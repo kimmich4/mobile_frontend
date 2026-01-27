@@ -1,0 +1,15 @@
+Analyzing mobile_frontend...                                    
+
+   info - Don't invoke 'print' in production code - lib\login_screen.dart:26:7 - avoid_print
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\login_screen.dart:383:102 - deprecated_member_use
+   info - The file name 'onBoarding_screen.dart' isn't a lower_case_with_underscores identifier - lib\onBoarding_screen.dart:1:1 - file_names
+   info - Don't invoke 'print' in production code - lib\profile_setup_screen.dart:127:5 - avoid_print
+  error - The argument for the named parameter 'color' was already specified - lib\profile_setup_screen.dart:373:13 - duplicate_named_argument
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:492:41 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:493:24 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:519:41 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:520:24 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:546:41 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:547:24 - curly_braces_in_flow_control_structures
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\splash_screen.dart:152:49 - deprecated_member_use
+

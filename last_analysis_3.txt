@@ -1,0 +1,14 @@
+Analyzing mobile_frontend...                                    
+
+   info - Don't invoke 'print' in production code - lib\login_screen.dart:26:7 - avoid_print
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\login_screen.dart:383:102 - deprecated_member_use
+   info - The file name 'onBoarding_screen.dart' isn't a lower_case_with_underscores identifier - lib\onBoarding_screen.dart:1:1 - file_names
+   info - Don't invoke 'print' in production code - lib\profile_setup_screen.dart:134:5 - avoid_print
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:614:34 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:615:24 - curly_braces_in_flow_control_structures
+  error - The getter 'platform' isn't defined for the type 'FilePicker' - lib\profile_setup_screen.dart:625:59 - undefined_getter
+warning - The operand can't be 'null', so the condition is always 'true' - lib\profile_setup_screen.dart:629:26 - unnecessary_null_comparison
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:631:34 - curly_braces_in_flow_control_structures
+   info - Statements in an if should be enclosed in a block - lib\profile_setup_screen.dart:632:24 - curly_braces_in_flow_control_structures
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\splash_screen.dart:152:49 - deprecated_member_use
+

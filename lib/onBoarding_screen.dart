@@ -89,14 +89,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  spacing: 24,
                   children: [
                     // Page indicators
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      spacing: 8,
                       children: List.generate(3, (index) {
                         return Container(
+                          margin: EdgeInsets.only(right: index < 2 ? 8 : 0), // Add spacing via margin
                           width: _currentPage == index ? 32 : 8,
                           height: 8,
                           decoration: ShapeDecoration(
@@ -110,6 +109,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         );
                       }),
                     ),
+                    const SizedBox(height: 24), // Add spacing manually
                     // Next/Get Started button
                     GestureDetector(
                       onTap: _nextPage,
@@ -143,7 +143,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
-                          spacing: 8,
                           children: [
                             Text(
                               _currentPage == 2 ? 'Get Started' : 'Next',
@@ -155,6 +154,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                                 height: 1.50,
                               ),
                             ),
+                            const SizedBox(width: 8), // Add spacing manually
                             const Icon(
                               Icons.arrow_forward,
                               color: Colors.white,
