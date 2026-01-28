@@ -1,0 +1,11 @@
+Analyzing mobile_frontend...                                    
+
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\home_screen.dart:110:39 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\home_screen.dart:160:29 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\home_screen.dart:366:63 - deprecated_member_use
+   info - Don't invoke 'print' in production code - lib\login_screen.dart:26:7 - avoid_print
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\login_screen.dart:383:102 - deprecated_member_use
+   info - The file name 'onBoarding_screen.dart' isn't a lower_case_with_underscores identifier - lib\onBoarding_screen.dart:1:1 - file_names
+   info - Don't invoke 'print' in production code - lib\profile_setup_screen.dart:133:5 - avoid_print
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\splash_screen.dart:152:49 - deprecated_member_use
+
