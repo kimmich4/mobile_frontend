@@ -1,71 +1,53 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
+import 'profile_setup_screen.dart';
+import 'progress_tracking_screen.dart';
+import 'ai_assistant_screen.dart';
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  bool _notificationsEnabled = true;
+  bool _darkModeEnabled = false;
+  bool _dataSharingEnabled = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFAFDDE5),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            _buildHeader(context),
-            const SizedBox(height: 24),
-            _buildSection(
-              title: 'Account',
+      body: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          _buildHeader(context),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
               children: [
-                _buildSettingsItem(
-                  icon: Icons.person_outline,
-                  title: 'Edit Profile',
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Edit Profile Clicked")));
-                  },
-                ),
-                _buildSettingsItem(
-                  icon: Icons.monitor_heart_outlined,
-                  title: 'Health Data',
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Health Data Clicked")));
-                  },
-                ),
-                _buildSettingsItem(
-                  icon: Icons.email_outlined,
-                  title: 'Email Preferences',
-                  onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Email Preferences Clicked")));
-                  },
-                ),
+                _buildAccountSection(),
+                const SizedBox(height: 16),
+                _buildPreferencesSection(),
+                const SizedBox(height: 16),
+                _buildPrivacySection(),
+                const SizedBox(height: 16),
+                _buildSupportSection(),
+                const SizedBox(height: 16),
+                _buildBrandingSection(),
+                const SizedBox(height: 16),
+                _buildLegalSection(context),
+                const SizedBox(height: 24),
+                _buildLogoutButton(context),
+                const SizedBox(height: 24),
+                _buildFooter(),
+                const SizedBox(height: 100),
               ],
             ),
-            const SizedBox(height: 24),
-            _buildSection(
-              title: 'Preferences',
-              children: [
-                _buildSettingsItem(
-                  icon: Icons.notifications_none,
-                  title: 'Notifications',
-                  trailing: Switch(
-                    value: true, 
-                    onChanged: (val) {},
-                    activeColor: const Color(0xFF0FA4AF),
-                  ),
-                ),
-                _buildSettingsItem(
-                  icon: Icons.language,
-                  title: 'Language',
-                  trailing: const Text('English', style: TextStyle(color: Color(0xFF024950))),
-                ),
-                 _buildSettingsItem(
-                  icon: Icons.straighten,
-                  title: 'Units',
-                  trailing: const Text('Metric', style: TextStyle(color: Color(0xFF024950))),
-                ),
-              ],
-            ),
-            const SizedBox(height: 100),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -75,11 +57,7 @@ class SettingsScreen extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 32),
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(0.50, 0.00),
-          end: Alignment(0.50, 1.00),
-          colors: [Color(0xFF003135), Color(0xFF024950)],
-        ),
+        color: Color(0xFF003135),
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(40),
           bottomRight: Radius.circular(40),
@@ -89,174 +67,188 @@ class SettingsScreen extends StatelessWidget {
         children: [
           Row(
             children: [
-              GestureDetector(
-                onTap: () => Navigator.maybePop(context),
-                child: Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.10),
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(Icons.arrow_back, color: Colors.white, size: 20),
-                ),
+              IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.white),
+                onPressed: () { Navigator.of(context).maybePop(); },
               ),
-              const SizedBox(width: 16),
               const Text(
                 'Settings',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.w400,
-                ),
+                style: TextStyle(color: Colors.white, fontSize: 18),
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            decoration: BoxDecoration(
-              color: Colors.white.withValues(alpha: 0.10),
-              borderRadius: BorderRadius.circular(24),
-            ),
-            child: Row(
-              children: [
-                 Container(
-                    width: 64,
-                    height: 64,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                        colors: [Color(0xFF0FA4AF), Color(0xFF964734)],
-                      ),
-                    ),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'J',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontFamily: 'Arial',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                const SizedBox(width: 16),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
-                      'John Doe',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontFamily: 'Arial',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      'Premium Member',
-                      style: TextStyle(
-                        color: Color(0xFFAFDDE5),
-                        fontSize: 14,
-                        fontFamily: 'Arial',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+          const SizedBox(height: 20),
+          _buildProfileCard(),
         ],
       ),
     );
   }
 
-  Widget _buildSection({required String title, required List<Widget> children}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+  Widget _buildProfileCard() {
+    return InkWell(
+      onTap: () { _navigateTo(context, const ProfileSetupScreen()); },
       child: Container(
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
-          boxShadow: const [
-            BoxShadow(
-              color: Color(0x19000000),
-              blurRadius: 6,
-              offset: Offset(0, 4),
-              spreadRadius: -4,
-            ),
-             BoxShadow(
-              color: Color(0x19000000),
-              blurRadius: 15,
-              offset: Offset(0, 10),
-              spreadRadius: -3,
-            )
-          ],
+          color: Colors.white.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(20),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
-              child: Text(
-                title,
-                style: const TextStyle(
-                  color: Color(0xFF024950),
-                  fontSize: 16,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.w400,
-                ),
+            const CircleAvatar(
+              radius: 30,
+              backgroundColor: Color(0xFF0FA4AF),
+              child: Text('J', style: TextStyle(color: Colors.white, fontSize: 24)),
+            ),
+            const SizedBox(width: 16),
+            const Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                   Text('John Doe', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                   Text('Premium Member', style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14)),
+                ],
               ),
             ),
-            const Divider(color: Color(0xFFAFDDE5), thickness: 0.8),
-            ...children,
+            const Icon(Icons.edit, color: Colors.white70),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildSettingsItem({
-    required IconData icon,
-    required String title,
-    Widget? trailing,
-    VoidCallback? onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-        child: Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: const Color(0x190FA4AF),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Icon(icon, color: const Color(0xFF0FA4AF), size: 20),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Text(
-                title,
-                style: const TextStyle(
-                  color: Color(0xFF003135),
-                  fontSize: 16,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            ),
-            if (trailing != null) trailing else const Icon(Icons.arrow_forward_ios, size: 16, color: Color(0xFFAFDDE5)),
-          ],
-        ),
+  Widget _buildAccountSection() {
+    return _buildCardWrapper(
+      title: 'Account',
+      children: [
+        _buildItem(Icons.person, 'Edit Profile', () { _navigateTo(context, const ProfileSetupScreen()); }),
+        _buildItem(Icons.monitor_heart, 'Health Data', () { _navigateTo(context, const ProgressTrackingScreen()); }),
+      ],
+    );
+  }
+
+  Widget _buildPreferencesSection() {
+    return _buildCardWrapper(
+      title: 'Preferences',
+      children: [
+        _buildItem(Icons.notifications, 'Notifications', null, trailing: Switch(
+          value: _notificationsEnabled,
+          onChanged: (v) => setState(() => _notificationsEnabled = v),
+          activeColor: const Color(0xFF0FA4AF),
+        )),
+        _buildItem(Icons.dark_mode, 'Dark Mode', null, trailing: Switch(
+          value: _darkModeEnabled,
+          onChanged: (v) => setState(() => _darkModeEnabled = v),
+          activeColor: const Color(0xFF0FA4AF),
+        )),
+      ],
+    );
+  }
+
+  Widget _buildPrivacySection() {
+    return _buildCardWrapper(
+      title: 'Privacy & Security',
+      children: [
+        _buildItem(Icons.lock, 'Privacy Settings', () { _showModal(context, 'Privacy', 'Settings here.'); }),
+        _buildItem(Icons.share, 'Data Sharing', null, trailing: Switch(
+          value: _dataSharingEnabled,
+          onChanged: (v) => setState(() => _dataSharingEnabled = v),
+          activeColor: const Color(0xFF0FA4AF),
+        )),
+      ],
+    );
+  }
+
+  Widget _buildSupportSection() {
+    return _buildCardWrapper(
+      title: 'Support',
+      children: [
+        _buildItem(Icons.download, 'Export Data', () { _showExportDialog(context); }),
+     ],
+    );
+  }
+
+  Widget _buildCardWrapper({required String title, required List<Widget> children}) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Text(title, style: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xFF024950))),
+          ),
+          ...children,
+        ],
       ),
     );
+  }
+
+  Widget _buildItem(IconData icon, String label, VoidCallback? onTap, {Widget? trailing}) {
+    return ListTile(
+      leading: Icon(icon, color: const Color(0xFF0FA4AF)),
+      title: Text(label),
+      trailing: trailing ?? const Icon(Icons.chevron_right, color: Color(0xFFAFDDE5)),
+      onTap: onTap,
+    );
+  }
+
+  Widget _buildBrandingSection() {
+    return const Center(child: Text('FitLife AI v1.0.0', style: TextStyle(color: Color(0xFF024950))));
+  }
+
+  Widget _buildLegalSection(BuildContext context) {
+    return _buildCardWrapper(
+      title: 'Legal',
+      children: [
+        _buildItem(Icons.description, 'Terms of Service', () {}),
+        _buildItem(Icons.privacy_tip, 'Privacy Policy', () {}),
+      ],
+    );
+  }
+
+  Widget _buildLogoutButton(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () { _showLogoutDialog(context); },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: const Color(0xFF964734),
+        foregroundColor: Colors.white,
+        minimumSize: const Size(double.infinity, 50),
+      ),
+      child: const Text('Logout'),
+    );
+  }
+
+  Widget _buildFooter() {
+    return const Center(child: Text('Made with ❤️', style: TextStyle(fontSize: 12)));
+  }
+
+  void _navigateTo(BuildContext context, Widget screen) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+  }
+
+  void _showModal(BuildContext context, String title, String desc) {
+    showModalBottomSheet(context: context, builder: (_) => Padding(padding: const EdgeInsets.all(24), child: Text(title)));
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(context: context, builder: (_) => AlertDialog(
+      title: const Text('Logout'),
+      actions: [
+        TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Cancel')),
+        TextButton(onPressed: () => Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const AuthScreen()), (_) => false), child: const Text('Logout')),
+      ],
+    ));
+  }
+
+  void _showExportDialog(BuildContext context) {
+    showDialog(context: context, builder: (_) => const AlertDialog(title: Text('Exporting...')));
+    Future.delayed(const Duration(seconds: 1), () {
+      if (!mounted) return;
+      Navigator.of(context).pop();
+    });
   }
 }

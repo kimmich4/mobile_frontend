@@ -48,7 +48,7 @@ class DietScreen extends StatelessWidget {
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.10),
+                    color: Colors.white.withOpacity(0.10),
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(Icons.arrow_back, color: Colors.white, size: 20),
@@ -67,7 +67,7 @@ class DietScreen extends StatelessWidget {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                   color: Colors.white.withValues(alpha: 0.10),
+                   color: Colors.white.withOpacity(0.10),
                   shape: BoxShape.circle,
                 ),
                 child: const Icon(Icons.calendar_today, color: Colors.white, size: 20),
@@ -97,7 +97,7 @@ class DietScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: isSelected ? const Color(0xFF0FA4AF) : Colors.white.withValues(alpha: 0.10),
+        color: isSelected ? const Color(0xFF0FA4AF) : Colors.white.withOpacity(0.10),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
@@ -182,7 +182,7 @@ class DietScreen extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [color, color.withValues(alpha: 0.7)], // Simple gradient simulation
+              colors: [color, color.withOpacity(0.7)], // Simple gradient simulation
             ),
           ),
           alignment: Alignment.center,
@@ -267,7 +267,7 @@ class DietScreen extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.5),
+            color: Colors.white.withOpacity(0.5),
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(
