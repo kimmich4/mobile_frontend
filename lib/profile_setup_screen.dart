@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'main_screen.dart';
 import 'package:image_picker/image_picker.dart';
 // import 'main_screen.dart'; // Breaking circular dependency
 
@@ -135,8 +136,11 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
     if (Navigator.of(context).canPop()) {
       Navigator.of(context).pop();
     } else {
-      // Emergency fallback if reached directly
-      _notify('Setup completed successfully!');
+      // If we can't pop (initial onboarding/signup flow), navigate to main screen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const MainScreen()),
+      );
     }
   }
 

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'main_screen.dart';
+import 'progress_tracking_screen.dart';
+import 'ai_assistant_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,13 +19,13 @@ class HomeScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 12.0),
               child: Column(
                 children: [
-                  _buildDietPlanSection(),
+                  _buildDietPlanSection(context),
                   const SizedBox(height: 16),
-                  _buildWorkoutSection(),
+                  _buildWorkoutSection(context),
                   const SizedBox(height: 16),
-                  _buildProgressSummarySection(),
+                  _buildProgressSummarySection(context),
                   const SizedBox(height: 16),
-                  _buildAiAssistantSection(),
+                  _buildAiAssistantSection(context),
                   const SizedBox(height: 16),
                   _buildDailyTipSection(),
                 ],
@@ -55,54 +58,59 @@ class HomeScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                        colors: [Color(0xFF0FA4AF), Color(0xFF964734)],
-                      ),
-                    ),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      'J',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontFamily: 'Arial',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        'Good Evening',
-                        style: TextStyle(
-                          color: Color(0xFFAFDDE5),
-                          fontSize: 14,
-                          fontFamily: 'Arial',
-                          fontWeight: FontWeight.w400,
+                InkWell(
+                  onTap: () {
+                    MainScreen.switchTab(3); // Switch to Settings tap
+                  },
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 48,
+                        height: 48,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [Color(0xFF0FA4AF), Color(0xFF964734)],
+                          ),
+                        ),
+                        alignment: Alignment.center,
+                        child: const Text(
+                          'J',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontFamily: 'Arial',
+                            fontWeight: FontWeight.w400,
+                          ),
                         ),
                       ),
-                      Text(
-                        'John Doe',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontFamily: 'Arial',
-                          fontWeight: FontWeight.w400,
-                        ),
+                      const SizedBox(width: 12),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Good Evening',
+                            style: TextStyle(
+                              color: Color(0xFFAFDDE5),
+                              fontSize: 14,
+                              fontFamily: 'Arial',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                          Text(
+                            'John Doe',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontFamily: 'Arial',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
               Container(
                 width: 40,
                 height: 40,
@@ -181,255 +189,267 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDietPlanSection() {
-    return _buildDashboardCard(
-      height: 108,
-      child: Stack(
-        children: [
-          Positioned(
-            left: 20,
-            top: 20,
-            right: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  children: [
-                    _buildGradientIconBox(
-                      colors: [const Color(0xFF0FA4AF), const Color(0xFF024950)],
-                      icon: Icons.restaurant_menu,
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          "Today's Diet Plan",
-                          style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                        ),
-                        Text(
-                          '4 meals remaining',
-                          style: TextStyle(color: Color(0x99024950), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                const Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      '1,847',
-                      textAlign: TextAlign.right,
-                      style: TextStyle(color: Color(0xFF0FA4AF), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                    ),
-                    Text(
-                      'cal consumed',
-                      textAlign: TextAlign.right,
-                      style: TextStyle(color: Color(0x99024950), fontSize: 12, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            left: 20,
-            top: 80,
-            right: 20,
-            child: Container(
-              height: 8,
-              clipBehavior: Clip.antiAlias,
-              decoration: ShapeDecoration(
-                color: const Color(0x7FAFDDE5),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(26843500)),
-              ),
-              child: FractionallySizedBox(
-                widthFactor: 0.8,
-                alignment: Alignment.centerLeft,
-                child: Container(
-                  decoration: const BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment(0.50, 0.00),
-                      end: Alignment(0.50, 1.00),
-                      colors: [Color(0xFF0FA4AF), Color(0xFF964734)],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildWorkoutSection() {
-    return _buildDashboardCard(
-      height: 116,
-      child: Stack(
-        children: [
-          Positioned(
-            left: 20,
-            top: 20,
-            right: 20,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  child: Row(
+  Widget _buildDietPlanSection(BuildContext context) {
+    return GestureDetector(
+      onTap: () => MainScreen.switchTab(2),
+      child: _buildDashboardCard(
+        height: 108,
+        child: Stack(
+          children: [
+            Positioned(
+              left: 20,
+              top: 20,
+              right: 20,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
                     children: [
                       _buildGradientIconBox(
-                        colors: [const Color(0xFF964734), const Color(0xFF024950)],
-                        icon: Icons.fitness_center,
+                        colors: [const Color(0xFF0FA4AF), const Color(0xFF024950)],
+                        icon: Icons.restaurant_menu,
                       ),
                       const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Workout Plan',
-                              style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                            ),
-                            Text(
-                              'Upper Body - 45 min',
-                              style: TextStyle(color: Color(0x99024950), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                            ),
-                          ],
-                        ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            "Today's Diet Plan",
+                            style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                          ),
+                          Text(
+                            '4 meals remaining',
+                            style: TextStyle(color: Color(0x99024950), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                  decoration: ShapeDecoration(
-                    color: const Color(0x330FA4AF),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(26843500)),
-                  ),
-                  child: const Text(
-                    'Start',
-                    style: TextStyle(color: Color(0xFF0FA4AF), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const Positioned(
-            left: 20,
-            top: 80,
-            child: Row(
-              children: [
-                Icon(Icons.list_alt, size: 14, color: Color(0x99024950)),
-                SizedBox(width: 4),
-                Text(
-                  '6 exercises',
-                  style: TextStyle(color: Color(0x99024950), fontSize: 12, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                ),
-                SizedBox(width: 12),
-                Icon(Icons.local_fire_department, size: 14, color: Color(0x99024950)),
-                SizedBox(width: 4),
-                Text(
-                  '~380 cal',
-                  style: TextStyle(color: Color(0x99024950), fontSize: 12, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildProgressSummarySection() {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: ShapeDecoration(
-        gradient: const LinearGradient(
-          begin: Alignment(0.50, 0.00),
-          end: Alignment(0.50, 1.00),
-          colors: [Color(0xFF024950), Color(0xFF003135)],
-        ),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
-        shadows: [_buildDefaultBoxShadow()],
-      ),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(16)),
-                child: const Icon(Icons.bar_chart, color: Colors.white),
-              ),
-              const SizedBox(width: 12),
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Progress Summary',
-                    style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                  ),
-                  Text(
-                    "This week's overview",
-                    style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildProgressInfo('-1.2kg', 'Weight'),
-              _buildProgressInfo('92%', 'Diet Plan'),
-              _buildProgressInfo('80%', 'Workout'),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildAiAssistantSection() {
-    return _buildDashboardCard(
-      height: 104,
-      child: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Row(
-          children: [
-            _buildGradientIconBox(
-              colors: [const Color(0xFF0FA4AF), const Color(0xFF964734)],
-              icon: Icons.smart_toy,
-            ),
-            const SizedBox(width: 12),
-            const Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'AI Assistant',
-                    style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
-                  ),
-                  Text(
-                    'Ask me anything about your fitness journey',
-                    style: TextStyle(color: Color(0x99024950), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        '1,847',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(color: Color(0xFF0FA4AF), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                      ),
+                      Text(
+                        'cal consumed',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(color: Color(0x99024950), fontSize: 12, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
-            Container(
-              width: 8,
-              height: 8,
-              decoration: const BoxDecoration(color: Color(0xFF0FA4AF), shape: BoxShape.circle),
+            Positioned(
+              left: 20,
+              top: 80,
+              right: 20,
+              child: Container(
+                height: 8,
+                clipBehavior: Clip.antiAlias,
+                decoration: ShapeDecoration(
+                  color: const Color(0x7FAFDDE5),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(26843500)),
+                ),
+                child: FractionallySizedBox(
+                  widthFactor: 0.8,
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment(0.50, 0.00),
+                        end: Alignment(0.50, 1.00),
+                        colors: [Color(0xFF0FA4AF), Color(0xFF964734)],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildWorkoutSection(BuildContext context) {
+    return GestureDetector(
+      onTap: () => MainScreen.switchTab(1),
+      child: _buildDashboardCard(
+        height: 116,
+        child: Stack(
+          children: [
+            Positioned(
+              left: 20,
+              top: 20,
+              right: 20,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        _buildGradientIconBox(
+                          colors: [const Color(0xFF964734), const Color(0xFF024950)],
+                          icon: Icons.fitness_center,
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                'Workout Plan',
+                                style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                              ),
+                              Text(
+                                'Upper Body - 45 min',
+                                style: TextStyle(color: Color(0x99024950), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                    decoration: ShapeDecoration(
+                      color: const Color(0x330FA4AF),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(26843500)),
+                    ),
+                    child: const Text(
+                      'Start',
+                      style: TextStyle(color: Color(0xFF0FA4AF), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const Positioned(
+              left: 20,
+              top: 80,
+              child: Row(
+                children: [
+                  Icon(Icons.list_alt, size: 14, color: Color(0x99024950)),
+                  SizedBox(width: 4),
+                  Text(
+                    '6 exercises',
+                    style: TextStyle(color: Color(0x99024950), fontSize: 12, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(width: 12),
+                  Icon(Icons.local_fire_department, size: 14, color: Color(0x99024950)),
+                  SizedBox(width: 4),
+                  Text(
+                    '~380 cal',
+                    style: TextStyle(color: Color(0x99024950), fontSize: 12, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildProgressSummarySection(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const ProgressTrackingScreen())),
+      child: Container(
+        padding: const EdgeInsets.all(20),
+        decoration: ShapeDecoration(
+          gradient: const LinearGradient(
+            begin: Alignment(0.50, 0.00),
+            end: Alignment(0.50, 1.00),
+            colors: [Color(0xFF024950), Color(0xFF003135)],
+          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+          shadows: [_buildDefaultBoxShadow()],
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Container(
+                  width: 48,
+                  height: 48,
+                  decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(16)),
+                  child: const Icon(Icons.bar_chart, color: Colors.white),
+                ),
+                const SizedBox(width: 12),
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Progress Summary',
+                      style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                    ),
+                    Text(
+                      "This week's overview",
+                      style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildProgressInfo('-1.2kg', 'Weight'),
+                _buildProgressInfo('92%', 'Diet Plan'),
+                _buildProgressInfo('80%', 'Workout'),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAiAssistantSection(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const AiAssistantScreen())),
+      child: _buildDashboardCard(
+        height: 104,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            children: [
+              _buildGradientIconBox(
+                colors: [const Color(0xFF0FA4AF), const Color(0xFF964734)],
+                icon: Icons.smart_toy,
+              ),
+              const SizedBox(width: 12),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'AI Assistant',
+                      style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                    ),
+                    Text(
+                      'Ask me anything about your fitness journey',
+                      style: TextStyle(color: Color(0x99024950), fontSize: 14, fontFamily: 'Arial', fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(color: Color(0xFF0FA4AF), shape: BoxShape.circle),
+              ),
+            ],
+          ),
         ),
       ),
     );

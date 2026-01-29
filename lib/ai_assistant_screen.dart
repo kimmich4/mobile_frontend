@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'main_screen.dart';
 
 class AiAssistantScreen extends StatelessWidget {
   const AiAssistantScreen({super.key});
@@ -9,7 +10,7 @@ class AiAssistantScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFAFDDE5),
       body: Column(
         children: [
-          _buildHeader(),
+          _buildHeader(context),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.only(top: 16, bottom: 24),
@@ -28,7 +29,7 @@ class AiAssistantScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 32),
@@ -41,14 +42,23 @@ class AiAssistantScreen extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.10),
-              shape: BoxShape.circle,
+          GestureDetector(
+            onTap: () {
+              if (Navigator.of(context).canPop()) {
+                Navigator.of(context).pop();
+              } else {
+                MainScreen.switchTab(0); // Switch to Home tab
+              }
+            },
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.10),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(Icons.arrow_back, color: Colors.white, size: 20),
             ),
-            child: const Icon(Icons.arrow_back, color: Colors.white, size: 20),
           ),
           const SizedBox(width: 16),
           Expanded(

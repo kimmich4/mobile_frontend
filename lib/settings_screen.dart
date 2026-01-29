@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
-import 'profile_setup_screen.dart';
+import 'main_screen.dart';
+import 'edit_profile_screen.dart';
 import 'progress_tracking_screen.dart';
 import 'ai_assistant_screen.dart';
 
@@ -67,10 +68,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           Row(
             children: [
-              IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.white),
-                onPressed: () { Navigator.of(context).maybePop(); },
-              ),
               const Text(
                 'Settings',
                 style: TextStyle(color: Colors.white, fontSize: 18),
@@ -86,7 +83,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Widget _buildProfileCard() {
     return InkWell(
-      onTap: () { _navigateTo(context, const ProfileSetupScreen()); },
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -110,7 +106,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ],
               ),
             ),
-            const Icon(Icons.edit, color: Colors.white70),
           ],
         ),
       ),
@@ -121,7 +116,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return _buildCardWrapper(
       title: 'Account',
       children: [
-        _buildItem(Icons.person, 'Edit Profile', () { _navigateTo(context, const ProfileSetupScreen()); }),
+        _buildItem(Icons.person, 'Edit Profile', () { _navigateTo(context, const EditProfileScreen()); }),
         _buildItem(Icons.monitor_heart, 'Health Data', () { _navigateTo(context, const ProgressTrackingScreen()); }),
       ],
     );

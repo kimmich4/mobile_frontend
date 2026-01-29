@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'main_screen.dart';
 
 class ProgressTrackingScreen extends StatefulWidget {
   const ProgressTrackingScreen({super.key});
@@ -43,7 +44,13 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: () => Navigator.maybePop(context),
+                onTap: () {
+                  if (Navigator.of(context).canPop()) {
+                    Navigator.of(context).pop();
+                  } else {
+                    MainScreen.switchTab(0);
+                  }
+                },
                 child: Container(
                   width: 40,
                   height: 40,

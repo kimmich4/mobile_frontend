@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'video_screen.dart';
+import 'main_screen.dart';
 
 class WorkoutPlanScreen extends StatefulWidget {
   const WorkoutPlanScreen({super.key});
@@ -48,15 +49,18 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: () => Navigator.maybePop(context),
+                onTap: () {
+                  if (Navigator.of(context).canPop()) {
+                    Navigator.of(context).pop();
+                  } else {
+                    MainScreen.switchTab(0);
+                  }
+                },
                 child: Container(
                   width: 40,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.10),
-                    shape: BoxShape.circle,
                   ),
-                  child: const Icon(Icons.arrow_back, color: Colors.white, size: 20),
                 ),
               ),
               const Text(

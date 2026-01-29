@@ -76,16 +76,30 @@ class _SignupscreenState extends State<Signupscreen> {
             ),
             child: Column(
               children: [
-                const Text(
-                  'Create Account',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Arial',
-                    fontWeight: FontWeight.w400,
-                    height: 1.50,
-                  ),
+                Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back, color: Colors.white),
+                      onPressed: () => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const AuthScreen()),
+                      ),
+                    ),
+                    const Expanded(
+                      child: Text(
+                        'Create Account',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: 'Arial',
+                          fontWeight: FontWeight.w400,
+                          height: 1.50,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 48), // Spacer to balance the back button
+                  ],
                 ),
                 const SizedBox(height: 8),
                 const Text(
