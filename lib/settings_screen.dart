@@ -4,6 +4,8 @@ import 'main_screen.dart';
 import 'edit_profile_screen.dart';
 import 'progress_tracking_screen.dart';
 import 'ai_assistant_screen.dart';
+import 'animate_in.dart';
+import 'theme_manager.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -14,36 +16,42 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _notificationsEnabled = true;
-  bool _darkModeEnabled = false;
+  late bool _darkModeEnabled;
   bool _dataSharingEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _darkModeEnabled = ThemeManager.themeMode.value == ThemeMode.dark;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFAFDDE5),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: ListView(
         padding: EdgeInsets.zero,
         children: [
-          _buildHeader(context),
+          AnimateIn(child: _buildHeader(context)),
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                _buildAccountSection(),
+                AnimateIn(delay: const Duration(milliseconds: 100), child: _buildAccountSection()),
                 const SizedBox(height: 16),
-                _buildPreferencesSection(),
+                AnimateIn(delay: const Duration(milliseconds: 200), child: _buildPreferencesSection()),
                 const SizedBox(height: 16),
-                _buildPrivacySection(),
+                AnimateIn(delay: const Duration(milliseconds: 300), child: _buildPrivacySection()),
                 const SizedBox(height: 16),
-                _buildSupportSection(),
+                AnimateIn(delay: const Duration(milliseconds: 400), child: _buildSupportSection()),
                 const SizedBox(height: 16),
-                _buildBrandingSection(),
+                AnimateIn(delay: const Duration(milliseconds: 500), child: _buildBrandingSection()),
                 const SizedBox(height: 16),
-                _buildLegalSection(context),
+                AnimateIn(delay: const Duration(milliseconds: 600), child: _buildLegalSection(context)),
                 const SizedBox(height: 24),
-                _buildLogoutButton(context),
+                AnimateIn(delay: const Duration(milliseconds: 700), child: _buildLogoutButton(context)),
                 const SizedBox(height: 24),
-                _buildFooter(),
+                AnimateIn(delay: const Duration(milliseconds: 800), child: _buildFooter()),
                 const SizedBox(height: 100),
               ],
             ),
@@ -101,7 +109,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   Text('John Doe', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                   Text('Mohamed Abdallah', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
                    Text('Premium Member', style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14)),
                 ],
               ),
@@ -133,7 +141,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         )),
         _buildItem(Icons.dark_mode, 'Dark Mode', null, trailing: Switch(
           value: _darkModeEnabled,
-          onChanged: (v) => setState(() => _darkModeEnabled = v),
+          onChanged: (v) {
+            setState(() => _darkModeEnabled = v);
+            ThemeManager.toggleTheme(v);
+          },
           activeColor: const Color(0xFF0FA4AF),
         )),
       ],
@@ -166,7 +177,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget _buildCardWrapper({required String title, required List<Widget> children}) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
@@ -192,7 +203,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
   Widget _buildBrandingSection() {
-    return const Center(child: Text('FitLife AI v1.0.0', style: TextStyle(color: Color(0xFF024950))));
+    return const Center(child: Text('FitBife AI v1.0.0', style: TextStyle(color: Color(0xFF024950))));
   }
 
   Widget _buildLegalSection(BuildContext context) {

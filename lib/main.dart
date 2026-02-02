@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'splash_screen.dart';
+import 'theme_manager.dart';
 
 void main() {
   runApp(const FitBiteApp());
@@ -10,14 +11,18 @@ class FitBiteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'FitBite',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF024950)),
-        useMaterial3: true,
-      ),
-      home: const SplashScreen(),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: ThemeManager.themeMode,
+      builder: (context, mode, child) {
+        return MaterialApp(
+          title: 'FitBite',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeManager.lightTheme,
+          darkTheme: ThemeManager.darkTheme,
+          themeMode: mode,
+          home: const SplashScreen(),
+        );
+      },
     );
   }
 }

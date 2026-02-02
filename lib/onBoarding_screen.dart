@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import 'animate_in.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -20,10 +21,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   void _nextPage() {
     if (_currentPage < 2) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
+      _pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeInOut);
     } else {
       _completeOnboarding();
     }
@@ -40,131 +38,45 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         children: [
           PageView(
             controller: _pageController,
-            onPageChanged: (index) {
-              setState(() {
-                _currentPage = index;
-              });
-            },
-            children: const [
-              OnboardingScreen1(),
-              OnboardingScreen2(),
-              OnboardingScreen3(),
-            ],
+            onPageChanged: (index) => setState(() => _currentPage = index),
+            children: const [OnboardingScreen1(), OnboardingScreen2(), OnboardingScreen3()],
           ),
-          // Skip button
+          Positioned(right: 24, top: 24, child: SafeArea(child: GestureDetector(onTap: _completeOnboarding, child: Text('Skip', style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 16))))),
           Positioned(
-            right: 24,
-            top: 24,
+            left: 0, right: 0, bottom: 0,
             child: SafeArea(
-              child: GestureDetector(
-                onTap: _completeOnboarding,
+              child: AnimateIn(
+                delay: const Duration(milliseconds: 500),
+                slideOffset: 50,
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const Text(
-                    'Skip',
-                    style: TextStyle(
-                      color: Color(0xFF024950),
-                      fontSize: 16,
-                      fontFamily: 'Arial',
-                      fontWeight: FontWeight.w400,
-                      height: 1.50,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          // Bottom section with indicators and next button
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: SafeArea(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // Page indicators
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: List.generate(3, (index) {
-                        return Container(
-                          margin: EdgeInsets.only(right: index < 2 ? 8 : 0), // Add spacing via margin
-                          width: _currentPage == index ? 32 : 8,
-                          height: 8,
-                          decoration: ShapeDecoration(
-                            color: _currentPage == index
-                                ? const Color(0xFF024950)
-                                : const Color(0x4C024950),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(26843500),
-                            ),
-                          ),
-                        );
-                      }),
-                    ),
-                    const SizedBox(height: 24), // Add spacing manually
-                    // Next/Get Started button
-                    GestureDetector(
-                      onTap: _nextPage,
-                      child: Container(
-                        width: double.infinity,
-                        height: 56,
-                        decoration: ShapeDecoration(
-                          gradient: const LinearGradient(
-                            begin: Alignment(0.50, 0.00),
-                            end: Alignment(0.50, 1.00),
-                            colors: [Color(0xFF024950), Color(0xFF0FA4AF)],
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14),
-                          ),
-                          shadows: const [
-                            BoxShadow(
-                              color: Color(0x19000000),
-                              blurRadius: 6,
-                              offset: Offset(0, 4),
-                              spreadRadius: -4,
-                            ),
-                            BoxShadow(
-                              color: Color(0x19000000),
-                              blurRadius: 15,
-                              offset: Offset(0, 10),
-                              spreadRadius: -3,
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              _currentPage == 2 ? 'Get Started' : 'Next',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontFamily: 'Arial',
-                                fontWeight: FontWeight.w400,
-                                height: 1.50,
-                              ),
-                            ),
-                            const SizedBox(width: 8), // Add spacing manually
-                            const Icon(
-                              Icons.arrow_forward,
-                              color: Colors.white,
-                              size: 20,
-                            ),
-                          ],
+                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 32),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(3, (index) => AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          margin: const EdgeInsets.only(right: 8),
+                          width: _currentPage == index ? 32 : 8, height: 8,
+                          decoration: BoxDecoration(color: Color(_currentPage == index ? 0xFF024950 : 0x4C024950), borderRadius: BorderRadius.circular(4)),
+                        )),
+                      ),
+                      const SizedBox(height: 24),
+                      GestureDetector(
+                        onTap: _nextPage,
+                        child: Container(
+                          width: double.infinity, height: 56,
+                          decoration: BoxDecoration(gradient: const LinearGradient(colors: [Color(0xFF024950), Color(0xFF0FA4AF)]), borderRadius: BorderRadius.circular(14)),
+                          child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                            Text(_currentPage == 2 ? 'Get Started' : 'Next', style: const TextStyle(color: Colors.white, fontSize: 16)),
+                            const SizedBox(width: 8),
+                            const Icon(Icons.arrow_forward, color: Colors.white, size: 20),
+                          ]),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -181,71 +93,17 @@ class OnboardingScreen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: const ShapeDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(0.50, 0.00),
-          end: Alignment(0.50, 1.00),
-          colors: [Color(0xFFAFDDE5), Colors.white],
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
-        ),
-      ),
+      decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Theme.of(context).scaffoldBackgroundColor, Theme.of(context).colorScheme.surface])),
       child: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(flex: 2),
-            // Icon container
-            Container(
-              width: 128,
-              height: 128,
-              decoration: ShapeDecoration(
-                color: const Color(0x1F0FA4AF),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(64),
-                ),
-              ),
-              child: const Icon(
-                Icons.restaurant_menu,
-                size: 64,
-                color: Color(0xFF0FA4AF),
-              ),
-            ),
-            const SizedBox(height: 32),
-            // Title
-            const Text(
-              'Personalized Diet Plans',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF003135),
-                fontSize: 20,
-                fontFamily: 'Arial',
-                fontWeight: FontWeight.w400,
-                height: 1.50,
-              ),
-            ),
-            const SizedBox(height: 32),
-            // Description
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              child: Text(
-                'Get customized meal plans based on your health data, allergies, and fitness goals using advanced nutritional formulas.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xB2024950),
-                  fontSize: 16,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.w400,
-                  height: 1.62,
-                ),
-              ),
-            ),
-            const Spacer(flex: 3),
-          ],
-        ),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          const Spacer(flex: 2),
+          AnimateIn(child: Container(width: 128, height: 128, decoration: const BoxDecoration(color: Color(0x1F0FA4AF), shape: BoxShape.circle), child: const Icon(Icons.restaurant_menu, size: 64, color: Color(0xFF0FA4AF)))),
+          const SizedBox(height: 32),
+          AnimateIn(delay: const Duration(milliseconds: 200), child: Text('Personalized Diet Plans', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 24, fontWeight: FontWeight.bold))),
+          const SizedBox(height: 16),
+          AnimateIn(delay: const Duration(milliseconds: 400), child: Padding(padding: const EdgeInsets.symmetric(horizontal: 32), child: Text('Get customized meal plans based on your health data, allergies, and fitness goals.', textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7), fontSize: 16)))),
+          const Spacer(flex: 3),
+        ]),
       ),
     );
   }
@@ -257,71 +115,17 @@ class OnboardingScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: const ShapeDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(0.50, 0.00),
-          end: Alignment(0.50, 1.00),
-          colors: [Color(0xFFAFDDE5), Colors.white],
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
-        ),
-      ),
+      decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Theme.of(context).scaffoldBackgroundColor, Theme.of(context).colorScheme.surface])),
       child: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(flex: 2),
-            // Icon container
-            Container(
-              width: 128,
-              height: 128,
-              decoration: ShapeDecoration(
-                color: const Color(0x1F964734),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(64),
-                ),
-              ),
-              child: const Icon(
-                Icons.psychology,
-                size: 64,
-                color: Color(0xFF964734),
-              ),
-            ),
-            const SizedBox(height: 32),
-            // Title
-            const Text(
-              'AI-Powered Recommendations',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF003135),
-                fontSize: 20,
-                fontFamily: 'Arial',
-                fontWeight: FontWeight.w400,
-                height: 1.50,
-              ),
-            ),
-            const SizedBox(height: 32),
-            // Description
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              child: Text(
-                'Our RAG-based AI assistant learns from your progress and provides intelligent, personalized advice 24/7.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xB2024950),
-                  fontSize: 16,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.w400,
-                  height: 1.62,
-                ),
-              ),
-            ),
-            const Spacer(flex: 3),
-          ],
-        ),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          const Spacer(flex: 2),
+          AnimateIn(child: Container(width: 128, height: 128, decoration: const BoxDecoration(color: Color(0x1F964734), shape: BoxShape.circle), child: const Icon(Icons.psychology, size: 64, color: Color(0xFF964734)))),
+          const SizedBox(height: 32),
+          AnimateIn(delay: const Duration(milliseconds: 200), child: Text('AI-Powered Recommendations', textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 24, fontWeight: FontWeight.bold))),
+          const SizedBox(height: 16),
+          AnimateIn(delay: const Duration(milliseconds: 400), child: Padding(padding: const EdgeInsets.symmetric(horizontal: 32), child: Text('Our RAG-based AI assistant learns from your progress and provides intelligent advice.', textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7), fontSize: 16)))),
+          const Spacer(flex: 3),
+        ]),
       ),
     );
   }
@@ -333,71 +137,17 @@ class OnboardingScreen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: const ShapeDecoration(
-        gradient: LinearGradient(
-          begin: Alignment(0.50, 0.00),
-          end: Alignment(0.50, 1.00),
-          colors: [Color(0xFFAFDDE5), Colors.white],
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
-        ),
-      ),
+      decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Theme.of(context).scaffoldBackgroundColor, Theme.of(context).colorScheme.surface])),
       child: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(flex: 2),
-            // Icon container
-            Container(
-              width: 128,
-              height: 128,
-              decoration: ShapeDecoration(
-                color: const Color(0x1F024950),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(64),
-                ),
-              ),
-              child: const Icon(
-                Icons.fitness_center,
-                size: 64,
-                color: Color(0xFF024950),
-              ),
-            ),
-            const SizedBox(height: 32),
-            // Title
-            const Text(
-              'Smart Fitness Tracking',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Color(0xFF003135),
-                fontSize: 20,
-                fontFamily: 'Arial',
-                fontWeight: FontWeight.w400,
-                height: 1.50,
-              ),
-            ),
-            const SizedBox(height: 32),
-            // Description
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 32),
-              child: Text(
-                'Track your progress with detailed analytics, workout plans tailored to your injuries and experience level.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xB2024950),
-                  fontSize: 16,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.w400,
-                  height: 1.62,
-                ),
-              ),
-            ),
-            const Spacer(flex: 3),
-          ],
-        ),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          const Spacer(flex: 2),
+          AnimateIn(child: Container(width: 128, height: 128, decoration: const BoxDecoration(color: Color(0x1F024950), shape: BoxShape.circle), child: const Icon(Icons.fitness_center, size: 64, color: Color(0xFF024950)))),
+          const SizedBox(height: 32),
+          AnimateIn(delay: const Duration(milliseconds: 200), child: Text('Smart Fitness Tracking', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 24, fontWeight: FontWeight.bold))),
+          const SizedBox(height: 16),
+          AnimateIn(delay: const Duration(milliseconds: 400), child: Padding(padding: const EdgeInsets.symmetric(horizontal: 32), child: Text('Track your progress with detailed analytics and workout plans tailored to you.', textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7), fontSize: 16)))),
+          const Spacer(flex: 3),
+        ]),
       ),
     );
   }

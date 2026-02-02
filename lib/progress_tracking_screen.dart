@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main_screen.dart';
+import 'animate_in.dart';
 
 class ProgressTrackingScreen extends StatefulWidget {
   const ProgressTrackingScreen({super.key});
@@ -14,12 +15,25 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFAFDDE5),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _buildHeader(context),
-            _buildContent(),
+            AnimateIn(child: _buildHeader(context)),
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                children: [
+                  AnimateIn(delay: const Duration(milliseconds: 200), child: _buildStatsGrid()),
+                  const SizedBox(height: 24),
+                  AnimateIn(delay: const Duration(milliseconds: 400), child: _buildWeightProgressSection()),
+                  const SizedBox(height: 16),
+                  AnimateIn(delay: const Duration(milliseconds: 600), child: _buildCaloriesOverviewSection()),
+                  const SizedBox(height: 16),
+                  AnimateIn(delay: const Duration(milliseconds: 800), child: _buildConsistencySection()),
+                ],
+              ),
+            ),
             const SizedBox(height: 100),
           ],
         ),
@@ -33,8 +47,8 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 24),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment(0.50, 0.00),
-          end: Alignment(0.50, 1.00),
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
           colors: [Color(0xFF003135), Color(0xFF024950)],
         ),
       ),
@@ -82,7 +96,6 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
             ],
           ),
           const SizedBox(height: 24),
-          // Toggle
           Container(
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
@@ -117,29 +130,11 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
             label,
             style: TextStyle(
               color: _selectedPeriod == index ? Colors.white : const Color(0xFFAFDDE5),
-              fontSize: 16,
-              fontFamily: 'Arial',
+              fontSize: 14,
               fontWeight: FontWeight.w400,
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildContent() {
-    return Padding(
-      padding: const EdgeInsets.all(24.0),
-      child: Column(
-        children: [
-          _buildStatsGrid(),
-          const SizedBox(height: 24),
-          _buildWeightProgressSection(),
-          const SizedBox(height: 16),
-          _buildCaloriesOverviewSection(),
-          const SizedBox(height: 16),
-          _buildConsistencySection(),
-        ],
       ),
     );
   }
@@ -201,7 +196,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isWhite ? Colors.white : null,
+        color: isWhite ? Theme.of(context).colorScheme.surface : null,
         gradient: gradient != null ? LinearGradient(colors: gradient, begin: Alignment.topLeft, end: Alignment.bottomRight) : null,
         borderRadius: BorderRadius.circular(24),
       ),
@@ -210,24 +205,22 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
         children: [
           Opacity(
             opacity: 0.8,
-            child: Icon(icon, color: isWhite ? const Color(0xFF024950) : Colors.white, size: 24),
+            child: Icon(icon, color: isWhite ? Theme.of(context).colorScheme.onSurface : Colors.white, size: 24),
           ),
           const SizedBox(height: 12),
           Text(
             title,
             style: TextStyle(
-              color: isWhite ? const Color(0x99024950) : Colors.white.withOpacity(0.9),
+              color: isWhite ? Theme.of(context).colorScheme.onSurface.withOpacity(0.6) : Colors.white.withOpacity(0.9),
               fontSize: 14,
-              fontFamily: 'Arial',
             ),
           ),
           const SizedBox(height: 8),
           Text(
             value,
             style: TextStyle(
-              color: isWhite ? const Color(0xFF003135) : Colors.white,
+              color: isWhite ? Theme.of(context).colorScheme.onSurface : Colors.white,
               fontSize: 18,
-              fontFamily: 'Arial',
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -235,9 +228,8 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
           Text(
             subtitle,
             style: TextStyle(
-              color: isWhite ? const Color(0xFF0FA4AF) : Colors.white.withOpacity(0.75),
+              color: isWhite ? Theme.of(context).colorScheme.primary : Colors.white.withOpacity(0.75),
               fontSize: 12,
-              fontFamily: 'Arial',
             ),
           ),
         ],
@@ -255,24 +247,24 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildYAxisLabel('79'),
-              _buildYAxisLabel('78.25'),
-              _buildYAxisLabel('77.5'),
-              _buildYAxisLabel('76.75'),
-              _buildYAxisLabel('76'),
+              _buildAxisLabel('79'),
+              _buildAxisLabel('78.25'),
+              _buildAxisLabel('77.5'),
+              _buildAxisLabel('76.75'),
+              _buildAxisLabel('76'),
             ],
           ),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildXAxisLabel('Mon'),
-              _buildXAxisLabel('Tue'),
-              _buildXAxisLabel('Wed'),
-              _buildXAxisLabel('Thu'),
-              _buildXAxisLabel('Fri'),
-              _buildXAxisLabel('Sat'),
-              _buildXAxisLabel('Sun'),
+              _buildAxisLabel('Mon'),
+              _buildAxisLabel('Tue'),
+              _buildAxisLabel('Wed'),
+              _buildAxisLabel('Thu'),
+              _buildAxisLabel('Fri'),
+              _buildAxisLabel('Sat'),
+              _buildAxisLabel('Sun'),
             ],
           ),
         ],
@@ -368,27 +360,19 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
   Widget _buildChartContainer({required String title, String? subtitle, required Widget child}) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(24),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 15,
-            offset: const Offset(0, 10),
-          ),
-        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             title,
-            style: const TextStyle(
-              color: Color(0xFF003135),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
               fontSize: 16,
-              fontFamily: 'Arial',
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -403,7 +387,6 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                   style: const TextStyle(
                     color: Color(0xFF0FA4AF),
                     fontSize: 14,
-                    fontFamily: 'Arial',
                   ),
                 ),
               ],
@@ -415,21 +398,19 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildYAxisLabel(String text) => Text(text, style: const TextStyle(color: Color(0xFF024950), fontSize: 10, fontFamily: 'Inter'));
-  Widget _buildXAxisLabel(String text) => Text(text, style: const TextStyle(color: Color(0xFF024950), fontSize: 10, fontFamily: 'Inter'));
+  Widget _buildAxisLabel(String text) => Text(text, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 10));
 
   Widget _buildLegendItem(String label, Color color) {
     return Row(
       children: [
         Container(
-          width: 12,
-          height: 12,
+          width: 12, height: 12,
           decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
         const SizedBox(width: 8),
         Text(
           label,
-          style: const TextStyle(color: Color(0xB2024950), fontSize: 14, fontFamily: 'Arial'),
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 13),
         ),
       ],
     );
@@ -439,8 +420,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     return Column(
       children: [
         Container(
-          width: 40,
-          height: 40,
+          width: 40, height: 40,
           decoration: BoxDecoration(
             color: completed ? const Color(0xFF0FA4AF) : const Color(0x190FA4AF),
             gradient: completed ? const LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xFF0FA4AF), Color(0xFF024950)]) : null,
@@ -455,7 +435,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
         const SizedBox(height: 8),
         Text(
           day,
-          style: const TextStyle(color: Color(0x99024950), fontSize: 12, fontFamily: 'Arial'),
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 12),
         ),
       ],
     );

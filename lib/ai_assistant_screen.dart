@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'main_screen.dart';
+import 'animate_in.dart';
 
 class AiAssistantScreen extends StatelessWidget {
   const AiAssistantScreen({super.key});
@@ -7,23 +8,23 @@ class AiAssistantScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFAFDDE5),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(
         children: [
-          _buildHeader(context),
+          AnimateIn(child: _buildHeader(context)),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.only(top: 16, bottom: 24),
               child: Column(
                 children: [
-                  _buildWelcomeMessage(),
+                  AnimateIn(delay: const Duration(milliseconds: 200), child: _buildWelcomeMessage(context)),
                   const SizedBox(height: 24),
-                  _buildQuickActions(),
+                  AnimateIn(delay: const Duration(milliseconds: 400), child: _buildQuickActions(context)),
                 ],
               ),
             ),
           ),
-          _buildInputArea(),
+          AnimateIn(delay: const Duration(milliseconds: 600), slideOffset: 50, child: _buildInputArea(context)),
         ],
       ),
     );
@@ -35,8 +36,8 @@ class AiAssistantScreen extends StatelessWidget {
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 32),
       decoration: const BoxDecoration(
         gradient: LinearGradient(
-          begin: Alignment(0.50, 0.00),
-          end: Alignment(0.50, 1.00),
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
           colors: [Color(0xFF003135), Color(0xFF024950)],
         ),
       ),
@@ -47,160 +48,89 @@ class AiAssistantScreen extends StatelessWidget {
               if (Navigator.of(context).canPop()) {
                 Navigator.of(context).pop();
               } else {
-                MainScreen.switchTab(0); // Switch to Home tab
+                MainScreen.switchTab(0);
               }
             },
             child: Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.10),
-                shape: BoxShape.circle,
-              ),
+              width: 40, height: 40,
+              decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), shape: BoxShape.circle),
               child: const Icon(Icons.arrow_back, color: Colors.white, size: 20),
             ),
           ),
           const SizedBox(width: 16),
-          Expanded(
+          const Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'AI Assistant',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontFamily: 'Arial',
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                const SizedBox(height: 4),
+                Text('AI Assistant', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                SizedBox(height: 4),
                 Row(
                   children: [
-                    Container(
-                      width: 8,
-                      height: 8,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF0FA4AF),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      'Online',
-                      style: TextStyle(
-                        color: Color(0xFFAFDDE5),
-                        fontSize: 14,
-                        fontFamily: 'Arial',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    CircleAvatar(radius: 4, backgroundColor: Color(0xFF0FA4AF)),
+                    SizedBox(width: 8),
+                    Text('Online', style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14)),
                   ],
                 ),
               ],
             ),
           ),
-          Container(
-            width: 40,
-            height: 40,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                colors: [Color(0xFF0FA4AF), Color(0xFF964734)],
-              ),
-            ),
-            alignment: Alignment.center,
-            child: const Icon(Icons.more_horiz, color: Colors.white, size: 20),
-          ),
         ],
       ),
     );
   }
 
-  Widget _buildWelcomeMessage() {
+  Widget _buildWelcomeMessage(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
-      padding: const EdgeInsets.only(top: 12, left: 20, right: 20, bottom: 12),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(24),
           topRight: Radius.circular(24),
-          bottomLeft: Radius.circular(10),
+          bottomLeft: Radius.circular(4),
           bottomRight: Radius.circular(24),
         ),
-        boxShadow: [
-           BoxShadow(
-            color: Color(0x19000000),
-            blurRadius: 4,
-            offset: Offset(0, 2),
-            spreadRadius: -2,
-          ),
-          BoxShadow(
-            color: Color(0x19000000),
-            blurRadius: 6,
-            offset: Offset(0, 4),
-            spreadRadius: -1,
-          )
-        ],
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const [
-           Text(
-            "Hello! I'm your AI fitness assistant powered by RAG technology. I can help you with personalized diet plans, workout recommendations, and answer any health-related questions based on your profile. How can I assist you today?",
-            style: TextStyle(
-              color: Color(0xFF003135),
-              fontSize: 14,
-              fontFamily: 'Arial',
-              fontWeight: FontWeight.w400,
-              height: 1.62,
-            ),
-          ),
-          SizedBox(height: 8),
+        children: [
           Text(
-            '06:53 PM',
-            style: TextStyle(
-              color: Color(0x7F024950),
-              fontSize: 12,
-              fontFamily: 'Arial',
-              fontWeight: FontWeight.w400,
-            ),
+            "Hello! I'm your AI fitness assistant. I can help you with personalized diet plans, workout recommendations, and answer any health-related questions. How can I assist you today?",
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 15, height: 1.5),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            'Just now',
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4), fontSize: 12),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildQuickActions() {
+  Widget _buildQuickActions(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Quick Actions',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Color(0x99024950),
-              fontSize: 14,
-              fontFamily: 'Arial',
-              fontWeight: FontWeight.w400,
-            ),
-          ),
-          const SizedBox(height: 12),
+          Text('Quick Actions', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 14, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 16),
           Row(
             children: [
-              Expanded(child: _buildActionCard('🍎', 'Create Diet Plan')),
+              Expanded(child: _buildActionCard(context, Icons.restaurant_menu, 'Diet Plan')),
               const SizedBox(width: 12),
-              Expanded(child: _buildActionCard('💪', 'Workout Tips')),
+              Expanded(child: _buildActionCard(context, Icons.fitness_center, 'Workout')),
             ],
           ),
           const SizedBox(height: 12),
           Row(
             children: [
-              Expanded(child: _buildActionCard('📊', 'Track Progress')),
+              Expanded(child: _buildActionCard(context, Icons.analytics, 'Progress')),
               const SizedBox(width: 12),
-              Expanded(child: _buildActionCard('🍽️', 'Recipe Ideas')),
+              Expanded(child: _buildActionCard(context, Icons.lightbulb, 'Tips')),
             ],
           ),
         ],
@@ -208,109 +138,60 @@ class AiAssistantScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionCard(String icon, String label) {
+  Widget _buildActionCard(BuildContext context, IconData icon, String label) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: Theme.of(context).colorScheme.primary.withOpacity(0.1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            icon,
-            style: const TextStyle(fontSize: 24),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            label,
-            style: const TextStyle(
-              color: Color(0xFF024950),
-              fontSize: 14,
-              fontFamily: 'Arial',
-              fontWeight: FontWeight.w400,
-            ),
-          ),
+          Icon(icon, color: Theme.of(context).colorScheme.primary),
+          const SizedBox(height: 12),
+          Text(label, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold)),
         ],
       ),
     );
   }
 
-  Widget _buildInputArea() {
+  Widget _buildInputArea(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        border: Border(top: BorderSide(color: Color(0xFFAFDDE5), width: 0.8)),
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
       ),
-      child: Row(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: const BoxDecoration(
-              color: Color(0x7FAFDDE5),
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(Icons.add, color: Colors.white), // Placeholder icon
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                color: const Color(0x4CAFDDE5),
-                borderRadius: BorderRadius.circular(24),
-              ),
-              child: const Text(
-                'Ask me anything...',
-                style: TextStyle(
-                  color: Color(0x7F024950),
-                  fontSize: 16,
-                  fontFamily: 'Arial',
-                  fontWeight: FontWeight.w400,
+      child: SafeArea(
+        child: Row(
+          children: [
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                height: 56,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).scaffoldBackgroundColor,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Ask me anything...',
+                    hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)),
+                    border: InputBorder.none,
+                  ),
                 ),
               ),
             ),
-          ),
-          const SizedBox(width: 12),
-           Container(
-            width: 40,
-            height: 40,
-             decoration: const BoxDecoration(
-              color: Color(0x7FAFDDE5),
-              shape: BoxShape.circle,
+            const SizedBox(width: 16),
+            Container(
+              width: 56, height: 56,
+              decoration: BoxDecoration(gradient: const LinearGradient(colors: [Color(0xFF024950), Color(0xFF0FA4AF)]), borderRadius: BorderRadius.circular(16)),
+              child: const Icon(Icons.send, color: Colors.white),
             ),
-            child: const Icon(Icons.mic, color: Colors.white), // Placeholder icon
-          ),
-          const SizedBox(width: 12),
-          Container(
-            width: 40,
-            height: 40,
-             decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xFF024950), Color(0xFF0FA4AF)],
-              ),
-              shape: BoxShape.circle,
-              boxShadow: [
-                 BoxShadow(
-                  color: Color(0x19000000),
-                  blurRadius: 6,
-                  offset: Offset(0, 4),
-                  spreadRadius: -4,
-                ),
-                BoxShadow(
-                  color: Color(0x19000000),
-                  blurRadius: 15,
-                  offset: Offset(0, 10),
-                  spreadRadius: -3,
-                )
-              ],
-            ),
-            child: const Icon(Icons.send, color: Colors.white, size: 20),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
