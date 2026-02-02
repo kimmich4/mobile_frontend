@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'main_screen.dart';
-import 'animate_in.dart';
 
 class ProgressTrackingScreen extends StatefulWidget {
   const ProgressTrackingScreen({super.key});
@@ -19,18 +18,18 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            AnimateIn(child: _buildHeader(context)),
+            _buildHeader(context),
             Padding(
               padding: const EdgeInsets.all(24.0),
               child: Column(
                 children: [
-                  AnimateIn(delay: const Duration(milliseconds: 200), child: _buildStatsGrid()),
+                  _buildStatsGrid(),
                   const SizedBox(height: 24),
-                  AnimateIn(delay: const Duration(milliseconds: 400), child: _buildWeightProgressSection()),
+                  _buildWeightProgressSection(),
                   const SizedBox(height: 16),
-                  AnimateIn(delay: const Duration(milliseconds: 600), child: _buildCaloriesOverviewSection()),
+                  _buildCaloriesOverviewSection(),
                   const SizedBox(height: 16),
-                  AnimateIn(delay: const Duration(milliseconds: 800), child: _buildConsistencySection()),
+                  _buildConsistencySection(),
                 ],
               ),
             ),

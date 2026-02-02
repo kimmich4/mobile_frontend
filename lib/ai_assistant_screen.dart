@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'main_screen.dart';
-import 'animate_in.dart';
 
 class AiAssistantScreen extends StatelessWidget {
   const AiAssistantScreen({super.key});
@@ -11,20 +10,20 @@ class AiAssistantScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Column(
         children: [
-          AnimateIn(child: _buildHeader(context)),
+          _buildHeader(context),
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.only(top: 16, bottom: 24),
               child: Column(
                 children: [
-                  AnimateIn(delay: const Duration(milliseconds: 200), child: _buildWelcomeMessage(context)),
+                  _buildWelcomeMessage(context),
                   const SizedBox(height: 24),
-                  AnimateIn(delay: const Duration(milliseconds: 400), child: _buildQuickActions(context)),
+                  _buildQuickActions(context),
                 ],
               ),
             ),
           ),
-          AnimateIn(delay: const Duration(milliseconds: 600), slideOffset: 50, child: _buildInputArea(context)),
+          _buildInputArea(context),
         ],
       ),
     );

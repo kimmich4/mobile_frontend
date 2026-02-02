@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'main_screen.dart';
-import 'animate_in.dart';
 
 class DietScreen extends StatefulWidget {
   const DietScreen({super.key});
@@ -65,7 +64,7 @@ class _DietScreenState extends State<DietScreen> {
         key: ValueKey(_selectedDayIndex),
         child: Column(children: [
           _buildHeader(context),
-          Transform.translate(offset: const Offset(0, -40), child: AnimateIn(child: _buildDailySummaryCard(currentData))),
+          Transform.translate(offset: const Offset(0, -40), child: _buildDailySummaryCard(currentData)),
           _buildMealsList(currentData),
           const SizedBox(height: 100),
         ]),
@@ -140,8 +139,8 @@ class _DietScreenState extends State<DietScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(children: List.generate(meals.length, (i) => 
-        AnimateIn(delay: Duration(milliseconds: 200 + i * 100), child: Padding(padding: const EdgeInsets.only(bottom: 16), child: _buildMealSection(meals[i]['title'], meals[i]['cal'], (meals[i]['items'] as List).map((it) => _buildMealItem(it['name'], it['cal'])).toList()))))
-      ),
+        Padding(padding: const EdgeInsets.only(bottom: 16), child: _buildMealSection(meals[i]['title'], meals[i]['cal'], (meals[i]['items'] as List).map((it) => _buildMealItem(it['name'], it['cal'])).toList()))
+      )),
     );
   }
 

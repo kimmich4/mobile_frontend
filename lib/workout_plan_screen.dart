@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'video_screen.dart';
 import 'main_screen.dart';
-import 'animate_in.dart';
 
 class WorkoutPlanScreen extends StatefulWidget {
   const WorkoutPlanScreen({super.key});
@@ -30,12 +29,12 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
         key: ValueKey(_selectedTab),
         child: Column(
           children: [
-            AnimateIn(child: _buildHeader(context)),
+            _buildHeader(context),
             Padding(
               padding: const EdgeInsets.all(24.0),
               child: Column(
                 children: [
-                  AnimateIn(delay: const Duration(milliseconds: 200), child: _buildSummaryCard()),
+                  _buildSummaryCard(),
                   const SizedBox(height: 24),
                   _selectedTab == 0 ? _buildHomeWorkoutList() : _buildGymWorkoutList(),
                   const SizedBox(height: 100),
@@ -162,17 +161,17 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
 
   Widget _buildHomeWorkoutList() {
     return Column(children: [
-      AnimateIn(delay: const Duration(milliseconds: 300), child: _buildExerciseCard(id: 1, name: 'Push-ups', difficulty: 'Medium', equipment: 'Bodyweight', sets: '3', reps: '15', cal: '60')),
+      _buildExerciseCard(id: 1, name: 'Push-ups', difficulty: 'Medium', equipment: 'Bodyweight', sets: '3', reps: '15', cal: '60'),
       const SizedBox(height: 16),
-      AnimateIn(delay: const Duration(milliseconds: 400), child: _buildExerciseCard(id: 2, name: 'Plank', difficulty: 'Easy', equipment: 'None', sets: '3', reps: '60s', cal: '40')),
+      _buildExerciseCard(id: 2, name: 'Plank', difficulty: 'Easy', equipment: 'None', sets: '3', reps: '60s', cal: '40'),
     ]);
   }
 
   Widget _buildGymWorkoutList() {
     return Column(children: [
-      AnimateIn(delay: const Duration(milliseconds: 300), child: _buildExerciseCard(id: 101, name: 'Bench Press', difficulty: 'Hard', equipment: 'Barbell', sets: '4', reps: '8', cal: '120')),
+      _buildExerciseCard(id: 101, name: 'Bench Press', difficulty: 'Hard', equipment: 'Barbell', sets: '4', reps: '8', cal: '120'),
       const SizedBox(height: 16),
-      AnimateIn(delay: const Duration(milliseconds: 400), child: _buildExerciseCard(id: 102, name: 'Deadlift', difficulty: 'Hard', equipment: 'Barbell', sets: '3', reps: '5', cal: '150')),
+      _buildExerciseCard(id: 102, name: 'Deadlift', difficulty: 'Hard', equipment: 'Barbell', sets: '3', reps: '5', cal: '150'),
     ]);
   }
 
