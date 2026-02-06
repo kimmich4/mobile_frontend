@@ -1,53 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../viewmodels/workout_view_model.dart';
+import '../../viewmodels/main_view_model.dart';
+import '../../data/models/workout_model.dart';
 import 'video_screen.dart';
-import 'main_screen.dart';
 
-class WorkoutPlanScreen extends StatefulWidget {
+class WorkoutPlanScreen extends StatelessWidget {
   const WorkoutPlanScreen({super.key});
 
   @override
-  State<WorkoutPlanScreen> createState() => _WorkoutPlanScreenState();
-}
-
-class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
-  int _selectedTab = 0; // 0: Home, 1: Gym
-  final Set<int> _completedExercises = {};
-
-  void _onTabChanged(int index) {
-    if (_selectedTab != index) {
-      setState(() {
-        _selectedTab = index;
-      });
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: SingleChildScrollView(
-        key: ValueKey(_selectedTab),
-        child: Column(
-          children: [
-            _buildHeader(context),
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                children: [
-                  _buildSummaryCard(),
-                  const SizedBox(height: 24),
-                  _selectedTab == 0 ? _buildHomeWorkoutList() : _buildGymWorkoutList(),
-                  const SizedBox(height: 100),
-                ],
-              ),
+    return Consumer<WorkoutViewModel>(
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          body: SingleChildScrollView(
+            // Use selectedTab as key to force rebuild or maintain state properly if needed, 
+            // but Consumer handles rebuilds. Key might be useful for animation.
+            child: Column(
+              children: [
+                _buildHeader(context, viewModel),
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    children: [
+                      _buildSummaryCard(context, viewModel),
+                      const SizedBox(height: 24),
+                      _buildWorkoutList(context, viewModel),
+                      const SizedBox(height: 100),
+                    ],
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader(BuildContext context, WorkoutViewModel viewModel) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 24),
@@ -60,7 +52,7 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(icon: const Icon(Icons.arrow_back, color: Colors.white), onPressed: () => MainScreen.switchTab(0)),
+              IconButton(icon: const Icon(Icons.arrow_back, color: Colors.white), onPressed: () => MainViewModel.switchTabStatic(0)),
               const Text('Workout Plan', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
               IconButton(icon: const Icon(Icons.more_horiz, color: Colors.white), onPressed: () {}),
             ],
@@ -71,23 +63,23 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
             decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(14)),
             child: Row(
               children: [
-                Expanded(child: _buildToggleButton('Home Workout', 0)),
+                Expanded(child: _buildToggleButton(context, viewModel, 'Home Workout', 0)),
                 const SizedBox(width: 8),
-                Expanded(child: _buildToggleButton('Gym Workout', 1)),
+                Expanded(child: _buildToggleButton(context, viewModel, 'Gym Workout', 1)),
               ],
             ),
           ),
           const SizedBox(height: 16),
-          _buildCalendarStrip(),
+          _buildCalendarStrip(viewModel),
         ],
       ),
     );
   }
 
-  Widget _buildToggleButton(String label, int index) {
-    bool isSelected = _selectedTab == index;
+  Widget _buildToggleButton(BuildContext context, WorkoutViewModel viewModel, String label, int index) {
+    bool isSelected = viewModel.selectedTab == index;
     return GestureDetector(
-      onTap: () => _onTabChanged(index),
+      onTap: () => viewModel.setSelectedTab(index),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         height: 40,
@@ -101,14 +93,13 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
     );
   }
 
-  Widget _buildCalendarStrip() {
-    final days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  Widget _buildCalendarStrip(WorkoutViewModel viewModel) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: days.map((day) => Padding(
+        children: viewModel.calendarDays.map((day) => Padding(
           padding: const EdgeInsets.only(right: 8),
-          child: _buildCalendarCard(day, day == 'Mon' || day == 'Tue'),
+          child: _buildCalendarCard(day.dayName, day.isCompleted),
         )).toList(),
       ),
     );
@@ -133,21 +124,21 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
     );
   }
 
-  Widget _buildSummaryCard() {
+  Widget _buildSummaryCard(BuildContext context, WorkoutViewModel viewModel) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(24), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10)]),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Upper Body Strength', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+          Text(viewModel.workoutTitle, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildInfoItem(Icons.timer_outlined, '45 min'),
-              _buildInfoItem(Icons.local_fire_department_outlined, '380 cal'),
-              _buildInfoItem(Icons.fitness_center_outlined, '6 x'),
+              _buildInfoItem(Icons.timer_outlined, '${viewModel.durationMinutes} min'),
+              _buildInfoItem(Icons.local_fire_department_outlined, '${viewModel.totalCalories} cal'),
+              _buildInfoItem(Icons.fitness_center_outlined, '${viewModel.exerciseCount} x'),
             ],
           ),
         ],
@@ -159,24 +150,18 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
     return Row(children: [Icon(icon, size: 18, color: const Color(0xFF024950)), const SizedBox(width: 4), Text(label)]);
   }
 
-  Widget _buildHomeWorkoutList() {
-    return Column(children: [
-      _buildExerciseCard(id: 1, name: 'Push-ups', difficulty: 'Medium', equipment: 'Bodyweight', sets: '3', reps: '15', cal: '60'),
-      const SizedBox(height: 16),
-      _buildExerciseCard(id: 2, name: 'Plank', difficulty: 'Easy', equipment: 'None', sets: '3', reps: '60s', cal: '40'),
-    ]);
+  Widget _buildWorkoutList(BuildContext context, WorkoutViewModel viewModel) {
+    final exercises = viewModel.currentWorkoutExercises;
+    return Column(
+      children: exercises.map((exercise) => Padding(
+        padding: const EdgeInsets.only(bottom: 16),
+        child: _buildExerciseCard(context, viewModel, exercise),
+      )).toList(),
+    );
   }
 
-  Widget _buildGymWorkoutList() {
-    return Column(children: [
-      _buildExerciseCard(id: 101, name: 'Bench Press', difficulty: 'Hard', equipment: 'Barbell', sets: '4', reps: '8', cal: '120'),
-      const SizedBox(height: 16),
-      _buildExerciseCard(id: 102, name: 'Deadlift', difficulty: 'Hard', equipment: 'Barbell', sets: '3', reps: '5', cal: '150'),
-    ]);
-  }
-
-  Widget _buildExerciseCard({required int id, required String name, required String difficulty, required String equipment, required String sets, required String reps, required String cal}) {
-    bool isDone = _completedExercises.contains(id);
+  Widget _buildExerciseCard(BuildContext context, WorkoutViewModel viewModel, Exercise exercise) {
+    bool isDone = viewModel.isExerciseCompleted(exercise.id);
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
       padding: const EdgeInsets.all(20),
@@ -188,13 +173,13 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
       child: Column(
         children: [
           Row(children: [
-            Container(width: 40, height: 40, decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xFF024950)), alignment: Alignment.center, child: Text(id.toString().substring(id > 100 ? 2 : 0), style: const TextStyle(color: Colors.white))),
+            Container(width: 40, height: 40, decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0xFF024950)), alignment: Alignment.center, child: Text(exercise.id.toString().substring(exercise.id > 100 ? 2 : 0), style: const TextStyle(color: Colors.white))),
             const SizedBox(width: 12),
-            Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(name, style: const TextStyle(fontWeight: FontWeight.bold)), Text(difficulty)])),
+            Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(exercise.name, style: const TextStyle(fontWeight: FontWeight.bold)), Text(exercise.difficulty)])),
           ]),
           const SizedBox(height: 16),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text('Sets: $sets'), Text('Reps: $reps'), Text('$cal cal'),
+            Text('Sets: ${exercise.sets}'), Text('Reps: ${exercise.reps}'), Text('${exercise.calories} cal'),
           ]),
           const SizedBox(height: 16),
           Row(children: [
@@ -202,7 +187,7 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
             const SizedBox(width: 12),
             Expanded(child: ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: isDone ? Colors.green : const Color(0xFF964734), foregroundColor: Colors.white),
-              onPressed: () => setState(() => isDone ? _completedExercises.remove(id) : _completedExercises.add(id)),
+              onPressed: () => viewModel.toggleExerciseCompletion(exercise.id),
               child: Text(isDone ? 'Done' : 'Complete'),
             )),
           ]),
@@ -211,3 +196,4 @@ class _WorkoutPlanScreenState extends State<WorkoutPlanScreen> {
     );
   }
 }
+

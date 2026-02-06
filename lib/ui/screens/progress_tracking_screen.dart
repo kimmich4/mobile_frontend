@@ -1,46 +1,45 @@
 import 'package:flutter/material.dart';
-import 'main_screen.dart';
+import 'package:provider/provider.dart';
+import '../../viewmodels/progress_tracking_view_model.dart';
+import '../../viewmodels/main_view_model.dart';
 
-class ProgressTrackingScreen extends StatefulWidget {
+class ProgressTrackingScreen extends StatelessWidget {
   const ProgressTrackingScreen({super.key});
 
   @override
-  State<ProgressTrackingScreen> createState() => _ProgressTrackingScreenState();
-}
-
-class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
-  int _selectedPeriod = 0; // 0: Week, 1: Month, 2: Year
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            _buildHeader(context),
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                children: [
-                  _buildStatsGrid(),
-                  const SizedBox(height: 24),
-                  _buildWeightProgressSection(),
-                  const SizedBox(height: 16),
-                  _buildCaloriesOverviewSection(),
-                  const SizedBox(height: 16),
-                  _buildConsistencySection(),
-                ],
-              ),
+    return Consumer<ProgressTrackingViewModel>(
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                _buildHeader(context, viewModel),
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Column(
+                    children: [
+                      _buildStatsGrid(context, viewModel),
+                      const SizedBox(height: 24),
+                      _buildWeightProgressSection(context, viewModel),
+                      const SizedBox(height: 16),
+                      _buildCaloriesOverviewSection(context, viewModel),
+                      const SizedBox(height: 16),
+                      _buildConsistencySection(context, viewModel),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 100),
+              ],
             ),
-            const SizedBox(height: 100),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader(BuildContext context, ProgressTrackingViewModel viewModel) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 24),
@@ -61,7 +60,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                   if (Navigator.of(context).canPop()) {
                     Navigator.of(context).pop();
                   } else {
-                    MainScreen.switchTab(0);
+                    MainViewModel.switchTabStatic(0);
                   }
                 },
                 child: Container(
@@ -103,9 +102,9 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
             ),
             child: Row(
               children: [
-                _buildToggleItem('Week', 0),
-                _buildToggleItem('Month', 1),
-                _buildToggleItem('Year', 2),
+                _buildToggleItem(viewModel, 'Week', 0),
+                _buildToggleItem(viewModel, 'Month', 1),
+                _buildToggleItem(viewModel, 'Year', 2),
               ],
             ),
           ),
@@ -114,21 +113,21 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildToggleItem(String label, int index) {
+  Widget _buildToggleItem(ProgressTrackingViewModel viewModel, String label, int index) {
     return Expanded(
       child: GestureDetector(
-        onTap: () => setState(() => _selectedPeriod = index),
+        onTap: () => viewModel.setSelectedPeriod(index),
         child: Container(
           height: 40,
           decoration: BoxDecoration(
-            color: _selectedPeriod == index ? const Color(0xFF0FA4AF) : Colors.transparent,
+            color: viewModel.selectedPeriod == index ? const Color(0xFF0FA4AF) : Colors.transparent,
             borderRadius: BorderRadius.circular(10),
           ),
           alignment: Alignment.center,
           child: Text(
             label,
             style: TextStyle(
-              color: _selectedPeriod == index ? Colors.white : const Color(0xFFAFDDE5),
+              color: viewModel.selectedPeriod == index ? Colors.white : const Color(0xFFAFDDE5),
               fontSize: 14,
               fontWeight: FontWeight.w400,
             ),
@@ -138,24 +137,27 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildStatsGrid() {
+  Widget _buildStatsGrid(BuildContext context, ProgressTrackingViewModel viewModel) {
+    final stats = viewModel.stats;
     return Row(
       children: [
         Expanded(
           child: Column(
             children: [
               _buildStatCard(
+                context,
                 'Weight Lost',
-                '1.3 kg',
-                'This week',
+                '${stats.weightLostKg} kg',
+                stats.weightLostPeriod,
                 Icons.trending_down,
                 const [Color(0xFF0FA4AF), Color(0xFF024950)],
               ),
               const SizedBox(height: 16),
               _buildStatCard(
+                context,
                 'Avg Calories',
-                '2,260',
-                'burned/day',
+                '${stats.avgCaloriesBurned}',
+                stats.caloriesPeriod,
                 Icons.local_fire_department_outlined,
                 null,
                 isWhite: true,
@@ -168,16 +170,18 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
           child: Column(
             children: [
               _buildStatCard(
+                context,
                 'To Goal',
-                '8.7 kg',
-                '~8 weeks',
+                '${stats.toGoalKg} kg',
+                stats.toGoalTime,
                 Icons.flag_outlined,
                 [const Color(0xFF964734), const Color(0xFF964734).withOpacity(0.8)],
               ),
               const SizedBox(height: 16),
               _buildStatCard(
+                context,
                 'Workouts',
-                '4/5',
+                '${stats.workoutsCompleted}/${stats.workoutsGoal}',
                 'completed',
                 Icons.fitness_center,
                 null,
@@ -190,7 +194,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildStatCard(String title, String value, String subtitle, IconData icon, List<Color>? gradient, {bool isWhite = false}) {
+  Widget _buildStatCard(BuildContext context, String title, String value, String subtitle, IconData icon, List<Color>? gradient, {bool isWhite = false}) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
@@ -236,8 +240,10 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildWeightProgressSection() {
+  Widget _buildWeightProgressSection(BuildContext context, ProgressTrackingViewModel viewModel) {
+    // In a real implementation, you'd use a charting library here with data from viewModel.weightData
     return _buildChartContainer(
+      context,
       title: 'Weight Progress',
       subtitle: '-1.3 kg this week',
       child: Column(
@@ -246,33 +252,27 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildAxisLabel('79'),
-              _buildAxisLabel('78.25'),
-              _buildAxisLabel('77.5'),
-              _buildAxisLabel('76.75'),
-              _buildAxisLabel('76'),
+              _buildAxisLabel(context, '79'),
+              _buildAxisLabel(context, '78.25'),
+              _buildAxisLabel(context, '77.5'),
+              _buildAxisLabel(context, '76.75'),
+              _buildAxisLabel(context, '76'),
             ],
           ),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildAxisLabel('Mon'),
-              _buildAxisLabel('Tue'),
-              _buildAxisLabel('Wed'),
-              _buildAxisLabel('Thu'),
-              _buildAxisLabel('Fri'),
-              _buildAxisLabel('Sat'),
-              _buildAxisLabel('Sun'),
-            ],
+            children: viewModel.weightData.map((d) => _buildAxisLabel(context, d.day)).toList(),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildCaloriesOverviewSection() {
+  Widget _buildCaloriesOverviewSection(BuildContext context, ProgressTrackingViewModel viewModel) {
+    // In a real implementation, calculate heights based on viewModel.caloriesData headers
     return _buildChartContainer(
+      context,
       title: 'Calories Overview',
       child: Column(
         children: [
@@ -282,24 +282,21 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                _buildCalorieBar(0.6, 0.4),
-                _buildCalorieBar(0.8, 0.5),
-                _buildCalorieBar(0.5, 0.7),
-                _buildCalorieBar(0.9, 0.4),
-                _buildCalorieBar(0.7, 0.6),
-                _buildCalorieBar(0.4, 0.8),
-                _buildCalorieBar(0.6, 0.5),
-              ],
+              children: viewModel.caloriesData.map((d) {
+                // Normalize values for demo purposes, assume max 3000 cal
+                double burnedFactor = d.burned / 3000.0;
+                double consumedFactor = d.consumed / 3000.0;
+                return _buildCalorieBar(burnedFactor, consumedFactor);
+              }).toList(),
             ),
           ),
           const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _buildLegendItem('Burned', const Color(0xFF964734)),
+              _buildLegendItem(context, 'Burned', const Color(0xFF964734)),
               const SizedBox(width: 24),
-              _buildLegendItem('Consumed', const Color(0xFF0FA4AF)),
+              _buildLegendItem(context, 'Consumed', const Color(0xFF0FA4AF)),
             ],
           ),
         ],
@@ -332,8 +329,9 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildConsistencySection() {
+  Widget _buildConsistencySection(BuildContext context, ProgressTrackingViewModel viewModel) {
     return _buildChartContainer(
+      context,
       title: 'Workout Consistency',
       subtitle: '80% completion rate',
       child: Column(
@@ -341,22 +339,16 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildConsistencyDay('Mon', true),
-              _buildConsistencyDay('Tue', true),
-              _buildConsistencyDay('Wed', true),
-              _buildConsistencyDay('Thu', false),
-              _buildConsistencyDay('Fri', true),
-              _buildConsistencyDay('Sat', false),
-              _buildConsistencyDay('Sun', false),
-            ],
+            children: viewModel.consistencyData.days.map((d) => 
+              _buildConsistencyDay(context, d.dayName, d.isCompleted)
+            ).toList(),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildChartContainer({required String title, String? subtitle, required Widget child}) {
+  Widget _buildChartContainer(BuildContext context, {required String title, String? subtitle, required Widget child}) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -397,9 +389,9 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildAxisLabel(String text) => Text(text, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 10));
+  Widget _buildAxisLabel(BuildContext context, String text) => Text(text, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 10));
 
-  Widget _buildLegendItem(String label, Color color) {
+  Widget _buildLegendItem(BuildContext context, String label, Color color) {
     return Row(
       children: [
         Container(
@@ -415,7 +407,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildConsistencyDay(String day, bool completed) {
+  Widget _buildConsistencyDay(BuildContext context, String day, bool completed) {
     return Column(
       children: [
         Container(
@@ -440,3 +432,4 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 }
+

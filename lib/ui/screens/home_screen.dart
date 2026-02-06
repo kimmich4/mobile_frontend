@@ -1,48 +1,64 @@
 import 'package:flutter/material.dart';
-import 'main_screen.dart';
-import 'animate_in.dart';
+import 'package:provider/provider.dart';
+import '../../viewmodels/home_view_model.dart';
+import '../../viewmodels/main_view_model.dart';
+import '../components/animate_in.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            AnimateIn(child: _buildTopSection(context)),
-            const SizedBox(height: 24),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Column(
-                children: [
-                  AnimateIn(delay: const Duration(milliseconds: 200), child: _buildDietPlanSection(context)),
-                  const SizedBox(height: 16),
-                  AnimateIn(delay: const Duration(milliseconds: 300), child: _buildWorkoutSection(context)),
-                  const SizedBox(height: 16),
-                  AnimateIn(delay: const Duration(milliseconds: 400), child: _buildProgressSummarySection(context)),
-                  const SizedBox(height: 16),
-                  AnimateIn(delay: const Duration(milliseconds: 500), child: _buildAiAssistantSection(context)),
-                  const SizedBox(height: 16),
-                  AnimateIn(delay: const Duration(milliseconds: 600), child: _buildDailyTipSection()),
-                ],
-              ),
+    return Consumer<HomeViewModel>(
+      builder: (context, viewModel, child) {
+        return Scaffold(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                AnimateIn(child: _buildTopSection(context, viewModel)),
+                const SizedBox(height: 24),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Column(
+                    children: [
+                      AnimateIn(
+                        delay: const Duration(milliseconds: 200),
+                        child: _buildDietPlanSection(context, viewModel),
+                      ),
+                      const SizedBox(height: 16),
+                      AnimateIn(
+                        delay: const Duration(milliseconds: 300),
+                        child: _buildWorkoutSection(context, viewModel),
+                      ),
+                      const SizedBox(height: 16),
+                      AnimateIn(
+                        delay: const Duration(milliseconds: 400),
+                        child: _buildProgressSummarySection(context, viewModel),
+                      ),
+                      const SizedBox(height: 16),
+                      AnimateIn(
+                        delay: const Duration(milliseconds: 500),
+                        child: _buildAiAssistantSection(context),
+                      ),
+                      const SizedBox(height: 16),
+                      AnimateIn(
+                        delay: const Duration(milliseconds: 600),
+                        child: _buildDailyTipSection(viewModel),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 100),
+              ],
             ),
-            const SizedBox(height: 100),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildTopSection(BuildContext context) {
+  Widget _buildTopSection(BuildContext context, HomeViewModel viewModel) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 24),
@@ -53,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Column(children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           InkWell(
-            onTap: () => MainScreen.switchTab(3),
+            onTap: () => MainViewModel.switchTabStatic(3),
             child: Row(children: [
               Hero(
                 tag: 'profile_pic',
@@ -65,9 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               const SizedBox(width: 12),
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
-                Text('Good Evening', style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14)),
-                Text('Mohamed Abdallah', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(viewModel.getGreeting(), style: const TextStyle(color: Color(0xFFAFDDE5), fontSize: 14)),
+                const Text('Mohamed Abdallah', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
               ]),
             ]),
           ),
@@ -75,11 +91,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ]),
         const SizedBox(height: 24),
         Row(children: [
-          Expanded(child: _buildStatCard(title: 'Calories', value: '1,847', subtitle: 'of 2,200')),
+          Expanded(child: _buildStatCard(title: 'Calories', value: viewModel.caloriesConsumed, subtitle: 'of ${viewModel.caloriesGoal}')),
           const SizedBox(width: 12),
-          Expanded(child: _buildStatCard(title: 'Workouts', value: '4/5', subtitle: 'this week')),
+          Expanded(child: _buildStatCard(title: 'Workouts', value: '${viewModel.workoutsCompleted}/${viewModel.workoutsGoal}', subtitle: 'this week')),
           const SizedBox(width: 12),
-          Expanded(child: _buildStatCard(title: 'Streak', value: '12', subtitle: 'days')),
+          Expanded(child: _buildStatCard(title: 'Streak', value: '${viewModel.currentStreak}', subtitle: 'days')),
         ]),
       ]),
     );
@@ -98,9 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildDietPlanSection(BuildContext context) {
+  Widget _buildDietPlanSection(BuildContext context, HomeViewModel viewModel) {
     return _buildDashboardCard(
-      onTap: () => MainScreen.switchTab(2),
+      context,
+      onTap: () => MainViewModel.switchTabStatic(2),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(children: [
@@ -110,16 +127,16 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(width: 12),
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text("Today's Diet Plan", style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16, fontWeight: FontWeight.bold)),
-                Text('4 meals remaining', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 14)),
+                Text('${viewModel.mealsRemaining} meals remaining', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 14)),
               ]),
             ]),
             Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Text('1,847', style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(viewModel.caloriesConsumed, style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 16, fontWeight: FontWeight.bold)),
               Text('cal consumed', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 12)),
             ]),
           ]),
           const SizedBox(height: 16),
-          _buildProgressBar(0.8),
+          _buildProgressBar(viewModel.dietProgress),
         ]),
       ),
     );
@@ -136,9 +153,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildWorkoutSection(BuildContext context) {
+  Widget _buildWorkoutSection(BuildContext context, HomeViewModel viewModel) {
     return _buildDashboardCard(
-      onTap: () => MainScreen.switchTab(1),
+      context,
+      onTap: () => MainViewModel.switchTabStatic(1),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
@@ -146,8 +164,8 @@ class _HomeScreenState extends State<HomeScreen> {
             _buildGradientIconBox(colors: [const Color(0xFF964734), const Color(0xFF024950)], icon: Icons.fitness_center),
             const SizedBox(width: 12),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('Workout Plan', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16, fontWeight: FontWeight.bold)),
-              Text('Upper Body - 45 min', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 14)),
+              Text(viewModel.workoutTitle, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(viewModel.workoutDescription, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 14)),
             ]),
           ]),
           Container(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8), decoration: BoxDecoration(color: const Color(0x330FA4AF), borderRadius: BorderRadius.circular(20)), child: const Text('Start', style: TextStyle(color: Color(0xFF0FA4AF), fontWeight: FontWeight.bold))),
@@ -156,9 +174,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildProgressSummarySection(BuildContext context) {
+  Widget _buildProgressSummarySection(BuildContext context, HomeViewModel viewModel) {
     return GestureDetector(
-      onTap: () => MainScreen.switchTab(4),
+      onTap: () => MainViewModel.switchTabStatic(4),
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(gradient: const LinearGradient(colors: [Color(0xFF024950), Color(0xFF003135)]), borderRadius: BorderRadius.circular(24)),
@@ -173,9 +191,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ]),
           const SizedBox(height: 16),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            _buildProgressInfo('-1.2kg', 'Weight'),
-            _buildProgressInfo('92%', 'Diet Plan'),
-            _buildProgressInfo('80%', 'Workout'),
+            _buildProgressInfo(viewModel.weightChange, 'Weight'),
+            _buildProgressInfo(viewModel.dietPlanCompletion, 'Diet Plan'),
+            _buildProgressInfo(viewModel.workoutCompletion, 'Workout'),
           ]),
         ]),
       ),
@@ -184,7 +202,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildAiAssistantSection(BuildContext context) {
     return _buildDashboardCard(
-      onTap: () => MainScreen.switchTab(5),
+      context,
+      onTap: () => MainViewModel.switchTabStatic(5),
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Row(children: [
@@ -200,23 +219,23 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildDailyTipSection() {
+  Widget _buildDailyTipSection(HomeViewModel viewModel) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(gradient: const LinearGradient(colors: [Color(0xFF964734), Color(0xCC964734)]), borderRadius: BorderRadius.circular(24)),
       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const Text('💡', style: TextStyle(fontSize: 24)),
         const SizedBox(width: 12),
-        const Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('Daily Tip', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
-          SizedBox(height: 8),
-          Text('Stay hydrated! Aim for at least 8 glasses of water today.', style: TextStyle(color: Colors.white, fontSize: 14, height: 1.5)),
+        Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Text('Daily Tip', style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 8),
+          Text(viewModel.dailyTip, style: const TextStyle(color: Colors.white, fontSize: 14, height: 1.5)),
         ])),
       ]),
     );
   }
 
-  Widget _buildDashboardCard({required Widget child, VoidCallback? onTap}) {
+  Widget _buildDashboardCard(BuildContext context, {required Widget child, VoidCallback? onTap}) {
     return Container(
       decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(24), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 15, offset: const Offset(0, 10))]),
       child: InkWell(onTap: onTap, borderRadius: BorderRadius.circular(24), child: child),
@@ -235,3 +254,4 @@ class _HomeScreenState extends State<HomeScreen> {
     ]);
   }
 }
+
