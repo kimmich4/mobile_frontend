@@ -25,6 +25,15 @@ class EditProfileViewModel extends BaseViewModel {
   final List<String> _selectedMedicalConditions = [];
   final TextEditingController otherMedicalConditionController = TextEditingController();
   bool _medicalConditionOtherSelected = false;
+  final List<String> allergiesOptions = ['Peanuts', 'Dairy', 'Gluten', 'Shellfish', 'Eggs', 'Soy', 'None'];
+  final List<String> _selectedAllergies = [];
+  final TextEditingController otherAllergyController = TextEditingController();
+  bool _allergyOtherSelected = false;
+
+  final List<String> injuriesOptions = ['Back Pain', 'Knee Injury', 'Shoulder Pain', 'Ankle Sprain', 'None'];
+  final List<String> _selectedInjuries = [];
+  final TextEditingController otherInjuryController = TextEditingController();
+  bool _injuryOtherSelected = false;
 
   String? _medicalReportName;
   String? _inBodyReportName;
@@ -35,6 +44,10 @@ class EditProfileViewModel extends BaseViewModel {
   String get selectedActivityLevel => _selectedActivityLevel;
   List<String> get selectedMedicalConditions => _selectedMedicalConditions;
   bool get medicalConditionOtherSelected => _medicalConditionOtherSelected;
+  List<String> get selectedAllergies => _selectedAllergies;
+  bool get allergyOtherSelected => _allergyOtherSelected;
+  List<String> get selectedInjuries => _selectedInjuries;
+  bool get injuryOtherSelected => _injuryOtherSelected;
   String? get medicalReportName => _medicalReportName;
   String? get inBodyReportName => _inBodyReportName;
 
@@ -69,6 +82,44 @@ class EditProfileViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  void toggleAllergy(String allergy) {
+    if (_selectedAllergies.contains(allergy)) {
+      _selectedAllergies.remove(allergy);
+    } else {
+      if (allergy == 'None') {
+        _selectedAllergies.clear();
+      } else {
+        _selectedAllergies.remove('None');
+      }
+      _selectedAllergies.add(allergy);
+    }
+    notifyListeners();
+  }
+
+  void setAllergyOtherSelected(bool value) {
+    _allergyOtherSelected = value;
+    notifyListeners();
+  }
+
+  void toggleInjury(String injury) {
+    if (_selectedInjuries.contains(injury)) {
+      _selectedInjuries.remove(injury);
+    } else {
+      if (injury == 'None') {
+        _selectedInjuries.clear();
+      } else {
+        _selectedInjuries.remove('None');
+      }
+      _selectedInjuries.add(injury);
+    }
+    notifyListeners();
+  }
+
+  void setInjuryOtherSelected(bool value) {
+    _injuryOtherSelected = value;
+    notifyListeners();
+  }
+
   /// Pick file for medical or inbody report
   Future<void> pickFile(bool isMedical) async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
@@ -96,6 +147,8 @@ class EditProfileViewModel extends BaseViewModel {
     weightController.dispose();
     heightController.dispose();
     otherMedicalConditionController.dispose();
+    otherAllergyController.dispose();
+    otherInjuryController.dispose();
     super.dispose();
   }
 }

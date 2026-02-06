@@ -17,6 +17,10 @@ class UserModel {
   final String? medicalReportName;
   final String? inBodyReportPath;
   final String? inBodyReportName;
+  final List<String> allergies;
+  final String? otherAllergy;
+  final List<String> currentInjuries;
+  final String? otherInjury;
 
   // Goals & Experience (Step 4 of Profile Setup)
   final List<String> fitnessGoals; // 'Lose weight', 'Build muscle', etc.
@@ -65,6 +69,10 @@ class UserModel {
     this.medicalReportName,
     this.inBodyReportPath,
     this.inBodyReportName,
+    this.allergies = const [],
+    this.otherAllergy,
+    this.currentInjuries = const [],
+    this.otherInjury,
     
     // Goals & Experience
     this.fitnessGoals = const [],
@@ -143,6 +151,10 @@ class UserModel {
     String? medicalReportName,
     String? inBodyReportPath,
     String? inBodyReportName,
+    List<String>? allergies,
+    String? otherAllergy,
+    List<String>? currentInjuries,
+    String? otherInjury,
     List<String>? fitnessGoals,
     String? otherFitnessGoal,
     String? experienceLevel,
@@ -176,6 +188,10 @@ class UserModel {
       medicalReportName: medicalReportName ?? this.medicalReportName,
       inBodyReportPath: inBodyReportPath ?? this.inBodyReportPath,
       inBodyReportName: inBodyReportName ?? this.inBodyReportName,
+      allergies: allergies ?? this.allergies,
+      otherAllergy: otherAllergy ?? this.otherAllergy,
+      currentInjuries: currentInjuries ?? this.currentInjuries,
+      otherInjury: otherInjury ?? this.otherInjury,
       fitnessGoals: fitnessGoals ?? this.fitnessGoals,
       otherFitnessGoal: otherFitnessGoal ?? this.otherFitnessGoal,
       experienceLevel: experienceLevel ?? this.experienceLevel,
@@ -213,6 +229,10 @@ class UserModel {
       'medicalReportName': medicalReportName,
       'inBodyReportPath': inBodyReportPath,
       'inBodyReportName': inBodyReportName,
+      'allergies': allergies,
+      'otherAllergy': otherAllergy,
+      'currentInjuries': currentInjuries,
+      'otherInjury': otherInjury,
       'fitnessGoals': fitnessGoals,
       'otherFitnessGoal': otherFitnessGoal,
       'experienceLevel': experienceLevel,
@@ -250,6 +270,10 @@ class UserModel {
       medicalReportName: json['medicalReportName'] as String?,
       inBodyReportPath: json['inBodyReportPath'] as String?,
       inBodyReportName: json['inBodyReportName'] as String?,
+      allergies: (json['allergies'] as List<dynamic>?)?.cast<String>() ?? [],
+      otherAllergy: json['otherAllergy'] as String?,
+      currentInjuries: (json['currentInjuries'] as List<dynamic>?)?.cast<String>() ?? [],
+      otherInjury: json['otherInjury'] as String?,
       fitnessGoals: (json['fitnessGoals'] as List<dynamic>?)?.cast<String>() ?? [],
       otherFitnessGoal: json['otherFitnessGoal'] as String?,
       experienceLevel: json['experienceLevel'] as String?,

@@ -158,7 +158,7 @@ class ProfileSetupScreen extends StatelessWidget {
         const SizedBox(height: 8),
         ...['Sedentary', 'Light', 'Moderate', 'Active', 'Very Active'].asMap().entries.map((e) => 
           AnimateIn(delay: Duration(milliseconds: 500 + e.key * 100), child: Padding(padding: const EdgeInsets.only(bottom: 8), child: _buildActivityOption(context, viewModel, e.value)))
-        ).toList(),
+        ),
       ]),
     );
   }
@@ -167,22 +167,65 @@ class ProfileSetupScreen extends StatelessWidget {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const AnimateIn(child: Text('Health Information', style: TextStyle(color: Color(0xFF003135), fontSize: 20, fontWeight: FontWeight.bold))),
+        const AnimateIn(child: Text('Health Information', style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400))),
         const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildFileUploadSection(context, title: 'Medical Report', fileName: viewModel.medicalReportName, onTap: () => viewModel.pickFile(isMedical: true))),
+        
+        // Medical Conditions
+        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildSectionTitle('Medical Conditions')),
         const SizedBox(height: 16),
-        AnimateIn(delay: const Duration(milliseconds: 300), child: _buildFileUploadSection(context, title: 'InBody Report', fileName: viewModel.inBodyReportName, onTap: () => viewModel.pickFile(isMedical: false))),
+        AnimateIn(
+          delay: const Duration(milliseconds: 300),
+          child: _buildCustomMultiSelect(
+            context,
+            options: viewModel.medicalConditionsOptions,
+            selectedValues: viewModel.selectedMedicalConditions,
+            otherSelected: viewModel.medicalConditionOtherSelected,
+            otherController: viewModel.otherMedicalConditionController,
+            onOptionTap: viewModel.toggleMedicalCondition,
+            onOtherTap: () => viewModel.setMedicalConditionOtherSelected(!viewModel.medicalConditionOtherSelected),
+          ),
+        ),
+
         const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 400), child: _buildMultiSelectSectionWithOther(
-          context,
-          title: 'Medical Conditions', 
-          options: viewModel.medicalConditionsOptions, 
-          selectedValues: viewModel.selectedMedicalConditions,
-          otherSelected: viewModel.medicalConditionOtherSelected, 
-          otherController: viewModel.otherMedicalConditionController,
-          onOptionTap: (opt) => viewModel.toggleMedicalCondition(opt),
-          onOtherTap: () => viewModel.setMedicalConditionOtherSelected(!viewModel.medicalConditionOtherSelected),
-        )),
+        
+        // Allergies
+        AnimateIn(delay: const Duration(milliseconds: 400), child: _buildSectionTitle('Allergies')),
+        const SizedBox(height: 16),
+        AnimateIn(
+          delay: const Duration(milliseconds: 500),
+          child: _buildCustomMultiSelect(
+            context,
+            options: viewModel.allergiesOptions,
+            selectedValues: viewModel.selectedAllergies,
+            otherSelected: viewModel.allergyOtherSelected,
+            otherController: viewModel.otherAllergyController,
+            onOptionTap: viewModel.toggleAllergy,
+            onOtherTap: () => viewModel.setAllergyOtherSelected(!viewModel.allergyOtherSelected),
+          ),
+        ),
+
+        const SizedBox(height: 24),
+
+        // Current Injuries
+        AnimateIn(delay: const Duration(milliseconds: 600), child: _buildSectionTitle('Current Injuries')),
+        const SizedBox(height: 16),
+        AnimateIn(
+          delay: const Duration(milliseconds: 700),
+          child: _buildCustomMultiSelect(
+            context,
+            options: viewModel.injuriesOptions,
+            selectedValues: viewModel.selectedInjuries,
+            otherSelected: viewModel.injuryOtherSelected,
+            otherController: viewModel.otherInjuryController,
+            onOptionTap: viewModel.toggleInjury,
+            onOtherTap: () => viewModel.setInjuryOtherSelected(!viewModel.injuryOtherSelected),
+          ),
+        ),
+
+        const SizedBox(height: 24),
+        AnimateIn(delay: const Duration(milliseconds: 800), child: _buildFileUploadSection(context, title: 'Medical Report', fileName: viewModel.medicalReportName, onTap: () => viewModel.pickFile(isMedical: true))),
+        const SizedBox(height: 16),
+        AnimateIn(delay: const Duration(milliseconds: 900), child: _buildFileUploadSection(context, title: 'InBody Report', fileName: viewModel.inBodyReportName, onTap: () => viewModel.pickFile(isMedical: false))),
       ]),
     );
   }
@@ -191,30 +234,173 @@ class ProfileSetupScreen extends StatelessWidget {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const AnimateIn(child: Text('Goals & Experience', style: TextStyle(color: Color(0xFF003135), fontSize: 20, fontWeight: FontWeight.bold))),
+        const AnimateIn(child: Text('Goals & Experience', style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400))),
         const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildMultiSelectSectionWithOther(
-          context,
-          title: 'Fitness Goals', 
-          options: viewModel.fitnessGoalsOptions, 
-          selectedValues: viewModel.selectedFitnessGoals,
-          otherSelected: viewModel.fitnessGoalOtherSelected, 
-          otherController: viewModel.otherFitnessGoalController,
-          onOptionTap: (opt) => viewModel.toggleFitnessGoal(opt),
-          onOtherTap: () => viewModel.setFitnessGoalOtherSelected(!viewModel.fitnessGoalOtherSelected),
-        )),
+        
+        // Fitness Goals
+        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildSectionTitle('Fitness Goals')),
+        const SizedBox(height: 16),
+        AnimateIn(
+          delay: const Duration(milliseconds: 300),
+          child: _buildCustomMultiSelect(
+            context,
+            options: viewModel.fitnessGoalsOptions,
+            selectedValues: viewModel.selectedFitnessGoals,
+            otherSelected: viewModel.fitnessGoalOtherSelected,
+            otherController: viewModel.otherFitnessGoalController,
+            onOptionTap: viewModel.toggleFitnessGoal,
+            onOtherTap: () => viewModel.setFitnessGoalOtherSelected(!viewModel.fitnessGoalOtherSelected),
+          ),
+        ),
+
         const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 300), child: _buildSingleSelectSectionWithOther(
-          context,
-          title: 'Experience Level', 
-          options: viewModel.experienceLevelOptions, 
-          selectedValue: viewModel.selectedExperienceLevel,
-          otherSelected: viewModel.experienceOtherSelected, 
-          otherController: viewModel.otherExperienceController,
-          onOptionTap: (opt) => viewModel.setSelectedExperienceLevel(opt),
-          onOtherTap: () => viewModel.setExperienceOtherSelected(!viewModel.experienceOtherSelected),
-        )),
+        
+        // Experience Level
+        AnimateIn(delay: const Duration(milliseconds: 400), child: _buildSectionTitle('Experience Level')),
+        const SizedBox(height: 16),
+        AnimateIn(
+          delay: const Duration(milliseconds: 500),
+          child: _buildCustomSingleSelect(
+            context,
+            options: viewModel.experienceLevelOptions,
+            selectedValue: viewModel.selectedExperienceLevel,
+            otherSelected: viewModel.experienceOtherSelected,
+            otherController: viewModel.otherExperienceController,
+            onOptionTap: viewModel.setSelectedExperienceLevel,
+            onOtherTap: () => viewModel.setExperienceOtherSelected(!viewModel.experienceOtherSelected),
+          ),
+        ),
       ]),
+    );
+  }
+
+  Widget _buildSectionTitle(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        color: Color(0xFF024950),
+        fontSize: 16,
+        fontFamily: 'Arial',
+        fontWeight: FontWeight.w400,
+        height: 1.50,
+      ),
+    );
+  }
+
+  Widget _buildCustomMultiSelect(
+    BuildContext context, {
+    required List<String> options,
+    required List<String> selectedValues,
+    required bool otherSelected,
+    required TextEditingController otherController,
+    required Function(String) onOptionTap,
+    required VoidCallback onOtherTap,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            ...options.map((opt) {
+              bool isSelected = selectedValues.contains(opt);
+              return GestureDetector(
+                onTap: () => onOptionTap(opt),
+                child: _buildPill(context, opt, isSelected),
+              );
+            }),
+            GestureDetector(
+              onTap: onOtherTap,
+              child: _buildPill(context, 'Other', otherSelected),
+            ),
+          ],
+        ),
+        if (otherSelected) ...[
+          const SizedBox(height: 12),
+          TextField(
+            controller: otherController,
+            decoration: InputDecoration(
+              hintText: 'Please specify...',
+              filled: true,
+              fillColor: Theme.of(context).colorScheme.surface,
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildCustomSingleSelect(
+    BuildContext context, {
+    required List<String> options,
+    String? selectedValue,
+    required bool otherSelected,
+    required TextEditingController otherController,
+    required Function(String) onOptionTap,
+    required VoidCallback onOtherTap,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            ...options.map((opt) {
+              bool isSelected = selectedValue == opt;
+              return GestureDetector(
+                onTap: () => onOptionTap(opt),
+                child: _buildPill(context, opt, isSelected),
+              );
+            }),
+            GestureDetector(
+              onTap: onOtherTap,
+              child: _buildPill(context, 'Other', otherSelected),
+            ),
+          ],
+        ),
+        if (otherSelected) ...[
+          const SizedBox(height: 12),
+          TextField(
+            controller: otherController,
+            decoration: InputDecoration(
+              hintText: 'Please specify...',
+              filled: true,
+              fillColor: Theme.of(context).colorScheme.surface,
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildPill(BuildContext context, String text, bool isSelected) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+      decoration: ShapeDecoration(
+        color: isSelected ? const Color(0xFF024950) : Colors.white,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            width: 1.60,
+            color: isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5),
+          ),
+          borderRadius: BorderRadius.circular(50), // Fully rounded
+        ),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: isSelected ? Colors.white : const Color(0xFF024950),
+          fontSize: 16,
+          fontFamily: 'Arial',
+          fontWeight: FontWeight.w400,
+        ),
+      ),
     );
   }
 
@@ -275,49 +461,7 @@ class ProfileSetupScreen extends StatelessWidget {
       ),
     ]);
   }
-
-  Widget _buildMultiSelectSectionWithOther(BuildContext context, {required String title, required List<String> options, required List<String> selectedValues, required bool otherSelected, required TextEditingController otherController, required Function(String) onOptionTap, required Function() onOtherTap}) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(title, style: const TextStyle(color: Color(0xFF024950), fontSize: 16)),
-      const SizedBox(height: 8),
-      Wrap(spacing: 8, runSpacing: 8, children: [
-        ...options.map((opt) => FilterChip(label: Text(opt), selected: selectedValues.contains(opt), onSelected: (_) => onOptionTap(opt))),
-        ActionChip(label: const Text('Other'), onPressed: onOtherTap, backgroundColor: otherSelected ? const Color(0xFF024950) : null, labelStyle: TextStyle(color: otherSelected ? Colors.white : null)),
-      ]),
-      if (otherSelected) ...[
-        const SizedBox(height: 12),
-        TextField(
-          controller: otherController,
-          decoration: InputDecoration(
-            hintText: 'Please specify...',
-            filled: true, fillColor: Theme.of(context).colorScheme.surface,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-          ),
-        ),
-      ],
-    ]);
-  }
-
-  Widget _buildSingleSelectSectionWithOther(BuildContext context, {required String title, required List<String> options, String? selectedValue, required bool otherSelected, required TextEditingController otherController, required Function(String) onOptionTap, required Function() onOtherTap}) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(title, style: const TextStyle(color: Color(0xFF024950), fontSize: 16)),
-      const SizedBox(height: 8),
-      Wrap(spacing: 8, runSpacing: 8, children: [
-        ...options.map((opt) => ChoiceChip(label: Text(opt), selected: selectedValue == opt, onSelected: (_) => onOptionTap(opt))),
-        ActionChip(label: const Text('Other'), onPressed: onOtherTap, backgroundColor: otherSelected ? const Color(0xFF024950) : null, labelStyle: TextStyle(color: otherSelected ? Colors.white : null)),
-      ]),
-      if (otherSelected) ...[
-        const SizedBox(height: 12),
-        TextField(
-          controller: otherController,
-          decoration: InputDecoration(
-            hintText: 'Please specify...',
-            filled: true, fillColor: Theme.of(context).colorScheme.surface,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-          ),
-        ),
-      ],
-    ]);
-  }
 }
+
+
 

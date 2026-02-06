@@ -42,26 +42,66 @@ class EditProfileScreen extends StatelessWidget {
               const SizedBox(height: 40),
               const AnimateIn(delay: Duration(milliseconds: 1000), child: SectionHeader('Health Information')),
               const SizedBox(height: 24),
+              
+              // Medical Conditions
+              AnimateIn(delay: const Duration(milliseconds: 1050), child: _buildSectionTitle('Medical Conditions')),
+              const SizedBox(height: 16),
               AnimateIn(
                 delay: const Duration(milliseconds: 1100),
-                child: _multiSelect(
+                child: _buildCustomMultiSelect(
                   context,
-                  'Medical Conditions',
-                  viewModel.medicalConditionsOptions,
-                  viewModel.selectedMedicalConditions,
-                  viewModel.medicalConditionOtherSelected,
-                  viewModel.otherMedicalConditionController,
-                  (v) => viewModel.toggleMedicalCondition(v),
-                  () => viewModel.setMedicalConditionOtherSelected(!viewModel.medicalConditionOtherSelected)
-                )
+                  options: viewModel.medicalConditionsOptions,
+                  selectedValues: viewModel.selectedMedicalConditions,
+                  otherSelected: viewModel.medicalConditionOtherSelected,
+                  otherController: viewModel.otherMedicalConditionController,
+                  onOptionTap: viewModel.toggleMedicalCondition,
+                  onOtherTap: () => viewModel.setMedicalConditionOtherSelected(!viewModel.medicalConditionOtherSelected),
+                ),
               ),
-              const SizedBox(height: 24),
-              AnimateIn(delay: const Duration(milliseconds: 1200), child: _uploadTile(context, 'Medical Report', viewModel.medicalReportName, (_) => viewModel.pickFile(true))),
-              const SizedBox(height: 16),
-              AnimateIn(delay: const Duration(milliseconds: 1300), child: _uploadTile(context, 'InBody Report', viewModel.inBodyReportName, (_) => viewModel.pickFile(false))),
 
+              const SizedBox(height: 24),
+              
+              // Allergies
+              AnimateIn(delay: const Duration(milliseconds: 1200), child: _buildSectionTitle('Allergies')),
+              const SizedBox(height: 16),
+              AnimateIn(
+                delay: const Duration(milliseconds: 1250),
+                child: _buildCustomMultiSelect(
+                  context,
+                  options: viewModel.allergiesOptions,
+                  selectedValues: viewModel.selectedAllergies,
+                  otherSelected: viewModel.allergyOtherSelected,
+                  otherController: viewModel.otherAllergyController,
+                  onOptionTap: viewModel.toggleAllergy,
+                  onOtherTap: () => viewModel.setAllergyOtherSelected(!viewModel.allergyOtherSelected),
+                ),
+              ),
+
+              const SizedBox(height: 24),
+              
+              // Injuries
+              AnimateIn(delay: const Duration(milliseconds: 1300), child: _buildSectionTitle('Current Injuries')),
+              const SizedBox(height: 16),
+              AnimateIn(
+                delay: const Duration(milliseconds: 1350),
+                child: _buildCustomMultiSelect(
+                  context,
+                  options: viewModel.injuriesOptions,
+                  selectedValues: viewModel.selectedInjuries,
+                  otherSelected: viewModel.injuryOtherSelected,
+                  otherController: viewModel.otherInjuryController,
+                  onOptionTap: viewModel.toggleInjury,
+                  onOtherTap: () => viewModel.setInjuryOtherSelected(!viewModel.injuryOtherSelected),
+                ),
+              ),
+
+              const SizedBox(height: 24),
+              AnimateIn(delay: const Duration(milliseconds: 1400), child: _uploadTile(context, 'Medical Report', viewModel.medicalReportName, (_) => viewModel.pickFile(true))),
+              const SizedBox(height: 16),
+              AnimateIn(delay: const Duration(milliseconds: 1450), child: _uploadTile(context, 'InBody Report', viewModel.inBodyReportName, (_) => viewModel.pickFile(false))),
+ 
               const SizedBox(height: 40),
-              AnimateIn(delay: const Duration(milliseconds: 1400), child: _saveBtn(context, viewModel)),
+              AnimateIn(delay: const Duration(milliseconds: 1500), child: _saveBtn(context, viewModel)),
               const SizedBox(height: 100),
             ],
           ),
@@ -83,46 +123,122 @@ class EditProfileScreen extends StatelessWidget {
 
   Widget _genderSelect(BuildContext context, EditProfileViewModel viewModel) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text('Gender', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold)),
-      const SizedBox(height: 8),
-      Row(children: ['Male', 'Female', 'Other'].map((g) {
-        bool isSelected = viewModel.selectedGender == g;
-        return Expanded(child: GestureDetector(
-          onTap: () => viewModel.setSelectedGender(g),
-          child: Container(
-            margin: const EdgeInsets.only(right: 8),
-            padding: const EdgeInsets.symmetric(vertical: 12),
-            decoration: BoxDecoration(color: isSelected ? const Color(0xFF024950) : Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(12)),
-            alignment: Alignment.center,
-            child: Text(g, style: TextStyle(color: isSelected ? Colors.white : Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold)),
-          ),
-        ));
-      }).toList()),
+        Text('Gender', style: const TextStyle(color: Color(0xFF024950), fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        Wrap(
+          spacing: 8,
+          children: ['Male', 'Female', 'Other'].map((g) {
+            bool isSelected = viewModel.selectedGender == g;
+            return GestureDetector(
+              onTap: () => viewModel.setSelectedGender(g),
+              child: _buildPill(context, g, isSelected),
+            );
+          }).toList(),
+        ),
     ]);
   }
 
   Widget _activitySelectAnimated(BuildContext context, EditProfileViewModel viewModel, {required int delay}) {
     final activities = ['Sedentary', 'Light', 'Moderate', 'Active', 'Very Active'];
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text('Activity Level', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold)),
+      Text('Activity Level', style: const TextStyle(color: Color(0xFF024950), fontWeight: FontWeight.bold)),
       const SizedBox(height: 8),
-      ...activities.asMap().entries.map((e) => AnimateIn(
-        delay: Duration(milliseconds: delay + (e.key * 100)),
-        child: RadioListTile(
-          title: Text(e.value), value: e.value, groupValue: viewModel.selectedActivityLevel,
-          onChanged: (v) => viewModel.setSelectedActivityLevel(v.toString()),
-          activeColor: const Color(0xFF0FA4AF),
-        ),
-      )),
+      Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: activities.map((a) {
+          bool isSelected = viewModel.selectedActivityLevel == a;
+          return GestureDetector(
+            onTap: () => viewModel.setSelectedActivityLevel(a),
+            child: _buildPill(context, a, isSelected),
+          );
+        }).toList(),
+      ),
     ]);
   }
 
-  Widget _multiSelect(BuildContext context, String l, List<String> o, List<String> s, bool os, TextEditingController oc, Function(String) t, VoidCallback oot) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(l, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold)),
-      const SizedBox(height: 8),
-      Wrap(spacing: 8, runSpacing: 8, children: o.map((v) => FilterChip(label: Text(v), selected: s.contains(v), onSelected: (_) => t(v))).toList()),
-    ]);
+  Widget _buildSectionTitle(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        color: Color(0xFF024950),
+        fontSize: 16,
+        fontFamily: 'Arial',
+        fontWeight: FontWeight.w400,
+        height: 1.50,
+      ),
+    );
+  }
+
+  Widget _buildCustomMultiSelect(
+    BuildContext context, {
+    required List<String> options,
+    required List<String> selectedValues,
+    required bool otherSelected,
+    required TextEditingController otherController,
+    required Function(String) onOptionTap,
+    required VoidCallback onOtherTap,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            ...options.map((opt) {
+              bool isSelected = selectedValues.contains(opt);
+              return GestureDetector(
+                onTap: () => onOptionTap(opt),
+                child: _buildPill(context, opt, isSelected),
+              );
+            }),
+            GestureDetector(
+              onTap: onOtherTap,
+              child: _buildPill(context, 'Other', otherSelected),
+            ),
+          ],
+        ),
+        if (otherSelected) ...[
+          const SizedBox(height: 12),
+          TextField(
+            controller: otherController,
+            decoration: InputDecoration(
+              hintText: 'Please specify...',
+              filled: true,
+              fillColor: Theme.of(context).colorScheme.surface,
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildPill(BuildContext context, String text, bool isSelected) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+      decoration: ShapeDecoration(
+        color: isSelected ? const Color(0xFF024950) : Colors.white,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            width: 1.60,
+            color: isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5),
+          ),
+          borderRadius: BorderRadius.circular(50),
+        ),
+      ),
+      child: Text(
+        text,
+        style: TextStyle(
+          color: isSelected ? Colors.white : const Color(0xFF024950),
+          fontSize: 16,
+          fontFamily: 'Arial',
+          fontWeight: FontWeight.w400,
+        ),
+      ),
+    );
   }
 
   Widget _uploadTile(BuildContext context, String l, String? n, Function(String) onPick) {
@@ -132,7 +248,7 @@ class EditProfileScreen extends StatelessWidget {
         leading: Icon(n != null ? Icons.check_circle : Icons.cloud_upload, color: const Color(0xFF0FA4AF)),
         title: Text(l, style: const TextStyle(fontWeight: FontWeight.bold)),
         subtitle: Text(n ?? 'Tap to upload'),
-        onTap: () => onPick(''), // Argument ignored as ViewModel picks logic
+        onTap: () => onPick(''),
       ),
     );
   }

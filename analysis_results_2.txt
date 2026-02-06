@@ -1,0 +1,5 @@
+﻿Analyzing 5 items...                                            
+
+   info - Unnecessary use of 'toList' in a spread - lib\ui\screens\profile_setup_screen.dart:161:11 - unnecessary_to_list_in_spreads
+  error - Expected to find '}' - lib\ui\screens\profile_setup_screen.dart:467:1 - expected_token
+
