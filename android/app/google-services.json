@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976583278348",
+    "project_id": "fitbiteapp-a1940",
+    "storage_bucket": "fitbiteapp-a1940.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976583278348:android:d6d731fc23ab2b55dcd329",
+        "android_client_info": {
+          "package_name": "com.example.mobile_frontend"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqTtXV6wbh6GWCsLCac0EEm7Crf2WqGyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

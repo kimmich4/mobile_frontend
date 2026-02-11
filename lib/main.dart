@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'ui/screens/splash_screen.dart';
 import 'core/theme/theme_manager.dart';
 import 'viewmodels/splash_view_model.dart';
@@ -16,10 +17,16 @@ import 'viewmodels/progress_tracking_view_model.dart';
 import 'viewmodels/ai_assistant_view_model.dart';
 import 'viewmodels/edit_profile_view_model.dart';
 import 'viewmodels/video_view_model.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const FitBiteApp());
 }
+
 
 class FitBiteApp extends StatelessWidget {
   const FitBiteApp({super.key});

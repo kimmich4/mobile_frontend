@@ -1,9 +1,19 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import '../data/models/user_model.dart';
+import '../data/repositories/auth_repository.dart';
+import '../data/repositories/user_repository.dart';
 import 'base_view_model.dart';
 import '../core/theme/theme_manager.dart';
 
 /// ViewModel for Settings Screen
 class SettingsViewModel extends BaseViewModel {
+  final AuthRepository _authRepository = AuthRepository();
+  final UserRepository _userRepository = UserRepository();
+  StreamSubscription<UserModel?>? _userSubscription;
+
+  UserModel? _currentUser;
+
   bool _notificationsEnabled = true;
   bool _darkModeEnabled = false;
   bool _dataSharingEnabled = false;
@@ -13,9 +23,28 @@ class SettingsViewModel extends BaseViewModel {
   bool get dataSharingEnabled => _dataSharingEnabled;
 
   // User profile info
-  final String userName = 'Mohamed Abdallah';
-  final String userInitial = 'J';
-  final String membershipStatus = 'Premium Member';
+  String get userName => _currentUser?.fullName ?? 'User';
+  String get userInitial => _currentUser?.profileInitial ?? 'U';
+  String get membershipStatus => (_currentUser?.isPremiumMember ?? false) ? 'Premium Member' : 'Free Member';
+
+  SettingsViewModel() {
+    _initUserStream();
+  }
+
+  void _initUserStream() {
+    final user = _authRepository.currentUser;
+    if (user != null) {
+      _userSubscription = _userRepository.getUserStream(user.uid).listen((userModel) {
+        if (userModel != null) {
+          _currentUser = userModel;
+          _notificationsEnabled = userModel.notificationsEnabled;
+          _darkModeEnabled = userModel.darkModeEnabled;
+          _dataSharingEnabled = userModel.dataSharingEnabled;
+          notifyListeners();
+        }
+      });
+    }
+  }
 
   /// Initialize dark mode from ThemeManager
   void initializeDarkMode() {
@@ -24,22 +53,34 @@ class SettingsViewModel extends BaseViewModel {
   }
 
   /// Toggle notifications
-  void setNotificationsEnabled(bool value) {
+  void setNotificationsEnabled(bool value) async {
     _notificationsEnabled = value;
     notifyListeners();
+    final user = _authRepository.currentUser;
+    if (user != null) {
+      await _userRepository.updateFields(user.uid, {'notificationsEnabled': value});
+    }
   }
 
   /// Toggle dark mode
-  void setDarkModeEnabled(bool value) {
+  void setDarkModeEnabled(bool value) async {
     _darkModeEnabled = value;
     ThemeManager.toggleTheme(value);
     notifyListeners();
+    final user = _authRepository.currentUser;
+    if (user != null) {
+      await _userRepository.updateFields(user.uid, {'darkModeEnabled': value});
+    }
   }
 
   /// Toggle data sharing
-  void setDataSharingEnabled(bool value) {
+  void setDataSharingEnabled(bool value) async {
     _dataSharingEnabled = value;
     notifyListeners();
+    final user = _authRepository.currentUser;
+    if (user != null) {
+      await _userRepository.updateFields(user.uid, {'dataSharingEnabled': value});
+    }
   }
 
   /// Navigate to a specific screen
@@ -53,7 +94,14 @@ class SettingsViewModel extends BaseViewModel {
       context: context,
       builder: (_) => Padding(
         padding: const EdgeInsets.all(24),
-        child: Text(title),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 16),
+            Text(description),
+          ],
+        ),
       ),
     );
   }
@@ -64,14 +112,19 @@ class SettingsViewModel extends BaseViewModel {
       context: context,
       builder: (_) => AlertDialog(
         title: const Text('Logout'),
+        content: const Text('Are you sure you want to logout?'),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
             child: const Text('Cancel'),
           ),
           TextButton(
-            onPressed: onLogout,
-            child: const Text('Logout'),
+            onPressed: () {
+              Navigator.of(context).pop();
+              _authRepository.signOut();
+              onLogout();
+            },
+            child: const Text('Logout', style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
@@ -82,10 +135,16 @@ class SettingsViewModel extends BaseViewModel {
   void showExportDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (_) => const AlertDialog(title: Text('Exporting...')),
+      builder: (_) => const AlertDialog(title: Text('Exporting...'), content: Text('Generating your health report...')),
     );
-    Future.delayed(const Duration(seconds: 1), () {
-      Navigator.of(context).pop();
+    Future.delayed(const Duration(seconds: 2), () {
+      if (context.mounted) Navigator.of(context).pop();
     });
+  }
+
+  @override
+  void dispose() {
+    _userSubscription?.cancel();
+    super.dispose();
   }
 }

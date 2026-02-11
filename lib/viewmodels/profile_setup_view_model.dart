@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import '../data/repositories/auth_repository.dart';
+import '../data/repositories/user_repository.dart';
 import 'base_view_model.dart';
 import '../data/models/user_model.dart';
 
 /// ViewModel for Profile Setup Screen (4-step process)
 class ProfileSetupViewModel extends BaseViewModel {
+  final AuthRepository _authRepository = AuthRepository();
+  final UserRepository _userRepository = UserRepository();
+  
   final PageController pageController = PageController();
   int _currentPage = 0;
 
@@ -214,49 +219,69 @@ class ProfileSetupViewModel extends BaseViewModel {
     }
   }
 
-  /// Complete profile setup and create UserModel
-  void completeSetup(VoidCallback onComplete) {
-    // Create UserModel from collected data
-    final user = UserModel(
-      fullName: nameController.text.isNotEmpty ? nameController.text : null,
-      age: int.tryParse(ageController.text),
-      gender: _selectedGender,
-      weightKg: double.tryParse(weightController.text),
-      heightCm: double.tryParse(heightController.text),
-      activityLevel: _selectedActivityLevel,
-      medicalConditions: _selectedMedicalConditions,
-      otherMedicalCondition: _medicalConditionOtherSelected
-          ? otherMedicalConditionController.text
-          : null,
-      medicalReportName: _medicalReportName,
-      inBodyReportName: _inBodyReportName,
-      allergies: _selectedAllergies,
-      otherAllergy: _allergyOtherSelected ? otherAllergyController.text : null,
-      currentInjuries: _selectedInjuries,
-      otherInjury: _injuryOtherSelected ? otherInjuryController.text : null,
-      fitnessGoals: _selectedFitnessGoals,
-      otherFitnessGoal: _fitnessGoalOtherSelected
-          ? otherFitnessGoalController.text
-          : null,
-      experienceLevel: _selectedExperienceLevel,
-      otherExperience: _experienceOtherSelected
-          ? otherExperienceController.text
-          : null,
-      profileInitial: nameController.text.isNotEmpty
-          ? nameController.text[0].toUpperCase()
-          : 'U',
-      // Default values for other fields
-      currentCalories: 1847,
-      dailyCalorieGoal: 2200,
-      workoutsCompletedThisWeek: 4,
-      workoutsGoalPerWeek: 5,
-      currentStreak: 12,
-    );
+  /// Complete profile setup and save to Firestore using Repository
+  Future<void> completeSetup(VoidCallback onComplete) async {
+    final user = _authRepository.currentUser;
+    if (user == null) {
+      setError('No authenticated user found. Please login again.');
+      return;
+    }
 
-    // In a real app, this would save to a database or service
-    // For now, just navigate to main screen
-    debugPrint('User Profile Created: ${user.toJson()}');
-    onComplete();
+    setLoading(true);
+    clearError();
+
+    try {
+      // Create UserModel from collected data
+      final userModel = UserModel(
+        userId: user.uid,
+        email: user.email,
+        fullName: nameController.text.isNotEmpty ? nameController.text : null,
+        age: int.tryParse(ageController.text),
+        gender: _selectedGender,
+        weightKg: double.tryParse(weightController.text),
+        heightCm: double.tryParse(heightController.text),
+        activityLevel: _selectedActivityLevel,
+        medicalConditions: _selectedMedicalConditions,
+        otherMedicalCondition: _medicalConditionOtherSelected
+            ? otherMedicalConditionController.text
+            : null,
+        medicalReportName: _medicalReportName,
+        inBodyReportName: _inBodyReportName,
+        allergies: _selectedAllergies,
+        otherAllergy: _allergyOtherSelected ? otherAllergyController.text : null,
+        currentInjuries: _selectedInjuries,
+        otherInjury: _injuryOtherSelected ? otherInjuryController.text : null,
+        fitnessGoals: _selectedFitnessGoals,
+        otherFitnessGoal: _fitnessGoalOtherSelected
+            ? otherFitnessGoalController.text
+            : null,
+        experienceLevel: _selectedExperienceLevel,
+        otherExperience: _experienceOtherSelected
+            ? otherExperienceController.text
+            : null,
+        profileInitial: nameController.text.isNotEmpty
+            ? nameController.text[0].toUpperCase()
+            : 'U',
+        // Default values for other fields
+        currentCalories: 1847,
+        dailyCalorieGoal: 2200,
+        workoutsCompletedThisWeek: 4,
+        workoutsGoalPerWeek: 5,
+        currentStreak: 12,
+        isPremiumMember: false,
+      );
+
+      // Save via UserRepository
+      await _userRepository.saveUserProfile(userModel);
+
+      setLoading(false);
+      debugPrint('User Profile Saved via Repository: ${userModel.toJson()}');
+      onComplete();
+    } catch (e) {
+      setLoading(false);
+      setError('Failed to save profile: $e');
+      debugPrint('Error saving profile: $e');
+    }
   }
 
   @override
