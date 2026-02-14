@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../data/models/user_model.dart';
 import '../data/repositories/auth_repository.dart';
 import '../data/repositories/user_repository.dart';
@@ -11,6 +12,7 @@ class SettingsViewModel extends BaseViewModel {
   final AuthRepository _authRepository = AuthRepository();
   final UserRepository _userRepository = UserRepository();
   StreamSubscription<UserModel?>? _userSubscription;
+  StreamSubscription<User?>? _authSubscription;
 
   UserModel? _currentUser;
 
@@ -25,25 +27,39 @@ class SettingsViewModel extends BaseViewModel {
   // User profile info
   String get userName => _currentUser?.fullName ?? 'User';
   String get userInitial => _currentUser?.profileInitial ?? 'U';
+  String? get profilePicturePath => _currentUser?.profilePicturePath;
   String get membershipStatus => (_currentUser?.isPremiumMember ?? false) ? 'Premium Member' : 'Free Member';
 
   SettingsViewModel() {
-    _initUserStream();
+    _initAuthListener();
   }
 
-  void _initUserStream() {
-    final user = _authRepository.currentUser;
-    if (user != null) {
-      _userSubscription = _userRepository.getUserStream(user.uid).listen((userModel) {
-        if (userModel != null) {
-          _currentUser = userModel;
-          _notificationsEnabled = userModel.notificationsEnabled;
-          _darkModeEnabled = userModel.darkModeEnabled;
-          _dataSharingEnabled = userModel.dataSharingEnabled;
-          notifyListeners();
-        }
-      });
-    }
+  void _initAuthListener() {
+    // Listen to auth state changes to handle user switching
+    _authSubscription = FirebaseAuth.instance.authStateChanges().listen((user) {
+      // Cancel previous user subscription
+      _userSubscription?.cancel();
+      _currentUser = null;
+      
+      if (user != null) {
+        // Initialize new user stream
+        _userSubscription = _userRepository.getUserStream(user.uid).listen((userModel) {
+          if (userModel != null) {
+            _currentUser = userModel;
+            _notificationsEnabled = userModel.notificationsEnabled;
+            _darkModeEnabled = userModel.darkModeEnabled;
+            _dataSharingEnabled = userModel.dataSharingEnabled;
+            notifyListeners();
+          }
+        });
+      } else {
+        // Reset to defaults when logged out
+        _notificationsEnabled = true;
+        _darkModeEnabled = false;
+        _dataSharingEnabled = false;
+        notifyListeners();
+      }
+    });
   }
 
   /// Initialize dark mode from ThemeManager
@@ -145,6 +161,7 @@ class SettingsViewModel extends BaseViewModel {
   @override
   void dispose() {
     _userSubscription?.cancel();
+    _authSubscription?.cancel();
     super.dispose();
   }
 }

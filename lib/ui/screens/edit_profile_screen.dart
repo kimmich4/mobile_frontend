@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:io';
 import '../components/animate_in.dart';
+import '../widgets/profile_avatar.dart';
 import '../../viewmodels/edit_profile_view_model.dart';
 // Remove local ImagePicker import as it's handled in ViewModel
 
@@ -22,6 +24,62 @@ class EditProfileScreen extends StatelessWidget {
           body: ListView(
             padding: const EdgeInsets.all(24),
             children: [
+              // Profile Picture Section
+              AnimateIn(
+                child: Center(
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: [
+                          // Show selected image or current profile picture or initials
+                          viewModel.selectedProfilePicturePath != null
+                              ? Container(
+                                  width: 120,
+                                  height: 120,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      image: FileImage(File(viewModel.selectedProfilePicturePath!)),
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                )
+                              : ProfileAvatar(
+                                  profilePicturePath: viewModel.profilePicturePath,
+                                  profileInitial: viewModel.profileInitial,
+                                  size: 120,
+                                ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: GestureDetector(
+                              onTap: viewModel.pickProfilePicture,
+                              child: Container(
+                                width: 40,
+                                height: 40,
+                                decoration: const BoxDecoration(
+                                  color: Color(0xFF0FA4AF),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Icon(Icons.camera_alt, color: Colors.white, size: 20),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        'Tap to change profile picture',
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 40),
               const AnimateIn(child: SectionHeader('Basic Information')),
               const SizedBox(height: 24),
               AnimateIn(delay: const Duration(milliseconds: 100), child: _buildTextField(context, viewModel.nameController, 'Full Name', 'John Doe')),

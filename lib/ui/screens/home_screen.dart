@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../viewmodels/home_view_model.dart';
 import '../../viewmodels/main_view_model.dart';
 import '../components/animate_in.dart';
+import '../widgets/profile_avatar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -73,11 +74,10 @@ class HomeScreen extends StatelessWidget {
             child: Row(children: [
               Hero(
                 tag: 'profile_pic',
-                child: Container(
-                  width: 48, height: 48,
-                  decoration: const BoxDecoration(shape: BoxShape.circle, gradient: LinearGradient(colors: [Color(0xFF0FA4AF), Color(0xFF964734)])),
-                  alignment: Alignment.center,
-                  child: Text(viewModel.profileInitial, style: const TextStyle(color: Colors.white, fontSize: 16)),
+                child: ProfileAvatar(
+                  profilePicturePath: viewModel.profilePicturePath,
+                  profileInitial: viewModel.profileInitial,
+                  size: 48,
                 ),
               ),
               const SizedBox(width: 12),

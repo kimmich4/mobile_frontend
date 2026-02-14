@@ -4,6 +4,7 @@ import 'edit_profile_screen.dart';
 import 'progress_tracking_screen.dart';
 import 'login_screen.dart';
 import '../components/animate_in.dart';
+import '../widgets/profile_avatar.dart';
 import '../../viewmodels/settings_view_model.dart';
 
 
@@ -102,10 +103,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         child: Row(
           children: [
-            CircleAvatar(
-              radius: 30,
-              backgroundColor: const Color(0xFF0FA4AF),
-              child: Text(viewModel.userInitial, style: const TextStyle(color: Colors.white, fontSize: 24)),
+            ProfileAvatar(
+              profilePicturePath: viewModel.profilePicturePath,
+              profileInitial: viewModel.userInitial,
+              size: 60,
             ),
             const SizedBox(width: 16),
             Expanded(

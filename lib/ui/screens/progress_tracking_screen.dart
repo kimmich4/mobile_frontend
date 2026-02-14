@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
 import '../../viewmodels/progress_tracking_view_model.dart';
 import '../../viewmodels/main_view_model.dart';
@@ -241,36 +242,79 @@ class ProgressTrackingScreen extends StatelessWidget {
   }
 
   Widget _buildWeightProgressSection(BuildContext context, ProgressTrackingViewModel viewModel) {
-    // In a real implementation, you'd use a charting library here with data from viewModel.weightData
     return _buildChartContainer(
       context,
       title: 'Weight Progress',
       subtitle: '-1.3 kg this week',
-      child: Column(
-        children: [
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildAxisLabel(context, '79'),
-              _buildAxisLabel(context, '78.25'),
-              _buildAxisLabel(context, '77.5'),
-              _buildAxisLabel(context, '76.75'),
-              _buildAxisLabel(context, '76'),
+      child: SizedBox(
+        height: 200,
+        child: LineChart(
+          LineChartData(
+            gridData: const FlGridData(show: false),
+            titlesData: FlTitlesData(
+              bottomTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  getTitlesWidget: (value, meta) {
+                    if (value.toInt() >= 0 && value.toInt() < viewModel.weightData.length) {
+                      return Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: _buildAxisLabel(context, viewModel.weightData[value.toInt()].day),
+                      );
+                    }
+                    return const SizedBox();
+                  },
+                  reservedSize: 30,
+                ),
+              ),
+              leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+              topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+              rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+            ),
+            borderData: FlBorderData(show: false),
+            lineBarsData: [
+              LineChartBarData(
+                spots: viewModel.weightData.asMap().entries.map((entry) {
+                  return FlSpot(entry.key.toDouble(), entry.value.weight);
+                }).toList(),
+                isCurved: true,
+                color: const Color(0xFF0FA4AF),
+                barWidth: 4,
+                isStrokeCapRound: true,
+                dotData: const FlDotData(show: false),
+                belowBarData: BarAreaData(
+                  show: true,
+                  gradient: LinearGradient(
+                    colors: [
+                      const Color(0xFF0FA4AF).withOpacity(0.3),
+                      const Color(0xFF0FA4AF).withOpacity(0.0),
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                ),
+              ),
             ],
+            lineTouchData: LineTouchData(
+              touchTooltipData: LineTouchTooltipData(
+                getTooltipColor: (_) => const Color(0xFF024950),
+                getTooltipItems: (touchedSpots) {
+                  return touchedSpots.map((spot) {
+                    return LineTooltipItem(
+                      '${spot.y} kg',
+                      const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                    );
+                  }).toList();
+                },
+              ),
+            ),
           ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: viewModel.weightData.map((d) => _buildAxisLabel(context, d.day)).toList(),
-          ),
-        ],
+        ),
       ),
     );
   }
 
   Widget _buildCaloriesOverviewSection(BuildContext context, ProgressTrackingViewModel viewModel) {
-    // In a real implementation, calculate heights based on viewModel.caloriesData headers
     return _buildChartContainer(
       context,
       title: 'Calories Overview',
@@ -278,16 +322,72 @@ class ProgressTrackingScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 32),
           SizedBox(
-            height: 150,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: viewModel.caloriesData.map((d) {
-                // Normalize values for demo purposes, assume max 3000 cal
-                double burnedFactor = d.burned / 3000.0;
-                double consumedFactor = d.consumed / 3000.0;
-                return _buildCalorieBar(burnedFactor, consumedFactor);
-              }).toList(),
+            height: 200,
+            child: BarChart(
+              BarChartData(
+                alignment: BarChartAlignment.spaceAround,
+                maxY: 3000,
+                barTouchData: BarTouchData(
+                  touchTooltipData: BarTouchTooltipData(
+                    getTooltipColor: (_) => const Color(0xFF024950),
+                    getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                      String category = rodIndex == 0 ? 'Burned' : 'Consumed';
+                      return BarTooltipItem(
+                        '$category\n',
+                        const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                        children: [
+                          TextSpan(
+                            text: '${rod.toY.toInt()} cal',
+                            style: const TextStyle(color: Color(0xFFAFDDE5), fontWeight: FontWeight.w500, fontSize: 12),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
+                titlesData: FlTitlesData(
+                  show: true,
+                  bottomTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      getTitlesWidget: (value, meta) {
+                        if (value.toInt() >= 0 && value.toInt() < viewModel.caloriesData.length) {
+                          return Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: _buildAxisLabel(context, viewModel.caloriesData[value.toInt()].day),
+                          );
+                        }
+                        return const SizedBox();
+                      },
+                      reservedSize: 30,
+                    ),
+                  ),
+                  leftTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                  topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                  rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                ),
+                borderData: FlBorderData(show: false),
+                gridData: const FlGridData(show: false),
+                barGroups: viewModel.caloriesData.asMap().entries.map((entry) {
+                  return BarChartGroupData(
+                    x: entry.key,
+                    barRods: [
+                      BarChartRodData(
+                        toY: entry.value.burned.toDouble(),
+                        color: const Color(0xFF964734),
+                        width: 10,
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
+                      ),
+                      BarChartRodData(
+                        toY: entry.value.consumed.toDouble(),
+                        color: const Color(0xFF0FA4AF),
+                        width: 10,
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(4)),
+                      ),
+                    ],
+                  );
+                }).toList(),
+              ),
             ),
           ),
           const SizedBox(height: 24),
@@ -301,31 +401,6 @@ class ProgressTrackingScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildCalorieBar(double burnedHeightFactor, double consumedHeightFactor) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Container(
-          width: 8,
-          height: 150 * burnedHeightFactor,
-          decoration: BoxDecoration(
-            color: const Color(0xFF964734),
-            borderRadius: BorderRadius.circular(4),
-          ),
-        ),
-        const SizedBox(width: 4),
-        Container(
-          width: 8,
-          height: 150 * consumedHeightFactor,
-          decoration: BoxDecoration(
-            color: const Color(0xFF0FA4AF),
-            borderRadius: BorderRadius.circular(4),
-          ),
-        ),
-      ],
     );
   }
 

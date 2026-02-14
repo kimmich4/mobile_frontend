@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:async';
 import '../data/models/user_model.dart';
 import '../data/repositories/auth_repository.dart';
 import '../data/repositories/user_repository.dart';
@@ -9,6 +11,7 @@ import 'base_view_model.dart';
 class EditProfileViewModel extends BaseViewModel {
   final AuthRepository _authRepository = AuthRepository();
   final UserRepository _userRepository = UserRepository();
+  StreamSubscription<User?>? _authSubscription;
   
   UserModel? _originalUser;
 
@@ -41,6 +44,10 @@ class EditProfileViewModel extends BaseViewModel {
   String? _inBodyReportName;
   final ImagePicker _picker = ImagePicker();
 
+  // Profile Picture
+  String? _profilePicturePath;
+  String? _selectedProfilePicturePath; // Local path before upload
+
   // Getters
   String get selectedGender => _selectedGender;
   String get selectedActivityLevel => _selectedActivityLevel;
@@ -52,9 +59,47 @@ class EditProfileViewModel extends BaseViewModel {
   bool get injuryOtherSelected => _injuryOtherSelected;
   String? get medicalReportName => _medicalReportName;
   String? get inBodyReportName => _inBodyReportName;
+  String? get profilePicturePath => _profilePicturePath;
+  String? get selectedProfilePicturePath => _selectedProfilePicturePath;
+  String get profileInitial => _originalUser?.profileInitial ?? (nameController.text.isNotEmpty ? nameController.text[0].toUpperCase() : 'U');
 
   EditProfileViewModel() {
-    loadUserData();
+    _initAuthListener();
+  }
+
+  void _initAuthListener() {
+    // Listen to auth state changes to reload data when user switches
+    _authSubscription = FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user != null) {
+        loadUserData();
+      } else {
+        _clearFormData();
+      }
+    });
+  }
+
+  void _clearFormData() {
+    _originalUser = null;
+    nameController.clear();
+    ageController.clear();
+    weightController.clear();
+    heightController.clear();
+    otherMedicalConditionController.clear();
+    otherAllergyController.clear();
+    otherInjuryController.clear();
+    _selectedMedicalConditions.clear();
+    _selectedAllergies.clear();
+    _selectedInjuries.clear();
+    _selectedGender = 'Male';
+    _selectedActivityLevel = 'Sedentary';
+    _medicalConditionOtherSelected = false;
+    _allergyOtherSelected = false;
+    _injuryOtherSelected = false;
+    _medicalReportName = null;
+    _inBodyReportName = null;
+    _profilePicturePath = null;
+    _selectedProfilePicturePath = null;
+    notifyListeners();
   }
 
   /// Load user data from Firestore to pre-fill the form
@@ -91,6 +136,7 @@ class EditProfileViewModel extends BaseViewModel {
 
         _medicalReportName = userModel.medicalReportName;
         _inBodyReportName = userModel.inBodyReportName;
+        _profilePicturePath = userModel.profilePicturePath;
       }
       setLoading(false);
     } catch (e) {
@@ -180,6 +226,20 @@ class EditProfileViewModel extends BaseViewModel {
     }
   }
 
+  /// Pick profile picture from gallery
+  Future<void> pickProfilePicture() async {
+    final XFile? image = await _picker.pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 512,
+      maxHeight: 512,
+      imageQuality: 85,
+    );
+    if (image != null) {
+      _selectedProfilePicturePath = image.path;
+      notifyListeners();
+    }
+  }
+
   /// Save profile changes to Firestore
   Future<void> saveChanges(VoidCallback onSaved) async {
     final user = _authRepository.currentUser;
@@ -192,6 +252,18 @@ class EditProfileViewModel extends BaseViewModel {
     clearError();
 
     try {
+      // Upload profile picture if a new one was selected
+      String? uploadedPicturePath = _profilePicturePath;
+      if (_selectedProfilePicturePath != null) {
+        // Read file as bytes (works on both web and mobile)
+        final bytes = await XFile(_selectedProfilePicturePath!).readAsBytes();
+        uploadedPicturePath = await _userRepository.uploadProfilePicture(
+          user.uid,
+          bytes,
+          _selectedProfilePicturePath!,
+        );
+      }
+
       final updatedUser = (_originalUser ?? UserModel(userId: user.uid)).copyWith(
         fullName: nameController.text.trim(),
         age: int.tryParse(ageController.text),
@@ -208,6 +280,7 @@ class EditProfileViewModel extends BaseViewModel {
         medicalReportName: _medicalReportName,
         inBodyReportName: _inBodyReportName,
         profileInitial: nameController.text.isNotEmpty ? nameController.text[0].toUpperCase() : 'U',
+        profilePicturePath: uploadedPicturePath,
       );
 
       await _userRepository.saveUserProfile(updatedUser);
@@ -221,6 +294,7 @@ class EditProfileViewModel extends BaseViewModel {
 
   @override
   void dispose() {
+    _authSubscription?.cancel();
     nameController.dispose();
     ageController.dispose();
     weightController.dispose();

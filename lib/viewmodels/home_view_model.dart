@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../data/models/user_model.dart';
 import '../data/repositories/auth_repository.dart';
 import '../data/repositories/user_repository.dart';
@@ -9,6 +10,7 @@ class HomeViewModel extends BaseViewModel {
   final AuthRepository _authRepository = AuthRepository();
   final UserRepository _userRepository = UserRepository();
   StreamSubscription<UserModel?>? _userSubscription;
+  StreamSubscription<User?>? _authSubscription;
 
   UserModel? _currentUser;
 
@@ -20,6 +22,7 @@ class HomeViewModel extends BaseViewModel {
   int get currentStreak => _currentUser?.currentStreak ?? 0;
   String get fullName => _currentUser?.fullName ?? 'User';
   String get profileInitial => _currentUser?.profileInitial ?? 'U';
+  String? get profilePicturePath => _currentUser?.profilePicturePath;
 
   // Diet plan info
   final int mealsRemaining = 4; // This could also be fetched from another repo
@@ -38,17 +41,26 @@ class HomeViewModel extends BaseViewModel {
   final String dailyTip = 'Stay hydrated! Aim for at least 8 glasses of water today.';
 
   HomeViewModel() {
-    _initUserStream();
+    _initAuthListener();
   }
 
-  void _initUserStream() {
-    final user = _authRepository.currentUser;
-    if (user != null) {
-      _userSubscription = _userRepository.getUserStream(user.uid).listen((userModel) {
-        _currentUser = userModel;
+  void _initAuthListener() {
+    // Listen to auth state changes to handle user switching
+    _authSubscription = FirebaseAuth.instance.authStateChanges().listen((user) {
+      // Cancel previous user subscription
+      _userSubscription?.cancel();
+      _currentUser = null;
+      
+      if (user != null) {
+        // Initialize new user stream
+        _userSubscription = _userRepository.getUserStream(user.uid).listen((userModel) {
+          _currentUser = userModel;
+          notifyListeners();
+        });
+      } else {
         notifyListeners();
-      });
-    }
+      }
+    });
   }
 
   /// Get greeting based on time of day
@@ -71,6 +83,7 @@ class HomeViewModel extends BaseViewModel {
   @override
   void dispose() {
     _userSubscription?.cancel();
+    _authSubscription?.cancel();
     super.dispose();
   }
 }
