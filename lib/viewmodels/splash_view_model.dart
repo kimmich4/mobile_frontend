@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'base_view_model.dart';
+import '../data/repositories/auth_repository.dart';
 
 /// ViewModel for Splash Screen
 class SplashViewModel extends BaseViewModel {
+  final AuthRepository _authRepository = AuthRepository();
+  
+  bool get isLoggedIn => _authRepository.currentUser != null;
+  
   late AnimationController mainController;
   late AnimationController pulseController;
   late AnimationController loadingController;

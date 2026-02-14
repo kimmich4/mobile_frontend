@@ -8,6 +8,8 @@ import 'diet_screen.dart';
 import 'home_screen.dart';
 import '../components/animate_in.dart';
 import '../../viewmodels/main_view_model.dart';
+import '../../viewmodels/diet_view_model.dart';
+import '../../viewmodels/workout_view_model.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -37,6 +39,10 @@ class _MainScreenState extends State<MainScreen> {
     // Register this instance in ViewModel for static access
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<MainViewModel>().setInstance();
+      
+      // Initialize data when MainScreen loads
+      context.read<DietViewModel>().init();
+      context.read<WorkoutViewModel>().init();
     });
   }
 

@@ -1,125 +1,89 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'base_view_model.dart';
 import '../data/models/diet_model.dart';
+import '../data/repositories/diet_repository.dart';
+
+import '../data/repositories/user_repository.dart';
 
 /// ViewModel for Diet Screen
 class DietViewModel extends BaseViewModel {
+  final DietRepository _dietRepository;
+  final UserRepository _userRepository;
+  
+  DietViewModel({DietRepository? dietRepository, UserRepository? userRepository}) 
+      : _dietRepository = dietRepository ?? DietRepository(),
+        _userRepository = userRepository ?? UserRepository();
+
   DateTime _selectedDate = DateTime.now();
   int _selectedDayIndex = DateTime.now().weekday - 1;
+
+  DailyDietPlan? _currentDietPlan;
+  DailyDietPlan? get currentDietPlan => _currentDietPlan;
 
   final List<String> days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   DateTime get selectedDate => _selectedDate;
   int get selectedDayIndex => _selectedDayIndex;
+  
+  String? get userId => FirebaseAuth.instance.currentUser?.uid;
 
-  // Sample diet data for each day of the week
-  final Map<int, Map<String, dynamic>> dietData = {
-    0: {
-      'calories': '1,650',
-      'protein': '105g',
-      'carbs': '170g',
-      'fats': '55g',
-      'meals': [
-        {
-          'title': 'Breakfast',
-          'cal': '400 cal',
-          'items': [
-            {'name': 'Eggs & Toast', 'cal': '350 cal'},
-            {'name': 'Orange Juice', 'cal': '50 cal'}
-          ]
-        },
-        {
-          'title': 'Lunch',
-          'cal': '600 cal',
-          'items': [
-            {'name': 'Turkey Sandwich', 'cal': '450 cal'},
-            {'name': 'Side Salad', 'cal': '150 cal'}
-          ]
-        },
-        {
-          'title': 'Dinner',
-          'cal': '650 cal',
-          'items': [
-            {'name': 'Steak & Veggies', 'cal': '650 cal'}
-          ]
-        }
-      ]
-    },
-    1: {
-      'calories': '1,710',
-      'protein': '111g',
-      'carbs': '180g',
-      'fats': '58g',
-      'meals': [
-        {
-          'title': 'Breakfast',
-          'cal': '420 cal',
-          'items': [
-            {'name': 'Oatmeal with Berries', 'cal': '350 cal'},
-            {'name': 'Coffee with Milk', 'cal': '70 cal'}
-          ]
-        },
-        {
-          'title': 'Lunch',
-          'cal': '650 cal',
-          'items': [
-            {'name': 'Grilled Chicken Salad', 'cal': '450 cal'},
-            {'name': 'Apple', 'cal': '80 cal'},
-            {'name': 'Yogurt', 'cal': '120 cal'}
-          ]
-        },
-        {
-          'title': 'Snacks',
-          'cal': '200 cal',
-          'items': [
-            {'name': 'Almonds', 'cal': '150 cal'},
-            {'name': 'Dark Chocolate', 'cal': '50 cal'}
-          ]
-        },
-        {
-          'title': 'Dinner',
-          'cal': '440 cal',
-          'items': [
-            {'name': 'Salmon with Asparagus', 'cal': '440 cal'}
-          ]
-        }
-      ]
-    },
-    2: {
-      'calories': '1,800',
-      'protein': '120g',
-      'carbs': '190g',
-      'fats': '60g',
-      'meals': [
-        {
-          'title': 'Breakfast',
-          'cal': '450 cal',
-          'items': [
-            {'name': 'Greek Yogurt Bowl', 'cal': '400 cal'},
-            {'name': 'Honey', 'cal': '50 cal'}
-          ]
-        },
-        {
-          'title': 'Lunch',
-          'cal': '700 cal',
-          'items': [
-            {'name': 'Beef Stir Fry', 'cal': '600 cal'},
-            {'name': 'Brown Rice', 'cal': '100 cal'}
-          ]
-        },
-        {
-          'title': 'Dinner',
-          'cal': '650 cal',
-          'items': [
-            {'name': 'Pasta with Shrimp', 'cal': '650 cal'}
-          ]
-        }
-      ]
-    },
-  };
+  /// Initialize and fetch data
+  Future<void> init() async {
+    await fetchDietPlanForDate(_selectedDate);
+  }
 
-  /// Get current day's diet data
+  /// Fetch diet plan for the selected date
+  Future<void> fetchDietPlanForDate(DateTime date) async {
+    if (userId == null) return;
+    
+    setLoading(true);
+    clearError();
+    
+    try {
+      _currentDietPlan = await _dietRepository.getDietPlanForDate(userId!, date);
+      notifyListeners();
+    } catch (e) {
+      setError('Failed to load diet plan: $e');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  /// Generate a new diet plan using user profile from Firestore
+  Future<void> generateDietPlan() async {
+    if (userId == null) {
+      setError('User not logged in');
+      return;
+    }
+
+    setLoading(true);
+    clearError();
+
+    try {
+      // 1. Fetch User Profile
+      final userModel = await _userRepository.getUserProfile(userId!);
+      if (userModel == null) {
+        throw Exception('User profile not found. Please complete profile setup.');
+      }
+
+      // 2. Generate Plan
+      _currentDietPlan = await _dietRepository.generateAndSaveDietPlan(
+        userId: userId!,
+        userProfile: userModel.toJson(),
+      );
+      
+      notifyListeners();
+    } catch (e) {
+      setError('Failed to generate diet plan: $e');
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  /// Get current day's diet data as a Map for UI compatibility
   Map<String, dynamic> get currentDietData {
-    return dietData[_selectedDayIndex] ?? dietData[0]!;
+    if (_currentDietPlan == null) return {};
+    return _currentDietPlan!.toJson();
   }
 
   /// Select a specific day
@@ -127,41 +91,30 @@ class DietViewModel extends BaseViewModel {
     _selectedDayIndex = dayIndex;
     // Calculate new date based on day index
     final int difference = dayIndex - (_selectedDate.weekday - 1);
-    _selectedDate = _selectedDate.add(Duration(days: difference));
-    notifyListeners();
+    final newDate = _selectedDate.add(Duration(days: difference));
+    setDate(newDate);
   }
 
   /// Set a specific date
   void setDate(DateTime date) {
+    if (_selectedDate.day == date.day && 
+        _selectedDate.month == date.month && 
+        _selectedDate.year == date.year) return;
+        
     _selectedDate = date;
     _selectedDayIndex = date.weekday - 1;
+    fetchDietPlanForDate(date);
     notifyListeners();
   }
 
   /// Get formatted date string
   String getFormattedDate() {
     final months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
+      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
     ];
     final dayNames = [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday'
+      'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
     ];
     final day = _selectedDate.day.toString();
     String suffix = 'th';

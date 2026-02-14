@@ -1,11 +1,20 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'base_view_model.dart';
 import '../data/models/progress_model.dart';
+import '../data/repositories/progress_repository.dart';
 
 /// ViewModel for Progress Tracking Screen
 class ProgressTrackingViewModel extends BaseViewModel {
+  final ProgressRepository _progressRepository;
+  
+  ProgressTrackingViewModel({ProgressRepository? progressRepository})
+      : _progressRepository = progressRepository ?? ProgressRepository();
+
   int _selectedPeriod = 0; // 0: Week, 1: Month, 2: Year
 
   int get selectedPeriod => _selectedPeriod;
+  
+  String? get userId => FirebaseAuth.instance.currentUser?.uid;
 
   /// Get current period type
   ProgressPeriod get currentPeriod {
@@ -22,51 +31,45 @@ class ProgressTrackingViewModel extends BaseViewModel {
   }
 
   // Stats data
-  final ProgressStats stats = ProgressStats(
-    weightLostKg: 1.3,
-    weightLostPeriod: 'This week',
-    avgCaloriesBurned: 2260,
-    caloriesPeriod: 'burned/day',
-    toGoalKg: 8.7,
-    toGoalTime: '~8 weeks',
-    workoutsCompleted: 4,
-    workoutsGoal: 5,
-  );
+  ProgressStats? _stats;
+  ProgressStats? get stats => _stats;
 
-  // Weight progress data (example for week view)
-  final List<WeightDataPoint> weightData = [
-    WeightDataPoint(day: 'Mon', weight: 79.0),
-    WeightDataPoint(day: 'Tue', weight: 78.5),
-    WeightDataPoint(day: 'Wed', weight: 78.2),
-    WeightDataPoint(day: 'Thu', weight: 77.9),
-    WeightDataPoint(day: 'Fri', weight: 77.7),
-    WeightDataPoint(day: 'Sat', weight: 77.5),
-    WeightDataPoint(day: 'Sun', weight: 77.7),
-  ];
+  // Weight progress data (placeholder for now, needs graph data model in repo)
+  final List<WeightDataPoint> weightData = [];
 
-  // Calories data (burned vs consumed per day)
-  final List<CalorieDataPoint> caloriesData = [
-    CalorieDataPoint(day: 'Mon', burned: 2400, consumed: 1800),
-    CalorieDataPoint(day: 'Tue', burned: 2600, consumed: 2100),
-    CalorieDataPoint(day: 'Wed', burned: 2100, consumed: 1600),
-    CalorieDataPoint(day: 'Thu', burned: 2800, consumed: 2000),
-    CalorieDataPoint(day: 'Fri', burned: 2300, consumed: 1900),
-    CalorieDataPoint(day: 'Sat', burned: 1800, consumed: 2200),
-    CalorieDataPoint(day: 'Sun', burned: 2200, consumed: 1700),
-  ];
+  // Calories data (placeholder)
+  final List<CalorieDataPoint> caloriesData = [];
 
   // Consistency data
-  final ConsistencyData consistencyData = ConsistencyData(
-    days: [
-      WorkoutDayStatus(dayName: 'Mon', isCompleted: true),
-      WorkoutDayStatus(dayName: 'Tue', isCompleted: true),
-      WorkoutDayStatus(dayName: 'Wed', isCompleted: true),
-      WorkoutDayStatus(dayName: 'Thu', isCompleted: false),
-      WorkoutDayStatus(dayName: 'Fri', isCompleted: true),
-      WorkoutDayStatus(dayName: 'Sat', isCompleted: false),
-      WorkoutDayStatus(dayName: 'Sun', isCompleted: false),
-    ],
-  );
+  ConsistencyData _consistencyData = ConsistencyData(days: []);
+  ConsistencyData get consistencyData => _consistencyData;
+  
+  /// Initialize
+  Future<void> init() async {
+    await fetchProgressData();
+  }
+  
+  /// Fetch all progress data
+  Future<void> fetchProgressData() async {
+    if (userId == null) return;
+    
+    setLoading(true);
+    clearError();
+    
+    try {
+      _stats = await _progressRepository.getProgressStats(userId!);
+      
+      final days = await _progressRepository.getWeeklyConsistency(userId!);
+      _consistencyData = ConsistencyData(days: days);
+      
+      // Fetch graph data... implementation depends on exact repo methods
+      
+    } catch (e) {
+      setError('Failed to load progress data: $e');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   /// Set selected period
   void setSelectedPeriod(int period) {

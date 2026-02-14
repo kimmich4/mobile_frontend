@@ -33,16 +33,36 @@ class DietScreen extends StatelessWidget {
 
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          body: SingleChildScrollView(
-            // Key helps with rebuilding if date changes significantly, though Consumer handles data updates.
-            key: ValueKey(viewModel.selectedDayIndex),
-            child: Column(children: [
-              _buildHeader(context, viewModel),
-              Transform.translate(offset: const Offset(0, -40), child: _buildDailySummaryCard(context, currentData)),
-              _buildMealsList(currentData),
-              const SizedBox(height: 100),
-            ]),
-          ),
+          body: viewModel.isLoading 
+            ? const Center(child: CircularProgressIndicator(color: Color(0xFF024950)))
+            : (viewModel.currentDietPlan == null)
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('No diet plan found for this date.', style: TextStyle(fontSize: 16)),
+                        const SizedBox(height: 16),
+                        ElevatedButton(
+                          onPressed: () => viewModel.generateDietPlan(),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF024950),
+                            foregroundColor: Colors.white,
+                          ),
+                          child: const Text('Generate AI Diet Plan'),
+                        ),
+                      ],
+                    ),
+                  )
+                : SingleChildScrollView(
+                    // Key helps with rebuilding if date changes significantly, though Consumer handles data updates.
+                    key: ValueKey(viewModel.selectedDayIndex),
+                    child: Column(children: [
+                      _buildHeader(context, viewModel),
+                      Transform.translate(offset: const Offset(0, -40), child: _buildDailySummaryCard(context, currentData)),
+                      _buildMealsList(currentData),
+                      const SizedBox(height: 100),
+                    ]),
+                  ),
         );
       },
     );

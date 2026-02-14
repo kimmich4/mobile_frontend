@@ -139,7 +139,15 @@ class ProgressTrackingScreen extends StatelessWidget {
   }
 
   Widget _buildStatsGrid(BuildContext context, ProgressTrackingViewModel viewModel) {
+    if (viewModel.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+    
     final stats = viewModel.stats;
+    if (stats == null) {
+      return const Center(child: Text('No progress data available'));
+    }
+    
     return Row(
       children: [
         Expanded(

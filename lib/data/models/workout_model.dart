@@ -29,13 +29,13 @@ class Exercise {
   };
 
   factory Exercise.fromJson(Map<String, dynamic> json) => Exercise(
-    id: json['id'] as int,
-    name: json['name'] as String,
-    difficulty: json['difficulty'] as String,
-    equipment: json['equipment'] as String,
-    sets: json['sets'] as String,
-    reps: json['reps'] as String,
-    calories: json['calories'] as int,
+    id: (json['id'] as num?)?.toInt() ?? 0,
+    name: (json['name'] as String?) ?? 'Exercise',
+    difficulty: (json['difficulty'] as String?) ?? 'Medium',
+    equipment: (json['equipment'] as String?) ?? 'None',
+    sets: (json['sets'] as String?)?.toString() ?? '3', // API might return int
+    reps: (json['reps'] as String?)?.toString() ?? '10', // API might return int
+    calories: (json['calories'] as num?)?.toInt() ?? 0,
   );
 }
 
@@ -64,13 +64,14 @@ class WorkoutPlan {
   };
 
   factory WorkoutPlan.fromJson(Map<String, dynamic> json) => WorkoutPlan(
-    title: json['title'] as String,
-    durationMinutes: json['durationMinutes'] as int,
-    totalCalories: json['totalCalories'] as int,
-    exerciseCount: json['exerciseCount'] as int,
-    exercises: (json['exercises'] as List<dynamic>)
-        .map((ex) => Exercise.fromJson(ex as Map<String, dynamic>))
-        .toList(),
+    title: (json['title'] as String?) ?? 'Workout Plan',
+    durationMinutes: (json['durationMinutes'] as num?)?.toInt() ?? 0,
+    totalCalories: (json['totalCalories'] as num?)?.toInt() ?? 0,
+    exerciseCount: (json['exerciseCount'] as num?)?.toInt() ?? 0,
+    exercises: (json['exercises'] as List<dynamic>?)
+            ?.map((ex) => Exercise.fromJson(ex as Map<String, dynamic>))
+            .toList() ??
+        [],
   );
 }
 

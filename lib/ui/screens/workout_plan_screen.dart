@@ -14,26 +14,44 @@ class WorkoutPlanScreen extends StatelessWidget {
       builder: (context, viewModel, child) {
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          body: SingleChildScrollView(
-            // Use selectedTab as key to force rebuild or maintain state properly if needed, 
-            // but Consumer handles rebuilds. Key might be useful for animation.
-            child: Column(
-              children: [
-                _buildHeader(context, viewModel),
-                Padding(
-                  padding: const EdgeInsets.all(24.0),
-                  child: Column(
-                    children: [
-                      _buildSummaryCard(context, viewModel),
-                      const SizedBox(height: 24),
-                      _buildWorkoutList(context, viewModel),
-                      const SizedBox(height: 100),
-                    ],
+          body: viewModel.isLoading
+            ? const Center(child: CircularProgressIndicator(color: Color(0xFF024950)))
+            : (viewModel.currentPlan == null || viewModel.currentWorkoutExercises.isEmpty)
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text('No workout plan found.', style: TextStyle(fontSize: 16)),
+                        const SizedBox(height: 16),
+                        ElevatedButton(
+                          onPressed: () => viewModel.generateWorkouts(),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color(0xFF024950),
+                            foregroundColor: Colors.white,
+                          ),
+                          child: const Text('Generate AI Workout Plan'),
+                        ),
+                      ],
+                    ),
+                  )
+                : SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        _buildHeader(context, viewModel),
+                        Padding(
+                          padding: const EdgeInsets.all(24.0),
+                          child: Column(
+                            children: [
+                              _buildSummaryCard(context, viewModel),
+                              const SizedBox(height: 24),
+                              _buildWorkoutList(context, viewModel),
+                              const SizedBox(height: 100),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-          ),
         );
       },
     );

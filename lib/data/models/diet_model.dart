@@ -69,14 +69,15 @@ class DailyDietPlan {
   };
 
   factory DailyDietPlan.fromJson(Map<String, dynamic> json) => DailyDietPlan(
-    date: DateTime.parse(json['date'] as String),
-    totalCalories: json['totalCalories'] as int,
-    protein: json['protein'] as String,
-    carbs: json['carbs'] as String,
-    fats: json['fats'] as String,
-    meals: (json['meals'] as List<dynamic>)
-        .map((meal) => Meal.fromJson(meal as Map<String, dynamic>))
-        .toList(),
+    date: DateTime.tryParse(json['date'] as String? ?? '') ?? DateTime.now(),
+    totalCalories: (json['totalCalories'] as num?)?.toInt() ?? 0,
+    protein: (json['protein'] as String?) ?? '0g',
+    carbs: (json['carbs'] as String?) ?? '0g',
+    fats: (json['fats'] as String?) ?? '0g',
+    meals: (json['meals'] as List<dynamic>?)
+            ?.map((meal) => Meal.fromJson(meal as Map<String, dynamic>))
+            .toList() ??
+        [],
   );
 }
 

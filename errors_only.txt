@@ -1,0 +1,40 @@
+﻿
+  error - The getter 
+'workoutTitle' isn't 
+defined for the type 
+'WorkoutViewModel' - 
+lib\ui\screens\workou
+t_plan_screen.dart:13
+4:26 - 
+undefined_getter
+  error - The getter 
+'totalCalories' 
+isn't defined for 
+the type 
+'WorkoutViewModel' - 
+lib\ui\screens\workou
+t_plan_screen.dart:14
+0:81 - 
+undefined_getter
+   info - Don't 
+invoke 'print' in 
+production code - rea
+d_errors.dart:13:7 - 
+avoid_print
+   info - Don't 
+invoke 'print' in 
+production code - rea
+d_errors.dart:19:10 
+- avoid_print
+   info - Don't 
+invoke 'print' in 
+production code - rea
+d_errors.dart:27:5 - 
+avoid_print
+   info - Don't 
+invoke 'print' in 
+production code - rea
+d_errors.dart:34:7 - 
+avoid_print
+
+

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import '../data/repositories/auth_repository.dart';
 import '../data/repositories/user_repository.dart';
+import '../data/repositories/diet_repository.dart';
+import '../data/repositories/workout_repository.dart';
 import 'base_view_model.dart';
 import '../data/models/user_model.dart';
 
@@ -9,6 +11,8 @@ import '../data/models/user_model.dart';
 class ProfileSetupViewModel extends BaseViewModel {
   final AuthRepository _authRepository = AuthRepository();
   final UserRepository _userRepository = UserRepository();
+  final DietRepository _dietRepository = DietRepository();
+  final WorkoutRepository _workoutRepository = WorkoutRepository();
   
   final PageController pageController = PageController();
   int _currentPage = 0;
@@ -273,9 +277,37 @@ class ProfileSetupViewModel extends BaseViewModel {
 
       // Save via UserRepository
       await _userRepository.saveUserProfile(userModel);
+      debugPrint('User Profile Saved via Repository: ${userModel.toJson()}');
+
+      // Trigger AI Generation (Non-blocking but awaited)
+      try {
+        debugPrint('Triggering AI Generation...');
+        final userProfile = userModel.toJson();
+        
+        await Future.wait([
+          // Generate Diet
+          _dietRepository.generateAndSaveDietPlan(
+            userId: user.uid, 
+            userProfile: userProfile
+          ),
+          
+          // Generate Workouts (Home & Gym)
+          _workoutRepository.generateAndSaveWorkoutPlan(
+            userId: user.uid,
+            userProfile: {...userProfile, 'preference': 'home'}
+          ),
+          _workoutRepository.generateAndSaveWorkoutPlan(
+            userId: user.uid,
+            userProfile: {...userProfile, 'preference': 'gym'}
+          ),
+        ]);
+        debugPrint('AI Generation Completed Successfully');
+      } catch (e) {
+        debugPrint('AI Generation failed (non-blocking): $e');
+        // Continue to completion despite generation error, user can regenerate later
+      }
 
       setLoading(false);
-      debugPrint('User Profile Saved via Repository: ${userModel.toJson()}');
       onComplete();
     } catch (e) {
       setLoading(false);
