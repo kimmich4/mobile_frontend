@@ -277,36 +277,9 @@ class ProfileSetupViewModel extends BaseViewModel {
 
       // Save via UserRepository
       await _userRepository.saveUserProfile(userModel);
-      debugPrint('User Profile Saved via Repository: ${userModel.toJson()}');
+      debugPrint('User Profile Saved via Repository');
 
-      // Trigger AI Generation (Non-blocking but awaited)
-      try {
-        debugPrint('Triggering AI Generation...');
-        final userProfile = userModel.toJson();
-        
-        await Future.wait([
-          // Generate Diet
-          _dietRepository.generateAndSaveDietPlan(
-            userId: user.uid, 
-            userProfile: userProfile
-          ),
-          
-          // Generate Workouts (Home & Gym)
-          _workoutRepository.generateAndSaveWorkoutPlan(
-            userId: user.uid,
-            userProfile: {...userProfile, 'preference': 'home'}
-          ),
-          _workoutRepository.generateAndSaveWorkoutPlan(
-            userId: user.uid,
-            userProfile: {...userProfile, 'preference': 'gym'}
-          ),
-        ]);
-        debugPrint('AI Generation Completed Successfully');
-      } catch (e) {
-        debugPrint('AI Generation failed (non-blocking): $e');
-        // Continue to completion despite generation error, user can regenerate later
-      }
-
+      // 3. Navigation to Loading Screen (handled by UI)
       setLoading(false);
       onComplete();
     } catch (e) {

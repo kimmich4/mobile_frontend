@@ -7,24 +7,6 @@ import '../../viewmodels/main_view_model.dart';
 class DietScreen extends StatelessWidget {
   const DietScreen({super.key});
 
-  Future<void> _selectDate(BuildContext context, DietViewModel viewModel) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: viewModel.selectedDate,
-      firstDate: DateTime(2020),
-      lastDate: DateTime(2030),
-      builder: (context, child) => Theme(
-        data: ThemeData.light().copyWith(
-          colorScheme: const ColorScheme.light(primary: Color(0xFF024950)),
-        ),
-        child: child!,
-      ),
-    );
-    if (picked != null) {
-      viewModel.setDate(picked);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<DietViewModel>(
@@ -35,31 +17,24 @@ class DietScreen extends StatelessWidget {
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: viewModel.isLoading 
             ? const Center(child: CircularProgressIndicator(color: Color(0xFF024950)))
-            : (viewModel.currentDietPlan == null)
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('No diet plan found for this date.', style: TextStyle(fontSize: 16)),
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed: () => viewModel.generateDietPlan(),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF024950),
-                            foregroundColor: Colors.white,
-                          ),
-                          child: const Text('Generate AI Diet Plan'),
-                        ),
-                      ],
-                    ),
+            : (viewModel.dietPlan == null)
+                ? const Center(
+                    child: Text('No diet plan found.', style: TextStyle(fontSize: 16)),
                   )
                 : SingleChildScrollView(
-                    // Key helps with rebuilding if date changes significantly, though Consumer handles data updates.
+                    // Key helps with rebuilding if date changes significantly
                     key: ValueKey(viewModel.selectedDayIndex),
                     child: Column(children: [
                       _buildHeader(context, viewModel),
-                      Transform.translate(offset: const Offset(0, -40), child: _buildDailySummaryCard(context, currentData)),
-                      _buildMealsList(currentData),
+                      if (currentData.isNotEmpty)
+                        Transform.translate(offset: const Offset(0, -40), child: _buildDailySummaryCard(context, currentData)),
+                      if (currentData.isNotEmpty)
+                        _buildMealsList(currentData)
+                      else
+                        const Padding(
+                          padding: EdgeInsets.all(24.0),
+                          child: Center(child: Text('No data for this day.')),
+                        ),
                       const SizedBox(height: 100),
                     ]),
                   ),
@@ -82,7 +57,7 @@ class DietScreen extends StatelessWidget {
             const Text('Diet Plan', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
             Text(viewModel.getFormattedDate(), style: const TextStyle(color: Color(0xFFAFDDE5), fontSize: 14)),
           ]),
-          IconButton(icon: const Icon(Icons.calendar_today, color: Colors.white), onPressed: () => _selectDate(context, viewModel)),
+          const SizedBox(width: 48), // Spacer for balance
         ]),
         const SizedBox(height: 24),
         SingleChildScrollView(

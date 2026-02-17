@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../viewmodels/workout_view_model.dart';
 import '../../viewmodels/main_view_model.dart';
 import '../../data/models/workout_model.dart';
+import 'workout_loading_screen.dart';
 import 'video_screen.dart';
 
 class WorkoutPlanScreen extends StatelessWidget {
@@ -17,22 +18,8 @@ class WorkoutPlanScreen extends StatelessWidget {
           body: viewModel.isLoading
             ? const Center(child: CircularProgressIndicator(color: Color(0xFF024950)))
             : (viewModel.currentPlan == null || viewModel.currentWorkoutExercises.isEmpty)
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('No workout plan found.', style: TextStyle(fontSize: 16)),
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed: () => viewModel.generateWorkouts(),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF024950),
-                            foregroundColor: Colors.white,
-                          ),
-                          child: const Text('Generate AI Workout Plan'),
-                        ),
-                      ],
-                    ),
+                ? const Center(
+                    child: Text('No workout plan found.', style: TextStyle(fontSize: 16)),
                   )
                 : SingleChildScrollView(
                     child: Column(
@@ -41,9 +28,12 @@ class WorkoutPlanScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(24.0),
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               _buildSummaryCard(context, viewModel),
                               const SizedBox(height: 24),
+                              const Text('Exercises', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                              const SizedBox(height: 16),
                               _buildWorkoutList(context, viewModel),
                               const SizedBox(height: 100),
                             ],
@@ -115,28 +105,36 @@ class WorkoutPlanScreen extends StatelessWidget {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
-        children: viewModel.calendarDays.map((day) => Padding(
-          padding: const EdgeInsets.only(right: 8),
-          child: _buildCalendarCard(day.dayName, day.isCompleted),
-        )).toList(),
+        children: List.generate(7, (index) {
+          final dayNum = index + 1;
+          final isSelected = viewModel.selectedDay == dayNum;
+          return Padding(
+            padding: const EdgeInsets.only(right: 12),
+            child: GestureDetector(
+              onTap: () => viewModel.setSelectedDay(dayNum),
+              child: _buildCalendarCard(viewModel.dayLabels[index], isSelected),
+            ),
+          );
+        }),
       ),
     );
   }
 
-  Widget _buildCalendarCard(String day, bool isCompleted) {
+  Widget _buildCalendarCard(String day, bool isSelected) {
     return Container(
-      width: 85, height: 68,
+      width: 70, height: 80,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: isCompleted ? const Color(0xFF0FA4AF) : Colors.white.withOpacity(0.1),
+        color: isSelected ? const Color(0xFF0FA4AF) : Colors.white.withOpacity(0.1),
         borderRadius: BorderRadius.circular(16),
+        border: isSelected ? Border.all(color: Colors.white24) : null,
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(day, style: TextStyle(color: isCompleted ? Colors.white : const Color(0xFFAFDDE5), fontSize: 12)),
-          const Spacer(),
-          if (isCompleted) const Icon(Icons.check, color: Colors.white, size: 14),
+          Text(day, style: TextStyle(color: isSelected ? Colors.white : const Color(0xFFAFDDE5), fontSize: 13, fontWeight: isSelected ? FontWeight.bold : FontWeight.normal)),
+          const SizedBox(height: 4),
+          if (isSelected) Container(width: 4, height: 4, decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle)),
         ],
       ),
     );

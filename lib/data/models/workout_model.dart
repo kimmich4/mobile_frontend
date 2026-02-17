@@ -28,51 +28,90 @@ class Exercise {
     'calories': calories,
   };
 
-  factory Exercise.fromJson(Map<String, dynamic> json) => Exercise(
-    id: (json['id'] as num?)?.toInt() ?? 0,
-    name: (json['name'] as String?) ?? 'Exercise',
-    difficulty: (json['difficulty'] as String?) ?? 'Medium',
-    equipment: (json['equipment'] as String?) ?? 'None',
-    sets: (json['sets'] as String?)?.toString() ?? '3', // API might return int
-    reps: (json['reps'] as String?)?.toString() ?? '10', // API might return int
-    calories: (json['calories'] as num?)?.toInt() ?? 0,
-  );
+  factory Exercise.fromJson(Map<String, dynamic>? json) {
+    if (json == null) return Exercise(id: 0, name: 'Exercise', difficulty: 'Medium', equipment: 'None', sets: '3', reps: '10', calories: 0);
+    return Exercise(
+      id: (json['id'] as num?)?.toInt() ?? 0,
+      name: (json['name'] as String?) ?? 'Exercise',
+      difficulty: (json['difficulty'] as String?) ?? 'Medium',
+      equipment: (json['equipment'] as String?) ?? 'None',
+      sets: json['sets']?.toString() ?? '3',
+      reps: json['reps']?.toString() ?? '10',
+      calories: (json['calories'] as num?)?.toInt() ?? 0,
+    );
+  }
+}
+
+/// Represents a single day in a workout plan
+class WorkoutDay {
+  final int day;
+  final List<Exercise> exercises;
+
+  WorkoutDay({
+    required this.day,
+    required this.exercises,
+  });
+
+  Map<String, dynamic> toJson() => {
+    'day': day,
+    'exercises': exercises.map((ex) => ex.toJson()).toList(),
+  };
+
+  factory WorkoutDay.fromJson(Map<String, dynamic>? json) {
+    if (json == null) return WorkoutDay(day: 0, exercises: []);
+    return WorkoutDay(
+      day: (json['day'] as num?)?.toInt() ?? (json['id'] as num?)?.toInt() ?? 0,
+      exercises: (json['exercises'] as List<dynamic>?)
+              ?.map((ex) => Exercise.fromJson(ex as Map<String, dynamic>?))
+              .toList() ??
+          [],
+    );
+  }
 }
 
 /// Represents a workout plan (Home or Gym)
 class WorkoutPlan {
   final String title; // e.g., 'Upper Body Strength'
-  final int durationMinutes;
-  final int totalCalories;
-  final int exerciseCount;
-  final List<Exercise> exercises;
+  final List<WorkoutDay> days;
 
   WorkoutPlan({
     required this.title,
-    required this.durationMinutes,
-    required this.totalCalories,
-    required this.exerciseCount,
-    required this.exercises,
+    required this.days,
   });
+
+  int get totalCalories {
+    int total = 0;
+    for (var day in days) {
+      for (var ex in day.exercises) {
+        total += ex.calories;
+      }
+    }
+    return total;
+  }
+
+  int get exerciseCount {
+    int total = 0;
+    for (var day in days) {
+      total += day.exercises.length;
+    }
+    return total;
+  }
 
   Map<String, dynamic> toJson() => {
     'title': title,
-    'durationMinutes': durationMinutes,
-    'totalCalories': totalCalories,
-    'exerciseCount': exerciseCount,
-    'exercises': exercises.map((ex) => ex.toJson()).toList(),
+    'days': days.map((day) => day.toJson()).toList(),
   };
 
-  factory WorkoutPlan.fromJson(Map<String, dynamic> json) => WorkoutPlan(
-    title: (json['title'] as String?) ?? 'Workout Plan',
-    durationMinutes: (json['durationMinutes'] as num?)?.toInt() ?? 0,
-    totalCalories: (json['totalCalories'] as num?)?.toInt() ?? 0,
-    exerciseCount: (json['exerciseCount'] as num?)?.toInt() ?? 0,
-    exercises: (json['exercises'] as List<dynamic>?)
-            ?.map((ex) => Exercise.fromJson(ex as Map<String, dynamic>))
-            .toList() ??
-        [],
-  );
+  factory WorkoutPlan.fromJson(Map<String, dynamic>? json) {
+    if (json == null) return WorkoutPlan(title: 'Workout Plan', days: []);
+    return WorkoutPlan(
+      title: (json['title'] as String?) ?? 'Workout Plan',
+      days: (json['days'] as List<dynamic>?)
+              ?.map((day) => WorkoutDay.fromJson(day as Map<String, dynamic>?))
+              .toList() ??
+          [],
+    );
+  }
 }
 
 /// Represents workout calendar day status

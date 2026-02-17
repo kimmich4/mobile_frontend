@@ -43,7 +43,7 @@ class Meal {
 
 /// Represents a daily diet plan
 class DailyDietPlan {
-  final DateTime date;
+  final int day; // 1-7
   final int totalCalories;
   final String protein; // e.g., "105g"
   final String carbs;   // e.g., "170g"
@@ -51,7 +51,7 @@ class DailyDietPlan {
   final List<Meal> meals;
 
   DailyDietPlan({
-    required this.date,
+    required this.day,
     required this.totalCalories,
     required this.protein,
     required this.carbs,
@@ -60,7 +60,7 @@ class DailyDietPlan {
   });
 
   Map<String, dynamic> toJson() => {
-    'date': date.toIso8601String(),
+    'day': day,
     'totalCalories': totalCalories,
     'protein': protein,
     'carbs': carbs,
@@ -68,24 +68,39 @@ class DailyDietPlan {
     'meals': meals.map((meal) => meal.toJson()).toList(),
   };
 
-  factory DailyDietPlan.fromJson(Map<String, dynamic> json) => DailyDietPlan(
-    date: DateTime.tryParse(json['date'] as String? ?? '') ?? DateTime.now(),
-    totalCalories: (json['totalCalories'] as num?)?.toInt() ?? 0,
-    protein: (json['protein'] as String?) ?? '0g',
-    carbs: (json['carbs'] as String?) ?? '0g',
-    fats: (json['fats'] as String?) ?? '0g',
-    meals: (json['meals'] as List<dynamic>?)
-            ?.map((meal) => Meal.fromJson(meal as Map<String, dynamic>))
-            .toList() ??
-        [],
-  );
+  factory DailyDietPlan.fromJson(Map<String, dynamic>? json) {
+    if (json == null) return DailyDietPlan(day: 1, totalCalories: 0, protein: '0g', carbs: '0g', fats: '0g', meals: []);
+    return DailyDietPlan(
+      day: (json['day'] as num?)?.toInt() ?? 1,
+      totalCalories: (json['totalCalories'] as num?)?.toInt() ?? 0,
+      protein: (json['protein'] as String?) ?? '0g',
+      carbs: (json['carbs'] as String?) ?? '0g',
+      fats: (json['fats'] as String?) ?? '0g',
+      meals: (json['meals'] as List<dynamic>?)
+              ?.map((meal) => Meal.fromJson(meal as Map<String, dynamic>))
+              .toList() ??
+          [],
+    );
+  }
 }
 
-/// Represents weekly diet plan
-class WeeklyDietPlan {
-  final Map<int, DailyDietPlan> dailyPlans; // key: weekday (0-6)
+/// Represents a multi-day diet plan
+class DietPlan {
+  final List<DailyDietPlan> days;
 
-  WeeklyDietPlan({required this.dailyPlans});
+  DietPlan({required this.days});
 
-  DailyDietPlan? getPlanForDay(int weekday) => dailyPlans[weekday];
+  Map<String, dynamic> toJson() => {
+    'days': days.map((day) => day.toJson()).toList(),
+  };
+
+  factory DietPlan.fromJson(Map<String, dynamic>? json) {
+    if (json == null) return DietPlan(days: []);
+    return DietPlan(
+      days: (json['days'] as List<dynamic>?)
+              ?.map((day) => DailyDietPlan.fromJson(day as Map<String, dynamic>?))
+              .toList() ??
+          [],
+    );
+  }
 }

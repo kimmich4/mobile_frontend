@@ -15,10 +15,13 @@ class WorkoutViewModel extends BaseViewModel {
         _userRepository = userRepository ?? UserRepository();
 
   int _selectedTab = 0; // 0: Home Workout, 1: Gym Workout
+  int _selectedDay = 1; // 1 to 7
+
   // Note: completedExercises might be better tracked in repository, but keeping local for now is fine for UI
   final Set<int> _completedExercises = {};
 
   int get selectedTab => _selectedTab;
+  int get selectedDay => _selectedDay;
   Set<int> get completedExercises => _completedExercises;
   
   WorkoutPlan? _homeWorkout;
@@ -28,17 +31,8 @@ class WorkoutViewModel extends BaseViewModel {
   
   String? get userId => FirebaseAuth.instance.currentUser?.uid;
 
-  // Calendar days - This would likely come from ProgressRepository in real implementation
-  // For now keeping it simple or can pull from progress
-  final List<WorkoutCalendarDay> calendarDays = [
-    WorkoutCalendarDay(dayName: 'Mon', isCompleted: true),
-    WorkoutCalendarDay(dayName: 'Tue', isCompleted: true),
-    WorkoutCalendarDay(dayName: 'Wed', isCompleted: false),
-    WorkoutCalendarDay(dayName: 'Thu', isCompleted: false),
-    WorkoutCalendarDay(dayName: 'Fri', isCompleted: false),
-    WorkoutCalendarDay(dayName: 'Sat', isCompleted: false),
-    WorkoutCalendarDay(dayName: 'Sun', isCompleted: false),
-  ];
+  // List of days labels
+  final List<String> dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   /// Initialize
   Future<void> init() async {
@@ -53,11 +47,6 @@ class WorkoutViewModel extends BaseViewModel {
     clearError();
     
     try {
-      // In a real app we might distinguish 'Home' vs 'Gym' plans 
-      // by ID or type. Here we'll try to fetch 'home_workout' and 'gym_workout' 
-      // or similar IDs, or just fetch all and filter.
-      // For demonstration, let's assume specific IDs or just fetch "current"
-      
       _homeWorkout = await _workoutRepository.getWorkoutPlan(userId!, 'home_workout');
       _gymWorkout = await _workoutRepository.getWorkoutPlan(userId!, 'gym_workout');
       
@@ -87,45 +76,49 @@ class WorkoutViewModel extends BaseViewModel {
       }
       final userProfile = userModel.toJson();
 
-      // Generate Home
-      // Ideally backend handles generating both or we request specific type
-      _homeWorkout = await _workoutRepository.generateAndSaveWorkoutPlan(
+      // Generate both plans
+      final plans = await _workoutRepository.generateAndSaveWorkoutPlans(
         userId: userId!,
-        userProfile: {...userProfile, 'preference': 'home'},
+        userProfile: userProfile,
       );
       
-      // Generate Gym
-      _gymWorkout = await _workoutRepository.generateAndSaveWorkoutPlan(
-         userId: userId!,
-         userProfile: {...userProfile, 'preference': 'gym'},
-      );
+      _homeWorkout = plans['home'];
+      _gymWorkout = plans['gym'];
       
       notifyListeners();
     } catch (e) {
        setError('Failed to generate workouts: $e');
+       rethrow; // Rethrow to handle in UI (e.g. Loading Screen)
     } finally {
       setLoading(false);
     }
   }
 
-  /// Get current workout list based on selected tab
+  /// Get current workout list based on selected tab and day
   List<Exercise> get currentWorkoutExercises {
-    return currentPlan?.exercises ?? [];
+    if (currentPlan == null) return [];
+    try {
+      final dayPlan = currentPlan!.days.firstWhere((d) => d.day == _selectedDay);
+      return dayPlan.exercises;
+    } catch (e) {
+      return [];
+    }
   }
 
-  /// Get total duration of the current workout
+  /// Get total duration of the current workout (Sum of exercises)
   int get durationMinutes {
-    return currentPlan?.durationMinutes ?? 0;
+    // Assuming each exercise takes about 10 mins or we can use a fixed value per exercise
+    return currentWorkoutExercises.length * 8; 
   }
 
-  /// Get total calories burned for the current workout
+  /// Get total calories burned for the selected day
   int get caloriesBurned {
-    return currentPlan?.totalCalories ?? 0;
+    return currentWorkoutExercises.fold(0, (sum, ex) => sum + ex.calories);
   }
 
-  /// Get total number of exercises
+  /// Get total number of exercises for selected day
   int get exerciseCount {
-    return currentPlan?.exercises.length ?? 0;
+    return currentWorkoutExercises.length;
   }
 
   /// Get workout title
@@ -140,6 +133,14 @@ class WorkoutViewModel extends BaseViewModel {
   void setSelectedTab(int index) {
     if (_selectedTab != index) {
       _selectedTab = index;
+      notifyListeners();
+    }
+  }
+
+  /// Switch between days
+  void setSelectedDay(int day) {
+    if (_selectedDay != day) {
+      _selectedDay = day;
       notifyListeners();
     }
   }

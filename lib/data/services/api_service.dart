@@ -36,8 +36,8 @@ class ApiService {
 
   ApiService({http.Client? client}) : _client = client ?? http.Client();
 
-  /// Generate a diet plan via AI backend
-  Future<DailyDietPlan> generateDietPlan({
+  /// Generate a 7-day diet plan via AI backend
+  Future<DietPlan> generateDietPlan({
     required String userId,
     required Map<String, dynamic> userProfile,
   }) async {
@@ -57,10 +57,11 @@ class ApiService {
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return DailyDietPlan.fromJson(data);
+        return DietPlan.fromJson(data);
       } else {
+        final errorMsg = 'Failed to generate diet plan: ${response.body}';
         throw ApiException(
-          'Failed to generate diet plan',
+          errorMsg,
           statusCode: response.statusCode,
         );
       }
@@ -70,8 +71,8 @@ class ApiService {
     }
   }
 
-  /// Generate a workout plan via AI backend
-  Future<WorkoutPlan> generateWorkoutPlan({
+  /// Generate workout plans (Gym and Home) via AI backend
+  Future<Map<String, WorkoutPlan>> generateWorkoutPlans({
     required String userId,
     required Map<String, dynamic> userProfile,
   }) async {
@@ -83,16 +84,20 @@ class ApiService {
           'userId': userId,
           'goal': (userProfile['fitnessGoals'] as List?)?.join(', ') ?? '',
           'age': userProfile['age'],
-          'preference': 'gym', // Default or extract from userProfile if available
+          'health_conditions': (userProfile['medicalConditions'] as List?)?.join(', ') ?? '',
         }),
       );
 
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        return WorkoutPlan.fromJson(data);
+        return {
+          'gym': WorkoutPlan.fromJson(data['gym']),
+          'home': WorkoutPlan.fromJson(data['home']),
+        };
       } else {
+        final errorMsg = 'Failed to generate workout plans: ${response.body}';
         throw ApiException(
-          'Failed to generate workout plan',
+          errorMsg,
           statusCode: response.statusCode,
         );
       }

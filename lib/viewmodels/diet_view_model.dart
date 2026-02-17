@@ -14,33 +14,31 @@ class DietViewModel extends BaseViewModel {
       : _dietRepository = dietRepository ?? DietRepository(),
         _userRepository = userRepository ?? UserRepository();
 
-  DateTime _selectedDate = DateTime.now();
-  int _selectedDayIndex = DateTime.now().weekday - 1;
+  int _selectedDayIndex = 0; // 0-6 (Mon-Sun)
 
-  DailyDietPlan? _currentDietPlan;
-  DailyDietPlan? get currentDietPlan => _currentDietPlan;
+  DietPlan? _dietPlan;
+  DietPlan? get dietPlan => _dietPlan;
 
   final List<String> days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-  DateTime get selectedDate => _selectedDate;
   int get selectedDayIndex => _selectedDayIndex;
   
   String? get userId => FirebaseAuth.instance.currentUser?.uid;
 
   /// Initialize and fetch data
   Future<void> init() async {
-    await fetchDietPlanForDate(_selectedDate);
+    await fetchDietPlan();
   }
 
-  /// Fetch diet plan for the selected date
-  Future<void> fetchDietPlanForDate(DateTime date) async {
+  /// Fetch diet plan
+  Future<void> fetchDietPlan() async {
     if (userId == null) return;
     
     setLoading(true);
     clearError();
     
     try {
-      _currentDietPlan = await _dietRepository.getDietPlanForDate(userId!, date);
+      _dietPlan = await _dietRepository.getDietPlan(userId!);
       notifyListeners();
     } catch (e) {
       setError('Failed to load diet plan: $e');
@@ -67,7 +65,7 @@ class DietViewModel extends BaseViewModel {
       }
 
       // 2. Generate Plan
-      _currentDietPlan = await _dietRepository.generateAndSaveDietPlan(
+      _dietPlan = await _dietRepository.generateAndSaveDietPlan(
         userId: userId!,
         userProfile: userModel.toJson(),
       );
@@ -75,56 +73,54 @@ class DietViewModel extends BaseViewModel {
       notifyListeners();
     } catch (e) {
       setError('Failed to generate diet plan: $e');
+      rethrow;
     } finally {
       setLoading(false);
     }
   }
 
+  /// Get current day's diet plan
+  DailyDietPlan? get currentDayPlan {
+    if (_dietPlan == null || _dietPlan!.days.isEmpty) return null;
+    try {
+      return _dietPlan!.days.firstWhere((d) => d.day == (_selectedDayIndex + 1));
+    } catch (e) {
+      return null;
+    }
+  }
+
   /// Get current day's diet data as a Map for UI compatibility
   Map<String, dynamic> get currentDietData {
-    if (_currentDietPlan == null) return {};
-    return _currentDietPlan!.toJson();
+    final plan = currentDayPlan;
+    if (plan == null) return {};
+    
+    // UI expects specific keys
+    return {
+      'calories': plan.totalCalories,
+      'protein': plan.protein,
+      'carbs': plan.carbs,
+      'fats': plan.fats,
+      'meals': plan.meals.map((m) => {
+        'title': m.title,
+        'cal': '${m.totalCalories} cal',
+        'items': m.items.map((it) => {
+          'name': it.name,
+          'cal': '${it.calories} cal'
+        }).toList()
+      }).toList()
+    };
   }
 
   /// Select a specific day
   void selectDay(int dayIndex) {
-    _selectedDayIndex = dayIndex;
-    // Calculate new date based on day index
-    final int difference = dayIndex - (_selectedDate.weekday - 1);
-    final newDate = _selectedDate.add(Duration(days: difference));
-    setDate(newDate);
-  }
-
-  /// Set a specific date
-  void setDate(DateTime date) {
-    if (_selectedDate.day == date.day && 
-        _selectedDate.month == date.month && 
-        _selectedDate.year == date.year) return;
-        
-    _selectedDate = date;
-    _selectedDayIndex = date.weekday - 1;
-    fetchDietPlanForDate(date);
-    notifyListeners();
-  }
-
-  /// Get formatted date string
-  String getFormattedDate() {
-    final months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-    ];
-    final dayNames = [
-      'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
-    ];
-    final day = _selectedDate.day.toString();
-    String suffix = 'th';
-    if (day.endsWith('1') && day != '11') {
-      suffix = 'st';
-    } else if (day.endsWith('2') && day != '12') {
-      suffix = 'nd';
-    } else if (day.endsWith('3') && day != '13') {
-      suffix = 'rd';
+    if (_selectedDayIndex != dayIndex) {
+      _selectedDayIndex = dayIndex;
+      notifyListeners();
     }
-    return "${dayNames[_selectedDate.weekday - 1]}, ${months[_selectedDate.month - 1]} $day$suffix";
+  }
+
+  /// Get formatted date string (Not used as much with 7-day plan, but kept for UI)
+  String getFormattedDate() {
+    return "Weekly Plan - Day ${_selectedDayIndex + 1}";
   }
 }

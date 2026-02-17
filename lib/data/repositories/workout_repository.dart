@@ -18,41 +18,26 @@ class WorkoutRepository {
     return _firestore.collection('users').doc(userId).collection('workoutPlans');
   }
 
-  /// Generate and save a new workout plan
-  Future<WorkoutPlan> generateAndSaveWorkoutPlan({
+  /// Generate and save new workout plans (Gym and Home)
+  Future<Map<String, WorkoutPlan>> generateAndSaveWorkoutPlans({
     required String userId,
     required Map<String, dynamic> userProfile,
   }) async {
     try {
-      // 1. Fetch from API
-      final workoutPlan = await _apiService.generateWorkoutPlan(
+      // 1. Fetch from API (Returns both gym and home)
+      final plans = await _apiService.generateWorkoutPlans(
         userId: userId,
         userProfile: userProfile,
       );
 
-      // 2. Save to Firestore. 
-      // Ensure ID matches what ViewModel expects ('home_workout' or 'gym_workout')
-      String planId;
-      final lowerTitle = workoutPlan.title.toLowerCase();
-      
-      // We can also check the 'preference' from userProfile if available, to be sure.
-      final preference = userProfile['preference']?.toString().toLowerCase();
+      // 2. Save both to Firestore
+      print('Saving gym and home workout plans to Firestore');
+      await _getWorkoutCollection(userId).doc('gym_workout').set(plans['gym']!.toJson());
+      await _getWorkoutCollection(userId).doc('home_workout').set(plans['home']!.toJson());
 
-      if (preference == 'home' || lowerTitle.contains('home')) {
-        planId = 'home_workout';
-      } else if (preference == 'gym' || lowerTitle.contains('gym')) {
-        planId = 'gym_workout';
-      } else {
-        // Fallback
-        planId = lowerTitle.replaceAll(RegExp(r'\s+'), '_');
-      }
-      
-      print('Saving workout plan to Firestore with ID: $planId');
-      await _getWorkoutCollection(userId).doc(planId).set(workoutPlan.toJson());
-
-      return workoutPlan;
+      return plans;
     } catch (e) {
-      throw Exception('Failed to generate and save workout plan: $e');
+      throw Exception('Failed to generate and save workout plans: $e');
     }
   }
 

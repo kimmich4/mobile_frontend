@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'main_screen.dart';
+import 'workout_loading_screen.dart';
 import '../components/animate_in.dart';
 import '../../viewmodels/profile_setup_view_model.dart';
 
@@ -57,7 +58,7 @@ class ProfileSetupScreen extends StatelessWidget {
                             viewModel.nextPage(() {
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => const MainScreen()),
+                                MaterialPageRoute(builder: (context) => const WorkoutLoadingScreen()),
                               );
                             });
                           },
