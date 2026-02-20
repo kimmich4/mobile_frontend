@@ -73,9 +73,9 @@ class DailyDietPlan {
     return DailyDietPlan(
       day: (json['day'] as num?)?.toInt() ?? 1,
       totalCalories: (json['totalCalories'] as num?)?.toInt() ?? 0,
-      protein: (json['protein'] as String?) ?? '0g',
-      carbs: (json['carbs'] as String?) ?? '0g',
-      fats: (json['fats'] as String?) ?? '0g',
+      protein: json['protein']?.toString() ?? '0g',
+      carbs: json['carbs']?.toString() ?? '0g',
+      fats: json['fats']?.toString() ?? '0g',
       meals: (json['meals'] as List<dynamic>?)
               ?.map((meal) => Meal.fromJson(meal as Map<String, dynamic>))
               .toList() ??

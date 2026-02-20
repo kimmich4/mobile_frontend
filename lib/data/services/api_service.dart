@@ -47,11 +47,16 @@ class ApiService {
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'userId': userId,
-          'health_conditions': (userProfile['medicalConditions'] as List?)?.join(', ') ?? '',
-          'goal': (userProfile['fitnessGoals'] as List?)?.join(', ') ?? '',
+          'fullName': userProfile['fullName'],
           'age': userProfile['age'],
+          'gender': userProfile['gender'],
           'height_cm': userProfile['heightCm'],
           'weight_kg': userProfile['weightKg'],
+          'activity_level': userProfile['activityLevel'],
+          'goal': (userProfile['fitnessGoals'] as List?)?.join(', ') ?? '',
+          'health_conditions': (userProfile['medicalConditions'] as List?)?.join(', ') ?? '',
+          'allergies': (userProfile['allergies'] as List?)?.join(', ') ?? '',
+          'injuries': (userProfile['currentInjuries'] as List?)?.join(', ') ?? '',
         }),
       );
 
@@ -82,9 +87,16 @@ class ApiService {
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'userId': userId,
-          'goal': (userProfile['fitnessGoals'] as List?)?.join(', ') ?? '',
+          'fullName': userProfile['fullName'],
           'age': userProfile['age'],
+          'gender': userProfile['gender'],
+          'height_cm': userProfile['heightCm'],
+          'weight_kg': userProfile['weightKg'],
+          'activity_level': userProfile['activityLevel'],
+          'goal': (userProfile['fitnessGoals'] as List?)?.join(', ') ?? '',
           'health_conditions': (userProfile['medicalConditions'] as List?)?.join(', ') ?? '',
+          'allergies': (userProfile['allergies'] as List?)?.join(', ') ?? '',
+          'injuries': (userProfile['currentInjuries'] as List?)?.join(', ') ?? '',
         }),
       );
 
