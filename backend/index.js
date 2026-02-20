@@ -17,7 +17,7 @@ async function generateAnswer(context, question, model = "mistralai/Mistral-7B-I
                 { role: "system", content: "You are an expert fitness coach. Return ONLY valid JSON." },
                 { role: "user", content: `Context: ${context}\n\nQuestion: ${question}` }
             ],
-            max_tokens: 3000
+            max_tokens: 4000
         });
 
         // Try rotating subdomains if one is blocked (In some regions, api-inference is blocked)
