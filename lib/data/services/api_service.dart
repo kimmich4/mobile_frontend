@@ -57,6 +57,12 @@ class ApiService {
           'health_conditions': (userProfile['medicalConditions'] as List?)?.join(', ') ?? '',
           'allergies': (userProfile['allergies'] as List?)?.join(', ') ?? '',
           'injuries': (userProfile['currentInjuries'] as List?)?.join(', ') ?? '',
+          'experience_level': userProfile['experienceLevel'] ?? '',
+          'other_medical': userProfile['otherMedicalCondition'] ?? '',
+          'other_allergy': userProfile['otherAllergy'] ?? '',
+          'other_injury': userProfile['otherInjury'] ?? '',
+          'other_fitness_goal': userProfile['otherFitnessGoal'] ?? '',
+          'other_experience': userProfile['otherExperience'] ?? '',
         }),
       );
 
@@ -97,6 +103,12 @@ class ApiService {
           'health_conditions': (userProfile['medicalConditions'] as List?)?.join(', ') ?? '',
           'allergies': (userProfile['allergies'] as List?)?.join(', ') ?? '',
           'injuries': (userProfile['currentInjuries'] as List?)?.join(', ') ?? '',
+          'experience_level': userProfile['experienceLevel'] ?? '',
+          'other_medical': userProfile['otherMedicalCondition'] ?? '',
+          'other_allergy': userProfile['otherAllergy'] ?? '',
+          'other_injury': userProfile['otherInjury'] ?? '',
+          'other_fitness_goal': userProfile['otherFitnessGoal'] ?? '',
+          'other_experience': userProfile['otherExperience'] ?? '',
         }),
       );
 

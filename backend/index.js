@@ -42,13 +42,13 @@ async function getEmbedding(text) {
     return vector.map(x => parseFloat(x));
 }
 
-// 🔹 Helper: Search Health Context
-async function searchHealthContext(userId, problem) {
+// 🔹 Helper: Search Health Context (finds similar cases by health profile)
+async function searchHealthContext(healthProfile) {
     try {
-        const queryVector = await getEmbedding(problem);
+        const queryVector = await getEmbedding(healthProfile);
         const result = await qdrant.search("athlete_health_context", {
             vector: queryVector,
-            limit: 2,
+            limit: 3,
             with_payload: true
         });
         return result.map(r => {
@@ -125,13 +125,19 @@ async function generateAnswer(context, question) {
 }
 
 app.post('/ai/generate-diet', async (req, res) => {
-    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries } = req.body;
+    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience } = req.body;
     console.log(`Diet requested for ${fullName || userId}`);
 
     try {
-        // 1. Search Vector Context for all health inputs
-        const searchQuery = `${health_conditions} ${allergies} ${injuries}`;
-        const vectorContext = await searchHealthContext(userId, searchQuery);
+        // Merge "other" custom text into relevant fields
+        const allHealthConditions = [health_conditions, other_medical].filter(Boolean).join(', ');
+        const allAllergies = [allergies, other_allergy].filter(Boolean).join(', ');
+        const allInjuries = [injuries, other_injury].filter(Boolean).join(', ');
+        const allGoals = [goal, other_fitness_goal].filter(Boolean).join(', ');
+
+        // 1. Search Vector Context using full health profile
+        const searchQuery = `Health conditions: ${allHealthConditions}. Allergies: ${allAllergies}. Injuries: ${allInjuries}. Experience: ${experience_level || ''}`;
+        const vectorContext = await searchHealthContext(searchQuery);
 
         // 2. Calculations
         const bmr = calculateBMR(weight_kg, height_cm, age, gender || 'male');
@@ -141,10 +147,12 @@ app.post('/ai/generate-diet', async (req, res) => {
         const context = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
 Metrics: ${weight_kg}kg, ${height_cm}cm. 
-Goal: ${goal}. 
-Reported Health: ${health_conditions}. 
-Allergies: ${allergies}. 
-Injuries: ${injuries}.
+Activity Level: ${activity_level || 'moderate'}.
+Experience Level: ${experience_level || 'Not specified'}.
+Goals: ${allGoals || 'General fitness'}. 
+Reported Health Conditions: ${allHealthConditions || 'None'}. 
+Allergies: ${allAllergies || 'None'}. 
+Injuries: ${allInjuries || 'None'}.
 Calculated BMR: ${Math.round(bmr)}. 
 Calculated TDEE: ${Math.round(tdee)}.
 Vector database search results for these conditions: ${vectorContext || 'No specific contraindications found in database.'}
@@ -182,23 +190,36 @@ Return ONLY JSON in this EXACT format:
 });
 
 app.post('/ai/generate-workout', async (req, res) => {
-    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries } = req.body;
+    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience } = req.body;
     console.log(`Workout requested for ${fullName || userId}`);
 
     try {
-        const searchQuery = `${health_conditions} ${injuries}`;
-        const vectorContext = await searchHealthContext(userId, searchQuery);
+        // Merge "other" custom text into relevant fields
+        const allHealthConditions = [health_conditions, other_medical].filter(Boolean).join(', ');
+        const allAllergies = [allergies, other_allergy].filter(Boolean).join(', ');
+        const allInjuries = [injuries, other_injury].filter(Boolean).join(', ');
+        const allGoals = [goal, other_fitness_goal].filter(Boolean).join(', ');
+        const experienceInfo = [experience_level, other_experience].filter(Boolean).join(' - ');
+
+        const searchQuery = `Health conditions: ${allHealthConditions}. Allergies: ${allAllergies}. Injuries: ${allInjuries}. Experience: ${experienceInfo || ''}`;
+        const vectorContext = await searchHealthContext(searchQuery);
 
         const context = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
-Goal: ${goal}. 
-Health context: ${health_conditions}, ${injuries}.
+Metrics: ${weight_kg}kg, ${height_cm}cm.
+Activity Level: ${activity_level || 'moderate'}.
+Experience Level: ${experienceInfo || 'Not specified'}.
+Goals: ${allGoals || 'General fitness'}. 
+Health Conditions: ${allHealthConditions || 'None'}.
+Allergies: ${allAllergies || 'None'}.
+Injuries: ${allInjuries || 'None'}.
 Vector Database Constraints: ${vectorContext || 'None'}.
 `;
 
         const task = `Create a 7-day exercise plan. 
 For EACH day, provide TWO complete plans: one for "home" and one for "gym". 
 Include warm-up, main exercises, and cool-down. 
+Adjust difficulty based on the user's experience level.
 Ensure exercises are safe for the provided injuries/conditions. 
 Return ONLY JSON in this format:
 {
