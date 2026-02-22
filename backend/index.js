@@ -91,18 +91,18 @@ async function generateAnswer(context, question) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            model: "deepseek-ai/DeepSeek-V3", // Using DeepSeek-V3 as requested
+            model: "deepseek-ai/DeepSeek-V3",
             messages: [
                 {
                     role: "system",
-                    content: "You are a certified sports nutritionist and personal trainer. You MUST return ONLY valid JSON. Accuracy is critical for user safety."
+                    content: "You are a certified sports nutritionist and personal trainer. You MUST return ONLY valid, complete JSON. Keep responses compact but complete. Accuracy is critical for user safety."
                 },
                 {
                     role: "user",
                     content: `Context:\n${context}\n\nTask:\n${question}`
                 }
             ],
-            max_tokens: 4000
+            max_tokens: 16000
         })
     });
 
@@ -113,6 +113,12 @@ async function generateAnswer(context, question) {
 
     const data = await response.json();
     let content = data.choices?.[0]?.message?.content || "";
+    const finishReason = data.choices?.[0]?.finish_reason;
+
+    // Warn if response was truncated
+    if (finishReason === 'length') {
+        console.warn("⚠️ AI response was TRUNCATED (hit max_tokens limit). JSON may be incomplete.");
+    }
 
     // Clean JSON from markdown if present
     if (content.includes("```json")) {
@@ -158,9 +164,9 @@ Calculated TDEE: ${Math.round(tdee)}.
 Vector database search results for these conditions: ${vectorContext || 'No specific contraindications found in database.'}
 `;
 
-        const task = `Create a 7-day highly detailed diet plan. 
+        const task = `Create a 7-day highly detailed diet plan with grams and mls of portions in the name of the item. 
 Ensure the plan respects ALL health conditions, allergies, and injuries. 
-Return ONLY JSON in this EXACT format: 
+Return ONLY JSON in this EXACT format but not with the same numbers of the calories and macros: 
 {
   "days": [
     {
@@ -216,20 +222,21 @@ Injuries: ${allInjuries || 'None'}.
 Vector Database Constraints: ${vectorContext || 'None'}.
 `;
 
-        const task = `Create a 7-day exercise plan. 
-For EACH day, provide TWO complete plans: one for "home" and one for "gym". 
-Include warm-up, main exercises, and cool-down. 
-Adjust difficulty based on the user's experience level.
+        const task = `Create a 7-day exercise plan.
+For EACH day, provide TWO complete plans: one for "home" and one for "gym".
+Include warm-up, main exercises, and cool-down.
+Each day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. 
+Adjust difficulty based on the user's experience level and if he gave you a specific split name like "push-pull-legs" or "full body" or "upper-lower" make it in the exact format of the Json in example.
 Ensure exercises are safe for the provided injuries/conditions. 
 Return ONLY JSON in this format:
 {
   "gym": {
     "title": "Gym Workout Plan",
-    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "...", "sets": "3", "reps": "12", "calories": 0}]}]
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "...", "sets": "3", "reps": "12", "calories": 40}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "...", "sets": "3", "reps": "15", "calories": 49}]}]
   },
   "home": {
     "title": "Home Workout Plan",
-    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "None", "sets": "3", "reps": "12", "calories": 0}]}]
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "None", "sets": "3", "reps": "12", "calories": 100}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "None", "sets": "3", "reps": "15", "calories": 80}]}]
   }
 }`;
 
