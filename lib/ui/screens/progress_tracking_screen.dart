@@ -253,7 +253,7 @@ class ProgressTrackingScreen extends StatelessWidget {
     return _buildChartContainer(
       context,
       title: 'Weight Progress',
-      subtitle: '-1.3 kg this week',
+      subtitle: viewModel.weightProgressSubtitle,
       child: SizedBox(
         height: 200,
         child: LineChart(
@@ -416,7 +416,7 @@ class ProgressTrackingScreen extends StatelessWidget {
     return _buildChartContainer(
       context,
       title: 'Workout Consistency',
-      subtitle: '80% completion rate',
+      subtitle: viewModel.consistencySubtitle,
       child: Column(
         children: [
           const SizedBox(height: 20),

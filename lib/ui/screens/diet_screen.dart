@@ -22,14 +22,13 @@ class DietScreen extends StatelessWidget {
                     child: Text('No diet plan found.', style: TextStyle(fontSize: 16)),
                   )
                 : SingleChildScrollView(
-                    // Key helps with rebuilding if date changes significantly
                     key: ValueKey(viewModel.selectedDayIndex),
                     child: Column(children: [
                       _buildHeader(context, viewModel),
                       if (currentData.isNotEmpty)
-                        Transform.translate(offset: const Offset(0, -40), child: _buildDailySummaryCard(context, currentData)),
+                        Transform.translate(offset: const Offset(0, -40), child: _buildDailySummaryCard(context, currentData, viewModel)),
                       if (currentData.isNotEmpty)
-                        _buildMealsList(currentData)
+                        _buildMealsList(context, currentData, viewModel)
                       else
                         const Padding(
                           padding: EdgeInsets.all(24.0),
@@ -57,7 +56,7 @@ class DietScreen extends StatelessWidget {
             const Text('Diet Plan', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
             Text(viewModel.getFormattedDate(), style: const TextStyle(color: Color(0xFFAFDDE5), fontSize: 14)),
           ]),
-          const SizedBox(width: 48), // Spacer for balance
+          const SizedBox(width: 48),
         ]),
         const SizedBox(height: 24),
         SingleChildScrollView(
@@ -84,16 +83,34 @@ class DietScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDailySummaryCard(BuildContext context, Map<String, dynamic> data) {
+  Widget _buildDailySummaryCard(BuildContext context, Map<String, dynamic> data, DietViewModel viewModel) {
+    final totalMeals = (data['meals'] as List?)?.length ?? 0;
+    final completedCount = viewModel.completedMealsCount;
+    
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24), padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(24), boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10, offset: const Offset(0, 5))]),
       child: Column(children: [
         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          const Text('Daily Summary', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            const Text('Daily Summary', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 4),
+            Text('$completedCount/$totalMeals meals completed', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 12)),
+          ]),
           Text('${data['calories']} cal', style: const TextStyle(color: Color(0xFF0FA4AF), fontWeight: FontWeight.bold)),
         ]),
-        const SizedBox(height: 24),
+        const SizedBox(height: 16),
+        // Progress bar for meal completion
+        Container(
+          height: 8, clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(color: const Color(0x7FAFDDE5), borderRadius: BorderRadius.circular(4)),
+          child: FractionallySizedBox(
+            widthFactor: totalMeals > 0 ? (completedCount / totalMeals).clamp(0.0, 1.0) : 0.0,
+            alignment: Alignment.centerLeft,
+            child: Container(decoration: const BoxDecoration(gradient: LinearGradient(colors: [Color(0xFF0FA4AF), Color(0xFF964734)]))),
+          ),
+        ),
+        const SizedBox(height: 16),
         Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           _buildMacroCircle('Protein', data['protein'], const Color(0xFF0FA4AF)),
           _buildMacroCircle('Carbs', data['carbs'], const Color(0xFF964734)),
@@ -110,32 +127,82 @@ class DietScreen extends StatelessWidget {
     ]);
   }
 
-  Widget _buildMealsList(Map<String, dynamic> data) {
+  Widget _buildMealsList(BuildContext context, Map<String, dynamic> data, DietViewModel viewModel) {
     List<dynamic> meals = data['meals'];
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(children: List.generate(meals.length, (i) => 
-        Padding(padding: const EdgeInsets.only(bottom: 16), child: _buildMealSection(meals[i]['title'], meals[i]['cal'], (meals[i]['items'] as List).map((it) => _buildMealItem(it['name'], it['cal'])).toList()))
-      )),
+      child: Column(children: List.generate(meals.length, (i) {
+        final meal = meals[i];
+        final mealIndex = meal['index'] as int;
+        final isCompleted = viewModel.isMealCompleted(mealIndex);
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 16), 
+          child: _buildMealSection(
+            context,
+            viewModel,
+            meal['title'],
+            meal['cal'],
+            mealIndex,
+            isCompleted,
+            (meal['items'] as List).map((it) => _buildMealItem(it['name'], it['cal'])).toList(),
+          ),
+        );
+      })),
     );
   }
 
-  Widget _buildMealSection(String title, String cal, List<Widget> items) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF024950))),
-        Text(cal, style: const TextStyle(color: Color(0xFF0FA4AF))),
+  Widget _buildMealSection(BuildContext context, DietViewModel viewModel, String title, String cal, int mealIndex, bool isCompleted, List<Widget> items) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 400),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: isCompleted 
+          ? const Color(0xFFE0F2F1).withOpacity(Theme.of(context).brightness == Brightness.dark ? 0.2 : 1.0) 
+          : Theme.of(context).colorScheme.surface,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 8, offset: const Offset(0, 4))],
+      ),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Row(children: [
+            Container(
+              width: 40, height: 40,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: isCompleted ? [Colors.green, Colors.green.shade700] : [const Color(0xFF0FA4AF), const Color(0xFF024950)]),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Icon(isCompleted ? Icons.check : Icons.restaurant, color: Colors.white, size: 20),
+            ),
+            const SizedBox(width: 12),
+            Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xFF024950))),
+          ]),
+          Text(cal, style: const TextStyle(color: Color(0xFF0FA4AF), fontWeight: FontWeight.w600)),
+        ]),
+        const SizedBox(height: 12),
+        ...items,
+        const SizedBox(height: 12),
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: isCompleted ? Colors.green : const Color(0xFF964734),
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            ),
+            icon: Icon(isCompleted ? Icons.check_circle : Icons.check_circle_outline, size: 20),
+            label: Text(isCompleted ? 'Completed' : 'Mark as Complete'),
+            onPressed: () => viewModel.toggleMealCompletion(mealIndex),
+          ),
+        ),
       ]),
-      const SizedBox(height: 12),
-      Container(padding: const EdgeInsets.all(16), decoration: BoxDecoration(color: Colors.white.withOpacity(0.5), borderRadius: BorderRadius.circular(16)), child: Column(children: items)),
-    ]);
+    );
   }
 
   Widget _buildMealItem(String name, String cal) {
     return Padding(padding: const EdgeInsets.symmetric(vertical: 6), child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Row(children: [const Icon(Icons.circle, size: 8, color: Color(0xFF964734)), const SizedBox(width: 8), Text(name)]),
+      Expanded(child: Row(children: [const Icon(Icons.circle, size: 8, color: Color(0xFF964734)), const SizedBox(width: 8), Expanded(child: Text(name, overflow: TextOverflow.ellipsis))])),
       Text(cal, style: const TextStyle(fontSize: 12, color: Colors.grey)),
     ]));
   }
 }
-

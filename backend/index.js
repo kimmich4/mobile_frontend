@@ -83,51 +83,71 @@ function calculateTDEE(bmr, activityLevel) {
 
 // 1️⃣ Robust AI Forwarder (Using Router & DeepSeek)
 async function generateAnswer(context, question) {
-    console.log(`AI Request starting...`);
-    const response = await fetch("https://router.huggingface.co/v1/chat/completions", {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${process.env.HF_API_KEY}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            model: "deepseek-ai/DeepSeek-V3",
-            messages: [
-                {
-                    role: "system",
-                    content: "You are a certified sports nutritionist and personal trainer. You MUST return ONLY valid, complete JSON. Keep responses compact but complete. Accuracy is critical for user safety."
+    const maxRetries = 3;
+    let lastError;
+
+    for (let i = 0; i < maxRetries; i++) {
+        try {
+            console.log(`AI Request attempt ${i + 1}/${maxRetries}...`);
+            const response = await fetch("https://router.huggingface.co/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Authorization": `Bearer ${process.env.HF_API_KEY}`,
+                    "Content-Type": "application/json",
                 },
-                {
-                    role: "user",
-                    content: `Context:\n${context}\n\nTask:\n${question}`
+                body: JSON.stringify({
+                    model: "deepseek-ai/DeepSeek-V3",
+                    messages: [
+                        {
+                            role: "system",
+                            content: "You are a certified sports nutritionist and personal trainer. You MUST return ONLY valid, complete JSON. Keep responses compact but complete. Accuracy is critical for user safety."
+                        },
+                        {
+                            role: "user",
+                            content: `Context:\n${context}\n\nTask:\n${question}`
+                        }
+                    ],
+                    max_tokens: 16000
+                })
+            });
+
+            if (!response.ok) {
+                const errText = await response.text();
+                // 504 Gateway Timeout or 503 Service Unavailable - Retryable
+                if (response.status === 504 || response.status === 503) {
+                    console.warn(`Attempt ${i + 1} failed with ${response.status}. Retrying in 2s...`);
+                    lastError = new Error(`HF API Error: ${response.status} - ${errText}`);
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    continue; // Retry
                 }
-            ],
-            max_tokens: 16000
-        })
-    });
+                throw new Error(`HF API Error: ${response.status} - ${errText}`);
+            }
 
-    if (!response.ok) {
-        const err = await response.text();
-        throw new Error(`HF API Error: ${response.statusCode} - ${err}`);
+            const data = await response.json();
+            let content = data.choices?.[0]?.message?.content || "";
+            const finishReason = data.choices?.[0]?.finish_reason;
+
+            // Warn if response was truncated
+            if (finishReason === 'length') {
+                console.warn("⚠️ AI response was TRUNCATED (hit max_tokens limit). JSON may be incomplete.");
+            }
+
+            // Clean JSON from markdown if present
+            if (content.includes("```json")) {
+                content = content.split("```json")[1].split("```")[0].trim();
+            } else if (content.includes("```")) {
+                content = content.split("```")[1].split("```")[0].trim();
+            }
+
+            return content;
+        } catch (e) {
+            lastError = e;
+            if (i === maxRetries - 1) throw e;
+            console.error(`Attempt ${i + 1} catched error: ${e.message}. Retrying...`);
+            await new Promise(resolve => setTimeout(resolve, 1000));
+        }
     }
-
-    const data = await response.json();
-    let content = data.choices?.[0]?.message?.content || "";
-    const finishReason = data.choices?.[0]?.finish_reason;
-
-    // Warn if response was truncated
-    if (finishReason === 'length') {
-        console.warn("⚠️ AI response was TRUNCATED (hit max_tokens limit). JSON may be incomplete.");
-    }
-
-    // Clean JSON from markdown if present
-    if (content.includes("```json")) {
-        content = content.split("```json")[1].split("```")[0].trim();
-    } else if (content.includes("```")) {
-        content = content.split("```")[1].split("```")[0].trim();
-    }
-
-    return content;
+    throw lastError;
 }
 
 app.post('/ai/generate-diet', async (req, res) => {
