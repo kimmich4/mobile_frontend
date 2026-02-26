@@ -22,11 +22,18 @@ class WorkoutViewModel extends BaseViewModel {
   int _selectedTab = 0; // 0: Home Workout, 1: Gym Workout
   int _selectedDay = 1; // 1 to 7
 
-  final Set<int> _completedExercises = {};
+  final Map<int, Set<int>> _completedHomeExercises = {};
+  final Map<int, Set<int>> _completedGymExercises = {};
 
   int get selectedTab => _selectedTab;
   int get selectedDay => _selectedDay;
-  Set<int> get completedExercises => _completedExercises;
+  Set<int> get completedExercises {
+    if (_selectedTab == 0) {
+      return _completedHomeExercises[_selectedDay] ?? {};
+    } else {
+      return _completedGymExercises[_selectedDay] ?? {};
+    }
+  }
 
   WorkoutPlan? _homeWorkout;
   WorkoutPlan? _gymWorkout;
@@ -45,6 +52,30 @@ class WorkoutViewModel extends BaseViewModel {
     // Default to today
     _selectedDay = DateTime.now().weekday; // 1=Mon .. 7=Sun
     await fetchWorkoutPlans();
+    await _loadCompletedExercises();
+  }
+
+  /// Load completed exercises from Firestore
+  Future<void> _loadCompletedExercises() async {
+    if (userId == null) return;
+    try {
+      final userModel = await _userRepository.getUserProfile(userId!);
+      if (userModel != null) {
+        if (userModel.completedHomeExercises.isNotEmpty) {
+          _completedHomeExercises.clear();
+          userModel.completedHomeExercises.forEach((dayIndex, exerciseList) {
+            _completedHomeExercises[dayIndex] = Set<int>.from(exerciseList);
+          });
+        }
+        if (userModel.completedGymExercises.isNotEmpty) {
+          _completedGymExercises.clear();
+          userModel.completedGymExercises.forEach((dayIndex, exerciseList) {
+            _completedGymExercises[dayIndex] = Set<int>.from(exerciseList);
+          });
+        }
+        notifyListeners();
+      }
+    } catch (_) {}
   }
 
   /// Fetch workout plans
@@ -148,7 +179,8 @@ class WorkoutViewModel extends BaseViewModel {
   bool get allExercisesCompleted {
     final exercises = currentWorkoutExercises;
     if (exercises.isEmpty) return false;
-    return exercises.every((ex) => _completedExercises.contains(ex.id));
+    final targetMap = _selectedTab == 0 ? _completedHomeExercises : _completedGymExercises;
+    return exercises.every((ex) => (targetMap[_selectedDay] ?? {}).contains(ex.id));
   }
 
   /// Switch between Home and Gym workouts
@@ -163,7 +195,8 @@ class WorkoutViewModel extends BaseViewModel {
   void setSelectedDay(int day) {
     if (_selectedDay != day) {
       _selectedDay = day;
-      _completedExercises.clear();
+      // Do not clear _completedExercises here so state isn't lost when switching days
+      // _completedExercises.clear();
       _todayWorkoutLogged = false;
       notifyListeners();
     }
@@ -171,12 +204,29 @@ class WorkoutViewModel extends BaseViewModel {
 
   /// Toggle exercise completion and persist to progress tracking
   Future<void> toggleExerciseCompletion(int exerciseId) async {
-    if (_completedExercises.contains(exerciseId)) {
-      _completedExercises.remove(exerciseId);
+    final targetMap = _selectedTab == 0 ? _completedHomeExercises : _completedGymExercises;
+    
+    targetMap[_selectedDay] ??= {};
+    if (targetMap[_selectedDay]!.contains(exerciseId)) {
+      targetMap[_selectedDay]!.remove(exerciseId);
     } else {
-      _completedExercises.add(exerciseId);
+      targetMap[_selectedDay]!.add(exerciseId);
     }
     notifyListeners();
+
+    // Persist to user profile
+    if (userId != null) {
+      try {
+        final updatedExercisesMap = targetMap.map((key, value) => MapEntry(key.toString(), value.toList()));
+        final fieldName = _selectedTab == 0 ? 'completedHomeExercises' : 'completedGymExercises';
+        
+        await _userRepository.updateFields(userId!, {
+          fieldName: updatedExercisesMap,
+        });
+      } catch (e) {
+        print('Error persisting exercise completion: $e');
+      }
+    }
 
     // If all exercises completed for today → log workout completion
     if (allExercisesCompleted && !_todayWorkoutLogged && userId != null) {
@@ -204,6 +254,7 @@ class WorkoutViewModel extends BaseViewModel {
 
   /// Check if an exercise is completed
   bool isExerciseCompleted(int exerciseId) {
-    return _completedExercises.contains(exerciseId);
+    final targetMap = _selectedTab == 0 ? _completedHomeExercises : _completedGymExercises;
+    return (targetMap[_selectedDay] ?? {}).contains(exerciseId);
   }
 }

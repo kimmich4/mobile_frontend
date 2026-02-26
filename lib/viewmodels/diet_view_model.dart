@@ -57,10 +57,12 @@ class DietViewModel extends BaseViewModel {
     if (userId == null) return;
     try {
       final userModel = await _userRepository.getUserProfile(userId!);
-      if (userModel != null && userModel.completedMealIndices.isNotEmpty) {
-        // Store today's completed meals at the current day index
-        final todayIndex = DateTime.now().weekday - 1;
-        _completedMeals[todayIndex] = Set<int>.from(userModel.completedMealIndices);
+      if (userModel != null && userModel.completedMeals.isNotEmpty) {
+        // Load all completed meals across all days from the map
+        _completedMeals.clear();
+        userModel.completedMeals.forEach((dayIndex, mealsList) {
+          _completedMeals[dayIndex] = Set<int>.from(mealsList);
+        });
         notifyListeners();
       }
     } catch (_) {}
@@ -171,14 +173,22 @@ class DietViewModel extends BaseViewModel {
         }
       }
 
-      // Only persist today's completions to user doc
+      // Update the whole completedMeals map in Firestore
+      final updatedMealsMap = _completedMeals.map((key, value) => MapEntry(key.toString(), value.toList()));
+      
+      // Calculate total calories consumed from completed meals for TODAY
       final todayIndex = DateTime.now().weekday - 1;
+      
+      final Map<String, dynamic> updates = {
+         'completedMeals': updatedMealsMap,
+      };
+      
+      // Only update currentCalories counter if we are modifying today's meals
       if (_selectedDayIndex == todayIndex) {
-        await _userRepository.updateFields(userId!, {
-          'currentCalories': totalConsumed,
-          'completedMealIndices': completedSet.toList(),
-        });
+        updates['currentCalories'] = totalConsumed;
       }
+      
+      await _userRepository.updateFields(userId!, updates);
     } catch (e) {
       print('Error persisting meal completion: $e');
     }

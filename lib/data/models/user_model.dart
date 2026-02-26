@@ -45,7 +45,9 @@ class UserModel {
   final int? currentStreak;
   final double? currentWeightKg;
   final double? goalWeightKg;
-  final List<int> completedMealIndices; // indices of meals completed today
+  final Map<int, List<int>> completedMeals; // Map of dayIndex -> List of meal indices
+  final Map<int, List<int>> completedHomeExercises; // Map of dayIndex -> List of home exercise IDs
+  final Map<int, List<int>> completedGymExercises; // Map of dayIndex -> List of gym exercise IDs
 
   // Preferences
   final bool notificationsEnabled;
@@ -98,7 +100,9 @@ class UserModel {
     this.currentStreak,
     this.currentWeightKg,
     this.goalWeightKg,
-    this.completedMealIndices = const [],
+    this.completedMeals = const {},
+    this.completedHomeExercises = const {},
+    this.completedGymExercises = const {},
     
     // Preferences
     this.notificationsEnabled = true,
@@ -173,7 +177,9 @@ class UserModel {
     int? currentStreak,
     double? currentWeightKg,
     double? goalWeightKg,
-    List<int>? completedMealIndices,
+    Map<int, List<int>>? completedMeals,
+    Map<int, List<int>>? completedHomeExercises,
+    Map<int, List<int>>? completedGymExercises,
     bool? notificationsEnabled,
     bool? darkModeEnabled,
     bool? dataSharingEnabled,
@@ -211,7 +217,9 @@ class UserModel {
       currentStreak: currentStreak ?? this.currentStreak,
       currentWeightKg: currentWeightKg ?? this.currentWeightKg,
       goalWeightKg: goalWeightKg ?? this.goalWeightKg,
-      completedMealIndices: completedMealIndices ?? this.completedMealIndices,
+      completedMeals: completedMeals ?? this.completedMeals,
+      completedHomeExercises: completedHomeExercises ?? this.completedHomeExercises,
+      completedGymExercises: completedGymExercises ?? this.completedGymExercises,
       notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
       darkModeEnabled: darkModeEnabled ?? this.darkModeEnabled,
       dataSharingEnabled: dataSharingEnabled ?? this.dataSharingEnabled,
@@ -253,7 +261,10 @@ class UserModel {
       'currentStreak': currentStreak,
       'currentWeightKg': currentWeightKg,
       'goalWeightKg': goalWeightKg,
-      'completedMealIndices': completedMealIndices,
+      // Convert map keys to string for JSON
+      'completedMeals': completedMeals.map((k, v) => MapEntry(k.toString(), v)),
+      'completedHomeExercises': completedHomeExercises.map((k, v) => MapEntry(k.toString(), v)),
+      'completedGymExercises': completedGymExercises.map((k, v) => MapEntry(k.toString(), v)),
       'notificationsEnabled': notificationsEnabled,
       'darkModeEnabled': darkModeEnabled,
       'dataSharingEnabled': dataSharingEnabled,
@@ -295,10 +306,23 @@ class UserModel {
       currentStreak: json['currentStreak'] as int?,
       currentWeightKg: json['currentWeightKg'] as double?,
       goalWeightKg: json['goalWeightKg'] as double?,
-      completedMealIndices: (json['completedMealIndices'] as List<dynamic>?)?.cast<int>() ?? [],
+      completedMeals: _parseMap(json['completedMeals']),
+      completedHomeExercises: _parseMap(json['completedHomeExercises']),
+      completedGymExercises: _parseMap(json['completedGymExercises']),
       notificationsEnabled: json['notificationsEnabled'] as bool? ?? true,
       darkModeEnabled: json['darkModeEnabled'] as bool? ?? false,
       dataSharingEnabled: json['dataSharingEnabled'] as bool? ?? false,
     );
+  }
+
+  static Map<int, List<int>> _parseMap(dynamic jsonMap) {
+    if (jsonMap == null) return {};
+    if (jsonMap is Map) {
+      return jsonMap.map((key, value) => MapEntry(
+            int.parse(key.toString()),
+            (value as List<dynamic>).cast<int>(),
+          ));
+    }
+    return {};
   }
 }

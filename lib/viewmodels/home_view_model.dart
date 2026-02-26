@@ -62,7 +62,7 @@ class HomeViewModel extends BaseViewModel {
     final todayPlan = _todayDietPlan;
     if (todayPlan == null) return 0;
     final totalMeals = todayPlan.meals.length;
-    final consumed = _currentUser?.completedMealIndices?.length ?? 0;
+    final consumed = _currentUser?.completedMeals[_todayWeekday - 1]?.length ?? 0;
     return (totalMeals - consumed).clamp(0, totalMeals);
   }
 
@@ -109,7 +109,7 @@ class HomeViewModel extends BaseViewModel {
   String get dietPlanCompletion {
     final todayPlan = _todayDietPlan;
     if (todayPlan == null || todayPlan.meals.isEmpty) return '0%';
-    final completed = _currentUser?.completedMealIndices?.length ?? 0;
+    final completed = _currentUser?.completedMeals[_todayWeekday - 1]?.length ?? 0;
     final pct = (completed / todayPlan.meals.length * 100).round();
     return '$pct%';
   }
