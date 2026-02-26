@@ -11,33 +11,21 @@ const qdrant = new QdrantClient({
     url: process.env.QDRANT_URL,
     apiKey: process.env.QDRANT_API_KEY
 });
+const hf = new HfInference(process.env.HF_API_KEY);
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-// 🔹 Helper: Get Embeddings (Using Router)
+// 🔹 Helper: Get Embeddings (Using HfInference)
 async function getEmbedding(text) {
-    const response = await fetch("https://router.huggingface.co/v1/embeddings", {
-        method: "POST",
-        headers: {
-            "Authorization": `Bearer ${process.env.HF_API_KEY}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            model: "sentence-transformers/all-MiniLM-L6-v2",
-            input: text
-        })
+    const vector = await hf.featureExtraction({
+        model: "sentence-transformers/all-MiniLM-L6-v2",
+        inputs: text
     });
 
-    if (!response.ok) {
-        const err = await response.text();
-        throw new Error(`Embedding API Error: ${response.status} - ${err}`);
+    if (!vector || !Array.isArray(vector)) {
+        throw new Error("Embedding failed: No valid vector in response");
     }
-
-    const data = await response.json();
-    const vector = data.data?.[0]?.embedding;
-
-    if (!vector) throw new Error("Embedding failed: No vector in response");
 
     return vector.map(x => parseFloat(x));
 }
@@ -51,6 +39,14 @@ async function searchHealthContext(healthProfile) {
             limit: 3,
             with_payload: true
         });
+
+        if (result && result.length > 0) {
+            console.log(`✅ Qdrant search found ${result.length} matches.`);
+            console.log("   Results:", JSON.stringify(result.map(r => r.payload), null, 2));
+        } else {
+            console.log(`ℹ️ Qdrant search found 0 matches.`);
+        }
+
         return result.map(r => {
             const p = r.payload;
             return `Issue: ${p.issue || 'N/A'}. Constraints: Foods to avoid (${(p.contraindicated_foods || []).map(f => f.food).join(", ")}), Exercises to avoid (${(p.contraindicated_exercises || []).map(e => e.exercise).join(", ")})`;
@@ -198,7 +194,7 @@ Vector database search results for these conditions: ${vectorContext || 'No spec
         const task = `Create a 7-day highly detailed diet plan with grams and mls of portions in the name of the item. 
 Ensure the plan respects ALL health conditions, allergies, Goals, and injuries. 
 CRITICAL MATHEMATICAL CONSTRAINT: For each day, the sum of all "calories" for every item across ALL meals per day MUST exactly equal that day's "totalCalories" (${targetCalories}). You must do the math correctly.
-Return ONLY JSON in this EXACT format but not with the same numbers of the calories and macros: 
+Return ONLY JSON in this EXACT format but not with the same numbers macros make it realistic and correct according to the user profile target calories and Goals: 
 {
   "days": [
     {

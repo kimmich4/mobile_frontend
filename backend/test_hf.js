@@ -1,23 +1,26 @@
-const { HfInference } = require("@huggingface/inference");
 require("dotenv").config();
-
-const hf = new HfInference(process.env.HF_API_KEY);
+const { HfInference } = require("@huggingface/inference");
 
 async function test() {
-    console.log("Testing HF connection...");
+    const text = 'Health conditions: None';
+
+    // Test the direct API endpoint since router /v1/embeddings fails for feature extraction
+    console.log("Testing direct API endpoint...");
     try {
-        const start = Date.now();
-        const result = await hf.textGeneration({
-            model: "gpt2",
-            inputs: "Hello",
-            parameters: { max_new_tokens: 5 }
+        const res = await fetch('https://api-inference.huggingface.co/pipeline/feature-extraction/sentence-transformers/all-MiniLM-L6-v2', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${process.env.HF_API_KEY}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ inputs: text })
         });
-        console.log("Success in " + (Date.now() - start) + "ms");
-        console.log("Result:", result.generated_text);
+
+        console.log("Status:", res.status);
+        const data = await res.json();
+        console.log("Data shape:", Array.isArray(data) ? `Array[${data.length}]` : typeof data);
     } catch (e) {
-        console.error("Test failed:", e.message);
-        console.error(e.stack);
+        console.error("Error:", e);
     }
 }
-
 test();
