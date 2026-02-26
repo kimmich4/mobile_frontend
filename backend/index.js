@@ -169,6 +169,16 @@ app.post('/ai/generate-diet', async (req, res) => {
         const bmr = calculateBMR(weight_kg, height_cm, age, gender || 'male');
         const tdee = calculateTDEE(bmr, activity_level || 'moderate');
 
+        // 2b. Adjust TDEE based on goals
+        let targetCalories = tdee;
+        const lowerGoals = allGoals.toLowerCase();
+        if (lowerGoals.includes('lose') || lowerGoals.includes('cut') || lowerGoals.includes('fat') || lowerGoals.includes('loss')) {
+            targetCalories -= 500; // Deficit for weight loss
+        } else if (lowerGoals.includes('build') || lowerGoals.includes('gain') || lowerGoals.includes('bulk') || lowerGoals.includes('muscle')) {
+            targetCalories += 500; // Surplus for building muscle
+        }
+        targetCalories = Math.round(targetCalories);
+
         // 3. Build Rich Context
         const context = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
@@ -181,17 +191,19 @@ Allergies: ${allAllergies || 'None'}.
 Injuries: ${allInjuries || 'None'}.
 Calculated BMR: ${Math.round(bmr)}. 
 Calculated TDEE: ${Math.round(tdee)}.
+Target Daily Calories (adjusted for goal): ${targetCalories}.
 Vector database search results for these conditions: ${vectorContext || 'No specific contraindications found in database.'}
 `;
 
         const task = `Create a 7-day highly detailed diet plan with grams and mls of portions in the name of the item. 
-Ensure the plan respects ALL health conditions, allergies, and injuries. 
+Ensure the plan respects ALL health conditions, allergies, Goals, and injuries. 
+CRITICAL MATHEMATICAL CONSTRAINT: For each day, the sum of all "calories" for every item across ALL meals per day MUST exactly equal that day's "totalCalories" (${targetCalories}). You must do the math correctly.
 Return ONLY JSON in this EXACT format but not with the same numbers of the calories and macros: 
 {
   "days": [
     {
       "day": 1,
-      "totalCalories": ${Math.round(tdee)},
+      "totalCalories": ${targetCalories},
       "protein": "150g",
       "carbs": "200g",
       "fats": "60g",

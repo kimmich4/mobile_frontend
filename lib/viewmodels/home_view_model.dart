@@ -30,8 +30,19 @@ class HomeViewModel extends BaseViewModel {
   String? get profilePicturePath => _currentUser?.profilePicturePath;
 
   // ── Calories (from diet plan for today) ──
-  String get caloriesConsumed =>
-      _currentUser?.currentCalories?.toString() ?? '0';
+  String get caloriesConsumed {
+    final todayPlan = _todayDietPlan;
+    if (todayPlan == null) return '0';
+    
+    int totalConsumed = 0;
+    final completedForToday = _currentUser?.completedMeals[_todayWeekday - 1] ?? [];
+    for (int i = 0; i < todayPlan.meals.length; i++) {
+      if (completedForToday.contains(i)) {
+        totalConsumed += todayPlan.meals[i].totalCalories;
+      }
+    }
+    return totalConsumed.toString();
+  }
 
   String get caloriesGoal {
     final todayPlan = _todayDietPlan;
@@ -42,8 +53,21 @@ class HomeViewModel extends BaseViewModel {
   }
 
   // ── Workouts (from workout plans) ──
-  String get workoutsCompleted =>
-      _currentUser?.workoutsCompletedThisWeek?.toString() ?? '0';
+  String get workoutsCompleted {
+    final homeMap = _currentUser?.completedHomeExercises ?? {};
+    final gymMap = _currentUser?.completedGymExercises ?? {};
+    
+    // Count days with at least one completed exercise
+    final Set<int> activeDays = {};
+    for (var entry in homeMap.entries) {
+      if (entry.value.isNotEmpty) activeDays.add(entry.key);
+    }
+    for (var entry in gymMap.entries) {
+      if (entry.value.isNotEmpty) activeDays.add(entry.key);
+    }
+    
+    return activeDays.length.toString();
+  }
 
   /// Goal = number of days in workout plan that have exercises (not rest days)
   String get workoutsGoal {
@@ -69,7 +93,7 @@ class HomeViewModel extends BaseViewModel {
   double get dietProgress {
     final todayPlan = _todayDietPlan;
     if (todayPlan == null || todayPlan.totalCalories == 0) return 0.0;
-    final consumed = _currentUser?.currentCalories ?? 0;
+    final consumed = int.tryParse(caloriesConsumed) ?? 0;
     return (consumed / todayPlan.totalCalories).clamp(0.0, 1.0);
   }
 
@@ -115,7 +139,7 @@ class HomeViewModel extends BaseViewModel {
   }
 
   String get workoutCompletion {
-    final completed = _currentUser?.workoutsCompletedThisWeek ?? 0;
+    final completed = int.tryParse(workoutsCompleted) ?? 0;
     final goal = int.tryParse(workoutsGoal) ?? 5;
     if (goal == 0) return '0%';
     final pct = (completed / goal * 100).round().clamp(0, 100);
