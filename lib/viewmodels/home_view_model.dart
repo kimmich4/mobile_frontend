@@ -44,6 +44,16 @@ class HomeViewModel extends BaseViewModel {
     return totalConsumed.toString();
   }
 
+  int get totalMealsToday => _todayDietPlan?.meals.length ?? 0;
+
+  int get completedMealsToday =>
+      _currentUser?.completedMeals[_todayWeekday - 1]?.length ?? 0;
+
+  String get mealsDoneDisplay => '$completedMealsToday / $totalMealsToday';
+
+  bool get allMealsDone =>
+      totalMealsToday > 0 && completedMealsToday >= totalMealsToday;
+
   String get caloriesGoal {
     final todayPlan = _todayDietPlan;
     if (todayPlan != null && todayPlan.totalCalories > 0) {
@@ -54,29 +64,96 @@ class HomeViewModel extends BaseViewModel {
 
   // ── Workouts (from workout plans) ──
   String get workoutsCompleted {
-    final homeMap = _currentUser?.completedHomeExercises ?? {};
-    final gymMap = _currentUser?.completedGymExercises ?? {};
-    
-    // Count days with at least one completed exercise
-    final Set<int> activeDays = {};
-    for (var entry in homeMap.entries) {
-      if (entry.value.isNotEmpty) activeDays.add(entry.key);
-    }
-    for (var entry in gymMap.entries) {
-      if (entry.value.isNotEmpty) activeDays.add(entry.key);
-    }
-    
-    return activeDays.length.toString();
+    final today = _todayWeekday;
+    final homeCompleted = _currentUser?.completedHomeExercises[today]?.length ?? 0;
+    final gymCompleted = _currentUser?.completedGymExercises[today]?.length ?? 0;
+    return (homeCompleted + gymCompleted).toString();
   }
 
-  /// Goal = number of days in workout plan that have exercises (not rest days)
-  String get workoutsGoal {
-    final plan = _homeWorkout ?? _gymWorkout;
-    if (plan != null && plan.days.isNotEmpty) {
-      final activeDays = plan.days.where((d) => d.exercises.isNotEmpty).length;
-      return activeDays > 0 ? activeDays.toString() : '5';
+  bool get allWorkoutsDone {
+    final completed = int.tryParse(workoutsCompleted) ?? 0;
+    final goal = int.tryParse(workoutsGoal) ?? 0;
+    return goal > 0 && completed >= goal;
+  }
+
+  // ── Home Workout Specific ──
+  String get homeWorkoutTitle => _homeWorkout?.title ?? 'Home Workout';
+  
+  String get homeWorkoutDescription {
+    if (_homeWorkout == null) return 'No plan yet';
+    try {
+      final dayPlan = _homeWorkout!.days.firstWhere((d) => d.day == _todayWeekday);
+      final count = dayPlan.exercises.length;
+      return '$count exercises · ~${count * 8} min';
+    } catch (_) {
+      return '${_homeWorkout!.exerciseCount} total exercises';
     }
-    return _currentUser?.workoutsGoalPerWeek?.toString() ?? '5';
+  }
+
+  int get homeWorkoutCompleted {
+    return _currentUser?.completedHomeExercises[_todayWeekday]?.length ?? 0;
+  }
+
+  int get homeWorkoutGoal {
+    if (_homeWorkout == null) return 0;
+    try {
+      return _homeWorkout!.days.firstWhere((d) => d.day == _todayWeekday).exercises.length;
+    } catch (_) {
+      return 0;
+    }
+  }
+
+  bool get isHomeWorkoutDone => homeWorkoutGoal > 0 && homeWorkoutCompleted >= homeWorkoutGoal;
+
+  // ── Gym Workout Specific ──
+  String get gymWorkoutTitle => _gymWorkout?.title ?? 'Gym Workout';
+
+  String get gymWorkoutDescription {
+    if (_gymWorkout == null) return 'No plan yet';
+    try {
+      final dayPlan = _gymWorkout!.days.firstWhere((d) => d.day == _todayWeekday);
+      final count = dayPlan.exercises.length;
+      return '$count exercises · ~${count * 8} min';
+    } catch (_) {
+      return '${_gymWorkout!.exerciseCount} total exercises';
+    }
+  }
+
+  int get gymWorkoutCompleted {
+    return _currentUser?.completedGymExercises[_todayWeekday]?.length ?? 0;
+  }
+
+  int get gymWorkoutGoal {
+    if (_gymWorkout == null) return 0;
+    try {
+      return _gymWorkout!.days.firstWhere((d) => d.day == _todayWeekday).exercises.length;
+    } catch (_) {
+      return 0;
+    }
+  }
+
+  bool get isGymWorkoutDone => gymWorkoutGoal > 0 && gymWorkoutCompleted >= gymWorkoutGoal;
+
+  /// Goal = number of exercises today
+  String get workoutsGoal {
+    final today = _todayWeekday;
+    int totalExercises = 0;
+    
+    if (_homeWorkout != null) {
+      try {
+        final dayPlan = _homeWorkout!.days.firstWhere((d) => d.day == today);
+        totalExercises += dayPlan.exercises.length;
+      } catch (_) {}
+    }
+    
+    if (_gymWorkout != null) {
+      try {
+        final dayPlan = _gymWorkout!.days.firstWhere((d) => d.day == today);
+        totalExercises += dayPlan.exercises.length;
+      } catch (_) {}
+    }
+    
+    return totalExercises > 0 ? totalExercises.toString() : '0';
   }
 
   int get currentStreak => _currentUser?.currentStreak ?? 0;
@@ -91,10 +168,9 @@ class HomeViewModel extends BaseViewModel {
   }
 
   double get dietProgress {
-    final todayPlan = _todayDietPlan;
-    if (todayPlan == null || todayPlan.totalCalories == 0) return 0.0;
-    final consumed = int.tryParse(caloriesConsumed) ?? 0;
-    return (consumed / todayPlan.totalCalories).clamp(0.0, 1.0);
+    final total = totalMealsToday;
+    if (total == 0) return 0.0;
+    return (completedMealsToday / total).clamp(0.0, 1.0);
   }
 
   // ── Workout info (dynamic) ──

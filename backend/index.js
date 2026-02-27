@@ -32,17 +32,26 @@ async function getEmbedding(text) {
 
 // 🔹 Helper: Search Health Context (finds similar cases by health profile)
 async function searchHealthContext(healthProfile) {
+    // 🔍 Skip if input is effectively empty or "none"
+    const cleanProfile = healthProfile ? healthProfile.toLowerCase().replace(/none/g, "").replace(/[,.\s]/g, "") : "";
+    if (!cleanProfile) {
+        console.log(`ℹ️ Skipping Qdrant search for "${healthProfile}": No substantive health profile provided.`);
+        return "";
+    }
+
     try {
         const queryVector = await getEmbedding(healthProfile);
+        console.log(`🔍 Qdrant Search Query: "${healthProfile}"`);
         const result = await qdrant.search("athlete_health_context", {
             vector: queryVector,
             limit: 3,
-            with_payload: true
+            with_payload: true,
+            score_threshold: 0.015
         });
 
         if (result && result.length > 0) {
             console.log(`✅ Qdrant search found ${result.length} matches.`);
-            console.log("   Results:", JSON.stringify(result.map(r => r.payload), null, 2));
+            console.log("   Results:", JSON.stringify(result.map(r => ({ score: r.score, payload: r.payload })), null, 2));
         } else {
             console.log(`ℹ️ Qdrant search found 0 matches.`);
         }
@@ -158,7 +167,7 @@ app.post('/ai/generate-diet', async (req, res) => {
         const allGoals = [goal, other_fitness_goal].filter(Boolean).join(', ');
 
         // 1. Search Vector Context using full health profile
-        const searchQuery = `Health conditions: ${allHealthConditions}. Allergies: ${allAllergies}. Injuries: ${allInjuries}. Experience: ${experience_level || ''}`;
+        const searchQuery = `${allHealthConditions}, ${allAllergies},${allInjuries}`;
         const vectorContext = await searchHealthContext(searchQuery);
 
         // 2. Calculations
@@ -191,10 +200,31 @@ Target Daily Calories (adjusted for goal): ${targetCalories}.
 Vector database search results for these conditions: ${vectorContext || 'No specific contraindications found in database.'}
 `;
 
-        const task = `Create a 7-day highly detailed diet plan with grams and mls of portions in the name of the item. 
-Ensure the plan respects ALL health conditions, allergies, Goals, and injuries. 
-CRITICAL MATHEMATICAL CONSTRAINT: For each day, the sum of all "calories" for every item across ALL meals per day MUST exactly equal that day's "totalCalories" (${targetCalories}). You must do the math correctly.
-Return ONLY JSON in this EXACT format but not with the same numbers macros make it realistic and correct according to the user profile target calories and Goals: 
+        const task = `Create a 7-day diet plan (Day 1 to Day 7). 
+You MUST provide EXACTLY 7 DAYS in the "days" array. DO NOT stop before Day 7.
+
+USER GOAL: ${allGoals}
+TARGET CALORIES: ${targetCalories} PER DAY.
+
+CRITICAL RULES:
+1. YOU MUST GENERATE ALL 7 DAYS (day 1, 2, 3, 4, 5, 6, 7).
+2. For EVERY day, the "totalCalories" field MUST be EXACTLY ${targetCalories}.
+3. The sum of all individual "calories" for items in "meals" MUST EXACTLY mathematically equal ${targetCalories} for every day. 
+4. meal variety: Each day SHOULD have a varied number of meals (between 3 and 6). 
+5. CREATIVE TITLES: Use different meal names (e.g., "Dawn Fuel", "Mid-Day Boost", "Evening Feast", "Night-time Nosh") instead of just "Breakfast/Lunch/Dinner". Be creative and varied!
+6. Portions (grams/ml) must be realistic and specific.
+
+THINKING STEP:
+Before writing each day, decide on the number of meals (3-6) and creative formal titles. Then mentally calculate the calories for each so the total matches exactly ${targetCalories}.
+
+EXAMPLE OF CORRECT MATH (Varying counts/titles):
+- Pre-Gym Snack: 300
+- Main Lunch: 900
+- Afternoon Refresh: 300
+- Hearty Supper: 1000
+TOTAL: 300 + 900 + 300 + 1000 = 2500 (Matches target)
+
+Return ONLY JSON in this EXACT format:
 {
   "days": [
     {
@@ -205,13 +235,17 @@ Return ONLY JSON in this EXACT format but not with the same numbers macros make 
       "fats": "60g",
       "meals": [
         {
-          "title": "Breakfast",
-          "items": [
-              {"name": "...", "calories": 0}
-          ]
+          "title": "Pre-Gym Snack",
+          "items": [{"name": "Banana + Almonds", "calories": 300}]
+        },
+        {
+          "title": "Lunch",
+          "items": [{"name": "Chicken Breast (150g)", "calories": 450}, {"name": "Brown Rice (200g)", "calories": 450}]
         }
+        // ... add more meals per day
       ]
     }
+    // MUST CONTINUE FOR DAYS 2, 3, 4, 5, 6, 7
   ]
 }`;
 

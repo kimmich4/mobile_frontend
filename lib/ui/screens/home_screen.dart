@@ -91,9 +91,23 @@ class HomeScreen extends StatelessWidget {
         ]),
         const SizedBox(height: 24),
         Row(children: [
-          Expanded(child: _buildStatCard(title: 'Calories', value: viewModel.caloriesConsumed, subtitle: 'of ${viewModel.caloriesGoal}')),
+          Expanded(
+            child: _buildStatCard(
+              title: 'Meals',
+              value: viewModel.mealsDoneDisplay,
+              subtitle: 'completed',
+              isDone: viewModel.allMealsDone,
+            ),
+          ),
           const SizedBox(width: 12),
-          Expanded(child: _buildStatCard(title: 'Workouts', value: '${viewModel.workoutsCompleted}/${viewModel.workoutsGoal}', subtitle: 'this week')),
+          Expanded(
+            child: _buildStatCard(
+              title: 'Workouts',
+              value: '${viewModel.workoutsCompleted}/${viewModel.workoutsGoal}',
+              subtitle: 'today',
+              isDone: viewModel.allWorkoutsDone,
+            ),
+          ),
           const SizedBox(width: 12),
           Expanded(child: _buildStatCard(title: 'Streak', value: '${viewModel.currentStreak}', subtitle: 'days')),
         ]),
@@ -101,15 +115,39 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStatCard({required String title, required String value, required String subtitle}) {
+  Widget _buildStatCard({
+    required String title,
+    required String value,
+    required String subtitle,
+    bool isDone = false,
+  }) {
     return Container(
       padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(16)),
+      decoration: BoxDecoration(
+        color: isDone
+            ? Colors.green.withOpacity(0.3)
+            : Colors.white.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(16),
+        border: isDone ? Border.all(color: Colors.green.withOpacity(0.5)) : null,
+      ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(title, style: const TextStyle(color: Color(0xFFAFDDE5), fontSize: 12)),
+        Text(title,
+            style: TextStyle(
+              color: isDone ? Colors.white : const Color(0xFFAFDDE5),
+              fontSize: 12,
+            )),
         const SizedBox(height: 4),
-        Text(value, style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-        Text(subtitle, style: const TextStyle(color: Color(0xFF0FA4AF), fontSize: 10)),
+        Text(value,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            )),
+        Text(subtitle,
+            style: TextStyle(
+              color: isDone ? Colors.white.withOpacity(0.8) : const Color(0xFF0FA4AF),
+              fontSize: 10,
+            )),
       ]),
     );
   }
@@ -131,8 +169,23 @@ class HomeScreen extends StatelessWidget {
               ]),
             ]),
             Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Text(viewModel.caloriesConsumed, style: TextStyle(color: Theme.of(context).colorScheme.primary, fontSize: 16, fontWeight: FontWeight.bold)),
-              Text('cal consumed', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 12)),
+              Text(
+                viewModel.mealsDoneDisplay,
+                style: TextStyle(
+                  color: viewModel.allMealsDone
+                      ? Colors.green
+                      : Theme.of(context).colorScheme.primary,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                'meals done',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                  fontSize: 12,
+                ),
+              ),
             ]),
           ]),
           const SizedBox(height: 16),
@@ -154,22 +207,106 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildWorkoutSection(BuildContext context, HomeViewModel viewModel) {
+    return Column(
+      children: [
+        _buildWorkoutCard(
+          context,
+          title: viewModel.homeWorkoutTitle,
+          description: viewModel.homeWorkoutDescription,
+          isDone: viewModel.isHomeWorkoutDone,
+          icon: Icons.home,
+          colors: [const Color(0xFF964734), const Color(0xFF024950)],
+          onTap: () {
+            // Force select Home tab (0) and then navigate
+            // Assuming we might need a way to set the tab in WorkoutViewModel
+            MainViewModel.switchTabStatic(1);
+          },
+        ),
+        const SizedBox(height: 16),
+        _buildWorkoutCard(
+          context,
+          title: viewModel.gymWorkoutTitle,
+          description: viewModel.gymWorkoutDescription,
+          isDone: viewModel.isGymWorkoutDone,
+          icon: Icons.fitness_center,
+          colors: [const Color(0xFF0FA4AF), const Color(0xFF024950)],
+          onTap: () {
+            // Force select Gym tab (1) and then navigate
+            MainViewModel.switchTabStatic(1);
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildWorkoutCard(
+    BuildContext context, {
+    required String title,
+    required String description,
+    required bool isDone,
+    required IconData icon,
+    required List<Color> colors,
+    required VoidCallback onTap,
+  }) {
     return _buildDashboardCard(
       context,
-      onTap: () => MainViewModel.switchTabStatic(1),
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(20),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Row(children: [
-            _buildGradientIconBox(colors: [const Color(0xFF964734), const Color(0xFF024950)], icon: Icons.fitness_center),
-            const SizedBox(width: 12),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(viewModel.workoutTitle, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16, fontWeight: FontWeight.bold)),
-              Text(viewModel.workoutDescription, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 14)),
-            ]),
-          ]),
-          Container(padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8), decoration: BoxDecoration(color: const Color(0x330FA4AF), borderRadius: BorderRadius.circular(20)), child: const Text('Start', style: TextStyle(color: Color(0xFF0FA4AF), fontWeight: FontWeight.bold))),
-        ]),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Expanded(
+              child: Row(
+                children: [
+                  _buildGradientIconBox(colors: colors, icon: icon),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.onSurface,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          description,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(width: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              decoration: BoxDecoration(
+                color: isDone
+                    ? Colors.green.withOpacity(0.2)
+                    : const Color(0x330FA4AF),
+                borderRadius: BorderRadius.circular(20),
+                border: isDone ? Border.all(color: Colors.green.withOpacity(0.5)) : null,
+              ),
+              child: Text(
+                isDone ? 'Completed' : 'Start',
+                style: TextStyle(
+                  color: isDone ? Colors.green : const Color(0xFF0FA4AF),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
