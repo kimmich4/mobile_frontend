@@ -21,6 +21,8 @@ class UserModel {
   final String? otherAllergy;
   final List<String> currentInjuries;
   final String? otherInjury;
+  final String? medicalReportText;
+  final String? inBodyReportText;
 
   // Goals & Experience (Step 4 of Profile Setup)
   final List<String> fitnessGoals; // 'Lose weight', 'Build muscle', etc.
@@ -103,6 +105,8 @@ class UserModel {
     this.completedMeals = const {},
     this.completedHomeExercises = const {},
     this.completedGymExercises = const {},
+    this.medicalReportText,
+    this.inBodyReportText,
     
     // Preferences
     this.notificationsEnabled = true,
@@ -165,6 +169,8 @@ class UserModel {
     String? otherFitnessGoal,
     String? experienceLevel,
     String? otherExperience,
+    String? medicalReportText,
+    String? inBodyReportText,
     String? email,
     String? userId,
     String? profilePicturePath,
@@ -220,6 +226,8 @@ class UserModel {
       completedMeals: completedMeals ?? this.completedMeals,
       completedHomeExercises: completedHomeExercises ?? this.completedHomeExercises,
       completedGymExercises: completedGymExercises ?? this.completedGymExercises,
+      medicalReportText: medicalReportText ?? this.medicalReportText,
+      inBodyReportText: inBodyReportText ?? this.inBodyReportText,
       notificationsEnabled: notificationsEnabled ?? this.notificationsEnabled,
       darkModeEnabled: darkModeEnabled ?? this.darkModeEnabled,
       dataSharingEnabled: dataSharingEnabled ?? this.dataSharingEnabled,
@@ -245,6 +253,8 @@ class UserModel {
       'otherAllergy': otherAllergy,
       'currentInjuries': currentInjuries,
       'otherInjury': otherInjury,
+      'medicalReportText': medicalReportText,
+      'inBodyReportText': inBodyReportText,
       'fitnessGoals': fitnessGoals,
       'otherFitnessGoal': otherFitnessGoal,
       'experienceLevel': experienceLevel,
@@ -290,6 +300,8 @@ class UserModel {
       otherAllergy: json['otherAllergy'] as String?,
       currentInjuries: (json['currentInjuries'] as List<dynamic>?)?.cast<String>() ?? [],
       otherInjury: json['otherInjury'] as String?,
+      medicalReportText: json['medicalReportText'] as String?,
+      inBodyReportText: json['inBodyReportText'] as String?,
       fitnessGoals: (json['fitnessGoals'] as List<dynamic>?)?.cast<String>() ?? [],
       otherFitnessGoal: json['otherFitnessGoal'] as String?,
       experienceLevel: json['experienceLevel'] as String?,

@@ -13,7 +13,7 @@ const qdrant = new QdrantClient({
 });
 const hf = new HfInference(process.env.HF_API_KEY);
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 app.use(cors());
 
 // 🔹 Helper: Get Embeddings (Using HfInference)
@@ -155,8 +155,80 @@ async function generateAnswer(context, question) {
     throw lastError;
 }
 
+// 🔹 Helper: Analyze Image (OCR/Report Extraction)
+async function analyzeImage(base64Image, type) {
+    try {
+        console.log(`🔍 Analyzing ${type} report using Llama 3.2 Vision (v4)...`);
+        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                model: "meta-llama/Llama-3.2-11B-Vision-Instruct",
+                max_tokens: 1000,
+                messages: [
+                    {
+                        role: "system",
+                        content: "You are a medical data extraction assistant. Extract clinical findings, biomarkers, and health constraints from the provided report image. Return a concise summary suitable for a nutritionist or trainer."
+                    },
+                    {
+                        role: "user",
+                        content: [
+                            {
+                                type: "text",
+                                text: `Extract data from this ${type} report.`
+                            },
+                            {
+                                type: "image_url",
+                                image_url: {
+                                    url: `data:image/jpeg;base64,${base64Image}`
+                                }
+                            }
+                        ]
+                    }
+                ]
+            })
+        });
+
+        if (!response.ok) {
+            const err = await response.text();
+            throw new Error(`Vision API Error: ${response.status} - ${err}`);
+        }
+
+        const data = await response.json();
+        const extractedText = data.choices?.[0]?.message?.content || "No data extracted.";
+
+        console.log(`✅ Extracted Text from ${type} report:`);
+        console.log("-----------------------------------------");
+        console.log(extractedText);
+        console.log("-----------------------------------------");
+
+        return extractedText;
+    } catch (e) {
+        console.error("Image Analysis failed:", e.message);
+        return `Error extracting ${type} report: ${e.message}`;
+    }
+}
+
+app.post('/ai/analyze-report', async (req, res) => {
+    const { base64Image, type } = req.body; // type: 'medical' or 'inbody'
+
+    if (!base64Image) {
+        return res.status(400).json({ error: "Missing image data" });
+    }
+
+    try {
+        const extractedText = await analyzeImage(base64Image, type || 'report');
+        res.json({ extractedText });
+    } catch (e) {
+        res.status(500).json({ error: "Failed to analyze report", details: e.message });
+    }
+});
+
 app.post('/ai/generate-diet', async (req, res) => {
-    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience } = req.body;
+    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Diet requested for ${fullName || userId}`);
 
     try {
@@ -258,7 +330,7 @@ Return ONLY JSON in this EXACT format:
 });
 
 app.post('/ai/generate-workout', async (req, res) => {
-    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience } = req.body;
+    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Workout requested for ${fullName || userId}`);
 
     try {
@@ -272,15 +344,30 @@ app.post('/ai/generate-workout', async (req, res) => {
         const searchQuery = `Health conditions: ${allHealthConditions}. Allergies: ${allAllergies}. Injuries: ${allInjuries}. Experience: ${experienceInfo || ''}`;
         const vectorContext = await searchHealthContext(searchQuery);
 
+        // Calculations (copied from generate-diet, as they are needed for context)
+        const bmr = calculateBMR(weight_kg, height_cm, age, gender || 'male');
+        const tdee = calculateTDEE(bmr, activity_level || 'moderate');
+        let targetCalories = tdee; // Default, can be adjusted if workout plan needs calorie info
+        const lowerGoals = allGoals.toLowerCase();
+        if (lowerGoals.includes('lose') || lowerGoals.includes('cut') || lowerGoals.includes('fat') || lowerGoals.includes('loss')) {
+            targetCalories -= 500; // Deficit for weight loss
+        } else if (lowerGoals.includes('build') || lowerGoals.includes('gain') || lowerGoals.includes('bulk') || lowerGoals.includes('muscle')) {
+            targetCalories += 500; // Surplus for building muscle
+        }
+        targetCalories = Math.round(targetCalories);
+
         const context = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
 Metrics: ${weight_kg}kg, ${height_cm}cm.
+BMR: ${bmr.toFixed(2)}, TDEE: ${tdee.toFixed(2)}. Target Calories: ${targetCalories} kcal.
 Activity Level: ${activity_level || 'moderate'}.
 Experience Level: ${experienceInfo || 'Not specified'}.
 Goals: ${allGoals || 'General fitness'}. 
 Health Conditions: ${allHealthConditions || 'None'}.
 Allergies: ${allAllergies || 'None'}.
 Injuries: ${allInjuries || 'None'}.
+Medical Report Findings: ${medical_report_text || 'None provided'}.
+InBody Report Findings: ${inbody_report_text || 'None provided'}.
 Vector Database Constraints: ${vectorContext || 'None'}.
 `;
 

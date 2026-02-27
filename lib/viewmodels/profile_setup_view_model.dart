@@ -4,6 +4,7 @@ import '../data/repositories/auth_repository.dart';
 import '../data/repositories/user_repository.dart';
 import '../data/repositories/diet_repository.dart';
 import '../data/repositories/workout_repository.dart';
+import '../data/services/api_service.dart';
 import 'base_view_model.dart';
 import '../data/models/user_model.dart';
 
@@ -51,6 +52,9 @@ class ProfileSetupViewModel extends BaseViewModel {
 
   String? _medicalReportName;
   String? _inBodyReportName;
+  String? _medicalReportText;
+  String? _inBodyReportText;
+  bool _isAnalyzingReport = false;
 
   // Step 4: Goals & Experience
   final List<String> fitnessGoalsOptions = [
@@ -83,6 +87,9 @@ class ProfileSetupViewModel extends BaseViewModel {
   bool get injuryOtherSelected => _injuryOtherSelected;
   String? get medicalReportName => _medicalReportName;
   String? get inBodyReportName => _inBodyReportName;
+  String? get medicalReportText => _medicalReportText;
+  String? get inBodyReportText => _inBodyReportText;
+  bool get isAnalyzingReport => _isAnalyzingReport;
   List<String> get selectedFitnessGoals => _selectedFitnessGoals;
   bool get fitnessGoalOtherSelected => _fitnessGoalOtherSelected;
   String? get selectedExperienceLevel => _selectedExperienceLevel;
@@ -210,7 +217,7 @@ class ProfileSetupViewModel extends BaseViewModel {
     }
   }
 
-  /// Pick file for medical or inbody report
+  /// Pick file for medical or inbody report and analyze it
   Future<void> pickFile({required bool isMedical}) async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
@@ -220,6 +227,31 @@ class ProfileSetupViewModel extends BaseViewModel {
         _inBodyReportName = image.name;
       }
       notifyListeners();
+
+      // Trigger OCR analysis
+      _isAnalyzingReport = true;
+      notifyListeners();
+
+      try {
+        final apiService = ApiService();
+        final extractedText = await apiService.analyzeReport(
+          image: image,
+          type: isMedical ? 'medical' : 'inbody',
+        );
+
+        if (isMedical) {
+          _medicalReportText = extractedText;
+        } else {
+          _inBodyReportText = extractedText;
+        }
+        debugPrint('OCR extraction successful: ${extractedText.substring(0, 50)}...');
+      } catch (e) {
+        debugPrint('OCR extraction failed: $e');
+        setError('Failed to extract data from report: $e');
+      } finally {
+        _isAnalyzingReport = false;
+        notifyListeners();
+      }
     }
   }
 
@@ -263,6 +295,8 @@ class ProfileSetupViewModel extends BaseViewModel {
         otherExperience: _experienceOtherSelected
             ? otherExperienceController.text
             : null,
+        medicalReportText: _medicalReportText,
+        inBodyReportText: _inBodyReportText,
         profileInitial: nameController.text.isNotEmpty
             ? nameController.text[0].toUpperCase()
             : 'U',

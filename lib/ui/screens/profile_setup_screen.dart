@@ -224,9 +224,9 @@ class ProfileSetupScreen extends StatelessWidget {
         ),
 
         const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 800), child: _buildFileUploadSection(context, title: 'Medical Report', fileName: viewModel.medicalReportName, onTap: () => viewModel.pickFile(isMedical: true))),
+        AnimateIn(delay: const Duration(milliseconds: 800), child: _buildFileUploadSection(context, title: 'Medical Report', fileName: viewModel.medicalReportName, isAnalyzing: viewModel.isAnalyzingReport, onTap: () => viewModel.pickFile(isMedical: true))),
         const SizedBox(height: 16),
-        AnimateIn(delay: const Duration(milliseconds: 900), child: _buildFileUploadSection(context, title: 'InBody Report', fileName: viewModel.inBodyReportName, onTap: () => viewModel.pickFile(isMedical: false))),
+        AnimateIn(delay: const Duration(milliseconds: 900), child: _buildFileUploadSection(context, title: 'InBody Report', fileName: viewModel.inBodyReportName, isAnalyzing: viewModel.isAnalyzingReport, onTap: () => viewModel.pickFile(isMedical: false))),
       ]),
     );
   }
@@ -444,19 +444,22 @@ class ProfileSetupScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildFileUploadSection(BuildContext context, {required String title, String? fileName, required VoidCallback onTap}) {
+  Widget _buildFileUploadSection(BuildContext context, {required String title, String? fileName, bool isAnalyzing = false, required VoidCallback onTap}) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(title, style: const TextStyle(color: Color(0xFF024950), fontSize: 16)),
       const SizedBox(height: 8),
       GestureDetector(
-        onTap: onTap,
+        onTap: isAnalyzing ? null : onTap,
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14), border: Border.all(color: const Color(0xFFAFDDE5))),
           child: Row(children: [
-            Icon(fileName != null ? Icons.check_circle : Icons.upload_file, color: const Color(0xFF024950)),
+            if (isAnalyzing && fileName != null)
+              const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF024950)))
+            else
+              Icon(fileName != null ? Icons.check_circle : Icons.upload_file, color: const Color(0xFF024950)),
             const SizedBox(width: 12),
-            Expanded(child: Text(fileName ?? 'Upload file', overflow: TextOverflow.ellipsis)),
+            Expanded(child: Text(isAnalyzing && fileName != null ? 'Analyzing report...' : (fileName ?? 'Upload file'), overflow: TextOverflow.ellipsis)),
           ]),
         ),
       ),
