@@ -269,6 +269,8 @@ Injuries: ${allInjuries || 'None'}.
 Calculated BMR: ${Math.round(bmr)}. 
 Calculated TDEE: ${Math.round(tdee)}.
 Target Daily Calories (adjusted for goal): ${targetCalories}.
+Medical Report Findings: ${medical_report_text || 'None provided'}.
+InBody Report Findings: ${inbody_report_text || 'None provided'}.
 Vector database search results for these conditions: ${vectorContext || 'No specific contraindications found in database.'}
 `;
 
