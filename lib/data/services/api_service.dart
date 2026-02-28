@@ -152,4 +152,29 @@ class ApiService {
       throw ApiException('Network error during report analysis: $e');
     }
   }
+
+  /// Chat with the AI assistant
+  Future<String> chatWithAssistant({
+    required List<Map<String, dynamic>> messages,
+  }) async {
+    try {
+      final response = await _client.post(
+        Uri.parse('$_baseUrl/ai/chat'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'messages': messages,
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return data['response'] as String;
+      } else {
+        throw ApiException('Failed to get AI response: ${response.body}', statusCode: response.statusCode);
+      }
+    } catch (e) {
+      if (e is ApiException) rethrow;
+      throw ApiException('Network error during AI chat: $e');
+    }
+  }
 }

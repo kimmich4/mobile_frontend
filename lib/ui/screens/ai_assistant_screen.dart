@@ -25,6 +25,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
       case 'fitness_center': return Icons.fitness_center;
       case 'analytics': return Icons.analytics;
       case 'lightbulb': return Icons.lightbulb;
+      case 'swap_horiz': return Icons.swap_horiz;
       default: return Icons.help_outline;
     }
   }
@@ -33,6 +34,10 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
   Widget build(BuildContext context) {
     return Consumer<AiAssistantViewModel>(
       builder: (context, viewModel, child) {
+        if (viewModel.prefillText != null) {
+          _messageController.text = viewModel.prefillText!;
+          viewModel.clearPrefill();
+        }
         return Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           body: Column(
@@ -43,7 +48,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
                   padding: const EdgeInsets.only(top: 16, bottom: 24),
                   child: Column(
                     children: [
-                      _buildWelcomeMessage(context, viewModel),
+                      _buildChatThread(context, viewModel),
                       const SizedBox(height: 24),
                       _buildQuickActions(context, viewModel),
                     ],
@@ -107,33 +112,95 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
     );
   }
 
-  Widget _buildWelcomeMessage(BuildContext context, AiAssistantViewModel viewModel) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24),
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(24),
-          topRight: Radius.circular(24),
-          bottomLeft: Radius.circular(4),
-          bottomRight: Radius.circular(24),
+  Widget _buildChatThread(BuildContext context, AiAssistantViewModel viewModel) {
+    return ListView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      itemCount: viewModel.messages.length + (viewModel.isLoading ? 1 : 0),
+      itemBuilder: (context, index) {
+        if (index == viewModel.messages.length) {
+          return _buildLoadingBubble(context);
+        }
+        final message = viewModel.messages[index];
+        return _buildMessageBubble(context, message);
+      },
+    );
+  }
+
+  Widget _buildMessageBubble(BuildContext context, dynamic message) {
+    final bool isUser = message.isUser;
+    return Align(
+      alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: isUser ? const Color(0xFF0FA4AF) : Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.only(
+            topLeft: const Radius.circular(20),
+            topRight: const Radius.circular(20),
+            bottomLeft: Radius.circular(isUser ? 20 : 4),
+            bottomRight: Radius.circular(isUser ? 4 : 20),
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 4),
+            )
+          ],
         ),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4))],
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width * 0.75,
+        ),
+        child: Text(
+          message.text,
+          style: TextStyle(
+            color: isUser ? Colors.white : Theme.of(context).colorScheme.onSurface,
+            fontSize: 15,
+            height: 1.4,
+          ),
+        ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            viewModel.welcomeMessage,
-            style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 15, height: 1.5),
+    );
+  }
+
+  Widget _buildLoadingBubble(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+            bottomLeft: Radius.circular(4),
+            bottomRight: Radius.circular(20),
           ),
-          const SizedBox(height: 12),
-          Text(
-            'Just now',
-            style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4), fontSize: 12),
-          ),
-        ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              width: 12, height: 12,
+              child: CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Text(
+              'Thinking...',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
