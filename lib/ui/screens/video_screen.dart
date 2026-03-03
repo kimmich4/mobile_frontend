@@ -1,11 +1,27 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 import '../components/animate_in.dart';
 import '../../viewmodels/video_view_model.dart';
+import '../../data/models/workout_model.dart';
 
-class VideoScreen extends StatelessWidget {
-  const VideoScreen({super.key});
+class VideoScreen extends StatefulWidget {
+  final Exercise exercise;
+
+  const VideoScreen({super.key, required this.exercise});
+
+  @override
+  State<VideoScreen> createState() => _VideoScreenState();
+}
+
+class _VideoScreenState extends State<VideoScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<VideoViewModel>().init(widget.exercise);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +45,44 @@ class VideoScreen extends StatelessWidget {
 
   Widget _buildVideoPlayerPlaceholder(BuildContext context, VideoViewModel viewModel) {
     return Container(
-      width: double.infinity, height: 400,
-      decoration: const BoxDecoration(gradient: LinearGradient(colors: [Color(0xFF003135), Color(0xFF024950)])),
-      child: Stack(alignment: Alignment.center, children: [
-        Positioned(top: 64, left: 24, child: IconButton(icon: const Icon(Icons.arrow_back, color: Colors.white), onPressed: () => Navigator.pop(context))),
-        GestureDetector(
-          onTap: viewModel.togglePlayPause,
-          child: Container(width: 80, height: 80, decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), shape: BoxShape.circle), child: const Icon(Icons.play_arrow, color: Colors.white, size: 40)),
+      width: double.infinity,
+      height: 400,
+      decoration: const BoxDecoration(
+        color: Colors.black,
+      ),
+      child: SafeArea(
+        bottom: false,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            if (viewModel.isVideoLoading)
+              const CircularProgressIndicator(color: Color(0xFF0FA4AF))
+            else if (viewModel.errorMessage != null)
+              Padding(
+                padding: const EdgeInsets.all(24.0),
+                child: Text(
+                  viewModel.errorMessage!,
+                  style: const TextStyle(color: Colors.redAccent, fontSize: 16),
+                  textAlign: TextAlign.center,
+                ),
+              )
+            else if (viewModel.youtubeController != null)
+              YoutubePlayer(
+                controller: viewModel.youtubeController!,
+              ),
+              
+            // Floating back button overlay
+            Positioned(
+              top: 16,
+              left: 16,
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.white, shadows: [Shadow(color: Colors.black54, blurRadius: 4)]),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+          ],
         ),
-      ]),
+      ),
     );
   }
 
@@ -48,38 +93,23 @@ class VideoScreen extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         AnimateIn(child: Text(viewModel.title, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 24, fontWeight: FontWeight.bold))),
         const SizedBox(height: 16),
-        AnimateIn(delay: const Duration(milliseconds: 100), child: Row(children: [
+        AnimateIn(delay: const Duration(milliseconds: 100), child: Wrap(
+          spacing: 12,
+          runSpacing: 8,
+          children: [
           _buildTag(viewModel.difficulty, const Color(0xFF0FA4AF), const Color(0x190FA4AF)),
-          const SizedBox(width: 12),
           _buildTag('${viewModel.durationMinutes} min', const Color(0xFF964734), const Color(0x19964734)),
+          _buildTag('${viewModel.calories} cal', Colors.amber.shade700, Colors.amber.shade50),
         ])),
         const SizedBox(height: 32),
-        AnimateIn(delay: const Duration(milliseconds: 200), child: Text('About this exercise', style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 18, fontWeight: FontWeight.bold))),
-        const SizedBox(height: 12),
-        AnimateIn(delay: const Duration(milliseconds: 300), child: _buildArGuideButton(viewModel)),
+        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildKeyPoints(viewModel)),
         const SizedBox(height: 32),
-        AnimateIn(delay: const Duration(milliseconds: 400), child: _buildKeyPoints(viewModel)),
-        const SizedBox(height: 32),
-        AnimateIn(delay: const Duration(milliseconds: 500), child: _buildCommonMistakes(viewModel)),
+        AnimateIn(delay: const Duration(milliseconds: 300), child: _buildCommonMistakes(viewModel)),
         const SizedBox(height: 80),
       ]),
     );
   }
 
-  Widget _buildArGuideButton(VideoViewModel viewModel) {
-    return GestureDetector(
-      onTap: viewModel.toggleArGuide,
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 16), width: double.infinity,
-        decoration: BoxDecoration(color: const Color(0xFF024950).withOpacity(0.1), borderRadius: BorderRadius.circular(14)),
-        child: Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
-          Icon(Icons.view_in_ar, color: Color(0xFF024950)),
-          SizedBox(width: 8),
-          Text('Enable AR Posture Guide', style: TextStyle(color: Color(0xFF024950), fontSize: 16, fontWeight: FontWeight.bold)),
-        ]),
-      ),
-    );
-  }
 
   Widget _buildTag(String label, Color color, Color bgColor) {
     return Container(padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6), decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(20)), child: Text(label, style: TextStyle(color: color, fontSize: 14, fontWeight: FontWeight.bold)));

@@ -199,7 +199,7 @@ class WorkoutPlanScreen extends StatelessWidget {
           ]),
           const SizedBox(height: 16),
           Row(children: [
-            Expanded(child: ElevatedButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const VideoScreen())), child: const Text('Tutorial'))),
+            Expanded(child: ElevatedButton(onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => VideoScreen(exercise: exercise))), child: const Text('Tutorial'))),
             const SizedBox(width: 12),
             Expanded(child: ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: isDone ? Colors.green : const Color(0xFF964734), foregroundColor: Colors.white),

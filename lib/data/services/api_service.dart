@@ -48,6 +48,7 @@ class ApiService {
           'gender': userProfile['gender'],
           'height_cm': userProfile['heightCm'],
           'weight_kg': userProfile['weightKg'],
+          'target_weight_kg': userProfile['goalWeightKg'],
           'activity_level': userProfile['activityLevel'],
           'goal': (userProfile['fitnessGoals'] as List?)?.join(', ') ?? '',
           'health_conditions': (userProfile['medicalConditions'] as List?)?.join(', ') ?? '',
@@ -92,6 +93,7 @@ class ApiService {
           'gender': userProfile['gender'],
           'height_cm': userProfile['heightCm'],
           'weight_kg': userProfile['weightKg'],
+          'target_weight_kg': userProfile['goalWeightKg'],
           'activity_level': userProfile['activityLevel'],
           'goal': (userProfile['fitnessGoals'] as List?)?.join(', ') ?? '',
           'health_conditions': (userProfile['medicalConditions'] as List?)?.join(', ') ?? '',
@@ -175,6 +177,27 @@ class ApiService {
     } catch (e) {
       if (e is ApiException) rethrow;
       throw ApiException('Network error during AI chat: $e');
+    }
+  }
+
+  /// Search for an exercise tutorial video ID on YouTube using the backend
+  Future<String> searchVideo(String query) async {
+    try {
+      final response = await _client.post(
+        Uri.parse('$_baseUrl/ai/search-video'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({'query': query}),
+      );
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        return data['videoId'] as String;
+      } else {
+        throw ApiException('Failed to search video: ${response.body}', statusCode: response.statusCode);
+      }
+    } catch (e) {
+      if (e is ApiException) rethrow;
+      throw ApiException('Network error during video search: $e');
     }
   }
 }

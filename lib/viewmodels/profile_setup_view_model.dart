@@ -25,6 +25,7 @@ class ProfileSetupViewModel extends BaseViewModel {
 
   // Step 2: Body Metrics
   final TextEditingController weightController = TextEditingController();
+  final TextEditingController targetWeightController = TextEditingController();
   final TextEditingController heightController = TextEditingController();
   String _selectedActivityLevel = 'Sedentary';
 
@@ -275,6 +276,8 @@ class ProfileSetupViewModel extends BaseViewModel {
         age: int.tryParse(ageController.text),
         gender: _selectedGender,
         weightKg: double.tryParse(weightController.text),
+        currentWeightKg: double.tryParse(weightController.text),
+        goalWeightKg: double.tryParse(targetWeightController.text),
         heightCm: double.tryParse(heightController.text),
         activityLevel: _selectedActivityLevel,
         medicalConditions: _selectedMedicalConditions,
@@ -329,6 +332,7 @@ class ProfileSetupViewModel extends BaseViewModel {
     nameController.dispose();
     ageController.dispose();
     weightController.dispose();
+    targetWeightController.dispose();
     heightController.dispose();
     otherMedicalConditionController.dispose();
     otherAllergyController.dispose();

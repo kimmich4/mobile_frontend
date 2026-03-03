@@ -4,6 +4,7 @@ const cors = require('cors');
 const https = require('https');
 const { QdrantClient } = require("@qdrant/js-client-rest");
 const { HfInference } = require("@huggingface/inference");
+const ytSearch = require('yt-search');
 const { defaultDietPlan, defaultWorkoutPlan } = require('./fallbacks');
 
 // 🔹 Initialize Clients
@@ -212,7 +213,7 @@ async function analyzeImage(base64Image, type) {
     }
 }
 
-// 🔹 Helper: Chat Assistant (Using OpenRouter with Fallback)
+// 🔹 Helper: Chat Assistant (Using OpenRouter with Fallbacks)
 async function chatAssistant(messages) {
     const models = [
         "stepfun/step-3.5-flash:free",
@@ -303,7 +304,7 @@ app.post('/ai/analyze-report', async (req, res) => {
 });
 
 app.post('/ai/generate-diet', async (req, res) => {
-    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
+    const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Diet requested for ${fullName || userId}`);
 
     try {
@@ -334,10 +335,10 @@ app.post('/ai/generate-diet', async (req, res) => {
         // 3. Build Rich Context
         const context = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
-Metrics: ${weight_kg}kg, ${height_cm}cm. 
+Metrics: Current Weight: ${weight_kg}kg, Target Weight: ${target_weight_kg || 'Not specified'}kg, Height: ${height_cm}cm. 
 Activity Level: ${activity_level || 'moderate'}.
 Experience Level: ${experience_level || 'Not specified'}.
-Goals: ${allGoals || 'General fitness'}. 
+Goals: ${allGoals || 'General fitness'}.  
 Reported Health Conditions: ${allHealthConditions || 'None'}. 
 Allergies: ${allAllergies || 'None'}. 
 Injuries: ${allInjuries || 'None'}.
@@ -360,7 +361,7 @@ CRITICAL RULES:
 2. For EVERY day, the "totalCalories" field MUST be EXACTLY ${targetCalories}.
 3. The sum of all individual "calories" for items in "meals" MUST EXACTLY mathematically equal ${targetCalories} for every day. 
 4. meal variety: Each day SHOULD have a varied number of meals (between 3 and 6). 
-5. CREATIVE TITLES: Use different meal names (e.g., "Dawn Fuel", "Mid-Day Boost", "Evening Feast", "Night-time Nosh") instead of just "Breakfast/Lunch/Dinner". Be creative and varied!
+5. CREATIVE TITLES: Use different meal names instead of just "Breakfast/Lunch/Dinner". Be creative and varied!
 6. Portions (grams/ml) must be realistic and specific.
 
 THINKING STEP:
@@ -407,7 +408,7 @@ Return ONLY JSON in this EXACT format:
 });
 
 app.post('/ai/generate-workout', async (req, res) => {
-    const { userId, fullName, age, height_cm, weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
+    const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Workout requested for ${fullName || userId}`);
 
     try {
@@ -435,7 +436,7 @@ app.post('/ai/generate-workout', async (req, res) => {
 
         const context = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
-Metrics: ${weight_kg}kg, ${height_cm}cm.
+Metrics: Current Weight: ${weight_kg}kg, Target Weight: ${target_weight_kg || 'Not specified'}kg, Height: ${height_cm}cm.
 BMR: ${bmr.toFixed(2)}, TDEE: ${tdee.toFixed(2)}. Target Calories: ${targetCalories} kcal.
 Activity Level: ${activity_level || 'moderate'}.
 Experience Level: ${experienceInfo || 'Not specified'}.
@@ -471,6 +472,26 @@ Return ONLY JSON in this format:
     } catch (e) {
         console.error("AI Generation failed:", e.message);
         res.status(500).json({ error: "Failed to generate workout plan. Please retry.", details: e.message });
+    }
+});
+
+app.post('/ai/search-video', async (req, res) => {
+    const { query } = req.body;
+    if (!query) {
+        return res.status(400).json({ error: "Missing query" });
+    }
+    try {
+        console.log(`🔍 Searching YouTube for: "${query}"`);
+        const result = await ytSearch(query);
+        const videos = result.videos.slice(0, 1);
+        if (videos.length > 0) {
+            res.json({ videoId: videos[0].videoId });
+        } else {
+            res.status(404).json({ error: "No video found" });
+        }
+    } catch (e) {
+        console.error("YouTube Search Error:", e.message);
+        res.status(500).json({ error: "Failed to search video", details: e.message });
     }
 });
 

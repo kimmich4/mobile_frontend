@@ -200,8 +200,9 @@ class HomeViewModel extends BaseViewModel {
     final current = _currentUser?.currentWeightKg;
     if (initial != null && current != null) {
       final diff = current - initial;
-      final sign = diff >= 0 ? '+' : '';
-      return '${sign}${diff.toStringAsFixed(1)}kg';
+      if (diff.abs() < 0.1) return 'No change';
+      final label = diff > 0 ? 'gained' : 'lost';
+      return '${diff.abs().toStringAsFixed(1)}kg $label';
     }
     return '0.0kg';
   }

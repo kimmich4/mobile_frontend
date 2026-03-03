@@ -130,7 +130,7 @@ class ProfileSetupScreen extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const AnimateIn(child: Text('Basic Information', style: TextStyle(color: Color(0xFF003135), fontSize: 20, fontWeight: FontWeight.bold))),
         const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildTextField(context, label: 'Full Name', controller: viewModel.nameController, hint: 'e.g. John Doe')),
+        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildTextField(context, label: 'Full Name', controller: viewModel.nameController, hint: 'Enter your full name')),
         const SizedBox(height: 16),
         AnimateIn(delay: const Duration(milliseconds: 300), child: _buildTextField(context, label: 'Age', controller: viewModel.ageController, hint: 'Enter your age', keyboardType: TextInputType.number)),
         const SizedBox(height: 16),
@@ -139,7 +139,6 @@ class ProfileSetupScreen extends StatelessWidget {
         AnimateIn(delay: const Duration(milliseconds: 500), child: Row(children: [
           _buildGenderOption(context, viewModel, 'Male'), const SizedBox(width: 12),
           _buildGenderOption(context, viewModel, 'Female'), const SizedBox(width: 12),
-          _buildGenderOption(context, viewModel, 'Other'),
         ])),
       ]),
     );
@@ -151,7 +150,9 @@ class ProfileSetupScreen extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         const AnimateIn(child: Text('Body Metrics', style: TextStyle(color: Color(0xFF003135), fontSize: 20, fontWeight: FontWeight.bold))),
         const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildTextField(context, label: 'Weight (kg)', controller: viewModel.weightController, hint: 'Enter your weight', keyboardType: TextInputType.number)),
+        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildTextField(context, label: 'Current Weight (kg)', controller: viewModel.weightController, hint: 'Enter your weight', keyboardType: TextInputType.number)),
+        const SizedBox(height: 16),
+        AnimateIn(delay: const Duration(milliseconds: 250), child: _buildTextField(context, label: 'Target Weight (kg)', controller: viewModel.targetWeightController, hint: 'Enter your goal weight', keyboardType: TextInputType.number)),
         const SizedBox(height: 16),
         AnimateIn(delay: const Duration(milliseconds: 300), child: _buildTextField(context, label: 'Height (cm)', controller: viewModel.heightController, hint: 'Enter your height', keyboardType: TextInputType.number)),
         const SizedBox(height: 24),
@@ -269,6 +270,7 @@ class ProfileSetupScreen extends StatelessWidget {
             otherController: viewModel.otherExperienceController,
             onOptionTap: viewModel.setSelectedExperienceLevel,
             onOtherTap: () => viewModel.setExperienceOtherSelected(!viewModel.experienceOtherSelected),
+            
           ),
         ),
       ]),

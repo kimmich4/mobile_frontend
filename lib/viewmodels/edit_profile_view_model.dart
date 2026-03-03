@@ -22,6 +22,7 @@ class EditProfileViewModel extends BaseViewModel {
 
   // Body Metrics
   final TextEditingController weightController = TextEditingController();
+  final TextEditingController targetWeightController = TextEditingController();
   final TextEditingController heightController = TextEditingController();
   String _selectedActivityLevel = 'Sedentary';
 
@@ -83,6 +84,7 @@ class EditProfileViewModel extends BaseViewModel {
     nameController.clear();
     ageController.clear();
     weightController.clear();
+    targetWeightController.clear();
     heightController.clear();
     otherMedicalConditionController.clear();
     otherAllergyController.clear();
@@ -115,7 +117,8 @@ class EditProfileViewModel extends BaseViewModel {
         nameController.text = userModel.fullName ?? '';
         ageController.text = userModel.age?.toString() ?? '';
         _selectedGender = userModel.gender ?? 'Male';
-        weightController.text = userModel.weightKg?.toString() ?? '';
+        weightController.text = userModel.currentWeightKg?.toString() ?? userModel.weightKg?.toString() ?? '';
+        targetWeightController.text = userModel.goalWeightKg?.toString() ?? '';
         heightController.text = userModel.heightCm?.toString() ?? '';
         _selectedActivityLevel = userModel.activityLevel ?? 'Sedentary';
         
@@ -268,7 +271,10 @@ class EditProfileViewModel extends BaseViewModel {
         fullName: nameController.text.trim(),
         age: int.tryParse(ageController.text),
         gender: _selectedGender,
-        weightKg: double.tryParse(weightController.text),
+        // CRITICAL: weightKg is the STARTING weight. Don't overwrite it with current.
+        weightKg: _originalUser?.weightKg ?? double.tryParse(weightController.text),
+        currentWeightKg: double.tryParse(weightController.text),
+        goalWeightKg: double.tryParse(targetWeightController.text),
         heightCm: double.tryParse(heightController.text),
         activityLevel: _selectedActivityLevel,
         medicalConditions: _selectedMedicalConditions,
@@ -298,6 +304,7 @@ class EditProfileViewModel extends BaseViewModel {
     nameController.dispose();
     ageController.dispose();
     weightController.dispose();
+    targetWeightController.dispose();
     heightController.dispose();
     otherMedicalConditionController.dispose();
     otherAllergyController.dispose();
