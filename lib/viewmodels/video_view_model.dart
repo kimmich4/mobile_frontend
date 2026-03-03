@@ -64,10 +64,10 @@ class VideoViewModel extends BaseViewModel {
     _isVideoLoading = true;
     _errorMessage = null;
     notifyListeners();
-    
+
     try {
       final apiService = ApiService();
-      // Search for the exercise name + "form tutorial"
+      // Search for the exercise name + "form tutoriall"
       final searchQuery = '$exerciseName exercise form tutorial';
       
       final videoId = await apiService.searchVideo(searchQuery);
