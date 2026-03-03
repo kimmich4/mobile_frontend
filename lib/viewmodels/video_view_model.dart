@@ -64,7 +64,7 @@ class VideoViewModel extends BaseViewModel {
     _isVideoLoading = true;
     _errorMessage = null;
     notifyListeners();
-S
+    
     try {
       final apiService = ApiService();
       // Search for the exercise name + "form tutorial"
