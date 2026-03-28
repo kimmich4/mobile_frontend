@@ -1,280 +1,23 @@
 require("dotenv").config();
 const express = require('express');
 const cors = require('cors');
-const https = require('https');
-const { QdrantClient } = require("@qdrant/js-client-rest");
-const { HfInference } = require("@huggingface/inference");
 const ytSearch = require('yt-search');
 const { defaultDietPlan, defaultWorkoutPlan } = require('./fallbacks');
 
-// 🔹 Initialize Clients
-const qdrant = new QdrantClient({
-    url: process.env.QDRANT_URL,
-    apiKey: process.env.QDRANT_API_KEY
-});
-const hf = new HfInference(process.env.HF_API_KEY);
+const { ragChain } = require('./rag_chain');
+const { generateAnswer, calculateBMR, calculateTDEE, adjustCalories } = require('./plan_generator');
+const { chatAssistant } = require('./ai_assistant');
+const { analyzeImage } = require('./ocr_logic');
+
 const app = express();
 app.use(express.json({ limit: '50mb' }));
 app.use(cors());
 
-// 🔹 Helper: Get Embeddings (Using HfInference)
-async function getEmbedding(text) {
-    const vector = await hf.featureExtraction({
-        model: "sentence-transformers/all-MiniLM-L6-v2",
-        inputs: text
-    });
-
-    if (!vector || !Array.isArray(vector)) {
-        throw new Error("Embedding failed: No valid vector in response");
-    }
-
-    return vector.map(x => parseFloat(x));
-}
-
-// 🔹 Helper: Search Health Context (finds similar cases by health profile)
-async function searchHealthContext(healthProfile) {
-    // 🔍 Skip if input is effectively empty or "none"
-    const cleanProfile = healthProfile ? healthProfile.toLowerCase().replace(/none/g, "").replace(/[,.\s]/g, "") : "";
-    if (!cleanProfile) {
-        console.log(`ℹ️ Skipping Qdrant search for "${healthProfile}": No substantive health profile provided.`);
-        return "";
-    }
-
-    try {
-        const queryVector = await getEmbedding(healthProfile);
-        console.log(`🔍 Qdrant Search Query: "${healthProfile}"`);
-        const result = await qdrant.search("athlete_health_context", {
-            vector: queryVector,
-            limit: 3,
-            with_payload: true,
-            score_threshold: 0.015
-        });
-
-        if (result && result.length > 0) {
-            console.log(`✅ Qdrant search found ${result.length} matches.`);
-            console.log("   Results:", JSON.stringify(result.map(r => ({ score: r.score, payload: r.payload })), null, 2));
-        } else {
-            console.log(`ℹ️ Qdrant search found 0 matches.`);
-        }
-
-        return result.map(r => {
-            const p = r.payload;
-            return `Issue: ${p.issue || 'N/A'}. Constraints: Foods to avoid (${(p.contraindicated_foods || []).map(f => f.food).join(", ")}), Exercises to avoid (${(p.contraindicated_exercises || []).map(e => e.exercise).join(", ")})`;
-        }).join("\n");
-    } catch (e) {
-        console.error("Qdrant Search Error:", e.message);
-        return "";
-    }
-}
-
-// 🔹 Helper: BMR/TDEE Calculation
-function calculateBMR(weight, height, age, gender) {
-    if (gender.toLowerCase() === 'male') {
-        return 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
-    } else {
-        return 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
-    }
-}
-
-function calculateTDEE(bmr, activityLevel) {
-    const activityMultipliers = {
-        'sedentary': 1.2,
-        'light': 1.375,
-        'moderate': 1.55,
-        'active': 1.725,
-        'very active': 1.9
-    };
-    return bmr * (activityMultipliers[activityLevel.toLowerCase()] || 1.375);
-}
-
-// 1️⃣ Robust AI Forwarder (Using Router & DeepSeek)
-async function generateAnswer(context, question) {
-    const maxRetries = 3;
-    let lastError;
-
-    for (let i = 0; i < maxRetries; i++) {
-        try {
-            console.log(`AI Request attempt ${i + 1}/${maxRetries}...`);
-            const response = await fetch("https://router.huggingface.co/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${process.env.HF_API_KEY}`,
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    model: "deepseek-ai/DeepSeek-V3",
-                    messages: [
-                        {
-                            role: "system",
-                            content: "You are a certified sports nutritionist and personal trainer. You MUST return ONLY valid, complete JSON. Keep responses compact but complete. Accuracy is critical for user safety."
-                        },
-                        {
-                            role: "user",
-                            content: `Context:\n${context}\n\nTask:\n${question}`
-                        }
-                    ],
-                    max_tokens: 16000
-                })
-            });
-
-            if (!response.ok) {
-                const errText = await response.text();
-                // 504 Gateway Timeout or 503 Service Unavailable - Retryable
-                if (response.status === 504 || response.status === 503) {
-                    console.warn(`Attempt ${i + 1} failed with ${response.status}. Retrying in 2s...`);
-                    lastError = new Error(`HF API Error: ${response.status} - ${errText}`);
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    continue; // Retry
-                }
-                throw new Error(`HF API Error: ${response.status} - ${errText}`);
-            }
-
-            const data = await response.json();
-            let content = data.choices?.[0]?.message?.content || "";
-            const finishReason = data.choices?.[0]?.finish_reason;
-
-            // Warn if response was truncated
-            if (finishReason === 'length') {
-                console.warn("⚠️ AI response was TRUNCATED (hit max_tokens limit). JSON may be incomplete.");
-            }
-
-            // Clean JSON from markdown if present
-            if (content.includes("```json")) {
-                content = content.split("```json")[1].split("```")[0].trim();
-            } else if (content.includes("```")) {
-                content = content.split("```")[1].split("```")[0].trim();
-            }
-
-            return content;
-        } catch (e) {
-            lastError = e;
-            if (i === maxRetries - 1) throw e;
-            console.error(`Attempt ${i + 1} catched error: ${e.message}. Retrying...`);
-            await new Promise(resolve => setTimeout(resolve, 1000));
-        }
-    }
-    throw lastError;
-}
-
-// 🔹 Helper: Analyze Image (OCR/Report Extraction)
-async function analyzeImage(base64Image, type) {
-    try {
-        console.log(`🔍 Analyzing ${type} report using Llama 3.2 Vision (v4)...`);
-        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                model: "meta-llama/Llama-3.2-11B-Vision-Instruct",
-                max_tokens: 1000,
-                messages: [
-                    {
-                        role: "system",
-                        content: "You are a medical data extraction assistant. Extract clinical findings, biomarkers, and health constraints from the provided report image. Return a concise summary suitable for a nutritionist or trainer."
-                    },
-                    {
-                        role: "user",
-                        content: [
-                            {
-                                type: "text",
-                                text: `Extract data from this ${type} report.`
-                            },
-                            {
-                                type: "image_url",
-                                image_url: {
-                                    url: `data:image/jpeg;base64,${base64Image}`
-                                }
-                            }
-                        ]
-                    }
-                ]
-            })
-        });
-
-        if (!response.ok) {
-            const err = await response.text();
-            throw new Error(`Vision API Error: ${response.status} - ${err}`);
-        }
-
-        const data = await response.json();
-        const extractedText = data.choices?.[0]?.message?.content || "No data extracted.";
-
-        console.log(`✅ Extracted Text from ${type} report:`);
-        console.log("-----------------------------------------");
-        console.log(extractedText);
-        console.log("-----------------------------------------");
-
-        return extractedText;
-    } catch (e) {
-        console.error("Image Analysis failed:", e.message);
-        return `Error extracting ${type} report: ${e.message}`;
-    }
-}
-
-// 🔹 Helper: Chat Assistant (Using OpenRouter with Fallbacks)
-async function chatAssistant(messages) {
-    const models = [
-        "stepfun/step-3.5-flash:free",
-        "arcee-ai/trinity-large-preview:free",
-        "upstage/solar-pro-3:free",
-        "liquid/lfm-2.5-1.2b-thinking:free",
-        "nvidia/nemotron-3-nano-30b-a3b:free",
-        "google/gemma-3n-e2b-it:free",
-        "mistralai/mistral-small-3.1-24b-instruct:free"
-    ];
-
-    let lastError;
-
-    for (const model of models) {
-        try {
-            console.log(`🤖 Attempting chat with ${model}...`);
-            const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-                    "Content-Type": "application/json",
-                    "HTTP-Referer": "https://github.com/stepfun-ai",
-                    "X-Title": "Fitness AI Assistant",
-                },
-                body: JSON.stringify({
-                    model: model,
-                    messages: [
-                        {
-                            role: "system",
-                            content: "You are a helpful and knowledgeable fitness assistant. You provide personalized advice on workouts, diet, and general health. Keep your responses concise and motivating."
-                        },
-                        ...messages
-                    ],
-                    max_tokens: 1000,
-                })
-            });
-
-            if (!response.ok) {
-                const errText = await response.text();
-                // If rate limited (429), try next model
-                if (response.status === 429) {
-                    console.warn(`⚠️ Model ${model} is rate limited. Trying next...`);
-                    lastError = new Error(`Rate limit reached for ${model}`);
-                    continue;
-                }
-                throw new Error(`Chat API Error: ${response.status} - ${errText}`);
-            }
-
-            const data = await response.json();
-            return data.choices?.[0]?.message?.content || "I'm sorry, I couldn't process that.";
-        } catch (e) {
-            console.error(`Chat attempt with ${model} failed:`, e.message);
-            lastError = e;
-            if (model === models[models.length - 1]) throw e;
-        }
-    }
-    throw lastError;
-}
-
+// ─────────────────────────────────────────────────────────────────────────────
+// Route: AI Chat
+// ─────────────────────────────────────────────────────────────────────────────
 app.post('/ai/chat', async (req, res) => {
-    const { messages } = req.body; // Expecting an array of {role: 'user'|'assistant', content: '...'}
+    const { messages } = req.body;
 
     if (!messages || !Array.isArray(messages)) {
         return res.status(400).json({ error: "Missing or invalid messages array" });
@@ -288,8 +31,11 @@ app.post('/ai/chat', async (req, res) => {
     }
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Route: Analyze Medical / InBody Report (OCR)
+// ─────────────────────────────────────────────────────────────────────────────
 app.post('/ai/analyze-report', async (req, res) => {
-    const { base64Image, type } = req.body; // type: 'medical' or 'inbody'
+    const { base64Image, type } = req.body;
 
     if (!base64Image) {
         return res.status(400).json({ error: "Missing image data" });
@@ -303,6 +49,9 @@ app.post('/ai/analyze-report', async (req, res) => {
     }
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Route: Generate 7-Day Diet Plan
+// ─────────────────────────────────────────────────────────────────────────────
 app.post('/ai/generate-diet', async (req, res) => {
     const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Diet requested for ${fullName || userId}`);
@@ -314,26 +63,16 @@ app.post('/ai/generate-diet', async (req, res) => {
         const allInjuries = [injuries, other_injury].filter(Boolean).join(', ');
         const allGoals = [goal, other_fitness_goal].filter(Boolean).join(', ');
 
-        // 1. Search Vector Context using full health profile
+        // 1. Define vector search string
         const searchQuery = `${allHealthConditions}, ${allAllergies},${allInjuries}`;
-        const vectorContext = await searchHealthContext(searchQuery);
 
-        // 2. Calculations
+        // 2. Calculate calorie targets
         const bmr = calculateBMR(weight_kg, height_cm, age, gender || 'male');
         const tdee = calculateTDEE(bmr, activity_level || 'moderate');
+        const targetCalories = adjustCalories(tdee, allGoals);
 
-        // 2b. Adjust TDEE based on goals
-        let targetCalories = tdee;
-        const lowerGoals = allGoals.toLowerCase();
-        if (lowerGoals.includes('lose') || lowerGoals.includes('cut') || lowerGoals.includes('fat') || lowerGoals.includes('loss')) {
-            targetCalories -= 500; // Deficit for weight loss
-        } else if (lowerGoals.includes('build') || lowerGoals.includes('gain') || lowerGoals.includes('bulk') || lowerGoals.includes('muscle')) {
-            targetCalories += 500; // Surplus for building muscle
-        }
-        targetCalories = Math.round(targetCalories);
-
-        // 3. Build Rich Context
-        const context = `
+        // 3. Build generic context template (LangChain injects Vector details into {{VECTOR_CONTEXT}})
+        const contextPrefix = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
 Metrics: Current Weight: ${weight_kg}kg, Target Weight: ${target_weight_kg || 'Not specified'}kg, Height: ${height_cm}cm. 
 Activity Level: ${activity_level || 'moderate'}.
@@ -347,9 +86,10 @@ Calculated TDEE: ${Math.round(tdee)}.
 Target Daily Calories (adjusted for goal): ${targetCalories}.
 Medical Report Findings: ${medical_report_text || 'None provided'}.
 InBody Report Findings: ${inbody_report_text || 'None provided'}.
-Vector database search results for these conditions: ${vectorContext || 'No specific contraindications found in database.'}
+Vector Database Constraints: {{VECTOR_CONTEXT}}
 `;
 
+        // 4. Build prompt task
         const task = `Create a 7-day diet plan (Day 1 to Day 7). 
 You MUST provide EXACTLY 7 DAYS in the "days" array. DO NOT stop before Day 7.
 
@@ -360,9 +100,10 @@ CRITICAL RULES:
 1. YOU MUST GENERATE ALL 7 DAYS (day 1, 2, 3, 4, 5, 6, 7).
 2. For EVERY day, the "totalCalories" field MUST be EXACTLY ${targetCalories}.
 3. The sum of all individual "calories" for items in "meals" MUST EXACTLY mathematically equal ${targetCalories} for every day. 
-4. meal variety: Each day SHOULD have a varied number of meals (between 3 and 6). 
-5. CREATIVE TITLES: Use different meal names instead of just "Breakfast/Lunch/Dinner". Be creative and varied!
-6. Portions (grams/ml) must be realistic and specific.
+4. meal variety: Each day SHOULD have a varied number of meals (between 3 and 6).
+5. Ensure the diet plan is safe for the provided injuries/conditions and doesnt violate any of the vector database constraints.
+6. CREATIVE TITLES: Use different meal names instead of just "Breakfast/Lunch/Dinner". Be creative and varied!
+7. Portions (grams/ml) must be realistic and specific.
 
 THINKING STEP:
 Before writing each day, decide on the number of meals (3-6) and creative formal titles. Then mentally calculate the calories for each so the total matches exactly ${targetCalories}.
@@ -399,7 +140,8 @@ Return ONLY JSON in this EXACT format:
   ]
 }`;
 
-        const aiResponse = await generateAnswer(context, task);
+        // 5. Execute the full LangChain orchestration
+        const aiResponse = await ragChain.invoke({ searchQuery, contextPrefix, task });
         res.json(JSON.parse(aiResponse));
     } catch (e) {
         console.error("AI Generation failed:", e.message);
@@ -407,6 +149,9 @@ Return ONLY JSON in this EXACT format:
     }
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Route: Generate 7-Day Workout Plan
+// ─────────────────────────────────────────────────────────────────────────────
 app.post('/ai/generate-workout', async (req, res) => {
     const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Workout requested for ${fullName || userId}`);
@@ -419,22 +164,16 @@ app.post('/ai/generate-workout', async (req, res) => {
         const allGoals = [goal, other_fitness_goal].filter(Boolean).join(', ');
         const experienceInfo = [experience_level, other_experience].filter(Boolean).join(' - ');
 
+        // 1. Define vector search string
         const searchQuery = `Health conditions: ${allHealthConditions}. Allergies: ${allAllergies}. Injuries: ${allInjuries}. Experience: ${experienceInfo || ''}`;
-        const vectorContext = await searchHealthContext(searchQuery);
 
-        // Calculations (copied from generate-diet, as they are needed for context)
+        // 2. Calculate calorie targets (for context)
         const bmr = calculateBMR(weight_kg, height_cm, age, gender || 'male');
         const tdee = calculateTDEE(bmr, activity_level || 'moderate');
-        let targetCalories = tdee; // Default, can be adjusted if workout plan needs calorie info
-        const lowerGoals = allGoals.toLowerCase();
-        if (lowerGoals.includes('lose') || lowerGoals.includes('cut') || lowerGoals.includes('fat') || lowerGoals.includes('loss')) {
-            targetCalories -= 500; // Deficit for weight loss
-        } else if (lowerGoals.includes('build') || lowerGoals.includes('gain') || lowerGoals.includes('bulk') || lowerGoals.includes('muscle')) {
-            targetCalories += 500; // Surplus for building muscle
-        }
-        targetCalories = Math.round(targetCalories);
+        const targetCalories = adjustCalories(tdee, allGoals);
 
-        const context = `
+        // 3. Build generic context template (LangChain injects Vector details into {{VECTOR_CONTEXT}})
+        const contextPrefix = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
 Metrics: Current Weight: ${weight_kg}kg, Target Weight: ${target_weight_kg || 'Not specified'}kg, Height: ${height_cm}cm.
 BMR: ${bmr.toFixed(2)}, TDEE: ${tdee.toFixed(2)}. Target Calories: ${targetCalories} kcal.
@@ -446,15 +185,16 @@ Allergies: ${allAllergies || 'None'}.
 Injuries: ${allInjuries || 'None'}.
 Medical Report Findings: ${medical_report_text || 'None provided'}.
 InBody Report Findings: ${inbody_report_text || 'None provided'}.
-Vector Database Constraints: ${vectorContext || 'None'}.
+Vector Database Constraints: {{VECTOR_CONTEXT}}
 `;
 
+        // 4. Build prompt task
         const task = `Create a 7-day exercise plan.
 For EACH day, provide TWO complete plans: one for "home" and one for "gym".
 Include warm-up, main exercises, and cool-down.
 Each day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. 
 Adjust difficulty based on the user's experience level and if he gave you a specific split name like "push-pull-legs" or "full body" or "upper-lower" make it in the exact format of the Json in example.
-Ensure exercises are safe for the provided injuries/conditions. 
+Ensure exercises are safe for the provided injuries/conditions and doesnt violate any of the vector database constraints. 
 Return ONLY JSON in this format:
 {
   "gym": {
@@ -467,7 +207,8 @@ Return ONLY JSON in this format:
   }
 }`;
 
-        const aiResponse = await generateAnswer(context, task);
+        // 5. Execute the full LangChain orchestration
+        const aiResponse = await ragChain.invoke({ searchQuery, contextPrefix, task });
         res.json(JSON.parse(aiResponse));
     } catch (e) {
         console.error("AI Generation failed:", e.message);
@@ -475,6 +216,9 @@ Return ONLY JSON in this format:
     }
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Route: YouTube Video Search
+// ─────────────────────────────────────────────────────────────────────────────
 app.post('/ai/search-video', async (req, res) => {
     const { query } = req.body;
     if (!query) {
@@ -495,6 +239,9 @@ app.post('/ai/search-video', async (req, res) => {
     }
 });
 
+// ─────────────────────────────────────────────────────────────────────────────
+// Route: Health Check
+// ─────────────────────────────────────────────────────────────────────────────
 app.get('/health', (req, res) => res.json({ status: 'ok', environment: 'BypassMode' }));
 
 const PORT = 3000;
@@ -504,4 +251,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = { calculateBMR, calculateTDEE, searchHealthContext, getEmbedding };
+module.exports = { app };
