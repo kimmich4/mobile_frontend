@@ -47,6 +47,8 @@ class UserModel {
   final int? currentStreak;
   final double? currentWeightKg;
   final double? goalWeightKg;
+  // Progress Tracking Weight — entered by user in the Progress screen (separate from signup weightKg)
+  final double? trackedWeightKg;
   final Map<int, List<int>> completedMeals; // Map of dayIndex -> List of meal indices
   final Map<int, List<int>> completedHomeExercises; // Map of dayIndex -> List of home exercise IDs
   final Map<int, List<int>> completedGymExercises; // Map of dayIndex -> List of gym exercise IDs
@@ -102,6 +104,7 @@ class UserModel {
     this.currentStreak,
     this.currentWeightKg,
     this.goalWeightKg,
+    this.trackedWeightKg,
     this.completedMeals = const {},
     this.completedHomeExercises = const {},
     this.completedGymExercises = const {},
@@ -183,6 +186,7 @@ class UserModel {
     int? currentStreak,
     double? currentWeightKg,
     double? goalWeightKg,
+    double? trackedWeightKg,
     Map<int, List<int>>? completedMeals,
     Map<int, List<int>>? completedHomeExercises,
     Map<int, List<int>>? completedGymExercises,
@@ -223,6 +227,7 @@ class UserModel {
       currentStreak: currentStreak ?? this.currentStreak,
       currentWeightKg: currentWeightKg ?? this.currentWeightKg,
       goalWeightKg: goalWeightKg ?? this.goalWeightKg,
+      trackedWeightKg: trackedWeightKg ?? this.trackedWeightKg,
       completedMeals: completedMeals ?? this.completedMeals,
       completedHomeExercises: completedHomeExercises ?? this.completedHomeExercises,
       completedGymExercises: completedGymExercises ?? this.completedGymExercises,
@@ -271,6 +276,7 @@ class UserModel {
       'currentStreak': currentStreak,
       'currentWeightKg': currentWeightKg,
       'goalWeightKg': goalWeightKg,
+      'trackedWeightKg': trackedWeightKg,
       // Convert map keys to string for JSON
       'completedMeals': completedMeals.map((k, v) => MapEntry(k.toString(), v)),
       'completedHomeExercises': completedHomeExercises.map((k, v) => MapEntry(k.toString(), v)),
@@ -318,6 +324,7 @@ class UserModel {
       currentStreak: json['currentStreak'] as int?,
       currentWeightKg: json['currentWeightKg'] as double?,
       goalWeightKg: json['goalWeightKg'] as double?,
+      trackedWeightKg: (json['trackedWeightKg'] as num?)?.toDouble(),
       completedMeals: _parseMap(json['completedMeals']),
       completedHomeExercises: _parseMap(json['completedHomeExercises']),
       completedGymExercises: _parseMap(json['completedGymExercises']),

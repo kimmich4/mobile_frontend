@@ -6,6 +6,7 @@ class ProgressStats {
   final String caloriesPeriod;   // e.g., 'burned/day'
   final double toGoalKg;
   final String toGoalTime;       // e.g., '~8 weeks'
+  final String toGoalLabel;      // e.g., 'To Lose' or 'To Gain'
   final int workoutsCompleted;
   final int workoutsGoal;
 
@@ -16,6 +17,7 @@ class ProgressStats {
     required this.caloriesPeriod,
     required this.toGoalKg,
     required this.toGoalTime,
+    required this.toGoalLabel,
     required this.workoutsCompleted,
     required this.workoutsGoal,
   });
@@ -25,10 +27,12 @@ class ProgressStats {
 
 /// Represents weight progress data point
 class WeightDataPoint {
-  final String day; // 'Mon', 'Tue', etc.
+  final String day;    // label: 'Mon', '5', 'Jan', etc. — varies by period
   final double weight;
+  final DateTime? date; // actual date of the log entry (nullable for backward compat)
+  final double x;      // NEW: explicit X position on the graph to maintain gaps
 
-  WeightDataPoint({required this.day, required this.weight});
+  WeightDataPoint({required this.day, required this.weight, this.date, required this.x});
 }
 
 /// Represents calorie data for a single day

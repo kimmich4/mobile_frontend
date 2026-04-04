@@ -11,9 +11,8 @@ import '../data/repositories/user_repository.dart';
 import '../data/repositories/diet_repository.dart';
 import '../data/repositories/workout_repository.dart';
 
-/// ViewModel for Progress Tracking Screen — computes real progress data
-/// Uses real-time user stream so data updates automatically when user
-/// completes exercises or meals.
+/// ViewModel for Progress Tracking Screen — computes real progress data.
+/// Reads weight logs and daily logs from Firebase for each period.
 class ProgressTrackingViewModel extends BaseViewModel {
   final ProgressRepository _progressRepository;
   final UserRepository _userRepository;
@@ -33,67 +32,66 @@ class ProgressTrackingViewModel extends BaseViewModel {
         _userRepository = userRepository ?? UserRepository(),
         _dietRepository = dietRepository ?? DietRepository(),
         _workoutRepository = workoutRepository ?? WorkoutRepository() {
-    // Auto-initialize with auth listener
     _initAuthListener();
   }
 
   int _selectedPeriod = 0; // 0: Week, 1: Month, 2: Year
-
   int get selectedPeriod => _selectedPeriod;
 
   String? get userId => FirebaseAuth.instance.currentUser?.uid;
 
-  /// Get current period type
+  /// Current period enum
   ProgressPeriod get currentPeriod {
     switch (_selectedPeriod) {
-      case 0:
-        return ProgressPeriod.week;
-      case 1:
-        return ProgressPeriod.month;
-      case 2:
-        return ProgressPeriod.year;
-      default:
-        return ProgressPeriod.week;
+      case 0:  return ProgressPeriod.week;
+      case 1:  return ProgressPeriod.month;
+      case 2:  return ProgressPeriod.year;
+      default: return ProgressPeriod.week;
     }
   }
 
-  // Stats data
+  // ── State ──────────────────────────────────────────────────────────────
+
   ProgressStats? _stats;
   ProgressStats? get stats => _stats;
 
-  // User data for computing dynamic subtitles
   UserModel? _currentUser;
-
-  // Plans for calorie computation
   DietPlan? _dietPlan;
   WorkoutPlan? _homeWorkout;
   WorkoutPlan? _gymWorkout;
 
-  // Weight progress data
+  // Weight chart — real daily logs from Firebase
   final List<WeightDataPoint> weightData = [];
 
-  // Calories data
+  // Calories chart — real Firebase dailyLogs, period-aware
   final List<CalorieDataPoint> caloriesData = [];
 
-  // Consistency data
+  // Consistency (weekly workout streak)
   ConsistencyData _consistencyData = ConsistencyData(days: []);
   ConsistencyData get consistencyData => _consistencyData;
 
-  /// Dynamic subtitle for weight progress
+  // Whether a weight save is in progress (for Progress screen log-weight card)
+  bool _isSavingWeight = false;
+  bool get isSavingWeight => _isSavingWeight;
+
+  // ── Computed getters ────────────────────────────────────────────────────
+
+  /// Subtitle for weight chart — shows period delta from real stats
   String get weightProgressSubtitle {
-    if (_currentUser == null) return '';
-    final initial = _currentUser!.weightKg;
-    final current = _currentUser!.currentWeightKg;
-    if (initial != null && current != null) {
-      final diff = current - initial;
-      final sign = diff >= 0 ? '+' : '';
-      final periodLabel = currentPeriod.displayName.toLowerCase();
-      return '$sign${diff.toStringAsFixed(1)} kg this $periodLabel';
-    }
-    return 'No weight data yet';
+    if (_stats == null) return '';
+    final lost = _stats!.weightLostKg;
+    final direction = _stats!.weightLostPeriod.contains('gained') ? '+' : '-';
+    if (lost == 0) return 'No change this ${currentPeriod.displayName.toLowerCase()}';
+    return '$direction${lost.toStringAsFixed(1)} kg ${currentPeriod.displayName.toLowerCase()}';
   }
 
-  /// Dynamic subtitle for workout consistency
+  /// Most recent weight logged in the Progress screen (new field, separate)
+  double? get latestTrackedWeight => _currentUser?.trackedWeightKg;
+
+  /// Original signup weight (unchanged)
+  double? get signupWeight => _currentUser?.weightKg;
+
+  /// Subtitle for workout consistency section
   String get consistencySubtitle {
     final completed = _consistencyData.days.where((d) => d.isCompleted).length;
     final total = _consistencyData.days.length;
@@ -102,26 +100,20 @@ class ProgressTrackingViewModel extends BaseViewModel {
     return '$completed/$total days · ${(rate * 100).round()}% completion';
   }
 
-  /// Goal estimate display
-  String get goalEstimate {
-    if (_stats == null) return '';
-    return _stats!.toGoalTime;
-  }
+  String get goalEstimate => _stats?.toGoalTime ?? '';
 
-  /// Auto-initialize by listening to auth state
+  // ── Auth + stream setup ─────────────────────────────────────────────────
+
   void _initAuthListener() {
     _authSubscription = FirebaseAuth.instance.authStateChanges().listen((user) {
       _userSubscription?.cancel();
       _currentUser = null;
 
       if (user != null) {
-        // Listen to user doc for real-time updates
         _userSubscription = _userRepository.getUserStream(user.uid).listen((userModel) {
           _currentUser = userModel;
-          // Recompute progress whenever user data changes
           _recomputeProgress();
         });
-        // Fetch plans once
         _loadPlans(user.uid);
       } else {
         _stats = null;
@@ -133,125 +125,133 @@ class ProgressTrackingViewModel extends BaseViewModel {
     });
   }
 
-  /// Load workout and diet plans
   Future<void> _loadPlans(String uid) async {
     try {
       _dietPlan = await _dietRepository.getDietPlan(uid);
       _homeWorkout = await _workoutRepository.getWorkoutPlan(uid, 'home_workout');
       _gymWorkout = await _workoutRepository.getWorkoutPlan(uid, 'gym_workout');
-      // Recompute after plans loaded
       _recomputeProgress();
-    } catch (e) {
-      // Plans not available yet — will show empty state
-    }
+    } catch (_) {}
   }
 
-  /// Recompute all progress data from current user + plans
+  // ── Core recompute — now fully Firebase-backed and period-aware ──────────
+
   Future<void> _recomputeProgress() async {
     if (_currentUser == null || userId == null) return;
 
     try {
-      // 1. Compute stats dynamically from real data
+      // 1. Compute period-aware stats from Firebase
       _stats = await _progressRepository.computeProgressStats(
         userId!,
         _currentUser!,
+        currentPeriod,
         dietPlan: _dietPlan,
         homeWorkout: _homeWorkout,
         gymWorkout: _gymWorkout,
       );
 
-      // 2. Save computed stats to Firebase for persistence
+      // 2. Persist snapshot to Firebase
       await _progressRepository.updateProgressStats(userId!, _stats!);
 
-      // 3. Populate weight chart data from user profile
+      // 3. Weight chart — real daily logs from Firebase (period-aware)
       weightData.clear();
-      weightData.addAll(_progressRepository.getWeightChartData(_currentUser!));
+      weightData.addAll(
+        await _progressRepository.fetchWeightLogsForPeriod(userId!, currentPeriod),
+      );
 
-      // 4. Populate calorie chart data from completed meals/exercises
+      // 4. Calorie chart — real Firebase dailyLogs (period-aware)
       caloriesData.clear();
-      caloriesData.addAll(_progressRepository.getWeeklyCaloriesData(
-        _currentUser!,
-        dietPlan: _dietPlan,
-        homeWorkout: _homeWorkout,
-        gymWorkout: _gymWorkout,
-      ));
+      caloriesData.addAll(
+        await _progressRepository.fetchCaloriesForPeriod(userId!, currentPeriod),
+      );
 
-      // 5. Save daily calorie data to Firebase for history
-      await _saveDailyCaloriesToFirebase();
+      // 5. Save today's calorie data to dailyLogs (only for current week)
+      if (currentPeriod == ProgressPeriod.week) {
+        await _saveTodayCaloriesToFirebase();
+      }
 
-      // 6. Build consistency from actual user doc data (not just dailyLogs)
+      // 6. Build workout consistency from user doc (weekly)
       _buildConsistencyFromUserData();
 
       if (!_initialized) _initialized = true;
       notifyListeners();
-    } catch (e) {
-      // Don't set error during background recomputation
-      // Just notify with what we have
+    } catch (_) {
       notifyListeners();
     }
   }
 
-  /// Save all 7 days of weekly calorie summaries to Firebase dailyLogs
-  Future<void> _saveDailyCaloriesToFirebase() async {
-    if (userId == null) return;
+  /// Saves today's calorie data based on completed exercises/meals (week view only)
+  Future<void> _saveTodayCaloriesToFirebase() async {
+    if (userId == null || _currentUser == null) return;
     try {
-      final now = DateTime.now();
-      // Calculate Monday of the current week
-      final monday = now.subtract(Duration(days: now.weekday - 1));
-      final dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      final today = DateTime.now();
+      final todayStr = today.toIso8601String().split('T').first;
+      final todayWeekday = today.weekday; // 1=Mon..7=Sun
 
-      // Iterate through all 7 days of the current week
-      for (int i = 0; i < 7; i++) {
-        final currentDayDate = monday.add(Duration(days: i));
-        final dateString = currentDayDate.toIso8601String().split('T').first;
-        final dayLabel = dayLabels[i];
-
-        // Find data for this specific day
-        CalorieDataPoint? dayData;
-        for (final point in caloriesData) {
-          if (point.day == dayLabel) {
-            dayData = point;
-            break;
+      // Burned from completed exercises today
+      int burned = 0;
+      if (_homeWorkout != null) {
+        final completedHome = _currentUser!.completedHomeExercises[todayWeekday] ?? [];
+        try {
+          final dayPlan = _homeWorkout!.days.firstWhere((d) => d.day == todayWeekday);
+          for (final ex in dayPlan.exercises) {
+            if (completedHome.contains(ex.id)) burned += ex.calories;
           }
-        }
-
-        if (dayData != null) {
-          await FirebaseFirestore.instance
-              .collection('users')
-              .doc(userId!)
-              .collection('dailyLogs')
-              .doc(dateString)
-              .set({
-            'caloriesBurned': dayData.burned,
-            'caloriesConsumed': dayData.consumed,
-            'dayName': dayLabel, // Added for consistency
-            'updatedAt': FieldValue.serverTimestamp(),
-          }, SetOptions(merge: true));
-        }
+        } catch (_) {}
       }
-    } catch (_) {
-      // Non-critical — don't block the UI
-    }
+      if (_gymWorkout != null) {
+        final completedGym = _currentUser!.completedGymExercises[todayWeekday] ?? [];
+        try {
+          final dayPlan = _gymWorkout!.days.firstWhere((d) => d.day == todayWeekday);
+          for (final ex in dayPlan.exercises) {
+            if (completedGym.contains(ex.id)) burned += ex.calories;
+          }
+        } catch (_) {}
+      }
+
+      // Consumed from completed meals today (diet plan uses 0-based day index)
+      int consumed = 0;
+      if (_dietPlan != null) {
+        final completedMealIndices = _currentUser!.completedMeals[todayWeekday - 1] ?? [];
+        try {
+          final dayDiet = _dietPlan!.days.firstWhere((d) => d.day == todayWeekday);
+          for (int i = 0; i < dayDiet.meals.length; i++) {
+            if (completedMealIndices.contains(i)) consumed += dayDiet.meals[i].totalCalories;
+          }
+        } catch (_) {}
+      }
+
+      // Whether any workout was done today
+      final hasHomeWorkout = _currentUser!.completedHomeExercises[todayWeekday]?.isNotEmpty ?? false;
+      final hasGymWorkout = _currentUser!.completedGymExercises[todayWeekday]?.isNotEmpty ?? false;
+
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId!)
+          .collection('dailyLogs')
+          .doc(todayStr)
+          .set({
+        'caloriesBurned': burned,
+        'caloriesConsumed': consumed,
+        'workoutCompleted': hasHomeWorkout || hasGymWorkout,
+        'updatedAt': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
+    } catch (_) {}
   }
 
-  /// Build consistency data from the actual user doc (completedExercises)
-  /// instead of relying only on dailyLogs
+  /// Build consistency data from user doc (weekly exercise completions)
   void _buildConsistencyFromUserData() {
     if (_currentUser == null) return;
-
-    final dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    final todayWeekday = DateTime.now().weekday; // 1=Mon..7=Sun
+    const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
     final List<WorkoutDayStatus> days = [];
     for (int i = 0; i < 7; i++) {
       final dayNumber = i + 1;
       bool isCompleted = false;
 
-      // Check all days for completions (past, present, or future entries)
       final homeCompleted = _currentUser!.completedHomeExercises[dayNumber]?.isNotEmpty ?? false;
       final gymCompleted = _currentUser!.completedGymExercises[dayNumber]?.isNotEmpty ?? false;
 
-      // Also check if ALL exercises for the day are done (true completion)
       if (homeCompleted || gymCompleted) {
         bool allHomeDone = true;
         bool allGymDone = true;
@@ -262,7 +262,7 @@ class ProgressTrackingViewModel extends BaseViewModel {
             final completedIds = _currentUser!.completedHomeExercises[dayNumber] ?? [];
             allHomeDone = dayPlan.exercises.every((ex) => completedIds.contains(ex.id));
           } catch (_) {
-            allHomeDone = true; // No plan for this day = consider done
+            allHomeDone = true;
           }
         }
 
@@ -272,11 +272,10 @@ class ProgressTrackingViewModel extends BaseViewModel {
             final completedIds = _currentUser!.completedGymExercises[dayNumber] ?? [];
             allGymDone = dayPlan.exercises.every((ex) => completedIds.contains(ex.id));
           } catch (_) {
-            allGymDone = true; // No plan for this day = consider done
+            allGymDone = true;
           }
         }
 
-        // Mark completed if ALL exercises in at least one plan type are done
         isCompleted = allHomeDone || allGymDone;
       }
 
@@ -286,14 +285,14 @@ class ProgressTrackingViewModel extends BaseViewModel {
     _consistencyData = ConsistencyData(days: days);
   }
 
-  /// Initialize — called when screen is first displayed
+  // ── Public API ──────────────────────────────────────────────────────────
+
   Future<void> init() async {
     if (!_initialized) {
       await fetchProgressData();
     }
   }
 
-  /// Fetch all progress data (manual refresh)
   Future<void> fetchProgressData() async {
     if (userId == null) return;
 
@@ -301,19 +300,15 @@ class ProgressTrackingViewModel extends BaseViewModel {
     clearError();
 
     try {
-      // Fetch user profile
       _currentUser = await _userRepository.getUserProfile(userId!);
       if (_currentUser == null) {
         setLoading(false);
         return;
       }
-
-      // Fetch plans
       _dietPlan = await _dietRepository.getDietPlan(userId!);
       _homeWorkout = await _workoutRepository.getWorkoutPlan(userId!, 'home_workout');
       _gymWorkout = await _workoutRepository.getWorkoutPlan(userId!, 'gym_workout');
 
-      // Recompute everything
       await _recomputeProgress();
     } catch (e) {
       setError('Failed to load progress data: $e');
@@ -322,11 +317,46 @@ class ProgressTrackingViewModel extends BaseViewModel {
     }
   }
 
-  /// Set selected period and re-fetch data
+  /// Switch period and immediately reload all data from Firebase
   void setSelectedPeriod(int period) {
+    if (_selectedPeriod == period) return;
     _selectedPeriod = period;
-    notifyListeners();
+    notifyListeners(); // show loading immediately
     fetchProgressData();
+  }
+
+  /// Log a new weight entry from the Progress Tracking screen.
+  /// Saves `trackedWeightKg` to the user doc AND appends to `weightLogs`.
+  /// Does NOT touch existing `weightKg` or `currentWeightKg` fields.
+  Future<void> logNewWeight(double newWeight) async {
+    if (userId == null) return;
+    _isSavingWeight = true;
+    notifyListeners();
+    try {
+      // 1. Update user document
+      await _userRepository.updateFields(userId!, {'trackedWeightKg': newWeight});
+
+      // 2. Append to weightLogs history
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId!)
+          .collection('weightLogs')
+          .add({
+        'trackedWeightKg': newWeight,
+        'loggedAt': FieldValue.serverTimestamp(),
+      });
+
+      // 3. Optimistic local update + recompute
+      if (_currentUser != null) {
+        _currentUser = _currentUser!.copyWith(trackedWeightKg: newWeight);
+        await _recomputeProgress();
+      }
+    } catch (e) {
+      setError('Failed to save weight: $e');
+    } finally {
+      _isSavingWeight = false;
+      notifyListeners();
+    }
   }
 
   @override
