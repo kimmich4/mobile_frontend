@@ -20,18 +20,21 @@ class ProgressRepository {
   final FirebaseFirestore _firestore;
 
   ProgressRepository({FirebaseFirestore? firestore})
-      : _firestore = firestore ?? FirebaseFirestore.instance;
+    : _firestore = firestore ?? FirebaseFirestore.instance;
 
   // ─── Firestore collection helpers ───────────────────────────────────────
 
-  CollectionReference<Map<String, dynamic>> _getProgressCollection(String userId) =>
-      _firestore.collection('users').doc(userId).collection('progress');
+  CollectionReference<Map<String, dynamic>> _getProgressCollection(
+    String userId,
+  ) => _firestore.collection('users').doc(userId).collection('progress');
 
-  CollectionReference<Map<String, dynamic>> _getDailyLogsCollection(String userId) =>
-      _firestore.collection('users').doc(userId).collection('dailyLogs');
+  CollectionReference<Map<String, dynamic>> _getDailyLogsCollection(
+    String userId,
+  ) => _firestore.collection('users').doc(userId).collection('dailyLogs');
 
-  CollectionReference<Map<String, dynamic>> _getWeightLogsCollection(String userId) =>
-      _firestore.collection('users').doc(userId).collection('weightLogs');
+  CollectionReference<Map<String, dynamic>> _getWeightLogsCollection(
+    String userId,
+  ) => _firestore.collection('users').doc(userId).collection('weightLogs');
 
   // ─── Period date-range helper ────────────────────────────────────────────
 
@@ -44,18 +47,27 @@ class ProgressRepository {
         // Monday 00:00 → Sunday 23:59:59
         final monday = now.subtract(Duration(days: now.weekday - 1));
         final start = DateTime(monday.year, monday.month, monday.day);
-        final end = start.add(const Duration(days: 6, hours: 23, minutes: 59, seconds: 59));
+        final end = start.add(
+          const Duration(days: 6, hours: 23, minutes: 59, seconds: 59),
+        );
         return _DateRange(start, end);
 
       case ProgressPeriod.month:
         final start = DateTime(now.year, now.month, 1);
-        final end = DateTime(now.year, now.month + 1, 1)
-            .subtract(const Duration(seconds: 1));
+        final end = DateTime(
+          now.year,
+          now.month + 1,
+          1,
+        ).subtract(const Duration(seconds: 1));
         return _DateRange(start, end);
 
       case ProgressPeriod.year:
         final start = DateTime(now.year, 1, 1);
-        final end = DateTime(now.year + 1, 1, 1).subtract(const Duration(seconds: 1));
+        final end = DateTime(
+          now.year + 1,
+          1,
+          1,
+        ).subtract(const Duration(seconds: 1));
         return _DateRange(start, end);
     }
   }
@@ -68,100 +80,144 @@ class ProgressRepository {
   /// Month → one point per logged day (x-label = day-of-month number).
   /// Year  → one point per month that has logs (x-label = 'Jan', 'Feb', …).
   Future<List<WeightDataPoint>> fetchWeightLogsForPeriod(
-      String userId, ProgressPeriod period) async {
+    String userId,
+    ProgressPeriod period,
+  ) async {
     try {
       final range = _getPeriodDateRange(period);
 
-      final snapshot = await _getWeightLogsCollection(userId)
-          .where('loggedAt', isGreaterThanOrEqualTo: Timestamp.fromDate(range.start))
-          .where('loggedAt', isLessThanOrEqualTo: Timestamp.fromDate(range.end))
-          .orderBy('loggedAt')
-          .get();
+      final snapshot =
+          await _getWeightLogsCollection(userId)
+              .where(
+                'loggedAt',
+                isGreaterThanOrEqualTo: Timestamp.fromDate(range.start),
+              )
+              .where(
+                'loggedAt',
+                isLessThanOrEqualTo: Timestamp.fromDate(range.end),
+              )
+              .orderBy('loggedAt')
+              .get();
 
       if (snapshot.docs.isEmpty) return [];
 
-      // De-duplicate: keep LATEST entry per calendar day
-      final Map<String, _RawWeightLog> byDay = {};
-      for (final doc in snapshot.docs) {
-        final data = doc.data();
-        final ts = data['loggedAt'];
-        if (ts == null) continue;
-        final loggedAt = (ts as Timestamp).toDate();
-        final dayKey = loggedAt.toIso8601String().split('T').first; // YYYY-MM-DD
-        final weight = (data['trackedWeightKg'] as num?)?.toDouble();
-        if (weight == null || weight <= 0) continue;
-        byDay[dayKey] = _RawWeightLog(date: loggedAt, weight: weight);
-      }
-
-      if (byDay.isEmpty) return [];
-
       switch (period) {
         case ProgressPeriod.week:
-          return _buildWeeklyWeightPoints(byDay);
+          return _buildAllWeeklyWeightPoints(snapshot.docs, range.start);
         case ProgressPeriod.month:
-          return _buildMonthlyWeightPoints(byDay);
+          return _buildAllMonthlyWeightPoints(snapshot.docs, range.start);
         case ProgressPeriod.year:
-          return _buildYearlyWeightPoints(byDay);
+          return _buildAllYearlyWeightPoints(snapshot.docs, range.start);
       }
     } catch (_) {
       return [];
     }
   }
 
-  /// Week: fills Mon–Sun slots; days without a log are skipped (no data point).
-  List<WeightDataPoint> _buildWeeklyWeightPoints(Map<String, _RawWeightLog> byDay) {
+  List<WeightDataPoint> _buildAllWeeklyWeightPoints(
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> docs,
+    DateTime mondayStart,
+  ) {
     const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-    final now = DateTime.now();
-    final monday = now.subtract(Duration(days: now.weekday - 1));
     final List<WeightDataPoint> points = [];
 
-    for (int i = 0; i < 7; i++) {
-      final day = monday.add(Duration(days: i));
-      final key = day.toIso8601String().split('T').first;
-      final log = byDay[key];
-      if (log != null) {
-        points.add(WeightDataPoint(day: labels[i], weight: log.weight, date: log.date, x: i.toDouble()));
-      }
+    for (final doc in docs) {
+      final data = doc.data();
+      final ts = data['loggedAt'];
+      if (ts == null) continue;
+      final loggedAt = (ts as Timestamp).toDate();
+      final weight = (data['trackedWeightKg'] as num?)?.toDouble();
+      if (weight == null || weight <= 0) continue;
+
+      final diff = loggedAt.difference(mondayStart);
+      final double x = diff.inSeconds / 86400.0;
+      int dayIndex = diff.inDays.clamp(0, 6);
+
+      points.add(
+        WeightDataPoint(
+          day: labels[dayIndex],
+          weight: weight,
+          date: loggedAt,
+          x: x,
+        ),
+      );
     }
     return points;
   }
 
-  /// Month: one point per logged day; x-label = day number as string.
-  List<WeightDataPoint> _buildMonthlyWeightPoints(Map<String, _RawWeightLog> byDay) {
-    final sortedKeys = byDay.keys.toList()..sort();
-    return sortedKeys.map((key) {
-      final log = byDay[key]!;
-      final dayNum = log.date.day;
-      return WeightDataPoint(day: dayNum.toString(), weight: log.weight, date: log.date, x: dayNum.toDouble());
-    }).toList();
+  List<WeightDataPoint> _buildAllMonthlyWeightPoints(
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> docs,
+    DateTime monthStart,
+  ) {
+    final List<WeightDataPoint> points = [];
+
+    for (final doc in docs) {
+      final data = doc.data();
+      final ts = data['loggedAt'];
+      if (ts == null) continue;
+      final loggedAt = (ts as Timestamp).toDate();
+      final weight = (data['trackedWeightKg'] as num?)?.toDouble();
+      if (weight == null || weight <= 0) continue;
+
+      final int dayNum = loggedAt.day;
+      final double timeOffset =
+          (loggedAt.hour * 3600 + loggedAt.minute * 60 + loggedAt.second) /
+          86400.0;
+      final double x = dayNum + timeOffset;
+
+      points.add(
+        WeightDataPoint(
+          day: dayNum.toString(),
+          weight: weight,
+          date: loggedAt,
+          x: x,
+        ),
+      );
+    }
+    return points;
   }
 
-  /// Year: aggregate logs into 12 monthly averages; skips months with no data.
-  List<WeightDataPoint> _buildYearlyWeightPoints(Map<String, _RawWeightLog> byDay) {
+  List<WeightDataPoint> _buildAllYearlyWeightPoints(
+    List<QueryDocumentSnapshot<Map<String, dynamic>>> docs,
+    DateTime yearStart,
+  ) {
     const monthLabels = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
-
-    // Group by month
-    final Map<int, List<double>> byMonth = {};
-    for (final log in byDay.values) {
-      final m = log.date.month; // 1-12
-      byMonth.putIfAbsent(m, () => []).add(log.weight);
-    }
-
     final List<WeightDataPoint> points = [];
-    for (int m = 1; m <= 12; m++) {
-      final vals = byMonth[m];
-      if (vals != null && vals.isNotEmpty) {
-        final avg = vals.reduce((a, b) => a + b) / vals.length;
-        points.add(WeightDataPoint(
+
+    for (final doc in docs) {
+      final data = doc.data();
+      final ts = data['loggedAt'];
+      if (ts == null) continue;
+      final loggedAt = (ts as Timestamp).toDate();
+      final weight = (data['trackedWeightKg'] as num?)?.toDouble();
+      if (weight == null || weight <= 0) continue;
+
+      final int m = loggedAt.month;
+      final int d = loggedAt.day;
+      final double fraction = (d - 1) / 30.0;
+      final double x = m + fraction.clamp(0.0, 0.99);
+
+      points.add(
+        WeightDataPoint(
           day: monthLabels[m - 1],
-          weight: double.parse(avg.toStringAsFixed(1)),
-          date: DateTime(DateTime.now().year, m, 15),
-          x: m.toDouble()
-        ));
-      }
+          weight: weight,
+          date: loggedAt,
+          x: x,
+        ),
+      );
     }
     return points;
   }
@@ -174,15 +230,21 @@ class ProgressRepository {
   /// Month → 4-5 weekly  bars  (W1–W4/W5, averaged).
   /// Year  → 12 monthly  bars  (Jan–Dec, averaged per day).
   Future<List<CalorieDataPoint>> fetchCaloriesForPeriod(
-      String userId, ProgressPeriod period) async {
+    String userId,
+    ProgressPeriod period,
+  ) async {
     try {
       final range = _getPeriodDateRange(period);
 
       // dailyLogs docs use YYYY-MM-DD as ID — range query works directly
-      final snapshot = await _getDailyLogsCollection(userId)
-          .where(FieldPath.documentId, isGreaterThanOrEqualTo: range.startStr)
-          .where(FieldPath.documentId, isLessThanOrEqualTo: range.endStr)
-          .get();
+      final snapshot =
+          await _getDailyLogsCollection(userId)
+              .where(
+                FieldPath.documentId,
+                isGreaterThanOrEqualTo: range.startStr,
+              )
+              .where(FieldPath.documentId, isLessThanOrEqualTo: range.endStr)
+              .get();
 
       // Build map: dateStr → (burned, consumed)
       final Map<String, _RawCalorieLog> byDate = {};
@@ -208,7 +270,9 @@ class ProgressRepository {
 
   /// Week: 7 daily bars Mon–Sun.
   List<CalorieDataPoint> _buildWeeklyCaloriePoints(
-      Map<String, _RawCalorieLog> byDate, DateTime monday) {
+    Map<String, _RawCalorieLog> byDate,
+    DateTime monday,
+  ) {
     const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     return List.generate(7, (i) {
       final day = monday.add(Duration(days: i));
@@ -224,7 +288,9 @@ class ProgressRepository {
 
   /// Month: group days into ISO weeks within the month. Returns W1–W4 (or W5).
   List<CalorieDataPoint> _buildMonthlyCaloriePoints(
-      Map<String, _RawCalorieLog> byDate, DateTime monthStart) {
+    Map<String, _RawCalorieLog> byDate,
+    DateTime monthStart,
+  ) {
     // Determine how many weeks the month spans
     final Map<int, List<_RawCalorieLog>> byWeek = {};
     for (final entry in byDate.entries) {
@@ -240,18 +306,42 @@ class ProgressRepository {
     final weekCount = byWeek.keys.reduce((a, b) => a > b ? a : b) + 1;
     for (int w = 0; w < weekCount; w++) {
       final logs = byWeek[w] ?? [];
-      final burned = logs.isEmpty ? 0 : (logs.map((l) => l.burned).reduce((a, b) => a + b) / logs.length).round();
-      final consumed = logs.isEmpty ? 0 : (logs.map((l) => l.consumed).reduce((a, b) => a + b) / logs.length).round();
-      points.add(CalorieDataPoint(day: 'W${w + 1}', burned: burned, consumed: consumed));
+      final burned =
+          logs.isEmpty
+              ? 0
+              : (logs.map((l) => l.burned).reduce((a, b) => a + b) /
+                      logs.length)
+                  .round();
+      final consumed =
+          logs.isEmpty
+              ? 0
+              : (logs.map((l) => l.consumed).reduce((a, b) => a + b) /
+                      logs.length)
+                  .round();
+      points.add(
+        CalorieDataPoint(day: 'W${w + 1}', burned: burned, consumed: consumed),
+      );
     }
     return points;
   }
 
   /// Year: 12 monthly bars — average burned/consumed per logged day in each month.
-  List<CalorieDataPoint> _buildYearlyCaloriePoints(Map<String, _RawCalorieLog> byDate) {
+  List<CalorieDataPoint> _buildYearlyCaloriePoints(
+    Map<String, _RawCalorieLog> byDate,
+  ) {
     const monthLabels = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
     ];
 
     final Map<int, List<_RawCalorieLog>> byMonth = {};
@@ -263,9 +353,23 @@ class ProgressRepository {
     return List.generate(12, (i) {
       final m = i + 1;
       final logs = byMonth[m] ?? [];
-      final burned = logs.isEmpty ? 0 : (logs.map((l) => l.burned).reduce((a, b) => a + b) / logs.length).round();
-      final consumed = logs.isEmpty ? 0 : (logs.map((l) => l.consumed).reduce((a, b) => a + b) / logs.length).round();
-      return CalorieDataPoint(day: monthLabels[i], burned: burned, consumed: consumed);
+      final burned =
+          logs.isEmpty
+              ? 0
+              : (logs.map((l) => l.burned).reduce((a, b) => a + b) /
+                      logs.length)
+                  .round();
+      final consumed =
+          logs.isEmpty
+              ? 0
+              : (logs.map((l) => l.consumed).reduce((a, b) => a + b) /
+                      logs.length)
+                  .round();
+      return CalorieDataPoint(
+        day: monthLabels[i],
+        burned: burned,
+        consumed: consumed,
+      );
     });
   }
 
@@ -285,21 +389,33 @@ class ProgressRepository {
 
     // ── 1. Weight calculations from Firebase weightLogs ──
     final initialWeight = user.weightKg ?? 0.0;
-    double currentWeight = user.trackedWeightKg ?? user.currentWeightKg ?? initialWeight;
+    double currentWeight =
+        user.trackedWeightKg ?? user.currentWeightKg ?? initialWeight;
     double periodStartWeight = initialWeight;
 
     try {
       // Fetch logs sorted ascending for this period
-      final weightSnap = await _getWeightLogsCollection(userId)
-          .where('loggedAt', isGreaterThanOrEqualTo: Timestamp.fromDate(range.start))
-          .where('loggedAt', isLessThanOrEqualTo: Timestamp.fromDate(range.end))
-          .orderBy('loggedAt')
-          .get();
+      final weightSnap =
+          await _getWeightLogsCollection(userId)
+              .where(
+                'loggedAt',
+                isGreaterThanOrEqualTo: Timestamp.fromDate(range.start),
+              )
+              .where(
+                'loggedAt',
+                isLessThanOrEqualTo: Timestamp.fromDate(range.end),
+              )
+              .orderBy('loggedAt')
+              .get();
 
       if (weightSnap.docs.isNotEmpty) {
-        final firstLog = (weightSnap.docs.first.data()['trackedWeightKg'] as num?)?.toDouble();
-        final lastLog = (weightSnap.docs.last.data()['trackedWeightKg'] as num?)?.toDouble();
-        
+        final firstLog =
+            (weightSnap.docs.first.data()['trackedWeightKg'] as num?)
+                ?.toDouble();
+        final lastLog =
+            (weightSnap.docs.last.data()['trackedWeightKg'] as num?)
+                ?.toDouble();
+
         // Always use first log of the period as baseline
         if (firstLog != null) periodStartWeight = firstLog;
         if (lastLog != null) currentWeight = lastLog;
@@ -316,14 +432,22 @@ class ProgressRepository {
     int avgCaloriesBurned = 0;
     if (period == ProgressPeriod.week) {
       // Always calculate current week from raw user data (100% accurate)
-      avgCaloriesBurned = _computeWeeklyAvgCaloriesFromPlan(user, homeWorkout, gymWorkout);
+      avgCaloriesBurned = _computeWeeklyAvgCaloriesFromPlan(
+        user,
+        homeWorkout,
+        gymWorkout,
+      );
     } else {
       // Calculate month/year from dailyLogs
       try {
-        final calSnap = await _getDailyLogsCollection(userId)
-            .where(FieldPath.documentId, isGreaterThanOrEqualTo: range.startStr)
-            .where(FieldPath.documentId, isLessThanOrEqualTo: range.endStr)
-            .get();
+        final calSnap =
+            await _getDailyLogsCollection(userId)
+                .where(
+                  FieldPath.documentId,
+                  isGreaterThanOrEqualTo: range.startStr,
+                )
+                .where(FieldPath.documentId, isLessThanOrEqualTo: range.endStr)
+                .get();
 
         if (calSnap.docs.isNotEmpty) {
           int totalBurned = 0;
@@ -331,7 +455,8 @@ class ProgressRepository {
             totalBurned += (doc.data()['caloriesBurned'] as num?)?.toInt() ?? 0;
           }
           final daysElapsed = DateTime.now().difference(range.start).inDays + 1;
-          avgCaloriesBurned = daysElapsed > 0 ? (totalBurned / daysElapsed).round() : 0;
+          avgCaloriesBurned =
+              daysElapsed > 0 ? (totalBurned / daysElapsed).round() : 0;
         }
       } catch (_) {}
     }
@@ -340,13 +465,21 @@ class ProgressRepository {
     int workoutsCompleted = 0;
     if (period == ProgressPeriod.week) {
       // Calculate week workout count cleanly from user struct
-      workoutsCompleted = _computeWeeklyWorkoutCount(user, homeWorkout, gymWorkout);
+      workoutsCompleted = _computeWeeklyWorkoutCount(
+        user,
+        homeWorkout,
+        gymWorkout,
+      );
     } else {
       try {
-        final workSnap = await _getDailyLogsCollection(userId)
-            .where(FieldPath.documentId, isGreaterThanOrEqualTo: range.startStr)
-            .where(FieldPath.documentId, isLessThanOrEqualTo: range.endStr)
-            .get();
+        final workSnap =
+            await _getDailyLogsCollection(userId)
+                .where(
+                  FieldPath.documentId,
+                  isGreaterThanOrEqualTo: range.startStr,
+                )
+                .where(FieldPath.documentId, isLessThanOrEqualTo: range.endStr)
+                .get();
 
         for (final doc in workSnap.docs) {
           final completed = doc.data()['workoutCompleted'] as bool? ?? false;
@@ -380,9 +513,10 @@ class ProgressRepository {
     }
 
     // ── 5. Period label for weight card ──
-    final weightLostPeriod = weightLost >= 0 
-        ? 'lost this ${period.displayName.toLowerCase()}' 
-        : 'gained this ${period.displayName.toLowerCase()}';
+    final weightLostPeriod =
+        weightLost >= 0
+            ? 'lost this ${period.displayName.toLowerCase()}'
+            : 'gained this ${period.displayName.toLowerCase()}';
 
     return ProgressStats(
       weightLostKg: double.parse(weightLost.abs().toStringAsFixed(1)),
@@ -399,7 +533,10 @@ class ProgressRepository {
 
   /// Weekly calorie computation from the exact plan completion state
   int _computeWeeklyAvgCaloriesFromPlan(
-      UserModel user, WorkoutPlan? homeWorkout, WorkoutPlan? gymWorkout) {
+    UserModel user,
+    WorkoutPlan? homeWorkout,
+    WorkoutPlan? gymWorkout,
+  ) {
     final todayWeekday = DateTime.now().weekday;
     int totalBurnedCals = 0;
 
@@ -423,12 +560,16 @@ class ProgressRepository {
         } catch (_) {}
       }
     }
-    
+
     return todayWeekday > 0 ? (totalBurnedCals / todayWeekday).round() : 0;
   }
 
   /// Weekly workout completion count from exact plan completion state
-  int _computeWeeklyWorkoutCount(UserModel user, WorkoutPlan? homeWorkout, WorkoutPlan? gymWorkout) {
+  int _computeWeeklyWorkoutCount(
+    UserModel user,
+    WorkoutPlan? homeWorkout,
+    WorkoutPlan? gymWorkout,
+  ) {
     int completedDays = 0;
     for (int day = 1; day <= 7; day++) {
       final hasHome = (user.completedHomeExercises[day]?.isNotEmpty ?? false);
@@ -476,7 +617,11 @@ class ProgressRepository {
   }
 
   /// Log a completed workout for a specific day
-  Future<void> logWorkoutCompletion(String userId, String dayName, bool isCompleted) async {
+  Future<void> logWorkoutCompletion(
+    String userId,
+    String dayName,
+    bool isCompleted,
+  ) async {
     try {
       final today = DateTime.now().toIso8601String().split('T').first;
       await _getDailyLogsCollection(userId).doc(today).set({
@@ -497,7 +642,8 @@ class ProgressRepository {
   /// Fetch user's current progress stats snapshot (legacy — kept for backward compat)
   Future<ProgressStats?> getProgressStats(String userId) async {
     try {
-      final doc = await _getProgressCollection(userId).doc('currentStats').get();
+      final doc =
+          await _getProgressCollection(userId).doc('currentStats').get();
       if (doc.exists && doc.data() != null) {
         final data = doc.data()!;
         return ProgressStats(
@@ -531,20 +677,27 @@ class ProgressRepository {
         final key = day.toIso8601String().split('T').first;
         final doc = await _getDailyLogsCollection(userId).doc(key).get();
         if (doc.exists) {
-          logsByDay[dayLabels[i]] = doc.data()?['workoutCompleted'] as bool? ?? false;
+          logsByDay[dayLabels[i]] =
+              doc.data()?['workoutCompleted'] as bool? ?? false;
         }
       }
 
       final todayWeekday = now.weekday;
       return List.generate(7, (i) {
         final dayNumber = i + 1;
-        final isCompleted = dayNumber <= todayWeekday
-            ? (logsByDay[dayLabels[i]] ?? false)
-            : false;
-        return WorkoutDayStatus(dayName: dayLabels[i], isCompleted: isCompleted);
+        final isCompleted =
+            dayNumber <= todayWeekday
+                ? (logsByDay[dayLabels[i]] ?? false)
+                : false;
+        return WorkoutDayStatus(
+          dayName: dayLabels[i],
+          isCompleted: isCompleted,
+        );
       });
     } catch (_) {
-      return dayLabels.map((name) => WorkoutDayStatus(dayName: name, isCompleted: false)).toList();
+      return dayLabels
+          .map((name) => WorkoutDayStatus(dayName: name, isCompleted: false))
+          .toList();
     }
   }
 }

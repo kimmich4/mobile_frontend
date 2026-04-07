@@ -57,7 +57,10 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildHeader(BuildContext context, ProgressTrackingViewModel viewModel) {
+  Widget _buildHeader(
+    BuildContext context,
+    ProgressTrackingViewModel viewModel,
+  ) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 24),
@@ -88,7 +91,11 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                     color: Colors.white.withOpacity(0.10),
                     shape: BoxShape.circle,
                   ),
-                  child: const Icon(Icons.arrow_back, color: Colors.white, size: 20),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
+                    size: 20,
+                  ),
                 ),
               ),
               const Text(
@@ -131,21 +138,31 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildToggleItem(ProgressTrackingViewModel viewModel, String label, int index) {
+  Widget _buildToggleItem(
+    ProgressTrackingViewModel viewModel,
+    String label,
+    int index,
+  ) {
     return Expanded(
       child: GestureDetector(
         onTap: () => viewModel.setSelectedPeriod(index),
         child: Container(
           height: 40,
           decoration: BoxDecoration(
-            color: viewModel.selectedPeriod == index ? const Color(0xFF0FA4AF) : Colors.transparent,
+            color:
+                viewModel.selectedPeriod == index
+                    ? const Color(0xFF0FA4AF)
+                    : Colors.transparent,
             borderRadius: BorderRadius.circular(10),
           ),
           alignment: Alignment.center,
           child: Text(
             label,
             style: TextStyle(
-              color: viewModel.selectedPeriod == index ? Colors.white : const Color(0xFFAFDDE5),
+              color:
+                  viewModel.selectedPeriod == index
+                      ? Colors.white
+                      : const Color(0xFFAFDDE5),
               fontSize: 14,
               fontWeight: FontWeight.w400,
             ),
@@ -155,11 +172,16 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildStatsGrid(BuildContext context, ProgressTrackingViewModel viewModel) {
+  Widget _buildStatsGrid(
+    BuildContext context,
+    ProgressTrackingViewModel viewModel,
+  ) {
     if (viewModel.isLoading) {
-      return const Center(child: CircularProgressIndicator(color: Color(0xFF0FA4AF)));
+      return const Center(
+        child: CircularProgressIndicator(color: Color(0xFF0FA4AF)),
+      );
     }
-    
+
     final stats = viewModel.stats;
     if (stats == null) {
       return Container(
@@ -170,7 +192,11 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
         ),
         child: Column(
           children: [
-            Icon(Icons.analytics_outlined, size: 48, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3)),
+            Icon(
+              Icons.analytics_outlined,
+              size: 48,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+            ),
             const SizedBox(height: 12),
             Text(
               'No progress data yet',
@@ -191,7 +217,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
         ),
       );
     }
-    
+
     return Row(
       children: [
         Expanded(
@@ -199,10 +225,14 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
             children: [
               _buildStatCard(
                 context,
-                stats.weightLostPeriod.contains('gained') ? 'Weight Gained' : 'Weight Lost',
+                stats.weightLostPeriod.contains('gained')
+                    ? 'Weight Gained'
+                    : 'Weight Lost',
                 '${stats.weightLostKg} kg',
                 stats.weightLostPeriod,
-                stats.weightLostPeriod.contains('gained') ? Icons.trending_up : Icons.trending_down,
+                stats.weightLostPeriod.contains('gained')
+                    ? Icons.trending_up
+                    : Icons.trending_down,
                 const [Color(0xFF0FA4AF), Color(0xFF024950)],
               ),
               const SizedBox(height: 16),
@@ -247,13 +277,28 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildStatCard(BuildContext context, String title, String value, String subtitle, IconData icon, List<Color>? gradient, {bool isWhite = false}) {
+  Widget _buildStatCard(
+    BuildContext context,
+    String title,
+    String value,
+    String subtitle,
+    IconData icon,
+    List<Color>? gradient, {
+    bool isWhite = false,
+  }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: isWhite ? Theme.of(context).colorScheme.surface : null,
-        gradient: gradient != null ? LinearGradient(colors: gradient, begin: Alignment.topLeft, end: Alignment.bottomRight) : null,
+        gradient:
+            gradient != null
+                ? LinearGradient(
+                  colors: gradient,
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                )
+                : null,
         borderRadius: BorderRadius.circular(24),
       ),
       child: Column(
@@ -261,13 +306,23 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
         children: [
           Opacity(
             opacity: 0.8,
-            child: Icon(icon, color: isWhite ? Theme.of(context).colorScheme.onSurface : Colors.white, size: 24),
+            child: Icon(
+              icon,
+              color:
+                  isWhite
+                      ? Theme.of(context).colorScheme.onSurface
+                      : Colors.white,
+              size: 24,
+            ),
           ),
           const SizedBox(height: 12),
           Text(
             title,
             style: TextStyle(
-              color: isWhite ? Theme.of(context).colorScheme.onSurface.withOpacity(0.6) : Colors.white.withOpacity(0.9),
+              color:
+                  isWhite
+                      ? Theme.of(context).colorScheme.onSurface.withOpacity(0.6)
+                      : Colors.white.withOpacity(0.9),
               fontSize: 14,
             ),
           ),
@@ -275,7 +330,10 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
           Text(
             value,
             style: TextStyle(
-              color: isWhite ? Theme.of(context).colorScheme.onSurface : Colors.white,
+              color:
+                  isWhite
+                      ? Theme.of(context).colorScheme.onSurface
+                      : Colors.white,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
@@ -284,7 +342,10 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
           Text(
             subtitle,
             style: TextStyle(
-              color: isWhite ? Theme.of(context).colorScheme.primary : Colors.white.withOpacity(0.75),
+              color:
+                  isWhite
+                      ? Theme.of(context).colorScheme.primary
+                      : Colors.white.withOpacity(0.75),
               fontSize: 12,
             ),
           ),
@@ -293,9 +354,13 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildWeightProgressSection(BuildContext context, ProgressTrackingViewModel viewModel) {
+  Widget _buildWeightProgressSection(
+    BuildContext context,
+    ProgressTrackingViewModel viewModel,
+  ) {
     // Determine subtitle icon direction
-    final isGained = viewModel.weightProgressSubtitle.contains('+') ||
+    final isGained =
+        viewModel.weightProgressSubtitle.contains('+') ||
         viewModel.weightProgressSubtitle.contains('gained');
     final subtitleIcon = isGained ? Icons.trending_up : Icons.trending_down;
 
@@ -304,155 +369,199 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
       title: 'Weight Progress',
       subtitle: viewModel.weightProgressSubtitle,
       subtitleIcon: subtitleIcon,
-      child: viewModel.weightData.isEmpty
-          ? _buildEmptyChartState(
-              context,
-              'No weight logs yet',
-              'Tap "Log Today\'s Weight" above to start tracking')
-          : SizedBox(
-                  height: 200,
-                  child: LineChart(
-                    LineChartData(
-                      gridData: FlGridData(
-                        show: true,
-                        drawVerticalLine: false,
-                        horizontalInterval: _getWeightInterval(viewModel),
-                        getDrawingHorizontalLine: (value) => FlLine(
-                          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.06),
-                          strokeWidth: 1,
-                        ),
-                      ),
-                      titlesData: FlTitlesData(
-                        bottomTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            interval: 1,
-                            getTitlesWidget: (value, meta) {
-                              if (value != value.toInt()) return const SizedBox();
-                              final int x = value.toInt();
-                              String label = '';
-                              if (viewModel.selectedPeriod == 0) {
-                                // Week
-                                const wLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-                                if (x >= 0 && x < 7) label = wLabels[x];
-                              } else if (viewModel.selectedPeriod == 1) {
-                                // Month
-                                if (x >= 1 && x <= 31) label = x.toString();
-                                // Only show every 5th day label, plus 1st, to avoid overlap
-                                if (x != 1 && x % 5 != 0) label = '';
-                              } else {
-                                // Year
-                                const yLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-                                if (x >= 1 && x <= 12) label = yLabels[x - 1];
-                                // Only show every 2nd or 3rd month if overlap occurs, but 12 fits usually.
-                              }
-                              
-                              if (label.isEmpty) return const SizedBox();
-                              
-                              return Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: Text(
-                                  label,
-                                  style: TextStyle(
-                                    color: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              );
-                            },
-                            reservedSize: 30,
+      child:
+          viewModel.weightData.isEmpty
+              ? _buildEmptyChartState(
+                context,
+                'No weight logs yet',
+                'Tap "Log Today\'s Weight" above to start tracking',
+              )
+              : SizedBox(
+                height: 200,
+                child: LineChart(
+                  LineChartData(
+                    gridData: FlGridData(
+                      show: true,
+                      drawVerticalLine: false,
+                      horizontalInterval: _getWeightInterval(viewModel),
+                      getDrawingHorizontalLine:
+                          (value) => FlLine(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withOpacity(0.06),
+                            strokeWidth: 1,
                           ),
-                        ),
-                        leftTitles: AxisTitles(
-                          sideTitles: SideTitles(
-                            showTitles: true,
-                            reservedSize: 45,
-                            getTitlesWidget: (value, meta) {
-                              return Text(
-                                '${value.toInt()}',
+                    ),
+                    titlesData: FlTitlesData(
+                      bottomTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          interval: 1,
+                          getTitlesWidget: (value, meta) {
+                            if (value != value.toInt()) return const SizedBox();
+                            final int x = value.toInt();
+                            String label = '';
+                            if (viewModel.selectedPeriod == 0) {
+                              // Week
+                              const wLabels = [
+                                'Mon',
+                                'Tue',
+                                'Wed',
+                                'Thu',
+                                'Fri',
+                                'Sat',
+                                'Sun',
+                              ];
+                              if (x >= 0 && x < 7) label = wLabels[x];
+                            } else if (viewModel.selectedPeriod == 1) {
+                              // Month
+                              if (x >= 1 && x <= 31) label = x.toString();
+                              // Only show every 5th day label, plus 1st, to avoid overlap
+                              if (x != 1 && x % 5 != 0) label = '';
+                            } else {
+                              // Year
+                              const yLabels = [
+                                'Jan',
+                                'Feb',
+                                'Mar',
+                                'Apr',
+                                'May',
+                                'Jun',
+                                'Jul',
+                                'Aug',
+                                'Sep',
+                                'Oct',
+                                'Nov',
+                                'Dec',
+                              ];
+                              if (x >= 1 && x <= 12) label = yLabels[x - 1];
+                              // Only show every 2nd or 3rd month if overlap occurs, but 12 fits usually.
+                            }
+
+                            if (label.isEmpty) return const SizedBox();
+
+                            return Padding(
+                              padding: const EdgeInsets.only(top: 8.0),
+                              child: Text(
+                                label,
                                 style: TextStyle(
-                                  color:
-                                      Theme.of(context).colorScheme.onSurface.withOpacity(0.4),
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface.withOpacity(0.5),
                                   fontSize: 10,
+                                  fontWeight: FontWeight.w600,
                                 ),
-                              );
-                            },
-                          ),
+                              ),
+                            );
+                          },
+                          reservedSize: 30,
                         ),
-                        topTitles:
-                            const AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                        rightTitles:
-                            const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                       ),
-                      borderData: FlBorderData(show: false),
-                      minX: viewModel.selectedPeriod == 0 ? 0 : 1,
-                      maxX: viewModel.selectedPeriod == 0 ? 6 : (viewModel.selectedPeriod == 1 ? 31 : 12),
-                      minY: _getWeightMinY(viewModel),
-                      maxY: _getWeightMaxY(viewModel),
-                      lineBarsData: [
-                        LineChartBarData(
-                          spots: viewModel.weightData.map((d) {
-                            return FlSpot(d.x, d.weight);
-                          }).toList(),
-                          isCurved: true,
-                          curveSmoothness: 0.3,
-                          color: const Color(0xFF0FA4AF),
-                          barWidth: 3,
-                          isStrokeCapRound: true,
-                          dotData: FlDotData(
-                            show: true,
-                            getDotPainter: (spot, percent, barData, index) {
-                              return FlDotCirclePainter(
-                                radius: 4,
-                                color: const Color(0xFF0FA4AF),
-                                strokeWidth: 2,
-                                strokeColor: Colors.white,
-                              );
-                            },
-                          ),
-                          belowBarData: BarAreaData(
-                            show: true,
-                            gradient: LinearGradient(
-                              colors: [
-                                const Color(0xFF0FA4AF).withOpacity(0.3),
-                                const Color(0xFF0FA4AF).withOpacity(0.0),
-                              ],
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                            ),
-                          ),
-                        ),
-                      ],
-                      lineTouchData: LineTouchData(
-                        enabled: viewModel.weightData.length > 1,
-                        touchTooltipData: LineTouchTooltipData(
-                          getTooltipColor: (_) => const Color(0xFF024950),
-                          getTooltipItems: (touchedSpots) {
-                            return touchedSpots.map((spot) {
-                              // Find the data point that matches this exact X coordinate
-                              final point = viewModel.weightData.firstWhere(
-                                (d) => d.x == spot.x,
-                                orElse: () => WeightDataPoint(day: '', weight: 0.0, x: 0.0),
-                              );
-                              
-                              return LineTooltipItem(
-                                '${point.day}\n${spot.y.toStringAsFixed(1)} kg',
-                                const TextStyle(
-                                    color: Colors.white, fontWeight: FontWeight.bold),
-                              );
-                            }).toList();
+                      leftTitles: AxisTitles(
+                        sideTitles: SideTitles(
+                          showTitles: true,
+                          reservedSize: 45,
+                          getTitlesWidget: (value, meta) {
+                            return Text(
+                              '${value.toInt()}',
+                              style: TextStyle(
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.onSurface.withOpacity(0.4),
+                                fontSize: 10,
+                              ),
+                            );
                           },
                         ),
+                      ),
+                      topTitles: const AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
+                      rightTitles: const AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
+                    ),
+                    borderData: FlBorderData(show: false),
+                    minX: viewModel.selectedPeriod == 0 ? 0 : 1,
+                    maxX:
+                        viewModel.selectedPeriod == 0
+                            ? 6.99
+                            : (viewModel.selectedPeriod == 1 ? 31.99 : 12.99),
+                    minY: _getWeightMinY(viewModel),
+                    maxY: _getWeightMaxY(viewModel),
+                    lineBarsData: [
+                      LineChartBarData(
+                        spots:
+                            viewModel.weightData.map((d) {
+                              return FlSpot(d.x, d.weight);
+                            }).toList(),
+                        isCurved: true,
+                        curveSmoothness: 0.3,
+                        color: const Color(0xFF0FA4AF),
+                        barWidth: 3,
+                        isStrokeCapRound: true,
+                        dotData: FlDotData(
+                          show: true,
+                          getDotPainter: (spot, percent, barData, index) {
+                            return FlDotCirclePainter(
+                              radius: 4,
+                              color: const Color(0xFF0FA4AF),
+                              strokeWidth: 2,
+                              strokeColor: Colors.white,
+                            );
+                          },
+                        ),
+                        belowBarData: BarAreaData(
+                          show: true,
+                          gradient: LinearGradient(
+                            colors: [
+                              const Color(0xFF0FA4AF).withOpacity(0.3),
+                              const Color(0xFF0FA4AF).withOpacity(0.0),
+                            ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                        ),
+                      ),
+                    ],
+                    lineTouchData: LineTouchData(
+                      enabled: viewModel.weightData.length > 1,
+                      touchTooltipData: LineTouchTooltipData(
+                        getTooltipColor: (_) => const Color(0xFF024950),
+                        getTooltipItems: (touchedSpots) {
+                          return touchedSpots.map((spot) {
+                            // Find the data point that matches this nearly exact X coordinate
+                            final point = viewModel.weightData.firstWhere(
+                              (d) => (d.x - spot.x).abs() < 0.0001,
+                              orElse:
+                                  () => WeightDataPoint(
+                                    day: '',
+                                    weight: 0.0,
+                                    x: 0.0,
+                                  ),
+                            );
+
+                            return LineTooltipItem(
+                              '${point.day}\n${spot.y.toStringAsFixed(1)} kg',
+                              const TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            );
+                          }).toList();
+                        },
                       ),
                     ),
                   ),
                 ),
+              ),
     );
   }
 
-
-  Widget _buildCaloriesOverviewSection(BuildContext context, ProgressTrackingViewModel viewModel) {
+  Widget _buildCaloriesOverviewSection(
+    BuildContext context,
+    ProgressTrackingViewModel viewModel,
+  ) {
     // Compute dynamic maxY from actual data
     double maxY = 500;
     for (final point in viewModel.caloriesData) {
@@ -464,9 +573,10 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     if (maxY < 500) maxY = 500;
 
     final periodLabel = viewModel.currentPeriod.displayName;
-    final emptySubtitle = viewModel.selectedPeriod == 0
-        ? 'Complete meals and workouts this week'
-        : viewModel.selectedPeriod == 1
+    final emptySubtitle =
+        viewModel.selectedPeriod == 0
+            ? 'Complete meals and workouts this week'
+            : viewModel.selectedPeriod == 1
             ? 'Meals and workouts this month will appear here'
             : 'Year-to-date meals and workouts will appear here';
 
@@ -475,108 +585,136 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
       title: 'Calories — $periodLabel',
       child:
           viewModel.caloriesData.isEmpty ||
-                  viewModel.caloriesData.every((d) => d.burned == 0 && d.consumed == 0)
-              ? _buildEmptyChartState(context, 'No calorie data yet', emptySubtitle)
+                  viewModel.caloriesData.every(
+                    (d) => d.burned == 0 && d.consumed == 0,
+                  )
+              ? _buildEmptyChartState(
+                context,
+                'No calorie data yet',
+                emptySubtitle,
+              )
               : Column(
-                  children: [
-                    const SizedBox(height: 32),
-                    SizedBox(
-                      height: 200,
-                      child: BarChart(
-                        BarChartData(
-                          alignment: BarChartAlignment.spaceAround,
-                          maxY: maxY,
-                          barTouchData: BarTouchData(
-                            touchTooltipData: BarTouchTooltipData(
-                              getTooltipColor: (_) => const Color(0xFF024950),
-                              getTooltipItem: (group, groupIndex, rod, rodIndex) {
-                                final String category =
-                                    rodIndex == 0 ? 'Burned' : 'Consumed';
-                                return BarTooltipItem(
-                                  '$category\n',
-                                  const TextStyle(
-                                      color: Colors.white, fontWeight: FontWeight.bold),
-                                  children: [
-                                    TextSpan(
-                                      text: '${rod.toY.toInt()} cal',
-                                      style: const TextStyle(
-                                          color: Color(0xFFAFDDE5),
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 12),
+                children: [
+                  const SizedBox(height: 32),
+                  SizedBox(
+                    height: 200,
+                    child: BarChart(
+                      BarChartData(
+                        alignment: BarChartAlignment.spaceAround,
+                        maxY: maxY,
+                        barTouchData: BarTouchData(
+                          touchTooltipData: BarTouchTooltipData(
+                            getTooltipColor: (_) => const Color(0xFF024950),
+                            getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                              final String category =
+                                  rodIndex == 0 ? 'Burned' : 'Consumed';
+                              return BarTooltipItem(
+                                '$category\n',
+                                const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: '${rod.toY.toInt()} cal',
+                                    style: const TextStyle(
+                                      color: Color(0xFFAFDDE5),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
                                     ),
-                                  ],
-                                );
-                              },
-                            ),
+                                  ),
+                                ],
+                              );
+                            },
                           ),
-                          titlesData: FlTitlesData(
-                            show: true,
-                            bottomTitles: AxisTitles(
-                              sideTitles: SideTitles(
-                                showTitles: true,
-                                getTitlesWidget: (value, meta) {
-                                  if (value.toInt() >= 0 &&
-                                      value.toInt() < viewModel.caloriesData.length) {
-                                    return Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: _buildAxisLabel(context,
-                                          viewModel.caloriesData[value.toInt()].day),
-                                    );
-                                  }
-                                  return const SizedBox();
-                                },
-                                reservedSize: 30,
-                              ),
-                            ),
-                            leftTitles: const AxisTitles(
-                                sideTitles: SideTitles(showTitles: false)),
-                            topTitles: const AxisTitles(
-                                sideTitles: SideTitles(showTitles: false)),
-                            rightTitles: const AxisTitles(
-                                sideTitles: SideTitles(showTitles: false)),
-                          ),
-                          borderData: FlBorderData(show: false),
-                          gridData: const FlGridData(show: false),
-                          barGroups:
-                              viewModel.caloriesData.asMap().entries.map((entry) {
-                            return BarChartGroupData(
-                              x: entry.key,
-                              barRods: [
-                                BarChartRodData(
-                                  toY: entry.value.burned.toDouble(),
-                                  color: const Color(0xFF964734),
-                                  width: 10,
-                                  borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(4)),
-                                ),
-                                BarChartRodData(
-                                  toY: entry.value.consumed.toDouble(),
-                                  color: const Color(0xFF0FA4AF),
-                                  width: 10,
-                                  borderRadius: const BorderRadius.vertical(
-                                      top: Radius.circular(4)),
-                                ),
-                              ],
-                            );
-                          }).toList(),
                         ),
+                        titlesData: FlTitlesData(
+                          show: true,
+                          bottomTitles: AxisTitles(
+                            sideTitles: SideTitles(
+                              showTitles: true,
+                              getTitlesWidget: (value, meta) {
+                                if (value.toInt() >= 0 &&
+                                    value.toInt() <
+                                        viewModel.caloriesData.length) {
+                                  return Padding(
+                                    padding: const EdgeInsets.only(top: 8.0),
+                                    child: _buildAxisLabel(
+                                      context,
+                                      viewModel.caloriesData[value.toInt()].day,
+                                    ),
+                                  );
+                                }
+                                return const SizedBox();
+                              },
+                              reservedSize: 30,
+                            ),
+                          ),
+                          leftTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                          topTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                          rightTitles: const AxisTitles(
+                            sideTitles: SideTitles(showTitles: false),
+                          ),
+                        ),
+                        borderData: FlBorderData(show: false),
+                        gridData: const FlGridData(show: false),
+                        barGroups:
+                            viewModel.caloriesData.asMap().entries.map((entry) {
+                              return BarChartGroupData(
+                                x: entry.key,
+                                barRods: [
+                                  BarChartRodData(
+                                    toY: entry.value.burned.toDouble(),
+                                    color: const Color(0xFF964734),
+                                    width: 10,
+                                    borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(4),
+                                    ),
+                                  ),
+                                  BarChartRodData(
+                                    toY: entry.value.consumed.toDouble(),
+                                    color: const Color(0xFF0FA4AF),
+                                    width: 10,
+                                    borderRadius: const BorderRadius.vertical(
+                                      top: Radius.circular(4),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }).toList(),
                       ),
                     ),
-                    const SizedBox(height: 24),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildLegendItem(context, 'Burned', const Color(0xFF964734)),
-                        const SizedBox(width: 24),
-                        _buildLegendItem(context, 'Consumed', const Color(0xFF0FA4AF)),
-                      ],
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 24),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildLegendItem(
+                        context,
+                        'Burned',
+                        const Color(0xFF964734),
+                      ),
+                      const SizedBox(width: 24),
+                      _buildLegendItem(
+                        context,
+                        'Consumed',
+                        const Color(0xFF0FA4AF),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
     );
   }
 
-  Widget _buildConsistencySection(BuildContext context, ProgressTrackingViewModel viewModel) {
+  Widget _buildConsistencySection(
+    BuildContext context,
+    ProgressTrackingViewModel viewModel,
+  ) {
     return _buildChartContainer(
       context,
       title: 'Workout Consistency',
@@ -585,26 +723,45 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
         children: [
           const SizedBox(height: 20),
           viewModel.consistencyData.days.isEmpty
-              ? _buildEmptyChartState(context, 'No workout data', 'Complete a workout to see your streak')
+              ? _buildEmptyChartState(
+                context,
+                'No workout data',
+                'Complete a workout to see your streak',
+              )
               : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: viewModel.consistencyData.days.map((d) => 
-                    _buildConsistencyDay(context, d.dayName, d.isCompleted)
-                  ).toList(),
-                ),
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:
+                    viewModel.consistencyData.days
+                        .map(
+                          (d) => _buildConsistencyDay(
+                            context,
+                            d.dayName,
+                            d.isCompleted,
+                          ),
+                        )
+                        .toList(),
+              ),
         ],
       ),
     );
   }
 
-  Widget _buildEmptyChartState(BuildContext context, String title, String subtitle) {
+  Widget _buildEmptyChartState(
+    BuildContext context,
+    String title,
+    String subtitle,
+  ) {
     return Container(
       height: 150,
       alignment: Alignment.center,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.insert_chart_outlined, size: 36, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2)),
+          Icon(
+            Icons.insert_chart_outlined,
+            size: 36,
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+          ),
           const SizedBox(height: 8),
           Text(
             title,
@@ -627,11 +784,13 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildChartContainer(BuildContext context,
-      {required String title,
-      String? subtitle,
-      IconData subtitleIcon = Icons.trending_down,
-      required Widget child}) {
+  Widget _buildChartContainer(
+    BuildContext context, {
+    required String title,
+    String? subtitle,
+    IconData subtitleIcon = Icons.trending_down,
+    required Widget child,
+  }) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -674,44 +833,74 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  Widget _buildAxisLabel(BuildContext context, String text) => Text(text, style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 10));
+  Widget _buildAxisLabel(BuildContext context, String text) => Text(
+    text,
+    style: TextStyle(
+      color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+      fontSize: 10,
+    ),
+  );
 
   Widget _buildLegendItem(BuildContext context, String label, Color color) {
     return Row(
       children: [
         Container(
-          width: 12, height: 12,
+          width: 12,
+          height: 12,
           decoration: BoxDecoration(color: color, shape: BoxShape.circle),
         ),
         const SizedBox(width: 8),
         Text(
           label,
-          style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 13),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            fontSize: 13,
+          ),
         ),
       ],
     );
   }
 
-  Widget _buildConsistencyDay(BuildContext context, String day, bool completed) {
+  Widget _buildConsistencyDay(
+    BuildContext context,
+    String day,
+    bool completed,
+  ) {
     return Column(
       children: [
         Container(
-          width: 40, height: 40,
+          width: 40,
+          height: 40,
           decoration: BoxDecoration(
-            color: completed ? const Color(0xFF0FA4AF) : const Color(0x190FA4AF),
-            gradient: completed ? const LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xFF0FA4AF), Color(0xFF024950)]) : null,
+            color:
+                completed ? const Color(0xFF0FA4AF) : const Color(0x190FA4AF),
+            gradient:
+                completed
+                    ? const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Color(0xFF0FA4AF), Color(0xFF024950)],
+                    )
+                    : null,
             borderRadius: BorderRadius.circular(12),
           ),
           alignment: Alignment.center,
           child: Text(
             completed ? '✓' : '—',
-            style: TextStyle(color: completed ? Colors.white : const Color(0x66024950), fontSize: 16, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: completed ? Colors.white : const Color(0x66024950),
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
         const SizedBox(height: 8),
         Text(
           day,
-          style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 12),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+            fontSize: 12,
+          ),
         ),
       ],
     );
@@ -721,13 +910,17 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
 
   double _getWeightMinY(ProgressTrackingViewModel viewModel) {
     if (viewModel.weightData.isEmpty) return 0;
-    final minW = viewModel.weightData.map((d) => d.weight).reduce((a, b) => a < b ? a : b);
+    final minW = viewModel.weightData
+        .map((d) => d.weight)
+        .reduce((a, b) => a < b ? a : b);
     return (minW - 3).floorToDouble().clamp(0, double.infinity);
   }
 
   double _getWeightMaxY(ProgressTrackingViewModel viewModel) {
     if (viewModel.weightData.isEmpty) return 100;
-    final maxW = viewModel.weightData.map((d) => d.weight).reduce((a, b) => a > b ? a : b);
+    final maxW = viewModel.weightData
+        .map((d) => d.weight)
+        .reduce((a, b) => a > b ? a : b);
     return (maxW + 3).ceilToDouble();
   }
 
@@ -740,7 +933,10 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
 
   // --- Log Weight Card ---
 
-  Widget _buildLogWeightCard(BuildContext context, ProgressTrackingViewModel viewModel) {
+  Widget _buildLogWeightCard(
+    BuildContext context,
+    ProgressTrackingViewModel viewModel,
+  ) {
     final signupW = viewModel.signupWeight;
     final trackedW = viewModel.latestTrackedWeight;
 
@@ -782,7 +978,11 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                   color: const Color(0xFF0FA4AF).withOpacity(0.20),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: const Icon(Icons.monitor_weight_outlined, color: Color(0xFF0FA4AF), size: 20),
+                child: const Icon(
+                  Icons.monitor_weight_outlined,
+                  color: Color(0xFF0FA4AF),
+                  size: 20,
+                ),
               ),
               const SizedBox(width: 12),
               const Expanded(
@@ -806,7 +1006,10 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                 child: _buildWeightTile(
                   context,
                   label: 'Starting Weight',
-                  value: signupW != null ? '${signupW.toStringAsFixed(1)} kg' : '—',
+                  value:
+                      signupW != null
+                          ? '${signupW.toStringAsFixed(1)} kg'
+                          : '—',
                   icon: Icons.flag_outlined,
                   iconColor: const Color(0xFFAFDDE5),
                 ),
@@ -820,27 +1023,30 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                       diffKg == null
                           ? Icons.compare_arrows
                           : diffKg < 0
-                              ? Icons.arrow_downward
-                              : Icons.arrow_upward,
-                      color: diffKg == null
-                          ? Colors.white38
-                          : diffKg < 0
+                          ? Icons.arrow_downward
+                          : Icons.arrow_upward,
+                      color:
+                          diffKg == null
+                              ? Colors.white38
+                              : diffKg < 0
                               ? const Color(0xFF4CAF50)
                               : const Color(0xFFEF5350),
                       size: 22,
                     ),
-                    if (diffKg != null) ...
-                      [
-                        const SizedBox(height: 2),
-                        Text(
-                          '${diffKg >= 0 ? '+' : ''}${diffKg.toStringAsFixed(1)}',
-                          style: TextStyle(
-                            color: diffKg < 0 ? const Color(0xFF4CAF50) : const Color(0xFFEF5350),
-                            fontSize: 11,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    if (diffKg != null) ...[
+                      const SizedBox(height: 2),
+                      Text(
+                        '${diffKg >= 0 ? '+' : ''}${diffKg.toStringAsFixed(1)}',
+                        style: TextStyle(
+                          color:
+                              diffKg < 0
+                                  ? const Color(0xFF4CAF50)
+                                  : const Color(0xFFEF5350),
+                          fontSize: 11,
+                          fontWeight: FontWeight.bold,
                         ),
-                      ],
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -849,9 +1055,13 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                 child: _buildWeightTile(
                   context,
                   label: 'Current Weight',
-                  value: hasTracked ? '${trackedW.toStringAsFixed(1)} kg' : 'Not logged',
+                  value:
+                      hasTracked
+                          ? '${trackedW.toStringAsFixed(1)} kg'
+                          : 'Not logged',
                   icon: Icons.track_changes,
-                  iconColor: hasTracked ? const Color(0xFF0FA4AF) : Colors.white38,
+                  iconColor:
+                      hasTracked ? const Color(0xFF0FA4AF) : Colors.white38,
                 ),
               ),
             ],
@@ -861,24 +1071,36 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
-              onPressed: viewModel.isSavingWeight
-                  ? null
-                  : () => _showLogWeightDialog(context, viewModel),
-              icon: viewModel.isSavingWeight
-                  ? const SizedBox(
-                      width: 16,
-                      height: 16,
-                      child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
-                    )
-                  : const Icon(Icons.add_circle_outline, size: 18),
-              label: Text(viewModel.isSavingWeight ? 'Saving…' : 'Log Today\'s Weight'),
+              onPressed:
+                  viewModel.isSavingWeight
+                      ? null
+                      : () => _showLogWeightDialog(context, viewModel),
+              icon:
+                  viewModel.isSavingWeight
+                      ? const SizedBox(
+                        width: 16,
+                        height: 16,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          color: Colors.white,
+                        ),
+                      )
+                      : const Icon(Icons.add_circle_outline, size: 18),
+              label: Text(
+                viewModel.isSavingWeight ? 'Saving…' : 'Log Today\'s Weight',
+              ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFF0FA4AF),
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
                 elevation: 0,
-                textStyle: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                textStyle: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ),
@@ -926,7 +1148,10 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  void _showLogWeightDialog(BuildContext context, ProgressTrackingViewModel viewModel) {
+  void _showLogWeightDialog(
+    BuildContext context,
+    ProgressTrackingViewModel viewModel,
+  ) {
     final TextEditingController weightController = TextEditingController();
     // Pre-fill with last tracked or signup weight
     final prefill = viewModel.latestTrackedWeight ?? viewModel.signupWeight;
@@ -937,87 +1162,134 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
 
     showDialog<void>(
       context: context,
-      builder: (dialogContext) => StatefulBuilder(
-        builder: (ctx, setDialogState) {
-          return AlertDialog(
-            backgroundColor: const Color(0xFF024950),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-            title: const Row(
-              children: [
-                Icon(Icons.monitor_weight_outlined, color: Color(0xFF0FA4AF), size: 22),
-                SizedBox(width: 10),
-                Text(
-                  'Log Today\'s Weight',
-                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+      builder:
+          (dialogContext) => StatefulBuilder(
+            builder: (ctx, setDialogState) {
+              return AlertDialog(
+                backgroundColor: const Color(0xFF024950),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
                 ),
-              ],
-            ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Enter your current weight in kilograms.',
-                  style: TextStyle(color: Colors.white.withOpacity(0.65), fontSize: 13),
+                title: const Row(
+                  children: [
+                    Icon(
+                      Icons.monitor_weight_outlined,
+                      color: Color(0xFF0FA4AF),
+                      size: 22,
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      'Log Today\'s Weight',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 16),
-                TextField(
-                  controller: weightController,
-                  keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                  autofocus: true,
-                  showCursor: true,
-                  cursorColor: const Color(0xFF0FA4AF),
-                  style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
-                  decoration: InputDecoration(
-                    hintText: '70.0',
-                    hintStyle: TextStyle(color: Colors.white.withOpacity(0.3)),
-                    suffixText: 'kg',
-                    suffixStyle: const TextStyle(color: Color(0xFF0FA4AF), fontWeight: FontWeight.bold),
-                    errorText: errorText,
-                    errorStyle: const TextStyle(color: Color(0xFFEF5350)),
-                    enabledBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF0FA4AF), width: 2),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Enter your current weight in kilograms.',
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.65),
+                        fontSize: 13,
+                      ),
                     ),
-                    focusedBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF0FA4AF), width: 2),
+                    const SizedBox(height: 16),
+                    TextField(
+                      controller: weightController,
+                      keyboardType: const TextInputType.numberWithOptions(
+                        decimal: true,
+                      ),
+                      autofocus: true,
+                      showCursor: true,
+                      cursorColor: const Color(0xFF0FA4AF),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      decoration: InputDecoration(
+                        hintText: '70.0',
+                        hintStyle: TextStyle(
+                          color: Colors.white.withOpacity(0.3),
+                        ),
+                        suffixText: 'kg',
+                        suffixStyle: const TextStyle(
+                          color: Color(0xFF0FA4AF),
+                          fontWeight: FontWeight.bold,
+                        ),
+                        errorText: errorText,
+                        errorStyle: const TextStyle(color: Color(0xFFEF5350)),
+                        enabledBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF0FA4AF),
+                            width: 2,
+                          ),
+                        ),
+                        focusedBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFF0FA4AF),
+                            width: 2,
+                          ),
+                        ),
+                        errorBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFEF5350),
+                            width: 2,
+                          ),
+                        ),
+                        focusedErrorBorder: const UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFEF5350),
+                            width: 2,
+                          ),
+                        ),
+                      ),
                     ),
-                    errorBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFFEF5350), width: 2),
-                    ),
-                    focusedErrorBorder: const UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFFEF5350), width: 2),
+                  ],
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(dialogContext).pop(),
+                    child: Text(
+                      'Cancel',
+                      style: TextStyle(color: Colors.white.withOpacity(0.55)),
                     ),
                   ),
-                ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(dialogContext).pop(),
-                child: Text('Cancel', style: TextStyle(color: Colors.white.withOpacity(0.55))),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF0FA4AF),
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                ),
-                onPressed: () {
-                  final raw = weightController.text.trim();
-                  final parsed = double.tryParse(raw);
-                  if (parsed == null || parsed <= 0 || parsed > 500) {
-                    setDialogState(() => errorText = 'Enter a valid weight (e.g. 70.5)');
-                    return;
-                  }
-                  Navigator.of(dialogContext).pop();
-                  viewModel.logNewWeight(parsed);
-                },
-                child: const Text('Save', style: TextStyle(fontWeight: FontWeight.bold)),
-              ),
-            ],
-          );
-        },
-      ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF0FA4AF),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    onPressed: () {
+                      final raw = weightController.text.trim();
+                      final parsed = double.tryParse(raw);
+                      if (parsed == null || parsed <= 0 || parsed > 500) {
+                        setDialogState(
+                          () => errorText = 'Enter a valid weight (e.g. 70.5)',
+                        );
+                        return;
+                      }
+                      Navigator.of(dialogContext).pop();
+                      viewModel.logNewWeight(parsed);
+                    },
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
     );
   }
 }
