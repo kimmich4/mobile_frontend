@@ -24,7 +24,7 @@ async function queryQdrant(vector) {
         vector: vector,
         limit: 3,
         with_payload: true,
-        score_threshold: 0.015
+        score_threshold: 0.35
     });
 }
 

@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../data/repositories/auth_repository.dart';
+import '../data/repositories/user_repository.dart';
 import 'base_view_model.dart';
 
 /// ViewModel for Authentication (Login) Screen
 class AuthViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
+  final UserRepository _userRepository;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  AuthViewModel({AuthRepository? authRepository})
-      : _authRepository = authRepository ?? AuthRepository();
+  AuthViewModel({AuthRepository? authRepository, UserRepository? userRepository})
+      : _authRepository = authRepository ?? AuthRepository(),
+        _userRepository = userRepository ?? UserRepository();
 
   String get email => emailController.text;
   String get password => passwordController.text;
@@ -51,6 +55,67 @@ class AuthViewModel extends BaseViewModel {
         setError(message.replaceFirst('Exception: ', ''));
       }
       return false;
+    }
+  }
+
+  /// Perform Google Login
+  Future<void> loginWithGoogle(BuildContext context, VoidCallback onSuccess) async {
+    clearError();
+    setLoading(true);
+
+    try {
+      final credential = await _authRepository.signInWithGoogle();
+      
+      // Check if this is a new user and create record in Firestore if needed
+      if (credential.additionalUserInfo?.isNewUser ?? false) {
+        final user = credential.user;
+        if (user != null) {
+          await _userRepository.updateFields(user.uid, {
+            'uid': user.uid,
+            'name': user.displayName ?? 'New User',
+            'email': user.email ?? '',
+            'createdAt': FieldValue.serverTimestamp(),
+          });
+        }
+      }
+
+      setLoading(false);
+      onSuccess();
+    } on Exception catch (e) {
+      setLoading(false);
+      if (e.toString().contains('canceled')) {
+        return; // Don't show error if user just closed the popup
+      }
+      setError(e.toString().replaceFirst('Exception: ', ''));
+    }
+  }
+
+  /// Perform Apple Login
+  Future<void> loginWithApple(BuildContext context, VoidCallback onSuccess) async {
+    clearError();
+    setLoading(true);
+
+    try {
+      final credential = await _authRepository.signInWithApple();
+
+      // Check if this is a new user
+      if (credential.additionalUserInfo?.isNewUser ?? false) {
+        final user = credential.user;
+        if (user != null) {
+          await _userRepository.updateFields(user.uid, {
+            'uid': user.uid,
+            'name': user.displayName ?? 'New User',
+            'email': user.email ?? '',
+            'createdAt': FieldValue.serverTimestamp(),
+          });
+        }
+      }
+
+      setLoading(false);
+      onSuccess();
+    } on Exception catch (e) {
+      setLoading(false);
+      setError(e.toString().replaceFirst('Exception: ', ''));
     }
   }
 

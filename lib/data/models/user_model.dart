@@ -45,6 +45,7 @@ class UserModel {
   final int? workoutsCompletedThisWeek;
   final int? workoutsGoalPerWeek;
   final int? currentStreak;
+  final int waterIntake; // Glasses of water today
   final double? currentWeightKg;
   final double? goalWeightKg;
   // Progress Tracking Weight — entered by user in the Progress screen (separate from signup weightKg)
@@ -102,6 +103,7 @@ class UserModel {
     this.workoutsCompletedThisWeek,
     this.workoutsGoalPerWeek = 5,
     this.currentStreak,
+    this.waterIntake = 0,
     this.currentWeightKg,
     this.goalWeightKg,
     this.trackedWeightKg,
@@ -184,6 +186,7 @@ class UserModel {
     int? workoutsCompletedThisWeek,
     int? workoutsGoalPerWeek,
     int? currentStreak,
+    int? waterIntake,
     double? currentWeightKg,
     double? goalWeightKg,
     double? trackedWeightKg,
@@ -225,6 +228,7 @@ class UserModel {
       workoutsCompletedThisWeek: workoutsCompletedThisWeek ?? this.workoutsCompletedThisWeek,
       workoutsGoalPerWeek: workoutsGoalPerWeek ?? this.workoutsGoalPerWeek,
       currentStreak: currentStreak ?? this.currentStreak,
+      waterIntake: waterIntake ?? this.waterIntake,
       currentWeightKg: currentWeightKg ?? this.currentWeightKg,
       goalWeightKg: goalWeightKg ?? this.goalWeightKg,
       trackedWeightKg: trackedWeightKg ?? this.trackedWeightKg,
@@ -274,6 +278,7 @@ class UserModel {
       'workoutsCompletedThisWeek': workoutsCompletedThisWeek,
       'workoutsGoalPerWeek': workoutsGoalPerWeek,
       'currentStreak': currentStreak,
+      'waterIntake': waterIntake,
       'currentWeightKg': currentWeightKg,
       'goalWeightKg': goalWeightKg,
       'trackedWeightKg': trackedWeightKg,
@@ -322,6 +327,7 @@ class UserModel {
       workoutsCompletedThisWeek: json['workoutsCompletedThisWeek'] as int?,
       workoutsGoalPerWeek: json['workoutsGoalPerWeek'] as int? ?? 5,
       currentStreak: json['currentStreak'] as int?,
+      waterIntake: json['waterIntake'] as int? ?? 0,
       currentWeightKg: (json['currentWeightKg'] as num?)?.toDouble(),
       goalWeightKg: (json['goalWeightKg'] as num?)?.toDouble(),
       trackedWeightKg: (json['trackedWeightKg'] as num?)?.toDouble(),

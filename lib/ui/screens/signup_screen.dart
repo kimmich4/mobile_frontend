@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'login_screen.dart';
 import 'profile_setup_screen.dart';
 import '../components/animate_in.dart';
@@ -103,7 +104,7 @@ class Signupscreen extends StatelessWidget {
                             const SizedBox(height: 24),
                             AnimateIn(
                               delay: const Duration(milliseconds: 800),
-                              child: _buildSocialButtons(),
+                              child: _buildSocialButtons(context, viewModel),
                             ),
                             const SizedBox(height: 24),
                             _buildLoginLink(context),
@@ -203,20 +204,47 @@ class Signupscreen extends StatelessWidget {
     ]);
   }
 
-  Widget _buildSocialButtons() {
+  Widget _buildSocialButtons(BuildContext context, SignupViewModel viewModel) {
     return Row(children: [
-      Expanded(child: _buildSocialButton('Google', const Color(0xFF4285F4))),
+      Expanded(
+        child: _buildSocialButton(
+          'Google',
+          const Color(0xFF4285F4),
+          FontAwesomeIcons.google,
+          onTap: () => viewModel.loginWithGoogle(context, () {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfileSetupScreen()));
+          }),
+        ),
+      ),
       const SizedBox(width: 16),
-      Expanded(child: _buildSocialButton('Apple', Colors.black)),
+      Expanded(
+        child: _buildSocialButton(
+          'Apple',
+          Colors.black,
+          FontAwesomeIcons.apple,
+          onTap: () => viewModel.loginWithApple(context, () {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfileSetupScreen()));
+          }),
+        ),
+      ),
     ]);
   }
 
-  Widget _buildSocialButton(String label, Color color) {
-    return Container(
-      height: 52,
-      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(14)),
-      alignment: Alignment.center,
-      child: Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+  Widget _buildSocialButton(String label, Color color, IconData icon, {VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 52,
+        decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(14)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            FaIcon(icon, color: Colors.white, size: 20),
+            const SizedBox(width: 12),
+            Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+          ],
+        ),
+      ),
     );
   }
 

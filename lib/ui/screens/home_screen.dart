@@ -109,7 +109,18 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 12),
-          Expanded(child: _buildStatCard(title: 'Streak', value: '${viewModel.currentStreak}', subtitle: 'days')),
+          Expanded(
+            child: GestureDetector(
+              onTap: () => viewModel.incrementWaterIntake(),
+              child: _buildStatCard(
+                title: 'Water 🥛',
+                value: '${viewModel.waterIntake}/8',
+                subtitle: 'glasses',
+                isDone: viewModel.isWaterGoalReached,
+                activeColor: Colors.blue,
+              ),
+            ),
+          ),
         ]),
       ]),
     );
@@ -120,15 +131,16 @@ class HomeScreen extends StatelessWidget {
     required String value,
     required String subtitle,
     bool isDone = false,
+    Color activeColor = Colors.green,
   }) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: isDone
-            ? Colors.green.withOpacity(0.3)
+            ? activeColor.withOpacity(0.3)
             : Colors.white.withOpacity(0.1),
         borderRadius: BorderRadius.circular(16),
-        border: isDone ? Border.all(color: Colors.green.withOpacity(0.5)) : null,
+        border: isDone ? Border.all(color: activeColor.withOpacity(0.5)) : null,
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(title,

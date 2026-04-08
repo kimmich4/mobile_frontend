@@ -184,6 +184,20 @@ class HomeViewModel extends BaseViewModel {
   }
 
   int get currentStreak => _currentUser?.currentStreak ?? 0;
+  
+  // ── Water Tracker ──
+  int get waterIntake => _currentUser?.waterIntake ?? 0;
+  int get waterGoal => 8;
+  bool get isWaterGoalReached => waterIntake >= waterGoal;
+
+  Future<void> incrementWaterIntake() async {
+    final uid = _authRepository.currentUser?.uid;
+    if (uid != null) {
+      final newValue = (waterIntake + 1).clamp(0, 99); // Allow going over but limit UI to 8 for logic
+      await _userRepository.updateFields(uid, {'waterIntake': newValue});
+      // The stream listener will update _currentUser and notify listeners automatically
+    }
+  }
 
   // ── Diet plan info ──
   int get mealsRemaining {

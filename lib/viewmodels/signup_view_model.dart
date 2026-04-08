@@ -99,6 +99,66 @@ class SignupViewModel extends BaseViewModel {
     }
   }
 
+  /// Perform Google Login/Signup
+  Future<void> loginWithGoogle(BuildContext context, VoidCallback onSuccess) async {
+    clearError();
+    setLoading(true);
+
+    try {
+      final credential = await _authRepository.signInWithGoogle();
+      
+      // Check if this is a new user and create record in Firestore
+      if (credential.additionalUserInfo?.isNewUser ?? false) {
+        final user = credential.user;
+        if (user != null) {
+          await _userRepository.updateFields(user.uid, {
+            'uid': user.uid,
+            'name': user.displayName ?? 'New User',
+            'email': user.email ?? '',
+            'createdAt': FieldValue.serverTimestamp(),
+          });
+        }
+      }
+
+      setLoading(false);
+      onSuccess();
+    } on Exception catch (e) {
+      setLoading(false);
+      if (e.toString().contains('canceled')) {
+        return;
+      }
+      setError(e.toString().replaceFirst('Exception: ', ''));
+    }
+  }
+
+  /// Perform Apple Login/Signup
+  Future<void> loginWithApple(BuildContext context, VoidCallback onSuccess) async {
+    clearError();
+    setLoading(true);
+
+    try {
+      final credential = await _authRepository.signInWithApple();
+
+      if (credential.additionalUserInfo?.isNewUser ?? false) {
+        final user = credential.user;
+        if (user != null) {
+          await _userRepository.updateFields(user.uid, {
+            'uid': user.uid,
+            'name': user.displayName ?? 'New User',
+            'email': user.email ?? '',
+            'createdAt': FieldValue.serverTimestamp(),
+          });
+        }
+      }
+
+      setLoading(false);
+      onSuccess();
+    } on Exception catch (e) {
+      setLoading(false);
+      setError(e.toString().replaceFirst('Exception: ', ''));
+    }
+  }
+
   /// Navigate to login screen
   void navigateToLogin(VoidCallback onNavigate) {
     onNavigate();
