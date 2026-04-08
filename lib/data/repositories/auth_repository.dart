@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 /// Repository handling all Firebase Authentication operations
 class AuthRepository {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth;
+
+  AuthRepository({FirebaseAuth? auth}) : _auth = auth ?? FirebaseAuth.instance;
 
   /// Get currently logged-in user
   User? get currentUser => _auth.currentUser;

@@ -5,8 +5,12 @@ import '../models/user_model.dart';
 
 /// Repository handling all Firestore operations for User profiles
 class UserRepository {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final FirebaseStorage _storage = FirebaseStorage.instance;
+  final FirebaseFirestore _firestore;
+  final FirebaseStorage _storage;
+
+  UserRepository({FirebaseFirestore? firestore, FirebaseStorage? storage})
+      : _firestore = firestore ?? FirebaseFirestore.instance,
+        _storage = storage ?? FirebaseStorage.instance;
 
   /// Save or update a full user profile
   Future<void> saveUserProfile(UserModel user) async {

@@ -9,8 +9,8 @@ import '../core/theme/theme_manager.dart';
 
 /// ViewModel for Settings Screen
 class SettingsViewModel extends BaseViewModel {
-  final AuthRepository _authRepository = AuthRepository();
-  final UserRepository _userRepository = UserRepository();
+  final AuthRepository _authRepository;
+  final UserRepository _userRepository;
   StreamSubscription<UserModel?>? _userSubscription;
   StreamSubscription<User?>? _authSubscription;
 
@@ -30,13 +30,15 @@ class SettingsViewModel extends BaseViewModel {
   String? get profilePicturePath => _currentUser?.profilePicturePath;
   String get membershipStatus => (_currentUser?.isPremiumMember ?? false) ? 'Premium Member' : 'Free Member';
 
-  SettingsViewModel() {
+  SettingsViewModel({AuthRepository? authRepository, UserRepository? userRepository})
+      : _authRepository = authRepository ?? AuthRepository(),
+        _userRepository = userRepository ?? UserRepository() {
     _initAuthListener();
   }
 
   void _initAuthListener() {
     // Listen to auth state changes to handle user switching
-    _authSubscription = FirebaseAuth.instance.authStateChanges().listen((user) {
+    _authSubscription = _authRepository.authStateChanges.listen((user) {
       // Cancel previous user subscription
       _userSubscription?.cancel();
       _currentUser = null;

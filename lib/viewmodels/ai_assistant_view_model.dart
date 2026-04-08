@@ -4,7 +4,10 @@ import '../data/services/api_service.dart';
 
 /// ViewModel for AI Assistant Screen
 class AiAssistantViewModel extends BaseViewModel {
-  final ApiService _apiService = ApiService();
+  final ApiService _apiService;
+
+  AiAssistantViewModel({ApiService? apiService})
+      : _apiService = apiService ?? ApiService();
   
   // Message history
   final List<ChatMessage> _messages = [

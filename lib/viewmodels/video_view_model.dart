@@ -6,6 +6,11 @@ import '../data/services/api_service.dart';
 
 /// ViewModel for Video Screen
 class VideoViewModel extends BaseViewModel {
+  final ApiService _apiService;
+  
+  VideoViewModel({ApiService? apiService})
+      : _apiService = apiService ?? ApiService();
+
   // Video details
   String _title = 'Loading...';
   String _difficulty = 'Beginner';
@@ -66,11 +71,10 @@ class VideoViewModel extends BaseViewModel {
     notifyListeners();
 
     try {
-      final apiService = ApiService();
       // Search for the exercise name + "form tutoriall"
       final searchQuery = '$exerciseName exercise form tutorial';
       
-      final videoId = await apiService.searchVideo(searchQuery);
+      final videoId = await _apiService.searchVideo(searchQuery);
 
       _youtubeController = YoutubePlayerController.fromVideoId(
         videoId: videoId,

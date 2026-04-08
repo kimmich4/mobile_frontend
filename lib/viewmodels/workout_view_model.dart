@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import '../data/repositories/auth_repository.dart';
 import 'base_view_model.dart';
 import '../data/models/workout_model.dart';
 import '../data/repositories/workout_repository.dart';
@@ -7,15 +7,18 @@ import '../data/repositories/progress_repository.dart';
 
 /// ViewModel for Workout Plan Screen — connects exercise completion to progress tracking
 class WorkoutViewModel extends BaseViewModel {
+  final AuthRepository _authRepository;
   final WorkoutRepository _workoutRepository;
   final UserRepository _userRepository;
   final ProgressRepository _progressRepository;
 
   WorkoutViewModel({
+    AuthRepository? authRepository,
     WorkoutRepository? workoutRepository,
     UserRepository? userRepository,
     ProgressRepository? progressRepository,
-  })  : _workoutRepository = workoutRepository ?? WorkoutRepository(),
+  })  : _authRepository = authRepository ?? AuthRepository(),
+        _workoutRepository = workoutRepository ?? WorkoutRepository(),
         _userRepository = userRepository ?? UserRepository(),
         _progressRepository = progressRepository ?? ProgressRepository();
 
@@ -40,7 +43,7 @@ class WorkoutViewModel extends BaseViewModel {
 
   WorkoutPlan? get currentPlan => _selectedTab == 0 ? _homeWorkout : _gymWorkout;
 
-  String? get userId => FirebaseAuth.instance.currentUser?.uid;
+  String? get userId => _authRepository.currentUser?.uid;
 
   // Track if today's workout was already counted toward weekly goal
   bool _todayWorkoutLogged = false;

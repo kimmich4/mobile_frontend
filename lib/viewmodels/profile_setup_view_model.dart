@@ -10,10 +10,20 @@ import '../data/models/user_model.dart';
 
 /// ViewModel for Profile Setup Screen (4-step process)
 class ProfileSetupViewModel extends BaseViewModel {
-  final AuthRepository _authRepository = AuthRepository();
-  final UserRepository _userRepository = UserRepository();
-  final DietRepository _dietRepository = DietRepository();
-  final WorkoutRepository _workoutRepository = WorkoutRepository();
+  final AuthRepository _authRepository;
+  final UserRepository _userRepository;
+  final DietRepository _dietRepository;
+  final WorkoutRepository _workoutRepository;
+  
+  ProfileSetupViewModel({
+    AuthRepository? authRepository,
+    UserRepository? userRepository,
+    DietRepository? dietRepository,
+    WorkoutRepository? workoutRepository,
+  })  : _authRepository = authRepository ?? AuthRepository(),
+        _userRepository = userRepository ?? UserRepository(),
+        _dietRepository = dietRepository ?? DietRepository(),
+        _workoutRepository = workoutRepository ?? WorkoutRepository();
   
   final PageController pageController = PageController();
   int _currentPage = 0;

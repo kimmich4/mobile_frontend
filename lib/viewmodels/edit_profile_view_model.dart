@@ -9,8 +9,8 @@ import 'base_view_model.dart';
 
 /// ViewModel for Edit Profile Screen
 class EditProfileViewModel extends BaseViewModel {
-  final AuthRepository _authRepository = AuthRepository();
-  final UserRepository _userRepository = UserRepository();
+  final AuthRepository _authRepository;
+  final UserRepository _userRepository;
   StreamSubscription<User?>? _authSubscription;
   
   UserModel? _originalUser;
@@ -64,13 +64,15 @@ class EditProfileViewModel extends BaseViewModel {
   String? get selectedProfilePicturePath => _selectedProfilePicturePath;
   String get profileInitial => _originalUser?.profileInitial ?? (nameController.text.isNotEmpty ? nameController.text[0].toUpperCase() : 'U');
 
-  EditProfileViewModel() {
+  EditProfileViewModel({AuthRepository? authRepository, UserRepository? userRepository})
+      : _authRepository = authRepository ?? AuthRepository(),
+        _userRepository = userRepository ?? UserRepository() {
     _initAuthListener();
   }
 
   void _initAuthListener() {
     // Listen to auth state changes to reload data when user switches
-    _authSubscription = FirebaseAuth.instance.authStateChanges().listen((user) {
+    _authSubscription = _authRepository.authStateChanges.listen((user) {
       if (user != null) {
         loadUserData();
       } else {

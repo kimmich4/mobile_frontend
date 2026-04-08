@@ -4,7 +4,7 @@ import '../data/repositories/auth_repository.dart';
 
 /// ViewModel for Splash Screen
 class SplashViewModel extends BaseViewModel {
-  final AuthRepository _authRepository = AuthRepository();
+  final AuthRepository _authRepository;
   
   bool get isLoggedIn => _authRepository.currentUser != null;
   
@@ -22,7 +22,8 @@ class SplashViewModel extends BaseViewModel {
   bool _navigationStarted = false;
   bool isInitialized = false;
 
-  SplashViewModel() {
+  SplashViewModel({AuthRepository? authRepository})
+      : _authRepository = authRepository ?? AuthRepository() {
     // Force sign out on app start as requested
     _authRepository.signOut();
   }

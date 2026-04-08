@@ -4,9 +4,12 @@ import 'base_view_model.dart';
 
 /// ViewModel for Authentication (Login) Screen
 class AuthViewModel extends BaseViewModel {
-  final AuthRepository _authRepository = AuthRepository();
+  final AuthRepository _authRepository;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  AuthViewModel({AuthRepository? authRepository})
+      : _authRepository = authRepository ?? AuthRepository();
 
   String get email => emailController.text;
   String get password => passwordController.text;

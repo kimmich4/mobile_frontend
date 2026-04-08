@@ -6,8 +6,12 @@ import 'base_view_model.dart';
 
 /// ViewModel for Signup Screen
 class SignupViewModel extends BaseViewModel {
-  final AuthRepository _authRepository = AuthRepository();
-  final UserRepository _userRepository = UserRepository();
+  final AuthRepository _authRepository;
+  final UserRepository _userRepository;
+
+  SignupViewModel({AuthRepository? authRepository, UserRepository? userRepository})
+      : _authRepository = authRepository ?? AuthRepository(),
+        _userRepository = userRepository ?? UserRepository();
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();

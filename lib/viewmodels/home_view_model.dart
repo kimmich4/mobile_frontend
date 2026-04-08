@@ -11,10 +11,22 @@ import 'base_view_model.dart';
 
 /// ViewModel for Home Screen — pulls real data from AI-generated plans
 class HomeViewModel extends BaseViewModel {
-  final AuthRepository _authRepository = AuthRepository();
-  final UserRepository _userRepository = UserRepository();
-  final DietRepository _dietRepository = DietRepository();
-  final WorkoutRepository _workoutRepository = WorkoutRepository();
+  final AuthRepository _authRepository;
+  final UserRepository _userRepository;
+  final DietRepository _dietRepository;
+  final WorkoutRepository _workoutRepository;
+
+  HomeViewModel({
+    AuthRepository? authRepository,
+    UserRepository? userRepository,
+    DietRepository? dietRepository,
+    WorkoutRepository? workoutRepository,
+  })  : _authRepository = authRepository ?? AuthRepository(),
+        _userRepository = userRepository ?? UserRepository(),
+        _dietRepository = dietRepository ?? DietRepository(),
+        _workoutRepository = workoutRepository ?? WorkoutRepository() {
+    _initAuthListener();
+  }
 
   StreamSubscription<UserModel?>? _userSubscription;
   StreamSubscription<User?>? _authSubscription;
@@ -257,12 +269,8 @@ class HomeViewModel extends BaseViewModel {
   }
 
   // ── Lifecycle ──
-  HomeViewModel() {
-    _initAuthListener();
-  }
-
   void _initAuthListener() {
-    _authSubscription = FirebaseAuth.instance.authStateChanges().listen((user) {
+    _authSubscription = _authRepository.authStateChanges.listen((user) {
       _userSubscription?.cancel();
       _currentUser = null;
 
@@ -301,7 +309,7 @@ class HomeViewModel extends BaseViewModel {
 
   /// Reload plans (e.g. after generating new ones)
   Future<void> refreshPlans() async {
-    final uid = FirebaseAuth.instance.currentUser?.uid;
+    final uid = _authRepository.currentUser?.uid;
     if (uid != null) await _loadPlans(uid);
   }
 
