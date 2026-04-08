@@ -6,16 +6,19 @@ class WorkoutRepository {
   final FirebaseFirestore _firestore;
   final ApiService _apiService;
 
-  WorkoutRepository({
-    FirebaseFirestore? firestore,
-    ApiService? apiService,
-  })  : _firestore = firestore ?? FirebaseFirestore.instance,
-        _apiService = apiService ?? ApiService();
+  WorkoutRepository({FirebaseFirestore? firestore, ApiService? apiService})
+    : _firestore = firestore ?? FirebaseFirestore.instance,
+      _apiService = apiService ?? ApiService();
 
   /// Collection reference for a specific user's workout plans
   /// Structure: users/{userId}/workoutPlans/{planId}
-  CollectionReference<Map<String, dynamic>> _getWorkoutCollection(String userId) {
-    return _firestore.collection('users').doc(userId).collection('workoutPlans');
+  CollectionReference<Map<String, dynamic>> _getWorkoutCollection(
+    String userId,
+  ) {
+    return _firestore
+        .collection('users')
+        .doc(userId)
+        .collection('workoutPlans');
   }
 
   /// Generate and save new workout plans (Gym and Home)
@@ -32,8 +35,12 @@ class WorkoutRepository {
 
       // 2. Save both to Firestore
       print('Saving gym and home workout plans to Firestore');
-      await _getWorkoutCollection(userId).doc('gym_workout').set(plans['gym']!.toJson());
-      await _getWorkoutCollection(userId).doc('home_workout').set(plans['home']!.toJson());
+      await _getWorkoutCollection(
+        userId,
+      ).doc('gym_workout').set(plans['gym']!.toJson());
+      await _getWorkoutCollection(
+        userId,
+      ).doc('home_workout').set(plans['home']!.toJson());
 
       return plans;
     } catch (e) {

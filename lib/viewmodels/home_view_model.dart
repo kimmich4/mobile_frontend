@@ -59,7 +59,7 @@ class HomeViewModel extends BaseViewModel {
     if (todayPlan != null && todayPlan.totalCalories > 0) {
       return todayPlan.totalCalories.toString();
     }
-    return _currentUser?.dailyCalorieGoal?.toString() ?? '2,200';
+    return _currentUser?.dailyCalorieGoal?.toString() ?? '0';
   }
 
   // ── Workouts (from workout plans) ──

@@ -293,8 +293,8 @@ class UserModel {
       fullName: json['fullName'] as String?,
       age: json['age'] as int?,
       gender: json['gender'] as String?,
-      weightKg: json['weightKg'] as double?,
-      heightCm: json['heightCm'] as double?,
+      weightKg: (json['weightKg'] as num?)?.toDouble(),
+      heightCm: (json['heightCm'] as num?)?.toDouble(),
       activityLevel: json['activityLevel'] as String?,
       medicalConditions: (json['medicalConditions'] as List<dynamic>?)?.cast<String>() ?? [],
       otherMedicalCondition: json['otherMedicalCondition'] as String?,
@@ -322,8 +322,8 @@ class UserModel {
       workoutsCompletedThisWeek: json['workoutsCompletedThisWeek'] as int?,
       workoutsGoalPerWeek: json['workoutsGoalPerWeek'] as int? ?? 5,
       currentStreak: json['currentStreak'] as int?,
-      currentWeightKg: json['currentWeightKg'] as double?,
-      goalWeightKg: json['goalWeightKg'] as double?,
+      currentWeightKg: (json['currentWeightKg'] as num?)?.toDouble(),
+      goalWeightKg: (json['goalWeightKg'] as num?)?.toDouble(),
       trackedWeightKg: (json['trackedWeightKg'] as num?)?.toDouble(),
       completedMeals: _parseMap(json['completedMeals']),
       completedHomeExercises: _parseMap(json['completedHomeExercises']),
@@ -339,7 +339,7 @@ class UserModel {
     if (jsonMap is Map) {
       return jsonMap.map((key, value) => MapEntry(
             int.parse(key.toString()),
-            (value as List<dynamic>).cast<int>(),
+            (value as List<dynamic>).map((e) => (e as num).toInt()).toList(),
           ));
     }
     return {};

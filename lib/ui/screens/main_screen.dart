@@ -39,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
     // Register this instance in ViewModel for static access
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<MainViewModel>().setInstance();
-      
+
       // Initialize data when MainScreen loads
       context.read<DietViewModel>().init();
       context.read<WorkoutViewModel>().init();
@@ -59,13 +59,25 @@ class _MainScreenState extends State<MainScreen> {
               backgroundColor: Theme.of(context).colorScheme.surface,
               items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-                BottomNavigationBarItem(icon: Icon(Icons.fitness_center), label: 'Workout'),
-                BottomNavigationBarItem(icon: Icon(Icons.restaurant_menu), label: 'Diet'),
-                BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings'),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.fitness_center),
+                  label: 'Workout',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.restaurant_menu),
+                  label: 'Diet',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.settings),
+                  label: 'Settings',
+                ),
               ],
-              currentIndex: viewModel.selectedIndex < 4 ? viewModel.selectedIndex : 0,
+              currentIndex:
+                  viewModel.selectedIndex < 4 ? viewModel.selectedIndex : 0,
               selectedItemColor: Theme.of(context).colorScheme.primary,
-              unselectedItemColor: Theme.of(context).colorScheme.onSurface.withOpacity(0.5),
+              unselectedItemColor: Theme.of(
+                context,
+              ).colorScheme.onSurface.withOpacity(0.5),
               showUnselectedLabels: true,
               type: BottomNavigationBarType.fixed,
               onTap: (index) => viewModel.switchTab(index),
@@ -76,4 +88,3 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 }
-

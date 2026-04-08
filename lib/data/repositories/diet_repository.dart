@@ -6,11 +6,9 @@ class DietRepository {
   final FirebaseFirestore _firestore;
   final ApiService _apiService;
 
-  DietRepository({
-    FirebaseFirestore? firestore,
-    ApiService? apiService,
-  })  : _firestore = firestore ?? FirebaseFirestore.instance,
-        _apiService = apiService ?? ApiService();
+  DietRepository({FirebaseFirestore? firestore, ApiService? apiService})
+    : _firestore = firestore ?? FirebaseFirestore.instance,
+      _apiService = apiService ?? ApiService();
 
   /// Collection reference for a specific user's diet plans
   /// Structure: users/{userId}/dietPlans/{planId}
@@ -25,7 +23,7 @@ class DietRepository {
   }) async {
     try {
       print('Generating 7-day diet plan for user: $userId');
-      
+
       // 1. Fetch from API
       final dietPlan = await _apiService.generateDietPlan(
         userId: userId,
@@ -34,8 +32,10 @@ class DietRepository {
 
       // 2. Save to Firestore as a single 'weekly_diet' document
       print('Saving weekly diet plan to Firestore');
-      await _getDietCollection(userId).doc('weekly_diet').set(dietPlan.toJson());
-      
+      await _getDietCollection(
+        userId,
+      ).doc('weekly_diet').set(dietPlan.toJson());
+
       return dietPlan;
     } catch (e) {
       print('Error in generateAndSaveDietPlan: $e');

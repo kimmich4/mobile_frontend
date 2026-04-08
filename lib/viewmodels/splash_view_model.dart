@@ -22,6 +22,11 @@ class SplashViewModel extends BaseViewModel {
   bool _navigationStarted = false;
   bool isInitialized = false;
 
+  SplashViewModel() {
+    // Force sign out on app start as requested
+    _authRepository.signOut();
+  }
+
   /// Initialize all animations
   void initializeAnimations(TickerProvider vsync) {
     // Main entrance animation

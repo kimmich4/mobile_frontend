@@ -11,7 +11,7 @@ class MealItem {
   Map<String, dynamic> toJson() => {'name': name, 'calories': calories};
   factory MealItem.fromJson(Map<String, dynamic> json) => MealItem(
     name: json['name'] as String,
-    calories: json['calories'] as int,
+    calories: (json['calories'] as num).toInt(),
   );
 }
 

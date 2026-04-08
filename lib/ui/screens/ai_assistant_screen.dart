@@ -21,12 +21,18 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
 
   IconData _getIconData(String iconName) {
     switch (iconName) {
-      case 'restaurant_menu': return Icons.restaurant_menu;
-      case 'fitness_center': return Icons.fitness_center;
-      case 'analytics': return Icons.analytics;
-      case 'lightbulb': return Icons.lightbulb;
-      case 'swap_horiz': return Icons.swap_horiz;
-      default: return Icons.help_outline;
+      case 'restaurant_menu':
+        return Icons.restaurant_menu;
+      case 'fitness_center':
+        return Icons.fitness_center;
+      case 'analytics':
+        return Icons.analytics;
+      case 'lightbulb':
+        return Icons.lightbulb;
+      case 'swap_horiz':
+        return Icons.swap_horiz;
+      default:
+        return Icons.help_outline;
     }
   }
 
@@ -85,9 +91,17 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
               }
             },
             child: Container(
-              width: 40, height: 40,
-              decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), shape: BoxShape.circle),
-              child: const Icon(Icons.arrow_back, color: Colors.white, size: 20),
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: const Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+                size: 20,
+              ),
             ),
           ),
           const SizedBox(width: 16),
@@ -95,13 +109,23 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('AI Assistant', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(
+                  'AI Assistant',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 SizedBox(height: 4),
                 Row(
                   children: [
                     CircleAvatar(radius: 4, backgroundColor: Color(0xFF0FA4AF)),
                     SizedBox(width: 8),
-                    Text('Online', style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14)),
+                    Text(
+                      'Online',
+                      style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14),
+                    ),
                   ],
                 ),
               ],
@@ -112,7 +136,10 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
     );
   }
 
-  Widget _buildChatThread(BuildContext context, AiAssistantViewModel viewModel) {
+  Widget _buildChatThread(
+    BuildContext context,
+    AiAssistantViewModel viewModel,
+  ) {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -136,7 +163,10 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isUser ? const Color(0xFF0FA4AF) : Theme.of(context).colorScheme.surface,
+          color:
+              isUser
+                  ? const Color(0xFF0FA4AF)
+                  : Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(20),
             topRight: const Radius.circular(20),
@@ -148,7 +178,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
               color: Colors.black.withOpacity(0.05),
               blurRadius: 10,
               offset: const Offset(0, 4),
-            )
+            ),
           ],
         ),
         constraints: BoxConstraints(
@@ -157,7 +187,8 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
         child: Text(
           message.text,
           style: TextStyle(
-            color: isUser ? Colors.white : Theme.of(context).colorScheme.onSurface,
+            color:
+                isUser ? Colors.white : Theme.of(context).colorScheme.onSurface,
             fontSize: 15,
             height: 1.4,
           ),
@@ -185,10 +216,13 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
-              width: 12, height: 12,
+              width: 12,
+              height: 12,
               child: CircularProgressIndicator(
                 strokeWidth: 2,
-                valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  Theme.of(context).colorScheme.primary,
+                ),
               ),
             ),
             const SizedBox(width: 12),
@@ -205,45 +239,70 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
     );
   }
 
-  Widget _buildQuickActions(BuildContext context, AiAssistantViewModel viewModel) {
+  Widget _buildQuickActions(
+    BuildContext context,
+    AiAssistantViewModel viewModel,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Quick Actions', style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6), fontSize: 14, fontWeight: FontWeight.bold)),
+          Text(
+            'Quick Actions',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const SizedBox(height: 16),
           // Group quick actions in rows of 2 for better layout
           Column(
-            children: List.generate((viewModel.quickActions.length / 2).ceil(), (rowIndex) {
-              return Padding(
-                padding: const EdgeInsets.only(bottom: 12),
-                child: Row(
-                  children: [
-                    for (int i = 0; i < 2; i++)
-                      if (rowIndex * 2 + i < viewModel.quickActions.length) ...[
-                        Expanded(
-                          child: _buildActionCard(
-                            context, 
-                            _getIconData(viewModel.quickActions[rowIndex * 2 + i].iconName), 
-                            viewModel.quickActions[rowIndex * 2 + i].title,
-                            () => viewModel.onQuickActionTap(viewModel.quickActions[rowIndex * 2 + i].title)
+            children: List.generate(
+              (viewModel.quickActions.length / 2).ceil(),
+              (rowIndex) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Row(
+                    children: [
+                      for (int i = 0; i < 2; i++)
+                        if (rowIndex * 2 + i <
+                            viewModel.quickActions.length) ...[
+                          Expanded(
+                            child: _buildActionCard(
+                              context,
+                              _getIconData(
+                                viewModel
+                                    .quickActions[rowIndex * 2 + i]
+                                    .iconName,
+                              ),
+                              viewModel.quickActions[rowIndex * 2 + i].title,
+                              () => viewModel.onQuickActionTap(
+                                viewModel.quickActions[rowIndex * 2 + i].title,
+                              ),
+                            ),
                           ),
-                        ),
-                        if (i == 0) const SizedBox(width: 12),
-                      ] else 
-                        const Spacer(),
-                  ],
-                ),
-              );
-            }),
+                          if (i == 0) const SizedBox(width: 12),
+                        ] else
+                          const Spacer(),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildActionCard(BuildContext context, IconData icon, String label, VoidCallback onTap) {
+  Widget _buildActionCard(
+    BuildContext context,
+    IconData icon,
+    String label,
+    VoidCallback onTap,
+  ) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -251,14 +310,22 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Theme.of(context).colorScheme.primary.withOpacity(0.1)),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+          ),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Icon(icon, color: Theme.of(context).colorScheme.primary),
             const SizedBox(height: 12),
-            Text(label, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.bold)),
+            Text(
+              label,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),
@@ -287,7 +354,11 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
                   controller: _messageController,
                   decoration: InputDecoration(
                     hintText: 'Ask me anything...',
-                    hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.4)),
+                    hintStyle: TextStyle(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withOpacity(0.4),
+                    ),
                     border: InputBorder.none,
                   ),
                 ),
@@ -302,8 +373,14 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
                 }
               },
               child: Container(
-                width: 56, height: 56,
-                decoration: BoxDecoration(gradient: const LinearGradient(colors: [Color(0xFF024950), Color(0xFF0FA4AF)]), borderRadius: BorderRadius.circular(16)),
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF024950), Color(0xFF0FA4AF)],
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                ),
                 child: const Icon(Icons.send, color: Colors.white),
               ),
             ),
@@ -313,4 +390,3 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
     );
   }
 }
-

@@ -8,12 +8,13 @@ import 'base_view_model.dart';
 class SignupViewModel extends BaseViewModel {
   final AuthRepository _authRepository = AuthRepository();
   final UserRepository _userRepository = UserRepository();
-  
+
   final TextEditingController nameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
-  
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
   bool _agreedToTerms = false;
 
   bool get agreedToTerms => _agreedToTerms;
@@ -78,7 +79,6 @@ class SignupViewModel extends BaseViewModel {
       setLoading(false);
       setError('Failed to create user');
       return false;
-
     } on Exception catch (e) {
       setLoading(false);
       final message = e.toString();
@@ -94,7 +94,6 @@ class SignupViewModel extends BaseViewModel {
       return false;
     }
   }
-
 
   /// Navigate to login screen
   void navigateToLogin(VoidCallback onNavigate) {
