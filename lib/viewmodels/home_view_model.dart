@@ -33,9 +33,10 @@ class HomeViewModel extends BaseViewModel {
   String get caloriesConsumed {
     final todayPlan = _todayDietPlan;
     if (todayPlan == null) return '0';
-    
+
     int totalConsumed = 0;
-    final completedForToday = _currentUser?.completedMeals[_todayWeekday - 1] ?? [];
+    final completedForToday =
+        _currentUser?.completedMeals[_todayWeekday - 1] ?? [];
     for (int i = 0; i < todayPlan.meals.length; i++) {
       if (completedForToday.contains(i)) {
         totalConsumed += todayPlan.meals[i].totalCalories;
@@ -65,8 +66,10 @@ class HomeViewModel extends BaseViewModel {
   // ── Workouts (from workout plans) ──
   String get workoutsCompleted {
     final today = _todayWeekday;
-    final homeCompleted = _currentUser?.completedHomeExercises[today]?.length ?? 0;
-    final gymCompleted = _currentUser?.completedGymExercises[today]?.length ?? 0;
+    final homeCompleted =
+        _currentUser?.completedHomeExercises[today]?.length ?? 0;
+    final gymCompleted =
+        _currentUser?.completedGymExercises[today]?.length ?? 0;
     return (homeCompleted + gymCompleted).toString();
   }
 
@@ -78,11 +81,13 @@ class HomeViewModel extends BaseViewModel {
 
   // ── Home Workout Specific ──
   String get homeWorkoutTitle => _homeWorkout?.title ?? 'Home Workout';
-  
+
   String get homeWorkoutDescription {
     if (_homeWorkout == null) return 'No plan yet';
     try {
-      final dayPlan = _homeWorkout!.days.firstWhere((d) => d.day == _todayWeekday);
+      final dayPlan = _homeWorkout!.days.firstWhere(
+        (d) => d.day == _todayWeekday,
+      );
       final count = dayPlan.exercises.length;
       return '$count exercises · ~${count * 8} min';
     } catch (_) {
@@ -97,13 +102,17 @@ class HomeViewModel extends BaseViewModel {
   int get homeWorkoutGoal {
     if (_homeWorkout == null) return 0;
     try {
-      return _homeWorkout!.days.firstWhere((d) => d.day == _todayWeekday).exercises.length;
+      return _homeWorkout!.days
+          .firstWhere((d) => d.day == _todayWeekday)
+          .exercises
+          .length;
     } catch (_) {
       return 0;
     }
   }
 
-  bool get isHomeWorkoutDone => homeWorkoutGoal > 0 && homeWorkoutCompleted >= homeWorkoutGoal;
+  bool get isHomeWorkoutDone =>
+      homeWorkoutGoal > 0 && homeWorkoutCompleted >= homeWorkoutGoal;
 
   // ── Gym Workout Specific ──
   String get gymWorkoutTitle => _gymWorkout?.title ?? 'Gym Workout';
@@ -111,7 +120,9 @@ class HomeViewModel extends BaseViewModel {
   String get gymWorkoutDescription {
     if (_gymWorkout == null) return 'No plan yet';
     try {
-      final dayPlan = _gymWorkout!.days.firstWhere((d) => d.day == _todayWeekday);
+      final dayPlan = _gymWorkout!.days.firstWhere(
+        (d) => d.day == _todayWeekday,
+      );
       final count = dayPlan.exercises.length;
       return '$count exercises · ~${count * 8} min';
     } catch (_) {
@@ -126,33 +137,37 @@ class HomeViewModel extends BaseViewModel {
   int get gymWorkoutGoal {
     if (_gymWorkout == null) return 0;
     try {
-      return _gymWorkout!.days.firstWhere((d) => d.day == _todayWeekday).exercises.length;
+      return _gymWorkout!.days
+          .firstWhere((d) => d.day == _todayWeekday)
+          .exercises
+          .length;
     } catch (_) {
       return 0;
     }
   }
 
-  bool get isGymWorkoutDone => gymWorkoutGoal > 0 && gymWorkoutCompleted >= gymWorkoutGoal;
+  bool get isGymWorkoutDone =>
+      gymWorkoutGoal > 0 && gymWorkoutCompleted >= gymWorkoutGoal;
 
   /// Goal = number of exercises today
   String get workoutsGoal {
     final today = _todayWeekday;
     int totalExercises = 0;
-    
+
     if (_homeWorkout != null) {
       try {
         final dayPlan = _homeWorkout!.days.firstWhere((d) => d.day == today);
         totalExercises += dayPlan.exercises.length;
       } catch (_) {}
     }
-    
+
     if (_gymWorkout != null) {
       try {
         final dayPlan = _gymWorkout!.days.firstWhere((d) => d.day == today);
         totalExercises += dayPlan.exercises.length;
       } catch (_) {}
     }
-    
+
     return totalExercises > 0 ? totalExercises.toString() : '0';
   }
 
@@ -163,7 +178,8 @@ class HomeViewModel extends BaseViewModel {
     final todayPlan = _todayDietPlan;
     if (todayPlan == null) return 0;
     final totalMeals = todayPlan.meals.length;
-    final consumed = _currentUser?.completedMeals[_todayWeekday - 1]?.length ?? 0;
+    final consumed =
+        _currentUser?.completedMeals[_todayWeekday - 1]?.length ?? 0;
     return (totalMeals - consumed).clamp(0, totalMeals);
   }
 
@@ -210,7 +226,8 @@ class HomeViewModel extends BaseViewModel {
   String get dietPlanCompletion {
     final todayPlan = _todayDietPlan;
     if (todayPlan == null || todayPlan.meals.isEmpty) return '0%';
-    final completed = _currentUser?.completedMeals[_todayWeekday - 1]?.length ?? 0;
+    final completed =
+        _currentUser?.completedMeals[_todayWeekday - 1]?.length ?? 0;
     final pct = (completed / todayPlan.meals.length * 100).round();
     return '$pct%';
   }
@@ -245,15 +262,15 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void _initAuthListener() {
-    _authSubscription =
-        FirebaseAuth.instance.authStateChanges().listen((user) {
+    _authSubscription = FirebaseAuth.instance.authStateChanges().listen((user) {
       _userSubscription?.cancel();
       _currentUser = null;
 
       if (user != null) {
         // Listen to user doc for real-time updates
-        _userSubscription =
-            _userRepository.getUserStream(user.uid).listen((userModel) {
+        _userSubscription = _userRepository.getUserStream(user.uid).listen((
+          userModel,
+        ) {
           _currentUser = userModel;
           notifyListeners();
         });
@@ -268,10 +285,14 @@ class HomeViewModel extends BaseViewModel {
   Future<void> _loadPlans(String userId) async {
     try {
       _dietPlan = await _dietRepository.getDietPlan(userId);
-      _homeWorkout =
-          await _workoutRepository.getWorkoutPlan(userId, 'home_workout');
-      _gymWorkout =
-          await _workoutRepository.getWorkoutPlan(userId, 'gym_workout');
+      _homeWorkout = await _workoutRepository.getWorkoutPlan(
+        userId,
+        'home_workout',
+      );
+      _gymWorkout = await _workoutRepository.getWorkoutPlan(
+        userId,
+        'gym_workout',
+      );
       notifyListeners();
     } catch (e) {
       print('HomeViewModel: Error loading plans: $e');
