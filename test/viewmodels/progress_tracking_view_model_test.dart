@@ -20,11 +20,15 @@ void main() {
   late MockAuthRepository mockAuthRepository;
   late MockProgressRepository mockProgressRepository;
   late MockUserRepository mockUserRepository;
+  late MockDietRepository mockDietRepository;
+  late MockWorkoutRepository mockWorkoutRepository;
 
   setUp(() {
     mockAuthRepository = MockAuthRepository();
     mockProgressRepository = MockProgressRepository();
     mockUserRepository = MockUserRepository();
+    mockDietRepository = MockDietRepository();
+    mockWorkoutRepository = MockWorkoutRepository();
     
     when(() => mockAuthRepository.authStateChanges)
         .thenAnswer((_) => Stream.value(null));
@@ -37,6 +41,8 @@ void main() {
         authRepository: mockAuthRepository,
         progressRepository: mockProgressRepository,
         userRepository: mockUserRepository,
+        dietRepository: mockDietRepository,
+        workoutRepository: mockWorkoutRepository,
       );
       
       expect(viewModel.selectedPeriod, 0); // Week
@@ -49,6 +55,8 @@ void main() {
         authRepository: mockAuthRepository,
         progressRepository: mockProgressRepository,
         userRepository: mockUserRepository,
+        dietRepository: mockDietRepository,
+        workoutRepository: mockWorkoutRepository,
       );
       
       viewModel.setSelectedPeriod(1);

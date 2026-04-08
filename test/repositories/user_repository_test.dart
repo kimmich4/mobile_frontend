@@ -2,14 +2,23 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 import 'package:mobile_frontend/data/repositories/user_repository.dart';
 import 'package:mobile_frontend/data/models/user_model.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+
+class MockFirebaseStorage extends Mock implements FirebaseStorage {}
 
 void main() {
   late UserRepository repository;
   late FakeFirebaseFirestore fakeFirestore;
+  late MockFirebaseStorage mockStorage;
 
   setUp(() {
     fakeFirestore = FakeFirebaseFirestore();
-    repository = UserRepository(firestore: fakeFirestore);
+    mockStorage = MockFirebaseStorage();
+    repository = UserRepository(
+      firestore: fakeFirestore,
+      storage: mockStorage,
+    );
   });
 
   group('UserRepository', () {

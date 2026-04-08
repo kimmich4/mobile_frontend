@@ -1,22 +1,30 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:mobile_frontend/data/repositories/auth_repository.dart';
 import 'package:mobile_frontend/viewmodels/diet_view_model.dart';
 import 'package:mobile_frontend/data/repositories/diet_repository.dart';
 import 'package:mobile_frontend/data/repositories/user_repository.dart';
 import 'package:mobile_frontend/data/models/diet_model.dart';
 
+class MockAuthRepository extends Mock implements AuthRepository {}
 class MockDietRepository extends Mock implements DietRepository {}
 class MockUserRepository extends Mock implements UserRepository {}
 
 void main() {
   late DietViewModel viewModel;
+  late MockAuthRepository mockAuthRepository;
   late MockDietRepository mockDietRepository;
   late MockUserRepository mockUserRepository;
 
   setUp(() {
+    mockAuthRepository = MockAuthRepository();
     mockDietRepository = MockDietRepository();
     mockUserRepository = MockUserRepository();
+    
+    when(() => mockAuthRepository.currentUser).thenReturn(null);
+
     viewModel = DietViewModel(
+      authRepository: mockAuthRepository,
       dietRepository: mockDietRepository,
       userRepository: mockUserRepository,
     );

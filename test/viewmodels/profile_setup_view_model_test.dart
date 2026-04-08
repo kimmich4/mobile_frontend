@@ -3,21 +3,32 @@ import 'package:mocktail/mocktail.dart';
 import 'package:mobile_frontend/viewmodels/profile_setup_view_model.dart';
 import 'package:mobile_frontend/data/repositories/auth_repository.dart';
 import 'package:mobile_frontend/data/repositories/user_repository.dart';
+import 'package:mobile_frontend/data/repositories/diet_repository.dart';
+import 'package:mobile_frontend/data/repositories/workout_repository.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 class MockUserRepository extends Mock implements UserRepository {}
+class MockDietRepository extends Mock implements DietRepository {}
+class MockWorkoutRepository extends Mock implements WorkoutRepository {}
 
 void main() {
   late ProfileSetupViewModel viewModel;
   late MockAuthRepository mockAuthRepository;
   late MockUserRepository mockUserRepository;
+  late MockDietRepository mockDietRepository;
+  late MockWorkoutRepository mockWorkoutRepository;
 
   setUp(() {
     mockAuthRepository = MockAuthRepository();
     mockUserRepository = MockUserRepository();
+    mockDietRepository = MockDietRepository();
+    mockWorkoutRepository = MockWorkoutRepository();
+    
     viewModel = ProfileSetupViewModel(
       authRepository: mockAuthRepository,
       userRepository: mockUserRepository,
+      dietRepository: mockDietRepository,
+      workoutRepository: mockWorkoutRepository,
     );
   });
 

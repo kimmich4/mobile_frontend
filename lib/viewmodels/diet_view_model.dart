@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import '../data/repositories/auth_repository.dart';
 import 'base_view_model.dart';
 import '../data/models/diet_model.dart';
 import '../data/repositories/diet_repository.dart';
@@ -6,11 +6,16 @@ import '../data/repositories/user_repository.dart';
 
 /// ViewModel for Diet Screen — includes meal completion tracking
 class DietViewModel extends BaseViewModel {
+  final AuthRepository _authRepository;
   final DietRepository _dietRepository;
   final UserRepository _userRepository;
 
-  DietViewModel({DietRepository? dietRepository, UserRepository? userRepository})
-      : _dietRepository = dietRepository ?? DietRepository(),
+  DietViewModel({
+    AuthRepository? authRepository,
+    DietRepository? dietRepository,
+    UserRepository? userRepository,
+  })  : _authRepository = authRepository ?? AuthRepository(),
+        _dietRepository = dietRepository ?? DietRepository(),
         _userRepository = userRepository ?? UserRepository();
 
   int _selectedDayIndex = 0; // 0-6 (Mon-Sun)
@@ -22,7 +27,7 @@ class DietViewModel extends BaseViewModel {
 
   int get selectedDayIndex => _selectedDayIndex;
   
-  String? get userId => FirebaseAuth.instance.currentUser?.uid;
+  String? get userId => _authRepository.currentUser?.uid;
 
   // Track completed meals per day: key = dayIndex, value = set of meal indices
   final Map<int, Set<int>> _completedMeals = {};

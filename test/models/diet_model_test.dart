@@ -24,9 +24,12 @@ void main() {
             carbs: '150g',
             fats: '50g',
             meals: [
-              Meal(title: 'Lunch', items: [MealItem(name: 'Chicken', calories: 500)])
+              Meal(
+                title: 'Lunch',
+                items: [MealItem(name: 'Chicken', calories: 500)],
+              ),
             ],
-          )
+          ),
         ],
       );
 
