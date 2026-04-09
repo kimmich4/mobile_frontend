@@ -232,21 +232,26 @@ class WorkoutViewModel extends BaseViewModel {
     }
 
     // If all exercises completed for today → log workout completion
-    if (allExercisesCompleted && !_todayWorkoutLogged && userId != null) {
-      _todayWorkoutLogged = true;
+    final todayDay = DateTime.now().weekday;
+    if (_selectedDay == todayDay && userId != null) {
       try {
-        // Get current day name
         final dayName = dayLabels[_selectedDay - 1];
+        final totalBurned = _calculateCaloriesBurnedForDay(_selectedDay);
+        final workoutCompleted = _isWorkoutDayCompleted(_selectedDay);
 
-        // Log workout to daily log
-        await _progressRepository.logWorkoutCompletion(userId!, dayName, true);
+        _todayWorkoutLogged = workoutCompleted;
 
-        // Increment workoutsCompletedThisWeek on user doc
+        await _progressRepository.logWorkoutCompletion(
+          userId!,
+          dayName,
+          workoutCompleted,
+          caloriesBurned: totalBurned,
+        );
+
         final userModel = await _userRepository.getUserProfile(userId!);
         if (userModel != null) {
-          final current = userModel.workoutsCompletedThisWeek ?? 0;
           await _userRepository.updateFields(userId!, {
-            'workoutsCompletedThisWeek': current + 1,
+            'workoutsCompletedThisWeek': _calculateCompletedWorkoutDays(userModel),
           });
         }
       } catch (e) {
@@ -259,5 +264,100 @@ class WorkoutViewModel extends BaseViewModel {
   bool isExerciseCompleted(int exerciseId) {
     final targetMap = _selectedTab == 0 ? _completedHomeExercises : _completedGymExercises;
     return (targetMap[_selectedDay] ?? {}).contains(exerciseId);
+  }
+
+  int _calculateCaloriesBurnedForDay(int day) {
+    int total = 0;
+
+    if (_homeWorkout != null) {
+      try {
+        final dayPlan = _homeWorkout!.days.firstWhere((d) => d.day == day);
+        final completedHome = _completedHomeExercises[day] ?? {};
+        for (final ex in dayPlan.exercises) {
+          if (completedHome.contains(ex.id)) {
+            total += ex.calories;
+          }
+        }
+      } catch (_) {}
+    }
+
+    if (_gymWorkout != null) {
+      try {
+        final dayPlan = _gymWorkout!.days.firstWhere((d) => d.day == day);
+        final completedGym = _completedGymExercises[day] ?? {};
+        for (final ex in dayPlan.exercises) {
+          if (completedGym.contains(ex.id)) {
+            total += ex.calories;
+          }
+        }
+      } catch (_) {}
+    }
+
+    return total;
+  }
+
+  bool _isWorkoutDayCompleted(int day) {
+    bool homeDone = false;
+    bool gymDone = false;
+
+    if (_homeWorkout != null) {
+      try {
+        final dayPlan = _homeWorkout!.days.firstWhere((d) => d.day == day);
+        final completedHome = _completedHomeExercises[day] ?? {};
+        homeDone =
+            dayPlan.exercises.isNotEmpty &&
+            dayPlan.exercises.every((ex) => completedHome.contains(ex.id));
+      } catch (_) {}
+    }
+
+    if (_gymWorkout != null) {
+      try {
+        final dayPlan = _gymWorkout!.days.firstWhere((d) => d.day == day);
+        final completedGym = _completedGymExercises[day] ?? {};
+        gymDone =
+            dayPlan.exercises.isNotEmpty &&
+            dayPlan.exercises.every((ex) => completedGym.contains(ex.id));
+      } catch (_) {}
+    }
+
+    return homeDone || gymDone;
+  }
+
+  int _calculateCompletedWorkoutDays(dynamic userModel) {
+    int total = 0;
+
+    for (int day = 1; day <= 7; day++) {
+      final completedHome =
+          Set<int>.from(userModel.completedHomeExercises[day] ?? const []);
+      final completedGym =
+          Set<int>.from(userModel.completedGymExercises[day] ?? const []);
+
+      bool homeDone = false;
+      bool gymDone = false;
+
+      if (_homeWorkout != null) {
+        try {
+          final dayPlan = _homeWorkout!.days.firstWhere((d) => d.day == day);
+          homeDone =
+              dayPlan.exercises.isNotEmpty &&
+              dayPlan.exercises.every((ex) => completedHome.contains(ex.id));
+        } catch (_) {}
+      }
+
+      if (_gymWorkout != null) {
+        try {
+          final dayPlan = _gymWorkout!.days.firstWhere((d) => d.day == day);
+          gymDone =
+              dayPlan.exercises.isNotEmpty &&
+              dayPlan.exercises.every((ex) => completedGym.contains(ex.id));
+        } catch (_) {}
+      }
+
+      if (homeDone || gymDone) {
+        total++;
+      }
+    }
+
+    return total;
   }
 }

@@ -572,9 +572,30 @@ class ProgressRepository {
   ) {
     int completedDays = 0;
     for (int day = 1; day <= 7; day++) {
-      final hasHome = (user.completedHomeExercises[day]?.isNotEmpty ?? false);
-      final hasGym = (user.completedGymExercises[day]?.isNotEmpty ?? false);
-      if (hasHome || hasGym) completedDays++;
+      bool homeDone = false;
+      bool gymDone = false;
+
+      if (homeWorkout != null) {
+        try {
+          final dayPlan = homeWorkout.days.firstWhere((d) => d.day == day);
+          final completedHome = user.completedHomeExercises[day] ?? [];
+          homeDone =
+              dayPlan.exercises.isNotEmpty &&
+              dayPlan.exercises.every((ex) => completedHome.contains(ex.id));
+        } catch (_) {}
+      }
+
+      if (gymWorkout != null) {
+        try {
+          final dayPlan = gymWorkout.days.firstWhere((d) => d.day == day);
+          final completedGym = user.completedGymExercises[day] ?? [];
+          gymDone =
+              dayPlan.exercises.isNotEmpty &&
+              dayPlan.exercises.every((ex) => completedGym.contains(ex.id));
+        } catch (_) {}
+      }
+
+      if (homeDone || gymDone) completedDays++;
     }
     return completedDays;
   }
@@ -620,22 +641,34 @@ class ProgressRepository {
   Future<void> logWorkoutCompletion(
     String userId,
     String dayName,
-    bool isCompleted,
-  ) async {
+    bool isCompleted, {
+    int caloriesBurned = 0,
+  }) async {
     try {
       final today = DateTime.now().toIso8601String().split('T').first;
       await _getDailyLogsCollection(userId).doc(today).set({
         'workoutCompleted': isCompleted,
+        'caloriesBurned': caloriesBurned,
         'dayName': dayName,
         'timestamp': FieldValue.serverTimestamp(),
       }, SetOptions(merge: true));
-      if (isCompleted) {
-        await _getProgressCollection(userId).doc('currentStats').set({
-          'workoutsCompleted': FieldValue.increment(1),
-        }, SetOptions(merge: true));
-      }
     } catch (e) {
       throw Exception('Failed to log workout completion: $e');
+    }
+  }
+
+  Future<void> logCalorieConsumption(
+    String userId,
+    int caloriesConsumed,
+  ) async {
+    try {
+      final today = DateTime.now().toIso8601String().split('T').first;
+      await _getDailyLogsCollection(userId).doc(today).set({
+        'caloriesConsumed': caloriesConsumed,
+        'timestamp': FieldValue.serverTimestamp(),
+      }, SetOptions(merge: true));
+    } catch (e) {
+      throw Exception('Failed to log calorie consumption: $e');
     }
   }
 

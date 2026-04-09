@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../viewmodels/ai_assistant_view_model.dart';
 import '../../viewmodels/diet_view_model.dart';
 import '../../viewmodels/main_view_model.dart';
 
@@ -135,6 +136,12 @@ class DietScreen extends StatelessWidget {
         final meal = meals[i];
         final mealIndex = meal['index'] as int;
         final isCompleted = viewModel.isMealCompleted(mealIndex);
+        final mealItems = (meal['items'] as List)
+            .map((it) => {
+                  'name': it['name'],
+                  'cal': it['cal'],
+                })
+            .toList();
         return Padding(
           padding: const EdgeInsets.only(bottom: 16), 
           child: _buildMealSection(
@@ -144,14 +151,18 @@ class DietScreen extends StatelessWidget {
             meal['cal'],
             mealIndex,
             isCompleted,
-            (meal['items'] as List).map((it) => _buildMealItem(it['name'], it['cal'])).toList(),
+            mealItems,
           ),
         );
       })),
     );
   }
 
-  Widget _buildMealSection(BuildContext context, DietViewModel viewModel, String title, String cal, int mealIndex, bool isCompleted, List<Widget> items) {
+  Widget _buildMealSection(BuildContext context, DietViewModel viewModel, String title, String cal, int mealIndex, bool isCompleted, List<Map<String, dynamic>> items) {
+    final itemSummary = items
+        .map((item) => '${item['name']} (${item['cal']})')
+        .join(', ');
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 400),
       padding: const EdgeInsets.all(16),
@@ -179,7 +190,27 @@ class DietScreen extends StatelessWidget {
           Text(cal, style: const TextStyle(color: Color(0xFF0FA4AF), fontWeight: FontWeight.w600)),
         ]),
         const SizedBox(height: 12),
-        ...items,
+        ...items.map((item) => _buildMealItem(item['name'] as String, item['cal'] as String)),
+        const SizedBox(height: 12),
+        SizedBox(
+          width: double.infinity,
+          child: OutlinedButton.icon(
+            style: OutlinedButton.styleFrom(
+              foregroundColor: const Color(0xFF024950),
+              side: BorderSide(color: const Color(0xFF024950).withOpacity(0.2)),
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+            ),
+            onPressed: () {
+              context.read<AiAssistantViewModel>().setPrefillText(
+                'Give me alternatives for these meal items in "$title" for Day ${viewModel.selectedDayIndex + 1} of my diet plan: $itemSummary. Keep the same idea, include portions, and keep the alternatives aligned with my calorie target.',
+              );
+              MainViewModel.switchTabStatic(5);
+            },
+            icon: const Icon(Icons.swap_horiz, size: 20),
+            label: const Text('See Alternatives'),
+          ),
+        ),
         const SizedBox(height: 12),
         SizedBox(
           width: double.infinity,

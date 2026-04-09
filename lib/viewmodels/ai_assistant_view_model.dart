@@ -26,6 +26,11 @@ class AiAssistantViewModel extends BaseViewModel {
   String? _prefillText;
   String? get prefillText => _prefillText;
 
+  void setPrefillText(String text) {
+    _prefillText = text;
+    notifyListeners();
+  }
+
   void clearPrefill() {
     _prefillText = null;
   }

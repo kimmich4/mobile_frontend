@@ -1,6 +1,37 @@
-const { calculateBMR, calculateTDEE, adjustCalories } = require('../plan_generator');
+const { calculateBMR, calculateTDEE, adjustCalories, generateAnswer } = require('../plan_generator');
+
+function createStreamResponse(chunks) {
+    const encoder = new TextEncoder();
+    let index = 0;
+
+    return {
+        ok: true,
+        status: 200,
+        body: {
+            getReader() {
+                return {
+                    async read() {
+                        if (index >= chunks.length) {
+                            return { done: true, value: undefined };
+                        }
+                        return { done: false, value: encoder.encode(chunks[index++]) };
+                    },
+                    releaseLock() {}
+                };
+            }
+        }
+    };
+}
 
 describe('Plan Generator calculations', () => {
+    beforeEach(() => {
+        global.fetch = jest.fn();
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
     test('calculateBMR should calculate correctly for male', () => {
         // formula: 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age)
         const bmr = calculateBMR(70, 175, 25, 'male');
@@ -26,5 +57,25 @@ describe('Plan Generator calculations', () => {
         expect(adjustCalories(tdee, 'lose weight')).toBe(2000);
         expect(adjustCalories(tdee, 'build muscle')).toBe(3000);
         expect(adjustCalories(tdee, 'maintain')).toBe(2500);
+    });
+
+    test('generateAnswer should fall back to streaming after a retryable HF error', async () => {
+        global.fetch
+            .mockResolvedValueOnce({
+                ok: false,
+                status: 504,
+                text: jest.fn().mockResolvedValue('Gateway Timeout')
+            })
+            .mockResolvedValueOnce(createStreamResponse([
+                'data: {"choices":[{"delta":{"content":"{\\"gym\\":{\\"days\\":[]},"}}]}\n',
+                'data: {"choices":[{"delta":{"content":"\\"home\\":{\\"days\\":[]}}"},"finish_reason":"stop"}]}\n',
+                'data: [DONE]\n'
+            ]));
+
+        const result = await generateAnswer('ctx', 'task');
+
+        expect(JSON.parse(result)).toEqual({ gym: { days: [] }, home: { days: [] } });
+        expect(global.fetch).toHaveBeenCalledTimes(2);
+        expect(JSON.parse(global.fetch.mock.calls[1][1].body).stream).toBe(true);
     });
 });

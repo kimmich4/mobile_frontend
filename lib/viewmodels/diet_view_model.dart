@@ -2,6 +2,7 @@ import '../data/repositories/auth_repository.dart';
 import 'base_view_model.dart';
 import '../data/models/diet_model.dart';
 import '../data/repositories/diet_repository.dart';
+import '../data/repositories/progress_repository.dart';
 import '../data/repositories/user_repository.dart';
 
 /// ViewModel for Diet Screen — includes meal completion tracking
@@ -9,14 +10,17 @@ class DietViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final DietRepository _dietRepository;
   final UserRepository _userRepository;
+  final ProgressRepository _progressRepository;
 
   DietViewModel({
     AuthRepository? authRepository,
     DietRepository? dietRepository,
     UserRepository? userRepository,
+    ProgressRepository? progressRepository,
   })  : _authRepository = authRepository ?? AuthRepository(),
         _dietRepository = dietRepository ?? DietRepository(),
-        _userRepository = userRepository ?? UserRepository();
+        _userRepository = userRepository ?? UserRepository(),
+        _progressRepository = progressRepository ?? ProgressRepository();
 
   int _selectedDayIndex = 0; // 0-6 (Mon-Sun)
 
@@ -194,6 +198,10 @@ class DietViewModel extends BaseViewModel {
       }
       
       await _userRepository.updateFields(userId!, updates);
+
+      if (_selectedDayIndex == todayIndex) {
+        await _progressRepository.logCalorieConsumption(userId!, totalConsumed);
+      }
     } catch (e) {
       print('Error persisting meal completion: $e');
     }

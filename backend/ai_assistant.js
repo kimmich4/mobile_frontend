@@ -3,6 +3,10 @@ require("dotenv").config();
 // 🔹 Helper: Chat Assistant (Using OpenRouter with Fallbacks)
 async function chatAssistant(messages) {
     const models = [
+        "google/gemma-4-31b-it:free",
+        "minimax/minimax-m2.5:free",
+        "google/gemma-4-31b-it:free",
+        "openai/gpt-oss-120b:free",
         "stepfun/step-3.5-flash:free",
         "arcee-ai/trinity-large-preview:free",
         "upstage/solar-pro-3:free",

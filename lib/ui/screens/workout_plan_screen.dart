@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../viewmodels/ai_assistant_view_model.dart';
 import '../../viewmodels/workout_view_model.dart';
 import '../../viewmodels/main_view_model.dart';
 import '../../data/models/workout_model.dart';
@@ -207,6 +208,27 @@ class WorkoutPlanScreen extends StatelessWidget {
               child: Text(isDone ? 'Done' : 'Complete'),
             )),
           ]),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: OutlinedButton.icon(
+              style: OutlinedButton.styleFrom(
+                foregroundColor: const Color(0xFF024950),
+                side: BorderSide(color: const Color(0xFF024950).withOpacity(0.2)),
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+              ),
+              onPressed: () {
+                final workoutType = viewModel.selectedTab == 0 ? 'home' : 'gym';
+                context.read<AiAssistantViewModel>().setPrefillText(
+                  'Give me alternatives for the "${exercise.name}" exercise in my Day ${viewModel.selectedDay} $workoutType workout plan. Keep the alternatives suitable for the same difficulty and goal.',
+                );
+                MainViewModel.switchTabStatic(5);
+              },
+              icon: const Icon(Icons.swap_horiz, size: 20),
+              label: const Text('See Alternatives'),
+            ),
+          ),
         ],
       ),
     );

@@ -34,7 +34,12 @@ void main() {
     test('logWorkoutCompletion saves to dailyLogs', () async {
       final todayStr = DateTime.now().toIso8601String().split('T').first;
       
-      await repository.logWorkoutCompletion('user123', 'Mon', true);
+      await repository.logWorkoutCompletion(
+        'user123',
+        'Mon',
+        true,
+        caloriesBurned: 320,
+      );
       
       final doc = await fakeFirestore
           .collection('users')
@@ -45,6 +50,23 @@ void main() {
           
       expect(doc.exists, true);
       expect(doc.data()?['workoutCompleted'], true);
+      expect(doc.data()?['caloriesBurned'], 320);
+    });
+
+    test('logCalorieConsumption saves caloriesConsumed to dailyLogs', () async {
+      final todayStr = DateTime.now().toIso8601String().split('T').first;
+
+      await repository.logCalorieConsumption('user123', 1850);
+
+      final doc = await fakeFirestore
+          .collection('users')
+          .doc('user123')
+          .collection('dailyLogs')
+          .doc(todayStr)
+          .get();
+
+      expect(doc.exists, true);
+      expect(doc.data()?['caloriesConsumed'], 1850);
     });
   });
 }

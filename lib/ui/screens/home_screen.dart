@@ -110,16 +110,27 @@ class HomeScreen extends StatelessWidget {
           ),
           const SizedBox(width: 12),
           Expanded(
-            child: GestureDetector(
-              onTap: () => viewModel.incrementWaterIntake(),
-              child: _buildStatCard(
+            child: _buildStatCard(
                 title: 'Water 🥛',
                 value: '${viewModel.waterIntake}/8',
                 subtitle: 'glasses',
                 isDone: viewModel.isWaterGoalReached,
                 activeColor: Colors.blue,
+                trailing: InkWell(
+                  onTap: () => viewModel.incrementWaterIntake(),
+                  borderRadius: BorderRadius.circular(999),
+                  child: Container(
+                    width: 28,
+                    height: 28,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(0.18),
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white.withOpacity(0.18)),
+                    ),
+                    child: const Icon(Icons.add, color: Colors.white, size: 18),
+                  ),
+                ),
               ),
-            ),
           ),
         ]),
       ]),
@@ -132,6 +143,7 @@ class HomeScreen extends StatelessWidget {
     required String subtitle,
     bool isDone = false,
     Color activeColor = Colors.green,
+    Widget? trailing,
   }) {
     return Container(
       padding: const EdgeInsets.all(12),
@@ -143,11 +155,23 @@ class HomeScreen extends StatelessWidget {
         border: isDone ? Border.all(color: activeColor.withOpacity(0.5)) : null,
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text(title,
-            style: TextStyle(
-              color: isDone ? Colors.white : const Color(0xFFAFDDE5),
-              fontSize: 12,
-            )),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Text(title,
+                  style: TextStyle(
+                    color: isDone ? Colors.white : const Color(0xFFAFDDE5),
+                    fontSize: 12,
+                  )),
+            ),
+            if (trailing != null) ...[
+              const SizedBox(width: 8),
+              trailing,
+            ],
+          ],
+        ),
         const SizedBox(height: 4),
         Text(value,
             style: const TextStyle(
