@@ -4,20 +4,27 @@ import 'package:mocktail/mocktail.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_frontend/viewmodels/auth_view_model.dart';
 import 'package:mobile_frontend/data/repositories/auth_repository.dart';
+import 'package:mobile_frontend/data/repositories/user_repository.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
+class MockUserRepository extends Mock implements UserRepository {}
 class MockBuildContext extends Mock implements BuildContext {}
 class MockUserCredential extends Mock implements UserCredential {}
 
 void main() {
   late AuthViewModel viewModel;
   late MockAuthRepository mockAuthRepository;
+  late MockUserRepository mockUserRepository;
   late MockBuildContext mockContext;
 
   setUp(() {
     mockAuthRepository = MockAuthRepository();
+    mockUserRepository = MockUserRepository();
     mockContext = MockBuildContext();
-    viewModel = AuthViewModel(authRepository: mockAuthRepository);
+    viewModel = AuthViewModel(
+      authRepository: mockAuthRepository,
+      userRepository: mockUserRepository,
+    );
   });
 
   group('AuthViewModel', () {

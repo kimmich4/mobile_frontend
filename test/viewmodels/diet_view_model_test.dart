@@ -1,25 +1,31 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mobile_frontend/data/repositories/auth_repository.dart';
 import 'package:mobile_frontend/viewmodels/diet_view_model.dart';
 import 'package:mobile_frontend/data/repositories/diet_repository.dart';
+import 'package:mobile_frontend/data/repositories/progress_repository.dart';
 import 'package:mobile_frontend/data/repositories/user_repository.dart';
 import 'package:mobile_frontend/data/models/diet_model.dart';
 
 class MockAuthRepository extends Mock implements AuthRepository {}
 class MockDietRepository extends Mock implements DietRepository {}
 class MockUserRepository extends Mock implements UserRepository {}
+class MockProgressRepository extends Mock implements ProgressRepository {}
+class MockUser extends Mock implements User {}
 
 void main() {
   late DietViewModel viewModel;
   late MockAuthRepository mockAuthRepository;
   late MockDietRepository mockDietRepository;
   late MockUserRepository mockUserRepository;
+  late MockProgressRepository mockProgressRepository;
 
   setUp(() {
     mockAuthRepository = MockAuthRepository();
     mockDietRepository = MockDietRepository();
     mockUserRepository = MockUserRepository();
+    mockProgressRepository = MockProgressRepository();
     
     when(() => mockAuthRepository.currentUser).thenReturn(null);
 
@@ -27,6 +33,7 @@ void main() {
       authRepository: mockAuthRepository,
       dietRepository: mockDietRepository,
       userRepository: mockUserRepository,
+      progressRepository: mockProgressRepository,
     );
   });
 
@@ -37,14 +44,19 @@ void main() {
     });
 
     test('fetchDietPlan should set diet plan on success', () async {
+      final mockFirebaseUser = MockUser();
       final mockPlan = DietPlan(days: []);
-      
-      // We need to handle the userId getter which uses FirebaseAuth.instance
-      // In a real scenario we'd refactor this to be injectable
-      // For now, we'll just test the core logic if possible or assume a userId
-      
-      // Since we can't easily mock FirebaseAuth.instance without more complex setup,
-      // we'll skip the tests that rely on userId for now or mock the whole VM behavior.
+
+      when(() => mockFirebaseUser.uid).thenReturn('user123');
+      when(() => mockAuthRepository.currentUser).thenReturn(mockFirebaseUser);
+      when(() => mockDietRepository.getDietPlan('user123'))
+          .thenAnswer((_) async => mockPlan);
+
+      await viewModel.fetchDietPlan();
+
+      expect(viewModel.dietPlan, mockPlan);
+      expect(viewModel.isLoading, false);
+      verify(() => mockDietRepository.getDietPlan('user123')).called(1);
     });
 
     test('getFormattedDate returns correct string', () {
