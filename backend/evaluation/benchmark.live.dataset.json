@@ -1,0 +1,183 @@
+[
+  {
+    "id": "diet-diabetes-cutting-001",
+    "question": "Generate a safe 7-day diet plan for a male athlete with type 2 diabetes who wants fat loss.",
+    "searchQuery": "type 2 diabetes, none,none",
+    "contextPrefix": "User Profile: Omar, 29 years old, male.\nMetrics: Current Weight: 92kg, Target Weight: 84kg, Height: 178cm.\nActivity Level: moderate.\nExperience Level: intermediate.\nGoals: fat loss.\nReported Health Conditions: type 2 diabetes.\nAllergies: None.\nInjuries: None.\nCalculated BMR: 1900.\nCalculated TDEE: 2945.\nTarget Daily Calories (adjusted for goal): 2445.\nMedical Report Findings: Elevated fasting glucose.\nInBody Report Findings: High body fat percentage.\nVector Database Constraints: {{VECTOR_CONTEXT}}",
+    "task": "Create a 7-day diet plan (Day 1 to Day 7). Return only JSON. Ensure meals avoid obvious high-sugar foods and keep the answer grounded in the constraints.",
+    "groundTruthAnswer": "{\"requirements\":[\"7 days\",\"2445 calories per day\",\"avoid high-sugar foods\",\"blood-sugar-aware meal choices\"]}",
+    "relevantDocumentIds": [
+      "c06cf4af-cdc2-40eb-87c4-b58b5d4fe492",
+      "b454b22e-0283-45d9-9496-82055e2ec068",
+      "2eb71c19-6f7f-42bf-89c8-8460a85dd768"
+    ],
+    "metadata": {
+      "route": "/ai/generate-diet",
+      "goal": "fat loss",
+      "condition": "type 2 diabetes",
+      "liveIssueMatches": [
+        "Type 2 Diabetes - Moderate - Metabolic",
+        "Type 2 Diabetes - Mild - Metabolic",
+        "Type 2 Diabetes - Mild-Moderate - Metabolic"
+      ]
+    }
+  },
+  {
+    "id": "diet-shellfish-allergy-002",
+    "question": "Generate a muscle-gain diet plan for a female athlete with a shellfish allergy.",
+    "searchQuery": "shellfish allergy, shellfish,none",
+    "contextPrefix": "User Profile: Sara, 24 years old, female.\nMetrics: Current Weight: 58kg, Target Weight: 62kg, Height: 167cm.\nActivity Level: active.\nExperience Level: beginner.\nGoals: muscle gain.\nReported Health Conditions: None.\nAllergies: shellfish.\nInjuries: None.\nCalculated BMR: 1370.\nCalculated TDEE: 2363.\nTarget Daily Calories (adjusted for goal): 2863.\nMedical Report Findings: None provided.\nInBody Report Findings: Lean mass below target.\nVector Database Constraints: {{VECTOR_CONTEXT}}",
+    "task": "Create a 7-day diet plan (Day 1 to Day 7). Return only JSON. Ensure meals avoid shellfish and support muscle gain.",
+    "groundTruthAnswer": "{\"requirements\":[\"7 days\",\"2863 calories per day\",\"no shellfish\",\"protein-forward meal choices\"]}",
+    "relevantDocumentIds": [
+      "8241bd7e-6ce2-417d-afa1-197ef409eb33",
+      "c5b4d7f9-a3fe-4d19-85cb-963a4462a17e",
+      "a0ab0f6d-0719-4b5b-9e5e-88b5e4c741da"
+    ],
+    "metadata": {
+      "route": "/ai/generate-diet",
+      "goal": "muscle gain",
+      "allergy": "shellfish",
+      "liveIssueMatches": [
+        "Postural Orthostatic Tachycardia Syndrome - Mild - Autonomic",
+        "Meniscal Irritation - Mild - Musculoskeletal",
+        "Hypermobility Spectrum Disorder - Mild - Connective Tissue"
+      ]
+    }
+  },
+  {
+    "id": "diet-hypothyroidism-003",
+    "question": "Generate a safe diet plan for an athlete with hypothyroidism who wants general conditioning.",
+    "searchQuery": "hypothyroidism, none,none",
+    "contextPrefix": "User Profile: Nour, 36 years old, female.\nMetrics: Current Weight: 73kg, Target Weight: 70kg, Height: 170cm.\nActivity Level: light.\nExperience Level: beginner.\nGoals: general conditioning.\nReported Health Conditions: hypothyroidism.\nAllergies: None.\nInjuries: None.\nCalculated BMR: 1460.\nCalculated TDEE: 2007.\nTarget Daily Calories (adjusted for goal): 2007.\nMedical Report Findings: Mild hypothyroidism with fatigue complaints.\nInBody Report Findings: Average skeletal muscle mass.\nVector Database Constraints: {{VECTOR_CONTEXT}}",
+    "task": "Create a 7-day diet plan (Day 1 to Day 7). Return only JSON. Ensure the plan supports steady energy, avoids unnecessary restrictions, and stays grounded in the retrieved context.",
+    "groundTruthAnswer": "{\"requirements\":[\"7 days\",\"2007 calories per day\",\"adequate energy intake\",\"avoid unsupported restrictions\"]}",
+    "relevantDocumentIds": [
+      "570689dd-25fb-4647-9229-86e444412f83",
+      "c4e7aee9-11f1-4a98-b1b6-3d10ce10eb9f",
+      "aedded61-031a-409d-94f1-4411e6851186"
+    ],
+    "metadata": {
+      "route": "/ai/generate-diet",
+      "condition": "hypothyroidism",
+      "liveIssueMatches": [
+        "Hypothyroidism - Mild - Endocrine",
+        "Hypothyroidism - Mild - Endocrine",
+        "Hypothyroidism - Mild - Endocrine"
+      ]
+    }
+  },
+  {
+    "id": "diet-lactose-004",
+    "question": "Generate a diet plan for an athlete with lactose intolerance who wants fat loss.",
+    "searchQuery": "lactose intolerance, none,none",
+    "contextPrefix": "User Profile: Mariam, 31 years old, female.\nMetrics: Current Weight: 65kg, Target Weight: 61kg, Height: 164cm.\nActivity Level: moderate.\nExperience Level: intermediate.\nGoals: fat loss.\nReported Health Conditions: lactose intolerance.\nAllergies: None.\nInjuries: None.\nCalculated BMR: 1368.\nCalculated TDEE: 2120.\nTarget Daily Calories (adjusted for goal): 1620.\nMedical Report Findings: GI upset after dairy-heavy meals.\nInBody Report Findings: None provided.\nVector Database Constraints: {{VECTOR_CONTEXT}}",
+    "task": "Create a 7-day diet plan (Day 1 to Day 7). Return only JSON. Avoid lactose-heavy food choices and keep the plan grounded in the retrieved context.",
+    "groundTruthAnswer": "{\"requirements\":[\"7 days\",\"1620 calories per day\",\"avoid lactose-heavy foods\",\"use suitable substitutes when needed\"]}",
+    "relevantDocumentIds": [
+      "5a2a6cf2-6539-458b-83ef-e44d180a4435",
+      "565904fd-ce37-433d-a771-9a935bf26dd1",
+      "3826046b-382c-4f10-aaa5-56c4758faf1f"
+    ],
+    "metadata": {
+      "route": "/ai/generate-diet",
+      "condition": "lactose intolerance",
+      "liveIssueMatches": [
+        "Lactose Intolerance - Mild - Gastrointestinal",
+        "Lactose Intolerance - Mild-Moderate - Gastrointestinal",
+        "Lactose Intolerance with training-volume sensitivity - Mild-Moderate - Gastrointestinal"
+      ]
+    }
+  },
+  {
+    "id": "workout-lower-back-005",
+    "question": "Generate a 7-day workout plan for an intermediate athlete with lower back pain using an upper-lower split.",
+    "searchQuery": "Health conditions: none. Allergies: none. Injuries: lower back pain. Experience: intermediate - upper-lower split",
+    "contextPrefix": "User Profile: Adam, 27 years old, male.\nMetrics: Current Weight: 81kg, Target Weight: 79kg, Height: 180cm.\nBMR: 1825.00, TDEE: 2828.75. Target Calories: 2329 kcal.\nActivity Level: moderate.\nExperience Level: intermediate - upper-lower split.\nGoals: recomposition.\nHealth Conditions: None.\nAllergies: None.\nInjuries: lower back pain.\nMedical Report Findings: Recurrent lumbar strain.\nInBody Report Findings: Good upper body muscle mass.\nVector Database Constraints: {{VECTOR_CONTEXT}}",
+    "task": "Create a 7-day exercise plan. For each day provide home and gym plans. Return only JSON. Ensure exercises are safe for lower back pain and respect the requested split.",
+    "groundTruthAnswer": "{\"requirements\":[\"7 days\",\"home and gym plans\",\"avoid high spinal-load exercises if contraindicated\",\"respect upper-lower split\"]}",
+    "relevantDocumentIds": [
+      "bb3b7bb6-2186-4a08-bdee-3c8555063725",
+      "bd905389-e3d6-40cd-aade-bdfb79585969",
+      "f8c1dd30-96f1-4b02-b52a-a51cc062af24"
+    ],
+    "metadata": {
+      "route": "/ai/generate-workout",
+      "injury": "lower back pain",
+      "split": "upper-lower",
+      "liveIssueMatches": [
+        "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal",
+        "Chronic Low Back Pain with Core Weakness - Mild-Moderate - Musculoskeletal",
+        "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal"
+      ]
+    }
+  },
+  {
+    "id": "workout-asthma-beginner-006",
+    "question": "Generate a beginner workout plan for an athlete with exercise-induced asthma.",
+    "searchQuery": "Health conditions: exercise-induced asthma. Allergies: none. Injuries: none. Experience: beginner",
+    "contextPrefix": "User Profile: Youssef, 22 years old, male.\nMetrics: Current Weight: 74kg, Target Weight: 74kg, Height: 176cm.\nBMR: 1748.00, TDEE: 2403.50. Target Calories: 2404 kcal.\nActivity Level: light.\nExperience Level: beginner.\nGoals: general fitness.\nHealth Conditions: exercise-induced asthma.\nAllergies: None.\nInjuries: None.\nMedical Report Findings: Uses rescue inhaler before hard cardio.\nInBody Report Findings: Average composition.\nVector Database Constraints: {{VECTOR_CONTEXT}}",
+    "task": "Create a 7-day exercise plan. For each day provide home and gym plans. Return only JSON. Adjust intensity for a beginner and keep cardio recommendations asthma-aware.",
+    "groundTruthAnswer": "{\"requirements\":[\"7 days\",\"home and gym plans\",\"beginner intensity\",\"asthma-aware cardio progression\"]}",
+    "relevantDocumentIds": [
+      "f037fda9-991a-47cf-97bb-f2467ca948f1",
+      "ea4114e8-bef7-4dd5-bb33-76ac7a9bec80",
+      "83edef64-865b-4c54-bcbe-75472079d356"
+    ],
+    "metadata": {
+      "route": "/ai/generate-workout",
+      "condition": "exercise-induced asthma",
+      "experience": "beginner",
+      "liveIssueMatches": [
+        "Exercise-Induced Asthma - Mild - Respiratory",
+        "Exercise-Induced Asthma - Mild - Respiratory",
+        "Exercise-Induced Asthma - Mild - Respiratory"
+      ]
+    }
+  },
+  {
+    "id": "workout-shoulder-007",
+    "question": "Generate a push-pull-legs workout plan for an athlete with a shoulder impingement history.",
+    "searchQuery": "Health conditions: none. Allergies: none. Injuries: shoulder impingement. Experience: advanced - push-pull-legs",
+    "contextPrefix": "User Profile: Layla, 30 years old, female.\nMetrics: Current Weight: 63kg, Target Weight: 64kg, Height: 169cm.\nBMR: 1396.00, TDEE: 2408.10. Target Calories: 2908 kcal.\nActivity Level: active.\nExperience Level: advanced - push-pull-legs.\nGoals: muscle gain.\nHealth Conditions: None.\nAllergies: None.\nInjuries: shoulder impingement.\nMedical Report Findings: Pain with repetitive overhead pressing.\nInBody Report Findings: High training age.\nVector Database Constraints: {{VECTOR_CONTEXT}}",
+    "task": "Create a 7-day exercise plan. For each day provide home and gym plans. Return only JSON. Respect push-pull-legs and avoid exercises that would be unsafe for shoulder impingement if the retrieved context says so.",
+    "groundTruthAnswer": "{\"requirements\":[\"7 days\",\"home and gym plans\",\"respect push-pull-legs\",\"avoid unsafe overhead volume when contraindicated\"]}",
+    "relevantDocumentIds": [
+      "49578c77-ae24-4356-91e7-afd5933486e3",
+      "ae321141-0ed4-47a9-9326-72a8f2d35122",
+      "d597406d-3959-4772-8b3d-d9f215d342b5"
+    ],
+    "metadata": {
+      "route": "/ai/generate-workout",
+      "injury": "shoulder impingement",
+      "split": "push-pull-legs",
+      "liveIssueMatches": [
+        "Shoulder Impingement Syndrome - Mild - Musculoskeletal",
+        "Shoulder Impingement Syndrome - Mild - Musculoskeletal",
+        "Shoulder Impingement Syndrome - Moderate - Musculoskeletal"
+      ]
+    }
+  },
+  {
+    "id": "workout-post-acl-008",
+    "question": "Generate a safe home and gym workout plan for an athlete recovering from ACL reconstruction.",
+    "searchQuery": "Health conditions: none. Allergies: none. Injuries: post-ACL reconstruction. Experience: beginner",
+    "contextPrefix": "User Profile: Hany, 41 years old, male.\nMetrics: Current Weight: 88kg, Target Weight: 82kg, Height: 177cm.\nBMR: 1801.00, TDEE: 2476.38. Target Calories: 1976 kcal.\nActivity Level: light.\nExperience Level: beginner.\nGoals: fat loss.\nHealth Conditions: None.\nAllergies: None.\nInjuries: post-op knee surgery.\nMedical Report Findings: Cleared for controlled rehab-style movement only.\nInBody Report Findings: Reduced lower-body muscle mass.\nVector Database Constraints: {{VECTOR_CONTEXT}}",
+    "task": "Create a 7-day exercise plan. For each day provide home and gym plans. Return only JSON. Prioritize safe rehab-aware movement choices and avoid high-impact work if the context indicates that.",
+    "groundTruthAnswer": "{\"requirements\":[\"7 days\",\"home and gym plans\",\"rehab-aware lower-body choices\",\"avoid high-impact exercises when contraindicated\"]}",
+    "relevantDocumentIds": [
+      "69a4cf4a-eb97-4fba-be96-5fe6686d6320",
+      "692f2b14-e0e6-4ea8-bd19-4e869ff1ad2e",
+      "81bb3604-3934-4840-8969-2f1962fc2932"
+    ],
+    "metadata": {
+      "route": "/ai/generate-workout",
+      "injury": "post-ACL reconstruction",
+      "liveIssueMatches": [
+        "Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal",
+        "Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal",
+        "Post-ACL Reconstruction Recovery - Mild-Moderate - Musculoskeletal"
+      ]
+    }
+  }
+]

@@ -40,6 +40,30 @@ describe('RAG Chain Orchestration', () => {
             expect.stringContaining("Issue: Diabetes"),
             "Generate diet"
         );
-        expect(response).toBe('{"result": "success"}');
+        expect(JSON.parse(response)).toEqual({ result: "success" });
+    });
+
+    test('ragChain should normalize alternative workout JSON shapes', async () => {
+        getEmbedding.mockResolvedValue([0.1, 0.2]);
+        queryQdrant.mockResolvedValue([{ payload: { issue: "Back Pain", contraindicated_exercises: [{ exercise: "Deadlift" }] } }]);
+        generateAnswer.mockResolvedValue(JSON.stringify({
+            "7_day_exercise_plan": [
+                {
+                    gym_workout: [{ exercise: "Deadlift", sets: "3", reps: "8" }],
+                    home_workout: ["Bird-Dog (3x10)"]
+                }
+            ]
+        }));
+
+        const response = await ragChain.invoke({
+            searchQuery: "Back Pain",
+            contextPrefix: "User Context. {{VECTOR_CONTEXT}}",
+            task: "Create a 7-day exercise plan."
+        });
+
+        const parsed = JSON.parse(response);
+        expect(parsed).toHaveProperty('gym');
+        expect(parsed).toHaveProperty('home');
+        expect(parsed.gym.days[0].exercises[0].name).toContain('Safe substitute');
     });
 });

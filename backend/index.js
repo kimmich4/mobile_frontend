@@ -100,7 +100,7 @@ CRITICAL RULES:
 1. YOU MUST GENERATE ALL 7 DAYS (day 1, 2, 3, 4, 5, 6, 7).
 2. For EVERY day, the "totalCalories" field MUST be EXACTLY ${targetCalories}.
 3. The sum of all individual "calories" for items in "meals" MUST EXACTLY mathematically equal ${targetCalories} for every day. 
-4. meal variety: Each day SHOULD have a varied number of meals (between 3 and 6).
+4. meal variety: Each day SHOULD have a varied number of meals (between 5 and above to achive the target calories).
 5. Ensure the diet plan is safe for the provided injuries/conditions and doesnt violate any of the vector database constraints.
 6. CREATIVE TITLES: Use different meal names instead of just "Breakfast/Lunch/Dinner". Be creative and varied!
 7. Portions (grams/ml) must be realistic and specific.

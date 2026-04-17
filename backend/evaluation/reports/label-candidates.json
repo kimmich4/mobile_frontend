@@ -1,0 +1,513 @@
+[
+  {
+    "id": "diet-diabetes-cutting-001",
+    "question": "Generate a safe 7-day diet plan for a male athlete with type 2 diabetes who wants fat loss.",
+    "searchQuery": "type 2 diabetes, none,none",
+    "topMatches": [
+      {
+        "id": "c06cf4af-cdc2-40eb-87c4-b58b5d4fe492",
+        "score": 0.56801933,
+        "issue": "Type 2 Diabetes - Moderate - Metabolic",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Sugary soft drinks",
+            "reason": "Rapid glucose spike"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Long sessions without hydration or fuel planning",
+            "reason": "Can destabilize glucose control"
+          },
+          {
+            "exercise": "Unsupervised exhaustive fasted training",
+            "reason": "Raises hypoglycemia risk in some athletes"
+          }
+        ]
+      },
+      {
+        "id": "b454b22e-0283-45d9-9496-82055e2ec068",
+        "score": 0.56351024,
+        "issue": "Type 2 Diabetes - Mild - Metabolic",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Large refined-dessert portions",
+            "reason": "Poor glycemic control"
+          },
+          {
+            "food": "Sugary soft drinks",
+            "reason": "Rapid glucose spike"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Long sessions without hydration or fuel planning",
+            "reason": "Can destabilize glucose control"
+          },
+          {
+            "exercise": "Unsupervised exhaustive fasted training",
+            "reason": "Raises hypoglycemia risk in some athletes"
+          }
+        ]
+      },
+      {
+        "id": "2eb71c19-6f7f-42bf-89c8-8460a85dd768",
+        "score": 0.56291574,
+        "issue": "Type 2 Diabetes - Mild-Moderate - Metabolic",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Sugary soft drinks",
+            "reason": "Rapid glucose spike"
+          },
+          {
+            "food": "Large refined-dessert portions",
+            "reason": "Poor glycemic control"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Long sessions without hydration or fuel planning",
+            "reason": "Can destabilize glucose control"
+          },
+          {
+            "exercise": "Unsupervised exhaustive fasted training",
+            "reason": "Raises hypoglycemia risk in some athletes"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "diet-shellfish-allergy-002",
+    "question": "Generate a muscle-gain diet plan for a female athlete with a shellfish allergy.",
+    "searchQuery": "shellfish allergy, shellfish,none",
+    "topMatches": [
+      {
+        "id": "8241bd7e-6ce2-417d-afa1-197ef409eb33",
+        "score": 0.6028516,
+        "issue": "Postural Orthostatic Tachycardia Syndrome - Mild - Autonomic",
+        "allergies": [
+          "Shellfish"
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Shellfish-based meals",
+            "reason": "Allergic reaction risk"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Dehydration-based training",
+            "reason": "Poor autonomic tolerance"
+          }
+        ]
+      },
+      {
+        "id": "c5b4d7f9-a3fe-4d19-85cb-963a4462a17e",
+        "score": 0.59685963,
+        "issue": "Meniscal Irritation - Mild - Musculoskeletal",
+        "allergies": [
+          "Shellfish"
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Shellfish-based meals",
+            "reason": "Allergic reaction risk"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Twisting jumps",
+            "reason": "Increases meniscal shear"
+          }
+        ]
+      },
+      {
+        "id": "a0ab0f6d-0719-4b5b-9e5e-88b5e4c741da",
+        "score": 0.5837586,
+        "issue": "Hypermobility Spectrum Disorder - Mild - Connective Tissue",
+        "allergies": [
+          "Shellfish"
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Shellfish-based meals",
+            "reason": "Allergic reaction risk"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Stretch-focused sessions into hyperextension",
+            "reason": "Can aggravate laxity"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "diet-hypothyroidism-003",
+    "question": "Generate a safe diet plan for an athlete with hypothyroidism who wants general conditioning.",
+    "searchQuery": "hypothyroidism, none,none",
+    "topMatches": [
+      {
+        "id": "570689dd-25fb-4647-9229-86e444412f83",
+        "score": 0.5429627,
+        "issue": "Hypothyroidism - Mild - Endocrine",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Extreme calorie-deficit training blocks",
+            "reason": "Can worsen fatigue"
+          },
+          {
+            "exercise": "Aggressive two-a-day training during low-energy periods",
+            "reason": "Poor recovery tolerance"
+          }
+        ]
+      },
+      {
+        "id": "c4e7aee9-11f1-4a98-b1b6-3d10ce10eb9f",
+        "score": 0.542236,
+        "issue": "Hypothyroidism - Mild - Endocrine",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Extreme calorie-deficit training blocks",
+            "reason": "Can worsen fatigue"
+          }
+        ]
+      },
+      {
+        "id": "aedded61-031a-409d-94f1-4411e6851186",
+        "score": 0.54127616,
+        "issue": "Hypothyroidism - Mild - Endocrine",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Extreme calorie-deficit training blocks",
+            "reason": "Can worsen fatigue"
+          },
+          {
+            "exercise": "Aggressive two-a-day training during low-energy periods",
+            "reason": "Poor recovery tolerance"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "diet-lactose-004",
+    "question": "Generate a diet plan for an athlete with lactose intolerance who wants fat loss.",
+    "searchQuery": "lactose intolerance, none,none",
+    "topMatches": [
+      {
+        "id": "5a2a6cf2-6539-458b-83ef-e44d180a4435",
+        "score": 0.62581956,
+        "issue": "Lactose Intolerance - Mild - Gastrointestinal",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Large dairy-based shakes without lactase support",
+            "reason": "Can cause GI upset"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "High-intensity training during active GI distress",
+            "reason": "Can worsen symptoms"
+          }
+        ]
+      },
+      {
+        "id": "565904fd-ce37-433d-a771-9a935bf26dd1",
+        "score": 0.6255866,
+        "issue": "Lactose Intolerance - Mild-Moderate - Gastrointestinal",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Large dairy-based shakes without lactase support",
+            "reason": "Can cause GI upset"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "High-intensity training during active GI distress",
+            "reason": "Can worsen symptoms"
+          }
+        ]
+      },
+      {
+        "id": "3826046b-382c-4f10-aaa5-56c4758faf1f",
+        "score": 0.6251402,
+        "issue": "Lactose Intolerance with training-volume sensitivity - Mild-Moderate - Gastrointestinal",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Large dairy-based shakes without lactase support",
+            "reason": "Can cause GI upset"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "High-intensity training during active GI distress",
+            "reason": "Can worsen symptoms"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "workout-lower-back-005",
+    "question": "Generate a 7-day workout plan for an intermediate athlete with lower back pain using an upper-lower split.",
+    "searchQuery": "Health conditions: none. Allergies: none. Injuries: lower back pain. Experience: intermediate - upper-lower split",
+    "topMatches": [
+      {
+        "id": "bb3b7bb6-2186-4a08-bdee-3c8555063725",
+        "score": 0.6262074,
+        "issue": "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Hyperextension work to failure",
+            "reason": "May worsen back irritation"
+          },
+          {
+            "exercise": "Max-effort deadlift testing",
+            "reason": "Poor fatigue tolerance"
+          }
+        ]
+      },
+      {
+        "id": "bd905389-e3d6-40cd-aade-bdfb79585969",
+        "score": 0.6072943,
+        "issue": "Chronic Low Back Pain with Core Weakness - Mild-Moderate - Musculoskeletal",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Hyperextension work to failure",
+            "reason": "May worsen back irritation"
+          },
+          {
+            "exercise": "Repeated heavy twisting under load",
+            "reason": "Can aggravate lumbar symptoms"
+          }
+        ]
+      },
+      {
+        "id": "f8c1dd30-96f1-4b02-b52a-a51cc062af24",
+        "score": 0.6046949,
+        "issue": "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Hyperextension work to failure",
+            "reason": "May worsen back irritation"
+          },
+          {
+            "exercise": "Repeated heavy twisting under load",
+            "reason": "Can aggravate lumbar symptoms"
+          },
+          {
+            "exercise": "Max-effort deadlift testing",
+            "reason": "Poor fatigue tolerance"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "workout-asthma-beginner-006",
+    "question": "Generate a beginner workout plan for an athlete with exercise-induced asthma.",
+    "searchQuery": "Health conditions: exercise-induced asthma. Allergies: none. Injuries: none. Experience: beginner",
+    "topMatches": [
+      {
+        "id": "f037fda9-991a-47cf-97bb-f2467ca948f1",
+        "score": 0.7565713,
+        "issue": "Exercise-Induced Asthma - Mild - Respiratory",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Cold dry-air outdoor intervals",
+            "reason": "Higher airway irritation risk"
+          }
+        ]
+      },
+      {
+        "id": "ea4114e8-bef7-4dd5-bb33-76ac7a9bec80",
+        "score": 0.6745763,
+        "issue": "Exercise-Induced Asthma - Mild - Respiratory",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Very dense circuit training with poor pacing",
+            "reason": "Can provoke breathing symptoms"
+          },
+          {
+            "exercise": "Cold dry-air outdoor intervals",
+            "reason": "Higher airway irritation risk"
+          }
+        ]
+      },
+      {
+        "id": "83edef64-865b-4c54-bcbe-75472079d356",
+        "score": 0.6430135,
+        "issue": "Exercise-Induced Asthma - Mild - Respiratory",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Liquid-calorie coffees and shakes",
+            "reason": "Can hide excess calories and disrupt fat-loss targets"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Cold dry-air outdoor intervals",
+            "reason": "Higher airway irritation risk"
+          },
+          {
+            "exercise": "All-out sprints without warm-up",
+            "reason": "Can trigger bronchospasm"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "workout-shoulder-007",
+    "question": "Generate a push-pull-legs workout plan for an athlete with a shoulder impingement history.",
+    "searchQuery": "Health conditions: none. Allergies: none. Injuries: shoulder impingement. Experience: advanced - push-pull-legs",
+    "topMatches": [
+      {
+        "id": "49578c77-ae24-4356-91e7-afd5933486e3",
+        "score": 0.7352039,
+        "issue": "Shoulder Impingement Syndrome - Mild - Musculoskeletal",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed sugary foods",
+            "reason": "May increase inflammatory load"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Deep bar dips",
+            "reason": "Places shoulder in painful end range"
+          },
+          {
+            "exercise": "Upright rows above chest level",
+            "reason": "Can aggravate impingement"
+          }
+        ]
+      },
+      {
+        "id": "ae321141-0ed4-47a9-9326-72a8f2d35122",
+        "score": 0.73039776,
+        "issue": "Shoulder Impingement Syndrome - Mild - Musculoskeletal",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed sugary foods",
+            "reason": "May increase inflammatory load"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Upright rows above chest level",
+            "reason": "Can aggravate impingement"
+          }
+        ]
+      },
+      {
+        "id": "d597406d-3959-4772-8b3d-d9f215d342b5",
+        "score": 0.7122215,
+        "issue": "Shoulder Impingement Syndrome - Moderate - Musculoskeletal",
+        "allergies": [],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed sugary foods",
+            "reason": "May increase inflammatory load"
+          }
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Deep bar dips",
+            "reason": "Places shoulder in painful end range"
+          },
+          {
+            "exercise": "Behind-the-neck presses",
+            "reason": "Provokes subacromial compression"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "workout-post-acl-008",
+    "question": "Generate a safe home and gym workout plan for an athlete recovering from ACL reconstruction.",
+    "searchQuery": "Health conditions: none. Allergies: none. Injuries: post-ACL reconstruction. Experience: beginner",
+    "topMatches": [
+      {
+        "id": "69a4cf4a-eb97-4fba-be96-5fe6686d6320",
+        "score": 0.66867465,
+        "issue": "Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy open-chain knee extension in painful range",
+            "reason": "Can irritate the knee"
+          },
+          {
+            "exercise": "Cutting drills before clearance",
+            "reason": "High graft stress"
+          }
+        ]
+      },
+      {
+        "id": "692f2b14-e0e6-4ea8-bd19-4e869ff1ad2e",
+        "score": 0.6516707,
+        "issue": "Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy open-chain knee extension in painful range",
+            "reason": "Can irritate the knee"
+          },
+          {
+            "exercise": "Cutting drills before clearance",
+            "reason": "High graft stress"
+          }
+        ]
+      },
+      {
+        "id": "81bb3604-3934-4840-8969-2f1962fc2932",
+        "score": 0.6415689,
+        "issue": "Post-ACL Reconstruction Recovery - Mild-Moderate - Musculoskeletal",
+        "allergies": [],
+        "contraindicated_foods": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy open-chain knee extension in painful range",
+            "reason": "Can irritate the knee"
+          },
+          {
+            "exercise": "Cutting drills before clearance",
+            "reason": "High graft stress"
+          }
+        ]
+      }
+    ]
+  }
+]
