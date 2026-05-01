@@ -1,0 +1,110 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "e7ff7272-d6b2-4c87-b477-ab1b2be27aa4",
+      "version": 231,
+      "score": 0.68248,
+      "payload": {
+        "athlete_id": "ATH0137",
+        "name": "نور رشاد المرزوقي",
+        "age": 35,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Iron-Deficiency Anemia - Mild - Hematologic",
+        "dietary_restrictions": [
+          "Iron supportive"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "High-volume conditioning in a fatigued state",
+            "reason": "Can worsen dizziness and fatigue"
+          },
+          {
+            "exercise": "All-out interval sessions when symptomatic",
+            "reason": "Low oxygen delivery tolerance"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Tea or coffee with iron-rich meals",
+            "reason": "Can reduce iron absorption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d308a5b9-2714-4bf3-80bc-51f299ff082a",
+      "version": 155,
+      "score": 0.67232466,
+      "payload": {
+        "athlete_id": "ATH0061",
+        "name": "كريم عبدالرحمن النجار",
+        "age": 47,
+        "gender": "Male",
+        "goal": "Healthy weight gain",
+        "issue": "Iron-Deficiency Anemia - Moderate - Hematologic",
+        "dietary_restrictions": [
+          "Vitamin C support",
+          "Iron supportive",
+          "Protein distribution support"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "High-volume conditioning in a fatigued state",
+            "reason": "Can worsen dizziness and fatigue"
+          },
+          {
+            "exercise": "All-out interval sessions when symptomatic",
+            "reason": "Low oxygen delivery tolerance"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Tea or coffee with iron-rich meals",
+            "reason": "Can reduce iron absorption"
+          }
+        ]
+      }
+    },
+    {
+      "id": "38c3432d-8f85-45b6-9894-32fd164fae68",
+      "version": 1859,
+      "score": 0.6552367,
+      "payload": {
+        "athlete_id": "ATH1765",
+        "name": "سارة العمري",
+        "age": 27,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Iron-Deficiency Anemia - Moderate - Hematologic",
+        "dietary_restrictions": [
+          "Vitamin C support",
+          "Iron supportive",
+          "Avoid tea/coffee with iron-rich meals"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "All-out interval sessions when symptomatic",
+            "reason": "Low oxygen delivery tolerance"
+          },
+          {
+            "exercise": "High-volume conditioning in a fatigued state",
+            "reason": "Can worsen dizziness and fatigue"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Tea or coffee with iron-rich meals",
+            "reason": "Can reduce iron absorption"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Iron-Deficiency Anemia - Mild - Hematologic. Constraints: Foods to avoid (Tea or coffee with iron-rich meals), Exercises to avoid (High-volume conditioning in a fatigued state, All-out interval sessions when symptomatic)\nIssue: Iron-Deficiency Anemia - Moderate - Hematologic. Constraints: Foods to avoid (Tea or coffee with iron-rich meals), Exercises to avoid (High-volume conditioning in a fatigued state, All-out interval sessions when symptomatic)\nIssue: Iron-Deficiency Anemia - Moderate - Hematologic. Constraints: Foods to avoid (Tea or coffee with iron-rich meals), Exercises to avoid (All-out interval sessions when symptomatic, High-volume conditioning in a fatigued state)"
+}

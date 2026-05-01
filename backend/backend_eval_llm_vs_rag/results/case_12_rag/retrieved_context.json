@@ -1,0 +1,94 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "54ebfde2-0c8a-4996-afda-9ca2559b6faf",
+      "version": 453,
+      "score": 0.6389457,
+      "payload": {
+        "athlete_id": "ATH0359",
+        "name": "كريم سليم النعيمي",
+        "age": 28,
+        "gender": "Male",
+        "goal": "Movement quality",
+        "issue": "Cervical Disc Irritation - Moderate - Musculoskeletal",
+        "dietary_restrictions": [],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy shrugs with neck protraction",
+            "reason": "Can worsen cervical compression"
+          },
+          {
+            "exercise": "Overhead pressing with poor head position",
+            "reason": "May aggravate nerve irritation"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "a45ec84f-2f3e-4ef0-88b5-b4f44c83f1ca",
+      "version": 2093,
+      "score": 0.5982622,
+      "payload": {
+        "athlete_id": "ATH1999",
+        "name": "عبير سالم الصقري",
+        "age": 53,
+        "gender": "Female",
+        "goal": "Movement quality",
+        "issue": "Cervical Disc Irritation - Moderate-Severe - Musculoskeletal",
+        "dietary_restrictions": [],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy shrugs with neck protraction",
+            "reason": "Can worsen cervical compression"
+          },
+          {
+            "exercise": "Overhead pressing with poor head position",
+            "reason": "May aggravate nerve irritation"
+          },
+          {
+            "exercise": "Bridging on the head",
+            "reason": "Direct cervical loading"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "d597406d-3959-4772-8b3d-d9f215d342b5",
+      "version": 1762,
+      "score": 0.5950302,
+      "payload": {
+        "athlete_id": "ATH1668",
+        "name": "فارس التميمي",
+        "age": 28,
+        "gender": "Male",
+        "goal": "Movement quality",
+        "issue": "Shoulder Impingement Syndrome - Moderate - Musculoskeletal",
+        "dietary_restrictions": [],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Deep bar dips",
+            "reason": "Places shoulder in painful end range"
+          },
+          {
+            "exercise": "Behind-the-neck presses",
+            "reason": "Provokes subacromial compression"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed sugary foods",
+            "reason": "May increase inflammatory load"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Cervical Disc Irritation - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy shrugs with neck protraction, Overhead pressing with poor head position)\nIssue: Cervical Disc Irritation - Moderate-Severe - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy shrugs with neck protraction, Overhead pressing with poor head position, Bridging on the head)\nIssue: Shoulder Impingement Syndrome - Moderate - Musculoskeletal. Constraints: Foods to avoid (Highly processed sugary foods), Exercises to avoid (Deep bar dips, Behind-the-neck presses)"
+}

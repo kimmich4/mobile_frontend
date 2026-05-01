@@ -1,0 +1,96 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "6c16ce63-352b-4000-a4c3-9a432bdfbccc",
+      "version": 1179,
+      "score": 0.7571833,
+      "payload": {
+        "athlete_id": "ATH1085",
+        "name": "دانا العوامي",
+        "age": 34,
+        "gender": "Female",
+        "goal": "Strength",
+        "issue": "Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal",
+        "dietary_restrictions": [
+          "Protein distribution support"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Maximal drop jumps",
+            "reason": "Landing forces may exceed rehab phase tolerance"
+          },
+          {
+            "exercise": "Cutting drills before clearance",
+            "reason": "High graft stress"
+          },
+          {
+            "exercise": "Heavy open-chain knee extension in painful range",
+            "reason": "Can irritate the knee"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "37acab40-226d-45c8-a01e-7063bf3e407d",
+      "version": 442,
+      "score": 0.7483193,
+      "payload": {
+        "athlete_id": "ATH0348",
+        "name": "نور عبدالعزيز العلي",
+        "age": 36,
+        "gender": "Female",
+        "goal": "Strength",
+        "issue": "Post-ACL Reconstruction Recovery - Mild-Moderate - Musculoskeletal",
+        "dietary_restrictions": [
+          "Collagen/Vitamin C support",
+          "Protein distribution support"
+        ],
+        "allergies": [
+          "Peanuts"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Maximal drop jumps",
+            "reason": "Landing forces may exceed rehab phase tolerance"
+          },
+          {
+            "exercise": "Heavy open-chain knee extension in painful range",
+            "reason": "Can irritate the knee"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "69a4cf4a-eb97-4fba-be96-5fe6686d6320",
+      "version": 2062,
+      "score": 0.7428578,
+      "payload": {
+        "athlete_id": "ATH1968",
+        "name": "عبدالله النعيمي",
+        "age": 18,
+        "gender": "Male",
+        "goal": "Return to training",
+        "issue": "Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal",
+        "dietary_restrictions": [],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy open-chain knee extension in painful range",
+            "reason": "Can irritate the knee"
+          },
+          {
+            "exercise": "Cutting drills before clearance",
+            "reason": "High graft stress"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    }
+  ],
+  "vectorContext": "Issue: Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Maximal drop jumps, Cutting drills before clearance, Heavy open-chain knee extension in painful range)\nIssue: Post-ACL Reconstruction Recovery - Mild-Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Maximal drop jumps, Heavy open-chain knee extension in painful range)\nIssue: Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy open-chain knee extension in painful range, Cutting drills before clearance)"
+}

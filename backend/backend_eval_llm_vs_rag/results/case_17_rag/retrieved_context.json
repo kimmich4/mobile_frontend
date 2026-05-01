@@ -1,0 +1,113 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "ff76eba6-995f-46d5-b2a0-6217b82ec408",
+      "version": 1314,
+      "score": 0.6165891,
+      "payload": {
+        "athlete_id": "ATH1220",
+        "name": "يوسف الدسوقي",
+        "age": 55,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Gout with training-volume sensitivity - Moderate - Metabolic",
+        "dietary_restrictions": [
+          "Lower-purine strategy"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Training through acutely inflamed toe or ankle pain",
+            "reason": "Alters mechanics and recovery"
+          },
+          {
+            "exercise": "High-impact sessions during acute flare",
+            "reason": "Joint pain can worsen"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Sugary fructose-rich drinks",
+            "reason": "Can worsen uric acid management"
+          }
+        ]
+      }
+    },
+    {
+      "id": "b6939bff-a33c-490c-92b0-0b471c6388b9",
+      "version": 1032,
+      "score": 0.61329615,
+      "payload": {
+        "athlete_id": "ATH0938",
+        "name": "أنس رفيق المرزوقي",
+        "age": 53,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Gout - Mild - Metabolic",
+        "dietary_restrictions": [
+          "Hydration focus",
+          "Weight-management focus",
+          "Lower-purine strategy"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "High-impact sessions during acute flare",
+            "reason": "Joint pain can worsen"
+          },
+          {
+            "exercise": "Training through acutely inflamed toe or ankle pain",
+            "reason": "Alters mechanics and recovery"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Sugary fructose-rich drinks",
+            "reason": "Can worsen uric acid management"
+          },
+          {
+            "food": "Organ meats",
+            "reason": "High purine load"
+          }
+        ]
+      }
+    },
+    {
+      "id": "a3bc1f2b-7fb5-4b7e-be0e-5b1da6203a06",
+      "version": 2042,
+      "score": 0.6086638,
+      "payload": {
+        "athlete_id": "ATH1948",
+        "name": "صفاء راشد العمري",
+        "age": 54,
+        "gender": "Female",
+        "goal": "Body recomposition",
+        "issue": "Gout with training-volume sensitivity - Mild - Metabolic",
+        "dietary_restrictions": [
+          "Lower-purine strategy",
+          "Weight-management focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Training through acutely inflamed toe or ankle pain",
+            "reason": "Alters mechanics and recovery"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Sugary fructose-rich drinks",
+            "reason": "Can worsen uric acid management"
+          },
+          {
+            "food": "Liquid-calorie coffees and shakes",
+            "reason": "Can hide excess calories and disrupt fat-loss targets"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Gout with training-volume sensitivity - Moderate - Metabolic. Constraints: Foods to avoid (Sugary fructose-rich drinks), Exercises to avoid (Training through acutely inflamed toe or ankle pain, High-impact sessions during acute flare)\nIssue: Gout - Mild - Metabolic. Constraints: Foods to avoid (Sugary fructose-rich drinks, Organ meats), Exercises to avoid (High-impact sessions during acute flare, Training through acutely inflamed toe or ankle pain)\nIssue: Gout with training-volume sensitivity - Mild - Metabolic. Constraints: Foods to avoid (Sugary fructose-rich drinks, Liquid-calorie coffees and shakes), Exercises to avoid (Training through acutely inflamed toe or ankle pain)"
+}

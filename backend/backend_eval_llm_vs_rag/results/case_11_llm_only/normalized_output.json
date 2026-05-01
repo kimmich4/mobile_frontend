@@ -1,0 +1,426 @@
+{
+  "caseId": "case_11",
+  "mode": "llm_only",
+  "route": "/ai/generate-diet",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "days": [
+      {
+        "day": 1,
+        "totalCalories": 1695,
+        "protein": "127g",
+        "carbs": "169g",
+        "fats": "57g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Oatmeal (rolled oats, 50g) with almond milk, chia seeds (10g), blueberries (50g)",
+                "calories": 350
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Apple (150g) with 2 tbsp peanut butter",
+                "calories": 250
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled chicken breast (120g), quinoa (100g cooked), steamed broccoli (150g), olive oil drizzle (1 tsp)",
+                "calories": 420
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Carrot sticks (100g) with hummus (3 tbsp)",
+                "calories": 150
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Baked salmon (100g), sweet potato (150g), mixed green salad with vinaigrette (1 tbsp olive oil)",
+                "calories": 425
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "totalCalories": 1695,
+        "protein": "127g",
+        "carbs": "169g",
+        "fats": "57g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Chia pudding (chia seeds 30g, almond milk, cinnamon) topped with sliced kiwi (100g)",
+                "calories": 340
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Pear (150g) with 2 tbsp almond butter",
+                "calories": 260
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Turkey breast slices (120g), brown rice (100g cooked), roasted zucchini (150g), olive oil (1 tsp)",
+                "calories": 410
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Cucumber slices (100g) with guacamole (3 tbsp)",
+                "calories": 145
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Stir‑fried tofu (100g) with mixed bell peppers (150g), soba noodles (80g cooked), soy sauce low‑sodium",
+                "calories": 440
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "totalCalories": 1695,
+        "protein": "127g",
+        "carbs": "169g",
+        "fats": "57g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Quinoa porridge (quinoa 50g, almond milk) with raspberries (60g) and pumpkin seeds (10g)",
+                "calories": 350
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Orange (150g) with 2 tbsp sunflower seed butter",
+                "calories": 250
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Lean beef strips (100g), lentil salad (lentils 80g cooked, chopped veggies, lemon dressing)",
+                "calories": 425
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Celery sticks (100g) with tahini dip (2 tbsp)",
+                "calories": 130
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Baked cod (120g) with cauliflower rice (200g) and avocado (50g)",
+                "calories": 540
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "totalCalories": 1695,
+        "protein": "127g",
+        "carbs": "169g",
+        "fats": "57g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Buckwheat flakes (50g) cooked in almond milk, topped with sliced strawberries (70g) and flaxseeds (10g)",
+                "calories": 340
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Banana (120g) with 2 tbsp cashew butter",
+                "calories": 260
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled chicken thigh (120g skinless), barley (100g cooked), roasted Brussels sprouts (150g)",
+                "calories": 415
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Bell pepper strips (100g) with hummus (3 tbsp)",
+                "calories": 150
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Turkey meatballs (100g) in tomato sauce, spaghetti squash (200g), side of sautéed spinach (100g)",
+                "calories": 530
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "totalCalories": 1695,
+        "protein": "127g",
+        "carbs": "169g",
+        "fats": "57g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Amaranth porridge (50g) with almond milk, blueberries (50g) and chia seeds (10g)",
+                "calories": 345
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Green apple (150g) with 2 tbsp peanut butter",
+                "calories": 250
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Baked tilapia (120g), wild rice (100g cooked), steamed asparagus (150g)",
+                "calories": 410
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Radish & cucumber salad with lemon‑olive oil dressing",
+                "calories": 130
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lentil stew (lentils 150g cooked, carrots, celery) with a side of quinoa (80g cooked)",
+                "calories": 560
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "totalCalories": 1695,
+        "protein": "127g",
+        "carbs": "169g",
+        "fats": "57g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Millet porridge (50g) with almond milk, sliced mango (70g) and pumpkin seeds (10g)",
+                "calories": 340
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Plum (150g) with 2 tbsp almond butter",
+                "calories": 250
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled shrimp (120g), couscous (100g cooked), mixed greens with balsamic vinaigrette (1 tsp oil)",
+                "calories": 420
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Snap peas (100g) with guacamole (3 tbsp)",
+                "calories": 145
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Chicken stir‑fry (chicken breast 100g, broccoli, carrots, soy sauce) over brown rice (80g cooked)",
+                "calories": 540
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "totalCalories": 1695,
+        "protein": "127g",
+        "carbs": "169g",
+        "fats": "57g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Oatmeal (rolled oats 50g) with almond milk, cinnamon, sliced pear (80g) and flaxseeds (10g)",
+                "calories": 350
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Kiwi (150g) with 2 tbsp sunflower seed butter",
+                "calories": 250
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Turkey breast (120g), sweet potato mash (150g), green beans (150g)",
+                "calories": 410
+              }
+            ]
+          },
+          {
+            "title": "Snack",
+            "items": [
+              {
+                "name": "Cherry tomatoes (100g) with hummus (3 tbsp)",
+                "calories": 140
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Baked cod (120g) with quinoa pilaf (80g cooked) and roasted cauliflower (150g)",
+                "calories": 545
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "parseError": null,
+  "cleanedContent": "{\"days\":[{\"day\":1,\"totalCalories\":1695,\"protein\":\"127g\",\"carbs\":\"169g\",\"fats\":\"57g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Oatmeal (rolled oats, 50g) with almond milk, chia seeds (10g), blueberries (50g)\",\"calories\":350}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Apple (150g) with 2 tbsp peanut butter\",\"calories\":250}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Grilled chicken breast (120g), quinoa (100g cooked), steamed broccoli (150g), olive oil drizzle (1 tsp)\",\"calories\":420}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Carrot sticks (100g) with hummus (3 tbsp)\",\"calories\":150}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Baked salmon (100g), sweet potato (150g), mixed green salad with vinaigrette (1 tbsp olive oil)\",\"calories\":425}]}]},{\"day\":2,\"totalCalories\":1695,\"protein\":\"127g\",\"carbs\":\"169g\",\"fats\":\"57g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Chia pudding (chia seeds 30g, almond milk, cinnamon) topped with sliced kiwi (100g)\",\"calories\":340}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Pear (150g) with 2 tbsp almond butter\",\"calories\":260}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Turkey breast slices (120g), brown rice (100g cooked), roasted zucchini (150g), olive oil (1 tsp)\",\"calories\":410}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Cucumber slices (100g) with guacamole (3 tbsp)\",\"calories\":145}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Stir‑fried tofu (100g) with mixed bell peppers (150g), soba noodles (80g cooked), soy sauce low‑sodium\",\"calories\":440}]}]},{\"day\":3,\"totalCalories\":1695,\"protein\":\"127g\",\"carbs\":\"169g\",\"fats\":\"57g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Quinoa porridge (quinoa 50g, almond milk) with raspberries (60g) and pumpkin seeds (10g)\",\"calories\":350}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Orange (150g) with 2 tbsp sunflower seed butter\",\"calories\":250}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Lean beef strips (100g), lentil salad (lentils 80g cooked, chopped veggies, lemon dressing)\",\"calories\":425}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Celery sticks (100g) with tahini dip (2 tbsp)\",\"calories\":130}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Baked cod (120g) with cauliflower rice (200g) and avocado (50g)\",\"calories\":540}]}]},{\"day\":4,\"totalCalories\":1695,\"protein\":\"127g\",\"carbs\":\"169g\",\"fats\":\"57g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Buckwheat flakes (50g) cooked in almond milk, topped with sliced strawberries (70g) and flaxseeds (10g)\",\"calories\":340}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Banana (120g) with 2 tbsp cashew butter\",\"calories\":260}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Grilled chicken thigh (120g skinless), barley (100g cooked), roasted Brussels sprouts (150g)\",\"calories\":415}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Bell pepper strips (100g) with hummus (3 tbsp)\",\"calories\":150}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Turkey meatballs (100g) in tomato sauce, spaghetti squash (200g), side of sautéed spinach (100g)\",\"calories\":530}]}]},{\"day\":5,\"totalCalories\":1695,\"protein\":\"127g\",\"carbs\":\"169g\",\"fats\":\"57g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Amaranth porridge (50g) with almond milk, blueberries (50g) and chia seeds (10g)\",\"calories\":345}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Green apple (150g) with 2 tbsp peanut butter\",\"calories\":250}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Baked tilapia (120g), wild rice (100g cooked), steamed asparagus (150g)\",\"calories\":410}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Radish & cucumber salad with lemon‑olive oil dressing\",\"calories\":130}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Lentil stew (lentils 150g cooked, carrots, celery) with a side of quinoa (80g cooked)\",\"calories\":560}]}]},{\"day\":6,\"totalCalories\":1695,\"protein\":\"127g\",\"carbs\":\"169g\",\"fats\":\"57g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Millet porridge (50g) with almond milk, sliced mango (70g) and pumpkin seeds (10g)\",\"calories\":340}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Plum (150g) with 2 tbsp almond butter\",\"calories\":250}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Grilled shrimp (120g), couscous (100g cooked), mixed greens with balsamic vinaigrette (1 tsp oil)\",\"calories\":420}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Snap peas (100g) with guacamole (3 tbsp)\",\"calories\":145}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Chicken stir‑fry (chicken breast 100g, broccoli, carrots, soy sauce) over brown rice (80g cooked)\",\"calories\":540}]}]},{\"day\":7,\"totalCalories\":1695,\"protein\":\"127g\",\"carbs\":\"169g\",\"fats\":\"57g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Oatmeal (rolled oats 50g) with almond milk, cinnamon, sliced pear (80g) and flaxseeds (10g)\",\"calories\":350}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Kiwi (150g) with 2 tbsp sunflower seed butter\",\"calories\":250}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Turkey breast (120g), sweet potato mash (150g), green beans (150g)\",\"calories\":410}]},{\"title\":\"Snack\",\"items\":[{\"name\":\"Cherry tomatoes (100g) with hummus (3 tbsp)\",\"calories\":140}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Baked cod (120g) with quinoa pilaf (80g cooked) and roasted cauliflower (150g)\",\"calories\":545}]}]}]}",
+  "derived": {
+    "allHealthConditions": "PCOS, insulin resistance concern",
+    "allAllergies": "dairy sensitivity",
+    "allInjuries": "none",
+    "allGoals": "fat loss and appetite control, simple repeated meal-prep options",
+    "experienceInfo": "beginner",
+    "bmr": 1596.317,
+    "tdee": 2194.935875,
+    "targetCalories": 1695
+  },
+  "latencyMs": 55421,
+  "usage": {
+    "prompt_tokens": 449,
+    "completion_tokens": 1646,
+    "total_tokens": 2095,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 121,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop"
+}

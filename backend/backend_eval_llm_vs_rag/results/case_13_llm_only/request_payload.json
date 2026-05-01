@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "headers": {
+    "Authorization": "Bearer [REDACTED]",
+    "Content-Type": "application/json",
+    "HTTP-Referer": "https://local.eval.backend",
+    "X-Title": "backend_eval_llm_vs_rag_openrouter_oss120b"
+  },
+  "body": {
+    "model": "openai/gpt-oss-120b:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Please create a practical, safe, personalized, and easy-to-use fitness plan using only the information provided below. Do not use any outside retrieved database context. The plan should consider the person's age, sex, height, weight, target weight, activity level, goal, experience, allergies, injuries, health conditions, medical-report notes, InBody notes, and calculated calorie target. Return the answer as clean JSON only so it can be loaded by an app.\n\nRequest type: diet.\n\nPlease create a 7-day diet plan. Each day must include total calories, protein, carbs, fats, and meals with item names and calories. The daily calories must match exactly 3362. Use this JSON shape:\n{\"days\":[{\"day\":1,\"totalCalories\":3362,\"protein\":\"...g\",\"carbs\":\"...g\",\"fats\":\"...g\",\"meals\":[{\"title\":\"...\",\"items\":[{\"name\":\"...\",\"calories\":123}]}]}]}\n\nPerson: Mostafa Kamel is a 22-year-old male, 183 cm tall, currently weighs 61 kg, and has a target weight of 72 kg. The activity level is active, the experience level is beginner - new to lifting, and the goal is muscle gain, budget-friendly student meals. Health conditions: none. Allergies or food restrictions: tree nut allergy. Injuries or movement restrictions: none. Medical-report notes: No clinical issues. Recommended to increase calorie intake steadily.. InBody notes: Underweight with low skeletal muscle mass.. Calculated BMR: 1659. Calculated TDEE: 2862. Calculated target daily calories: 3362.\n\nRequirements:\n- Use only the information above.\n- Do not use outside retrieved database context.\n- Return clean JSON only.\n- Do not add markdown, explanations, or commentary."
+      }
+    ],
+    "max_tokens": 16000
+  }
+}

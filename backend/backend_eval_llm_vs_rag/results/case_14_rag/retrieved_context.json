@@ -1,0 +1,89 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "a0e8aac6-6062-47d0-b5b8-741fc499f0ed",
+      "version": 1080,
+      "score": 0.6590527,
+      "payload": {
+        "athlete_id": "ATH0986",
+        "name": "جلال عبدالعزيز الزعبي",
+        "age": 38,
+        "gender": "Male",
+        "goal": "Return to training",
+        "issue": "Lateral Epicondylitis - Mild - Musculoskeletal",
+        "dietary_restrictions": [],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy pronated curls",
+            "reason": "Increases wrist extensor strain"
+          },
+          {
+            "exercise": "Thick-grip holds to failure",
+            "reason": "Can irritate the elbow"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "8c150cc3-a3c5-400d-98b8-b907f297ec3b",
+      "version": 1045,
+      "score": 0.6588779,
+      "payload": {
+        "athlete_id": "ATH0951",
+        "name": "دانا النجار",
+        "age": 28,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Lateral Epicondylitis - Moderate - Musculoskeletal",
+        "dietary_restrictions": [
+          "Anti-inflammatory focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy pronated curls",
+            "reason": "Increases wrist extensor strain"
+          },
+          {
+            "exercise": "Thick-grip holds to failure",
+            "reason": "Can irritate the elbow"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "bbbd600e-95d4-4adb-a86d-5477642e460c",
+      "version": 798,
+      "score": 0.65374804,
+      "payload": {
+        "athlete_id": "ATH0704",
+        "name": "مازن الدسوقي",
+        "age": 41,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Lateral Epicondylitis - Mild - Musculoskeletal",
+        "dietary_restrictions": [
+          "Anti-inflammatory focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy pronated curls",
+            "reason": "Increases wrist extensor strain"
+          },
+          {
+            "exercise": "Thick-grip holds to failure",
+            "reason": "Can irritate the elbow"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    }
+  ],
+  "vectorContext": "Issue: Lateral Epicondylitis - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy pronated curls, Thick-grip holds to failure)\nIssue: Lateral Epicondylitis - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy pronated curls, Thick-grip holds to failure)\nIssue: Lateral Epicondylitis - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy pronated curls, Thick-grip holds to failure)"
+}

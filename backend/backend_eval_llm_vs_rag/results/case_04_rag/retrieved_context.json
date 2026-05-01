@@ -1,0 +1,102 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "49578c77-ae24-4356-91e7-afd5933486e3",
+      "version": 1175,
+      "score": 0.748824,
+      "payload": {
+        "athlete_id": "ATH1081",
+        "name": "هبة العمري",
+        "age": 32,
+        "gender": "Female",
+        "goal": "Movement quality",
+        "issue": "Shoulder Impingement Syndrome - Mild - Musculoskeletal",
+        "dietary_restrictions": [
+          "Anti-inflammatory focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Deep bar dips",
+            "reason": "Places shoulder in painful end range"
+          },
+          {
+            "exercise": "Upright rows above chest level",
+            "reason": "Can aggravate impingement"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed sugary foods",
+            "reason": "May increase inflammatory load"
+          }
+        ]
+      }
+    },
+    {
+      "id": "27ce0c28-3eb9-42e1-ba18-f25ebb30c4e3",
+      "version": 376,
+      "score": 0.7408859,
+      "payload": {
+        "athlete_id": "ATH0282",
+        "name": "فاطمة فؤاد العتيبي",
+        "age": 34,
+        "gender": "Female",
+        "goal": "Return to training",
+        "issue": "Shoulder Impingement Syndrome - Mild-Moderate - Musculoskeletal",
+        "dietary_restrictions": [],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Behind-the-neck presses",
+            "reason": "Provokes subacromial compression"
+          },
+          {
+            "exercise": "Deep bar dips",
+            "reason": "Places shoulder in painful end range"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed sugary foods",
+            "reason": "May increase inflammatory load"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d597406d-3959-4772-8b3d-d9f215d342b5",
+      "version": 1762,
+      "score": 0.7311923,
+      "payload": {
+        "athlete_id": "ATH1668",
+        "name": "فارس التميمي",
+        "age": 28,
+        "gender": "Male",
+        "goal": "Movement quality",
+        "issue": "Shoulder Impingement Syndrome - Moderate - Musculoskeletal",
+        "dietary_restrictions": [],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Deep bar dips",
+            "reason": "Places shoulder in painful end range"
+          },
+          {
+            "exercise": "Behind-the-neck presses",
+            "reason": "Provokes subacromial compression"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed sugary foods",
+            "reason": "May increase inflammatory load"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Shoulder Impingement Syndrome - Mild - Musculoskeletal. Constraints: Foods to avoid (Highly processed sugary foods), Exercises to avoid (Deep bar dips, Upright rows above chest level)\nIssue: Shoulder Impingement Syndrome - Mild-Moderate - Musculoskeletal. Constraints: Foods to avoid (Highly processed sugary foods), Exercises to avoid (Behind-the-neck presses, Deep bar dips)\nIssue: Shoulder Impingement Syndrome - Moderate - Musculoskeletal. Constraints: Foods to avoid (Highly processed sugary foods), Exercises to avoid (Deep bar dips, Behind-the-neck presses)"
+}

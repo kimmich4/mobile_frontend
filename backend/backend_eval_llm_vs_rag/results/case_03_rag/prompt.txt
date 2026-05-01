@@ -1,0 +1,68 @@
+Context:
+
+User Profile: Nour Adel, 34 years old, female. 
+Metrics: Current Weight: 70kg, Target Weight: 70kg, Height: 170cm. 
+Activity Level: active.
+Experience Level: advanced.
+Goals: maintenance with stable energy, support endurance cycling.  
+Reported Health Conditions: IBS, sensitive to very high FODMAP meals. 
+Allergies: lactose intolerance. 
+Injuries: none.
+Calculated BMR: 1474. 
+Calculated TDEE: 2543.
+Target Daily Calories (adjusted for goal): 2543.
+Medical Report Findings: No major pathology. Digestive symptoms worsen after milk and large onion-heavy meals..
+InBody Report Findings: Muscle mass and body fat within athletic range..
+Vector Database Constraints: Issue: Irritable Bowel Syndrome during Cutting Phases - Mild - Gastrointestinal. Constraints: Foods to avoid (Very high-fat cheat meals), Exercises to avoid (Aggressive abdominal bracing during bloating episodes, Very intense sessions immediately after large meals)
+Issue: Irritable Bowel Syndrome (IBS-D) - Moderate - Gastrointestinal. Constraints: Foods to avoid (Dairy products, High FODMAP foods), Exercises to avoid (Very intense core circuits)
+Issue: Irritable Bowel Syndrome during Cutting Phases - Mild-Moderate - Gastrointestinal. Constraints: Foods to avoid (Liquid-calorie coffees and shakes, Very high-fat cheat meals), Exercises to avoid (Aggressive abdominal bracing during bloating episodes, Very intense sessions immediately after large meals)
+
+
+Task:
+Create a 7-day diet plan (Day 1 to Day 7). 
+You MUST provide EXACTLY 7 DAYS in the "days" array. DO NOT stop before Day 7.
+
+USER GOAL: maintenance with stable energy, support endurance cycling
+TARGET CALORIES: 2543 PER DAY.
+
+CRITICAL RULES:
+1. YOU MUST GENERATE ALL 7 DAYS (day 1, 2, 3, 4, 5, 6, 7).
+2. For EVERY day, the "totalCalories" field MUST be EXACTLY 2543.
+3. The sum of all individual "calories" for items in "meals" MUST EXACTLY mathematically equal 2543 for every day. 
+4. meal variety: Each day SHOULD have a varied number of meals (between 5 and above to achive the target calories).
+5. Ensure the diet plan is safe for the provided injuries/conditions and doesnt violate any of the vector database constraints.
+6. CREATIVE TITLES: Use different meal names instead of just "Breakfast/Lunch/Dinner". Be creative and varied!
+7. Portions (grams/ml) must be realistic and specific.
+
+THINKING STEP:
+Before writing each day, decide on the number of meals (3-6) and creative formal titles. Then mentally calculate the calories for each so the total matches exactly 2543.
+
+EXAMPLE OF CORRECT MATH (Varying counts/titles):
+- Pre-Gym Snack: 300
+- Main Lunch: 900
+- Afternoon Refresh: 300
+- Hearty Supper: 1000
+TOTAL: 300 + 900 + 300 + 1000 = 2500 (Matches target)
+
+Return ONLY JSON in this EXACT format:
+{
+  "days": [
+    {
+      "day": 1,
+      "totalCalories": 2543,
+      "protein": "150g",
+      "carbs": "200g",
+      "fats": "60g",
+      "meals": [
+        {
+          "title": "Pre-Gym Snack",
+          "items": [{"name": "Banana + Almonds", "calories": 300}]
+        },
+        {
+          "title": "Lunch",
+          "items": [{"name": "Chicken Breast (150g)", "calories": 450}, {"name": "Brown Rice (200g)", "calories": 450}]
+        }
+      ]
+    }
+  ]
+}

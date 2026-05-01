@@ -1,0 +1,426 @@
+{
+  "caseId": "case_15",
+  "mode": "llm_only",
+  "route": "/ai/generate-diet",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "days": [
+      {
+        "day": 1,
+        "totalCalories": 1848,
+        "protein": "92g",
+        "carbs": "231g",
+        "fats": "62g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Oatmeal with skim milk and banana",
+                "calories": 400
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Snack",
+            "items": [
+              {
+                "name": "Greek yogurt with honey",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled chicken breast, quinoa, steamed broccoli",
+                "calories": 500
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Apple slices with almond butter",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Baked cod, sweet potato, green beans",
+                "calories": 448
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "totalCalories": 1848,
+        "protein": "92g",
+        "carbs": "231g",
+        "fats": "62g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Whole‑grain toast with avocado and poached egg",
+                "calories": 400
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Snack",
+            "items": [
+              {
+                "name": "Low‑fat cottage cheese with pineapple chunks",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Turkey breast wrap with lettuce, tomato, hummus",
+                "calories": 500
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Pear and a handful of walnuts",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Steamed salmon, brown rice, sautéed spinach",
+                "calories": 448
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "totalCalories": 1848,
+        "protein": "92g",
+        "carbs": "231g",
+        "fats": "62g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Greek yogurt parfait with mixed berries and granola",
+                "calories": 400
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Snack",
+            "items": [
+              {
+                "name": "Hard‑boiled egg and cucumber slices",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled tofu, wild rice, roasted carrots",
+                "calories": 500
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Banana with peanut butter",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Baked chicken thigh, mashed cauliflower, steamed asparagus",
+                "calories": 448
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "totalCalories": 1848,
+        "protein": "92g",
+        "carbs": "231g",
+        "fats": "62g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Smoothie with whey protein, oat milk, banana, spinach",
+                "calories": 400
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Snack",
+            "items": [
+              {
+                "name": "Low‑fat ricotta with sliced peach",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Lean beef stir‑fry with bell peppers and brown rice",
+                "calories": 500
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Carrot sticks with hummus",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Grilled tilapia, quinoa salad, green beans",
+                "calories": 448
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "totalCalories": 1848,
+        "protein": "92g",
+        "carbs": "231g",
+        "fats": "62g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Scrambled egg whites with spinach and whole‑grain English muffin",
+                "calories": 400
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Snack",
+            "items": [
+              {
+                "name": "Low‑fat Greek yogurt with sliced kiwi",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Chicken and lentil soup with a side of mixed greens",
+                "calories": 500
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Orange and a small handful of almonds",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Baked turkey meatballs, whole‑wheat pasta, marinara sauce",
+                "calories": 448
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "totalCalories": 1848,
+        "protein": "92g",
+        "carbs": "231g",
+        "fats": "62g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Protein pancakes topped with fresh strawberries",
+                "calories": 400
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Snack",
+            "items": [
+              {
+                "name": "Cottage cheese with sliced tomato",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled shrimp salad with quinoa and mixed veggies",
+                "calories": 500
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Apple slices with sun‑flower seed butter",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Roasted chicken breast, sweet potato wedges, steamed broccoli",
+                "calories": 448
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "totalCalories": 1848,
+        "protein": "92g",
+        "carbs": "231g",
+        "fats": "62g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Oatmeal cooked with almond milk, topped with raisins and chia seeds",
+                "calories": 400
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Snack",
+            "items": [
+              {
+                "name": "Low‑fat kefir with a drizzle of maple syrup",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Turkey chili with black beans and a side of brown rice",
+                "calories": 500
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Celery sticks with guacamole",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Grilled halibut, barley pilaf, roasted zucchini",
+                "calories": 448
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "parseError": null,
+  "cleanedContent": "{\"days\":[{\"day\":1,\"totalCalories\":1848,\"protein\":\"92g\",\"carbs\":\"231g\",\"fats\":\"62g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Oatmeal with skim milk and banana\",\"calories\":400}]},{\"title\":\"Mid‑Morning Snack\",\"items\":[{\"name\":\"Greek yogurt with honey\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Grilled chicken breast, quinoa, steamed broccoli\",\"calories\":500}]},{\"title\":\"Afternoon Snack\",\"items\":[{\"name\":\"Apple slices with almond butter\",\"calories\":300}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Baked cod, sweet potato, green beans\",\"calories\":448}]}]},{\"day\":2,\"totalCalories\":1848,\"protein\":\"92g\",\"carbs\":\"231g\",\"fats\":\"62g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Whole‑grain toast with avocado and poached egg\",\"calories\":400}]},{\"title\":\"Mid‑Morning Snack\",\"items\":[{\"name\":\"Low‑fat cottage cheese with pineapple chunks\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Turkey breast wrap with lettuce, tomato, hummus\",\"calories\":500}]},{\"title\":\"Afternoon Snack\",\"items\":[{\"name\":\"Pear and a handful of walnuts\",\"calories\":300}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Steamed salmon, brown rice, sautéed spinach\",\"calories\":448}]}]},{\"day\":3,\"totalCalories\":1848,\"protein\":\"92g\",\"carbs\":\"231g\",\"fats\":\"62g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Greek yogurt parfait with mixed berries and granola\",\"calories\":400}]},{\"title\":\"Mid‑Morning Snack\",\"items\":[{\"name\":\"Hard‑boiled egg and cucumber slices\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Grilled tofu, wild rice, roasted carrots\",\"calories\":500}]},{\"title\":\"Afternoon Snack\",\"items\":[{\"name\":\"Banana with peanut butter\",\"calories\":300}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Baked chicken thigh, mashed cauliflower, steamed asparagus\",\"calories\":448}]}]},{\"day\":4,\"totalCalories\":1848,\"protein\":\"92g\",\"carbs\":\"231g\",\"fats\":\"62g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Smoothie with whey protein, oat milk, banana, spinach\",\"calories\":400}]},{\"title\":\"Mid‑Morning Snack\",\"items\":[{\"name\":\"Low‑fat ricotta with sliced peach\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Lean beef stir‑fry with bell peppers and brown rice\",\"calories\":500}]},{\"title\":\"Afternoon Snack\",\"items\":[{\"name\":\"Carrot sticks with hummus\",\"calories\":300}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Grilled tilapia, quinoa salad, green beans\",\"calories\":448}]}]},{\"day\":5,\"totalCalories\":1848,\"protein\":\"92g\",\"carbs\":\"231g\",\"fats\":\"62g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Scrambled egg whites with spinach and whole‑grain English muffin\",\"calories\":400}]},{\"title\":\"Mid‑Morning Snack\",\"items\":[{\"name\":\"Low‑fat Greek yogurt with sliced kiwi\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Chicken and lentil soup with a side of mixed greens\",\"calories\":500}]},{\"title\":\"Afternoon Snack\",\"items\":[{\"name\":\"Orange and a small handful of almonds\",\"calories\":300}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Baked turkey meatballs, whole‑wheat pasta, marinara sauce\",\"calories\":448}]}]},{\"day\":6,\"totalCalories\":1848,\"protein\":\"92g\",\"carbs\":\"231g\",\"fats\":\"62g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Protein pancakes topped with fresh strawberries\",\"calories\":400}]},{\"title\":\"Mid‑Morning Snack\",\"items\":[{\"name\":\"Cottage cheese with sliced tomato\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Grilled shrimp salad with quinoa and mixed veggies\",\"calories\":500}]},{\"title\":\"Afternoon Snack\",\"items\":[{\"name\":\"Apple slices with sun‑flower seed butter\",\"calories\":300}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Roasted chicken breast, sweet potato wedges, steamed broccoli\",\"calories\":448}]}]},{\"day\":7,\"totalCalories\":1848,\"protein\":\"92g\",\"carbs\":\"231g\",\"fats\":\"62g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Oatmeal cooked with almond milk, topped with raisins and chia seeds\",\"calories\":400}]},{\"title\":\"Mid‑Morning Snack\",\"items\":[{\"name\":\"Low‑fat kefir with a drizzle of maple syrup\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Turkey chili with black beans and a side of brown rice\",\"calories\":500}]},{\"title\":\"Afternoon Snack\",\"items\":[{\"name\":\"Celery sticks with guacamole\",\"calories\":300}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Grilled halibut, barley pilaf, roasted zucchini\",\"calories\":448}]}]}]}",
+  "derived": {
+    "allHealthConditions": "GERD, spicy and fried foods worsen reflux",
+    "allAllergies": "none",
+    "allInjuries": "none",
+    "allGoals": "maintenance and symptom control, easy meals for long workdays",
+    "experienceInfo": "beginner",
+    "bmr": 1343.869,
+    "tdee": 1847.819875,
+    "targetCalories": 1848
+  },
+  "latencyMs": 66112,
+  "usage": {
+    "prompt_tokens": 448,
+    "completion_tokens": 1916,
+    "total_tokens": 2364,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 708,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop"
+}

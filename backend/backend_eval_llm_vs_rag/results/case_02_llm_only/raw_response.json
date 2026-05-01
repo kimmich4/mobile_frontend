@@ -1,0 +1,56 @@
+{
+  "status": 200,
+  "body": {
+    "id": "gen-1777216236-thvFIOSz7g17z54ZovcR",
+    "object": "chat.completion",
+    "created": 1777216236,
+    "model": "openai/gpt-oss-120b:free",
+    "provider": "OpenInference",
+    "system_fingerprint": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"gym\":{\"title\":\"Gym Workout Plan\",\"days\":[{\"day\":1,\"exercises\":[{\"id\":1,\"name\":\"Leg Press (moderate depth)\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg Press Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":2,\"name\":\"Seated Cable Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":40},{\"id\":3,\"name\":\"Dumbbell Bench Press\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":50},{\"id\":4,\"name\":\"Standing Cable Hip Abduction\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":30}]},{\"day\":2,\"exercises\":[{\"id\":5,\"name\":\"Chest-Supported Dumbbell Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells, Incline Bench\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":6,\"name\":\"Leg Curl Machine\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg Curl Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":35},{\"id\":7,\"name\":\"Overhead Dumbbell Press\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":45},{\"id\":8,\"name\":\"Cable Glute Kickback\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":30}]},{\"day\":3,\"exercises\":[{\"id\":9,\"name\":\"Lat Pulldown\",\"difficulty\":\"Beginner\",\"equipment\":\"Lat Pulldown Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":40},{\"id\":10,\"name\":\"Seated Leg Extension (light)\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg Extension Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":35},{\"id\":11,\"name\":\"Incline Dumbbell Chest Press\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells, Incline Bench\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":50},{\"id\":12,\"name\":\"Standing Cable Hip Extension\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":30}]},{\"day\":4,\"exercises\":[{\"id\":13,\"name\":\"Machine Chest Press\",\"difficulty\":\"Beginner\",\"equipment\":\"Chest Press Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":14,\"name\":\"Seated Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Seated Row Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":40},{\"id\":15,\"name\":\"Leg Press (partial depth)\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg Press Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":16,\"name\":\"Cable Lateral Raise\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":30}]},{\"day\":5,\"exercises\":[{\"id\":17,\"name\":\"Dumbbell Romanian Deadlift\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":50},{\"id\":18,\"name\":\"Machine Hip Abduction\",\"difficulty\":\"Beginner\",\"equipment\":\"Hip Abduction Machine\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":35},{\"id\":19,\"name\":\"Cable Chest Fly\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":40},{\"id\":20,\"name\":\"Assisted Pull‑Up (machine)\",\"difficulty\":\"Beginner\",\"equipment\":\"Assisted Pull‑Up Machine\",\"sets\":\"3\",\"reps\":\"8\",\"calories\":45}]},{\"day\":6,\"exercises\":[{\"id\":21,\"name\":\"Elliptical (moderate)\",\"difficulty\":\"Beginner\",\"equipment\":\"Elliptical Trainer\",\"sets\":\"1\",\"reps\":\"30 min\",\"calories\":250},{\"id\":22,\"name\":\"Core Circuit – Plank 3×30s\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"30s\",\"calories\":20},{\"id\":23,\"name\":\"Standing Cable Wood Chop\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"12 each side\",\"calories\":30}]},{\"day\":7,\"exercises\":[{\"id\":24,\"name\":\"Active Recovery – Light Stretching\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"1\",\"reps\":\"15 min\",\"calories\":50},{\"id\":25,\"name\":\"Foam Rolling (lower body)\",\"difficulty\":\"Beginner\",\"equipment\":\"Foam Roller\",\"sets\":\"1\",\"reps\":\"10 min\",\"calories\":30}]}},\"home\":{\"title\":\"Home Workout Plan\",\"days\":[{\"day\":1,\"exercises\":[{\"id\":1,\"name\":\"Goblet Squat (to chair height)\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbell\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":40},{\"id\":2,\"name\":\"Dumbbell Bent‑Over Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":3,\"name\":\"Push‑Ups (knees)\",\"difficulty\":\"Beginner\",\"equipment\":\"Bodyweight\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":35},{\"id\":4,\"name\":\"Standing Glute Bridge\",\"difficulty\":\"Beginner\",\"equipment\":\"Bodyweight\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":30}]},{\"day\":2,\"exercises\":[{\"id\\\":5,\"name\":\"Dumbbell Romanian Deadlift\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":6,\"name\":\"Single‑Leg Wall Sit (partial)\",\"difficulty\":\"Beginner\",\"equipment\":\"Wall\",\"sets\":\"3\",\"reps\":\"20 sec each leg\",\"calories\":25},{\"id\":7,\"name\":\"Dumbbell Shoulder Press\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":40},{\"id\":8,\"name\":\"Side‑Lying Clam (with band)\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"15 each side\",\"calories\":20}]},{\"day\":3,\"exercises\":[{\"id\":9,\"name\":\"Dumbbell Chest Press (floor)\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":10,\"name\":\"Reverse Lunges (short step)\",\"difficulty\":\"Beginner\",\"equipment\":\"Bodyweight\",\"sets\":\"3\",\"reps\":\"10 each leg\",\"calories\":35},{\"id\":11,\"name\":\"Renegade Row (knees)\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"reps\":\"8 each side\",\"calories\":40},{\"id\":12,\"name\":\"Standing Hip Abduction (band)\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"15 each side\",\"calories\":20}]},{\"day\":4,\"exercises\":[{\"id\":13,\"name\":\"Dumbbell Incline Press (bench)\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells, Bench\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":14,\"name\":\"Seated Cable Row (band)\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":35},{\"id\":15,\"name\":\"Glute Bridge March\",\"difficulty\":\"Beginner\",\"equipment\":\"Bodyweight\",\"sets\":\"3\",\"reps\":\"12 each leg\",\"calories\":30},{\"id\":16,\"name\":\"Dumbbell Lateral Raise\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":30}]},{\"day\":5,\"exercises\":[{\"id\":17,\"name\":\"Dumbbell Split Squat (rear foot elevated)\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells, Chair\",\"sets\":\"3\",\"reps\":\"10 each leg\",\"calories\":45},{\"id\":18,\"name\":\"Band Pull‑Apart\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":20},{\"id\":19,\"name\":\"Diamond Push‑Ups (knees)\",\"difficulty\":\"Beginner\",\"equipment\":\"Bodyweight\",\"sets\":\"3\",\"reps\":\"8\",\"calories\":35},{\"id\":20,\"name\":\"Standing Calf Raise\",\"difficulty\":\"Beginner\",\"equipment\":\"Bodyweight\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":25}]},{\"day\":6,\"exercises\":[{\"id\":21,\"name\":\"Low‑Impact Cardio – Brisk Walk (outdoor)\",\"difficulty\":\"Beginner\",\"equipment\":\"None\",\"sets\":\"1\",\"reps\":\"30 min\",\"calories\":200},{\"id\":22,\"name\":\"Core Circuit – Bird Dog\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"12 each side\",\"calories\":25},{\"id\":23,\"name\":\"Standing Oblique Crunch (band)\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"15 each side\",\"calories\":20}]},{\"day\":6,\"exercises\":[{\"id\":24,\"name\":\"Active Recovery – Full Body Stretch\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"1\",\"reps\":\"15 min\",\"calories\":40},{\"id\":25,\"name\":\"Foam Rolling (if available)\",\"difficulty\":\"Beginner\",\"equipment\":\"Foam Roller\",\"sets\":\"1\",\"reps\":\"10 min\",\"calories\":30}]}]}}",
+          "refusal": null,
+          "reasoning": "We need JSON with gym and home. Provide 7 days each. Use beginner, low impact, avoid deep knee flexion. Provide exercises with difficulty, equipment, sets, reps, calories. We'll make plausible calories per exercise. Provide ids per day incrementally. Provide both gym and home versions. Probably home uses dumbbells; gym can use machines. Return only JSON.",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "We need JSON with gym and home. Provide 7 days each. Use beginner, low impact, avoid deep knee flexion. Provide exercises with difficulty, equipment, sets, reps, calories. We'll make plausible calories per exercise. Provide ids per day incrementally. Provide both gym and home versions. Probably home uses dumbbells; gym can use machines. Return only JSON.",
+              "format": "unknown",
+              "index": 0
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 503,
+      "completion_tokens": 2164,
+      "total_tokens": 2667,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 64,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0,
+        "upstream_inference_prompt_cost": 0,
+        "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 89,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

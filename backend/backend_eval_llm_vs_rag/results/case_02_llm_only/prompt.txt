@@ -1,0 +1,14 @@
+Please create a practical, safe, personalized, and easy-to-use fitness plan using only the information provided below. Do not use any outside retrieved database context. The plan should consider the person's age, sex, height, weight, target weight, activity level, goal, experience, allergies, injuries, health conditions, medical-report notes, InBody notes, and calculated calorie target. Return the answer as clean JSON only so it can be loaded by an app.
+
+Request type: workout.
+
+Please create a 7-day workout plan with both gym and home options for every day. Include exercise name, difficulty, equipment, sets, reps, and calories. Use this JSON shape:
+{"gym":{"title":"Gym Workout Plan","days":[{"day":1,"exercises":[{"id":1,"name":"...","difficulty":"...","equipment":"...","sets":"...","reps":"...","calories":123}]}]},"home":{"title":"Home Workout Plan","days":[{"day":1,"exercises":[{"id":1,"name":"...","difficulty":"...","equipment":"...","sets":"...","reps":"...","calories":123}]}]}}
+
+Person: Laila Nasser is a 29-year-old female, 164 cm tall, currently weighs 58 kg, and has a target weight of 63 kg. The activity level is light, the experience level is beginner - home dumbbells only on weekdays, and the goal is muscle gain, build glutes and upper body strength. Health conditions: none. Allergies or food restrictions: none. Injuries or movement restrictions: patellofemoral knee pain, avoid jumping and deep knee flexion. Medical-report notes: Physiotherapist advised low impact training and controlled squat depth.. InBody notes: Lean mass below age average, body fat healthy range.. Calculated BMR: 1366. Calculated TDEE: 1879. Calculated target daily calories: 2379.
+
+Requirements:
+- Use only the information above.
+- Do not use outside retrieved database context.
+- Return clean JSON only.
+- Do not add markdown, explanations, or commentary.

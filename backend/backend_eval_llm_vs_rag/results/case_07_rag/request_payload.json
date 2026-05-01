@@ -1,0 +1,23 @@
+{
+  "method": "POST",
+  "headers": {
+    "Authorization": "Bearer [REDACTED]",
+    "Content-Type": "application/json",
+    "HTTP-Referer": "https://local.eval.backend",
+    "X-Title": "backend_eval_llm_vs_rag_openrouter_oss120b"
+  },
+  "body": {
+    "model": "openai/gpt-oss-120b:free",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a certified sports nutritionist and personal trainer. You MUST return ONLY valid, complete JSON. Keep responses compact but complete. Accuracy is critical for user safety."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n\nUser Profile: Salma Reda, 31 years old, female. \nMetrics: Current Weight: 88kg, Target Weight: 76kg, Height: 168cm. \nActivity Level: light.\nExperience Level: intermediate.\nGoals: fat loss with better energy, meal prep friendly.  \nReported Health Conditions: mild iron deficiency anemia. \nAllergies: gluten intolerance. \nInjuries: none.\nCalculated BMR: 1648. \nCalculated TDEE: 2265.\nTarget Daily Calories (adjusted for goal): 1765.\nMedical Report Findings: Ferritin low. Clinician recommended iron-rich foods and vitamin C pairing..\nInBody Report Findings: Body fat 35%, muscle mass average..\nVector Database Constraints: Issue: Iron-Deficiency Anemia - Mild - Hematologic. Constraints: Foods to avoid (Tea or coffee with iron-rich meals), Exercises to avoid (High-volume conditioning in a fatigued state, All-out interval sessions when symptomatic)\nIssue: Iron-Deficiency Anemia - Moderate - Hematologic. Constraints: Foods to avoid (Tea or coffee with iron-rich meals), Exercises to avoid (High-volume conditioning in a fatigued state, All-out interval sessions when symptomatic)\nIssue: Iron-Deficiency Anemia - Moderate - Hematologic. Constraints: Foods to avoid (Tea or coffee with iron-rich meals), Exercises to avoid (All-out interval sessions when symptomatic, High-volume conditioning in a fatigued state)\n\n\nTask:\nCreate a 7-day diet plan (Day 1 to Day 7). \nYou MUST provide EXACTLY 7 DAYS in the \"days\" array. DO NOT stop before Day 7.\n\nUSER GOAL: fat loss with better energy, meal prep friendly\nTARGET CALORIES: 1765 PER DAY.\n\nCRITICAL RULES:\n1. YOU MUST GENERATE ALL 7 DAYS (day 1, 2, 3, 4, 5, 6, 7).\n2. For EVERY day, the \"totalCalories\" field MUST be EXACTLY 1765.\n3. The sum of all individual \"calories\" for items in \"meals\" MUST EXACTLY mathematically equal 1765 for every day. \n4. meal variety: Each day SHOULD have a varied number of meals (between 5 and above to achive the target calories).\n5. Ensure the diet plan is safe for the provided injuries/conditions and doesnt violate any of the vector database constraints.\n6. CREATIVE TITLES: Use different meal names instead of just \"Breakfast/Lunch/Dinner\". Be creative and varied!\n7. Portions (grams/ml) must be realistic and specific.\n\nTHINKING STEP:\nBefore writing each day, decide on the number of meals (3-6) and creative formal titles. Then mentally calculate the calories for each so the total matches exactly 1765.\n\nEXAMPLE OF CORRECT MATH (Varying counts/titles):\n- Pre-Gym Snack: 300\n- Main Lunch: 900\n- Afternoon Refresh: 300\n- Hearty Supper: 1000\nTOTAL: 300 + 900 + 300 + 1000 = 2500 (Matches target)\n\nReturn ONLY JSON in this EXACT format:\n{\n  \"days\": [\n    {\n      \"day\": 1,\n      \"totalCalories\": 1765,\n      \"protein\": \"150g\",\n      \"carbs\": \"200g\",\n      \"fats\": \"60g\",\n      \"meals\": [\n        {\n          \"title\": \"Pre-Gym Snack\",\n          \"items\": [{\"name\": \"Banana + Almonds\", \"calories\": 300}]\n        },\n        {\n          \"title\": \"Lunch\",\n          \"items\": [{\"name\": \"Chicken Breast (150g)\", \"calories\": 450}, {\"name\": \"Brown Rice (200g)\", \"calories\": 450}]\n        }\n      ]\n    }\n  ]\n}"
+      }
+    ],
+    "max_tokens": 16000
+  }
+}

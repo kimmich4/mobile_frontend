@@ -1,0 +1,105 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "6b220c50-c220-419b-88e5-7218a07e3212",
+      "version": 350,
+      "score": 0.4985327,
+      "payload": {
+        "athlete_id": "ATH0256",
+        "name": "محمد العوامي",
+        "age": 44,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Lactose Intolerance - Mild - Gastrointestinal",
+        "dietary_restrictions": [
+          "Protein source substitution"
+        ],
+        "allergies": [
+          "Sesame"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "High-intensity training during active GI distress",
+            "reason": "Can worsen symptoms"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Large dairy-based shakes without lactase support",
+            "reason": "Can cause GI upset"
+          },
+          {
+            "food": "Sesame-containing foods",
+            "reason": "Allergic reaction risk"
+          }
+        ]
+      }
+    },
+    {
+      "id": "93db5d9c-e949-4f7b-8ad6-e643719b68e6",
+      "version": 61,
+      "score": 0.4840281,
+      "payload": {
+        "athlete_id": "ATH017",
+        "name": "Karim El-Din",
+        "age": 28,
+        "gender": "Male",
+        "goal": "Muscular endurance",
+        "issue": "Exercise-Induced Urticaria - Mild - Other",
+        "dietary_restrictions": [
+          "Avoid triggering additives around training"
+        ],
+        "allergies": [
+          "Certain food additives"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Very intense exercise in extreme heat",
+            "reason": "Hives trigger"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Foods with specific additives",
+            "reason": "Histamine-mediated reaction"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c6dfe53a-722f-4480-9efb-bac9d52e5e06",
+      "version": 380,
+      "score": 0.48241568,
+      "payload": {
+        "athlete_id": "ATH0286",
+        "name": "هبة سليم العوامي",
+        "age": 34,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Post-Concussion Recovery - Mild - Neurological",
+        "dietary_restrictions": [
+          "Hydration focus",
+          "Regular meal timing"
+        ],
+        "allergies": [
+          "Peanuts"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Contact or collision drills",
+            "reason": "Risk of repeat injury"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Peanut-containing snacks",
+            "reason": "Allergic reaction risk"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Lactose Intolerance - Mild - Gastrointestinal. Constraints: Foods to avoid (Large dairy-based shakes without lactase support, Sesame-containing foods), Exercises to avoid (High-intensity training during active GI distress)\nIssue: Exercise-Induced Urticaria - Mild - Other. Constraints: Foods to avoid (Foods with specific additives), Exercises to avoid (Very intense exercise in extreme heat)\nIssue: Post-Concussion Recovery - Mild - Neurological. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Contact or collision drills)"
+}

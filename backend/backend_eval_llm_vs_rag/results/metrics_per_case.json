@@ -1,0 +1,2065 @@
+[
+  {
+    "caseId": "case_01",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 405,
+      "FP": 7,
+      "FN": 11
+    },
+    "precision": 0.9830097087378641,
+    "recall": 0.9735576923076923,
+    "f1": 0.9782608695652173,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0,
+    "faithfulness": 0.1,
+    "calculation_correctness": {
+      "targetCalories": 2620,
+      "absoluteErrors": [
+        0,
+        286,
+        0,
+        165,
+        0,
+        374,
+        0,
+        330,
+        0,
+        465,
+        0,
+        468,
+        0,
+        445
+      ],
+      "mean_absolute_error": 180.92857142857142,
+      "percentage_error": 6.90567066521265
+    },
+    "latency_ms": 117643,
+    "token_usage": 3925,
+    "efficiency_score": 0.4765073066342378,
+    "overall_score": 0.6938495199210839,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": true,
+      "missingObservableAttributes": [
+        "fat loss",
+        "diabetes",
+        "shellfish",
+        "low sodium",
+        "steady carbohydrate"
+      ],
+      "calculationErrors": [
+        286,
+        165,
+        374,
+        330,
+        465,
+        468,
+        445
+      ]
+    }
+  },
+  {
+    "caseId": "case_02",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 10,
+      "FP": 1,
+      "FN": 47
+    },
+    "precision": 0.9090909090909091,
+    "recall": 0.17543859649122806,
+    "f1": 0.2941176470588235,
+    "instruction_adherence": 0.1,
+    "constraint_compliance": 1,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0.5555555555555556,
+    "faithfulness": 0.6,
+    "calculation_correctness": {
+      "targetCalories": 2379,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 80493,
+    "token_usage": 2667,
+    "efficiency_score": 0.6430158398348575,
+    "overall_score": 0.38241222990023965,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "muscle gain",
+        "low impact"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_03",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 477,
+      "FP": 7,
+      "FN": 9
+    },
+    "precision": 0.9855371900826446,
+    "recall": 0.9814814814814815,
+    "f1": 0.9835051546391753,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 2543,
+      "absoluteErrors": [
+        0,
+        100,
+        0,
+        100,
+        0,
+        100,
+        0,
+        100,
+        0,
+        100,
+        0,
+        100,
+        0,
+        100
+      ],
+      "mean_absolute_error": 50,
+      "percentage_error": 1.966181675186787
+    },
+    "latency_ms": 114218,
+    "token_usage": 4050,
+    "efficiency_score": 0.47630124105122507,
+    "overall_score": 0.7818792086734089,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "IBS",
+        "lactose",
+        "low fodmap",
+        "endurance"
+      ],
+      "calculationErrors": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ]
+    }
+  },
+  {
+    "caseId": "case_04",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 4,
+      "FP": 1,
+      "FN": 53
+    },
+    "precision": 0.8,
+    "recall": 0.07017543859649122,
+    "f1": 0.12903225806451613,
+    "instruction_adherence": 0.1,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0,
+    "faithfulness": 0.1,
+    "calculation_correctness": {
+      "targetCalories": 2020,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 69726,
+    "token_usage": 2875,
+    "efficiency_score": 0.6543084036463243,
+    "overall_score": 0.20250036641887534,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [],
+      "missingPositiveTerms": true,
+      "missingObservableAttributes": [
+        "fat loss",
+        "shoulder",
+        "hypertension",
+        "conditioning",
+        "low impact"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_05",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 421,
+      "FP": 7,
+      "FN": 9
+    },
+    "precision": 0.9836448598130841,
+    "recall": 0.9790697674418605,
+    "f1": 0.9813519813519814,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 3008,
+      "absoluteErrors": [
+        0,
+        44,
+        0,
+        44,
+        0,
+        44,
+        0,
+        44,
+        0,
+        44,
+        0,
+        44,
+        0,
+        44
+      ],
+      "mean_absolute_error": 22,
+      "percentage_error": 0.7313829787234043
+    },
+    "latency_ms": 116026,
+    "token_usage": 4196,
+    "efficiency_score": 0.46272471286930605,
+    "overall_score": 0.7810927235999533,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "muscle gain",
+        "vegetarian",
+        "peanut",
+        "high protein",
+        "very active"
+      ],
+      "calculationErrors": [
+        44,
+        44,
+        44,
+        44,
+        44,
+        44,
+        44
+      ]
+    }
+  },
+  {
+    "caseId": "case_06",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 435,
+      "FP": 1,
+      "FN": 7
+    },
+    "precision": 0.9977064220183486,
+    "recall": 0.9841628959276018,
+    "f1": 0.9908883826879271,
+    "instruction_adherence": 0.8,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.6666666666666666,
+    "faithfulness": 0.6,
+    "calculation_correctness": {
+      "targetCalories": 2632,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 138024,
+    "token_usage": 4384,
+    "efficiency_score": 0.40008136199951616,
+    "overall_score": 0.7895484872343721,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [
+        "good morning"
+      ],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "back pain",
+        "short sessions"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_07",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 215,
+      "FP": 8,
+      "FN": 12
+    },
+    "precision": 0.9641255605381166,
+    "recall": 0.947136563876652,
+    "f1": 0.9555555555555557,
+    "instruction_adherence": 0.6666666666666666,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.3,
+    "faithfulness": 0.2727272727272727,
+    "calculation_correctness": {
+      "targetCalories": 1765,
+      "absoluteErrors": [
+        0,
+        120,
+        0,
+        240,
+        0,
+        290,
+        0,
+        300,
+        0,
+        255,
+        0,
+        165,
+        0,
+        290
+      ],
+      "mean_absolute_error": 118.57142857142857,
+      "percentage_error": 6.717927964386888
+    },
+    "latency_ms": 76688,
+    "token_usage": 3127,
+    "efficiency_score": 0.6220553823298658,
+    "overall_score": 0.7028199408336651,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [
+        "pasta"
+      ],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "iron",
+        "meal prep",
+        "vitamin c"
+      ],
+      "calculationErrors": [
+        120,
+        240,
+        290,
+        300,
+        255,
+        165,
+        290
+      ]
+    }
+  },
+  {
+    "caseId": "case_08",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 10,
+      "FP": 1,
+      "FN": 47
+    },
+    "precision": 0.9090909090909091,
+    "recall": 0.17543859649122806,
+    "f1": 0.2941176470588235,
+    "instruction_adherence": 0.1,
+    "constraint_compliance": 1,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0.5555555555555556,
+    "faithfulness": 0.6,
+    "calculation_correctness": {
+      "targetCalories": 1491,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 90960,
+    "token_usage": 3439,
+    "efficiency_score": 0.5691454398538014,
+    "overall_score": 0.37871870990118683,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "postpartum",
+        "wrist",
+        "short sessions"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_09",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 297,
+      "FP": 6,
+      "FN": 7
+    },
+    "precision": 0.9801980198019802,
+    "recall": 0.9769736842105263,
+    "f1": 0.9785831960461284,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.3333333333333333,
+    "faithfulness": 0.4,
+    "calculation_correctness": {
+      "targetCalories": 2265,
+      "absoluteErrors": [
+        0,
+        190,
+        0,
+        195,
+        0,
+        30,
+        0,
+        130,
+        0,
+        235,
+        0,
+        0,
+        0,
+        50
+      ],
+      "mean_absolute_error": 59.285714285714285,
+      "percentage_error": 2.617470829391359
+    },
+    "latency_ms": 105803,
+    "token_usage": 3488,
+    "efficiency_score": 0.5319032011811416,
+    "overall_score": 0.8266354309724746,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "hypothyroidism",
+        "satiety"
+      ],
+      "calculationErrors": [
+        190,
+        195,
+        30,
+        130,
+        235,
+        50
+      ]
+    }
+  },
+  {
+    "caseId": "case_10",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 548,
+      "FP": 0,
+      "FN": 6
+    },
+    "precision": 1,
+    "recall": 0.9891696750902527,
+    "f1": 0.9945553539019965,
+    "instruction_adherence": 0.8,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.5555555555555556,
+    "faithfulness": 0.6,
+    "calculation_correctness": {
+      "targetCalories": 3634,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 147355,
+    "token_usage": 5350,
+    "efficiency_score": 0.3162949613609949,
+    "overall_score": 0.8410980713187051,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "muscle gain",
+        "upper-lower",
+        "stronger legs"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_11",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 196,
+      "FP": 2,
+      "FN": 10
+    },
+    "precision": 0.98989898989899,
+    "recall": 0.9514563106796117,
+    "f1": 0.9702970297029703,
+    "instruction_adherence": 0.7777777777777778,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 1695,
+      "absoluteErrors": [
+        0,
+        100,
+        0,
+        100,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "mean_absolute_error": 14.285714285714286,
+      "percentage_error": 0.8428150021070375
+    },
+    "latency_ms": 55421,
+    "token_usage": 2095,
+    "efficiency_score": 0.7375071534142309,
+    "overall_score": 0.7720568758225268,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "PCOS",
+        "dairy",
+        "insulin resistance",
+        "appetite control"
+      ],
+      "calculationErrors": [
+        100,
+        100
+      ]
+    }
+  },
+  {
+    "caseId": "case_12",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 9,
+      "FP": 1,
+      "FN": 48
+    },
+    "precision": 0.9,
+    "recall": 0.15789473684210525,
+    "f1": 0.26865671641791045,
+    "instruction_adherence": 0.1,
+    "constraint_compliance": 1,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0.4444444444444444,
+    "faithfulness": 0.5,
+    "calculation_correctness": {
+      "targetCalories": 2247,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 48931,
+    "token_usage": 2217,
+    "efficiency_score": 0.7445318730371224,
+    "overall_score": 0.3651038739171961,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "desk",
+        "posture"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_13",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 394,
+      "FP": 7,
+      "FN": 9
+    },
+    "precision": 0.9825436408977556,
+    "recall": 0.9776674937965261,
+    "f1": 0.9800995024875622,
+    "instruction_adherence": 0.7777777777777778,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.3,
+    "faithfulness": 0.36363636363636365,
+    "calculation_correctness": {
+      "targetCalories": 3362,
+      "absoluteErrors": [
+        0,
+        27,
+        0,
+        27,
+        0,
+        27,
+        0,
+        27,
+        0,
+        27,
+        0,
+        27,
+        0,
+        27
+      ],
+      "mean_absolute_error": 13.5,
+      "percentage_error": 0.4015466983938132
+    },
+    "latency_ms": 126180,
+    "token_usage": 3986,
+    "efficiency_score": 0.45296868698991744,
+    "overall_score": 0.793572601393066,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "muscle gain",
+        "tree nut",
+        "student",
+        "beginner",
+        "high calorie"
+      ],
+      "calculationErrors": [
+        27,
+        27,
+        27,
+        27,
+        27,
+        27,
+        27
+      ]
+    }
+  },
+  {
+    "caseId": "case_14",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 7,
+      "FP": 1,
+      "FN": 50
+    },
+    "precision": 0.875,
+    "recall": 0.12280701754385964,
+    "f1": 0.2153846153846154,
+    "instruction_adherence": 0.1,
+    "constraint_compliance": 1,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0.2222222222222222,
+    "faithfulness": 0.3,
+    "calculation_correctness": {
+      "targetCalories": 2651,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 150718,
+    "token_usage": 5043,
+    "efficiency_score": 0.32839289216876555,
+    "overall_score": 0.29941109759989126,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "tennis elbow",
+        "push-pull-legs",
+        "high intensity"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_15",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 196,
+      "FP": 1,
+      "FN": 10
+    },
+    "precision": 0.9949238578680203,
+    "recall": 0.9514563106796117,
+    "f1": 0.9727047146401985,
+    "instruction_adherence": 1,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.1,
+    "calculation_correctness": {
+      "targetCalories": 1848,
+      "absoluteErrors": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "mean_absolute_error": 0,
+      "percentage_error": 0
+    },
+    "latency_ms": 66112,
+    "token_usage": 2364,
+    "efficiency_score": 0.6955950217412864,
+    "overall_score": 0.7378594312635187,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [
+        "chili"
+      ],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "GERD",
+        "symptom control",
+        "smaller meals",
+        "reflux"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_16",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 511,
+      "FP": 0,
+      "FN": 8
+    },
+    "precision": 1,
+    "recall": 0.9845857418111753,
+    "f1": 0.992233009708738,
+    "instruction_adherence": 0.8,
+    "constraint_compliance": 1,
+    "structure_compliance": 0.9979757085020243,
+    "completeness": 1,
+    "personalization": 0.4444444444444444,
+    "faithfulness": 0.5,
+    "calculation_correctness": {
+      "targetCalories": 1596,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 90428,
+    "token_usage": 3180,
+    "efficiency_score": 0.5870873544296545,
+    "overall_score": 0.8331068189266677,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "ACL"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_17",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 4,
+      "FP": 1,
+      "FN": 62
+    },
+    "precision": 0.8,
+    "recall": 0.06060606060606061,
+    "f1": 0.11267605633802819,
+    "instruction_adherence": 0.1111111111111111,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0,
+    "faithfulness": 0.1,
+    "calculation_correctness": {
+      "targetCalories": 2458,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 105756,
+    "token_usage": 3707,
+    "efficiency_score": 0.5178729575688013,
+    "overall_score": 0.19708300625089703,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [],
+      "missingPositiveTerms": true,
+      "missingObservableAttributes": [
+        "fat loss",
+        "gout",
+        "hydration",
+        "travel",
+        "moderate sodium"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_18",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 502,
+      "FP": 0,
+      "FN": 10
+    },
+    "precision": 1,
+    "recall": 0.98046875,
+    "f1": 0.9901380670611439,
+    "instruction_adherence": 0.8,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 2110,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 158919,
+    "token_usage": 4784,
+    "efficiency_score": 0.32628420382599654,
+    "overall_score": 0.7569322246554682,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "asthma",
+        "beginner",
+        "conditioning",
+        "stairs"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_19",
+    "mode": "llm_only",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 224,
+      "FP": 0,
+      "FN": 10
+    },
+    "precision": 1,
+    "recall": 0.9572649572649573,
+    "f1": 0.9781659388646288,
+    "instruction_adherence": 1,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0,
+    "faithfulness": 0.1,
+    "calculation_correctness": {
+      "targetCalories": 2663,
+      "absoluteErrors": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "mean_absolute_error": 0,
+      "percentage_error": 0
+    },
+    "latency_ms": 60170,
+    "token_usage": 2268,
+    "efficiency_score": 0.7154351521415142,
+    "overall_score": 0.7280133878836406,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": true,
+      "missingObservableAttributes": [
+        "maintenance",
+        "celiac",
+        "runner",
+        "recovery",
+        "very active"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_20",
+    "mode": "llm_only",
+    "route": "/ai/generate-workout",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 5,
+      "FP": 1,
+      "FN": 52
+    },
+    "precision": 0.8333333333333334,
+    "recall": 0.08771929824561403,
+    "f1": 0.15873015873015872,
+    "instruction_adherence": 0.1,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 2424,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 85300,
+    "token_usage": 3355,
+    "efficiency_score": 0.5875634166924361,
+    "overall_score": 0.22175912321557414,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [],
+      "missingPositiveTerms": true,
+      "missingObservableAttributes": [
+        "maintenance",
+        "scoliosis",
+        "balanced",
+        "full-body"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_01",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 359,
+      "FP": 7,
+      "FN": 11
+    },
+    "precision": 0.9808743169398907,
+    "recall": 0.9702702702702702,
+    "f1": 0.9755434782608695,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0,
+    "faithfulness": 0.1,
+    "calculation_correctness": {
+      "targetCalories": 2620,
+      "absoluteErrors": [
+        0,
+        279,
+        0,
+        712,
+        0,
+        766,
+        0,
+        686,
+        0,
+        689,
+        0,
+        687,
+        0,
+        743
+      ],
+      "mean_absolute_error": 325.85714285714283,
+      "percentage_error": 12.43729552889858
+    },
+    "latency_ms": 114230,
+    "token_usage": 4800,
+    "efficiency_score": 0.4278553551435864,
+    "overall_score": 0.691281052781334,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": true,
+      "missingObservableAttributes": [
+        "fat loss",
+        "diabetes",
+        "shellfish",
+        "low sodium",
+        "steady carbohydrate"
+      ],
+      "calculationErrors": [
+        279,
+        712,
+        766,
+        686,
+        689,
+        687,
+        743
+      ]
+    }
+  },
+  {
+    "caseId": "case_02",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 816,
+      "FP": 0,
+      "FN": 4
+    },
+    "precision": 1,
+    "recall": 0.9951219512195122,
+    "f1": 0.9975550122249389,
+    "instruction_adherence": 1,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.5555555555555556,
+    "faithfulness": 0.6,
+    "calculation_correctness": {
+      "targetCalories": 2379,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 177607,
+    "token_usage": 7144,
+    "efficiency_score": 0.1310209781329741,
+    "overall_score": 0.8719843550734513,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "muscle gain",
+        "beginner",
+        "low impact"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_03",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 7,
+      "FP": 4,
+      "FN": 59
+    },
+    "precision": 0.6363636363636364,
+    "recall": 0.10606060606060606,
+    "f1": 0.18181818181818182,
+    "instruction_adherence": 0.1111111111111111,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0.4444444444444444,
+    "faithfulness": 0.4,
+    "calculation_correctness": {
+      "targetCalories": 2543,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 122967,
+    "token_usage": 4705,
+    "efficiency_score": 0.413928557417361,
+    "overall_score": 0.26978733696177715,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [
+        "milk",
+        "yogurt",
+        "cheese"
+      ],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "IBS",
+        "low fodmap"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_04",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 734,
+      "FP": 0,
+      "FN": 9
+    },
+    "precision": 1,
+    "recall": 0.9878869448183042,
+    "f1": 0.993906567366283,
+    "instruction_adherence": 1,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 2020,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 176540,
+    "token_usage": 6301,
+    "efficiency_score": 0.18789297340329414,
+    "overall_score": 0.7235344214829234,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": true,
+      "missingObservableAttributes": [
+        "fat loss",
+        "hypertension",
+        "conditioning",
+        "low impact"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_05",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 412,
+      "FP": 8,
+      "FN": 8
+    },
+    "precision": 0.9809523809523809,
+    "recall": 0.9809523809523809,
+    "f1": 0.9809523809523809,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.4444444444444444,
+    "faithfulness": 0.4,
+    "calculation_correctness": {
+      "targetCalories": 3008,
+      "absoluteErrors": [
+        0,
+        38,
+        0,
+        700,
+        0,
+        336,
+        0,
+        241,
+        0,
+        683,
+        0,
+        595,
+        0,
+        590
+      ],
+      "mean_absolute_error": 227.35714285714286,
+      "percentage_error": 7.558415653495441
+    },
+    "latency_ms": 119967,
+    "token_usage": 5175,
+    "efficiency_score": 0.390474275773115,
+    "overall_score": 0.7641268883918304,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [
+        "peanut"
+      ],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "muscle gain",
+        "vegetarian",
+        "high protein",
+        "very active"
+      ],
+      "calculationErrors": [
+        38,
+        700,
+        336,
+        241,
+        683,
+        595,
+        590
+      ]
+    }
+  },
+  {
+    "caseId": "case_06",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 777,
+      "FP": 0,
+      "FN": 8
+    },
+    "precision": 1,
+    "recall": 0.9898089171974522,
+    "f1": 0.9948783610755442,
+    "instruction_adherence": 0.9,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.2222222222222222,
+    "faithfulness": 0.3,
+    "calculation_correctness": {
+      "targetCalories": 2632,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 177616,
+    "token_usage": 6749,
+    "efficiency_score": 0.15650063729811325,
+    "overall_score": 0.7897911721409052,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "back pain",
+        "beginner",
+        "neutral spine",
+        "short sessions"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_07",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 244,
+      "FP": 7,
+      "FN": 5
+    },
+    "precision": 0.9721115537848606,
+    "recall": 0.9799196787148594,
+    "f1": 0.9760000000000001,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.6,
+    "faithfulness": 0.6363636363636364,
+    "calculation_correctness": {
+      "targetCalories": 1765,
+      "absoluteErrors": [
+        0,
+        350,
+        0,
+        255,
+        0,
+        5,
+        0,
+        70,
+        0,
+        200,
+        0,
+        200,
+        0,
+        85
+      ],
+      "mean_absolute_error": 83.21428571428571,
+      "percentage_error": 4.7146904087414
+    },
+    "latency_ms": 92871,
+    "token_usage": 4066,
+    "efficiency_score": 0.5242801361766156,
+    "overall_score": 0.8764281482229723,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "meal prep"
+      ],
+      "calculationErrors": [
+        350,
+        255,
+        5,
+        70,
+        200,
+        200,
+        85
+      ]
+    }
+  },
+  {
+    "caseId": "case_08",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 738,
+      "FP": 0,
+      "FN": 5
+    },
+    "precision": 1,
+    "recall": 0.9932705248990579,
+    "f1": 0.9966239027683997,
+    "instruction_adherence": 1,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.4444444444444444,
+    "faithfulness": 0.5,
+    "calculation_correctness": {
+      "targetCalories": 1491,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 172721,
+    "token_usage": 6559,
+    "efficiency_score": 0.18000533071393898,
+    "overall_score": 0.8532759061185615,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "postpartum",
+        "wrist",
+        "beginner",
+        "short sessions"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_09",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 267,
+      "FP": 6,
+      "FN": 7
+    },
+    "precision": 0.978021978021978,
+    "recall": 0.9744525547445255,
+    "f1": 0.9762340036563071,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.3333333333333333,
+    "faithfulness": 0.4,
+    "calculation_correctness": {
+      "targetCalories": 2265,
+      "absoluteErrors": [
+        0,
+        0,
+        0,
+        300,
+        0,
+        475,
+        0,
+        640,
+        0,
+        540,
+        0,
+        580,
+        0,
+        490
+      ],
+      "mean_absolute_error": 216.07142857142858,
+      "percentage_error": 9.539577420372122
+    },
+    "latency_ms": 111318,
+    "token_usage": 4230,
+    "efficiency_score": 0.47133911955905416,
+    "overall_score": 0.8234897672718792,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "hypothyroidism",
+        "soy",
+        "satiety"
+      ],
+      "calculationErrors": [
+        300,
+        475,
+        640,
+        540,
+        580,
+        490
+      ]
+    }
+  },
+  {
+    "caseId": "case_10",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 883,
+      "FP": 0,
+      "FN": 7
+    },
+    "precision": 1,
+    "recall": 0.9921348314606742,
+    "f1": 0.9960518894529047,
+    "instruction_adherence": 1,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.2222222222222222,
+    "faithfulness": 0.3,
+    "calculation_correctness": {
+      "targetCalories": 3634,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 209230,
+    "token_usage": 7745,
+    "efficiency_score": 0.01961666681973062,
+    "overall_score": 0.8030056500358541,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "muscle gain",
+        "upper-lower",
+        "stronger legs",
+        "intermediate"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_11",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 276,
+      "FP": 7,
+      "FN": 8
+    },
+    "precision": 0.9752650176678446,
+    "recall": 0.971830985915493,
+    "f1": 0.9735449735449736,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.2222222222222222,
+    "faithfulness": 0.3,
+    "calculation_correctness": {
+      "targetCalories": 1695,
+      "absoluteErrors": [
+        0,
+        310,
+        0,
+        20,
+        0,
+        230,
+        0,
+        220,
+        0,
+        190,
+        0,
+        110,
+        0,
+        150
+      ],
+      "mean_absolute_error": 87.85714285714286,
+      "percentage_error": 5.183312262958281
+    },
+    "latency_ms": 100787,
+    "token_usage": 3963,
+    "efficiency_score": 0.5127547823623431,
+    "overall_score": 0.8043149877953659,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "PCOS",
+        "insulin resistance",
+        "appetite control"
+      ],
+      "calculationErrors": [
+        310,
+        20,
+        230,
+        220,
+        190,
+        110,
+        150
+      ]
+    }
+  },
+  {
+    "caseId": "case_12",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 696,
+      "FP": 0,
+      "FN": 5
+    },
+    "precision": 1,
+    "recall": 0.992867332382311,
+    "f1": 0.9964209019327129,
+    "instruction_adherence": 0.9,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.5555555555555556,
+    "faithfulness": 0.6,
+    "calculation_correctness": {
+      "targetCalories": 2247,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 158529,
+    "token_usage": 6033,
+    "efficiency_score": 0.24654696128584042,
+    "overall_score": 0.8577039487164833,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "desk",
+        "posture"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_13",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 7,
+      "FP": 1,
+      "FN": 60
+    },
+    "precision": 0.875,
+    "recall": 0.1044776119402985,
+    "f1": 0.18666666666666668,
+    "instruction_adherence": 0.1111111111111111,
+    "constraint_compliance": 1,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0.2,
+    "faithfulness": 0.2727272727272727,
+    "calculation_correctness": {
+      "targetCalories": 3362,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 152493,
+    "token_usage": 5551,
+    "efficiency_score": 0.2915222145324009,
+    "overall_score": 0.2934043935549029,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "muscle gain",
+        "tree nut",
+        "student",
+        "beginner",
+        "high calorie"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_14",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": false,
+    "confusion": {
+      "TP": 6,
+      "FP": 1,
+      "FN": 51
+    },
+    "precision": 0.8571428571428571,
+    "recall": 0.10526315789473684,
+    "f1": 0.1875,
+    "instruction_adherence": 0.1,
+    "constraint_compliance": 1,
+    "structure_compliance": 0,
+    "completeness": 0,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 2651,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 187399,
+    "token_usage": 6686,
+    "efficiency_score": 0.13810641836491921,
+    "overall_score": 0.2673914320293571,
+    "detectedFailures": {
+      "malformedOutput": true,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "tennis elbow",
+        "advanced",
+        "push-pull-legs",
+        "high intensity"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_15",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 297,
+      "FP": 7,
+      "FN": 9
+    },
+    "precision": 0.9769736842105263,
+    "recall": 0.9705882352941176,
+    "f1": 0.9737704918032787,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 1848,
+      "absoluteErrors": [
+        0,
+        70,
+        0,
+        250,
+        0,
+        285,
+        0,
+        410,
+        0,
+        425,
+        0,
+        253,
+        0,
+        425
+      ],
+      "mean_absolute_error": 151.28571428571428,
+      "percentage_error": 8.186456400742115
+    },
+    "latency_ms": 108930,
+    "token_usage": 4210,
+    "efficiency_score": 0.4781130233134233,
+    "overall_score": 0.781483064644724,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "GERD",
+        "symptom control",
+        "smaller meals",
+        "reflux"
+      ],
+      "calculationErrors": [
+        70,
+        250,
+        285,
+        410,
+        425,
+        253,
+        425
+      ]
+    }
+  },
+  {
+    "caseId": "case_16",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 755,
+      "FP": 0,
+      "FN": 9
+    },
+    "precision": 1,
+    "recall": 0.9882198952879581,
+    "f1": 0.9940750493745886,
+    "instruction_adherence": 1,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.1111111111111111,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 1596,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 170237,
+    "token_usage": 6592,
+    "efficiency_score": 0.18357808415678978,
+    "overall_score": 0.7233271011210135,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": true,
+      "missingObservableAttributes": [
+        "fat loss",
+        "ACL",
+        "beginner",
+        "low impact"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_17",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 343,
+      "FP": 7,
+      "FN": 7
+    },
+    "precision": 0.98,
+    "recall": 0.98,
+    "f1": 0.98,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.3333333333333333,
+    "faithfulness": 0.4,
+    "calculation_correctness": {
+      "targetCalories": 2458,
+      "absoluteErrors": [
+        0,
+        278,
+        0,
+        818,
+        0,
+        773,
+        0,
+        865,
+        0,
+        1178,
+        0,
+        973,
+        0,
+        780
+      ],
+      "mean_absolute_error": 404.64285714285717,
+      "percentage_error": 16.46228059979077
+    },
+    "latency_ms": 147940,
+    "token_usage": 4506,
+    "efficiency_score": 0.36943859147206837,
+    "overall_score": 0.8185830406847147,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "gout",
+        "moderate sodium"
+      ],
+      "calculationErrors": [
+        278,
+        818,
+        773,
+        865,
+        1178,
+        973,
+        780
+      ]
+    }
+  },
+  {
+    "caseId": "case_18",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 736,
+      "FP": 0,
+      "FN": 7
+    },
+    "precision": 1,
+    "recall": 0.990578734858681,
+    "f1": 0.9952670723461798,
+    "instruction_adherence": 1,
+    "constraint_compliance": 1,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.2222222222222222,
+    "faithfulness": 0.3,
+    "calculation_correctness": {
+      "targetCalories": 2110,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 181602,
+    "token_usage": 6351,
+    "efficiency_score": 0.17304294405860654,
+    "overall_score": 0.8106377230424616,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "fat loss",
+        "asthma",
+        "beginner",
+        "conditioning"
+      ],
+      "calculationErrors": []
+    }
+  },
+  {
+    "caseId": "case_19",
+    "mode": "rag",
+    "route": "/ai/generate-diet",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 280,
+      "FP": 8,
+      "FN": 10
+    },
+    "precision": 0.9722222222222222,
+    "recall": 0.9655172413793104,
+    "f1": 0.9688581314878894,
+    "instruction_adherence": 0.8888888888888888,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0.2222222222222222,
+    "faithfulness": 0.2,
+    "calculation_correctness": {
+      "targetCalories": 2663,
+      "absoluteErrors": [
+        0,
+        130,
+        0,
+        150,
+        0,
+        205,
+        0,
+        410,
+        0,
+        170,
+        0,
+        205,
+        0,
+        210
+      ],
+      "mean_absolute_error": 105.71428571428571,
+      "percentage_error": 3.9697441124403197
+    },
+    "latency_ms": 115615,
+    "token_usage": 4422,
+    "efficiency_score": 0.4490782935855291,
+    "overall_score": 0.7242301545870043,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [
+        "wheat"
+      ],
+      "missingPositiveTerms": false,
+      "missingObservableAttributes": [
+        "maintenance",
+        "celiac",
+        "runner",
+        "very active"
+      ],
+      "calculationErrors": [
+        130,
+        150,
+        205,
+        410,
+        170,
+        205,
+        210
+      ]
+    }
+  },
+  {
+    "caseId": "case_20",
+    "mode": "rag",
+    "route": "/ai/generate-workout",
+    "parsedOk": true,
+    "confusion": {
+      "TP": 732,
+      "FP": 0,
+      "FN": 11
+    },
+    "precision": 1,
+    "recall": 0.9851951547779273,
+    "f1": 0.9925423728813558,
+    "instruction_adherence": 0.9,
+    "constraint_compliance": 0.6666666666666666,
+    "structure_compliance": 1,
+    "completeness": 1,
+    "personalization": 0,
+    "faithfulness": 0.1,
+    "calculation_correctness": {
+      "targetCalories": 2424,
+      "absoluteErrors": [],
+      "mean_absolute_error": null,
+      "percentage_error": null
+    },
+    "latency_ms": 217774,
+    "token_usage": 6393,
+    "efficiency_score": 0.08728211749515813,
+    "overall_score": 0.6773245578521591,
+    "detectedFailures": {
+      "malformedOutput": false,
+      "forbiddenHits": [],
+      "missingPositiveTerms": true,
+      "missingObservableAttributes": [
+        "maintenance",
+        "scoliosis",
+        "advanced",
+        "balanced",
+        "full-body"
+      ],
+      "calculationErrors": []
+    }
+  }
+]

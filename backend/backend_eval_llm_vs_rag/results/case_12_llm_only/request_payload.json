@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "headers": {
+    "Authorization": "Bearer [REDACTED]",
+    "Content-Type": "application/json",
+    "HTTP-Referer": "https://local.eval.backend",
+    "X-Title": "backend_eval_llm_vs_rag_openrouter_oss120b"
+  },
+  "body": {
+    "model": "openai/gpt-oss-120b:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Please create a practical, safe, personalized, and easy-to-use fitness plan using only the information provided below. Do not use any outside retrieved database context. The plan should consider the person's age, sex, height, weight, target weight, activity level, goal, experience, allergies, injuries, health conditions, medical-report notes, InBody notes, and calculated calorie target. Return the answer as clean JSON only so it can be loaded by an app.\n\nRequest type: workout.\n\nPlease create a 7-day workout plan with both gym and home options for every day. Include exercise name, difficulty, equipment, sets, reps, and calories. Use this JSON shape:\n{\"gym\":{\"title\":\"Gym Workout Plan\",\"days\":[{\"day\":1,\"exercises\":[{\"id\":1,\"name\":\"...\",\"difficulty\":\"...\",\"equipment\":\"...\",\"sets\":\"...\",\"reps\":\"...\",\"calories\":123}]}]},\"home\":{\"title\":\"Home Workout Plan\",\"days\":[{\"day\":1,\"exercises\":[{\"id\":1,\"name\":\"...\",\"difficulty\":\"...\",\"equipment\":\"...\",\"sets\":\"...\",\"reps\":\"...\",\"calories\":123}]}]}}\n\nPerson: Ahmed Galal is a 36-year-old male, 177 cm tall, currently weighs 85 kg, and has a target weight of 83 kg. The activity level is sedentary, the experience level is beginner - adjustable dumbbells at home, and the goal is maintenance and posture improvement, weekday home training only. Health conditions: desk-job posture issues. Allergies or food restrictions: none. Injuries or movement restrictions: neck tension, avoid painful loaded shrugs and jerky neck motion. Medical-report notes: Therapist recommended thoracic mobility, scapular control, and gradual conditioning.. InBody notes: Body composition average, low activity score.. Calculated BMR: 1872. Calculated TDEE: 2247. Calculated target daily calories: 2247.\n\nRequirements:\n- Use only the information above.\n- Do not use outside retrieved database context.\n- Return clean JSON only.\n- Do not add markdown, explanations, or commentary."
+      }
+    ],
+    "max_tokens": 16000
+  }
+}

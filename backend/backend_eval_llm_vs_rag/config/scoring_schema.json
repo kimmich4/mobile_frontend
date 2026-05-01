@@ -1,0 +1,101 @@
+{
+  "model_requirement": {
+    "provider": "OpenRouter",
+    "model": "openai/gpt-oss-120b:free",
+    "fixed_across_modes": true,
+    "fallback_allowed": false
+  },
+  "equations": {
+    "precision": "TP / (TP + FP)",
+    "recall": "TP / (TP + FN)",
+    "f1": "2 * (precision * recall) / (precision + recall)",
+    "instruction_adherence": "followed_instructions / total_instructions",
+    "constraint_compliance": "satisfied_constraints / total_constraints",
+    "structure_compliance": "correctly_present_fields / total_required_fields",
+    "completeness": "completed_required_sections / total_required_sections",
+    "personalization": "used_relevant_user_attributes / total_relevant_user_attributes",
+    "faithfulness": "supported_claims / total_checkable_claims",
+    "absolute_error": "|predicted - reference|",
+    "mean_absolute_error": "(1/n) * sum(absolute_error_i)",
+    "percentage_error": "|predicted - reference| / reference * 100",
+    "latency": "t_end - t_start",
+    "mean_latency": "(1/n) * sum(T_i)",
+    "sd_latency": "sqrt(sum((T_i - mean_latency)^2) / (n - 1))",
+    "total_tokens": "input_tokens + output_tokens",
+    "overall_score": "0.20*instruction_adherence + 0.20*constraint_compliance + 0.15*structure_compliance + 0.15*completeness + 0.10*personalization + 0.10*faithfulness + 0.05*f1 + 0.05*efficiency_score"
+  },
+  "route_schema": {
+    "/ai/generate-diet": {
+      "required_sections": ["days"],
+      "required_fields": [
+        "days[].day",
+        "days[].totalCalories",
+        "days[].protein",
+        "days[].carbs",
+        "days[].fats",
+        "days[].meals",
+        "days[].meals[].title",
+        "days[].meals[].items",
+        "days[].meals[].items[].name",
+        "days[].meals[].items[].calories"
+      ],
+      "instruction_items": [
+        "valid_json",
+        "exactly_7_days",
+        "day_numbers_1_to_7",
+        "totalCalories_matches_target",
+        "meal_item_sum_matches_target",
+        "meal_variety_present",
+        "creative_meal_titles_present",
+        "realistic_portion_signals_present",
+        "safe_for_constraints"
+      ]
+    },
+    "/ai/generate-workout": {
+      "required_sections": ["gym", "home"],
+      "required_fields": [
+        "gym.title",
+        "gym.days",
+        "gym.days[].day",
+        "gym.days[].exercises",
+        "gym.days[].exercises[].id",
+        "gym.days[].exercises[].name",
+        "gym.days[].exercises[].difficulty",
+        "gym.days[].exercises[].equipment",
+        "gym.days[].exercises[].sets",
+        "gym.days[].exercises[].reps",
+        "gym.days[].exercises[].calories",
+        "home.title",
+        "home.days",
+        "home.days[].day",
+        "home.days[].exercises",
+        "home.days[].exercises[].id",
+        "home.days[].exercises[].name",
+        "home.days[].exercises[].difficulty",
+        "home.days[].exercises[].equipment",
+        "home.days[].exercises[].sets",
+        "home.days[].exercises[].reps",
+        "home.days[].exercises[].calories"
+      ],
+      "instruction_items": [
+        "valid_json",
+        "has_gym_plan",
+        "has_home_plan",
+        "exactly_7_gym_days",
+        "exactly_7_home_days",
+        "day_numbers_1_to_7",
+        "six_to_ten_exercises_per_day",
+        "warmup_or_cooldown_signal_present",
+        "difficulty_or_split_adjustment_present",
+        "safe_for_constraints"
+      ]
+    }
+  },
+  "metric_design_notes": {
+    "tp_definition": "A required evaluation item that is correctly satisfied.",
+    "fp_definition": "A generated item marked as satisfied but unsupported, wrong, malformed, or constraint-violating.",
+    "fn_definition": "A required evaluation item that is missing or not satisfied.",
+    "tn_definition": "Not forced for this structured generation task.",
+    "normalization_policy": "Outputs are normalized into a common route-specific JSON structure before scoring. Common wrapper and alternative root shapes are handled when possible."
+  }
+}

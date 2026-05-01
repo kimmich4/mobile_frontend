@@ -1,0 +1,720 @@
+{
+  "caseId": "case_16",
+  "mode": "llm_only",
+  "route": "/ai/generate-workout",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "gym": {
+      "title": "Gym Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Leg Press (Low‑Load)",
+              "difficulty": "Beginner",
+              "equipment": "Leg Press Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 2,
+              "name": "Seated Cable Row",
+              "difficulty": "Beginner",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 3,
+              "name": "Chest Press Machine",
+              "difficulty": "Beginner",
+              "equipment": "Chest Press Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 4,
+              "name": "Standing Calf Raise (Bodyweight)",
+              "difficulty": "Beginner",
+              "equipment": "Calf Raise Machine or Step",
+              "sets": "2",
+              "reps": "15",
+              "calories": 20
+            },
+            {
+              "id": 5,
+              "name": "Plank",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "30 sec",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Stationary Bike – Moderate",
+              "difficulty": "Beginner",
+              "equipment": "Stationary Bike",
+              "sets": "1",
+              "reps": "20 min",
+              "calories": 150
+            },
+            {
+              "id": 2,
+              "name": "Lat Pulldown",
+              "difficulty": "Beginner",
+              "equipment": "Lat Pulldown Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Dumbbell Shoulder Press (Seated)",
+              "difficulty": "Beginner",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "rep": "10",
+              "calories": 30
+            },
+            {
+              "id": 4,
+              "name": "Hip Abduction Machine",
+              "difficulty": "Beginner",
+              "equipment": "Hip Abductor Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 28
+            },
+            {
+              "id": 5,
+              "name": "Dead Bug",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "12 each side",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Elliptical – Low Impact",
+              "difficulty": "Beginner",
+              "equipment": "Elliptical Trainer",
+              "sets": "1",
+              "reps": "20 min",
+              "calories": 140
+            },
+            {
+              "id": 2,
+              "name": "Leg Curl Machine",
+              "difficulty": "Beginner",
+              "equipment": "Leg Curl Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 32
+            },
+            {
+              "id": 3,
+              "name": "Chest Fly Machine",
+              "difficulty": "Beginner",
+              "equipment": "Pec Deck",
+              "sets": "3",
+              "reps": "12",
+              "calories": 34
+            },
+            {
+              "id": 4,
+              "name": "Seated Row Machine",
+              "difficulty": "Beginner",
+              "equipment": "Row Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 5,
+              "name": "Side Plank (Knees Down)",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "20 sec each side",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Recumbent Bike – Steady",
+              "difficulty": "Beginner",
+              "equipment": "Recumbent Bike",
+              "sets": "1",
+              "reps": "25 min",
+              "calories": 155
+            },
+            {
+              "id": 2,
+              "name": "Goblet Squat (Light)",
+              "difficulty": "Beginner",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "10",
+              "calories": 40
+            },
+            {
+              "id": 3,
+              "name": "Cable Triceps Pushdown",
+              "difficulty": "Beginner",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 28
+            },
+            {
+              "id": 4,
+              "name": "Cable Biceps Curl",
+              "difficulty": "Beginner",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 27
+            },
+            {
+              "id": 5,
+              "name": "Bird‑Dog",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "10 each side",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Treadmill – Walk Incline 4%",
+              "difficulty": "Beginner",
+              "equipment": "Treadmill",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 160
+            },
+            {
+              "id": 2,
+              "name": "Leg Extension Machine (Light)",
+              "difficulty": "Beginner",
+              "equipment": "Leg Extension Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 3,
+              "name": "Machine Chest Press (Neutral Grip)",
+              "difficulty": "Beginner",
+              "equipment": "Chest Press Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 4,
+              "name": "Seated Hip Adductor Machine",
+              "difficulty": "Beginner",
+              "equipment": "Hip Adductor Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 28
+            },
+            {
+              "id": 5,
+              "name": "Reverse Crunch",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "12",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Rowing Machine – Low Resistance",
+              "difficulty": "Beginner",
+              "equipment": "Rowing Machine",
+              "sets": "1",
+              "reps": "15 min",
+              "calories": 130
+            },
+            {
+              "id": 2,
+              "name": "Cable Lateral Raise",
+              "difficulty": "Beginner",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 25
+            },
+            {
+              "id": 3,
+              "name": "Seated Leg Press (Single‑Leg)",
+              "difficulty": "Beginner",
+              "equipment": "Leg Press Machine",
+              "sets": "2",
+              "reps": "10 each leg",
+              "calories": 35
+            },
+            {
+              "id": 4,
+              "name": "Machine Back Extension (Limited ROM)",
+              "difficulty": "Beginner",
+              "equipment": "Back Extension Machine",
+              "sets": "3",
+              "reps": "10",
+              "calories": 30
+            },
+            {
+              "id": 5,
+              "name": "Glute Bridge",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "15",
+              "calories": 18
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Active Recovery – Stretching Circuit",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "1",
+              "reps": "20 min",
+              "calories": 60
+            },
+            {
+              "id": 2,
+              "name": "Light Cycle – Easy Pace",
+              "difficulty": "Beginner",
+              "equipment": "Stationary Bike",
+              "sets": "1",
+              "reps": "15 min",
+              "calories": 80
+            },
+            {
+              "id": 3,
+              "name": "Wall Sit (Supported)",
+              "difficulty": "Beginner",
+              "equipment": "Wall",
+              "sets": "2",
+              "reps": "30 sec",
+              "calories": 20
+            }
+          ]
+        }
+      ]
+    },
+    "home": {
+      "title": "Home Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Bodyweight Squat to Chair",
+              "difficulty": "Beginner",
+              "equipment": "Sturdy Chair",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Resistance Band Row",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 28
+            },
+            {
+              "id": 3,
+              "name": "Push‑up (Knees)",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "10",
+              "calories": 25
+            },
+            {
+              "id": 4,
+              "name": "Standing Calf Raises",
+              "difficulty": "Beginner",
+              "equipment": "Step or Flat Surface",
+              "sets": "2",
+              "reps": "15",
+              "calories": 18
+            },
+            {
+              "id": 5,
+              "name": "Plank (Knees)",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "30 sec",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Low‑Impact Cardio – March in Place",
+              "difficulty": "Beginner",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "20 min",
+              "calories": 120
+            },
+            {
+              "id": 2,
+              "name": "Resistance Band Chest Press",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 27
+            },
+            {
+              "id": 3,
+              "name": "Seated Dumbbell Shoulder Press",
+              "difficulty": "Beginner",
+              "equipment": "Light Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 25
+            },
+            {
+              "id": 4,
+              "name": "Glute Bridge",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "15",
+              "calories": 20
+            },
+            {
+              "id": 5,
+              "name": "Dead Bug",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "12 each side",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Elliptical‑Style Steps (Low Impact)",
+              "difficulty": "Beginner",
+              "equipment": "Step Platform",
+              "sets": "1",
+              "reps": "20 min",
+              "calories": 130
+            },
+            {
+              "id": 2,
+              "name": "Resistance Band Leg Curl",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 25
+            },
+            {
+              "id": 3,
+              "name": "Resistance Band Chest Fly",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 24
+            },
+            {
+              "id": 4,
+              "name": "Seated Row with Band",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 26
+            },
+            {
+              "id": 5,
+              "name": "Side Plank (Knees)",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "20 sec each side",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Stationary Bike (If available) or March",
+              "difficulty": "Beginner",
+              "equipment": "Bike or None",
+              "sets": "1",
+              "reps": "25 min",
+              "calories": 150
+            },
+            {
+              "id": 2,
+              "name": "Goblet Squat with Light Weight",
+              "difficulty": "Beginner",
+              "equipment": "Dumbbell or Water Bottle",
+              "sets": "3",
+              "reps": "10",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Band Triceps Push‑down",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 22
+            },
+            {
+              "id": 4,
+              "name": "Band Biceps Curl",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 22
+            },
+            {
+              "id": 5,
+              "name": "Bird‑Dog",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "10 each side",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Walking – Incline (Outdoor or Treadmill)",
+              "difficulty": "Beginner",
+              "equipment": "Walking Shoes",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 160
+            },
+            {
+              "id": 2,
+              "name": "Resistance Band Leg Extension",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 24
+            },
+            {
+              "id": 3,
+              "name": "Band Chest Press (Floor)",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 26
+            },
+            {
+              "id": 4,
+              "name": "Hip Adductor Squeeze (Ball or Pillow)",
+              "difficulty": "Beginner",
+              "equipment": "Small Ball",
+              "sets": "3",
+              "reps": "15",
+              "calories": 15
+            },
+            {
+              "id": 5,
+              "name": "Reverse Crunch",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "12",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Low‑Impact Rowing Motion (Band)",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band anchored low",
+              "sets": "1",
+              "reps": "15 min",
+              "calories": 120
+            },
+            {
+              "id": 2,
+              "name": "Band Lateral Raise",
+              "difficulty": "Beginner",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 22
+            },
+            {
+              "id": 3,
+              "name": "Single‑Leg Wall Sit (Supported)",
+              "difficulty": "Beginner",
+              "equipment": "Wall",
+              "sets": "2",
+              "reps": "30 sec each leg",
+              "calories": 20
+            },
+            {
+              "id": 4,
+              "name": "Back Extension (Superman)",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "12",
+              "calories": 18
+            },
+            {
+              "id": 5,
+              "name": "Glute Bridge March",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "3",
+              "reps": "12 each leg",
+              "calories": 18
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Active Recovery – Full Body Stretch",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "1",
+              "reps": "20 min",
+              "calories": 60
+            },
+            {
+              "id": 2,
+              "name": "Gentle Yoga Flow (Low Impact)",
+              "difficulty": "Beginner",
+              "equipment": "Mat",
+              "sets": "1",
+              "reps": "15 min",
+              "calories": 70
+            },
+            {
+              "id": 3,
+              "name": "Wall Sit (Supported)",
+              "difficulty": "Beginner",
+              "equipment": "Wall",
+              "sets": "2",
+              "reps": "30 sec",
+              "calories": 20
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "parseError": null,
+  "cleanedContent": "{\"gym\":{\"title\":\"Gym Workout Plan\",\"days\":[{\"day\":1,\"exercises\":[{\"id\":1,\"name\":\"Leg Press (Low‑Load)\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg Press Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":2,\"name\":\"Seated Cable Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":40},{\"id\":3,\"name\":\"Chest Press Machine\",\"difficulty\":\"Beginner\",\"equipment\":\"Chest Press Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":38},{\"id\":4,\"name\":\"Standing Calf Raise (Bodyweight)\",\"difficulty\":\"Beginner\",\"equipment\":\"Calf Raise Machine or Step\",\"sets\":\"2\",\"reps\":\"15\",\"calories\":20},{\"id\":5,\"name\":\"Plank\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"30 sec\",\"calories\":15}]},{\"day\":2,\"exercises\":[{\"id\":1,\"name\":\"Stationary Bike – Moderate\",\"difficulty\":\"Beginner\",\"equipment\":\"Stationary Bike\",\"sets\":\"1\",\"reps\":\"20 min\",\"calories\":150},{\"id\":2,\"name\":\"Lat Pulldown\",\"difficulty\":\"Beginner\",\"equipment\":\"Lat Pulldown Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":35},{\"id\":3,\"name\":\"Dumbbell Shoulder Press (Seated)\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbells\",\"sets\":\"3\",\"rep\":\"10\",\"calories\":30},{\"id\":4,\"name\":\"Hip Abduction Machine\",\"difficulty\":\"Beginner\",\"equipment\":\"Hip Abductor Machine\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":28},{\"id\":5,\"name\":\"Dead Bug\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"12 each side\",\"calories\":12}]},{\"day\":3,\"exercises\":[{\"id\":1,\"name\":\"Elliptical – Low Impact\",\"difficulty\":\"Beginner\",\"equipment\":\"Elliptical Trainer\",\"sets\":\"1\",\"reps\":\"20 min\",\"calories\":140},{\"id\":2,\"name\":\"Leg Curl Machine\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg Curl Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":32},{\"id\":3,\"name\":\"Chest Fly Machine\",\"difficulty\":\"Beginner\",\"equipment\":\"Pec Deck\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":34},{\"id\":4,\"name\":\"Seated Row Machine\",\"difficulty\":\"Beginner\",\"equipment\":\"Row Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":38},{\"id\":5,\"name\":\"Side Plank (Knees Down)\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"20 sec each side\",\"calories\":10}]},{\"day\":4,\"exercises\":[{\"id\":1,\"name\":\"Recumbent Bike – Steady\",\"difficulty\":\"Beginner\",\"equipment\":\"Recumbent Bike\",\"sets\":\"1\",\"reps\":\"25 min\",\"calories\":155},{\"id\":2,\"name\":\"Goblet Squat (Light)\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbell\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":40},{\"id\":3,\"name\":\"Cable Triceps Pushdown\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":28},{\"id\":4,\"name\":\"Cable Biceps Curl\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":27},{\"id\":5,\"name\":\"Bird‑Dog\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"10 each side\",\"calories\":12}]},{\"day\":5,\"exercises\":[{\"id\":1,\"name\":\"Treadmill – Walk Incline 4%\",\"difficulty\":\"Beginner\",\"equipment\":\"Treadmill\",\"sets\":\"1\",\"reps\":\"30 min\",\"calories\":160},{\"id\":2,\"name\":\"Leg Extension Machine (Light)\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg Extension Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":30},{\"id\":3,\"name\":\"Machine Chest Press (Neutral Grip)\",\"difficulty\":\"Beginner\",\"equipment\":\"Chest Press Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":38},{\"id\":4,\"name\":\"Seated Hip Adductor Machine\",\"difficulty\":\"Beginner\",\"equipment\":\"Hip Adductor Machine\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":28},{\"id\":5,\"name\":\"Reverse Crunch\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":10}]},{\"day\":6,\"exercises\":[{\"id\":1,\"name\":\"Rowing Machine – Low Resistance\",\"difficulty\":\"Beginner\",\"equipment\":\"Rowing Machine\",\"sets\":\"1\",\"reps\":\"15 min\",\"calories\":130},{\"id\":2,\"name\":\"Cable Lateral Raise\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable Machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":25},{\"id\":3,\"name\":\"Seated Leg Press (Single‑Leg)\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg Press Machine\",\"sets\":\"2\",\"reps\":\"10 each leg\",\"calories\":35},{\"id\":4,\"name\":\"Machine Back Extension (Limited ROM)\",\"difficulty\":\"Beginner\",\"equipment\":\"Back Extension Machine\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":30},{\"id\":5,\"name\":\"Glute Bridge\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":18}]},{\"day\":7,\"exercises\":[{\"id\":1,\"name\":\"Active Recovery – Stretching Circuit\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"1\",\"reps\":\"20 min\",\"calories\":60},{\"id\":2,\"name\":\"Light Cycle – Easy Pace\",\"difficulty\":\"Beginner\",\"equipment\":\"Stationary Bike\",\"sets\":\"1\",\"reps\":\"15 min\",\"calories\":80},{\"id\":3,\"name\":\"Wall Sit (Supported)\",\"difficulty\":\"Beginner\",\"equipment\":\"Wall\",\"sets\":\"2\",\"reps\":\"30 sec\",\"calories\":20}]}]},\"home\":{\"title\":\"Home Workout Plan\",\"days\":[{\"day\":1,\"exercises\":[{\"id\":1,\"name\":\"Bodyweight Squat to Chair\",\"difficulty\":\"Beginner\",\"equipment\":\"Sturdy Chair\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":30},{\"id\":2,\"name\":\"Resistance Band Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":28},{\"id\":3,\"name\":\"Push‑up (Knees)\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":25},{\"id\":4,\"name\":\"Standing Calf Raises\",\"difficulty\":\"Beginner\",\"equipment\":\"Step or Flat Surface\",\"sets\":\"2\",\"reps\":\"15\",\"calories\":18},{\"id\":5,\"name\":\"Plank (Knees)\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"30 sec\",\"calories\":12}]},{\"day\":2,\"exercises\":[{\"id\":1,\"name\":\"Low‑Impact Cardio – March in Place\",\"difficulty\":\"Beginner\",\"equipment\":\"None\",\"sets\":\"1\",\"reps\":\"20 min\",\"calories\":120},{\"id\":2,\"name\":\"Resistance Band Chest Press\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":27},{\"id\":3,\"name\":\"Seated Dumbbell Shoulder Press\",\"difficulty\":\"Beginner\",\"equipment\":\"Light Dumbbells\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":25},{\"id\":4,\"name\":\"Glute Bridge\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":20},{\"id\":5,\"name\":\"Dead Bug\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"12 each side\",\"calories\":12}]},{\"day\":3,\"exercises\":[{\"id\":1,\"name\":\"Elliptical‑Style Steps (Low Impact)\",\"difficulty\":\"Beginner\",\"equipment\":\"Step Platform\",\"sets\":\"1\",\"reps\":\"20 min\",\"calories\":130},{\"id\":2,\"name\":\"Resistance Band Leg Curl\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":25},{\"id\":3,\"name\":\"Resistance Band Chest Fly\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":24},{\"id\":4,\"name\":\"Seated Row with Band\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":26},{\"id\":5,\"name\":\"Side Plank (Knees)\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"20 sec each side\",\"calories\":10}]},{\"day\":4,\"exercises\":[{\"id\":1,\"name\":\"Stationary Bike (If available) or March\",\"difficulty\":\"Beginner\",\"equipment\":\"Bike or None\",\"sets\":\"1\",\"reps\":\"25 min\",\"calories\":150},{\"id\":2,\"name\":\"Goblet Squat with Light Weight\",\"difficulty\":\"Beginner\",\"equipment\":\"Dumbbell or Water Bottle\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":35},{\"id\":3,\"name\":\"Band Triceps Push‑down\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":22},{\"id\":4,\"name\":\"Band Biceps Curl\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":22},{\"id\":5,\"name\":\"Bird‑Dog\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"10 each side\",\"calories\":12}]},{\"day\":5,\"exercises\":[{\"id\":1,\"name\":\"Walking – Incline (Outdoor or Treadmill)\",\"difficulty\":\"Beginner\",\"equipment\":\"Walking Shoes\",\"sets\":\"1\",\"reps\":\"30 min\",\"calories\":160},{\"id\":2,\"name\":\"Resistance Band Leg Extension\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":24},{\"id\":3,\"name\":\"Band Chest Press (Floor)\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":26},{\"id\":4,\"name\":\"Hip Adductor Squeeze (Ball or Pillow)\",\"difficulty\":\"Beginner\",\"equipment\":\"Small Ball\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":15},{\"id\":5,\"name\":\"Reverse Crunch\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":10}]},{\"day\":6,\"exercises\":[{\"id\":1,\"name\":\"Low‑Impact Rowing Motion (Band)\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band anchored low\",\"sets\":\"1\",\"reps\":\"15 min\",\"calories\":120},{\"id\":2,\"name\":\"Band Lateral Raise\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance Band\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":22},{\"id\":3,\"name\":\"Single‑Leg Wall Sit (Supported)\",\"difficulty\":\"Beginner\",\"equipment\":\"Wall\",\"sets\":\"2\",\"reps\":\"30 sec each leg\",\"calories\":20},{\"id\":4,\"name\":\"Back Extension (Superman)\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":18},{\"id\":5,\"name\":\"Glute Bridge March\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"12 each leg\",\"calories\":18}]},{\"day\":7,\"exercises\":[{\"id\":1,\"name\":\"Active Recovery – Full Body Stretch\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"1\",\"reps\":\"20 min\",\"calories\":60},{\"id\":2,\"name\":\"Gentle Yoga Flow (Low Impact)\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"1\",\"reps\":\"15 min\",\"calories\":70},{\"id\":3,\"name\":\"Wall Sit (Supported)\",\"difficulty\":\"Beginner\",\"equipment\":\"Wall\",\"sets\":\"2\",\"reps\":\"30 sec\",\"calories\":20}]}]}}",
+  "derived": {
+    "allHealthConditions": "post-ACL rehab",
+    "allAllergies": "none",
+    "allInjuries": "recently rehabilitated knee, avoid twisting jumps, hard pivots, and impact running",
+    "allGoals": "fat loss and confidence rebuilding, confidence with gym and home options",
+    "experienceInfo": "beginner - new to resistance training",
+    "bmr": 1524.359,
+    "tdee": 2095.993625,
+    "targetCalories": 1596
+  },
+  "latencyMs": 90428,
+  "usage": {
+    "prompt_tokens": 507,
+    "completion_tokens": 2673,
+    "total_tokens": 3180,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 47,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop"
+}

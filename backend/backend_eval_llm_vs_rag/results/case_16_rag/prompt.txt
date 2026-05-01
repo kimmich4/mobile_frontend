@@ -1,0 +1,36 @@
+Context:
+
+User Profile: Sara Hegazy, 26 years old, female. 
+Metrics: Current Weight: 72kg, Target Weight: 67kg, Height: 169cm.
+BMR: 1524.36, TDEE: 2095.99. Target Calories: 1596 kcal.
+Activity Level: light.
+Experience Level: beginner - new to resistance training.
+Goals: fat loss and confidence rebuilding, confidence with gym and home options. 
+Health Conditions: post-ACL rehab.
+Allergies: none.
+Injuries: recently rehabilitated knee, avoid twisting jumps, hard pivots, and impact running.
+Medical Report Findings: Physiotherapist cleared strength work but advised strict low-impact progressions..
+InBody Report Findings: Average lean mass, above-target body fat..
+Vector Database Constraints: Issue: Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Maximal drop jumps, Cutting drills before clearance, Heavy open-chain knee extension in painful range)
+Issue: Post-ACL Reconstruction Recovery - Mild-Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Maximal drop jumps, Heavy open-chain knee extension in painful range)
+Issue: Post-ACL Reconstruction Recovery - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy open-chain knee extension in painful range, Cutting drills before clearance)
+
+
+Task:
+Create a 7-day exercise plan.
+For EACH day, provide TWO complete plans: one for "home" and one for "gym".
+Include warm-up, main exercises, and cool-down.
+Each day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. 
+Adjust difficulty based on the user's experience level and if he gave you a specific split name like "push-pull-legs" or "full body" or "upper-lower" make it in the exact format of the Json in example.
+Ensure exercises are safe for the provided injuries/conditions and doesnt violate any of the vector database constraints. 
+Return ONLY JSON in this format:
+{
+  "gym": {
+    "title": "Gym Workout Plan",
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "...", "sets": "3", "reps": "12", "calories": 40}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "...", "sets": "3", "reps": "15", "calories": 49}]}]
+  },
+  "home": {
+    "title": "Home Workout Plan",
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "None", "sets": "3", "reps": "12", "calories": 100}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "None", "sets": "3", "reps": "15", "calories": 80}]}]
+  }
+}

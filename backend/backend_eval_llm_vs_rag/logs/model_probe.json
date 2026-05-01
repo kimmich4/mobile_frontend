@@ -1,0 +1,111 @@
+{
+  "endpoint": "https://openrouter.ai/api/v1/chat/completions",
+  "request": {
+    "method": "POST",
+    "headers": {
+      "Authorization": "Bearer [REDACTED]",
+      "Content-Type": "application/json",
+      "HTTP-Referer": "https://local.eval.backend",
+      "X-Title": "backend_eval_llm_vs_rag_openrouter_oss120b"
+    },
+    "body": {
+      "model": "openai/gpt-oss-120b:free",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Return only this JSON: {\"ok\":true}"
+        }
+      ],
+      "max_tokens": 16000
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "gen-1777216116-YUG1NVIJEmSATWuSlZJl",
+      "object": "chat.completion",
+      "created": 1777216116,
+      "model": "openai/gpt-oss-120b:free",
+      "provider": "OpenInference",
+      "system_fingerprint": null,
+      "choices": [
+        {
+          "index": 0,
+          "logprobs": null,
+          "finish_reason": "stop",
+          "native_finish_reason": "stop",
+          "message": {
+            "role": "assistant",
+            "content": "{\"ok\":true}",
+            "refusal": null,
+            "reasoning": "We just need to output that JSON.",
+            "reasoning_details": [
+              {
+                "type": "reasoning.text",
+                "text": "We just need to output that JSON.",
+                "format": "unknown",
+                "index": 0
+              }
+            ]
+          }
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 77,
+        "completion_tokens": 23,
+        "total_tokens": 100,
+        "cost": 0,
+        "is_byok": false,
+        "prompt_tokens_details": {
+          "cached_tokens": 64,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "cost_details": {
+          "upstream_inference_cost": 0,
+          "upstream_inference_prompt_cost": 0,
+          "upstream_inference_completions_cost": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 9,
+          "image_tokens": 0,
+          "audio_tokens": 0
+        }
+      }
+    }
+  },
+  "rawContent": "{\"ok\":true}",
+  "cleanedContent": "{\"ok\":true}",
+  "parsed": {
+    "ok": true,
+    "value": {
+      "ok": true
+    }
+  },
+  "usage": {
+    "prompt_tokens": 77,
+    "completion_tokens": 23,
+    "total_tokens": 100,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 9,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop",
+  "latencyMs": 1429
+}

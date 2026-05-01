@@ -1,0 +1,14 @@
+Please create a practical, safe, personalized, and easy-to-use fitness plan using only the information provided below. Do not use any outside retrieved database context. The plan should consider the person's age, sex, height, weight, target weight, activity level, goal, experience, allergies, injuries, health conditions, medical-report notes, InBody notes, and calculated calorie target. Return the answer as clean JSON only so it can be loaded by an app.
+
+Request type: workout.
+
+Please create a 7-day workout plan with both gym and home options for every day. Include exercise name, difficulty, equipment, sets, reps, and calories. Use this JSON shape:
+{"gym":{"title":"Gym Workout Plan","days":[{"day":1,"exercises":[{"id":1,"name":"...","difficulty":"...","equipment":"...","sets":"...","reps":"...","calories":123}]}]},"home":{"title":"Home Workout Plan","days":[{"day":1,"exercises":[{"id":1,"name":"...","difficulty":"...","equipment":"...","sets":"...","reps":"...","calories":123}]}]}}
+
+Person: Ibrahim Wael is a 43-year-old male, 173 cm tall, currently weighs 112 kg, and has a target weight of 95 kg. The activity level is sedentary, the experience level is beginner - has not trained for years, and the goal is fat loss and basic strength, walk more and tolerate stairs. Health conditions: exercise-induced asthma, needs gradual conditioning and rest breaks. Allergies or food restrictions: none. Injuries or movement restrictions: none. Medical-report notes: Doctor advised longer warm-up, pace control, and low-impact aerobic work.. InBody notes: High body fat, low fitness score.. Calculated BMR: 2175. Calculated TDEE: 2610. Calculated target daily calories: 2110.
+
+Requirements:
+- Use only the information above.
+- Do not use outside retrieved database context.
+- Return clean JSON only.
+- Do not add markdown, explanations, or commentary.

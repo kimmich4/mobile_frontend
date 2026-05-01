@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "headers": {
+    "Authorization": "Bearer [REDACTED]",
+    "Content-Type": "application/json",
+    "HTTP-Referer": "https://local.eval.backend",
+    "X-Title": "backend_eval_llm_vs_rag_openrouter_oss120b"
+  },
+  "body": {
+    "model": "openai/gpt-oss-120b:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Please create a practical, safe, personalized, and easy-to-use fitness plan using only the information provided below. Do not use any outside retrieved database context. The plan should consider the person's age, sex, height, weight, target weight, activity level, goal, experience, allergies, injuries, health conditions, medical-report notes, InBody notes, and calculated calorie target. Return the answer as clean JSON only so it can be loaded by an app.\n\nRequest type: diet.\n\nPlease create a 7-day diet plan. Each day must include total calories, protein, carbs, fats, and meals with item names and calories. The daily calories must match exactly 2620. Use this JSON shape:\n{\"days\":[{\"day\":1,\"totalCalories\":2620,\"protein\":\"...g\",\"carbs\":\"...g\",\"fats\":\"...g\",\"meals\":[{\"title\":\"...\",\"items\":[{\"name\":\"...\",\"calories\":123}]}]}]}\n\nPerson: Omar Hassan is a 38-year-old male, 178 cm tall, currently weighs 96 kg, and has a target weight of 84 kg. The activity level is moderate, the experience level is intermediate, and the goal is fat loss while preserving muscle. Health conditions: type 2 diabetes, mild high blood pressure. Allergies or food restrictions: shellfish. Injuries or movement restrictions: none. Medical-report notes: HbA1c is elevated. Physician recommended steady carbohydrate intake and lower sodium choices.. InBody notes: Body fat percentage 29%, skeletal muscle mass slightly below target.. Calculated BMR: 2013. Calculated TDEE: 3120. Calculated target daily calories: 2620.\n\nRequirements:\n- Use only the information above.\n- Do not use outside retrieved database context.\n- Return clean JSON only.\n- Do not add markdown, explanations, or commentary."
+      }
+    ],
+    "max_tokens": 16000
+  }
+}

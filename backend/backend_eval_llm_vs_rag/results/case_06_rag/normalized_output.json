@@ -1,0 +1,1157 @@
+{
+  "caseId": "case_06",
+  "mode": "rag",
+  "route": "/ai/generate-workout",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "gym": {
+      "title": "Gym Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Treadmill Walk (incline 4%)",
+              "difficulty": "Easy",
+              "equipment": "Treadmill",
+              "sets": "1",
+              "reps": "20 min",
+              "calories": 120
+            },
+            {
+              "id": 2,
+              "name": "Leg Press",
+              "difficulty": "Medium",
+              "equipment": "Leg Press Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 3,
+              "name": "Seated Cable Row",
+              "difficulty": "Medium",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 4,
+              "name": "Chest Press Machine",
+              "difficulty": "Easy",
+              "equipment": "Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 38
+            },
+            {
+              "id": 5,
+              "name": "Band Pallof Press (standing)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "10 each side",
+              "calories": 30
+            },
+            {
+              "id": 6,
+              "name": "Standing Calf Raise",
+              "difficulty": "Easy",
+              "equipment": "Smith Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 25
+            },
+            {
+              "id": 7,
+              "name": "Foam Roll + Cat‑Cow Stretch",
+              "difficulty": "Easy",
+              "equipment": "Foam Roller",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Elliptical Warm‑up",
+              "difficulty": "Easy",
+              "equipment": "Elliptical",
+              "sets": "1",
+              "reps": "10 min",
+              "calories": 100
+            },
+            {
+              "id": 2,
+              "name": "Lat Pulldown (neutral grip)",
+              "difficulty": "Medium",
+              "equipment": "Lat Pulldown Machine",
+              "sets": "3",
+              "reps": "10",
+              "calories": 42
+            },
+            {
+              "id": 3,
+              "name": "Dumbbell Goblet Squat (light 8‑10 kg)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "12",
+              "calories": 48
+            },
+            {
+              "id": 4,
+              "name": "Seated Leg Curl",
+              "difficulty": "Easy",
+              "equipment": "Leg Curl Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 5,
+              "name": "Cable Pallof Press (kneeling)",
+              "difficulty": "Medium",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "8 each side",
+              "calories": 28
+            },
+            {
+              "id": 6,
+              "name": "Machine Chest Fly",
+              "difficulty": "Easy",
+              "equipment": "Machine",
+              "sets": "2",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 7,
+              "name": "Standing Hip Abduction (cable)",
+              "difficulty": "Easy",
+              "equipment": "Cable Machine",
+              "sets": "2",
+              "reps": "12 each leg",
+              "calories": 20
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down Stretch (hamstring, hip flexor, thoracic)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Rowing Machine Warm‑up",
+              "difficulty": "Easy",
+              "equipment": "Rowing Machine",
+              "sets": "1",
+              "reps": "8 min",
+              "calories": 110
+            },
+            {
+              "id": 2,
+              "name": "Machine Shoulder Press",
+              "difficulty": "Medium",
+              "equipment": "Machine",
+              "sets": "3",
+              "reps": "10",
+              "calories": 38
+            },
+            {
+              "id": 3,
+              "name": "Cable Lateral Raise",
+              "difficulty": "Easy",
+              "equipment": "Cable",
+              "sets": "3",
+              "reps": "12",
+              "calories": 28
+            },
+            {
+              "id": 4,
+              "name": "Leg Extension",
+              "difficulty": "Easy",
+              "equipment": "Leg Extension Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 5,
+              "name": "Swiss Ball Plank (knees)",
+              "difficulty": "Medium",
+              "equipment": "Swiss Ball",
+              "sets": "3",
+              "reps": "30 sec",
+              "calories": 22
+            },
+            {
+              "id": 6,
+              "name": "Cable Woodchop (low‑to‑high, light)",
+              "difficulty": "Medium",
+              "equipment": "Cable",
+              "sets": "3",
+              "reps": "10 each side",
+              "calories": 30
+            },
+            {
+              "id": 7,
+              "name": "Seated Calf Raise",
+              "difficulty": "Easy",
+              "equipment": "Machine",
+              "sets": "2",
+              "reps": "15",
+              "calories": 20
+            },
+            {
+              "id": 8,
+              "name": "Foam Roll Lower Back & Glutes",
+              "difficulty": "Easy",
+              "equipment": "Foam Roller",
+              "sets": "1",
+              "reps": "4 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Stationary Bike Warm‑up",
+              "difficulty": "Easy",
+              "equipment": "Bike",
+              "sets": "1",
+              "reps": "12 min",
+              "calories": 95
+            },
+            {
+              "id": 2,
+              "name": "Incline Chest Press (machine)",
+              "difficulty": "Medium",
+              "equipment": "Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 3,
+              "name": "Assisted Pull‑up (machine)",
+              "difficulty": "Medium",
+              "equipment": "Assisted Pull‑up Machine",
+              "sets": "3",
+              "reps": "8",
+              "calories": 42
+            },
+            {
+              "id": 4,
+              "name": "Seated Hip Internal Rotation (band)",
+              "difficulty": "Easy",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "15 each side",
+              "calories": 22
+            },
+            {
+              "id": 5,
+              "name": "Machine Row",
+              "difficulty": "Medium",
+              "equipment": "Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 6,
+              "name": "Standing Cable Anti‑Rotation Press",
+              "difficulty": "Medium",
+              "equipment": "Cable",
+              "sets": "3",
+              "reps": "10 each side",
+              "calories": 28
+            },
+            {
+              "id": 7,
+              "name": "Cool‑down: Bird‑Dog (on mat)",
+              "difficulty": "Easy",
+              "equipment": "Mat",
+              "sets": "2",
+              "reps": "10 each side",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dynamic Stretch Warm‑up (leg swings, arm circles)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Leg Press (single‑leg focus)",
+              "difficulty": "Medium",
+              "equipment": "Leg Press Machine",
+              "sets": "3",
+              "reps": "10 each leg",
+              "calories": 45
+            },
+            {
+              "id": 3,
+              "name": "Cable Chest Fly (low‑to‑mid)",
+              "difficulty": "Easy",
+              "equipment": "Cable",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 4,
+              "name": "Dumbbell Romanian Deadlift (light, focus on hinge, no spinal load)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 40
+            },
+            {
+              "id": 5,
+              "name": "Standing Cable Pallof Press (rotated 45°)",
+              "difficulty": "Medium",
+              "equipment": "Cable",
+              "sets": "3",
+              "reps": "8 each side",
+              "calories": 28
+            },
+            {
+              "id": 6,
+              "name": "Seated Calf Raise",
+              "difficulty": "Easy",
+              "equipment": "Machine",
+              "sets": "2",
+              "reps": "15",
+              "calories": 20
+            },
+            {
+              "id": 7,
+              "name": "Cool‑down Stretch (hip flexor, thoracic rotation)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Recumbent Bike Warm‑up",
+              "difficulty": "Easy",
+              "equipment": "Bike",
+              "sets": "1",
+              "reps": "10 min",
+              "calories": 90
+            },
+            {
+              "id": 2,
+              "name": "Machine Lateral Raise",
+              "difficulty": "Easy",
+              "equipment": "Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 3,
+              "name": "Chest Press (neutral grip dumbbells)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 4,
+              "name": "Cable Row (seated, neutral)",
+              "difficulty": "Medium",
+              "equipment": "Cable",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 5,
+              "name": "Band Hip Thrust (bodyweight + band)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 32
+            },
+            {
+              "id": 6,
+              "name": "Swiss Ball Side Plank (knees)",
+              "difficulty": "Easy",
+              "equipment": "Swiss Ball",
+              "sets": "2",
+              "reps": "30 sec each side",
+              "calories": 15
+            },
+            {
+              "id": 7,
+              "name": "Foam Roll IT Band & Lower Back",
+              "difficulty": "Easy",
+              "equipment": "Foam Roller",
+              "sets": "1",
+              "reps": "4 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Light Walk (outdoors or treadmill)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "25 min",
+              "calories": 130
+            },
+            {
+              "id": 2,
+              "name": "Machine Chest Press (reverse grip)",
+              "difficulty": "Easy",
+              "equipment": "Machine",
+              "sets": "2",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Cable Squat to Row (light)",
+              "difficulty": "Medium",
+              "equipment": "Cable",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 4,
+              "name": "Standing Band Anti‑Rotation Press",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "10 each side",
+              "calories": 28
+            },
+            {
+              "id": 5,
+              "name": "Seated Hip Abduction (machine)",
+              "difficulty": "Easy",
+              "equipment": "Machine",
+              "sets": "2",
+              "reps": "15",
+              "calories": 20
+            },
+            {
+              "id": 6,
+              "name": "Core Activation: Dead‑Bug (mat)",
+              "difficulty": "Easy",
+              "equipment": "Mat",
+              "sets": "2",
+              "reps": "12 each side",
+              "calories": 12
+            },
+            {
+              "id": 7,
+              "name": "Cool‑down: Gentle spine‑mobility & stretching",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 12
+            }
+          ]
+        }
+      ]
+    },
+    "home": {
+      "title": "Home Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dynamic Warm‑up (arm circles, leg swings)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Band Squat to Press",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 3,
+              "name": "Band Seated Row",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 38
+            },
+            {
+              "id": 4,
+              "name": "Push‑up (knees)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "10",
+              "calories": 35
+            },
+            {
+              "id": 5,
+              "name": "Standing Band Pallof Press",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "8 each side",
+              "calories": 28
+            },
+            {
+              "id": 6,
+              "name": "Glute Bridge (bodyweight)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 7,
+              "name": "Bird‑Dog (mat)",
+              "difficulty": "Easy",
+              "equipment": "Mat",
+              "sets": "2",
+              "reps": "12 each side",
+              "calories": 12
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down Stretch (hamstring, hip flexor, thoracic)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Light Jog in Place",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "7 min",
+              "calories": 80
+            },
+            {
+              "id": 2,
+              "name": "Band Chest Fly",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Band Romanian Hinge (light)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 4,
+              "name": "Wall Sit",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "45 sec",
+              "calories": 28
+            },
+            {
+              "id": 5,
+              "name": "Band Pallof Press (kneeling)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "8 each side",
+              "calories": 26
+            },
+            {
+              "id": 6,
+              "name": "Standing Calf Raise (bodyweight)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "20",
+              "calories": 20
+            },
+            {
+              "id": 7,
+              "name": "Foam Roll Lower Back & Glutes",
+              "difficulty": "Easy",
+              "equipment": "Foam Roller",
+              "sets": "1",
+              "reps": "4 min",
+              "calories": 10
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down Deep Breathing & Stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "4 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Jump Rope (slow)",
+              "difficulty": "Easy",
+              "equipment": "Jump Rope",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 70
+            },
+            {
+              "id": 2,
+              "name": "Band Overhead Press",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 3,
+              "name": "Band Lateral Walks (mini‑band)",
+              "difficulty": "Medium",
+              "equipment": "Mini Band",
+              "sets": "3",
+              "reps": "10 steps each direction",
+              "calories": 30
+            },
+            {
+              "id": 4,
+              "name": "Incline Push‑up (hands on sturdy chair)",
+              "difficulty": "Easy",
+              "equipment": "Chair",
+              "sets": "3",
+              "reps": "10",
+              "calories": 32
+            },
+            {
+              "id": 5,
+              "name": "Band Pallof Press (standing, rotate 45°)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "8 each side",
+              "calories": 28
+            },
+            {
+              "id": 6,
+              "name": "Side‑Plank (knees)",
+              "difficulty": "Easy",
+              "equipment": "Mat",
+              "sets": "2",
+              "reps": "30 sec each side",
+              "calories": 15
+            },
+            {
+              "id": 7,
+              "name": "Cool‑down Stretch (spine mobility, hip flexor)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Brisk Walk (outside or treadmill)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "20 min",
+              "calories": 120
+            },
+            {
+              "id": 2,
+              "name": "Band Squat with Pause",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "10",
+              "calories": 42
+            },
+            {
+              "id": 3,
+              "name": "Band Single‑Arm Row",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12 each arm",
+              "calories": 38
+            },
+            {
+              "id": 4,
+              "name": "Chest Press with Band (standing)",
+              "difficulty": "Easy",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 5,
+              "name": "Standing Hip Abduction (band)",
+              "difficulty": "Easy",
+              "equipment": "Mini Band",
+              "sets": "3",
+              "reps": "12 each leg",
+              "calories": 25
+            },
+            {
+              "id": 6,
+              "name": "Dead‑Bug (mat)",
+              "difficulty": "Easy",
+              "equipment": "Mat",
+              "sets": "2",
+              "reps": "12 each side",
+              "calories": 12
+            },
+            {
+              "id": 7,
+              "name": "Foam Roll IT Band & Lower Back",
+              "difficulty": "Easy",
+              "equipment": "Foam Roller",
+              "sets": "1",
+              "reps": "4 min",
+              "calories": 10
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down Gentle Stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "4 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dynamic Warm‑up (torso twists, leg swings)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Band Chest Press (floor)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Band Romanian Hinge (light)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 4,
+              "name": "Glute Bridge with Band",
+              "difficulty": "Medium",
+              "equipment": "Mini Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 32
+            },
+            {
+              "id": 5,
+              "name": "Band Pallof Press (kneeling, rotated)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "8 each side",
+              "calories": 28
+            },
+            {
+              "id": 6,
+              "name": "Standing Calf Raise (hold onto chair)",
+              "difficulty": "Easy",
+              "equipment": "Chair",
+              "sets": "3",
+              "reps": "20",
+              "calories": 22
+            },
+            {
+              "id": 7,
+              "name": "Cool‑down Stretch (hip flexor, thoracic)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Low‑Impact Cardio (marching in place)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "10 min",
+              "calories": 80
+            },
+            {
+              "id": 2,
+              "name": "Band Overhead Press (seated)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 3,
+              "name": "Band Bent‑Over Row (light)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 4,
+              "name": "Band Lateral Raise",
+              "difficulty": "Easy",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 5,
+              "name": "Band Anti‑Rotation Press (standing)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "8 each side",
+              "calories": 28
+            },
+            {
+              "id": 6,
+              "name": "Side‑Plank (knees)",
+              "difficulty": "Easy",
+              "equipment": "Mat",
+              "sets": "2",
+              "reps": "30 sec each side",
+              "calories": 15
+            },
+            {
+              "id": 7,
+              "name": "Foam Roll Lower Back & Glutes",
+              "difficulty": "Easy",
+              "equipment": "Foam Roller",
+              "sets": "1",
+              "reps": "4 min",
+              "calories": 10
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down Gentle Stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 12
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Active Recovery Walk",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 130
+            },
+            {
+              "id": 2,
+              "name": "Band Chest Fly (standing)",
+              "difficulty": "Easy",
+              "equipment": "Resistance Band",
+              "sets": "2",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 3,
+              "name": "Band Squat to Row (compound)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 4,
+              "name": "Band Pallof Press (standing, neutral)",
+              "difficulty": "Medium",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "8 each side",
+              "calories": 28
+            },
+            {
+              "id": 5,
+              "name": "Standing Hip Extension (band)",
+              "difficulty": "Easy",
+              "equipment": "Mini Band",
+              "sets": "2",
+              "reps": "12 each leg",
+              "calories": 22
+            },
+            {
+              "id": 6,
+              "name": "Dead‑Bug (mat)",
+              "difficulty": "Easy",
+              "equipment": "Mat",
+              "sets": "2",
+              "reps": "12 each side",
+              "calories": 12
+            },
+            {
+              "id": 7,
+              "name": "Cool‑down Full‑body Stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 12
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "parseError": null,
+  "cleanedContent": "{\n  \"gym\": {\n    \"title\": \"Gym Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Treadmill Walk (incline 4%)\", \"difficulty\": \"Easy\", \"equipment\": \"Treadmill\", \"sets\": \"1\", \"reps\": \"20 min\", \"calories\": 120 },\n          { \"id\": 2, \"name\": \"Leg Press\", \"difficulty\": \"Medium\", \"equipment\": \"Leg Press Machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 3, \"name\": \"Seated Cable Row\", \"difficulty\": \"Medium\", \"equipment\": \"Cable Machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40 },\n          { \"id\": 4, \"name\": \"Chest Press Machine\", \"difficulty\": \"Easy\", \"equipment\": \"Machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 38 },\n          { \"id\": 5, \"name\": \"Band Pallof Press (standing)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"10 each side\", \"calories\": 30 },\n          { \"id\": 6, \"name\": \"Standing Calf Raise\", \"difficulty\": \"Easy\", \"equipment\": \"Smith Machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 25 },\n          { \"id\": 7, \"name\": \"Foam Roll + Cat‑Cow Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"Foam Roller\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Elliptical Warm‑up\", \"difficulty\": \"Easy\", \"equipment\": \"Elliptical\", \"sets\": \"1\", \"reps\": \"10 min\", \"calories\": 100 },\n          { \"id\": 2, \"name\": \"Lat Pulldown (neutral grip)\", \"difficulty\": \"Medium\", \"equipment\": \"Lat Pulldown Machine\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 42 },\n          { \"id\": 3, \"name\": \"Dumbbell Goblet Squat (light 8‑10 kg)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 48 },\n          { \"id\": 4, \"name\": \"Seated Leg Curl\", \"difficulty\": \"Easy\", \"equipment\": \"Leg Curl Machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 35 },\n          { \"id\": 5, \"name\": \"Cable Pallof Press (kneeling)\", \"difficulty\": \"Medium\", \"equipment\": \"Cable Machine\", \"sets\": \"3\", \"reps\": \"8 each side\", \"calories\": 28 },\n          { \"id\": 6, \"name\": \"Machine Chest Fly\", \"difficulty\": \"Easy\", \"equipment\": \"Machine\", \"sets\": \"2\", \"reps\": \"15\", \"calories\": 30 },\n          { \"id\": 7, \"name\": \"Standing Hip Abduction (cable)\", \"difficulty\": \"Easy\", \"equipment\": \"Cable Machine\", \"sets\": \"2\", \"reps\": \"12 each leg\", \"calories\": 20 },\n          { \"id\": 8, \"name\": \"Cool‑down Stretch (hamstring, hip flexor, thoracic)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 12 }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Rowing Machine Warm‑up\", \"difficulty\": \"Easy\", \"equipment\": \"Rowing Machine\", \"sets\": \"1\", \"reps\": \"8 min\", \"calories\": 110 },\n          { \"id\": 2, \"name\": \"Machine Shoulder Press\", \"difficulty\": \"Medium\", \"equipment\": \"Machine\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 38 },\n          { \"id\": 3, \"name\": \"Cable Lateral Raise\", \"difficulty\": \"Easy\", \"equipment\": \"Cable\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 28 },\n          { \"id\": 4, \"name\": \"Leg Extension\", \"difficulty\": \"Easy\", \"equipment\": \"Leg Extension Machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 35 },\n          { \"id\": 5, \"name\": \"Swiss Ball Plank (knees)\", \"difficulty\": \"Medium\", \"equipment\": \"Swiss Ball\", \"sets\": \"3\", \"reps\": \"30 sec\", \"calories\": 22 },\n          { \"id\": 6, \"name\": \"Cable Woodchop (low‑to‑high, light)\", \"difficulty\": \"Medium\", \"equipment\": \"Cable\", \"sets\": \"3\", \"reps\": \"10 each side\", \"calories\": 30 },\n          { \"id\": 7, \"name\": \"Seated Calf Raise\", \"difficulty\": \"Easy\", \"equipment\": \"Machine\", \"sets\": \"2\", \"reps\": \"15\", \"calories\": 20 },\n          { \"id\": 8, \"name\": \"Foam Roll Lower Back & Glutes\", \"difficulty\": \"Easy\", \"equipment\": \"Foam Roller\", \"sets\": \"1\", \"reps\": \"4 min\", \"calories\": 10 }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Stationary Bike Warm‑up\", \"difficulty\": \"Easy\", \"equipment\": \"Bike\", \"sets\": \"1\", \"reps\": \"12 min\", \"calories\": 95 },\n          { \"id\": 2, \"name\": \"Incline Chest Press (machine)\", \"difficulty\": \"Medium\", \"equipment\": \"Machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40 },\n          { \"id\": 3, \"name\": \"Assisted Pull‑up (machine)\", \"difficulty\": \"Medium\", \"equipment\": \"Assisted Pull‑up Machine\", \"sets\": \"3\", \"reps\": \"8\", \"calories\": 42 },\n          { \"id\": 4, \"name\": \"Seated Hip Internal Rotation (band)\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"15 each side\", \"calories\": 22 },\n          { \"id\": 5, \"name\": \"Machine Row\", \"difficulty\": \"Medium\", \"equipment\": \"Machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 6, \"name\": \"Standing Cable Anti‑Rotation Press\", \"difficulty\": \"Medium\", \"equipment\": \"Cable\", \"sets\": \"3\", \"reps\": \"10 each side\", \"calories\": 28 },\n          { \"id\": 7, \"name\": \"Cool‑down: Bird‑Dog (on mat)\", \"difficulty\": \"Easy\", \"equipment\": \"Mat\", \"sets\": \"2\", \"reps\": \"10 each side\", \"calories\": 12 }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dynamic Stretch Warm‑up (leg swings, arm circles)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Leg Press (single‑leg focus)\", \"difficulty\": \"Medium\", \"equipment\": \"Leg Press Machine\", \"sets\": \"3\", \"reps\": \"10 each leg\", \"calories\": 45 },\n          { \"id\": 3, \"name\": \"Cable Chest Fly (low‑to‑mid)\", \"difficulty\": \"Easy\", \"equipment\": \"Cable\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 35 },\n          { \"id\": 4, \"name\": \"Dumbbell Romanian Deadlift (light, focus on hinge, no spinal load)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 40 },\n          { \"id\": 5, \"name\": \"Standing Cable Pallof Press (rotated 45°)\", \"difficulty\": \"Medium\", \"equipment\": \"Cable\", \"sets\": \"3\", \"reps\": \"8 each side\", \"calories\": 28 },\n          { \"id\": 6, \"name\": \"Seated Calf Raise\", \"difficulty\": \"Easy\", \"equipment\": \"Machine\", \"sets\": \"2\", \"reps\": \"15\", \"calories\": 20 },\n          { \"id\": 7, \"name\": \"Cool‑down Stretch (hip flexor, thoracic rotation)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 12 }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Recumbent Bike Warm‑up\", \"difficulty\": \"Easy\", \"equipment\": \"Bike\", \"sets\": \"1\", \"reps\": \"10 min\", \"calories\": 90 },\n          { \"id\": 2, \"name\": \"Machine Lateral Raise\", \"difficulty\": \"Easy\", \"equipment\": \"Machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 30 },\n          { \"id\": 3, \"name\": \"Chest Press (neutral grip dumbbells)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 4, \"name\": \"Cable Row (seated, neutral)\", \"difficulty\": \"Medium\", \"equipment\": \"Cable\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40 },\n          { \"id\": 5, \"name\": \"Band Hip Thrust (bodyweight + band)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 32 },\n          { \"id\": 6, \"name\": \"Swiss Ball Side Plank (knees)\", \"difficulty\": \"Easy\", \"equipment\": \"Swiss Ball\", \"sets\": \"2\", \"reps\": \"30 sec each side\", \"calories\": 15 },\n          { \"id\": 7, \"name\": \"Foam Roll IT Band & Lower Back\", \"difficulty\": \"Easy\", \"equipment\": \"Foam Roller\", \"sets\": \"1\", \"reps\": \"4 min\", \"calories\": 10 }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Light Walk (outdoors or treadmill)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"25 min\", \"calories\": 130 },\n          { \"id\": 2, \"name\": \"Machine Chest Press (reverse grip)\", \"difficulty\": \"Easy\", \"equipment\": \"Machine\", \"sets\": \"2\", \"reps\": \"15\", \"calories\": 35 },\n          { \"id\": 3, \"name\": \"Cable Squat to Row (light)\", \"difficulty\": \"Medium\", \"equipment\": \"Cable\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 4, \"name\": \"Standing Band Anti‑Rotation Press\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"10 each side\", \"calories\": 28 },\n          { \"id\": 5, \"name\": \"Seated Hip Abduction (machine)\", \"difficulty\": \"Easy\", \"equipment\": \"Machine\", \"sets\": \"2\", \"reps\": \"15\", \"calories\": 20 },\n          { \"id\": 6, \"name\": \"Core Activation: Dead‑Bug (mat)\", \"difficulty\": \"Easy\", \"equipment\": \"Mat\", \"sets\": \"2\", \"reps\": \"12 each side\", \"calories\": 12 },\n          { \"id\": 7, \"name\": \"Cool‑down: Gentle spine‑mobility & stretching\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 12 }\n        ]\n      }\n    ]\n  },\n  \"home\": {\n    \"title\": \"Home Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dynamic Warm‑up (arm circles, leg swings)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Band Squat to Press\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 3, \"name\": \"Band Seated Row\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 38 },\n          { \"id\": 4, \"name\": \"Push‑up (knees)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 35 },\n          { \"id\": 5, \"name\": \"Standing Band Pallof Press\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"8 each side\", \"calories\": 28 },\n          { \"id\": 6, \"name\": \"Glute Bridge (bodyweight)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 30 },\n          { \"id\": 7, \"name\": \"Bird‑Dog (mat)\", \"difficulty\": \"Easy\", \"equipment\": \"Mat\", \"sets\": \"2\", \"reps\": \"12 each side\", \"calories\": 12 },\n          { \"id\": 8, \"name\": \"Cool‑down Stretch (hamstring, hip flexor, thoracic)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 12 }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Light Jog in Place\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"7 min\", \"calories\": 80 },\n          { \"id\": 2, \"name\": \"Band Chest Fly\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 35 },\n          { \"id\": 3, \"name\": \"Band Romanian Hinge (light)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 4, \"name\": \"Wall Sit\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"45 sec\", \"calories\": 28 },\n          { \"id\": 5, \"name\": \"Band Pallof Press (kneeling)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"8 each side\", \"calories\": 26 },\n          { \"id\": 6, \"name\": \"Standing Calf Raise (bodyweight)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"20\", \"calories\": 20 },\n          { \"id\": 7, \"name\": \"Foam Roll Lower Back & Glutes\", \"difficulty\": \"Easy\", \"equipment\": \"Foam Roller\", \"sets\": \"1\", \"reps\": \"4 min\", \"calories\": 10 },\n          { \"id\": 8, \"name\": \"Cool‑down Deep Breathing & Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"4 min\", \"calories\": 10 }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Jump Rope (slow)\", \"difficulty\": \"Easy\", \"equipment\": \"Jump Rope\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 70 },\n          { \"id\": 2, \"name\": \"Band Overhead Press\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40 },\n          { \"id\": 3, \"name\": \"Band Lateral Walks (mini‑band)\", \"difficulty\": \"Medium\", \"equipment\": \"Mini Band\", \"sets\": \"3\", \"reps\": \"10 steps each direction\", \"calories\": 30 },\n          { \"id\": 4, \"name\": \"Incline Push‑up (hands on sturdy chair)\", \"difficulty\": \"Easy\", \"equipment\": \"Chair\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 32 },\n          { \"id\": 5, \"name\": \"Band Pallof Press (standing, rotate 45°)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"8 each side\", \"calories\": 28 },\n          { \"id\": 6, \"name\": \"Side‑Plank (knees)\", \"difficulty\": \"Easy\", \"equipment\": \"Mat\", \"sets\": \"2\", \"reps\": \"30 sec each side\", \"calories\": 15 },\n          { \"id\": 7, \"name\": \"Cool‑down Stretch (spine mobility, hip flexor)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 12 }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Brisk Walk (outside or treadmill)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"20 min\", \"calories\": 120 },\n          { \"id\": 2, \"name\": \"Band Squat with Pause\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 42 },\n          { \"id\": 3, \"name\": \"Band Single‑Arm Row\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12 each arm\", \"calories\": 38 },\n          { \"id\": 4, \"name\": \"Chest Press with Band (standing)\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 35 },\n          { \"id\": 5, \"name\": \"Standing Hip Abduction (band)\", \"difficulty\": \"Easy\", \"equipment\": \"Mini Band\", \"sets\": \"3\", \"reps\": \"12 each leg\", \"calories\": 25 },\n          { \"id\": 6, \"name\": \"Dead‑Bug (mat)\", \"difficulty\": \"Easy\", \"equipment\": \"Mat\", \"sets\": \"2\", \"reps\": \"12 each side\", \"calories\": 12 },\n          { \"id\": 7, \"name\": \"Foam Roll IT Band & Lower Back\", \"difficulty\": \"Easy\", \"equipment\": \"Foam Roller\", \"sets\": \"1\", \"reps\": \"4 min\", \"calories\": 10 },\n          { \"id\": 8, \"name\": \"Cool‑down Gentle Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"4 min\", \"calories\": 10 }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dynamic Warm‑up (torso twists, leg swings)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Band Chest Press (floor)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 35 },\n          { \"id\": 3, \"name\": \"Band Romanian Hinge (light)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 4, \"name\": \"Glute Bridge with Band\", \"difficulty\": \"Medium\", \"equipment\": \"Mini Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 32 },\n          { \"id\": 5, \"name\": \"Band Pallof Press (kneeling, rotated)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"8 each side\", \"calories\": 28 },\n          { \"id\": 6, \"name\": \"Standing Calf Raise (hold onto chair)\", \"difficulty\": \"Easy\", \"equipment\": \"Chair\", \"sets\": \"3\", \"reps\": \"20\", \"calories\": 22 },\n          { \"id\": 7, \"name\": \"Cool‑down Stretch (hip flexor, thoracic)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 12 }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Low‑Impact Cardio (marching in place)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"10 min\", \"calories\": 80 },\n          { \"id\": 2, \"name\": \"Band Overhead Press (seated)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 3, \"name\": \"Band Bent‑Over Row (light)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 35 },\n          { \"id\": 4, \"name\": \"Band Lateral Raise\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 30 },\n          { \"id\": 5, \"name\": \"Band Anti‑Rotation Press (standing)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"8 each side\", \"calories\": 28 },\n          { \"id\": 6, \"name\": \"Side‑Plank (knees)\", \"difficulty\": \"Easy\", \"equipment\": \"Mat\", \"sets\": \"2\", \"reps\": \"30 sec each side\", \"calories\": 15 },\n          { \"id\": 7, \"name\": \"Foam Roll Lower Back & Glutes\", \"difficulty\": \"Easy\", \"equipment\": \"Foam Roller\", \"sets\": \"1\", \"reps\": \"4 min\", \"calories\": 10 },\n          { \"id\": 8, \"name\": \"Cool‑down Gentle Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 12 }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Active Recovery Walk\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"30 min\", \"calories\": 130 },\n          { \"id\": 2, \"name\": \"Band Chest Fly (standing)\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance Band\", \"sets\": \"2\", \"reps\": \"15\", \"calories\": 30 },\n          { \"id\": 3, \"name\": \"Band Squat to Row (compound)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 4, \"name\": \"Band Pallof Press (standing, neutral)\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance Band\", \"sets\": \"3\", \"reps\": \"8 each side\", \"calories\": 28 },\n          { \"id\": 5, \"name\": \"Standing Hip Extension (band)\", \"difficulty\": \"Easy\", \"equipment\": \"Mini Band\", \"sets\": \"2\", \"reps\": \"12 each leg\", \"calories\": 22 },\n          { \"id\": 6, \"name\": \"Dead‑Bug (mat)\", \"difficulty\": \"Easy\", \"equipment\": \"Mat\", \"sets\": \"2\", \"reps\": \"12 each side\", \"calories\": 12 },\n          { \"id\": 7, \"name\": \"Cool‑down Full‑body Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 12 }\n        ]\n      }\n    ]\n  }\n}",
+  "derived": {
+    "allHealthConditions": "controlled high cholesterol",
+    "allAllergies": "none",
+    "allInjuries": "chronic lower back pain, avoid heavy deadlifts and loaded spinal flexion",
+    "allGoals": "maintenance, mobility, and general strength, short sessions under 40 minutes",
+    "experienceInfo": "beginner - home resistance bands available",
+    "bmr": 1698.3530000000003,
+    "tdee": 2632.4471500000004,
+    "targetCalories": 2632
+  },
+  "latencyMs": 177616,
+  "usage": {
+    "prompt_tokens": 790,
+    "completion_tokens": 5959,
+    "total_tokens": 6749,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 96,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 77,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop",
+  "retrieval": {
+    "skip": false,
+    "vectorLength": 384,
+    "results": [
+      {
+        "id": "bb3b7bb6-2186-4a08-bdee-3c8555063725",
+        "version": 2033,
+        "score": 0.6952106,
+        "payload": {
+          "athlete_id": "ATH1939",
+          "name": "عبدالله معتز العوامي",
+          "age": 50,
+          "gender": "Male",
+          "goal": "Fat loss",
+          "issue": "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal",
+          "dietary_restrictions": [
+            "Weight-management focus"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Hyperextension work to failure",
+              "reason": "May worsen back irritation"
+            },
+            {
+              "exercise": "Max-effort deadlift testing",
+              "reason": "Poor fatigue tolerance"
+            }
+          ],
+          "contraindicated_foods": []
+        }
+      },
+      {
+        "id": "f8c1dd30-96f1-4b02-b52a-a51cc062af24",
+        "version": 308,
+        "score": 0.6869463,
+        "payload": {
+          "athlete_id": "ATH0214",
+          "name": "دانا الرفاعي",
+          "age": 40,
+          "gender": "Female",
+          "goal": "Movement quality",
+          "issue": "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal",
+          "dietary_restrictions": [
+            "Weight-management focus"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Hyperextension work to failure",
+              "reason": "May worsen back irritation"
+            },
+            {
+              "exercise": "Repeated heavy twisting under load",
+              "reason": "Can aggravate lumbar symptoms"
+            },
+            {
+              "exercise": "Max-effort deadlift testing",
+              "reason": "Poor fatigue tolerance"
+            }
+          ],
+          "contraindicated_foods": []
+        }
+      },
+      {
+        "id": "714460e7-8d64-4acc-af8f-3814bf4125f0",
+        "version": 674,
+        "score": 0.6669908,
+        "payload": {
+          "athlete_id": "ATH0580",
+          "name": "ياسمين خالد البدري",
+          "age": 60,
+          "gender": "Female",
+          "goal": "Return to training",
+          "issue": "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal",
+          "dietary_restrictions": [
+            "Weight-management focus"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Max-effort deadlift testing",
+              "reason": "Poor fatigue tolerance"
+            },
+            {
+              "exercise": "Repeated heavy twisting under load",
+              "reason": "Can aggravate lumbar symptoms"
+            }
+          ],
+          "contraindicated_foods": []
+        }
+      }
+    ],
+    "vectorContext": "Issue: Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Hyperextension work to failure, Max-effort deadlift testing)\nIssue: Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Hyperextension work to failure, Repeated heavy twisting under load, Max-effort deadlift testing)\nIssue: Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Max-effort deadlift testing, Repeated heavy twisting under load)"
+  }
+}

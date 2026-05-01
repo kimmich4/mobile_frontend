@@ -1,0 +1,108 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "dac3c8e2-ba86-437e-8dd0-e1918c477483",
+      "version": 435,
+      "score": 0.6908162,
+      "payload": {
+        "athlete_id": "ATH0341",
+        "name": "كريم عبدالرحمن المنصوري",
+        "age": 42,
+        "gender": "Male",
+        "goal": "Return to training",
+        "issue": "Patellar Tendinopathy - Mild - Musculoskeletal",
+        "dietary_restrictions": [
+          "Weight-management focus"
+        ],
+        "allergies": [
+          "Latex"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "High-volume jumping drills",
+            "reason": "Increases tendon irritability"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed calorie-dense snacks",
+            "reason": "Can worsen body-mass related knee load"
+          }
+        ]
+      }
+    },
+    {
+      "id": "8bb0c43d-74a3-483d-aec9-bbb330e94867",
+      "version": 974,
+      "score": 0.6612782,
+      "payload": {
+        "athlete_id": "ATH0880",
+        "name": "علي راشد العلي",
+        "age": 44,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Patellar Tendinopathy - Moderate - Musculoskeletal",
+        "dietary_restrictions": [],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy leg extensions at end range",
+            "reason": "Raises patellar tendon load"
+          },
+          {
+            "exercise": "High-volume jumping drills",
+            "reason": "Increases tendon irritability"
+          },
+          {
+            "exercise": "Deep knee flexion under heavy load",
+            "reason": "High patellar tendon stress"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed calorie-dense snacks",
+            "reason": "Can worsen body-mass related knee load"
+          }
+        ]
+      }
+    },
+    {
+      "id": "eeef49da-5d7d-4cfd-b68f-02029d7cfa80",
+      "version": 525,
+      "score": 0.66091216,
+      "payload": {
+        "athlete_id": "ATH0431",
+        "name": "عمرو العمري",
+        "age": 30,
+        "gender": "Male",
+        "goal": "Body recomposition",
+        "issue": "Patellar Tendinopathy with intermittent flare-ups - Mild-Moderate - Musculoskeletal",
+        "dietary_restrictions": [],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Deep knee flexion under heavy load",
+            "reason": "High patellar tendon stress"
+          },
+          {
+            "exercise": "High-volume jumping drills",
+            "reason": "Increases tendon irritability"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed calorie-dense snacks",
+            "reason": "Can worsen body-mass related knee load"
+          },
+          {
+            "food": "Liquid-calorie coffees and shakes",
+            "reason": "Can hide excess calories and disrupt fat-loss targets"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Patellar Tendinopathy - Mild - Musculoskeletal. Constraints: Foods to avoid (Highly processed calorie-dense snacks), Exercises to avoid (High-volume jumping drills)\nIssue: Patellar Tendinopathy - Moderate - Musculoskeletal. Constraints: Foods to avoid (Highly processed calorie-dense snacks), Exercises to avoid (Heavy leg extensions at end range, High-volume jumping drills, Deep knee flexion under heavy load)\nIssue: Patellar Tendinopathy with intermittent flare-ups - Mild-Moderate - Musculoskeletal. Constraints: Foods to avoid (Highly processed calorie-dense snacks, Liquid-calorie coffees and shakes), Exercises to avoid (Deep knee flexion under heavy load, High-volume jumping drills)"
+}

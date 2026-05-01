@@ -1,0 +1,87 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "f037fda9-991a-47cf-97bb-f2467ca948f1",
+      "version": 1894,
+      "score": 0.7325485,
+      "payload": {
+        "athlete_id": "ATH1800",
+        "name": "ياسين عبداللطيف الزعبي",
+        "age": 27,
+        "gender": "Male",
+        "goal": "Sport performance",
+        "issue": "Exercise-Induced Asthma - Mild - Respiratory",
+        "dietary_restrictions": [
+          "Hydration focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Cold dry-air outdoor intervals",
+            "reason": "Higher airway irritation risk"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "ea4114e8-bef7-4dd5-bb33-76ac7a9bec80",
+      "version": 1668,
+      "score": 0.68615174,
+      "payload": {
+        "athlete_id": "ATH1574",
+        "name": "شهد رشاد الأنصاري",
+        "age": 35,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Exercise-Induced Asthma - Mild - Respiratory",
+        "dietary_restrictions": [
+          "Hydration focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Very dense circuit training with poor pacing",
+            "reason": "Can provoke breathing symptoms"
+          },
+          {
+            "exercise": "Cold dry-air outdoor intervals",
+            "reason": "Higher airway irritation risk"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "d7117024-2263-4a61-be77-8a4bed6db015",
+      "version": 892,
+      "score": 0.6427007,
+      "payload": {
+        "athlete_id": "ATH0798",
+        "name": "أنس الصقري",
+        "age": 35,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Exercise-Induced Asthma - Mild - Respiratory",
+        "dietary_restrictions": [
+          "Hydration focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Very dense circuit training with poor pacing",
+            "reason": "Can provoke breathing symptoms"
+          },
+          {
+            "exercise": "All-out sprints without warm-up",
+            "reason": "Can trigger bronchospasm"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    }
+  ],
+  "vectorContext": "Issue: Exercise-Induced Asthma - Mild - Respiratory. Constraints: Foods to avoid (), Exercises to avoid (Cold dry-air outdoor intervals)\nIssue: Exercise-Induced Asthma - Mild - Respiratory. Constraints: Foods to avoid (), Exercises to avoid (Very dense circuit training with poor pacing, Cold dry-air outdoor intervals)\nIssue: Exercise-Induced Asthma - Mild - Respiratory. Constraints: Foods to avoid (), Exercises to avoid (Very dense circuit training with poor pacing, All-out sprints without warm-up)"
+}

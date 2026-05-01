@@ -1,0 +1,14 @@
+Please create a practical, safe, personalized, and easy-to-use fitness plan using only the information provided below. Do not use any outside retrieved database context. The plan should consider the person's age, sex, height, weight, target weight, activity level, goal, experience, allergies, injuries, health conditions, medical-report notes, InBody notes, and calculated calorie target. Return the answer as clean JSON only so it can be loaded by an app.
+
+Request type: workout.
+
+Please create a 7-day workout plan with both gym and home options for every day. Include exercise name, difficulty, equipment, sets, reps, and calories. Use this JSON shape:
+{"gym":{"title":"Gym Workout Plan","days":[{"day":1,"exercises":[{"id":1,"name":"...","difficulty":"...","equipment":"...","sets":"...","reps":"...","calories":123}]}]},"home":{"title":"Home Workout Plan","days":[{"day":1,"exercises":[{"id":1,"name":"...","difficulty":"...","equipment":"...","sets":"...","reps":"...","calories":123}]}]}}
+
+Person: Karim Fathy is a 45-year-old male, 182 cm tall, currently weighs 104 kg, and has a target weight of 92 kg. The activity level is sedentary, the experience level is intermediate, and the goal is fat loss and improve conditioning, low impact cardio preferred. Health conditions: borderline hypertension. Allergies or food restrictions: none. Injuries or movement restrictions: shoulder impingement, avoid heavy overhead pressing and painful dips. Medical-report notes: Doctor recommended gradual conditioning and avoiding painful overhead movements.. InBody notes: High visceral fat indicator and low cardiorespiratory fitness.. Calculated BMR: 2100. Calculated TDEE: 2520. Calculated target daily calories: 2020.
+
+Requirements:
+- Use only the information above.
+- Do not use outside retrieved database context.
+- Return clean JSON only.
+- Do not add markdown, explanations, or commentary.

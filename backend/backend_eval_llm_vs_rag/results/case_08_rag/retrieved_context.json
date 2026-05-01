@@ -1,0 +1,101 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "2f43049d-5e05-4510-883d-4ab42a7447ad",
+      "version": 62,
+      "score": 0.5529653,
+      "payload": {
+        "athlete_id": "ATH018",
+        "name": "Amina Rashid",
+        "age": 36,
+        "gender": "Female",
+        "goal": "Fat loss",
+        "issue": "Postpartum Pelvic Floor Dysfunction - Mild - Musculoskeletal",
+        "dietary_restrictions": [
+          "Carbohydrate awareness"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "High-impact plyometrics",
+            "reason": "Pelvic floor strain"
+          },
+          {
+            "exercise": "Heavy valsalva lifting",
+            "reason": "Intra-abdominal pressure"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "High-sugar foods",
+            "reason": "Long-term diabetes risk"
+          }
+        ]
+      }
+    },
+    {
+      "id": "17a9429d-a620-4602-908a-8d56ffc3febb",
+      "version": 2323,
+      "score": 0.509349,
+      "payload": {
+        "athlete_id": "ATH0229",
+        "name": "Sarah Harris",
+        "age": 55,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "General Joint Stiffness - Mild - Musculoskeletal",
+        "dietary_restrictions": [
+          "Anti-inflammatory focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Cold-start maximal lifting",
+            "reason": "Poor tissue readiness"
+          },
+          {
+            "exercise": "High-impact circuits without warm-up",
+            "reason": "Increases joint stress"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Highly processed snacks",
+            "reason": "May promote inflammation"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1abbae43-cedb-4627-b0d3-6777e619feb7",
+      "version": 1801,
+      "score": 0.5053634,
+      "payload": {
+        "athlete_id": "ATH1707",
+        "name": "Zoe Brown",
+        "age": 21,
+        "gender": "Female",
+        "goal": "Movement quality",
+        "issue": "Hypermobility Spectrum Disorder - Moderate - Connective Tissue",
+        "dietary_restrictions": [
+          "Protein distribution support"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Ballistic end-range loading",
+            "reason": "Promotes joint instability"
+          },
+          {
+            "exercise": "Uncontrolled heavy overhead work",
+            "reason": "Reduces joint positioning control"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    }
+  ],
+  "vectorContext": "Issue: Postpartum Pelvic Floor Dysfunction - Mild - Musculoskeletal. Constraints: Foods to avoid (High-sugar foods), Exercises to avoid (High-impact plyometrics, Heavy valsalva lifting)\nIssue: General Joint Stiffness - Mild - Musculoskeletal. Constraints: Foods to avoid (Highly processed snacks), Exercises to avoid (Cold-start maximal lifting, High-impact circuits without warm-up)\nIssue: Hypermobility Spectrum Disorder - Moderate - Connective Tissue. Constraints: Foods to avoid (), Exercises to avoid (Ballistic end-range loading, Uncontrolled heavy overhead work)"
+}

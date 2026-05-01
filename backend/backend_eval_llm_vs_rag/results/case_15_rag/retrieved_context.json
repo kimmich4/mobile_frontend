@@ -1,0 +1,111 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "bb18ce26-3fb0-4696-a503-1d1991d094cb",
+      "version": 2487,
+      "score": 0.6387013,
+      "payload": {
+        "athlete_id": "ATH0393",
+        "name": "Nour Soliman",
+        "age": 48,
+        "gender": "Female",
+        "goal": "Body recomposition",
+        "issue": "Mild Acid Reflux During Training - Mild - Gastrointestinal",
+        "dietary_restrictions": [
+          "Lower-acid food timing"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy lifting immediately after a large meal",
+            "reason": "May worsen reflux"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Very spicy pre-workout meals",
+            "reason": "Can trigger reflux"
+          },
+          {
+            "food": "Large carbonated drinks before training",
+            "reason": "Can increase reflux symptoms"
+          }
+        ]
+      }
+    },
+    {
+      "id": "11fbd957-d863-4b81-b1b2-ad62e64aa0a3",
+      "version": 1763,
+      "score": 0.6356893,
+      "payload": {
+        "athlete_id": "ATH1669",
+        "name": "عمر العوامي",
+        "age": 46,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Gastroesophageal Reflux Disease - Mild - Gastrointestinal",
+        "dietary_restrictions": [
+          "Lower trigger-food load",
+          "Smaller pre-workout meals"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy lifting immediately after large meals",
+            "reason": "Raises reflux risk"
+          },
+          {
+            "exercise": "Decline bench work after eating",
+            "reason": "Can worsen reflux"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Very spicy pre-workout meals",
+            "reason": "Can worsen reflux"
+          }
+        ]
+      }
+    },
+    {
+      "id": "494e30dd-d4e6-46d4-a0cd-cae0c1a03a95",
+      "version": 923,
+      "score": 0.62011194,
+      "payload": {
+        "athlete_id": "ATH0829",
+        "name": "عبير راشد المالكي",
+        "age": 30,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Gastroesophageal Reflux Disease - Moderate - Gastrointestinal",
+        "dietary_restrictions": [
+          "Lower trigger-food load"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Heavy lifting immediately after large meals",
+            "reason": "Raises reflux risk"
+          },
+          {
+            "exercise": "High-pressure belt use after heavy meals",
+            "reason": "Increases abdominal pressure"
+          },
+          {
+            "exercise": "Decline bench work after eating",
+            "reason": "Can worsen reflux"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Very spicy pre-workout meals",
+            "reason": "Can worsen reflux"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Mild Acid Reflux During Training - Mild - Gastrointestinal. Constraints: Foods to avoid (Very spicy pre-workout meals, Large carbonated drinks before training), Exercises to avoid (Heavy lifting immediately after a large meal)\nIssue: Gastroesophageal Reflux Disease - Mild - Gastrointestinal. Constraints: Foods to avoid (Very spicy pre-workout meals), Exercises to avoid (Heavy lifting immediately after large meals, Decline bench work after eating)\nIssue: Gastroesophageal Reflux Disease - Moderate - Gastrointestinal. Constraints: Foods to avoid (Very spicy pre-workout meals), Exercises to avoid (Heavy lifting immediately after large meals, High-pressure belt use after heavy meals, Decline bench work after eating)"
+}

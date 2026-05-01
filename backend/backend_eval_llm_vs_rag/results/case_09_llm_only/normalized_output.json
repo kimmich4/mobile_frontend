@@ -1,0 +1,622 @@
+{
+  "caseId": "case_09",
+  "mode": "llm_only",
+  "route": "/ai/generate-diet",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "days": [
+      {
+        "day": 1,
+        "totalCalories": 2265,
+        "protein": "170g",
+        "carbs": "227g",
+        "fats": "76g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Greek yogurt (200g) with honey and berries",
+                "calories": 320
+              },
+              {
+                "name": "Whole‑grain toast (2 slices) with avocado",
+                "calories": 260
+              }
+            ]
+          },
+          {
+            "title": "Morning Snack",
+            "items": [
+              {
+                "name": "Almonds (30g)",
+                "calories": 170
+              },
+              {
+                "name": "Apple",
+                "calories": 95
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled chicken breast (150g)",
+                "calories": 250
+              },
+              {
+                "name": "Quinoa salad with cucumber, tomato, olive oil",
+                "calories": 380
+              },
+              {
+                "name": "Steamed broccoli (150g)",
+                "calories": 55
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Cottage cheese (150g) with pineapple",
+                "calories": 180
+              },
+              {
+                "name": "Rice cakes (2 pieces)",
+                "calories": 70
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Baked salmon (180g)",
+                "calories": 360
+              },
+              {
+                "name": "Sweet potato mash (200g)",
+                "calories": 180
+              },
+              {
+                "name": "Green salad with olive oil dressing",
+                "calories": 135
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "totalCalories": 2265,
+        "protein": "170g",
+        "carbs": "227g",
+        "fats": "76g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Oatmeal (80g) cooked with milk, topped with walnuts and banana",
+                "calories": 350
+              },
+              {
+                "name": "Boiled egg (2)",
+                "calories": 140
+              }
+            ]
+          },
+          {
+            "title": "Morning Snack",
+            "items": [
+              {
+                "name": "Greek yogurt (150g) with chia seeds",
+                "calories": 180
+              },
+              {
+                "name": "Pear",
+                "calories": 100
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Turkey breast slices (120g)",
+                "calories": 150
+              },
+              {
+                "name": "Brown rice (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Stir‑fried mixed veg (carrot, bell pepper, snap peas) in olive oil",
+                "calories": 140
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Hummus (70g) with carrot sticks",
+                "calories": 150
+              },
+              {
+                "name": "Whole‑grain crackers (30g)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lean beef steak (160g) grilled",
+                "calories": 340
+              },
+              {
+                "name": "Mashed cauliflower (200g)",
+                "calories": 80
+              },
+              {
+                "name": "Mixed leaf salad with balsamic vinaigrette",
+                "calories": 110
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "totalCalories": 2265,
+        "protein": "170g",
+        "carbs": "227g",
+        "fats": "76g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Protein shake (whey isolate, water) with a handful of berries",
+                "calories": 250
+              },
+              {
+                "name": "Whole‑grain English muffin with almond butter",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Morning Snack",
+            "items": [
+              {
+                "name": "Cottage cheese (200g) with sliced peach",
+                "calories": 210
+              },
+              {
+                "name": "Handful of pumpkin seeds (20g)",
+                "calories": 110
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Baked cod (150g)",
+                "calories": 150
+              },
+              {
+                "name": "Lentil salad with olive oil, lemon, herbs",
+                "calories": 350
+              },
+              {
+                "name": "Steamed asparagus (100g)",
+                "calories": 30
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Greek yogurt (150g) with honey",
+                "calories": 180
+              },
+              {
+                "name": "Grapes (100g)",
+                "calories": 70
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Turkey meatballs (180g) in tomato sauce",
+                "calories": 340
+              },
+              {
+                "name": "Whole‑wheat pasta (120g cooked)",
+                "calories": 190
+              },
+              {
+                "name": "Side salad with avocado",
+                "calories": 115
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "totalCalories": 2265,
+        "protein": "170g",
+        "carbs": "227g",
+        "fats": "76g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Scrambled eggs (3) with spinach and feta",
+                "calories": 300
+              },
+              {
+                "name": "Whole‑grain toast (2 slices)",
+                "calories": 160
+              }
+            ]
+          },
+          {
+            "title": "Morning Snack",
+            "items": [
+              {
+                "name": "Mixed nuts (30g) without soy",
+                "calories": 180
+              },
+              {
+                "name": "Orange",
+                "calories": 80
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled chicken thigh (150g, skinless)",
+                "calories": 260
+              },
+              {
+                "name": "Quinoa (150g cooked)",
+                "calories": 220
+              },
+              {
+                "name": "Roasted Brussels sprouts (150g) with olive oil",
+                "calories": 130
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Cottage cheese (150g) with cucumber slices",
+                "calories": 150
+              },
+              {
+                "name": "Rice cakes (2)",
+                "calories": 70
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Grilled shrimp (180g)",
+                "calories": 260
+              },
+              {
+                "name": "Brown rice (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Stir‑fried bok choy (100g) in sesame oil",
+                "calories": 115
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "totalCalories": 2265,
+        "protein": "170g",
+        "carbs": "227g",
+        "fats": "76g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Protein pancakes (oat flour, eggs, banana) topped with berries",
+                "calories": 340
+              },
+              {
+                "name": "Greek yogurt (100g) drizzle of maple syrup",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Morning Snack",
+            "items": [
+              {
+                "name": "Hard‑boiled egg (1)",
+                "calories": 70
+              },
+              {
+                "name": "Apple slices with almond butter",
+                "calories": 180
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Tuna steak (150g) grilled",
+                "calories": 250
+              },
+              {
+                "name": "Sweet potato wedges (200g) baked",
+                "calories": 180
+              },
+              {
+                "name": "Green beans (150g) sautéed",
+                "calories": 80
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Greek yogurt (150g) with granola (30g)",
+                "calories": 210
+              },
+              {
+                "name": "Blueberries (50g)",
+                "calories": 30
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lentil stew with carrots and celery",
+                "calories": 340
+              },
+              {
+                "name": "Whole‑grain roll",
+                "calories": 110
+              },
+              {
+                "name": "Side salad with olive oil",
+                "calories": 120
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "totalCalories": 2265,
+        "protein": "170g",
+        "carbs": "227g",
+        "fats": "76g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Chia pudding (chia seeds, almond milk) with mango",
+                "calories": 300
+              },
+              {
+                "name": "Boiled egg (2)",
+                "calories": 140
+              }
+            ]
+          },
+          {
+            "title": "Morning Snack",
+            "items": [
+              {
+                "name": "Greek yogurt (150g) with sliced kiwi",
+                "calories": 180
+              },
+              {
+                "name": "Walnuts (20g)",
+                "calories": 130
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled pork tenderloin (150g)",
+                "calories": 260
+              },
+              {
+                "name": "Barley salad with vegetables and olive oil",
+                "calories": 350
+              },
+              {
+                "name": "Steamed carrots (100g)",
+                "calories": 40
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Cottage cheese (150g) with cherry tomatoes",
+                "calories": 150
+              },
+              {
+                "name": "Whole‑grain crackers (30g)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Baked cod (180g) with lemon",
+                "calories": 260
+              },
+              {
+                "name": "Quinoa pilaf (150g cooked)",
+                "calories": 220
+              },
+              {
+                "name": "Sauteed zucchini (150g) in olive oil",
+                "calories": 115
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "totalCalories": 2265,
+        "protein": "170g",
+        "carbs": "227g",
+        "fats": "76g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Smoothie bowl (protein powder, banana, berries, almond milk) topped with pumpkin seeds",
+                "calories": 340
+              },
+              {
+                "name": "Whole‑grain toast (1 slice) with ricotta",
+                "calories": 130
+              }
+            ]
+          },
+          {
+            "title": "Morning Snack",
+            "items": [
+              {
+                "name": "Hard‑boiled egg (1)",
+                "calories": 70
+              },
+              {
+                "name": "Pear",
+                "calories": 100
+              },
+              {
+                "name": "Almonds (20g)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Grilled chicken salad with mixed greens, avocado, quinoa, olive oil",
+                "calories": 380
+              },
+              {
+                "name": "Whole‑grain pita",
+                "calories": 150
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Greek yogurt (150g) with honey",
+                "calories": 180
+              },
+              {
+                "name": "Rice cakes (2)",
+                "calories": 70
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Beef stir‑fry (lean beef 150g) with bell peppers, broccoli, cashews",
+                "calories": 350
+              },
+              {
+                "name": "Brown rice (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Side salad with lemon dressing",
+                "calories": 115
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "parseError": null,
+  "cleanedContent": "{\n  \"days\": [\n    {\n      \"day\": 1,\n      \"totalCalories\": 2265,\n      \"protein\": \"170g\",\n      \"carbs\": \"227g\",\n      \"fats\": \"76g\",\n      \"meals\": [\n        {\n          \"title\": \"Breakfast\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (200g) with honey and berries\", \"calories\": 320 },\n            { \"name\": \"Whole‑grain toast (2 slices) with avocado\", \"calories\": 260 }\n          ]\n        },\n        {\n          \"title\": \"Morning Snack\",\n          \"items\": [\n            { \"name\": \"Almonds (30g)\", \"calories\": 170 },\n            { \"name\": \"Apple\", \"calories\": 95 }\n          ]\n        },\n        {\n          \"title\": \"Lunch\",\n          \"items\": [\n            { \"name\": \"Grilled chicken breast (150g)\", \"calories\": 250 },\n            { \"name\": \"Quinoa salad with cucumber, tomato, olive oil\", \"calories\": 380 },\n            { \"name\": \"Steamed broccoli (150g)\", \"calories\": 55 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Snack\",\n          \"items\": [\n            { \"name\": \"Cottage cheese (150g) with pineapple\", \"calories\": 180 },\n            { \"name\": \"Rice cakes (2 pieces)\", \"calories\": 70 }\n          ]\n        },\n        {\n          \"title\": \"Dinner\",\n          \"items\": [\n            { \"name\": \"Baked salmon (180g)\", \"calories\": 360 },\n            { \"name\": \"Sweet potato mash (200g)\", \"calories\": 180 },\n            { \"name\": \"Green salad with olive oil dressing\", \"calories\": 135 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 2,\n      \"totalCalories\": 2265,\n      \"protein\": \"170g\",\n      \"carbs\": \"227g\",\n      \"fats\": \"76g\",\n      \"meals\": [\n        {\n          \"title\": \"Breakfast\",\n          \"items\": [\n            { \"name\": \"Oatmeal (80g) cooked with milk, topped with walnuts and banana\", \"calories\": 350 },\n            { \"name\": \"Boiled egg (2)\", \"calories\": 140 }\n          ]\n        },\n        {\n          \"title\": \"Morning Snack\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (150g) with chia seeds\", \"calories\": 180 },\n            { \"name\": \"Pear\", \"calories\": 100 }\n          ]\n        },\n        {\n          \"title\": \"Lunch\",\n          \"items\": [\n            { \"name\": \"Turkey breast slices (120g)\", \"calories\": 150 },\n            { \"name\": \"Brown rice (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Stir‑fried mixed veg (carrot, bell pepper, snap peas) in olive oil\", \"calories\": 140 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Snack\",\n          \"items\": [\n            { \"name\": \"Hummus (70g) with carrot sticks\", \"calories\": 150 },\n            { \"name\": \"Whole‑grain crackers (30g)\", \"calories\": 120 }\n          ]\n        },\n        {\n          \"title\": \"Dinner\",\n          \"items\": [\n            { \"name\": \"Lean beef steak (160g) grilled\", \"calories\": 340 },\n            { \"name\": \"Mashed cauliflower (200g)\", \"calories\": 80 },\n            { \"name\": \"Mixed leaf salad with balsamic vinaigrette\", \"calories\": 110 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 3,\n      \"totalCalories\": 2265,\n      \"protein\": \"170g\",\n      \"carbs\": \"227g\",\n      \"fats\": \"76g\",\n      \"meals\": [\n        {\n          \"title\": \"Breakfast\",\n          \"items\": [\n            { \"name\": \"Protein shake (whey isolate, water) with a handful of berries\", \"calories\": 250 },\n            { \"name\": \"Whole‑grain English muffin with almond butter\", \"calories\": 300 }\n          ]\n        },\n        {\n          \"title\": \"Morning Snack\",\n          \"items\": [\n            { \"name\": \"Cottage cheese (200g) with sliced peach\", \"calories\": 210 },\n            { \"name\": \"Handful of pumpkin seeds (20g)\", \"calories\": 110 }\n          ]\n        },\n        {\n          \"title\": \"Lunch\",\n          \"items\": [\n            { \"name\": \"Baked cod (150g)\", \"calories\": 150 },\n            { \"name\": \"Lentil salad with olive oil, lemon, herbs\", \"calories\": 350 },\n            { \"name\": \"Steamed asparagus (100g)\", \"calories\": 30 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Snack\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (150g) with honey\", \"calories\": 180 },\n            { \"name\": \"Grapes (100g)\", \"calories\": 70 }\n          ]\n        },\n        {\n          \"title\": \"Dinner\",\n          \"items\": [\n            { \"name\": \"Turkey meatballs (180g) in tomato sauce\", \"calories\": 340 },\n            { \"name\": \"Whole‑wheat pasta (120g cooked)\", \"calories\": 190 },\n            { \"name\": \"Side salad with avocado\", \"calories\": 115 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 4,\n      \"totalCalories\": 2265,\n      \"protein\": \"170g\",\n      \"carbs\": \"227g\",\n      \"fats\": \"76g\",\n      \"meals\": [\n        {\n          \"title\": \"Breakfast\",\n          \"items\": [\n            { \"name\": \"Scrambled eggs (3) with spinach and feta\", \"calories\": 300 },\n            { \"name\": \"Whole‑grain toast (2 slices)\", \"calories\": 160 }\n          ]\n        },\n        {\n          \"title\": \"Morning Snack\",\n          \"items\": [\n            { \"name\": \"Mixed nuts (30g) without soy\", \"calories\": 180 },\n            { \"name\": \"Orange\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Lunch\",\n          \"items\": [\n            { \"name\": \"Grilled chicken thigh (150g, skinless)\", \"calories\": 260 },\n            { \"name\": \"Quinoa (150g cooked)\", \"calories\": 220 },\n            { \"name\": \"Roasted Brussels sprouts (150g) with olive oil\", \"calories\": 130 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Snack\",\n          \"items\": [\n            { \"name\": \"Cottage cheese (150g) with cucumber slices\", \"calories\": 150 },\n            { \"name\": \"Rice cakes (2)\", \"calories\": 70 }\n          ]\n        },\n        {\n          \"title\": \"Dinner\",\n          \"items\": [\n            { \"name\": \"Grilled shrimp (180g)\", \"calories\": 260 },\n            { \"name\": \"Brown rice (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Stir‑fried bok choy (100g) in sesame oil\", \"calories\": 115 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 5,\n      \"totalCalories\": 2265,\n      \"protein\": \"170g\",\n      \"carbs\": \"227g\",\n      \"fats\": \"76g\",\n      \"meals\": [\n        {\n          \"title\": \"Breakfast\",\n          \"items\": [\n            { \"name\": \"Protein pancakes (oat flour, eggs, banana) topped with berries\", \"calories\": 340 },\n            { \"name\": \"Greek yogurt (100g) drizzle of maple syrup\", \"calories\": 120 }\n          ]\n        },\n        {\n          \"title\": \"Morning Snack\",\n          \"items\": [\n            { \"name\": \"Hard‑boiled egg (1)\", \"calories\": 70 },\n            { \"name\": \"Apple slices with almond butter\", \"calories\": 180 }\n          ]\n        },\n        {\n          \"title\": \"Lunch\",\n          \"items\": [\n            { \"name\": \"Tuna steak (150g) grilled\", \"calories\": 250 },\n            { \"name\": \"Sweet potato wedges (200g) baked\", \"calories\": 180 },\n            { \"name\": \"Green beans (150g) sautéed\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Snack\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (150g) with granola (30g)\", \"calories\": 210 },\n            { \"name\": \"Blueberries (50g)\", \"calories\": 30 }\n          ]\n        },\n        {\n          \"title\": \"Dinner\",\n          \"items\": [\n            { \"name\": \"Lentil stew with carrots and celery\", \"calories\": 340 },\n            { \"name\": \"Whole‑grain roll\", \"calories\": 110 },\n            { \"name\": \"Side salad with olive oil\", \"calories\": 120 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 6,\n      \"totalCalories\": 2265,\n      \"protein\": \"170g\",\n      \"carbs\": \"227g\",\n      \"fats\": \"76g\",\n      \"meals\": [\n        {\n          \"title\": \"Breakfast\",\n          \"items\": [\n            { \"name\": \"Chia pudding (chia seeds, almond milk) with mango\", \"calories\": 300 },\n            { \"name\": \"Boiled egg (2)\", \"calories\": 140 }\n          ]\n        },\n        {\n          \"title\": \"Morning Snack\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (150g) with sliced kiwi\", \"calories\": 180 },\n            { \"name\": \"Walnuts (20g)\", \"calories\": 130 }\n          ]\n        },\n        {\n          \"title\": \"Lunch\",\n          \"items\": [\n            { \"name\": \"Grilled pork tenderloin (150g)\", \"calories\": 260 },\n            { \"name\": \"Barley salad with vegetables and olive oil\", \"calories\": 350 },\n            { \"name\": \"Steamed carrots (100g)\", \"calories\": 40 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Snack\",\n          \"items\": [\n            { \"name\": \"Cottage cheese (150g) with cherry tomatoes\", \"calories\": 150 },\n            { \"name\": \"Whole‑grain crackers (30g)\", \"calories\": 120 }\n          ]\n        },\n        {\n          \"title\": \"Dinner\",\n          \"items\": [\n            { \"name\": \"Baked cod (180g) with lemon\", \"calories\": 260 },\n            { \"name\": \"Quinoa pilaf (150g cooked)\", \"calories\": 220 },\n            { \"name\": \"Sauteed zucchini (150g) in olive oil\", \"calories\": 115 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 7,\n      \"totalCalories\": 2265,\n      \"protein\": \"170g\",\n      \"carbs\": \"227g\",\n      \"fats\": \"76g\",\n      \"meals\": [\n        {\n          \"title\": \"Breakfast\",\n          \"items\": [\n            { \"name\": \"Smoothie bowl (protein powder, banana, berries, almond milk) topped with pumpkin seeds\", \"calories\": 340 },\n            { \"name\": \"Whole‑grain toast (1 slice) with ricotta\", \"calories\": 130 }\n          ]\n        },\n        {\n          \"title\": \"Morning Snack\",\n          \"items\": [\n            { \"name\": \"Hard‑boiled egg (1)\", \"calories\": 70 },\n            { \"name\": \"Pear\", \"calories\": 100 },\n            { \"name\": \"Almonds (20g)\", \"calories\": 120 }\n          ]\n        },\n        {\n          \"title\": \"Lunch\",\n          \"items\": [\n            { \"name\": \"Grilled chicken salad with mixed greens, avocado, quinoa, olive oil\", \"calories\": 380 },\n            { \"name\": \"Whole‑grain pita\", \"calories\": 150 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Snack\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (150g) with honey\", \"calories\": 180 },\n            { \"name\": \"Rice cakes (2)\", \"calories\": 70 }\n          ]\n        },\n        {\n          \"title\": \"Dinner\",\n          \"items\": [\n            { \"name\": \"Beef stir‑fry (lean beef 150g) with bell peppers, broccoli, cashews\", \"calories\": 350 },\n            { \"name\": \"Brown rice (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Side salad with lemon dressing\", \"calories\": 115 }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "derived": {
+    "allHealthConditions": "treated hypothyroidism",
+    "allAllergies": "soy intolerance",
+    "allInjuries": "none",
+    "allGoals": "maintenance with better satiety, high-satiety meals for office routine",
+    "experienceInfo": "intermediate",
+    "bmr": 1461.181,
+    "tdee": 2264.83055,
+    "targetCalories": 2265
+  },
+  "latencyMs": 105803,
+  "usage": {
+    "prompt_tokens": 448,
+    "completion_tokens": 3040,
+    "total_tokens": 3488,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 157,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop"
+}

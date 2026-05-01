@@ -1,0 +1,56 @@
+{
+  "status": 200,
+  "body": {
+    "id": "gen-1777217978-6A4eca43UYf4LXrhADlw",
+    "object": "chat.completion",
+    "created": 1777217978,
+    "model": "openai/gpt-oss-120b:free",
+    "provider": "OpenInference",
+    "system_fingerprint": null,
+    "choices": [
+      {
+        "index": 0,
+        "logprobs": null,
+        "finish_reason": "stop",
+        "native_finish_reason": "stop",
+        "message": {
+          "role": "assistant",
+          "content": "{\"days\":[{\"day\":1,\"totalCalories\":2663,\"protein\":\"200g\",\"carbs\":\"333g\",\"fats\":\"59g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Gluten‑free oatmeal (made with oat milk) topped with banana and almond butter\",\"calories\":500}]},{\"title\":\"Morning Snack\",\"items\":[{\"name\":\"Greek yogurt (plain, gluten‑free) with honey and pumpkin seeds\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Grilled chicken breast quinoa bowl with roasted sweet potatoes, spinach, cherry tomatoes, and olive oil dressing\",\"calories\":700}]},{\"title\":\"Pre‑run Snack\",\"items\":[{\"name\":\"Rice cake topped with peanut butter and sliced strawberries\",\"calories\":150}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Baked salmon, wild‑rice pilaf, steamed broccoli, and avocado dressing\",\"calories\":800}]},{\"title\":\"Evening Snack\",\"items\":[{\"name\":\"Cottage cheese with pineapple chunks and a sprinkle of chia seeds\",\"calories\":313}]}]},{\"day\":2,\"totalCalories\":2663,\"protein\":\"200g\",\"carbs\":\"333g\",\"fats\":\"59g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Gluten‑free whole grain toast with avocado smash and poached eggs\",\"calories\":500}]},{\"title\":\"Morning Snack\",\"items\":[{\"name\":\"Smoothie (protein powder, almond milk, frozen berries, spinach, flaxseed)\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Turkey lettuce wraps with quinoa, shredded carrots, cucumber, and tahini sauce\",\"calories\":700}]},{\"title\":\"Pre‑run Snack\",\"items\":[{\"name\":\"Apple slices with almond butter\",\"calories\":150}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Grilled lean steak, baked sweet potato wedges, sautéed green beans, and olive oil drizzle\",\"calories\":800}]},{\"title\":\"Evening Snack\",\"items\":[{\"name\":\"Greek kefir with granola (gluten‑free) and blueberries\",\"calories\":313}]}]},{\"day\":3,\"totalCalories\":2663,\"protein\":\"200g\",\"carbs\":\"333g\",\"fats\":\"59g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Chia pudding made with coconut milk, topped with mango and toasted coconut flakes\",\"calories\":500}]},{\"title\":\"Morning Snack\",\"items\":[{\"name\":\"Hard‑boiled eggs (2) and a handful of mixed nuts\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Grilled shrimp salad with mixed greens, quinoa, avocado, orange segments, and citrus vinaigrette\",\"calories\":700}]},{\"title\":\"Pre‑run Snack\",\"items\":[{\"name\":\"Gluten‑free granola bar (nut‑based)\",\"calories\":150}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Roasted chicken thigh, millet pilaf, roasted carrots, and pesto sauce\",\"calories\":800}]},{\"title\":\"Evening Snack\",\"items\":[{\"name\":\"Ricotta cheese with honey drizzle and sliced figs\",\"calories\":313}]}]},{\"day\":4,\"totalCalories\":2663,\"protein\":\"200g\",\"carbs\":\"333g\",\"fats\":\"59g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Protein pancakes (gluten‑free flour) with maple syrup and blueberries\",\"calories\":500}]},{\"title\":\"Morning Snack\",\"items\":[{\"name\":\"Edamame beans seasoned with sea salt\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Beef stir‑fry with brown rice, bell peppers, snow peas, and soy‑free tamari\",\"calories\":700}]},{\"title\":\"Pre‑run Snack\",\"items\":[{\"name\":\"Banana and a tablespoon of peanut butter\",\"calories\":150}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Baked cod, quinoa salad with olives, cherry tomatoes, feta (lactose‑free), and olive oil\",\"calories\":800}]},{\"title\":\"Evening Snack\",\"items\":[{\"name\":\"Protein shake (gluten‑free protein powder, almond milk) with a dash of cinnamon\",\"calories\":313}]}]},{\"day\":5,\"totalCalories\":2663,\"protein\":\"200g\",\"carbs\":\"333g\",\"fats\":\"59g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Greek yogurt parfait with gluten‑free granola, raspberries, and chia seeds\",\"calories\":500}]},{\"title\":\"Morning Snack\",\"items\":[{\"name\":\"Rice crackers with hummus and sliced cucumber\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Grilled turkey burger on lettuce bun, sweet potato fries, and coleslaw (gluten‑free mayo)\",\"calories\":700}]},{\"title\":\"Pre‑run Snack\",\"items\":[{\"name\":\"Pear slices with walnuts\",\"calories\":150}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Lentil stew with carrots, celery, and kale served over brown rice\",\"calories\":800}]},{\"title\":\"Evening Snack\",\"items\":[{\"name\":\"Cottage cheese with peach chunks and a sprinkle of pumpkin seed granola (gluten‑free)\",\"calories\":313}]}]},{\"day\":6,\"totalCalories\":2663,\"protein\":\"200g\",\"carbs\":\"333g\",\"fats\":\"59g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Smooth bowl: blended frozen banana, almond butter, protein powder, oat milk, topped with gluten‑free granola and cacao nibs\",\"calories\":500}]},{\"title\":\"Morning Snack\",\"items\":[{\"name\":\"Turkey slice roll‑ups with avocado and gluten‑free tortilla strips\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Salmon poke bowl with sushi‑grade salmon, cauliflower rice, edamame, pickled ginger, and sesame oil\",\"calories\":700}]},{\"title\":\"Pre‑run Snack\",\"items\":[{\"name\":\"Gluten‑free rice cake with cottage cheese and cherry tomatoes\",\"calories\":150}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Pork tenderloin, roasted parsnips, sautéed spinach with garlic, and mustard sauce\",\"calories\":800}]},{\"title\":\"Evening Snack\",\"items\":[{\"name\":\"Greek yogurt with dark chocolate shavings and sliced kiwi\",\"calories\":313}]}]},{\"day\":7,\"totalCalories\":2663,\"protein\":\"200g\",\"carbs\":\"333g\",\"fats\":\"59g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Egg white scramble with spinach, mushrooms, and gluten‑free toast, side of mixed berries\",\"calories\":500}]},{\"title\":\"Morning Snack\",\"items\":[{\"name\":\"Almond butter energy balls (gluten‑free oat and dates)\",\"calories\":200}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Chicken shawarma bowl with quinoa, cucumber, tomato, tahini drizzle, and pickles (gluten‑free)\",\"calories\":700}]},{\"title\":\"Pre‑run Snack\",\"items\":[{\"name\":\"Orange segments and a handful of pistachios\",\"calories\":150}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Grilled tilapia, wild‑rice risotto with peas, and asparagus spears with lemon zest\",\"calories\":800}]},{\"title\":\"Evening Snack\",\"items\":[{\"name\":\"Protein pudding (silken tofu, cocoa powder, vanilla, gluten‑free protein powder) topped with strawberries\",\"calories\":313}]}]}]}",
+          "refusal": null,
+          "reasoning": "Need to produce 7 days each 2663 calories, macro breakdown. Must compute macros? Provide protein carbs fats grams. Use typical ratios maybe 30% protein, 50% carbs, 20% fats. Calculate grams: protein 30% of 2663 = 799 kcal /4 = 199.75g ~200g. carbs 50% = 1331.5/4=332.9g ~333g. fats 20% = 532.6/9=59.2g ~59g.\n\nProvide same each day.\n\nCreate meal items gluten-free. Need sum calories per day 2663.\n\nWill craft simple list of meals: Breakfast, Snack, Lunch, Pre-run snack, Dinner, Evening snack. Ensure calories add up.\n\nLet's design one day then repeat similar variations.\n\nDay1 items calories: Breakfast 500, Snack 200, Lunch 700, Pre-run snack 150, Dinner 800, Evening snack 313 = 2663.\n\nProvide items with names.\n\nDo for 7 days with slight variations.\n\nReturn JSON.",
+          "reasoning_details": [
+            {
+              "type": "reasoning.text",
+              "text": "Need to produce 7 days each 2663 calories, macro breakdown. Must compute macros? Provide protein carbs fats grams. Use typical ratios maybe 30% protein, 50% carbs, 20% fats. Calculate grams: protein 30% of 2663 = 799 kcal /4 = 199.75g ~200g. carbs 50% = 1331.5/4=332.9g ~333g. fats 20% = 532.6/9=59.2g ~59g.\n\nProvide same each day.\n\nCreate meal items gluten-free. Need sum calories per day 2663.\n\nWill craft simple list of meals: Breakfast, Snack, Lunch, Pre-run snack, Dinner, Evening snack. Ensure calories add up.\n\nLet's design one day then repeat similar variations.\n\nDay1 items calories: Breakfast 500, Snack 200, Lunch 700, Pre-run snack 150, Dinner 800, Evening snack 313 = 2663.\n\nProvide items with names.\n\nDo for 7 days with slight variations.\n\nReturn JSON.",
+              "format": "unknown",
+              "index": 0
+            }
+          ]
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 441,
+      "completion_tokens": 1827,
+      "total_tokens": 2268,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 144,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0,
+        "upstream_inference_prompt_cost": 0,
+        "upstream_inference_completions_cost": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 204,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    }
+  }
+}

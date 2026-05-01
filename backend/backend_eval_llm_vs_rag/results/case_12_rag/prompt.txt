@@ -1,0 +1,36 @@
+Context:
+
+User Profile: Ahmed Galal, 36 years old, male. 
+Metrics: Current Weight: 85kg, Target Weight: 83kg, Height: 177cm.
+BMR: 1872.16, TDEE: 2246.59. Target Calories: 2247 kcal.
+Activity Level: sedentary.
+Experience Level: beginner - adjustable dumbbells at home.
+Goals: maintenance and posture improvement, weekday home training only. 
+Health Conditions: desk-job posture issues.
+Allergies: none.
+Injuries: neck tension, avoid painful loaded shrugs and jerky neck motion.
+Medical Report Findings: Therapist recommended thoracic mobility, scapular control, and gradual conditioning..
+InBody Report Findings: Body composition average, low activity score..
+Vector Database Constraints: Issue: Cervical Disc Irritation - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy shrugs with neck protraction, Overhead pressing with poor head position)
+Issue: Cervical Disc Irritation - Moderate-Severe - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy shrugs with neck protraction, Overhead pressing with poor head position, Bridging on the head)
+Issue: Shoulder Impingement Syndrome - Moderate - Musculoskeletal. Constraints: Foods to avoid (Highly processed sugary foods), Exercises to avoid (Deep bar dips, Behind-the-neck presses)
+
+
+Task:
+Create a 7-day exercise plan.
+For EACH day, provide TWO complete plans: one for "home" and one for "gym".
+Include warm-up, main exercises, and cool-down.
+Each day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. 
+Adjust difficulty based on the user's experience level and if he gave you a specific split name like "push-pull-legs" or "full body" or "upper-lower" make it in the exact format of the Json in example.
+Ensure exercises are safe for the provided injuries/conditions and doesnt violate any of the vector database constraints. 
+Return ONLY JSON in this format:
+{
+  "gym": {
+    "title": "Gym Workout Plan",
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "...", "sets": "3", "reps": "12", "calories": 40}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "...", "sets": "3", "reps": "15", "calories": 49}]}]
+  },
+  "home": {
+    "title": "Home Workout Plan",
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "None", "sets": "3", "reps": "12", "calories": 100}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "None", "sets": "3", "reps": "15", "calories": 80}]}]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "fddc4ee0-c2f3-4775-ba8b-fb05a59f018e",
+      "version": 652,
+      "score": 0.6135547,
+      "payload": {
+        "athlete_id": "ATH0558",
+        "name": "هدى مروان العوامي",
+        "age": 56,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Hypothyroidism - Mild - Endocrine",
+        "dietary_restrictions": [
+          "Adequate energy intake"
+        ],
+        "allergies": [
+          "Peanuts"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Extreme calorie-deficit training blocks",
+            "reason": "Can worsen fatigue"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Peanut-containing snacks",
+            "reason": "Allergic reaction risk"
+          }
+        ]
+      }
+    },
+    {
+      "id": "aedded61-031a-409d-94f1-4411e6851186",
+      "version": 560,
+      "score": 0.59395206,
+      "payload": {
+        "athlete_id": "ATH0466",
+        "name": "ياسين البدري",
+        "age": 57,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Hypothyroidism - Mild - Endocrine",
+        "dietary_restrictions": [
+          "Medication timing awareness"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Extreme calorie-deficit training blocks",
+            "reason": "Can worsen fatigue"
+          },
+          {
+            "exercise": "Aggressive two-a-day training during low-energy periods",
+            "reason": "Poor recovery tolerance"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "12613c53-5be8-4575-9345-256b07810d57",
+      "version": 1902,
+      "score": 0.58231246,
+      "payload": {
+        "athlete_id": "ATH1808",
+        "name": "محمد مروان المصري",
+        "age": 59,
+        "gender": "Male",
+        "goal": "Body recomposition",
+        "issue": "Hypothyroidism - Mild-Moderate - Endocrine",
+        "dietary_restrictions": [
+          "Protein distribution support",
+          "Medication timing awareness"
+        ],
+        "allergies": [
+          "Sesame"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Aggressive two-a-day training during low-energy periods",
+            "reason": "Poor recovery tolerance"
+          },
+          {
+            "exercise": "Extreme calorie-deficit training blocks",
+            "reason": "Can worsen fatigue"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Liquid-calorie coffees and shakes",
+            "reason": "Can hide excess calories and disrupt fat-loss targets"
+          },
+          {
+            "food": "Sesame-containing foods",
+            "reason": "Allergic reaction risk"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Hypothyroidism - Mild - Endocrine. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Extreme calorie-deficit training blocks)\nIssue: Hypothyroidism - Mild - Endocrine. Constraints: Foods to avoid (), Exercises to avoid (Extreme calorie-deficit training blocks, Aggressive two-a-day training during low-energy periods)\nIssue: Hypothyroidism - Mild-Moderate - Endocrine. Constraints: Foods to avoid (Liquid-calorie coffees and shakes, Sesame-containing foods), Exercises to avoid (Aggressive two-a-day training during low-energy periods, Extreme calorie-deficit training blocks)"
+}

@@ -1,0 +1,23 @@
+{
+  "method": "POST",
+  "headers": {
+    "Authorization": "Bearer [REDACTED]",
+    "Content-Type": "application/json",
+    "HTTP-Referer": "https://local.eval.backend",
+    "X-Title": "backend_eval_llm_vs_rag_openrouter_oss120b"
+  },
+  "body": {
+    "model": "openai/gpt-oss-120b:free",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a certified sports nutritionist and personal trainer. You MUST return ONLY valid, complete JSON. Keep responses compact but complete. Accuracy is critical for user safety."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n\nUser Profile: Jana Nabil, 35 years old, female. \nMetrics: Current Weight: 64kg, Target Weight: 64kg, Height: 167cm.\nBMR: 1405.22, TDEE: 2424.00. Target Calories: 2424 kcal.\nActivity Level: active.\nExperience Level: advanced - advanced lifter with home dumbbells and full gym access.\nGoals: maintenance and balanced strength, balanced full-body training. \nHealth Conditions: mild scoliosis.\nAllergies: none.\nInjuries: none, avoid painful asymmetrical loading and sloppy fatigue form.\nMedical Report Findings: Clinician advised good trunk control, symmetrical loading, and technique quality..\nInBody Report Findings: Balanced body composition and good lean mass..\nVector Database Constraints: Issue: Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Asymmetrical heavy carries to fatigue)\nIssue: Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Repeated twisting under heavy load)\nIssue: Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Poorly controlled heavy axial loading)\n\n\nTask:\nCreate a 7-day exercise plan.\nFor EACH day, provide TWO complete plans: one for \"home\" and one for \"gym\".\nInclude warm-up, main exercises, and cool-down.\nEach day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. \nAdjust difficulty based on the user's experience level and if he gave you a specific split name like \"push-pull-legs\" or \"full body\" or \"upper-lower\" make it in the exact format of the Json in example.\nEnsure exercises are safe for the provided injuries/conditions and doesnt violate any of the vector database constraints. \nReturn ONLY JSON in this format:\n{\n  \"gym\": {\n    \"title\": \"Gym Workout Plan\",\n    \"days\": [{\"day\": 1, \"exercises\": [{\"id\": 1, \"name\": \"...\", \"difficulty\": \"Medium\", \"equipment\": \"...\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40}, {\"id\": 2, \"name\": \"...\", \"difficulty\": \"Easy\", \"equipment\": \"...\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 49}]}]\n  },\n  \"home\": {\n    \"title\": \"Home Workout Plan\",\n    \"days\": [{\"day\": 1, \"exercises\": [{\"id\": 1, \"name\": \"...\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 100}, {\"id\": 2, \"name\": \"...\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 80}]}]\n  }\n}"
+      }
+    ],
+    "max_tokens": 16000
+  }
+}

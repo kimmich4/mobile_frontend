@@ -1,0 +1,811 @@
+{
+  "caseId": "case_13",
+  "mode": "llm_only",
+  "route": "/ai/generate-diet",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "days": [
+      {
+        "day": 1,
+        "totalCalories": 3362,
+        "protein": "144g",
+        "carbs": "487g",
+        "fats": "93g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Eggs (3)",
+                "calories": 210
+              },
+              {
+                "name": "Whole wheat toast (2 slices)",
+                "calories": 160
+              },
+              {
+                "name": "Oatmeal (1 cup, cooked)",
+                "calories": 150
+              },
+              {
+                "name": "Skim milk (1 cup)",
+                "calories": 90
+              },
+              {
+                "name": "Banana (1 medium)",
+                "calories": 105
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Chicken breast (200 g)",
+                "calories": 330
+              },
+              {
+                "name": "Brown rice (1.5 cups)",
+                "calories": 330
+              },
+              {
+                "name": "Steamed broccoli (1 cup)",
+                "calories": 55
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lean beef (200 g)",
+                "calories": 460
+              },
+              {
+                "name": "Sweet potato (300 g)",
+                "calories": 260
+              },
+              {
+                "name": "Mixed vegetables (1 cup)",
+                "calories": 80
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Snacks",
+            "items": [
+              {
+                "name": "Greek yogurt (200 g)",
+                "calories": 120
+              },
+              {
+                "name": "Whey protein shake (1 scoop)",
+                "calories": 120
+              },
+              {
+                "name": "Peanut butter (2 tbsp)",
+                "calories": 190
+              },
+              {
+                "name": "Apple (1 medium)",
+                "calories": 95
+              },
+              {
+                "name": "Cottage cheese (200 g)",
+                "calories": 180
+              },
+              {
+                "name": "Whole grain crackers (3 pcs)",
+                "calories": 90
+              },
+              {
+                "name": "Boiled egg (1)",
+                "calories": 70
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "totalCalories": 3362,
+        "protein": "144g",
+        "carbs": "487g",
+        "fats": "93g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Eggs (3)",
+                "calories": 210
+              },
+              {
+                "name": "Whole wheat toast (2 slices)",
+                "calories": 160
+              },
+              {
+                "name": "Oatmeal (1 cup, cooked)",
+                "calories": 150
+              },
+              {
+                "name": "Skim milk (1 cup)",
+                "calories": 90
+              },
+              {
+                "name": "Banana (1 medium)",
+                "calories": 105
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Chicken breast (200 g)",
+                "calories": 330
+              },
+              {
+                "name": "Brown rice (1.5 cups)",
+                "calories": 330
+              },
+              {
+                "name": "Steamed broccoli (1 cup)",
+                "calories": 55
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lean beef (200 g)",
+                "calories": 460
+              },
+              {
+                "name": "Sweet potato (300 g)",
+                "calories": 260
+              },
+              {
+                "name": "Mixed vegetables (1 cup)",
+                "calories": 80
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Snacks",
+            "items": [
+              {
+                "name": "Greek yogurt (200 g)",
+                "calories": 120
+              },
+              {
+                "name": "Whey protein shake (1 scoop)",
+                "calories": 120
+              },
+              {
+                "name": "Peanut butter (2 tbsp)",
+                "calories": 190
+              },
+              {
+                "name": "Apple (1 medium)",
+                "calories": 95
+              },
+              {
+                "name": "Cottage cheese (200 g)",
+                "calories": 180
+              },
+              {
+                "name": "Whole grain crackers (3 pcs)",
+                "calories": 90
+              },
+              {
+                "name": "Boiled egg (1)",
+                "calories": 70
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "totalCalories": 3362,
+        "protein": "144g",
+        "carbs": "487g",
+        "fats": "93g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Eggs (3)",
+                "calories": 210
+              },
+              {
+                "name": "Whole wheat toast (2 slices)",
+                "calories": 160
+              },
+              {
+                "name": "Oatmeal (1 cup, cooked)",
+                "calories": 150
+              },
+              {
+                "name": "Skim milk (1 cup)",
+                "calories": 90
+              },
+              {
+                "name": "Banana (1 medium)",
+                "calories": 105
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Chicken breast (200 g)",
+                "calories": 330
+              },
+              {
+                "name": "Brown rice (1.5 cups)",
+                "calories": 330
+              },
+              {
+                "name": "Steamed broccoli (1 cup)",
+                "calories": 55
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lean beef (200 g)",
+                "calories": 460
+              },
+              {
+                "name": "Sweet potato (300 g)",
+                "calories": 260
+              },
+              {
+                "name": "Mixed vegetables (1 cup)",
+                "calories": 80
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Snacks",
+            "items": [
+              {
+                "name": "Greek yogurt (200 g)",
+                "calories": 120
+              },
+              {
+                "name": "Whey protein shake (1 scoop)",
+                "calories": 120
+              },
+              {
+                "name": "Peanut butter (2 tbsp)",
+                "calories": 190
+              },
+              {
+                "name": "Apple (1 medium)",
+                "calories": 95
+              },
+              {
+                "name": "Cottage cheese (200 g)",
+                "calories": 180
+              },
+              {
+                "name": "Whole grain crackers (3 pcs)",
+                "calories": 90
+              },
+              {
+                "name": "Boiled egg (1)",
+                "calories": 70
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "totalCalories": 3362,
+        "protein": "144g",
+        "carbs": "487g",
+        "fats": "93g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Eggs (3)",
+                "calories": 210
+              },
+              {
+                "name": "Whole wheat toast (2 slices)",
+                "calories": 160
+              },
+              {
+                "name": "Oatmeal (1 cup, cooked)",
+                "calories": 150
+              },
+              {
+                "name": "Skim milk (1 cup)",
+                "calories": 90
+              },
+              {
+                "name": "Banana (1 medium)",
+                "calories": 105
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Chicken breast (200 g)",
+                "calories": 330
+              },
+              {
+                "name": "Brown rice (1.5 cups)",
+                "calories": 330
+              },
+              {
+                "name": "Steamed broccoli (1 cup)",
+                "calories": 55
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lean beef (200 g)",
+                "calories": 460
+              },
+              {
+                "name": "Sweet potato (300 g)",
+                "calories": 260
+              },
+              {
+                "name": "Mixed vegetables (1 cup)",
+                "calories": 80
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Snacks",
+            "items": [
+              {
+                "name": "Greek yogurt (200 g)",
+                "calories": 120
+              },
+              {
+                "name": "Whey protein shake (1 scoop)",
+                "calories": 120
+              },
+              {
+                "name": "Peanut butter (2 tbsp)",
+                "calories": 190
+              },
+              {
+                "name": "Apple (1 medium)",
+                "calories": 95
+              },
+              {
+                "name": "Cottage cheese (200 g)",
+                "calories": 180
+              },
+              {
+                "name": "Whole grain crackers (3 pcs)",
+                "calories": 90
+              },
+              {
+                "name": "Boiled egg (1)",
+                "calories": 70
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "totalCalories": 3362,
+        "protein": "144g",
+        "carbs": "487g",
+        "fats": "93g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Eggs (3)",
+                "calories": 210
+              },
+              {
+                "name": "Whole wheat toast (2 slices)",
+                "calories": 160
+              },
+              {
+                "name": "Oatmeal (1 cup, cooked)",
+                "calories": 150
+              },
+              {
+                "name": "Skim milk (1 cup)",
+                "calories": 90
+              },
+              {
+                "name": "Banana (1 medium)",
+                "calories": 105
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Chicken breast (200 g)",
+                "calories": 330
+              },
+              {
+                "name": "Brown rice (1.5 cups)",
+                "calories": 330
+              },
+              {
+                "name": "Steamed broccoli (1 cup)",
+                "calories": 55
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lean beef (200 g)",
+                "calories": 460
+              },
+              {
+                "name": "Sweet potato (300 g)",
+                "calories": 260
+              },
+              {
+                "name": "Mixed vegetables (1 cup)",
+                "calories": 80
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Snacks",
+            "items": [
+              {
+                "name": "Greek yogurt (200 g)",
+                "calories": 120
+              },
+              {
+                "name": "Whey protein shake (1 scoop)",
+                "calories": 120
+              },
+              {
+                "name": "Peanut butter (2 tbsp)",
+                "calories": 190
+              },
+              {
+                "name": "Apple (1 medium)",
+                "calories": 95
+              },
+              {
+                "name": "Cottage cheese (200 g)",
+                "calories": 180
+              },
+              {
+                "name": "Whole grain crackers (3 pcs)",
+                "calories": 90
+              },
+              {
+                "name": "Boiled egg (1)",
+                "calories": 70
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "totalCalories": 3362,
+        "protein": "144g",
+        "carbs": "487g",
+        "fats": "93g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Eggs (3)",
+                "calories": 210
+              },
+              {
+                "name": "Whole wheat toast (2 slices)",
+                "calories": 160
+              },
+              {
+                "name": "Oatmeal (1 cup, cooked)",
+                "calories": 150
+              },
+              {
+                "name": "Skim milk (1 cup)",
+                "calories": 90
+              },
+              {
+                "name": "Banana (1 medium)",
+                "calories": 105
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Chicken breast (200 g)",
+                "calories": 330
+              },
+              {
+                "name": "Brown rice (1.5 cups)",
+                "calories": 330
+              },
+              {
+                "name": "Steamed broccoli (1 cup)",
+                "calories": 55
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lean beef (200 g)",
+                "calories": 460
+              },
+              {
+                "name": "Sweet potato (300 g)",
+                "calories": 260
+              },
+              {
+                "name": "Mixed vegetables (1 cup)",
+                "calories": 80
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Snacks",
+            "items": [
+              {
+                "name": "Greek yogurt (200 g)",
+                "calories": 120
+              },
+              {
+                "name": "Whey protein shake (1 scoop)",
+                "calories": 120
+              },
+              {
+                "name": "Peanut butter (2 tbsp)",
+                "calories": 190
+              },
+              {
+                "name": "Apple (1 medium)",
+                "calories": 95
+              },
+              {
+                "name": "Cottage cheese (200 g)",
+                "calories": 180
+              },
+              {
+                "name": "Whole grain crackers (3 pcs)",
+                "calories": 90
+              },
+              {
+                "name": "Boiled egg (1)",
+                "calories": 70
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "totalCalories": 3362,
+        "protein": "144g",
+        "carbs": "487g",
+        "fats": "93g",
+        "meals": [
+          {
+            "title": "Breakfast",
+            "items": [
+              {
+                "name": "Eggs (3)",
+                "calories": 210
+              },
+              {
+                "name": "Whole wheat toast (2 slices)",
+                "calories": 160
+              },
+              {
+                "name": "Oatmeal (1 cup, cooked)",
+                "calories": 150
+              },
+              {
+                "name": "Skim milk (1 cup)",
+                "calories": 90
+              },
+              {
+                "name": "Banana (1 medium)",
+                "calories": 105
+              }
+            ]
+          },
+          {
+            "title": "Lunch",
+            "items": [
+              {
+                "name": "Chicken breast (200 g)",
+                "calories": 330
+              },
+              {
+                "name": "Brown rice (1.5 cups)",
+                "calories": 330
+              },
+              {
+                "name": "Steamed broccoli (1 cup)",
+                "calories": 55
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner",
+            "items": [
+              {
+                "name": "Lean beef (200 g)",
+                "calories": 460
+              },
+              {
+                "name": "Sweet potato (300 g)",
+                "calories": 260
+              },
+              {
+                "name": "Mixed vegetables (1 cup)",
+                "calories": 80
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Snacks",
+            "items": [
+              {
+                "name": "Greek yogurt (200 g)",
+                "calories": 120
+              },
+              {
+                "name": "Whey protein shake (1 scoop)",
+                "calories": 120
+              },
+              {
+                "name": "Peanut butter (2 tbsp)",
+                "calories": 190
+              },
+              {
+                "name": "Apple (1 medium)",
+                "calories": 95
+              },
+              {
+                "name": "Cottage cheese (200 g)",
+                "calories": 180
+              },
+              {
+                "name": "Whole grain crackers (3 pcs)",
+                "calories": 90
+              },
+              {
+                "name": "Boiled egg (1)",
+                "calories": 70
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "parseError": null,
+  "cleanedContent": "{\"days\":[{\"day\":1,\"totalCalories\":3362,\"protein\":\"144g\",\"carbs\":\"487g\",\"fats\":\"93g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Eggs (3)\",\"calories\":210},{\"name\":\"Whole wheat toast (2 slices)\",\"calories\":160},{\"name\":\"Oatmeal (1 cup, cooked)\",\"calories\":150},{\"name\":\"Skim milk (1 cup)\",\"calories\":90},{\"name\":\"Banana (1 medium)\",\"calories\":105}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Chicken breast (200 g)\",\"calories\":330},{\"name\":\"Brown rice (1.5 cups)\",\"calories\":330},{\"name\":\"Steamed broccoli (1 cup)\",\"calories\":55},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Lean beef (200 g)\",\"calories\":460},{\"name\":\"Sweet potato (300 g)\",\"calories\":260},{\"name\":\"Mixed vegetables (1 cup)\",\"calories\":80},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Snacks\",\"items\":[{\"name\":\"Greek yogurt (200 g)\",\"calories\":120},{\"name\":\"Whey protein shake (1 scoop)\",\"calories\":120},{\"name\":\"Peanut butter (2 tbsp)\",\"calories\":190},{\"name\":\"Apple (1 medium)\",\"calories\":95},{\"name\":\"Cottage cheese (200 g)\",\"calories\":180},{\"name\":\"Whole grain crackers (3 pcs)\",\"calories\":90},{\"name\":\"Boiled egg (1)\",\"calories\":70}]}]},{\"day\":2,\"totalCalories\":3362,\"protein\":\"144g\",\"carbs\":\"487g\",\"fats\":\"93g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Eggs (3)\",\"calories\":210},{\"name\":\"Whole wheat toast (2 slices)\",\"calories\":160},{\"name\":\"Oatmeal (1 cup, cooked)\",\"calories\":150},{\"name\":\"Skim milk (1 cup)\",\"calories\":90},{\"name\":\"Banana (1 medium)\",\"calories\":105}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Chicken breast (200 g)\",\"calories\":330},{\"name\":\"Brown rice (1.5 cups)\",\"calories\":330},{\"name\":\"Steamed broccoli (1 cup)\",\"calories\":55},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Lean beef (200 g)\",\"calories\":460},{\"name\":\"Sweet potato (300 g)\",\"calories\":260},{\"name\":\"Mixed vegetables (1 cup)\",\"calories\":80},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Snacks\",\"items\":[{\"name\":\"Greek yogurt (200 g)\",\"calories\":120},{\"name\":\"Whey protein shake (1 scoop)\",\"calories\":120},{\"name\":\"Peanut butter (2 tbsp)\",\"calories\":190},{\"name\":\"Apple (1 medium)\",\"calories\":95},{\"name\":\"Cottage cheese (200 g)\",\"calories\":180},{\"name\":\"Whole grain crackers (3 pcs)\",\"calories\":90},{\"name\":\"Boiled egg (1)\",\"calories\":70}]}]},{\"day\":3,\"totalCalories\":3362,\"protein\":\"144g\",\"carbs\":\"487g\",\"fats\":\"93g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Eggs (3)\",\"calories\":210},{\"name\":\"Whole wheat toast (2 slices)\",\"calories\":160},{\"name\":\"Oatmeal (1 cup, cooked)\",\"calories\":150},{\"name\":\"Skim milk (1 cup)\",\"calories\":90},{\"name\":\"Banana (1 medium)\",\"calories\":105}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Chicken breast (200 g)\",\"calories\":330},{\"name\":\"Brown rice (1.5 cups)\",\"calories\":330},{\"name\":\"Steamed broccoli (1 cup)\",\"calories\":55},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Lean beef (200 g)\",\"calories\":460},{\"name\":\"Sweet potato (300 g)\",\"calories\":260},{\"name\":\"Mixed vegetables (1 cup)\",\"calories\":80},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Snacks\",\"items\":[{\"name\":\"Greek yogurt (200 g)\",\"calories\":120},{\"name\":\"Whey protein shake (1 scoop)\",\"calories\":120},{\"name\":\"Peanut butter (2 tbsp)\",\"calories\":190},{\"name\":\"Apple (1 medium)\",\"calories\":95},{\"name\":\"Cottage cheese (200 g)\",\"calories\":180},{\"name\":\"Whole grain crackers (3 pcs)\",\"calories\":90},{\"name\":\"Boiled egg (1)\",\"calories\":70}]}]},{\"day\":4,\"totalCalories\":3362,\"protein\":\"144g\",\"carbs\":\"487g\",\"fats\":\"93g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Eggs (3)\",\"calories\":210},{\"name\":\"Whole wheat toast (2 slices)\",\"calories\":160},{\"name\":\"Oatmeal (1 cup, cooked)\",\"calories\":150},{\"name\":\"Skim milk (1 cup)\",\"calories\":90},{\"name\":\"Banana (1 medium)\",\"calories\":105}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Chicken breast (200 g)\",\"calories\":330},{\"name\":\"Brown rice (1.5 cups)\",\"calories\":330},{\"name\":\"Steamed broccoli (1 cup)\",\"calories\":55},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Lean beef (200 g)\",\"calories\":460},{\"name\":\"Sweet potato (300 g)\",\"calories\":260},{\"name\":\"Mixed vegetables (1 cup)\",\"calories\":80},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Snacks\",\"items\":[{\"name\":\"Greek yogurt (200 g)\",\"calories\":120},{\"name\":\"Whey protein shake (1 scoop)\",\"calories\":120},{\"name\":\"Peanut butter (2 tbsp)\",\"calories\":190},{\"name\":\"Apple (1 medium)\",\"calories\":95},{\"name\":\"Cottage cheese (200 g)\",\"calories\":180},{\"name\":\"Whole grain crackers (3 pcs)\",\"calories\":90},{\"name\":\"Boiled egg (1)\",\"calories\":70}]}]},{\"day\":5,\"totalCalories\":3362,\"protein\":\"144g\",\"carbs\":\"487g\",\"fats\":\"93g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Eggs (3)\",\"calories\":210},{\"name\":\"Whole wheat toast (2 slices)\",\"calories\":160},{\"name\":\"Oatmeal (1 cup, cooked)\",\"calories\":150},{\"name\":\"Skim milk (1 cup)\",\"calories\":90},{\"name\":\"Banana (1 medium)\",\"calories\":105}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Chicken breast (200 g)\",\"calories\":330},{\"name\":\"Brown rice (1.5 cups)\",\"calories\":330},{\"name\":\"Steamed broccoli (1 cup)\",\"calories\":55},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Lean beef (200 g)\",\"calories\":460},{\"name\":\"Sweet potato (300 g)\",\"calories\":260},{\"name\":\"Mixed vegetables (1 cup)\",\"calories\":80},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Snacks\",\"items\":[{\"name\":\"Greek yogurt (200 g)\",\"calories\":120},{\"name\":\"Whey protein shake (1 scoop)\",\"calories\":120},{\"name\":\"Peanut butter (2 tbsp)\",\"calories\":190},{\"name\":\"Apple (1 medium)\",\"calories\":95},{\"name\":\"Cottage cheese (200 g)\",\"calories\":180},{\"name\":\"Whole grain crackers (3 pcs)\",\"calories\":90},{\"name\":\"Boiled egg (1)\",\"calories\":70}]}]},{\"day\":6,\"totalCalories\":3362,\"protein\":\"144g\",\"carbs\":\"487g\",\"fats\":\"93g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Eggs (3)\",\"calories\":210},{\"name\":\"Whole wheat toast (2 slices)\",\"calories\":160},{\"name\":\"Oatmeal (1 cup, cooked)\",\"calories\":150},{\"name\":\"Skim milk (1 cup)\",\"calories\":90},{\"name\":\"Banana (1 medium)\",\"calories\":105}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Chicken breast (200 g)\",\"calories\":330},{\"name\":\"Brown rice (1.5 cups)\",\"calories\":330},{\"name\":\"Steamed broccoli (1 cup)\",\"calories\":55},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Lean beef (200 g)\",\"calories\":460},{\"name\":\"Sweet potato (300 g)\",\"calories\":260},{\"name\":\"Mixed vegetables (1 cup)\",\"calories\":80},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Snacks\",\"items\":[{\"name\":\"Greek yogurt (200 g)\",\"calories\":120},{\"name\":\"Whey protein shake (1 scoop)\",\"calories\":120},{\"name\":\"Peanut butter (2 tbsp)\",\"calories\":190},{\"name\":\"Apple (1 medium)\",\"calories\":95},{\"name\":\"Cottage cheese (200 g)\",\"calories\":180},{\"name\":\"Whole grain crackers (3 pcs)\",\"calories\":90},{\"name\":\"Boiled egg (1)\",\"calories\":70}]}]},{\"day\":7,\"totalCalories\":3362,\"protein\":\"144g\",\"carbs\":\"487g\",\"fats\":\"93g\",\"meals\":[{\"title\":\"Breakfast\",\"items\":[{\"name\":\"Eggs (3)\",\"calories\":210},{\"name\":\"Whole wheat toast (2 slices)\",\"calories\":160},{\"name\":\"Oatmeal (1 cup, cooked)\",\"calories\":150},{\"name\":\"Skim milk (1 cup)\",\"calories\":90},{\"name\":\"Banana (1 medium)\",\"calories\":105}]},{\"title\":\"Lunch\",\"items\":[{\"name\":\"Chicken breast (200 g)\",\"calories\":330},{\"name\":\"Brown rice (1.5 cups)\",\"calories\":330},{\"name\":\"Steamed broccoli (1 cup)\",\"calories\":55},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Dinner\",\"items\":[{\"name\":\"Lean beef (200 g)\",\"calories\":460},{\"name\":\"Sweet potato (300 g)\",\"calories\":260},{\"name\":\"Mixed vegetables (1 cup)\",\"calories\":80},{\"name\":\"Olive oil (1 tbsp)\",\"calories\":120}]},{\"title\":\"Snacks\",\"items\":[{\"name\":\"Greek yogurt (200 g)\",\"calories\":120},{\"name\":\"Whey protein shake (1 scoop)\",\"calories\":120},{\"name\":\"Peanut butter (2 tbsp)\",\"calories\":190},{\"name\":\"Apple (1 medium)\",\"calories\":95},{\"name\":\"Cottage cheese (200 g)\",\"calories\":180},{\"name\":\"Whole grain crackers (3 pcs)\",\"calories\":90},{\"name\":\"Boiled egg (1)\",\"calories\":70}]}]}]}",
+  "derived": {
+    "allHealthConditions": "none",
+    "allAllergies": "tree nut allergy",
+    "allInjuries": "none",
+    "allGoals": "muscle gain, budget-friendly student meals",
+    "experienceInfo": "beginner - new to lifting",
+    "bmr": 1658.902,
+    "tdee": 2861.60595,
+    "targetCalories": 3362
+  },
+  "latencyMs": 126180,
+  "usage": {
+    "prompt_tokens": 439,
+    "completion_tokens": 3547,
+    "total_tokens": 3986,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 877,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop"
+}

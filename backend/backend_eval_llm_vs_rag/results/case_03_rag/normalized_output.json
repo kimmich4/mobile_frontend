@@ -1,0 +1,158 @@
+{
+  "caseId": "case_03",
+  "mode": "rag",
+  "route": "/ai/generate-diet",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": false,
+  "parsedOutput": null,
+  "parseError": "Expected double-quoted property name in JSON at position 9732 (line 290 column 11)",
+  "cleanedContent": "{\n  \"days\": [\n    {\n      \"day\": 1,\n      \"totalCalories\": 2543,\n      \"protein\": \"158g\",\n      \"carbs\": \"260g\",\n      \"fats\": \"70g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunrise Fuel Bowl\",\n          \"items\": [\n            { \"name\": \"Rolled Oats (80g)\", \"calories\": 300 },\n            { \"name\": \"Lactose‑free Greek yogurt (150g)\", \"calories\": 95 },\n            { \"name\": \"Blueberries (50g)\", \"calories\": 29 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Power Snack\",\n          \"items\": [\n            { \"name\": \"Rice cakes (2 pcs)\", \"calories\": 70 },\n            { \"name\": \"Peanut butter (20g)\", \"calories\": 118 },\n            { \"name\": \"Strawberries (80g)\", \"calories\": 24 }\n          ]\n        },\n        {\n          \"title\": \"Cyclist’s Lunch Box\",\n          \"items\": [\n            { \"name\": \"Grilled chicken breast (150g)\", \"calories\": 250 },\n            { \"name\": \"Quinoa (180g cooked)\", \"calories\": 210 },\n            { \"name\": \"Steamed carrots (100g)\", \"calories\": 41 },\n            { \"name\": \"Olive oil drizzle (10g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Recovery Smoothie\",\n          \"items\": [\n            { \"name\": \"Lactose‑free protein powder (30g)\", \"calories\": 120 },\n            { \"name\": \"Banana (100g)\", \"calories\": 89 },\n            { \"name\": \"Almond milk (250ml)\", \"calories\": 60 },\n            { \"name\": \"Chia seeds (15g)\", \"calories\": 81 }\n          ]\n        },\n        {\n          \"title\": \"Evening Endurance Plate\",\n          \"items\": [\n            { \"name\": \"Baked salmon (180g)\", \"calories\": 360 },\n            { \"name\": \"Sweet potato (250g)\", \"calories\": 215 },\n            { \"name\": \"Green beans (120g)\", \"calories\": 45 },\n            { \"name\": \"Walnuts (20g)\", \"calories\": 126 },\n            { \"name\": \"Lemon‑herb vinaigrette (15g)\", \"calories\": 77 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 2,\n      \"totalCalories\": 2543,\n      \"protein\": \"155g\",\n      \"carbs\": \"255g\",\n      \"fats\": \"68g\",\n      \"meals\": [\n        {\n          \"title\": \"Morning Boost Parfait\",\n          \"items\": [\n            { \"name\": \"Lactose‑free cottage cheese (200g)\", \"calories\": 170 },\n            { \"name\": \"Kiwi (100g)\", \"calories\": 61 },\n            { \"name\": \"Granola (30g, low‑FODMAP)\", \"calories\": 140 }\n          ]\n        },\n        {\n          \"title\": \"Pre‑Ride Energy Bar\",\n          \"items\": [\n            { \"name\": \"Homemade oat‑date bar (50g)\", \"calories\": 210 }\n          ]\n        },\n        {\n          \"title\": \"Post‑Ride Refuel Bowl\",\n          \"items\": [\n            { \"name\": \"Lean turkey slices (120g)\", \"calories\": 150 },\n            { \"name\": \"Brown rice (200g cooked)\", \"calories\": 225 },\n            { \"name\": \"Spinach (80g)\", \"calories\": 19 },\n            { \"name\": \"Olive oil (10g)\", \"calories\": 90 },\n            { \"name\": \"Cucumber (50g)\", \"calories\": 8 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Afternoon Nut Mix\",\n          \"items\": [\n            { \"name\": \"Almonds (25g)\", \"calories\": 145 },\n            { \"name\": \"Pumpkin seeds (15g)\", \"calories\": 85 }\n          ]\n        },\n        {\n          \"title\": \"Dinner Power Plate\",\n          \"items\": [\n            { \"name\": \"Grilled cod (180g)\", \"calories\": 170 },\n            { \"name\": \"Polenta (150g)\", \"calories\": 160 },\n            { \"name\": \"Roasted zucchini (120g)\", \"calories\": 30 },\n            { \"name\": \"Pesto (15g, dairy‑free)\", \"calories\": 90 },\n            { \"name\": \"Olive oil (10g)\", \"calories\": 90 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 3,\n      \"totalCalories\": 2543,\n      \"protein\": \"160g\",\n      \"carbs\": \"250g\",\n      \"fats\": \"72g\",\n      \"meals\": [\n        {\n          \"title\": \"Early Bird Oatmeal\",\n          \"items\": [\n            { \"name\": \"Gluten‑free rolled oats (90g)\", \"calories\": 340 },\n            { \"name\": \"Lactose‑free milk (200ml)\", \"calories\": 90 },\n            { \"name\": \"Raspberries (60g)\", \"calories\": 30 }\n          ]\n        },\n        {\n          \"title\": \"Quick Trail Snack\",\n          \"items\": [\n            { \"name\": \"Rice crackers (30g)\", \"calories\": 115 },\n            { \"name\": \"Tahini dip (15g)\", \"calories\": 85 }\n          ]\n        },\n        {\n          \"title\": \"Midday Power Wrap\",\n          \"items\": [\n            { \"name\": \"Corn tortilla (2 pcs)\", \"calories\": 180 },\n            { \"name\": \"Grilled shrimp (130g)\", \"calories\": 150 },\n            { \"name\": \"Lettuce & bell pepper mix (80g)\", \"calories\": 20 },\n            { \"name\": \"Avocado (50g)\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Pre‑Evening Smoothie\",\n          \"items\": [\n            { \"name\": \"Pea protein isolate (30g)\", \"calories\": 120 },\n            { \"name\": \"Pineapple (100g)\", \"calories\": 50 },\n            { \"name\": \"Coconut water (200ml)\", \"calories\": 38 },\n            { \"name\": \"Flaxseed oil (5g)\", \"calories\": 45 }\n          ]\n        },\n        {\n          \"title\": \"Nighttime Recovery Plate\",\n          \"items\": [\n            { \"name\": \"Lean beef steak (150g)\", \"calories\": 320 },\n            { \"name\": \"Mashed parsnip (200g)\", \"calories\": 180 },\n            { \"name\": \"Steamed bok choy (100g)\", \"calories\": 13 },\n            { \"name\": \"Sesame oil (10g)\", \"calories\": 90 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 4,\n      \"totalCalories\": 2543,\n      \"protein\": \"152g\",\n      \"carbs\": \"258g\",\n      \"fats\": \"66g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunrise Chia Pudding\",\n          \"items\": [\n            { \"name\": \"Chia seeds (40g)\", \"calories\": 200 },\n            { \"name\": \"Almond milk (250ml)\", \"calories\": 60 },\n            { \"name\": \"Strawberries (80g)\", \"calories\": 24 }\n          ]\n        },\n        {\n          \"title\": \"Morning Nut‑Butter Toast\",\n          \"items\": [\n            { \"name\": \"Gluten‑free bread (2 slices)\", \"calories\": 180 },\n            { \"name\": \"Almond butter (15g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Cyclist’s Midday Bowl\",\n          \"items\": [\n            { \"name\": \"Tuna in water (120g)\", \"calories\": 140 },\n            { \"name\": \"Buckwheat (180g cooked)\", \"calories\": 210 },\n            { \"name\": \"Roasted carrots (100g)\", \"calories\": 41 },\n            { \"name\": \"Olive oil (10g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Energy Balls\",\n          \"items\": [\n            { \"name\": \"Homemade low‑FODMAP energy balls (3 pcs, 30g total)\", \"calories\": 150 }\n          ]\n        },\n        {\n          \"title\": \"Evening Harvest Platter\",\n          \"items\": [\n            { \"name\": \"Roasted chicken thigh (skinless, 150g)\", \"calories\": 210 },\n            { \"name\": \"Quinoa salad with cucumber & mint (200g)\", \"calories\": 240 },\n            { \"name\": \"Olive oil dressing (15g)\", \"calories\": 135 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 5,\n      \"totalCalories\": 2543,\n      \"protein\": \"158g\",\n      \"carbs\": \"252g\",\n      \"fats\": \"68g\",\n      \"meals\": [\n        {\n          \"title\": \"Morning Citrus Oats\",\n          \"items\": [\n            { \"name\": \"Gluten‑free oats (80g)\", \"calories\": 300 },\n            { \"name\": \"Lactose‑free kefir (150ml)\", \"calories\": 75 },\n            { \"name\": \"Orange segments (80g)\", \"calories\": 30 }\n          ]\n        },\n        {\n          \"title\": \"Pre‑Ride Banana‑Nut Pack\",\n          \"items\": [\n            { \"name\": \"Banana (120g)\", \"calories\": 107 },\n            { \"name\": \"Walnuts (15g)\", \"calories\": 98 }\n          ]\n        },\n        {\n          \"title\": \"Post‑Ride Chicken Quinoa Salad\",\n          \"items\": [\n            { \"name\": \"Grilled chicken breast (140g)\", \"calories\": 233 },\n            { \"name\": \"Quinoa (150g cooked)\", \"calories\": 175 },\n            { \"name\": \"Spinach (70g)\", \"calories\": 16 },\n            { \"name\": \"Olive oil (10g)\", \"calories\": 90 },\n            { \"name\": \"Lemon juice (5g)\", \"calories\": 2 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Afternoon Green Juice\",\n          \"items\": [\n            { \"name\": \"Kale (40g)\", \"calories\": 14 },\n            { \"name\": \"Cucumber (80g)\", \"calories\": 12 },\n            { \"name\": \"Ginger (5g)\", \"calories\": 3 },\n            { \"name\": \"Water (200ml)\", \"calories\": 0 }\n          ]\n        },\n        {\n          \"title\": \"Nighttime Comfort Plate\",\n          \"items\": [\n            { \"name\": \"Baked cod (180g)\", \"calories\": 170 },\n            { \"name\": \"Brown rice (180g cooked)\", \"calories\": 203 },\n            { \"name\": \"Steamed broccoli (120g)\", \"calories\": 41 },\n            { \"name\": \"Sesame seeds (10g)\", \"calories\": 56 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 6,\n      \"totalCalories\": 2543,\n      \"protein\": \"162g\",\n      \"carbs\": \"248g\",\n      \"fats\": \"70g\",\n      \"meals\": [\n        {\n          \"title\": \"Early Light Smoothie\",\n          \"items\": [\n            { \"name\": \"Pea protein isolate (30g)\", \"calories\": 120 },\n            { \"name\": \"Mango (100g)\", \"calories\": 60 },\n            { \"name\": \"Almond milk (200ml)\", \"calories\": 72 },\n            { \"name\": \"Flaxseed (10g)\", \"calories\": 55 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Rice Cake Duo\",\n          \"items\": [\n            { \"name\": \"Rice cakes (2 pcs)\", \"calories\": 70 },\n            { \"name\": \"Sunflower seed butter (15g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Lunch Power Grain Bowl\",\n          \"items\": [\n            { \"name\": \"Grilled tempeh (120g)\", \"calories\": 210 },\n            { \"name\": \"Millet (180g cooked)\", \"calories\": 210 },\n            { \"name\": \"Roasted red pepper (80g)\", \"calories\": 24 },\n            { \"name\": \"Olive oil (12g)\", \"calories\": 108 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Trail Mix\",\n          ** \"items\": [\n            { \"name\": \"Cashews (20g)\", \"calories\": 110 },\n            { \"name\": \"Dried cranberries (low‑sugar, 15g)\", \"calories\": 45 }\n          ]\n        },\n        {\n          \"title\": \"Evening Salmon Feast\",\n          \"items\": [\n            { \"name\": \"Grilled salmon (170g)\", \"calories\": 340 },\n            { \"name\": \"Roasted sweet potato wedges (200g)\", \"calories\": 215 },\n            { \"name\": \"Green beans (120g)\", \"calories\": 45 },\n            { \"name\": \"Lemon‑herb olive oil drizzle (10g)\", \"calories\": 90 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 7,\n      \"totalCalories\": 2543,\n      \"protein\": \"155g\",\n      \"carbs\": \"255g\",\n      \"fats\": \"68g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunday Morning Porridge\",\n          \"items\": [\n            { \"name\": \"Rice porridge (120g dry)\", \"calories\": 440 },\n            { \"name\": \"Lactose‑free kefir (100ml)\", \"calories\": 50 },\n            { \"name\": \"Blueberries (60g)\", \"calories\": 34 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Energy Bite\",\n          \"items\": [\n            { \"name\": \"Homemade oat‑pumpkin seed bar (40g)\", \"calories\": 170 }\n          ]\n        },\n        {\n          \"title\": \"Lunch Mediterranean Plate\",\n          \"items\": [\n            { \"name\": \"Grilled turkey kebab (130g)\", \"calories\": 170 },\n            { \"name\": \"Tabbouleh with quinoa (150g)\", \"calories\": 210 },\n            { \"name\": \"Olives (30g)\", \"calories\": 60 },\n            { \"name\": \"Olive oil dressing (10g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Coconut Yogurt\",\n          \"items\": [\n            { \"name\": \"Coconut‑based yogurt (150g)\", \"calories\": 120 },\n            { \"name\": \"Papaya (80g)\", \"calories\": 35 },\n            { \"name\": \"Pumpkin seeds (10g)\", \"calories\": 55 }\n          ]\n        },\n        {\n          \"title\": \"Evening Comfort Stew\",\n          \"items\": [\n            { \"name\": \"Lean pork loin (150g)\", \"calories\": 260 },\n            { \"name\": \"White rice (180g cooked)\", \"calories\": 240 },\n            { \"name\": \"Zucchini & carrot medley (150g)\", \"calories\": 45 },\n            { \"name\": \"Ginger‑garlic oil (8g)\", \"calories\": 72 }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "derived": {
+    "allHealthConditions": "IBS, sensitive to very high FODMAP meals",
+    "allAllergies": "lactose intolerance",
+    "allInjuries": "none",
+    "allGoals": "maintenance with stable energy, support endurance cycling",
+    "experienceInfo": "advanced",
+    "bmr": 1474.323,
+    "tdee": 2543.2071750000005,
+    "targetCalories": 2543
+  },
+  "latencyMs": 122967,
+  "usage": {
+    "prompt_tokens": 930,
+    "completion_tokens": 3775,
+    "total_tokens": 4705,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 236,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop",
+  "retrieval": {
+    "skip": false,
+    "vectorLength": 384,
+    "results": [
+      {
+        "id": "eb3881ef-8d64-4c66-b8b2-0ed4524a1a87",
+        "version": 1664,
+        "score": 0.65701544,
+        "payload": {
+          "athlete_id": "ATH1570",
+          "name": "Isabella Hayes",
+          "age": 55,
+          "gender": "Female",
+          "goal": "Body recomposition",
+          "issue": "Irritable Bowel Syndrome during Cutting Phases - Mild - Gastrointestinal",
+          "dietary_restrictions": [
+            "Lower-FODMAP awareness"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Aggressive abdominal bracing during bloating episodes",
+              "reason": "May increase discomfort"
+            },
+            {
+              "exercise": "Very intense sessions immediately after large meals",
+              "reason": "Can worsen cramping and urgency"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Very high-fat cheat meals",
+              "reason": "Can worsen IBS symptoms"
+            }
+          ]
+        }
+      },
+      {
+        "id": "d2f1e10f-549c-4114-bda2-81baffd60125",
+        "version": 54,
+        "score": 0.6548315,
+        "payload": {
+          "athlete_id": "ATH010",
+          "name": "Noor Al-Faisal",
+          "age": 27,
+          "gender": "Female",
+          "goal": "Toning",
+          "issue": "Irritable Bowel Syndrome (IBS-D) - Moderate - Gastrointestinal",
+          "dietary_restrictions": [
+            "Low FODMAP"
+          ],
+          "allergies": [
+            "Dairy"
+          ],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Very intense core circuits",
+              "reason": "Can trigger GI symptoms"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Dairy products",
+              "reason": "Lactose intolerance"
+            },
+            {
+              "food": "High FODMAP foods",
+              "reason": "IBS trigger"
+            }
+          ]
+        }
+      },
+      {
+        "id": "13fb5dfb-0d3c-4517-be54-35cfe86d63bd",
+        "version": 1064,
+        "score": 0.6292464,
+        "payload": {
+          "athlete_id": "ATH0970",
+          "name": "ندى الصقري",
+          "age": 18,
+          "gender": "Female",
+          "goal": "Fat loss",
+          "issue": "Irritable Bowel Syndrome during Cutting Phases - Mild-Moderate - Gastrointestinal",
+          "dietary_restrictions": [
+            "Lower-FODMAP awareness",
+            "Hydration focus"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Aggressive abdominal bracing during bloating episodes",
+              "reason": "May increase discomfort"
+            },
+            {
+              "exercise": "Very intense sessions immediately after large meals",
+              "reason": "Can worsen cramping and urgency"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Liquid-calorie coffees and shakes",
+              "reason": "Can hide excess calories and disrupt fat-loss targets"
+            },
+            {
+              "food": "Very high-fat cheat meals",
+              "reason": "Can worsen IBS symptoms"
+            }
+          ]
+        }
+      }
+    ],
+    "vectorContext": "Issue: Irritable Bowel Syndrome during Cutting Phases - Mild - Gastrointestinal. Constraints: Foods to avoid (Very high-fat cheat meals), Exercises to avoid (Aggressive abdominal bracing during bloating episodes, Very intense sessions immediately after large meals)\nIssue: Irritable Bowel Syndrome (IBS-D) - Moderate - Gastrointestinal. Constraints: Foods to avoid (Dairy products, High FODMAP foods), Exercises to avoid (Very intense core circuits)\nIssue: Irritable Bowel Syndrome during Cutting Phases - Mild-Moderate - Gastrointestinal. Constraints: Foods to avoid (Liquid-calorie coffees and shakes, Very high-fat cheat meals), Exercises to avoid (Aggressive abdominal bracing during bloating episodes, Very intense sessions immediately after large meals)"
+  }
+}

@@ -1,0 +1,765 @@
+{
+  "caseId": "case_10",
+  "mode": "llm_only",
+  "route": "/ai/generate-workout",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "gym": {
+      "title": "Gym Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Barbell Back Squat",
+              "difficulty": "Intermediate",
+              "equipment": "Barbell, Squat Rack",
+              "sets": "4",
+              "reps": "8",
+              "calories": 85
+            },
+            {
+              "id": 2,
+              "name": "Leg Press",
+              "difficulty": "Intermediate",
+              "equipment": "Leg Press Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 65
+            },
+            {
+              "id": 3,
+              "name": "Romanian Deadlift",
+              "difficulty": "Intermediate",
+              "equipment": "Barbell",
+              "sets": "3",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 4,
+              "name": "Seated Calf Raise",
+              "difficulty": "Intermediate",
+              "equipment": "Calf Raise Machine",
+              "sets": "4",
+              "reps": "15",
+              "calories": 45
+            },
+            {
+              "id": 5,
+              "name": "Single-Leg Cable Split Squat (Controlled)",
+              "difficulty": "Intermediate",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "10 each leg",
+              "calories": 55
+            },
+            {
+              "id": 6,
+              "name": "Standing Cable Hip Abduction (Balance)",
+              "difficulty": "Intermediate",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "12 each side",
+              "calories": 30
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 7,
+              "name": "Bench Press",
+              "difficulty": "Intermediate",
+              "equipment": "Barbell, Bench",
+              "sets": "4",
+              "reps": "8",
+              "calories": 80
+            },
+            {
+              "id": 8,
+              "name": "Incline Dumbbell Press",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells, Incline Bench",
+              "sets": "3",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 9,
+              "name": "Weighted Pull‑Ups",
+              "difficulty": "Intermediate",
+              "equipment": "Pull‑Up Bar, Weight Belt",
+              "sets": "4",
+              "reps": "6",
+              "calories": 85
+            },
+            {
+              "id": 10,
+              "name": "Seated Cable Row",
+              "difficulty": "Intermediate",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 60
+            },
+            {
+              "id": 11,
+              "name": "Dumbbell Side Lateral Raise",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "15",
+              "calories": 40
+            },
+            {
+              "id": 12,
+              "name": "Cable Triceps Pushdown",
+              "difficulty": "Intermediate",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 13,
+              "name": "Leg Extension",
+              "difficulty": "Intermediate",
+              "equipment": "Leg Extension Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 45
+            },
+            {
+              "id": 14,
+              "name": "Hamstring Curl (Machine)",
+              "difficulty": "Intermediate",
+              "equipment": "Leg Curl Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 45
+            },
+            {
+              "id": 15,
+              "name": "Goblet Squat (Controlled tempo)",
+              "difficulty": "Intermediate",
+              "equipment": "Kettlebell or Dumbbell",
+              "sets": "4",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 16,
+              "name": "Single‑Leg Balance on BOSU",
+              "difficulty": "Intermediate",
+              "equipment": "BOSU Ball",
+              "sets": "3",
+              "reps": "30 sec each leg",
+              "calories": 25
+            },
+            {
+              "id": 17,
+              "name": "Standing Calf Raise (Bodyweight)",
+              "difficulty": "Intermediate",
+              "equipment": "Bodyweight",
+              "sets": "4",
+              "reps": "20",
+              "calories": 40
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 18,
+              "name": "Overhead Press",
+              "difficulty": "Intermediate",
+              "equipment": "Barbell",
+              "sets": "4",
+              "reps": "8",
+              "calories": 75
+            },
+            {
+              "id": 19,
+              "name": "Arnold Dumbbell Press",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 65
+            },
+            {
+              "id": 20,
+              "name": "Chest‑Supported T‑Bar Row",
+              "difficulty": "Intermediate",
+              "equipment": "T‑Bar Row Machine",
+              "sets": "4",
+              "reps": "8",
+              "calories": 80
+            },
+            {
+              "id": 21,
+              "name": "Face Pulls",
+              "difficulty": "Intermediate",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 22,
+              "name": "Hammer Curls",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 23,
+              "name": "Overhead Triceps Extension",
+              "difficulty": "Intermediate",
+              "equipment": "Cable or Dumbbell",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 24,
+              "name": "Front Squat",
+              "difficulty": "Intermediate",
+              "equipment": "Barbell",
+              "sets": "4",
+              "reps": "6",
+              "calories": 85
+            },
+            {
+              "id": 25,
+              "name": "Bulgarian Split Squat (Bodyweight/Light dumbbell)",
+              "difficulty": "Intermediate",
+              "equipment": "Bench, Dumbbells",
+              "sets": "3",
+              "reps": "10 each leg",
+              "calories": 70
+            },
+            {
+              "id": 26,
+              "name": "Glute Bridge March (Controlled)",
+              "difficulty": "Intermediate",
+              "equipment": "Barbell or Smith Machine",
+              "sets": "3",
+              "reps": "12 each leg",
+              "calories": 55
+            },
+            {
+              "id": 27,
+              "name": "Seated Leg Curl",
+              "difficulty": "Intermediate",
+              "equipment": "Leg Curl Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 28,
+              "name": "Ankle Stability Band Exercise",
+              "difficulty": "Intermediate",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "15 each direction",
+              "calories": 20
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 29,
+              "name": "Dumbbell Bench Press",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells, Flat Bench",
+              "sets": "4",
+              "reps": "10",
+              "calories": 75
+            },
+            {
+              "id": 30,
+              "name": "Lat Pulldown",
+              "difficulty": "Intermediate",
+              "equipment": "Lat Pulldown Machine",
+              "sets": "4",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 31,
+              "name": "Dumbbell Row (Supported)",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells, Bench",
+              "sets": "3",
+              "reps": "12 each side",
+              "calories": 60
+            },
+            {
+              "id": 32,
+              "name": "Cable Lateral Raise",
+              "difficulty": "Intermediate",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 33,
+              "name": "EZ‑Bar Curl",
+              "difficulty": "Intermediate",
+              "equipment": "EZ‑Bar",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 34,
+              "name": "Rope Triceps Extension",
+              "difficulty": "Intermediate",
+              "equipment": "Cable Machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 35,
+              "name": "Active Recovery – Light Cardio (Elliptical)",
+              "difficulty": "Easy",
+              "equipment": "Elliptical Machine",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 250
+            },
+            {
+              "id": 36,
+              "name": "Foam Roll Lower Body",
+              "difficulty": "Easy",
+              "equipment": "Foam Roller",
+              "sets": "1",
+              "reps": "10 min",
+              "calories": 40
+            },
+            {
+              "id": 37,
+              "name": "Ankle Mobility Drills",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "2",
+              "reps": "15 each direction",
+              "calories": 20
+            }
+          ]
+        }
+      ]
+    },
+    "home": {
+      "title": "Home Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Goblet Squat (Controlled)",
+              "difficulty": "Intermediate",
+              "equipment": "Kettlebell or Dumbbell",
+              "sets": "4",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 2,
+              "name": "Single‑Leg Romanian Deadlift (Bodyweight)",
+              "difficulty": "Intermediate",
+              "equipment": "Bodyweight",
+              "sets": "3",
+              "reps": "10 each leg",
+              "calories": 55
+            },
+            {
+              "id": 3,
+              "name": "Wall Sit",
+              "difficulty": "Intermediate",
+              "equipment": "Wall",
+              "sets": "3",
+              "reps": "45 sec",
+              "calories": 30
+            },
+            {
+              "id": 4,
+              "name": "Calf Raise (Bodyweight)",
+              "difficulty": "Intermediate",
+              "equipment": "Stair or Step",
+              "sets": "4",
+              "reps": "20",
+              "calories": 40
+            },
+            {
+              "id": 5,
+              "name": "Single‑Leg Balance on Pillow",
+              "difficulty": "Intermediate",
+              "equipment": "Cushion/Pillow",
+              "sets": "3",
+              "reps": "30 sec each leg",
+              "calories": 20
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 6,
+              "name": "Push‑Up (Standard)",
+              "difficulty": "Intermediate",
+              "equipment": "Bodyweight",
+              "sets": "4",
+              "reps": "12",
+              "calories": 60
+            },
+            {
+              "id": 7,
+              "name": "Incline Push‑Up (Feet on Chair)",
+              "difficulty": "Intermediate",
+              "equipment": "Chair",
+              "sets": "3",
+              "reps": "10",
+              "calories": 45
+            },
+            {
+              "id": 8,
+              "name": "Pull‑Up (Doorway Bar)",
+              "difficulty": "Intermediate",
+              "equipment": "Doorway Pull‑Up Bar",
+              "sets": "4",
+              "reps": "6",
+              "calories": 80
+            },
+            {
+              "id": 9,
+              "name": "Bent‑Over Row (Dumbbells)",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 10,
+              "name": "Lateral Raise (Dumbbells)",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 11,
+              "name": "Overhead Triceps Extension (Dumbbell)",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 12,
+              "name": "Bulgarian Split Squat (Bodyweight)",
+              "difficulty": "Intermediate",
+              "equipment": "Chair/Bench",
+              "sets": "3",
+              "reps": "10 each leg",
+              "calories": 65
+            },
+            {
+              "id": 13,
+              "name": "Glute Bridge March",
+              "difficulty": "Intermediate",
+              "equipment": "Bodyweight",
+              "sets": "3",
+              "reps": "12 each leg",
+              "calories": 50
+            },
+            {
+              "id": 14,
+              "name": "Single‑Leg Hip Thrust (Bodyweight)",
+              "difficulty": "Intermediate",
+              "equipment": "Sofa Edge",
+              "sets": "3",
+              "reps": "10 each leg",
+              "calories": 45
+            },
+            {
+              "id": 15,
+              "name": "Ankle Stability Band Exercise",
+              "difficulty": "Intermediate",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "15 each direction",
+              "calories": 20
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 16,
+              "name": "Dumbbell Shoulder Press",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "4",
+              "reps": "8",
+              "calories": 70
+            },
+            {
+              "id": 17,
+              "name": "Arnold Press",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 60
+            },
+            {
+              "id": 18,
+              "name": "Renegade Row",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10 each side",
+              "calories": 55
+            },
+            {
+              "id": 19,
+              "name": "Face Pull (Band)",
+              "difficulty": "Intermediate",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 20,
+              "name": "Hammer Curl",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 21,
+              "name": "Overhead Triceps Extension (Band)",
+              "difficulty": "Intermediate",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 22,
+              "name": "Front Squat (Goblet)",
+              "difficulty": "Intermediate",
+              "equipment": "Kettlebell/Dumbbell",
+              "sets": "4",
+              "reps": "6",
+              "calories": 80
+            },
+            {
+              "id": 23,
+              "name": "Step‑Up (Controlled)",
+              "difficulty": "Intermediate",
+              "equipment": "Sturdy Chair",
+              "sets": "3",
+              "reps": "12 each leg",
+              "calories": 65
+            },
+            {
+              "id": 24,
+              "name": "Single‑Leg Calf Raise (Bodyweight)",
+              "difficulty": "Intermediate",
+              "equipment": "Step",
+              "sets": "4",
+              "reps": "12 each leg",
+              "calories": 45
+            },
+            {
+              "id": 25,
+              "name": "Balance Board Squat Hold (if available) or Single‑Leg Balance",
+              "difficulty": "Intermediate",
+              "equipment": "Balance Board or Pillow",
+              "sets": "3",
+              "reps": "30 sec each leg",
+              "calories": 20
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 26,
+              "name": "Dumbbell Chest Fly (Floor)",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbells",
+              "sets": "4",
+              "reps": "10",
+              "calories": 55
+            },
+            {
+              "id": 27,
+              "name": "Inverted Row (Under Table)",
+              "difficulty": "Intermediate",
+              "equipment": "Sturdy Table",
+              "sets": "4",
+              "reps": "10",
+              "calories": 60
+            },
+            {
+              "id": 28,
+              "name": "Single‑Arm Dumbbell Row",
+              "difficulty": "Intermediate",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "12 each side",
+              "calories": 50
+            },
+            {
+              "id": 29,
+              "name": "Lateral Raise (Band)",
+              "difficulty": "Intermediate",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 30,
+              "name": "Biceps Curl (Band)",
+              "difficulty": "Intermediate",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 31,
+              "name": "Triceps Kickback (Band)",
+              "difficulty": "Intermediate",
+              "equipment": "Resistance Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 32,
+              "name": "Active Recovery – Light Jog or Brisk Walk",
+              "difficulty": "Easy",
+              "equipment": "Outdoor/Indoor Space",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 250
+            },
+            {
+              "id": 33,
+              "name": "Foam Roll / Self‑Myofascial Release",
+              "difficulty": "Easy",
+              "equipment": "Foam Roller",
+              "sets": "1",
+              "reps": "10 min",
+              "calories": 40
+            },
+            {
+              "id": 34,
+              "name": "Ankle Mobility and Stability Drills",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "2",
+              "reps": "15 each direction",
+              "calories": 20
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "parseError": null,
+  "cleanedContent": "{\n  \"gym\": {\n    \"title\": \"Gym Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Barbell Back Squat\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Barbell, Squat Rack\",\n            \"sets\": \"4\",\n            \"reps\": \"8\",\n            \"calories\": 85\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Leg Press\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Leg Press Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 65\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Romanian Deadlift\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Barbell\",\n            \"sets\": \"3\",\n            \"reps\": \"10\",\n            \"calories\": 70\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Seated Calf Raise\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Calf Raise Machine\",\n            \"sets\": \"4\",\n            \"reps\": \"15\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Single-Leg Cable Split Squat (Controlled)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Cable Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"10 each leg\",\n            \"calories\": 55\n          },\n          {\n            \"id\": 6,\n            \"name\": \"Standing Cable Hip Abduction (Balance)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Cable Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12 each side\",\n            \"calories\": 30\n          }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          {\n            \"id\": 7,\n            \"name\": \"Bench Press\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Barbell, Bench\",\n            \"sets\": \"4\",\n            \"reps\": \"8\",\n            \"calories\": 80\n          },\n          {\n            \"id\": 8,\n            \"name\": \"Incline Dumbbell Press\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells, Incline Bench\",\n            \"sets\": \"3\",\n            \"reps\": \"10\",\n            \"calories\": 70\n          },\n          {\n            \"id\": 9,\n            \"name\": \"Weighted Pull‑Ups\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Pull‑Up Bar, Weight Belt\",\n            \"sets\": \"4\",\n            \"reps\": \"6\",\n            \"calories\": 85\n          },\n          {\n            \"id\": 10,\n            \"name\": \"Seated Cable Row\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Cable Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 60\n          },\n          {\n            \"id\": 11,\n            \"name\": \"Dumbbell Side Lateral Raise\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"3\",\n            \"reps\": \"15\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 12,\n            \"name\": \"Cable Triceps Pushdown\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Cable Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          {\n            \"id\": 13,\n            \"name\": \"Leg Extension\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Leg Extension Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"15\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 14,\n            \"name\": \"Hamstring Curl (Machine)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Leg Curl Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"15\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 15,\n            \"name\": \"Goblet Squat (Controlled tempo)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Kettlebell or Dumbbell\",\n            \"sets\": \"4\",\n            \"reps\": \"10\",\n            \"calories\": 70\n          },\n          {\n            \"id\": 16,\n            \"name\": \"Single‑Leg Balance on BOSU\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"BOSU Ball\",\n            \"sets\": \"3\",\n            \"reps\": \"30 sec each leg\",\n            \"calories\": 25\n          },\n          {\n            \"id\": 17,\n            \"name\": \"Standing Calf Raise (Bodyweight)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Bodyweight\",\n            \"sets\": \"4\",\n            \"reps\": \"20\",\n            \"calories\": 40\n          }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          {\n            \"id\": 18,\n            \"name\": \"Overhead Press\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Barbell\",\n            \"sets\": \"4\",\n            \"reps\": \"8\",\n            \"calories\": 75\n          },\n          {\n            \"id\": 19,\n            \"name\": \"Arnold Dumbbell Press\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"3\",\n            \"reps\": \"10\",\n            \"calories\": 65\n          },\n          {\n            \"id\": 20,\n            \"name\": \"Chest‑Supported T‑Bar Row\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"T‑Bar Row Machine\",\n            \"sets\": \"4\",\n            \"reps\": \"8\",\n            \"calories\": 80\n          },\n          {\n            \"id\": 21,\n            \"name\": \"Face Pulls\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Cable Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"15\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 22,\n            \"name\": \"Hammer Curls\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 23,\n            \"name\": \"Overhead Triceps Extension\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Cable or Dumbbell\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          {\n            \"id\": 24,\n            \"name\": \"Front Squat\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Barbell\",\n            \"sets\": \"4\",\n            \"reps\": \"6\",\n            \"calories\": 85\n          },\n          {\n            \"id\": 25,\n            \"name\": \"Bulgarian Split Squat (Bodyweight/Light dumbbell)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Bench, Dumbbells\",\n            \"sets\": \"3\",\n            \"reps\": \"10 each leg\",\n            \"calories\": 70\n          },\n          {\n            \"id\": 26,\n            \"name\": \"Glute Bridge March (Controlled)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Barbell or Smith Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12 each leg\",\n            \"calories\": 55\n          },\n          {\n            \"id\": 27,\n            \"name\": \"Seated Leg Curl\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Leg Curl Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 28,\n            \"name\": \"Ankle Stability Band Exercise\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Resistance Band\",\n            \"sets\": \"3\",\n            \"reps\": \"15 each direction\",\n            \"calories\": 20\n          }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          {\n            \"id\": 29,\n            \"name\": \"Dumbbell Bench Press\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells, Flat Bench\",\n            \"sets\": \"4\",\n            \"reps\": \"10\",\n            \"calories\": 75\n          },\n          {\n            \"id\": 30,\n            \"name\": \"Lat Pulldown\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Lat Pulldown Machine\",\n            \"sets\": \"4\",\n            \"reps\": \"10\",\n            \"calories\": 70\n          },\n          {\n            \"id\": 31,\n            \"name\": \"Dumbbell Row (Supported)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells, Bench\",\n            \"sets\": \"3\",\n            \"reps\": \"12 each side\",\n            \"calories\": 60\n          },\n          {\n            \"id\": 32,\n            \"name\": \"Cable Lateral Raise\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Cable Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"15\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 33,\n            \"name\": \"EZ‑Bar Curl\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"EZ‑Bar\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 34,\n            \"name\": \"Rope Triceps Extension\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Cable Machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          {\n            \"id\": 35,\n            \"name\": \"Active Recovery – Light Cardio (Elliptical)\",\n            \"difficulty\": \"Easy\",\n            \"equipment\": \"Elliptical Machine\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 250\n          },\n          {\n            \"id\": 36,\n            \"name\": \"Foam Roll Lower Body\",\n            \"difficulty\": \"Easy\",\n            \"equipment\": \"Foam Roller\",\n            \"sets\": \"1\",\n            \"reps\": \"10 min\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 37,\n            \"name\": \"Ankle Mobility Drills\",\n            \"difficulty\": \"Easy\",\n            \"equipment\": \"Band\",\n            \"sets\": \"2\",\n            \"reps\": \"15 each direction\",\n            \"calories\": 20\n          }\n        ]\n      }\n    ]\n  },\n  \"home\": {\n    \"title\": \"Home Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Goblet Squat (Controlled)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Kettlebell or Dumbbell\",\n            \"sets\": \"4\",\n            \"reps\": \"10\",\n            \"calories\": 70\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Single‑Leg Romanian Deadlift (Bodyweight)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Bodyweight\",\n            \"sets\": \"3\",\n            \"reps\": \"10 each leg\",\n            \"calories\": 55\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Wall Sit\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Wall\",\n            \"sets\": \"3\",\n            \"reps\": \"45 sec\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Calf Raise (Bodyweight)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Stair or Step\",\n            \"sets\": \"4\",\n            \"reps\": \"20\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Single‑Leg Balance on Pillow\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Cushion/Pillow\",\n            \"sets\": \"3\",\n            \"reps\": \"30 sec each leg\",\n            \"calories\": 20\n          }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          {\n            \"id\": 6,\n            \"name\": \"Push‑Up (Standard)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Bodyweight\",\n            \"sets\": \"4\",\n            \"reps\": \"12\",\n            \"calories\": 60\n          },\n          {\n            \"id\": 7,\n            \"name\": \"Incline Push‑Up (Feet on Chair)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Chair\",\n            \"sets\": \"3\",\n            \"reps\": \"10\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 8,\n            \"name\": \"Pull‑Up (Doorway Bar)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Doorway Pull‑Up Bar\",\n            \"sets\": \"4\",\n            \"reps\": \"6\",\n            \"calories\": 80\n          },\n          {\n            \"id\": 9,\n            \"name\": \"Bent‑Over Row (Dumbbells)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 55\n          },\n          {\n            \"id\": 10,\n            \"name\": \"Lateral Raise (Dumbbells)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"3\",\n            \"reps\": \"15\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 11,\n            \"name\": \"Overhead Triceps Extension (Dumbbell)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbell\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          {\n            \"id\": 12,\n            \"name\": \"Bulgarian Split Squat (Bodyweight)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Chair/Bench\",\n            \"sets\": \"3\",\n            \"reps\": \"10 each leg\",\n            \"calories\": 65\n          },\n          {\n            \"id\": 13,\n            \"name\": \"Glute Bridge March\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Bodyweight\",\n            \"sets\": \"3\",\n            \"reps\": \"12 each leg\",\n            \"calories\": 50\n          },\n          {\n            \"id\": 14,\n            \"name\": \"Single‑Leg Hip Thrust (Bodyweight)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Sofa Edge\",\n            \"sets\": \"3\",\n            \"reps\": \"10 each leg\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 15,\n            \"name\": \"Ankle Stability Band Exercise\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Resistance Band\",\n            \"sets\": \"3\",\n            \"reps\": \"15 each direction\",\n            \"calories\": 20\n          }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          {\n            \"id\": 16,\n            \"name\": \"Dumbbell Shoulder Press\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"4\",\n            \"reps\": \"8\",\n            \"calories\": 70\n          },\n          {\n            \"id\": 17,\n            \"name\": \"Arnold Press\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"3\",\n            \"reps\": \"10\",\n            \"calories\": 60\n          },\n          {\n            \"id\": 18,\n            \"name\": \"Renegade Row\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"3\",\n            \"reps\": \"10 each side\",\n            \"calories\": 55\n          },\n          {\n            \"id\": 19,\n            \"name\": \"Face Pull (Band)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Resistance Band\",\n            \"sets\": \"3\",\n            \"reps\": \"15\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 20,\n            \"name\": \"Hammer Curl\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 21,\n            \"name\": \"Overhead Triceps Extension (Band)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Resistance Band\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          {\n            \"id\": 22,\n            \"name\": \"Front Squat (Goblet)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Kettlebell/Dumbbell\",\n            \"sets\": \"4\",\n            \"reps\": \"6\",\n            \"calories\": 80\n          },\n          {\n            \"id\": 23,\n            \"name\": \"Step‑Up (Controlled)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Sturdy Chair\",\n            \"sets\": \"3\",\n            \"reps\": \"12 each leg\",\n            \"calories\": 65\n          },\n          {\n            \"id\": 24,\n            \"name\": \"Single‑Leg Calf Raise (Bodyweight)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Step\",\n            \"sets\": \"4\",\n            \"reps\": \"12 each leg\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 25,\n            \"name\": \"Balance Board Squat Hold (if available) or Single‑Leg Balance\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Balance Board or Pillow\",\n            \"sets\": \"3\",\n            \"reps\": \"30 sec each leg\",\n            \"calories\": 20\n          }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          {\n            \"id\": 26,\n            \"name\": \"Dumbbell Chest Fly (Floor)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbells\",\n            \"sets\": \"4\",\n            \"reps\": \"10\",\n            \"calories\": 55\n          },\n          {\n            \"id\": 27,\n            \"name\": \"Inverted Row (Under Table)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Sturdy Table\",\n            \"sets\": \"4\",\n            \"reps\": \"10\",\n            \"calories\": 60\n          },\n          {\n            \"id\": 28,\n            \"name\": \"Single‑Arm Dumbbell Row\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Dumbbell\",\n            \"sets\": \"3\",\n            \"reps\": \"12 each side\",\n            \"calories\": 50\n          },\n          {\n            \"id\": 29,\n            \"name\": \"Lateral Raise (Band)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Resistance Band\",\n            \"sets\": \"3\",\n            \"reps\": \"15\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 30,\n            \"name\": \"Biceps Curl (Band)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Resistance Band\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 31,\n            \"name\": \"Triceps Kickback (Band)\",\n            \"difficulty\": \"Intermediate\",\n            \"equipment\": \"Resistance Band\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          {\n            \"id\": 32,\n            \"name\": \"Active Recovery – Light Jog or Brisk Walk\",\n            \"difficulty\": \"Easy\",\n            \"equipment\": \"Outdoor/Indoor Space\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 250\n          },\n          {\n            \"id\": 33,\n            \"name\": \"Foam Roll / Self‑Myofascial Release\",\n            \"difficulty\": \"Easy\",\n            \"equipment\": \"Foam Roller\",\n            \"sets\": \"1\",\n            \"reps\": \"10 min\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 34,\n            \"name\": \"Ankle Mobility and Stability Drills\",\n            \"difficulty\": \"Easy\",\n            \"equipment\": \"Band\",\n            \"sets\": \"2\",\n            \"reps\": \"15 each direction\",\n            \"calories\": 20\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "derived": {
+    "allHealthConditions": "none",
+    "allAllergies": "none",
+    "allInjuries": "ankle instability, avoid repeated hard lateral cutting and unstable jumps",
+    "allGoals": "muscle gain with upper-lower split, athletic look and stronger legs",
+    "experienceInfo": "intermediate - prefers upper-lower split",
+    "bmr": 1817.0750000000003,
+    "tdee": 3134.4543750000007,
+    "targetCalories": 3634
+  },
+  "latencyMs": 147355,
+  "usage": {
+    "prompt_tokens": 501,
+    "completion_tokens": 4849,
+    "total_tokens": 5350,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 87,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop"
+}

@@ -1,0 +1,1048 @@
+{
+  "caseId": "case_12",
+  "mode": "rag",
+  "route": "/ai/generate-workout",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "gym": {
+      "title": "Gym Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Incline Dumbbell Press",
+              "difficulty": "Easy",
+              "equipment": "Adjustable dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 2,
+              "name": "Seated Cable Row",
+              "difficulty": "Medium",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "10",
+              "calories": 38
+            },
+            {
+              "id": 3,
+              "name": "Goblet Squat",
+              "difficulty": "Easy",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "15",
+              "calories": 50
+            },
+            {
+              "id": 4,
+              "name": "Face Pull",
+              "difficulty": "Easy",
+              "equipment": "Cable (rope)",
+              "sets": "3",
+              "reps": "15",
+              "calories": 28
+            },
+            {
+              "id": 5,
+              "name": "Standing Hip CAR (Controlled Articular Rotation)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "8 each side",
+              "calories": 12
+            },
+            {
+              "id": 6,
+              "name": "Cat‑Cow Stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 cycles",
+              "calories": 8
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Lat Pulldown (neutral grip)",
+              "difficulty": "Medium",
+              "equipment": "Pulldown machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 2,
+              "name": "Dumbbell Romanian Deadlift",
+              "difficulty": "Easy",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 3,
+              "name": "Chest‑Supported T‑Row",
+              "difficulty": "Medium",
+              "equipment": "Bench + dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 35
+            },
+            {
+              "id": 4,
+              "name": "Band Pull‑Apart",
+              "difficulty": "Easy",
+              "equipment": "Resistance band",
+              "sets": "3",
+              "reps": "20",
+              "calories": 22
+            },
+            {
+              "id": 5,
+              "name": "Thoracic Extension on Foam Roller",
+              "difficulty": "Easy",
+              "equipment": "Foam roller",
+              "sets": "2",
+              "reps": "30 sec hold",
+              "calories": 10
+            },
+            {
+              "id": 6,
+              "name": "Standing Calf Raise (machine)",
+              "difficulty": "Easy",
+              "equipment": "Calf raise machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 30
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dumbbell Bench Press (flat)",
+              "difficulty": "Easy",
+              "equipment": "Adjustable bench + dumbbells",
+              "sets": "4",
+              "reps": "8",
+              "calories": 48
+            },
+            {
+              "id": 2,
+              "name": "Single‑Arm Cable Row",
+              "difficulty": "Medium",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 36
+            },
+            {
+              "id": 3,
+              "name": "Leg Press (moderate load)",
+              "difficulty": "Easy",
+              "equipment": "Leg press machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 58
+            },
+            {
+              "id": 4,
+              "name": "Scapular Wall Slides",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "12",
+              "calories": 12
+            },
+            {
+              "id": 5,
+              "name": "Side‑lying Clam (band)",
+              "difficulty": "Easy",
+              "equipment": "Resistance band",
+              "sets": "3",
+              "reps": "15 each side",
+              "calories": 14
+            },
+            {
+              "id": 6,
+              "name": "Seated Neck Retraction (isometric)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 sec hold",
+              "calories": 6
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Machine Chest Fly",
+              "difficulty": "Easy",
+              "equipment": "Pec‑deck machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 32
+            },
+            {
+              "id": 2,
+              "name": "Reverse Grip Lat Pulldown",
+              "difficulty": "Medium",
+              "equipment": "Pulldown machine",
+              "sets": "3",
+              "reps": "10",
+              "calories": 38
+            },
+            {
+              "id": 3,
+              "name": "Bulgarian Split Squat (body‑weight or light dumbbell)",
+              "difficulty": "Medium",
+              "equipment": "Bench + dumbbell",
+              "sets": "3",
+              "reps": "10 each leg",
+              "calories": 52
+            },
+            {
+              "id": 4,
+              "name": "Prone Y‑T‑W (on incline bench)",
+              "difficulty": "Easy",
+              "equipment": "Bench",
+              "sets": "2",
+              "reps": "8 each pattern",
+              "calories": 16
+            },
+            {
+              "id": 5,
+              "name": "Standing Hip CAR",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "8 each side",
+              "calories": 12
+            },
+            {
+              "id": 6,
+              "name": "Ankle Mobilisation (wall stretch)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "30 sec each side",
+              "calories": 8
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dumbbell Arnold Press (neutral elbows, no neck strain)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 42
+            },
+            {
+              "id": 2,
+              "name": "Cable Chest Press (low incline)",
+              "difficulty": "Easy",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 3,
+              "name": "Leg Curl Machine",
+              "difficulty": "Easy",
+              "equipment": "Leg curl machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 45
+            },
+            {
+              "id": 4,
+              "name": "Band External Rotation",
+              "difficulty": "Easy",
+              "equipment": "Resistance band",
+              "sets": "3",
+              "reps": "15 each side",
+              "calories": 14
+            },
+            {
+              "id": 5,
+              "name": "Thoracic Windmill (floor)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "8 each side",
+              "calories": 12
+            },
+            {
+              "id": 6,
+              "name": "Standing Calf Stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "30 sec each side",
+              "calories": 6
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Close‑Grip Bench Press (moderate load)",
+              "difficulty": "Medium",
+              "equipment": "Barbell or dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 44
+            },
+            {
+              "id": 2,
+              "name": "Seated Row (machine, neutral grip)",
+              "difficulty": "Easy",
+              "equipment": "Row machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Goblet Squat to Box",
+              "difficulty": "Easy",
+              "equipment": "Dumbbell + box",
+              "sets": "3",
+              "reps": "12",
+              "calories": 52
+            },
+            {
+              "id": 4,
+              "name": "Scapular Push‑Ups (on knees)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "15",
+              "calories": 20
+            },
+            {
+              "id": 5,
+              "name": "Banded Pallof Press",
+              "difficulty": "Medium",
+              "equipment": "Resistance band",
+              "sets": "2",
+              "reps": "12 each side",
+              "calories": 16
+            },
+            {
+              "id": 6,
+              "name": "Supine Thoracic Rotation",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 each side",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dumbbell Lateral Raise (light, neutral neck)",
+              "difficulty": "Easy",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Lat Pulldown (wide, neutral spine)",
+              "difficulty": "Easy",
+              "equipment": "Pulldown machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 3,
+              "name": "Hack Squat Machine",
+              "difficulty": "Medium",
+              "equipment": "Hack squat machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 4,
+              "name": "Prone Y‑T‑W (light)",
+              "difficulty": "Easy",
+              "equipment": "Bench",
+              "sets": "2",
+              "reps": "10 each",
+              "calories": 14
+            },
+            {
+              "id": 5,
+              "name": "Standing Band Face Pull",
+              "difficulty": "Easy",
+              "equipment": "Resistance band",
+              "sets": "3",
+              "reps": "18",
+              "calories": 22
+            },
+            {
+              "id": 6,
+              "name": "Neck Isometric Retraction",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 sec hold",
+              "calories": 6
+            },
+            {
+              "id": 7,
+              "name": "Child’s Pose with Thoracic Extension",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "30 sec",
+              "calories": 5
+            }
+          ]
+        }
+      ]
+    },
+    "home": {
+      "title": "Home Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dumbbell Floor Press",
+              "difficulty": "Easy",
+              "equipment": "Adjustable dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 50
+            },
+            {
+              "id": 2,
+              "name": "Bent‑Over Dumbbell Row (neutral spine)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 42
+            },
+            {
+              "id": 3,
+              "name": "Goblet Squat",
+              "difficulty": "Easy",
+              "equipment": "Dumbbell",
+              "sets": "4",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 4,
+              "name": "Band Pull‑Apart",
+              "difficulty": "Easy",
+              "equipment": "Resistance band",
+              "sets": "3",
+              "reps": "20",
+              "calories": 22
+            },
+            {
+              "id": 5,
+              "name": "Cat‑Cow Mobility Flow",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 cycles",
+              "calories": 8
+            },
+            {
+              "id": 6,
+              "name": "Standing Hip CAR",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "8 each side",
+              "calories": 12
+            },
+            {
+              "id": 7,
+              "name": "Doorway Chest Stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "30 sec",
+              "calories": 5
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Single‑Arm Dumbbell Chest Press (floor)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "10 each side",
+              "calories": 44
+            },
+            {
+              "id": 2,
+              "name": "Resistance Band Row",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Reverse Lunge with Dumbbell",
+              "difficulty": "Easy",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "12 each leg",
+              "calories": 48
+            },
+            {
+              "id": 4,
+              "name": "Scapular Wall Slides",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "12",
+              "calories": 12
+            },
+            {
+              "id": 5,
+              "name": "Thoracic Extension on Foam Roller",
+              "difficulty": "Easy",
+              "equipment": "Foam roller",
+              "sets": "2",
+              "reps": "30 sec hold",
+              "calories": 10
+            },
+            {
+              "id": 6,
+              "name": "Standing Calf Raise (body‑weight)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "20",
+              "calories": 28
+            },
+            {
+              "id": 7,
+              "name": "Neck Retraction Isometric",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 sec hold",
+              "calories": 6
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dumbbell Incline Press (bench set at 45°)",
+              "difficulty": "Easy",
+              "equipment": "Bench + dumbbells",
+              "sets": "4",
+              "reps": "8",
+              "calories": 48
+            },
+            {
+              "id": 2,
+              "name": "One‑Arm Dumbbell Row (support with knee)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 3,
+              "name": "Sumo Goblet Squat",
+              "difficulty": "Easy",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "15",
+              "calories": 55
+            },
+            {
+              "id": 4,
+              "name": "Band External Rotation",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15 each side",
+              "calories": 14
+            },
+            {
+              "id": 5,
+              "name": "Prone Y‑T‑W (on floor)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 each",
+              "calories": 12
+            },
+            {
+              "id": 6,
+              "name": "Standing Hip CAR",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "8 each side",
+              "calories": 12
+            },
+            {
+              "id": 7,
+              "name": "Child’s Pose with Thoracic Rotation",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "30 sec",
+              "calories": 5
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dumbbell Chest Fly (floor)",
+              "difficulty": "Easy",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "15",
+              "calories": 38
+            },
+            {
+              "id": 2,
+              "name": "Band Seated Row",
+              "difficulty": "Medium",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 34
+            },
+            {
+              "id": 3,
+              "name": "Bulgarian Split Squat (body‑weight)",
+              "difficulty": "Medium",
+              "equipment": "Bench",
+              "sets": "3",
+              "reps": "10 each leg",
+              "calories": 50
+            },
+            {
+              "id": 4,
+              "name": "Scapular Push‑Ups (knees)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "15",
+              "calories": 20
+            },
+            {
+              "id": 5,
+              "name": "Thoracic Windmill (floor)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "8 each side",
+              "calories": 12
+            },
+            {
+              "id": 6,
+              "name": "Standing Calf Stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "30 sec each side",
+              "calories": 6
+            },
+            {
+              "id": 7,
+              "name": "Neck Isometric Retraction",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 sec hold",
+              "calories": 6
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dumbbell Arnold Press (neutral neck)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 42
+            },
+            {
+              "id": 2,
+              "name": "Resistance Band Chest Press (low angle)",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 36
+            },
+            {
+              "id": 3,
+              "name": "Single‑Leg Romanian Deadlift (body‑weight)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "10 each leg",
+              "calories": 48
+            },
+            {
+              "id": 4,
+              "name": "Band External Rotation",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15 each side",
+              "calories": 14
+            },
+            {
+              "id": 5,
+              "name": "Prone Y‑T‑W (light)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "12 each",
+              "calories": 14
+            },
+            {
+              "id": 6,
+              "name": "Standing Hip CAR",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "8 each side",
+              "calories": 12
+            },
+            {
+              "id": 7,
+              "name": "Doorway Lat Stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "30 sec",
+              "calories": 5
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Close‑Grip Dumbbell Press",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 44
+            },
+            {
+              "id": 2,
+              "name": "Band Seated Row (neutral grip)",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 34
+            },
+            {
+              "id": 3,
+              "name": "Goblet Squat to Box",
+              "difficulty": "Easy",
+              "equipment": "Dumbbell + box",
+              "sets": "3",
+              "reps": "12",
+              "calories": 52
+            },
+            {
+              "id": 4,
+              "name": "Scapular Wall Slides",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "12",
+              "calories": 12
+            },
+            {
+              "id": 5,
+              "name": "Band Pallof Press",
+              "difficulty": "Medium",
+              "equipment": "Band",
+              "sets": "2",
+              "reps": "12 each side",
+              "calories": 16
+            },
+            {
+              "id": 6,
+              "name": "Supine Thoracic Rotation",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 each side",
+              "calories": 10
+            },
+            {
+              "id": 7,
+              "name": "Neck Retraction Isometric",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 sec hold",
+              "calories": 6
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dumbbell Lateral Raise (light)",
+              "difficulty": "Easy",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Band Lat Pull‑Down (anchored high)",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 38
+            },
+            {
+              "id": 3,
+              "name": "Goblet Squat",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 4,
+              "name": "Prone Y‑T‑W (light)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "10 each",
+              "calories": 14
+            },
+            {
+              "id": 5,
+              "name": "Band Face Pull",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "18",
+              "calories": 22
+            },
+            {
+              "id": 6,
+              "name": "Standing Hip CAR",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "8 each side",
+              "calories": 12
+            },
+            {
+              "id": 7,
+              "name": "Child’s Pose with Thoracic Extension",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "2",
+              "reps": "30 sec",
+              "calories": 5
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "parseError": null,
+  "cleanedContent": "{\n  \"gym\": {\n    \"title\": \"Gym Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Incline Dumbbell Press\", \"difficulty\": \"Easy\", \"equipment\": \"Adjustable dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 2, \"name\": \"Seated Cable Row\", \"difficulty\": \"Medium\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 38 },\n          { \"id\": 3, \"name\": \"Goblet Squat\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 50 },\n          { \"id\": 4, \"name\": \"Face Pull\", \"difficulty\": \"Easy\", \"equipment\": \"Cable (rope)\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 28 },\n          { \"id\": 5, \"name\": \"Standing Hip CAR (Controlled Articular Rotation)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"8 each side\", \"calories\": 12 },\n          { \"id\": 6, \"name\": \"Cat‑Cow Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 cycles\", \"calories\": 8 }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Lat Pulldown (neutral grip)\", \"difficulty\": \"Medium\", \"equipment\": \"Pulldown machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40 },\n          { \"id\": 2, \"name\": \"Dumbbell Romanian Deadlift\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 3, \"name\": \"Chest‑Supported T‑Row\", \"difficulty\": \"Medium\", \"equipment\": \"Bench + dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 35 },\n          { \"id\": 4, \"name\": \"Band Pull‑Apart\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance band\", \"sets\": \"3\", \"reps\": \"20\", \"calories\": 22 },\n          { \"id\": 5, \"name\": \"Thoracic Extension on Foam Roller\", \"difficulty\": \"Easy\", \"equipment\": \"Foam roller\", \"sets\": \"2\", \"reps\": \"30 sec hold\", \"calories\": 10 },\n          { \"id\": 6, \"name\": \"Standing Calf Raise (machine)\", \"difficulty\": \"Easy\", \"equipment\": \"Calf raise machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 30 }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dumbbell Bench Press (flat)\", \"difficulty\": \"Easy\", \"equipment\": \"Adjustable bench + dumbbells\", \"sets\": \"4\", \"reps\": \"8\", \"calories\": 48 },\n          { \"id\": 2, \"name\": \"Single‑Arm Cable Row\", \"difficulty\": \"Medium\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 36 },\n          { \"id\": 3, \"name\": \"Leg Press (moderate load)\", \"difficulty\": \"Easy\", \"equipment\": \"Leg press machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 58 },\n          { \"id\": 4, \"name\": \"Scapular Wall Slides\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"12\", \"calories\": 12 },\n          { \"id\": 5, \"name\": \"Side‑lying Clam (band)\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance band\", \"sets\": \"3\", \"reps\": \"15 each side\", \"calories\": 14 },\n          { \"id\": 6, \"name\": \"Seated Neck Retraction (isometric)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 sec hold\", \"calories\": 6 }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Machine Chest Fly\", \"difficulty\": \"Easy\", \"equipment\": \"Pec‑deck machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 32 },\n          { \"id\": 2, \"name\": \"Reverse Grip Lat Pulldown\", \"difficulty\": \"Medium\", \"equipment\": \"Pulldown machine\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 38 },\n          { \"id\": 3, \"name\": \"Bulgarian Split Squat (body‑weight or light dumbbell)\", \"difficulty\": \"Medium\", \"equipment\": \"Bench + dumbbell\", \"sets\": \"3\", \"reps\": \"10 each leg\", \"calories\": 52 },\n          { \"id\": 4, \"name\": \"Prone Y‑T‑W (on incline bench)\", \"difficulty\": \"Easy\", \"equipment\": \"Bench\", \"sets\": \"2\", \"reps\": \"8 each pattern\", \"calories\": 16 },\n          { \"id\": 5, \"name\": \"Standing Hip CAR\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"8 each side\", \"calories\": 12 },\n          { \"id\": 6, \"name\": \"Ankle Mobilisation (wall stretch)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"30 sec each side\", \"calories\": 8 }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dumbbell Arnold Press (neutral elbows, no neck strain)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 42 },\n          { \"id\": 2, \"name\": \"Cable Chest Press (low incline)\", \"difficulty\": \"Easy\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 3, \"name\": \"Leg Curl Machine\", \"difficulty\": \"Easy\", \"equipment\": \"Leg curl machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 45 },\n          { \"id\": 4, \"name\": \"Band External Rotation\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance band\", \"sets\": \"3\", \"reps\": \"15 each side\", \"calories\": 14 },\n          { \"id\": 5, \"name\": \"Thoracic Windmill (floor)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"8 each side\", \"calories\": 12 },\n          { \"id\": 6, \"name\": \"Standing Calf Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"30 sec each side\", \"calories\": 6 }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Close‑Grip Bench Press (moderate load)\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell or dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 44 },\n          { \"id\": 2, \"name\": \"Seated Row (machine, neutral grip)\", \"difficulty\": \"Easy\", \"equipment\": \"Row machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 35 },\n          { \"id\": 3, \"name\": \"Goblet Squat to Box\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbell + box\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 52 },\n          { \"id\": 4, \"name\": \"Scapular Push‑Ups (on knees)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 20 },\n          { \"id\": 5, \"name\": \"Banded Pallof Press\", \"difficulty\": \"Medium\", \"equipment\": \"Resistance band\", \"sets\": \"2\", \"reps\": \"12 each side\", \"calories\": 16 },\n          { \"id\": 6, \"name\": \"Supine Thoracic Rotation\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 each side\", \"calories\": 10 }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dumbbell Lateral Raise (light, neutral neck)\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Lat Pulldown (wide, neutral spine)\", \"difficulty\": \"Easy\", \"equipment\": \"Pulldown machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 3, \"name\": \"Hack Squat Machine\", \"difficulty\": \"Medium\", \"equipment\": \"Hack squat machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 4, \"name\": \"Prone Y‑T‑W (light)\", \"difficulty\": \"Easy\", \"equipment\": \"Bench\", \"sets\": \"2\", \"reps\": \"10 each\", \"calories\": 14 },\n          { \"id\": 5, \"name\": \"Standing Band Face Pull\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance band\", \"sets\": \"3\", \"reps\": \"18\", \"calories\": 22 },\n          { \"id\": 6, \"name\": \"Neck Isometric Retraction\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 sec hold\", \"calories\": 6 },\n          { \"id\": 7, \"name\": \"Child’s Pose with Thoracic Extension\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"30 sec\", \"calories\": 5 }\n        ]\n      }\n    ]\n  },\n  \"home\": {\n    \"title\": \"Home Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dumbbell Floor Press\", \"difficulty\": \"Easy\", \"equipment\": \"Adjustable dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 50 },\n          { \"id\": 2, \"name\": \"Bent‑Over Dumbbell Row (neutral spine)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 42 },\n          { \"id\": 3, \"name\": \"Goblet Squat\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbell\", \"sets\": \"4\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 4, \"name\": \"Band Pull‑Apart\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance band\", \"sets\": \"3\", \"reps\": \"20\", \"calories\": 22 },\n          { \"id\": 5, \"name\": \"Cat‑Cow Mobility Flow\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 cycles\", \"calories\": 8 },\n          { \"id\": 6, \"name\": \"Standing Hip CAR\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"8 each side\", \"calories\": 12 },\n          { \"id\": 7, \"name\": \"Doorway Chest Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"30 sec\", \"calories\": 5 }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Single‑Arm Dumbbell Chest Press (floor)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"10 each side\", \"calories\": 44 },\n          { \"id\": 2, \"name\": \"Resistance Band Row\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 35 },\n          { \"id\": 3, \"name\": \"Reverse Lunge with Dumbbell\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"12 each leg\", \"calories\": 48 },\n          { \"id\": 4, \"name\": \"Scapular Wall Slides\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"12\", \"calories\": 12 },\n          { \"id\": 5, \"name\": \"Thoracic Extension on Foam Roller\", \"difficulty\": \"Easy\", \"equipment\": \"Foam roller\", \"sets\": \"2\", \"reps\": \"30 sec hold\", \"calories\": 10 },\n          { \"id\": 6, \"name\": \"Standing Calf Raise (body‑weight)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"20\", \"calories\": 28 },\n          { \"id\": 7, \"name\": \"Neck Retraction Isometric\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 sec hold\", \"calories\": 6 }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dumbbell Incline Press (bench set at 45°)\", \"difficulty\": \"Easy\", \"equipment\": \"Bench + dumbbells\", \"sets\": \"4\", \"reps\": \"8\", \"calories\": 48 },\n          { \"id\": 2, \"name\": \"One‑Arm Dumbbell Row (support with knee)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40 },\n          { \"id\": 3, \"name\": \"Sumo Goblet Squat\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 55 },\n          { \"id\": 4, \"name\": \"Band External Rotation\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15 each side\", \"calories\": 14 },\n          { \"id\": 5, \"name\": \"Prone Y‑T‑W (on floor)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 each\", \"calories\": 12 },\n          { \"id\": 6, \"name\": \"Standing Hip CAR\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"8 each side\", \"calories\": 12 },\n          { \"id\": 7, \"name\": \"Child’s Pose with Thoracic Rotation\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"30 sec\", \"calories\": 5 }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dumbbell Chest Fly (floor)\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 38 },\n          { \"id\": 2, \"name\": \"Band Seated Row\", \"difficulty\": \"Medium\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 34 },\n          { \"id\": 3, \"name\": \"Bulgarian Split Squat (body‑weight)\", \"difficulty\": \"Medium\", \"equipment\": \"Bench\", \"sets\": \"3\", \"reps\": \"10 each leg\", \"calories\": 50 },\n          { \"id\": 4, \"name\": \"Scapular Push‑Ups (knees)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 20 },\n          { \"id\": 5, \"name\": \"Thoracic Windmill (floor)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"8 each side\", \"calories\": 12 },\n          { \"id\": 6, \"name\": \"Standing Calf Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"30 sec each side\", \"calories\": 6 },\n          { \"id\": 7, \"name\": \"Neck Isometric Retraction\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 sec hold\", \"calories\": 6 }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dumbbell Arnold Press (neutral neck)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 42 },\n          { \"id\": 2, \"name\": \"Resistance Band Chest Press (low angle)\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 36 },\n          { \"id\": 3, \"name\": \"Single‑Leg Romanian Deadlift (body‑weight)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"10 each leg\", \"calories\": 48 },\n          { \"id\": 4, \"name\": \"Band External Rotation\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15 each side\", \"calories\": 14 },\n          { \"id\": 5, \"name\": \"Prone Y‑T‑W (light)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"12 each\", \"calories\": 14 },\n          { \"id\": 6, \"name\": \"Standing Hip CAR\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"8 each side\", \"calories\": 12 },\n          { \"id\": 7, \"name\": \"Doorway Lat Stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"30 sec\", \"calories\": 5 }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Close‑Grip Dumbbell Press\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 44 },\n          { \"id\": 2, \"name\": \"Band Seated Row (neutral grip)\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 34 },\n          { \"id\": 3, \"name\": \"Goblet Squat to Box\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbell + box\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 52 },\n          { \"id\": 4, \"name\": \"Scapular Wall Slides\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"12\", \"calories\": 12 },\n          { \"id\": 5, \"name\": \"Band Pallof Press\", \"difficulty\": \"Medium\", \"equipment\": \"Band\", \"sets\": \"2\", \"reps\": \"12 each side\", \"calories\": 16 },\n          { \"id\": 6, \"name\": \"Supine Thoracic Rotation\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 each side\", \"calories\": 10 },\n          { \"id\": 7, \"name\": \"Neck Retraction Isometric\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 sec hold\", \"calories\": 6 }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dumbbell Lateral Raise (light)\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Band Lat Pull‑Down (anchored high)\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 38 },\n          { \"id\": 3, \"name\": \"Goblet Squat\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 4, \"name\": \"Prone Y‑T‑W (light)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"10 each\", \"calories\": 14 },\n          { \"id\": 5, \"name\": \"Band Face Pull\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"18\", \"calories\": 22 },\n          { \"id\": 6, \"name\": \"Standing Hip CAR\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"8 each side\", \"calories\": 12 },\n          { \"id\": 7, \"name\": \"Child’s Pose with Thoracic Extension\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"2\", \"reps\": \"30 sec\", \"calories\": 5 }\n        ]\n      }\n    ]\n  }\n}",
+  "derived": {
+    "allHealthConditions": "desk-job posture issues",
+    "allAllergies": "none",
+    "allInjuries": "neck tension, avoid painful loaded shrugs and jerky neck motion",
+    "allGoals": "maintenance and posture improvement, weekday home training only",
+    "experienceInfo": "beginner - adjustable dumbbells at home",
+    "bmr": 1872.1580000000001,
+    "tdee": 2246.5896000000002,
+    "targetCalories": 2247
+  },
+  "latencyMs": 158529,
+  "usage": {
+    "prompt_tokens": 783,
+    "completion_tokens": 5250,
+    "total_tokens": 6033,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 40,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop",
+  "retrieval": {
+    "skip": false,
+    "vectorLength": 384,
+    "results": [
+      {
+        "id": "54ebfde2-0c8a-4996-afda-9ca2559b6faf",
+        "version": 453,
+        "score": 0.6389457,
+        "payload": {
+          "athlete_id": "ATH0359",
+          "name": "كريم سليم النعيمي",
+          "age": 28,
+          "gender": "Male",
+          "goal": "Movement quality",
+          "issue": "Cervical Disc Irritation - Moderate - Musculoskeletal",
+          "dietary_restrictions": [],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Heavy shrugs with neck protraction",
+              "reason": "Can worsen cervical compression"
+            },
+            {
+              "exercise": "Overhead pressing with poor head position",
+              "reason": "May aggravate nerve irritation"
+            }
+          ],
+          "contraindicated_foods": []
+        }
+      },
+      {
+        "id": "a45ec84f-2f3e-4ef0-88b5-b4f44c83f1ca",
+        "version": 2093,
+        "score": 0.5982622,
+        "payload": {
+          "athlete_id": "ATH1999",
+          "name": "عبير سالم الصقري",
+          "age": 53,
+          "gender": "Female",
+          "goal": "Movement quality",
+          "issue": "Cervical Disc Irritation - Moderate-Severe - Musculoskeletal",
+          "dietary_restrictions": [],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Heavy shrugs with neck protraction",
+              "reason": "Can worsen cervical compression"
+            },
+            {
+              "exercise": "Overhead pressing with poor head position",
+              "reason": "May aggravate nerve irritation"
+            },
+            {
+              "exercise": "Bridging on the head",
+              "reason": "Direct cervical loading"
+            }
+          ],
+          "contraindicated_foods": []
+        }
+      },
+      {
+        "id": "d597406d-3959-4772-8b3d-d9f215d342b5",
+        "version": 1762,
+        "score": 0.5950302,
+        "payload": {
+          "athlete_id": "ATH1668",
+          "name": "فارس التميمي",
+          "age": 28,
+          "gender": "Male",
+          "goal": "Movement quality",
+          "issue": "Shoulder Impingement Syndrome - Moderate - Musculoskeletal",
+          "dietary_restrictions": [],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Deep bar dips",
+              "reason": "Places shoulder in painful end range"
+            },
+            {
+              "exercise": "Behind-the-neck presses",
+              "reason": "Provokes subacromial compression"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Highly processed sugary foods",
+              "reason": "May increase inflammatory load"
+            }
+          ]
+        }
+      }
+    ],
+    "vectorContext": "Issue: Cervical Disc Irritation - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy shrugs with neck protraction, Overhead pressing with poor head position)\nIssue: Cervical Disc Irritation - Moderate-Severe - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Heavy shrugs with neck protraction, Overhead pressing with poor head position, Bridging on the head)\nIssue: Shoulder Impingement Syndrome - Moderate - Musculoskeletal. Constraints: Foods to avoid (Highly processed sugary foods), Exercises to avoid (Deep bar dips, Behind-the-neck presses)"
+  }
+}

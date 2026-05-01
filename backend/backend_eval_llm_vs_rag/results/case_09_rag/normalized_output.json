@@ -1,0 +1,668 @@
+{
+  "caseId": "case_09",
+  "mode": "rag",
+  "route": "/ai/generate-diet",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "days": [
+      {
+        "day": 1,
+        "totalCalories": 2265,
+        "protein": "142g",
+        "carbs": "228g",
+        "fats": "78g",
+        "meals": [
+          {
+            "title": "Morning Power Boost",
+            "items": [
+              {
+                "name": "Greek yogurt (200g) with mixed berries (100g) and 15g pumpkin seeds",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Deskside Delight",
+            "items": [
+              {
+                "name": "Grilled chicken breast (150g)",
+                "calories": 250
+              },
+              {
+                "name": "Quinoa salad (120g cooked quinoa, 80g chickpeas, veggies, olive oil 10g)",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Afternoon Crunch",
+            "items": [
+              {
+                "name": "Apple (150g) with 20g almond butter",
+                "calories": 250
+              },
+              {
+                "name": "Hard‑boiled egg (1 large)",
+                "calories": 100
+              }
+            ]
+          },
+          {
+            "title": "Pre‑Meeting Meal",
+            "items": [
+              {
+                "name": "Baked salmon (130g)",
+                "calories": 260
+              },
+              {
+                "name": "Sweet potato mash (200g) with 5g butter",
+                "calories": 140
+              }
+            ]
+          },
+          {
+            "title": "Evening Refuel",
+            "items": [
+              {
+                "name": "Stir‑fried beef strips (120g) with mixed veg (200g) in 10g coconut oil",
+                "calories": 350
+              },
+              {
+                "name": "Brown rice (180g cooked)",
+                "calories": 315
+              },
+              {
+                "name": "Side of avocado (50g)",
+                "calories": 100
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "totalCalories": 2265,
+        "protein": "138g",
+        "carbs": "235g",
+        "fats": "75g",
+        "meals": [
+          {
+            "title": "Sunrise Smoothie Bowl",
+            "items": [
+              {
+                "name": "Cottage cheese (200g) with sliced kiwi (100g) and 10g chia seeds",
+                "calories": 320
+              }
+            ]
+          },
+          {
+            "title": "Campus Lunchbox",
+            "items": [
+              {
+                "name": "Turkey breast slices (130g)",
+                "calories": 210
+              },
+              {
+                "name": "Whole‑grain wrap (1 medium) with lettuce, tomato, 5g olive oil mayo",
+                "calories": 210
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Pick‑Me‑Up",
+            "items": [
+              {
+                "name": "Carrot sticks (100g) with hummus (50g)",
+                "calories": 150
+              },
+              {
+                "name": "Handful of walnuts (20g)",
+                "calories": 130
+              }
+            ]
+          },
+          {
+            "title": "Late‑Day Power Plate",
+            "items": [
+              {
+                "name": "Seared cod (150g)",
+                "calories": 180
+              },
+              {
+                "name": "Lentil pilaf (150g cooked lentils + 50g brown rice) with herbs",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Nighttime Nourish",
+            "items": [
+              {
+                "name": "Pork tenderloin (130g) roasted with rosemary",
+                "calories": 260
+              },
+              {
+                "name": "Roasted Brussels sprouts (200g) with 10g olive oil",
+                "calories": 140
+              },
+              {
+                "name": "Quinoa (120g cooked)",
+                "calories": 165
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "totalCalories": 2265,
+        "protein": "145g",
+        "carbs": "220g",
+        "fats": "78g",
+        "meals": [
+          {
+            "title": "Rise‑and‑Shine Yogurt Parfait",
+            "items": [
+              {
+                "name": "Skyr (200g) layered with granola (30g) and raspberries (80g)",
+                "calories": 350
+              }
+            ]
+          },
+          {
+            "title": "Workspace Warm‑Up",
+            "items": [
+              {
+                "name": "Grilled shrimp (130g)",
+                "calories": 160
+              },
+              {
+                "name": "Brown rice salad (150g rice, cucumber, herbs, 8g olive oil)",
+                "calories": 240
+              }
+            ]
+          },
+          {
+            "title": "Snack‑Station",
+            "items": [
+              {
+                "name": "Pear (150g) with 15g sunflower seed butter",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Midday Munch",
+            "items": [
+              {
+                "name": "Lean ground turkey (120g) cooked with tomato sauce",
+                "calories": 210
+              },
+              {
+                "name": "Spaghetti squash (200g) tossed in 5g butter",
+                "calories": 95
+              }
+            ]
+          },
+          {
+            "title": "Dinner Duo",
+            "items": [
+              {
+                "name": "Baked tilapia (150g) with lemon",
+                "calories": 180
+              },
+              {
+                "name": "Quinoa‑black bean mix (150g cooked)",
+                "calories": 260
+              },
+              {
+                "name": "Steamed broccoli (150g) with 5g grated parmesan",
+                "calories": 95
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "totalCalories": 2265,
+        "protein": "140g",
+        "carbs": "225g",
+        "fats": "77g",
+        "meals": [
+          {
+            "title": "Early Energy Bowl",
+            "items": [
+              {
+                "name": "Oatmeal (70g dry) cooked with water, topped with banana (100g) and 10g almond slivers",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Power Snack",
+            "items": [
+              {
+                "name": "Boiled egg (2 large)",
+                "calories": 155
+              },
+              {
+                "name": "Cherry tomatoes (100g) with 5g olive oil",
+                "calories": 45
+              }
+            ]
+          },
+          {
+            "title": "Office Lunch Lift",
+            "items": [
+              {
+                "name": "Grilled chicken thigh (120g, skinless)",
+                "calories": 210
+              },
+              {
+                "name": "Farro (130g cooked) with roasted red pepper",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Refresher",
+            "items": [
+              {
+                "name": "Greek yogurt (150g) with honey (10g) and pumpkin seeds (10g)",
+                "calories": 200
+              },
+              {
+                "name": "Cucumber sticks (100g)",
+                "calories": 15
+              }
+            ]
+          },
+          {
+            "title": "Evening Comfort",
+            "items": [
+              {
+                "name": "Beef stir‑fry (130g lean beef) with mixed veg (200g) in 10g sesame‑free oil",
+                "calories": 340
+              },
+              {
+                "name": "Whole‑grain couscous (150g cooked)",
+                "calories": 140
+              },
+              {
+                "name": "Side of mixed greens with balsamic (30g)",
+                "calories": 20
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "totalCalories": 2265,
+        "protein": "143g",
+        "carbs": "230g",
+        "fats": "76g",
+        "meals": [
+          {
+            "title": "Sunburst Starter",
+            "items": [
+              {
+                "name": "Protein pancakes (2 medium) made with oat flour, egg whites, topped with 30g blueberries and 10g maple syrup",
+                "calories": 330
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Mix",
+            "items": [
+              {
+                "name": "Cottage cheese (150g) with sliced peach (80g)",
+                "calories": 180
+              },
+              {
+                "name": "Almonds (15g)",
+                "calories": 90
+              }
+            ]
+          },
+          {
+            "title": "Desk Lunch Delight",
+            "items": [
+              {
+                "name": "Tuna steak (130g) grilled",
+                "calories": 210
+              },
+              {
+                "name": "Barley salad (150g cooked barley, diced veggies, 8g olive oil)",
+                "calories": 250
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Energy Bar",
+            "items": [
+              {
+                "name": "Rice cakes (2) with avocado spread (40g)",
+                "calories": 180
+              },
+              {
+                "name": "Carrot sticks (100g)",
+                "calories": 40
+              }
+            ]
+          },
+          {
+            "title": "Nighttime Nourishment",
+            "items": [
+              {
+                "name": "Roasted chicken leg (120g, skin removed)",
+                "calories": 210
+              },
+              {
+                "name": "Mashed cauliflower (200g) with 10g butter",
+                "calories": 120
+              },
+              {
+                "name": "Green bean almondine (150g beans, 10g almond slices, 5g oil)",
+                "calories": 115
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "totalCalories": 2265,
+        "protein": "137g",
+        "carbs": "225g",
+        "fats": "78g",
+        "meals": [
+          {
+            "title": "Morning Boost",
+            "items": [
+              {
+                "name": "Smoothie (200ml unsweetened almond milk, 30g whey isolate, 50g frozen berries, 10g flaxseed)",
+                "calories": 310
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Morsel",
+            "items": [
+              {
+                "name": "Turkey roll‑up (80g turkey breast) with lettuce and 5g mustard",
+                "calories": 120
+              },
+              {
+                "name": "Small orange (130g)",
+                "calories": 60
+              }
+            ]
+          },
+          {
+            "title": "Lunch Lift",
+            "items": [
+              {
+                "name": "Grilled mahi‑mahi (130g)",
+                "calories": 190
+              },
+              {
+                "name": "Wild rice blend (150g cooked) with herbs",
+                "calories": 210
+              },
+              {
+                "name": "Sauteed zucchini (150g) in 5g olive oil",
+                "calories": 95
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Snack",
+            "items": [
+              {
+                "name": "Greek yogurt (150g) with 15g pumpkin seeds",
+                "calories": 190
+              },
+              {
+                "name": "Pear (150g)",
+                "calories": 80
+              }
+            ]
+          },
+          {
+            "title": "Evening Plate",
+            "items": [
+              {
+                "name": "Lean pork chops (130g) baked",
+                "calories": 260
+              },
+              {
+                "name": "Roasted sweet potato wedges (200g) with 5g olive oil",
+                "calories": 150
+              },
+              {
+                "name": "Steamed asparagus (150g)",
+                "calories": 20
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "totalCalories": 2265,
+        "protein": "141g",
+        "carbs": "228g",
+        "fats": "77g",
+        "meals": [
+          {
+            "title": "Sunrise Scramble",
+            "items": [
+              {
+                "name": "Egg white omelette (4 whites) with spinach (50g) and feta (20g)",
+                "calories": 300
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Fresh",
+            "items": [
+              {
+                "name": "Greek kefir (200ml) with sliced strawberry (80g)",
+                "calories": 120
+              },
+              {
+                "name": "Handful of pistachios (20g)",
+                "calories": 110
+              }
+            ]
+          },
+          {
+            "title": "Office Power Lunch",
+            "items": [
+              {
+                "name": "Grilled turkey breast (130g)",
+                "calories": 210
+              },
+              {
+                "name": "Quinoa tabbouleh (150g cooked quinoa, parsley, lemon, 8g olive oil)",
+                "calories": 240
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Recharge",
+            "items": [
+              {
+                "name": "Celery sticks (100g) with 30g almond butter",
+                "calories": 250
+              }
+            ]
+          },
+          {
+            "title": "Dinner Finale",
+            "items": [
+              {
+                "name": "Baked salmon (130g) with dill",
+                "calories": 260
+              },
+              {
+                "name": "Brown rice pilaf (180g cooked) with peas (50g)",
+                "calories": 260
+              },
+              {
+                "name": "Mixed leaf salad (50g) with 5g olive oil vinaigrette",
+                "calories": 25
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "parseError": null,
+  "cleanedContent": "{\n  \"days\": [\n    {\n      \"day\": 1,\n      \"totalCalories\": 2265,\n      \"protein\": \"142g\",\n      \"carbs\": \"228g\",\n      \"fats\": \"78g\",\n      \"meals\": [\n        {\n          \"title\": \"Morning Power Boost\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (200g) with mixed berries (100g) and 15g pumpkin seeds\", \"calories\": 300 }\n          ]\n        },\n        {\n          \"title\": \"Deskside Delight\",\n          \"items\": [\n            { \"name\": \"Grilled chicken breast (150g)\", \"calories\": 250 },\n            { \"name\": \"Quinoa salad (120g cooked quinoa, 80g chickpeas, veggies, olive oil 10g)\", \"calories\": 200 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Afternoon Crunch\",\n          \"items\": [\n            { \"name\": \"Apple (150g) with 20g almond butter\", \"calories\": 250 },\n            { \"name\": \"Hard‑boiled egg (1 large)\", \"calories\": 100 }\n          ]\n        },\n        {\n          \"title\": \"Pre‑Meeting Meal\",\n          \"items\": [\n            { \"name\": \"Baked salmon (130g)\", \"calories\": 260 },\n            { \"name\": \"Sweet potato mash (200g) with 5g butter\", \"calories\": 140 }\n          ]\n        },\n        {\n          \"title\": \"Evening Refuel\",\n          \"items\": [\n            { \"name\": \"Stir‑fried beef strips (120g) with mixed veg (200g) in 10g coconut oil\", \"calories\": 350 },\n            { \"name\": \"Brown rice (180g cooked)\", \"calories\": 315 },\n            { \"name\": \"Side of avocado (50g)\", \"calories\": 100 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 2,\n      \"totalCalories\": 2265,\n      \"protein\": \"138g\",\n      \"carbs\": \"235g\",\n      \"fats\": \"75g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunrise Smoothie Bowl\",\n          \"items\": [\n            { \"name\": \"Cottage cheese (200g) with sliced kiwi (100g) and 10g chia seeds\", \"calories\": 320 }\n          ]\n        },\n        {\n          \"title\": \"Campus Lunchbox\",\n          \"items\": [\n            { \"name\": \"Turkey breast slices (130g)\", \"calories\": 210 },\n            { \"name\": \"Whole‑grain wrap (1 medium) with lettuce, tomato, 5g olive oil mayo\", \"calories\": 210 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Pick‑Me‑Up\",\n          \"items\": [\n            { \"name\": \"Carrot sticks (100g) with hummus (50g)\", \"calories\": 150 },\n            { \"name\": \"Handful of walnuts (20g)\", \"calories\": 130 }\n          ]\n        },\n        {\n          \"title\": \"Late‑Day Power Plate\",\n          \"items\": [\n            { \"name\": \"Seared cod (150g)\", \"calories\": 180 },\n            { \"name\": \"Lentil pilaf (150g cooked lentils + 50g brown rice) with herbs\", \"calories\": 200 }\n          ]\n        },\n        {\n          \"title\": \"Nighttime Nourish\",\n          \"items\": [\n            { \"name\": \"Pork tenderloin (130g) roasted with rosemary\", \"calories\": 260 },\n            { \"name\": \"Roasted Brussels sprouts (200g) with 10g olive oil\", \"calories\": 140 },\n            { \"name\": \"Quinoa (120g cooked)\", \"calories\": 165 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 3,\n      \"totalCalories\": 2265,\n      \"protein\": \"145g\",\n      \"carbs\": \"220g\",\n      \"fats\": \"78g\",\n      \"meals\": [\n        {\n          \"title\": \"Rise‑and‑Shine Yogurt Parfait\",\n          \"items\": [\n            { \"name\": \"Skyr (200g) layered with granola (30g) and raspberries (80g)\", \"calories\": 350 }\n          ]\n        },\n        {\n          \"title\": \"Workspace Warm‑Up\",\n          \"items\": [\n            { \"name\": \"Grilled shrimp (130g)\", \"calories\": 160 },\n            { \"name\": \"Brown rice salad (150g rice, cucumber, herbs, 8g olive oil)\", \"calories\": 240 }\n          ]\n        },\n        {\n          \"title\": \"Snack‑Station\",\n          \"items\": [\n            { \"name\": \"Pear (150g) with 15g sunflower seed butter\", \"calories\": 200 }\n          ]\n        },\n        {\n          \"title\": \"Midday Munch\",\n          \"items\": [\n            { \"name\": \"Lean ground turkey (120g) cooked with tomato sauce\", \"calories\": 210 },\n            { \"name\": \"Spaghetti squash (200g) tossed in 5g butter\", \"calories\": 95 }\n          ]\n        },\n        {\n          \"title\": \"Dinner Duo\",\n          \"items\": [\n            { \"name\": \"Baked tilapia (150g) with lemon\", \"calories\": 180 },\n            { \"name\": \"Quinoa‑black bean mix (150g cooked)\", \"calories\": 260 },\n            { \"name\": \"Steamed broccoli (150g) with 5g grated parmesan\", \"calories\": 95 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 4,\n      \"totalCalories\": 2265,\n      \"protein\": \"140g\",\n      \"carbs\": \"225g\",\n      \"fats\": \"77g\",\n      \"meals\": [\n        {\n          \"title\": \"Early Energy Bowl\",\n          \"items\": [\n            { \"name\": \"Oatmeal (70g dry) cooked with water, topped with banana (100g) and 10g almond slivers\", \"calories\": 300 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Power Snack\",\n          \"items\": [\n            { \"name\": \"Boiled egg (2 large)\", \"calories\": 155 },\n            { \"name\": \"Cherry tomatoes (100g) with 5g olive oil\", \"calories\": 45 }\n          ]\n        },\n        {\n          \"title\": \"Office Lunch Lift\",\n          \"items\": [\n            { \"name\": \"Grilled chicken thigh (120g, skinless)\", \"calories\": 210 },\n            { \"name\": \"Farro (130g cooked) with roasted red pepper\", \"calories\": 200 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Refresher\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (150g) with honey (10g) and pumpkin seeds (10g)\", \"calories\": 200 },\n            { \"name\": \"Cucumber sticks (100g)\", \"calories\": 15 }\n          ]\n        },\n        {\n          \"title\": \"Evening Comfort\",\n          \"items\": [\n            { \"name\": \"Beef stir‑fry (130g lean beef) with mixed veg (200g) in 10g sesame‑free oil\", \"calories\": 340 },\n            { \"name\": \"Whole‑grain couscous (150g cooked)\", \"calories\": 140 },\n            { \"name\": \"Side of mixed greens with balsamic (30g)\", \"calories\": 20 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 5,\n      \"totalCalories\": 2265,\n      \"protein\": \"143g\",\n      \"carbs\": \"230g\",\n      \"fats\": \"76g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunburst Starter\",\n          \"items\": [\n            { \"name\": \"Protein pancakes (2 medium) made with oat flour, egg whites, topped with 30g blueberries and 10g maple syrup\", \"calories\": 330 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Mix\",\n          \"items\": [\n            { \"name\": \"Cottage cheese (150g) with sliced peach (80g)\", \"calories\": 180 },\n            { \"name\": \"Almonds (15g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Desk Lunch Delight\",\n          \"items\": [\n            { \"name\": \"Tuna steak (130g) grilled\", \"calories\": 210 },\n            { \"name\": \"Barley salad (150g cooked barley, diced veggies, 8g olive oil)\", \"calories\": 250 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Energy Bar\",\n          \"items\": [\n            { \"name\": \"Rice cakes (2) with avocado spread (40g)\", \"calories\": 180 },\n            { \"name\": \"Carrot sticks (100g)\", \"calories\": 40 }\n          ]\n        },\n        {\n          \"title\": \"Nighttime Nourishment\",\n          \"items\": [\n            { \"name\": \"Roasted chicken leg (120g, skin removed)\", \"calories\": 210 },\n            { \"name\": \"Mashed cauliflower (200g) with 10g butter\", \"calories\": 120 },\n            { \"name\": \"Green bean almondine (150g beans, 10g almond slices, 5g oil)\", \"calories\": 115 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 6,\n      \"totalCalories\": 2265,\n      \"protein\": \"137g\",\n      \"carbs\": \"225g\",\n      \"fats\": \"78g\",\n      \"meals\": [\n        {\n          \"title\": \"Morning Boost\",\n          \"items\": [\n            { \"name\": \"Smoothie (200ml unsweetened almond milk, 30g whey isolate, 50g frozen berries, 10g flaxseed)\", \"calories\": 310 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Morsel\",\n          \"items\": [\n            { \"name\": \"Turkey roll‑up (80g turkey breast) with lettuce and 5g mustard\", \"calories\": 120 },\n            { \"name\": \"Small orange (130g)\", \"calories\": 60 }\n          ]\n        },\n        {\n          \"title\": \"Lunch Lift\",\n          \"items\": [\n            { \"name\": \"Grilled mahi‑mahi (130g)\", \"calories\": 190 },\n            { \"name\": \"Wild rice blend (150g cooked) with herbs\", \"calories\": 210 },\n            { \"name\": \"Sauteed zucchini (150g) in 5g olive oil\", \"calories\": 95 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Snack\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (150g) with 15g pumpkin seeds\", \"calories\": 190 },\n            { \"name\": \"Pear (150g)\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Evening Plate\",\n          \"items\": [\n            { \"name\": \"Lean pork chops (130g) baked\", \"calories\": 260 },\n            { \"name\": \"Roasted sweet potato wedges (200g) with 5g olive oil\", \"calories\": 150 },\n            { \"name\": \"Steamed asparagus (150g)\", \"calories\": 20 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 7,\n      \"totalCalories\": 2265,\n      \"protein\": \"141g\",\n      \"carbs\": \"228g\",\n      \"fats\": \"77g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunrise Scramble\",\n          \"items\": [\n            { \"name\": \"Egg white omelette (4 whites) with spinach (50g) and feta (20g)\", \"calories\": 300 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Fresh\",\n          \"items\": [\n            { \"name\": \"Greek kefir (200ml) with sliced strawberry (80g)\", \"calories\": 120 },\n            { \"name\": \"Handful of pistachios (20g)\", \"calories\": 110 }\n          ]\n        },\n        {\n          \"title\": \"Office Power Lunch\",\n          \"items\": [\n            { \"name\": \"Grilled turkey breast (130g)\", \"calories\": 210 },\n            { \"name\": \"Quinoa tabbouleh (150g cooked quinoa, parsley, lemon, 8g olive oil)\", \"calories\": 240 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Recharge\",\n          \"items\": [\n            { \"name\": \"Celery sticks (100g) with 30g almond butter\", \"calories\": 250 }\n          ]\n        },\n        {\n          \"title\": \"Dinner Finale\",\n          \"items\": [\n            { \"name\": \"Baked salmon (130g) with dill\", \"calories\": 260 },\n            { \"name\": \"Brown rice pilaf (180g cooked) with peas (50g)\", \"calories\": 260 },\n            { \"name\": \"Mixed leaf salad (50g) with 5g olive oil vinaigrette\", \"calories\": 25 }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "derived": {
+    "allHealthConditions": "treated hypothyroidism",
+    "allAllergies": "soy intolerance",
+    "allInjuries": "none",
+    "allGoals": "maintenance with better satiety, high-satiety meals for office routine",
+    "experienceInfo": "intermediate",
+    "bmr": 1461.181,
+    "tdee": 2264.83055,
+    "targetCalories": 2265
+  },
+  "latencyMs": 111318,
+  "usage": {
+    "prompt_tokens": 909,
+    "completion_tokens": 3321,
+    "total_tokens": 4230,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 343,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop",
+  "retrieval": {
+    "skip": false,
+    "vectorLength": 384,
+    "results": [
+      {
+        "id": "fddc4ee0-c2f3-4775-ba8b-fb05a59f018e",
+        "version": 652,
+        "score": 0.6135547,
+        "payload": {
+          "athlete_id": "ATH0558",
+          "name": "هدى مروان العوامي",
+          "age": 56,
+          "gender": "Female",
+          "goal": "Overall fitness",
+          "issue": "Hypothyroidism - Mild - Endocrine",
+          "dietary_restrictions": [
+            "Adequate energy intake"
+          ],
+          "allergies": [
+            "Peanuts"
+          ],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Extreme calorie-deficit training blocks",
+              "reason": "Can worsen fatigue"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Peanut-containing snacks",
+              "reason": "Allergic reaction risk"
+            }
+          ]
+        }
+      },
+      {
+        "id": "aedded61-031a-409d-94f1-4411e6851186",
+        "version": 560,
+        "score": 0.59395206,
+        "payload": {
+          "athlete_id": "ATH0466",
+          "name": "ياسين البدري",
+          "age": 57,
+          "gender": "Male",
+          "goal": "Overall fitness",
+          "issue": "Hypothyroidism - Mild - Endocrine",
+          "dietary_restrictions": [
+            "Medication timing awareness"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Extreme calorie-deficit training blocks",
+              "reason": "Can worsen fatigue"
+            },
+            {
+              "exercise": "Aggressive two-a-day training during low-energy periods",
+              "reason": "Poor recovery tolerance"
+            }
+          ],
+          "contraindicated_foods": []
+        }
+      },
+      {
+        "id": "12613c53-5be8-4575-9345-256b07810d57",
+        "version": 1902,
+        "score": 0.58231246,
+        "payload": {
+          "athlete_id": "ATH1808",
+          "name": "محمد مروان المصري",
+          "age": 59,
+          "gender": "Male",
+          "goal": "Body recomposition",
+          "issue": "Hypothyroidism - Mild-Moderate - Endocrine",
+          "dietary_restrictions": [
+            "Protein distribution support",
+            "Medication timing awareness"
+          ],
+          "allergies": [
+            "Sesame"
+          ],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Aggressive two-a-day training during low-energy periods",
+              "reason": "Poor recovery tolerance"
+            },
+            {
+              "exercise": "Extreme calorie-deficit training blocks",
+              "reason": "Can worsen fatigue"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Liquid-calorie coffees and shakes",
+              "reason": "Can hide excess calories and disrupt fat-loss targets"
+            },
+            {
+              "food": "Sesame-containing foods",
+              "reason": "Allergic reaction risk"
+            }
+          ]
+        }
+      }
+    ],
+    "vectorContext": "Issue: Hypothyroidism - Mild - Endocrine. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Extreme calorie-deficit training blocks)\nIssue: Hypothyroidism - Mild - Endocrine. Constraints: Foods to avoid (), Exercises to avoid (Extreme calorie-deficit training blocks, Aggressive two-a-day training during low-energy periods)\nIssue: Hypothyroidism - Mild-Moderate - Endocrine. Constraints: Foods to avoid (Liquid-calorie coffees and shakes, Sesame-containing foods), Exercises to avoid (Aggressive two-a-day training during low-energy periods, Extreme calorie-deficit training blocks)"
+  }
+}

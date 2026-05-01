@@ -1,0 +1,827 @@
+{
+  "caseId": "case_17",
+  "mode": "rag",
+  "route": "/ai/generate-diet",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "days": [
+      {
+        "day": 1,
+        "totalCalories": 2458,
+        "protein": "150g",
+        "carbs": "200g",
+        "fats": "60g",
+        "meals": [
+          {
+            "title": "Airport Power Bowl",
+            "items": [
+              {
+                "name": "Greek yogurt (200g)",
+                "calories": 120
+              },
+              {
+                "name": "Mixed berries (150g)",
+                "calories": 80
+              },
+              {
+                "name": "Rolled oats (50g)",
+                "calories": 150
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Day Business Lunch",
+            "items": [
+              {
+                "name": "Grilled chicken breast (180g)",
+                "calories": 300
+              },
+              {
+                "name": "Quinoa (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Steamed broccoli (120g)",
+                "calories": 40
+              },
+              {
+                "name": "Olive oil drizzle (10ml)",
+                "calories": 80
+              }
+            ]
+          },
+          {
+            "title": "Quick Desk Snack",
+            "items": [
+              {
+                "name": "Carrot sticks (100g) with hummus (40g)",
+                "calories": 150
+              }
+            ]
+          },
+          {
+            "title": "Conference Dinner",
+            "items": [
+              {
+                "name": "Baked salmon (150g)",
+                "calories": 340
+              },
+              {
+                "name": "Sweet potato mash (200g)",
+                "calories": 180
+              },
+              {
+                "name": "Green beans almondine (100g)",
+                "calories": 120
+              },
+              {
+                "name": "Lemon‑tahini dressing (15ml)",
+                "calories": 80
+              }
+            ]
+          },
+          {
+            "title": "Nighttime Recovery",
+            "items": [
+              {
+                "name": "Cottage cheese (200g)",
+                "calories": 190
+              },
+              {
+                "name": "Walnuts (20g)",
+                "calories": 140
+              },
+              {
+                "name": "Cinnamon sprinkle",
+                "calories": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "totalCalories": 2458,
+        "protein": "150g",
+        "carbs": "200g",
+        "fats": "60g",
+        "meals": [
+          {
+            "title": "Sunrise Smoothie",
+            "items": [
+              {
+                "name": "Unsweetened soy milk (250ml)",
+                "calories": 100
+              },
+              {
+                "name": "Protein powder (30g)",
+                "calories": 120
+              },
+              {
+                "name": "Spinach (50g)",
+                "calories": 12
+              },
+              {
+                "name": "Frozen mango (100g)",
+                "calories": 70
+              }
+            ]
+          },
+          {
+            "title": "Travel‑Friendly Wrap",
+            "items": [
+              {
+                "name": "Whole‑grain tortilla",
+                "calories": 130
+              },
+              {
+                "name": "Turkey slices (120g)",
+                "calories": 150
+              },
+              {
+                "name": "Avocado (50g)",
+                "calories": 80
+              },
+              {
+                "name": "Lettuce & tomato",
+                "calories": 20
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Protein Bar",
+            "items": [
+              {
+                "name": "Homemade nut‑date bar (40g)",
+                "calories": 180
+              }
+            ]
+          },
+          {
+            "title": "Hotel Room Stir‑Fry",
+            "items": [
+              {
+                "name": "Lean beef strips (150g)",
+                "calories": 250
+              },
+              {
+                "name": "Brown rice noodles (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Mixed bell peppers (100g)",
+                "calories": 30
+              },
+              {
+                "name": "Soy‑ginger sauce (15ml)",
+                "calories": 40
+              }
+            ]
+          },
+          {
+            "title": "Late‑Night Hydration",
+            "items": [
+              {
+                "name": "Low‑fat milk (250ml)",
+                "calories": 110
+              },
+              {
+                "name": "Chia seed pudding (30g chia + 100ml almond milk)",
+                "calories": 138
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "totalCalories": 2458,
+        "protein": "150g",
+        "carbs": "200g",
+        "fats": "60g",
+        "meals": [
+          {
+            "title": "Early Flight Oats",
+            "items": [
+              {
+                "name": "Steel‑cut oats (60g dry)",
+                "calories": 220
+              },
+              {
+                "name": "Skim milk (200ml)",
+                "calories": 70
+              },
+              {
+                "name": "Sliced kiwi (100g)",
+                "calories": 60
+              },
+              {
+                "name": "Flaxseed (10g)",
+                "calories": 55
+              }
+            ]
+          },
+          {
+            "title": "Conference Power Salad",
+            "items": [
+              {
+                "name": "Grilled shrimp (150g)",
+                "calories": 180
+              },
+              {
+                "name": "Mixed greens (100g)",
+                "calories": 15
+              },
+              {
+                "name": "Cooked lentils (100g)",
+                "calories": 115
+              },
+              {
+                "name": "Cherry tomatoes (50g)",
+                "calories": 10
+              },
+              {
+                "name": "Olive oil vinaigrette (15ml)",
+                "calories": 130
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Afternoon Nuts",
+            "items": [
+              {
+                "name": "Almonds (25g)",
+                "calories": 145
+              }
+            ]
+          },
+          {
+            "title": "Dinner at Client Site",
+            "items": [
+              {
+                "name": "Roasted turkey breast (170g)",
+                "calories": 260
+              },
+              {
+                "name": "Wild rice (150g cooked)",
+                "calories": 170
+              },
+              {
+                "name": "Steamed asparagus (120g)",
+                "calories": 25
+              },
+              {
+                "name": "Butter (5g) for veg",
+                "calories": 35
+              }
+            ]
+          },
+          {
+            "title": "Evening Calm",
+            "items": [
+              {
+                "name": "Low‑sugar Greek yogurt (150g)",
+                "calories": 90
+              },
+              {
+                "name": "Pumpkin seeds (15g)",
+                "calories": 85
+              },
+              {
+                "name": "Honey drizzle (5ml)",
+                "calories": 20
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "totalCalories": 2458,
+        "protein": "150g",
+        "carbs": "200g",
+        "fats": "60g",
+        "meals": [
+          {
+            "title": "Hotel Mini‑Bar Munch",
+            "items": [
+              {
+                "name": "Hard‑boiled eggs (2 large)",
+                "calories": 140
+              },
+              {
+                "name": "Whole‑grain crispbread (2 pcs)",
+                "calories": 80
+              },
+              {
+                "name": "Low‑fat cheese slice (30g)",
+                "calories": 70
+              }
+            ]
+          },
+          {
+            "title": "Business Lunch Bowl",
+            "items": [
+              {
+                "name": "Baked cod (180g)",
+                "calories": 170
+              },
+              {
+                "name": "Millet (150g cooked)",
+                "calories": 180
+              },
+              {
+                "name": "Roasted carrots (100g)",
+                "calories": 45
+              },
+              {
+                "name": "Tahini drizzle (10ml)",
+                "calories": 85
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Fruit Pack",
+            "items": [
+              {
+                "name": "Apple (150g)",
+                "calories": 80
+              },
+              {
+                "name": "Peanut butter (15g)",
+                "calories": 90
+              }
+            ]
+          },
+          {
+            "title": "Evening Protein Stir",
+            "items": [
+              {
+                "name": "Tempeh strips (120g)",
+                "calories": 210
+              },
+              {
+                "name": "Brown basmati rice (180g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Snow peas (80g)",
+                "calories": 30
+              },
+              {
+                "name": "Sesame oil (5ml)",
+                "calories": 45
+              }
+            ]
+          },
+          {
+            "title": "Nighttime Hydrate",
+            "items": [
+              {
+                "name": "Coconut water (250ml)",
+                "calories": 46
+              },
+              {
+                "name": "Casein protein shake (30g powder + 250ml water)",
+                "calories": 112
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "totalCalories": 2458,
+        "protein": "150g",
+        "carbs": "200g",
+        "fats": "60g",
+        "meals": [
+          {
+            "title": "Sunrise Egg Scramble",
+            "items": [
+              {
+                "name": "Egg whites (200g)",
+                "calories": 110
+              },
+              {
+                "name": "Egg yolk (1 large)",
+                "calories": 55
+              },
+              {
+                "name": "Spinach (50g)",
+                "calories": 12
+              },
+              {
+                "name": "Feta cheese (30g)",
+                "calories": 80
+              },
+              {
+                "name": "Whole‑grain toast (2 slices)",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Trail Mix",
+            "items": [
+              {
+                "name": "Walnuts (15g)",
+                "calories": 100
+              },
+              {
+                "name": "Dried apricots (20g)",
+                "calories": 50
+              }
+            ]
+          },
+          {
+            "title": "Client Dinner Plate",
+            "items": [
+              {
+                "name": "Grilled lean pork tenderloin (160g)",
+                "calories": 260
+              },
+              {
+                "name": "Mashed cauliflower (200g)",
+                "calories": 70
+              },
+              {
+                "name": "Steamed zucchini (120g)",
+                "calories": 20
+              },
+              {
+                "name": "Olive oil (10ml)",
+                "calories": 80
+              }
+            ]
+          },
+          {
+            "title": "Late Snack",
+            "items": [
+              {
+                "name": "Rice cakes (2 pcs)",
+                "calories": 70
+              },
+              {
+                "name": "Low‑fat ricotta (80g)",
+                "calories": 80
+              },
+              {
+                "name": "Strawberries (80g)",
+                "calories": 25
+              }
+            ]
+          },
+          {
+            "title": "Pre‑Bed Hydration",
+            "items": [
+              {
+                "name": "Herbal tea (unsweetened)",
+                "calories": 0
+              },
+              {
+                "name": "Almond milk (200ml)",
+                "calories": 30
+              },
+              {
+                "name": "Collagen peptide powder (10g)",
+                "calories": 38
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "totalCalories": 2458,
+        "protein": "150g",
+        "carbs": "200g",
+        "fats": "60g",
+        "meals": [
+          {
+            "title": "Early Morning Chia Pudding",
+            "items": [
+              {
+                "name": "Chia seeds (30g)",
+                "calories": 150
+              },
+              {
+                "name": "Unsweetened oat milk (200ml)",
+                "calories": 80
+              },
+              {
+                "name": "Blueberries (80g)",
+                "calories": 45
+              },
+              {
+                "name": "Vanilla extract dash",
+                "calories": 0
+              }
+            ]
+          },
+          {
+            "title": "Business Travel Lunch Box",
+            "items": [
+              {
+                "name": "Tuna in water (120g)",
+                "calories": 130
+              },
+              {
+                "name": "Quinoa salad with cucumber, parsley, lemon (200g)",
+                "calories": 210
+              },
+              {
+                "name": "Olive oil (10ml)",
+                "calories": 80
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Energy Bites",
+            "items": [
+              {
+                "name": "Peanut butter ball (30g)",
+                "calories": 180
+              }
+            ]
+          },
+          {
+            "title": "Evening Grill",
+            "items": [
+              {
+                "name": "Chicken thigh, skinless (150g)",
+                "calories": 230
+              },
+              {
+                "name": "Barley (150g cooked)",
+                "calories": 180
+              },
+              {
+                "name": "Roasted Brussels sprouts (120g)",
+                "calories": 60
+              },
+              {
+                "name": "Sesame seeds (5g)",
+                "calories": 30
+              }
+            ]
+          },
+          {
+            "title": "Nightcap",
+            "items": [
+              {
+                "name": "Low‑fat kefir (200ml)",
+                "calories": 110
+              },
+              {
+                "name": "Ground cinnamon",
+                "calories": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "totalCalories": 2458,
+        "protein": "150g",
+        "carbs": "200g",
+        "fats": "60g",
+        "meals": [
+          {
+            "title": "Weekend Brunch Starter",
+            "items": [
+              {
+                "name": "Smoked salmon (80g)",
+                "calories": 120
+              },
+              {
+                "name": "Avocado toast on rye (1 slice bread + 40g avocado)",
+                "calories": 250
+              },
+              {
+                "name": "Sliced cucumber",
+                "calories": 10
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Day Power Plate",
+            "items": [
+              {
+                "name": "Lentil stew with carrots & celery (250g)",
+                "calories": 210
+              },
+              {
+                "name": "Baked falafel (3 pieces)",
+                "calories": 150
+              },
+              {
+                "name": "Tzatziki (30g)",
+                "calories": 45
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Fruit & Nut",
+            "items": [
+              {
+                "name": "Pear (150g)",
+                "calories": 100
+              },
+              {
+                "name": "Cashews (20g)",
+                "calories": 115
+              }
+            ]
+          },
+          {
+            "title": "Dinner at Home Office",
+            "items": [
+              {
+                "name": "Grilled mahi‑mahi (180g)",
+                "calories": 210
+              },
+              {
+                "name": "Couscous (150g cooked)",
+                "calories": 170
+              },
+              {
+                "name": "Sauteed spinach (100g) with garlic",
+                "calories": 40
+              },
+              {
+                "name": "Olive oil (10ml)",
+                "calories": 80
+              }
+            ]
+          },
+          {
+            "title": "Evening Relaxation",
+            "items": [
+              {
+                "name": "Protein shake (whey isolate 30g + water)",
+                "calories": 120
+              },
+              {
+                "name": "Dark chocolate (10g, ≥70% cacao)",
+                "calories": 58
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "parseError": null,
+  "cleanedContent": "{\n  \"days\": [\n    {\n      \"day\": 1,\n      \"totalCalories\": 2458,\n      \"protein\": \"150g\",\n      \"carbs\": \"200g\",\n      \"fats\": \"60g\",\n      \"meals\": [\n        {\n          \"title\": \"Airport Power Bowl\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (200g)\", \"calories\": 120 },\n            { \"name\": \"Mixed berries (150g)\", \"calories\": 80 },\n            { \"name\": \"Rolled oats (50g)\", \"calories\": 150 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Day Business Lunch\",\n          \"items\": [\n            { \"name\": \"Grilled chicken breast (180g)\", \"calories\": 300 },\n            { \"name\": \"Quinoa (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Steamed broccoli (120g)\", \"calories\": 40 },\n            { \"name\": \"Olive oil drizzle (10ml)\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Quick Desk Snack\",\n          \"items\": [\n            { \"name\": \"Carrot sticks (100g) with hummus (40g)\", \"calories\": 150 }\n          ]\n        },\n        {\n          \"title\": \"Conference Dinner\",\n          \"items\": [\n            { \"name\": \"Baked salmon (150g)\", \"calories\": 340 },\n            { \"name\": \"Sweet potato mash (200g)\", \"calories\": 180 },\n            { \"name\": \"Green beans almondine (100g)\", \"calories\": 120 },\n            { \"name\": \"Lemon‑tahini dressing (15ml)\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Nighttime Recovery\",\n          \"items\": [\n            { \"name\": \"Cottage cheese (200g)\", \"calories\": 190 },\n            { \"name\": \"Walnuts (20g)\", \"calories\": 140 },\n            { \"name\": \"Cinnamon sprinkle\", \"calories\": 0 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 2,\n      \"totalCalories\": 2458,\n      \"protein\": \"150g\",\n      \"carbs\": \"200g\",\n      \"fats\": \"60g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunrise Smoothie\",\n          \"items\": [\n            { \"name\": \"Unsweetened soy milk (250ml)\", \"calories\": 100 },\n            { \"name\": \"Protein powder (30g)\", \"calories\": 120 },\n            { \"name\": \"Spinach (50g)\", \"calories\": 12 },\n            { \"name\": \"Frozen mango (100g)\", \"calories\": 70 }\n          ]\n        },\n        {\n          \"title\": \"Travel‑Friendly Wrap\",\n          \"items\": [\n            { \"name\": \"Whole‑grain tortilla\", \"calories\": 130 },\n            { \"name\": \"Turkey slices (120g)\", \"calories\": 150 },\n            { \"name\": \"Avocado (50g)\", \"calories\": 80 },\n            { \"name\": \"Lettuce & tomato\", \"calories\": 20 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Protein Bar\",\n          \"items\": [\n            { \"name\": \"Homemade nut‑date bar (40g)\", \"calories\": 180 }\n          ]\n        },\n        {\n          \"title\": \"Hotel Room Stir‑Fry\",\n          \"items\": [\n            { \"name\": \"Lean beef strips (150g)\", \"calories\": 250 },\n            { \"name\": \"Brown rice noodles (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Mixed bell peppers (100g)\", \"calories\": 30 },\n            { \"name\": \"Soy‑ginger sauce (15ml)\", \"calories\": 40 }\n          ]\n        },\n        {\n          \"title\": \"Late‑Night Hydration\",\n          \"items\": [\n            { \"name\": \"Low‑fat milk (250ml)\", \"calories\": 110 },\n            { \"name\": \"Chia seed pudding (30g chia + 100ml almond milk)\", \"calories\": 138 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 3,\n      \"totalCalories\": 2458,\n      \"protein\": \"150g\",\n      \"carbs\": \"200g\",\n      \"fats\": \"60g\",\n      \"meals\": [\n        {\n          \"title\": \"Early Flight Oats\",\n          \"items\": [\n            { \"name\": \"Steel‑cut oats (60g dry)\", \"calories\": 220 },\n            { \"name\": \"Skim milk (200ml)\", \"calories\": 70 },\n            { \"name\": \"Sliced kiwi (100g)\", \"calories\": 60 },\n            { \"name\": \"Flaxseed (10g)\", \"calories\": 55 }\n          ]\n        },\n        {\n          \"title\": \"Conference Power Salad\",\n          \"items\": [\n            { \"name\": \"Grilled shrimp (150g)\", \"calories\": 180 },\n            { \"name\": \"Mixed greens (100g)\", \"calories\": 15 },\n            { \"name\": \"Cooked lentils (100g)\", \"calories\": 115 },\n            { \"name\": \"Cherry tomatoes (50g)\", \"calories\": 10 },\n            { \"name\": \"Olive oil vinaigrette (15ml)\", \"calories\": 130 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Afternoon Nuts\",\n          \"items\": [\n            { \"name\": \"Almonds (25g)\", \"calories\": 145 }\n          ]\n        },\n        {\n          \"title\": \"Dinner at Client Site\",\n          \"items\": [\n            { \"name\": \"Roasted turkey breast (170g)\", \"calories\": 260 },\n            { \"name\": \"Wild rice (150g cooked)\", \"calories\": 170 },\n            { \"name\": \"Steamed asparagus (120g)\", \"calories\": 25 },\n            { \"name\": \"Butter (5g) for veg\", \"calories\": 35 }\n          ]\n        },\n        {\n          \"title\": \"Evening Calm\",\n          \"items\": [\n            { \"name\": \"Low‑sugar Greek yogurt (150g)\", \"calories\": 90 },\n            { \"name\": \"Pumpkin seeds (15g)\", \"calories\": 85 },\n            { \"name\": \"Honey drizzle (5ml)\", \"calories\": 20 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 4,\n      \"totalCalories\": 2458,\n      \"protein\": \"150g\",\n      \"carbs\": \"200g\",\n      \"fats\": \"60g\",\n      \"meals\": [\n        {\n          \"title\": \"Hotel Mini‑Bar Munch\",\n          \"items\": [\n            { \"name\": \"Hard‑boiled eggs (2 large)\", \"calories\": 140 },\n            { \"name\": \"Whole‑grain crispbread (2 pcs)\", \"calories\": 80 },\n            { \"name\": \"Low‑fat cheese slice (30g)\", \"calories\": 70 }\n          ]\n        },\n        {\n          \"title\": \"Business Lunch Bowl\",\n          \"items\": [\n            { \"name\": \"Baked cod (180g)\", \"calories\": 170 },\n            { \"name\": \"Millet (150g cooked)\", \"calories\": 180 },\n            { \"name\": \"Roasted carrots (100g)\", \"calories\": 45 },\n            { \"name\": \"Tahini drizzle (10ml)\", \"calories\": 85 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Fruit Pack\",\n          \"items\": [\n            { \"name\": \"Apple (150g)\", \"calories\": 80 },\n            { \"name\": \"Peanut butter (15g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Evening Protein Stir\",\n          \"items\": [\n            { \"name\": \"Tempeh strips (120g)\", \"calories\": 210 },\n            { \"name\": \"Brown basmati rice (180g cooked)\", \"calories\": 210 },\n            { \"name\": \"Snow peas (80g)\", \"calories\": 30 },\n            { \"name\": \"Sesame oil (5ml)\", \"calories\": 45 }\n          ]\n        },\n        {\n          \"title\": \"Nighttime Hydrate\",\n          \"items\": [\n            { \"name\": \"Coconut water (250ml)\", \"calories\": 46 },\n            { \"name\": \"Casein protein shake (30g powder + 250ml water)\", \"calories\": 112 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 5,\n      \"totalCalories\": 2458,\n      \"protein\": \"150g\",\n      \"carbs\": \"200g\",\n      \"fats\": \"60g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunrise Egg Scramble\",\n          \"items\": [\n            { \"name\": \"Egg whites (200g)\", \"calories\": 110 },\n            { \"name\": \"Egg yolk (1 large)\", \"calories\": 55 },\n            { \"name\": \"Spinach (50g)\", \"calories\": 12 },\n            { \"name\": \"Feta cheese (30g)\", \"calories\": 80 },\n            { \"name\": \"Whole‑grain toast (2 slices)\", \"calories\": 200 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Trail Mix\",\n          \"items\": [\n            { \"name\": \"Walnuts (15g)\", \"calories\": 100 },\n            { \"name\": \"Dried apricots (20g)\", \"calories\": 50 }\n          ]\n        },\n        {\n          \"title\": \"Client Dinner Plate\",\n          \"items\": [\n            { \"name\": \"Grilled lean pork tenderloin (160g)\", \"calories\": 260 },\n            { \"name\": \"Mashed cauliflower (200g)\", \"calories\": 70 },\n            { \"name\": \"Steamed zucchini (120g)\", \"calories\": 20 },\n            { \"name\": \"Olive oil (10ml)\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Late Snack\",\n          \"items\": [\n            { \"name\": \"Rice cakes (2 pcs)\", \"calories\": 70 },\n            { \"name\": \"Low‑fat ricotta (80g)\", \"calories\": 80 },\n            { \"name\": \"Strawberries (80g)\", \"calories\": 25 }\n          ]\n        },\n        {\n          \"title\": \"Pre‑Bed Hydration\",\n          \"items\": [\n            { \"name\": \"Herbal tea (unsweetened)\", \"calories\": 0 },\n            { \"name\": \"Almond milk (200ml)\", \"calories\": 30 },\n            { \"name\": \"Collagen peptide powder (10g)\", \"calories\": 38 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 6,\n      \"totalCalories\": 2458,\n      \"protein\": \"150g\",\n      \"carbs\": \"200g\",\n      \"fats\": \"60g\",\n      \"meals\": [\n        {\n          \"title\": \"Early Morning Chia Pudding\",\n          \"items\": [\n            { \"name\": \"Chia seeds (30g)\", \"calories\": 150 },\n            { \"name\": \"Unsweetened oat milk (200ml)\", \"calories\": 80 },\n            { \"name\": \"Blueberries (80g)\", \"calories\": 45 },\n            { \"name\": \"Vanilla extract dash\", \"calories\": 0 }\n          ]\n        },\n        {\n          \"title\": \"Business Travel Lunch Box\",\n          \"items\": [\n            { \"name\": \"Tuna in water (120g)\", \"calories\": 130 },\n            { \"name\": \"Quinoa salad with cucumber, parsley, lemon (200g)\", \"calories\": 210 },\n            { \"name\": \"Olive oil (10ml)\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Energy Bites\",\n          \"items\": [\n            { \"name\": \"Peanut butter ball (30g)\", \"calories\": 180 }\n          ]\n        },\n        {\n          \"title\": \"Evening Grill\",\n          \"items\": [\n            { \"name\": \"Chicken thigh, skinless (150g)\", \"calories\": 230 },\n            { \"name\": \"Barley (150g cooked)\", \"calories\": 180 },\n            { \"name\": \"Roasted Brussels sprouts (120g)\", \"calories\": 60 },\n            { \"name\": \"Sesame seeds (5g)\", \"calories\": 30 }\n          ]\n        },\n        {\n          \"title\": \"Nightcap\",\n          \"items\": [\n            { \"name\": \"Low‑fat kefir (200ml)\", \"calories\": 110 },\n            { \"name\": \"Ground cinnamon\", \"calories\": 0 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 7,\n      \"totalCalories\": 2458,\n      \"protein\": \"150g\",\n      \"carbs\": \"200g\",\n      \"fats\": \"60g\",\n      \"meals\": [\n        {\n          \"title\": \"Weekend Brunch Starter\",\n          \"items\": [\n            { \"name\": \"Smoked salmon (80g)\", \"calories\": 120 },\n            { \"name\": \"Avocado toast on rye (1 slice bread + 40g avocado)\", \"calories\": 250 },\n            { \"name\": \"Sliced cucumber\", \"calories\": 10 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Day Power Plate\",\n          \"items\": [\n            { \"name\": \"Lentil stew with carrots & celery (250g)\", \"calories\": 210 },\n            { \"name\": \"Baked falafel (3 pieces)\", \"calories\": 150 },\n            { \"name\": \"Tzatziki (30g)\", \"calories\": 45 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Fruit & Nut\",\n          \"items\": [\n            { \"name\": \"Pear (150g)\", \"calories\": 100 },\n            { \"name\": \"Cashews (20g)\", \"calories\": 115 }\n          ]\n        },\n        {\n          \"title\": \"Dinner at Home Office\",\n          \"items\": [\n            { \"name\": \"Grilled mahi‑mahi (180g)\", \"calories\": 210 },\n            { \"name\": \"Couscous (150g cooked)\", \"calories\": 170 },\n            { \"name\": \"Sauteed spinach (100g) with garlic\", \"calories\": 40 },\n            { \"name\": \"Olive oil (10ml)\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Evening Relaxation\",\n          \"items\": [\n            { \"name\": \"Protein shake (whey isolate 30g + water)\", \"calories\": 120 },\n            { \"name\": \"Dark chocolate (10g, ≥70% cacao)\", \"calories\": 58 }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "derived": {
+    "allHealthConditions": "gout history, doctor asked for moderate sodium and hydration focus",
+    "allAllergies": "none",
+    "allInjuries": "none",
+    "allGoals": "fat loss and lower flare risk, practical meals for business travel",
+    "experienceInfo": "intermediate",
+    "bmr": 1908.4540000000002,
+    "tdee": 2958.1037000000006,
+    "targetCalories": 2458
+  },
+  "latencyMs": 147940,
+  "usage": {
+    "prompt_tokens": 931,
+    "completion_tokens": 3575,
+    "total_tokens": 4506,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 232,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop",
+  "retrieval": {
+    "skip": false,
+    "vectorLength": 384,
+    "results": [
+      {
+        "id": "ff76eba6-995f-46d5-b2a0-6217b82ec408",
+        "version": 1314,
+        "score": 0.6165891,
+        "payload": {
+          "athlete_id": "ATH1220",
+          "name": "يوسف الدسوقي",
+          "age": 55,
+          "gender": "Male",
+          "goal": "Overall fitness",
+          "issue": "Gout with training-volume sensitivity - Moderate - Metabolic",
+          "dietary_restrictions": [
+            "Lower-purine strategy"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Training through acutely inflamed toe or ankle pain",
+              "reason": "Alters mechanics and recovery"
+            },
+            {
+              "exercise": "High-impact sessions during acute flare",
+              "reason": "Joint pain can worsen"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Sugary fructose-rich drinks",
+              "reason": "Can worsen uric acid management"
+            }
+          ]
+        }
+      },
+      {
+        "id": "b6939bff-a33c-490c-92b0-0b471c6388b9",
+        "version": 1032,
+        "score": 0.61329615,
+        "payload": {
+          "athlete_id": "ATH0938",
+          "name": "أنس رفيق المرزوقي",
+          "age": 53,
+          "gender": "Male",
+          "goal": "Overall fitness",
+          "issue": "Gout - Mild - Metabolic",
+          "dietary_restrictions": [
+            "Hydration focus",
+            "Weight-management focus",
+            "Lower-purine strategy"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "High-impact sessions during acute flare",
+              "reason": "Joint pain can worsen"
+            },
+            {
+              "exercise": "Training through acutely inflamed toe or ankle pain",
+              "reason": "Alters mechanics and recovery"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Sugary fructose-rich drinks",
+              "reason": "Can worsen uric acid management"
+            },
+            {
+              "food": "Organ meats",
+              "reason": "High purine load"
+            }
+          ]
+        }
+      },
+      {
+        "id": "a3bc1f2b-7fb5-4b7e-be0e-5b1da6203a06",
+        "version": 2042,
+        "score": 0.6086638,
+        "payload": {
+          "athlete_id": "ATH1948",
+          "name": "صفاء راشد العمري",
+          "age": 54,
+          "gender": "Female",
+          "goal": "Body recomposition",
+          "issue": "Gout with training-volume sensitivity - Mild - Metabolic",
+          "dietary_restrictions": [
+            "Lower-purine strategy",
+            "Weight-management focus"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Training through acutely inflamed toe or ankle pain",
+              "reason": "Alters mechanics and recovery"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Sugary fructose-rich drinks",
+              "reason": "Can worsen uric acid management"
+            },
+            {
+              "food": "Liquid-calorie coffees and shakes",
+              "reason": "Can hide excess calories and disrupt fat-loss targets"
+            }
+          ]
+        }
+      }
+    ],
+    "vectorContext": "Issue: Gout with training-volume sensitivity - Moderate - Metabolic. Constraints: Foods to avoid (Sugary fructose-rich drinks), Exercises to avoid (Training through acutely inflamed toe or ankle pain, High-impact sessions during acute flare)\nIssue: Gout - Mild - Metabolic. Constraints: Foods to avoid (Sugary fructose-rich drinks, Organ meats), Exercises to avoid (High-impact sessions during acute flare, Training through acutely inflamed toe or ankle pain)\nIssue: Gout with training-volume sensitivity - Mild - Metabolic. Constraints: Foods to avoid (Sugary fructose-rich drinks, Liquid-calorie coffees and shakes), Exercises to avoid (Training through acutely inflamed toe or ankle pain)"
+  }
+}

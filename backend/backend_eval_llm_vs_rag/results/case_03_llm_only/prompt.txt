@@ -1,0 +1,14 @@
+Please create a practical, safe, personalized, and easy-to-use fitness plan using only the information provided below. Do not use any outside retrieved database context. The plan should consider the person's age, sex, height, weight, target weight, activity level, goal, experience, allergies, injuries, health conditions, medical-report notes, InBody notes, and calculated calorie target. Return the answer as clean JSON only so it can be loaded by an app.
+
+Request type: diet.
+
+Please create a 7-day diet plan. Each day must include total calories, protein, carbs, fats, and meals with item names and calories. The daily calories must match exactly 2543. Use this JSON shape:
+{"days":[{"day":1,"totalCalories":2543,"protein":"...g","carbs":"...g","fats":"...g","meals":[{"title":"...","items":[{"name":"...","calories":123}]}]}]}
+
+Person: Nour Adel is a 34-year-old female, 170 cm tall, currently weighs 70 kg, and has a target weight of 70 kg. The activity level is active, the experience level is advanced, and the goal is maintenance with stable energy, support endurance cycling. Health conditions: IBS, sensitive to very high FODMAP meals. Allergies or food restrictions: lactose intolerance. Injuries or movement restrictions: none. Medical-report notes: No major pathology. Digestive symptoms worsen after milk and large onion-heavy meals.. InBody notes: Muscle mass and body fat within athletic range.. Calculated BMR: 1474. Calculated TDEE: 2543. Calculated target daily calories: 2543.
+
+Requirements:
+- Use only the information above.
+- Do not use outside retrieved database context.
+- Return clean JSON only.
+- Do not add markdown, explanations, or commentary.

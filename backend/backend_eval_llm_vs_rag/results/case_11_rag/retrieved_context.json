@@ -1,0 +1,119 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "d29a0339-ba93-4367-8f40-fd4e6b356a92",
+      "version": 742,
+      "score": 0.52418727,
+      "payload": {
+        "athlete_id": "ATH0648",
+        "name": "فرح العوامي",
+        "age": 20,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Polycystic Ovary Syndrome - Moderate - Endocrine",
+        "dietary_restrictions": [
+          "Fiber-forward meals",
+          "Protein with each main meal"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Excessive training with insufficient recovery",
+            "reason": "Can worsen hormonal stress"
+          },
+          {
+            "exercise": "Very high-volume HIIT blocks",
+            "reason": "Recovery burden may be excessive"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Sugary drinks",
+            "reason": "Worsens insulin response"
+          },
+          {
+            "food": "Trans-fat rich fast food",
+            "reason": "Can worsen metabolic health"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c3d74f1f-1da1-426c-8f39-aeac7f41d0ef",
+      "version": 721,
+      "score": 0.48638907,
+      "payload": {
+        "athlete_id": "ATH0627",
+        "name": "دانا عبدالعزيز الغامدي",
+        "age": 27,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Polycystic Ovary Syndrome - Mild-Moderate - Endocrine",
+        "dietary_restrictions": [
+          "Protein with each main meal",
+          "Fiber-forward meals"
+        ],
+        "allergies": [
+          "Eggs"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Excessive training with insufficient recovery",
+            "reason": "Can worsen hormonal stress"
+          },
+          {
+            "exercise": "Very high-volume HIIT blocks",
+            "reason": "Recovery burden may be excessive"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Sugary drinks",
+            "reason": "Worsens insulin response"
+          }
+        ]
+      }
+    },
+    {
+      "id": "e487c478-3018-42e6-9889-bad305269eb7",
+      "version": 1511,
+      "score": 0.46274632,
+      "payload": {
+        "athlete_id": "ATH1417",
+        "name": "سارة البدري",
+        "age": 32,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Polycystic Ovary Syndrome - Moderate - Endocrine",
+        "dietary_restrictions": [
+          "Low added sugar focus",
+          "Fiber-forward meals"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Very high-volume HIIT blocks",
+            "reason": "Recovery burden may be excessive"
+          },
+          {
+            "exercise": "Excessive training with insufficient recovery",
+            "reason": "Can worsen hormonal stress"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Trans-fat rich fast food",
+            "reason": "Can worsen metabolic health"
+          },
+          {
+            "food": "Sugary drinks",
+            "reason": "Worsens insulin response"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Polycystic Ovary Syndrome - Moderate - Endocrine. Constraints: Foods to avoid (Sugary drinks, Trans-fat rich fast food), Exercises to avoid (Excessive training with insufficient recovery, Very high-volume HIIT blocks)\nIssue: Polycystic Ovary Syndrome - Mild-Moderate - Endocrine. Constraints: Foods to avoid (Sugary drinks), Exercises to avoid (Excessive training with insufficient recovery, Very high-volume HIIT blocks)\nIssue: Polycystic Ovary Syndrome - Moderate - Endocrine. Constraints: Foods to avoid (Trans-fat rich fast food, Sugary drinks), Exercises to avoid (Very high-volume HIIT blocks, Excessive training with insufficient recovery)"
+}

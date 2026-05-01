@@ -1,0 +1,102 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "c6dfe53a-722f-4480-9efb-bac9d52e5e06",
+      "version": 380,
+      "score": 0.6227462,
+      "payload": {
+        "athlete_id": "ATH0286",
+        "name": "هبة سليم العوامي",
+        "age": 34,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Post-Concussion Recovery - Mild - Neurological",
+        "dietary_restrictions": [
+          "Hydration focus",
+          "Regular meal timing"
+        ],
+        "allergies": [
+          "Peanuts"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Contact or collision drills",
+            "reason": "Risk of repeat injury"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Peanut-containing snacks",
+            "reason": "Allergic reaction risk"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fddc4ee0-c2f3-4775-ba8b-fb05a59f018e",
+      "version": 652,
+      "score": 0.58989733,
+      "payload": {
+        "athlete_id": "ATH0558",
+        "name": "هدى مروان العوامي",
+        "age": 56,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Hypothyroidism - Mild - Endocrine",
+        "dietary_restrictions": [
+          "Adequate energy intake"
+        ],
+        "allergies": [
+          "Peanuts"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Extreme calorie-deficit training blocks",
+            "reason": "Can worsen fatigue"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Peanut-containing snacks",
+            "reason": "Allergic reaction risk"
+          }
+        ]
+      }
+    },
+    {
+      "id": "0fc63e3c-6966-48b0-a491-5f39068ab620",
+      "version": 1279,
+      "score": 0.5668143,
+      "payload": {
+        "athlete_id": "ATH1185",
+        "name": "فاطمة الحمادي",
+        "age": 54,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Gout - Mild - Metabolic",
+        "dietary_restrictions": [
+          "Hydration focus",
+          "Weight-management focus"
+        ],
+        "allergies": [
+          "Peanuts"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Training through acutely inflamed toe or ankle pain",
+            "reason": "Alters mechanics and recovery"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Peanut-containing snacks",
+            "reason": "Allergic reaction risk"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Post-Concussion Recovery - Mild - Neurological. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Contact or collision drills)\nIssue: Hypothyroidism - Mild - Endocrine. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Extreme calorie-deficit training blocks)\nIssue: Gout - Mild - Metabolic. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Training through acutely inflamed toe or ankle pain)"
+}

@@ -1,0 +1,94 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "c5d59819-fc29-47da-9424-131e7c15508e",
+      "version": 787,
+      "score": 0.66236484,
+      "payload": {
+        "athlete_id": "ATH0693",
+        "name": "نادر النعيمي",
+        "age": 30,
+        "gender": "Male",
+        "goal": "Sport performance",
+        "issue": "Chronic Ankle Instability - Moderate - Musculoskeletal",
+        "dietary_restrictions": [
+          "Collagen/Vitamin C support"
+        ],
+        "allergies": [
+          "Eggs"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Uncontrolled lateral jump landings",
+            "reason": "High re-sprain risk"
+          },
+          {
+            "exercise": "Heavy single-leg jumps to fatigue",
+            "reason": "Reduced landing control"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Egg-based meals",
+            "reason": "Allergic reaction risk"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6f998285-f2f1-46c3-805c-7422ee341c1f",
+      "version": 1686,
+      "score": 0.6471444,
+      "payload": {
+        "athlete_id": "ATH1592",
+        "name": "شهد فؤاد الأنصاري",
+        "age": 21,
+        "gender": "Female",
+        "goal": "Sport performance",
+        "issue": "Chronic Ankle Instability - Mild - Musculoskeletal",
+        "dietary_restrictions": [
+          "Collagen/Vitamin C support"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Uncontrolled lateral jump landings",
+            "reason": "High re-sprain risk"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "8cac4782-47c8-48eb-a467-52f52d08d277",
+      "version": 1067,
+      "score": 0.64278424,
+      "payload": {
+        "athlete_id": "ATH0973",
+        "name": "محمد نجيب القرشي",
+        "age": 27,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Chronic Ankle Instability - Moderate - Musculoskeletal",
+        "dietary_restrictions": [
+          "Collagen/Vitamin C support"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Uncontrolled lateral jump landings",
+            "reason": "High re-sprain risk"
+          },
+          {
+            "exercise": "Heavy single-leg jumps to fatigue",
+            "reason": "Reduced landing control"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    }
+  ],
+  "vectorContext": "Issue: Chronic Ankle Instability - Moderate - Musculoskeletal. Constraints: Foods to avoid (Egg-based meals), Exercises to avoid (Uncontrolled lateral jump landings, Heavy single-leg jumps to fatigue)\nIssue: Chronic Ankle Instability - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Uncontrolled lateral jump landings)\nIssue: Chronic Ankle Instability - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Uncontrolled lateral jump landings, Heavy single-leg jumps to fatigue)"
+}

@@ -1,0 +1,45 @@
+{
+  "caseId": "case_12",
+  "mode": "llm_only",
+  "route": "/ai/generate-workout",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": false,
+  "parsedOutput": null,
+  "parseError": "Expected ',' or ']' after array element in JSON at position 2726 (line 1 column 2727)",
+  "cleanedContent": "{\"gym\":{\"title\":\"Gym Workout Plan\",\"days\":[{\"day\":1,\"exercises\":[{\"id\":1,\"name\":\"Seated Cable Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":2,\"name\":\"Leg Press\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg press machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":55},{\"id\":3,\"name\":\"Foam Roller Thoracic Extensions\",\"difficulty\":\"Beginner\",\"equipment\":\"Foam roller\",\"sets\":\"2\",\"reps\":\"10 (each side)\",\"calories\":20}]},{\"day\":2,\"exercises\":[{\"id\":1,\"name\":\"Lat Pulldown\",\"difficulty\":\"Beginner\",\"equipment\":\"Lat pulldown machine\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":40},{\"id\":2,\"name\":\"Leg Curl\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg curl machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":3,\"name\":\"Cat‑Cow Stretch\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"2\",\"reps\":\"12\",\"calories\":15}]},{\"day\":3,\"exercises\":[{\"id\":1,\"name\":\"Chest Press Machine\",\"difficulty\":\"Beginner\",\"equipment\":\"Chest press machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":50},{\"id\":2,\"name\":\"Bodyweight Squat\",\"difficulty\":\"Beginner\",\"equipment\":\"None\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":60},{\"id\":3,\"name\":\"Scapular Wall Slides\",\"difficulty\":\"Beginner\",\"equipment\":\"Wall\",\"sets\":\"2\",\"reps\":\"12\",\"calories\":20}]},{\"day\":4,\"exercises\":[{\"id\":1,\"name\":\"Machine Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Row machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":2,\"name\":\"Leg Extension\",\"difficulty\":\"Beginner\",\"equipment\":\"Leg extension machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":3,\"name\":\"Thoracic Rotation on Foam Roller\",\"difficulty\":\"Beginner\",\"equipment\":\"Foam roller\",\"sets\":\"2\",\"reps\":\"8 (each side)\",\"calories\":20}]},{\"day\":5,\"exercises\":[{\"id\":1,\"name\":\"Cable Face Pull\",\"difficulty\":\"Beginner\",\"equipment\":\"Cable machine\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":35},{\"id\":2,\"name\":\"Hip Bridge\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":50},{\"id\":3,\"name\":\"Neck Stretch (avoid loading)\",\"difficulty\":\"Beginner\",\"equipment\":\"None\",\"sets\":\"2\",\"reps\":\"10 (each side)\",\"calories\":10}]},{\"day\":6,\"exercises\":[{\"id\":1,\"name\":\"Elliptical (moderate)\",\"difficulty\":\"Beginner\",\"equipment\":\"Elliptical trainer\",\"sets\":\"1\",\"reps\":\"30 min\",\"calories\":250},{\"id\":2,\"name\":\"Standing Calf Raise\",\"difficulty\":\"Beginner\",\"equipment\":\"Body weight\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":30},{\"id\":3,\"name\":\"Thoracic Extension on Chair\",\"difficulty\":\"Beginner\",\"equipment\":\"Chair\",\"sets\":\"2\",\"reps\":\"10\",\"calories\":15}]},{\"day\":7,\"exercises\":[{\"id\":1,\"name\":\"Restorative Yoga Flow\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"1\",\"reps\":\"20 min\",\"calories\":80},{\"id\":2,\"name\":\"Light Walking\",\"difficulty\":\"Beginner\",\"equipment\":\"None\",\"sets\":\"1\",\"reps\":\"30 min\",\"calories\":150}]}},\"home\":{\"title\":\"Home Workout Plan\",\"days\":[{\"day\":1,\"exercises\":[{\"id\":1,\"name\":\"Dumbbell Bent‑Over Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Adjustable dumbbells\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":40},{\"id\":2,\"name\":\"Goblet Squat\",\"difficulty\":\"Beginner\",\"equipment\":\"Adjustable dumbbells\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":55},{\"id\":3,\"name\":\"Thoracic Foam Roller Extensions\",\"difficulty\":\"Beginner\",\"equipment\":\"Foam roller\",\"sets\":\"2\",\"reps\":\"10 (each side)\",\"calories\":20}]},{\"day\":2,\"exercises\":[{\"id\":1,\"name\":\"Dumbbell Chest Press (floor)\",\"difficulty\":\"Beginner\",\"equipment\":\"Adjustable dumbbells\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":45},{\"id\":2,\"name\":\"Dumbbell Romanian Deadlift\",\"difficulty\":\"Beginner\",\"equipment\":\"Adjustable dumbbells\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":55},{\"id\":3,\"name\":\"Cat‑Cow Stretch\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"2\",\"reps\":\"12\",\"calories\":15}]},{\"day\":3,\"exercises\":[{\"id\":1,\"name\":\"Dumbbell Single‑Arm Row\",\"difficulty\":\"Beginner\",\"equipment\":\"Adjustable dumbbells\",\"sets\":\"3\",\"reps\":\"10 each side\",\"calories\":40},{\"id\":2,\"name\":\"Lateral Band Walk (if band available)\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance band\",\"sets\":\"2\",\"reps\":\"15 steps each side\",\"calories\":30},{\"id\":3,\"name\":\"Scapular Wall Slides\",\"difficulty\":\"Beginner\",\"equipment\":\"Wall\",\"sets\":\"2\",\"reps\":\"12\",\"calories\":20}]},{\"day\":4,\"exercises\":[{\"id\":1,\"name\":\"Dumbbell Overhead Press (light)\",\"difficulty\":\"Beginner\",\"equipment\":\"Adjustable dumbbells\",\"sets\":\"3\",\"reps\":\"10\",\"calories\":35},{\"id\":2,\"name\":\"Bodyweight Glute Bridge\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":45},{\"id\":3,\"name\":\"Thoracic Rotation on Foam Roller\",\"difficulty\":\"Beginner\",\"equipment\":\"Foam roller\",\"sets\":\"2\",\"reps\":\"8 each side\",\"calories\":20}]},{\"day\":5,\"exercises\":[{\"id\":1,\"name\":\"Dumbbell Face Pull (using band or towel)\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance band or towel\",\"sets\":\"3\",\"reps\":\"12\",\"calories\":30},{\"id\":2,\"name\":\"Standing Calf Raise\",\"difficulty\":\"Beginner\",\"equipment\":\"Body weight\",\"sets\":\"3\",\"reps\":\"15\",\"calories\":30},{\"id\":3,\"name\":\"Neck Stretch (gentle)\",\"difficulty\":\"Beginner\",\"equipment\":\"None\",\"sets\":\"2\",\"reps\":\"10 each side\",\"calories\":10}]},{\"day\":6,\"exercises\":[{\"id\":1,\"name\":\"30‑minute Brisk Walk (outside or treadmill)\",\"difficulty\":\"Beginner\",\"equipment\":\"Walking shoes\",\"sets\":\"1\",\"reps\":\"30 min\",\"calories\":180},{\"id\":2,\"name\":\"Side‑Lying Clam (for scapular stability)\",\"difficulty\":\"Beginner\",\"equipment\":\"Resistance band optional\",\"sets\":\"2\",\"reps\":\"12 each side\",\"calories\":25},{\"id\":3,\"name\":\"Thoracic Extension on Chair\",\"difficulty\":\"Beginner\",\"equipment\":\"Chair\",\"sets\":\"2\",\"reps\":\"10\",\"calories\":15}]},{\"day\":7,\"exercises\":[{\"id\":1,\"name\":\"Restorative Yoga Flow (focus on neck and thoracic)\",\"difficulty\":\"Beginner\",\"equipment\":\"Mat\",\"sets\":\"1\",\"reps\":\"20 min\",\"calories\":80},{\"id\":2,\"name\":\"Light Stretching Circuit\",\"difficulty\":\"Beginner\",\"equipment\":\"None\",\"sets\":\"1\",\"reps\":\"10 min\",\"calories\":40}]}}}",
+  "derived": {
+    "allHealthConditions": "desk-job posture issues",
+    "allAllergies": "none",
+    "allInjuries": "neck tension, avoid painful loaded shrugs and jerky neck motion",
+    "allGoals": "maintenance and posture improvement, weekday home training only",
+    "experienceInfo": "beginner - adjustable dumbbells at home",
+    "bmr": 1872.1580000000001,
+    "tdee": 2246.5896000000002,
+    "targetCalories": 2247
+  },
+  "latencyMs": 48931,
+  "usage": {
+    "prompt_tokens": 502,
+    "completion_tokens": 1715,
+    "total_tokens": 2217,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 57,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop"
+}

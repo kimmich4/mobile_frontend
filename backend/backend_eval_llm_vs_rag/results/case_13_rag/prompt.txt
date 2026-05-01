@@ -1,0 +1,68 @@
+Context:
+
+User Profile: Mostafa Kamel, 22 years old, male. 
+Metrics: Current Weight: 61kg, Target Weight: 72kg, Height: 183cm. 
+Activity Level: active.
+Experience Level: beginner.
+Goals: muscle gain, budget-friendly student meals.  
+Reported Health Conditions: none. 
+Allergies: tree nut allergy. 
+Injuries: none.
+Calculated BMR: 1659. 
+Calculated TDEE: 2862.
+Target Daily Calories (adjusted for goal): 3362.
+Medical Report Findings: No clinical issues. Recommended to increase calorie intake steadily..
+InBody Report Findings: Underweight with low skeletal muscle mass..
+Vector Database Constraints: Issue: Lactose Intolerance - Mild - Gastrointestinal. Constraints: Foods to avoid (Large dairy-based shakes without lactase support, Sesame-containing foods), Exercises to avoid (High-intensity training during active GI distress)
+Issue: Exercise-Induced Urticaria - Mild - Other. Constraints: Foods to avoid (Foods with specific additives), Exercises to avoid (Very intense exercise in extreme heat)
+Issue: Post-Concussion Recovery - Mild - Neurological. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Contact or collision drills)
+
+
+Task:
+Create a 7-day diet plan (Day 1 to Day 7). 
+You MUST provide EXACTLY 7 DAYS in the "days" array. DO NOT stop before Day 7.
+
+USER GOAL: muscle gain, budget-friendly student meals
+TARGET CALORIES: 3362 PER DAY.
+
+CRITICAL RULES:
+1. YOU MUST GENERATE ALL 7 DAYS (day 1, 2, 3, 4, 5, 6, 7).
+2. For EVERY day, the "totalCalories" field MUST be EXACTLY 3362.
+3. The sum of all individual "calories" for items in "meals" MUST EXACTLY mathematically equal 3362 for every day. 
+4. meal variety: Each day SHOULD have a varied number of meals (between 5 and above to achive the target calories).
+5. Ensure the diet plan is safe for the provided injuries/conditions and doesnt violate any of the vector database constraints.
+6. CREATIVE TITLES: Use different meal names instead of just "Breakfast/Lunch/Dinner". Be creative and varied!
+7. Portions (grams/ml) must be realistic and specific.
+
+THINKING STEP:
+Before writing each day, decide on the number of meals (3-6) and creative formal titles. Then mentally calculate the calories for each so the total matches exactly 3362.
+
+EXAMPLE OF CORRECT MATH (Varying counts/titles):
+- Pre-Gym Snack: 300
+- Main Lunch: 900
+- Afternoon Refresh: 300
+- Hearty Supper: 1000
+TOTAL: 300 + 900 + 300 + 1000 = 2500 (Matches target)
+
+Return ONLY JSON in this EXACT format:
+{
+  "days": [
+    {
+      "day": 1,
+      "totalCalories": 3362,
+      "protein": "150g",
+      "carbs": "200g",
+      "fats": "60g",
+      "meals": [
+        {
+          "title": "Pre-Gym Snack",
+          "items": [{"name": "Banana + Almonds", "calories": 300}]
+        },
+        {
+          "title": "Lunch",
+          "items": [{"name": "Chicken Breast (150g)", "calories": 450}, {"name": "Brown Rice (200g)", "calories": 450}]
+        }
+      ]
+    }
+  ]
+}

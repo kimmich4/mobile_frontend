@@ -1,0 +1,108 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "79a537ca-d36e-47a3-8095-dc48909470d8",
+      "version": 1983,
+      "score": 0.6183176,
+      "payload": {
+        "athlete_id": "ATH1889",
+        "name": "ياسين صالح العلي",
+        "age": 29,
+        "gender": "Male",
+        "goal": "Lean bulking",
+        "issue": "Prediabetes / Insulin Resistance with mobility limitations - Mild - Metabolic",
+        "dietary_restrictions": [
+          "Fiber-forward meals"
+        ],
+        "allergies": [
+          "Shellfish"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Long sedentary periods between intense sessions",
+            "reason": "Reduces insulin sensitivity benefits"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Shellfish-based meals",
+            "reason": "Allergic reaction risk"
+          },
+          {
+            "food": "Refined pastries",
+            "reason": "High glycemic load"
+          }
+        ]
+      }
+    },
+    {
+      "id": "e17c5716-0d6c-4766-be5a-6850927551e6",
+      "version": 1691,
+      "score": 0.5949042,
+      "payload": {
+        "athlete_id": "ATH1597",
+        "name": "آية عبدالرحمن المنصوري",
+        "age": 48,
+        "gender": "Female",
+        "goal": "Overall fitness",
+        "issue": "Mild Chronic Kidney Disease - Mild-Moderate - Renal",
+        "dietary_restrictions": [
+          "Sodium awareness"
+        ],
+        "allergies": [
+          "Shellfish"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Extreme dehydration sessions",
+            "reason": "Can worsen kidney strain"
+          },
+          {
+            "exercise": "Unsupervised very high-volume training in heat",
+            "reason": "Poor fluid balance tolerance"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Very salty packaged snacks",
+            "reason": "Can worsen blood pressure and fluid balance"
+          }
+        ]
+      }
+    },
+    {
+      "id": "8241bd7e-6ce2-417d-afa1-197ef409eb33",
+      "version": 1776,
+      "score": 0.5650161,
+      "payload": {
+        "athlete_id": "ATH1682",
+        "name": "إياد النعيمي",
+        "age": 19,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Postural Orthostatic Tachycardia Syndrome - Mild - Autonomic",
+        "dietary_restrictions": [
+          "Electrolyte support"
+        ],
+        "allergies": [
+          "Shellfish"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Dehydration-based training",
+            "reason": "Poor autonomic tolerance"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Shellfish-based meals",
+            "reason": "Allergic reaction risk"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Prediabetes / Insulin Resistance with mobility limitations - Mild - Metabolic. Constraints: Foods to avoid (Shellfish-based meals, Refined pastries), Exercises to avoid (Long sedentary periods between intense sessions)\nIssue: Mild Chronic Kidney Disease - Mild-Moderate - Renal. Constraints: Foods to avoid (Very salty packaged snacks), Exercises to avoid (Extreme dehydration sessions, Unsupervised very high-volume training in heat)\nIssue: Postural Orthostatic Tachycardia Syndrome - Mild - Autonomic. Constraints: Foods to avoid (Shellfish-based meals), Exercises to avoid (Dehydration-based training)"
+}

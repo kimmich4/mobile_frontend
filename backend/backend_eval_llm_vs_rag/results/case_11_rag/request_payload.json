@@ -1,0 +1,23 @@
+{
+  "method": "POST",
+  "headers": {
+    "Authorization": "Bearer [REDACTED]",
+    "Content-Type": "application/json",
+    "HTTP-Referer": "https://local.eval.backend",
+    "X-Title": "backend_eval_llm_vs_rag_openrouter_oss120b"
+  },
+  "body": {
+    "model": "openai/gpt-oss-120b:free",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a certified sports nutritionist and personal trainer. You MUST return ONLY valid, complete JSON. Keep responses compact but complete. Accuracy is critical for user safety."
+      },
+      {
+        "role": "user",
+        "content": "Context:\n\nUser Profile: Farah Ali, 30 years old, female. \nMetrics: Current Weight: 84kg, Target Weight: 70kg, Height: 162cm. \nActivity Level: light.\nExperience Level: beginner.\nGoals: fat loss and appetite control, simple repeated meal-prep options.  \nReported Health Conditions: PCOS, insulin resistance concern. \nAllergies: dairy sensitivity. \nInjuries: none.\nCalculated BMR: 1596. \nCalculated TDEE: 2195.\nTarget Daily Calories (adjusted for goal): 1695.\nMedical Report Findings: Clinician advised high-fiber meals, regular protein, and lower added sugar..\nInBody Report Findings: Body fat elevated, visceral fat above target..\nVector Database Constraints: Issue: Polycystic Ovary Syndrome - Moderate - Endocrine. Constraints: Foods to avoid (Sugary drinks, Trans-fat rich fast food), Exercises to avoid (Excessive training with insufficient recovery, Very high-volume HIIT blocks)\nIssue: Polycystic Ovary Syndrome - Mild-Moderate - Endocrine. Constraints: Foods to avoid (Sugary drinks), Exercises to avoid (Excessive training with insufficient recovery, Very high-volume HIIT blocks)\nIssue: Polycystic Ovary Syndrome - Moderate - Endocrine. Constraints: Foods to avoid (Trans-fat rich fast food, Sugary drinks), Exercises to avoid (Very high-volume HIIT blocks, Excessive training with insufficient recovery)\n\n\nTask:\nCreate a 7-day diet plan (Day 1 to Day 7). \nYou MUST provide EXACTLY 7 DAYS in the \"days\" array. DO NOT stop before Day 7.\n\nUSER GOAL: fat loss and appetite control, simple repeated meal-prep options\nTARGET CALORIES: 1695 PER DAY.\n\nCRITICAL RULES:\n1. YOU MUST GENERATE ALL 7 DAYS (day 1, 2, 3, 4, 5, 6, 7).\n2. For EVERY day, the \"totalCalories\" field MUST be EXACTLY 1695.\n3. The sum of all individual \"calories\" for items in \"meals\" MUST EXACTLY mathematically equal 1695 for every day. \n4. meal variety: Each day SHOULD have a varied number of meals (between 5 and above to achive the target calories).\n5. Ensure the diet plan is safe for the provided injuries/conditions and doesnt violate any of the vector database constraints.\n6. CREATIVE TITLES: Use different meal names instead of just \"Breakfast/Lunch/Dinner\". Be creative and varied!\n7. Portions (grams/ml) must be realistic and specific.\n\nTHINKING STEP:\nBefore writing each day, decide on the number of meals (3-6) and creative formal titles. Then mentally calculate the calories for each so the total matches exactly 1695.\n\nEXAMPLE OF CORRECT MATH (Varying counts/titles):\n- Pre-Gym Snack: 300\n- Main Lunch: 900\n- Afternoon Refresh: 300\n- Hearty Supper: 1000\nTOTAL: 300 + 900 + 300 + 1000 = 2500 (Matches target)\n\nReturn ONLY JSON in this EXACT format:\n{\n  \"days\": [\n    {\n      \"day\": 1,\n      \"totalCalories\": 1695,\n      \"protein\": \"150g\",\n      \"carbs\": \"200g\",\n      \"fats\": \"60g\",\n      \"meals\": [\n        {\n          \"title\": \"Pre-Gym Snack\",\n          \"items\": [{\"name\": \"Banana + Almonds\", \"calories\": 300}]\n        },\n        {\n          \"title\": \"Lunch\",\n          \"items\": [{\"name\": \"Chicken Breast (150g)\", \"calories\": 450}, {\"name\": \"Brown Rice (200g)\", \"calories\": 450}]\n        }\n      ]\n    }\n  ]\n}"
+      }
+    ],
+    "max_tokens": 16000
+  }
+}

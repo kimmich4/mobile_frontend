@@ -1,0 +1,99 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "ba6fa78d-2e1c-42b8-93d6-743e8c5907ef",
+      "version": 1370,
+      "score": 0.660156,
+      "payload": {
+        "athlete_id": "ATH1276",
+        "name": "إسراء الحربي",
+        "age": 48,
+        "gender": "Female",
+        "goal": "General conditioning",
+        "issue": "Celiac Disease - Mild - Autoimmune",
+        "dietary_restrictions": [
+          "Strict gluten-free diet"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Training hard during active GI flare",
+            "reason": "Reduced recovery and hydration tolerance"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Barley or rye products",
+            "reason": "Gluten exposure"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cfcc9b33-1a5c-496e-bdee-91e8c096900b",
+      "version": 1878,
+      "score": 0.6580074,
+      "payload": {
+        "athlete_id": "ATH1784",
+        "name": "هبة عبدالرحمن العوامي",
+        "age": 32,
+        "gender": "Female",
+        "goal": "General conditioning",
+        "issue": "Celiac Disease - Mild - Autoimmune",
+        "dietary_restrictions": [
+          "Strict gluten-free diet"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Training hard during active GI flare",
+            "reason": "Reduced recovery and hydration tolerance"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Barley or rye products",
+            "reason": "Gluten exposure"
+          }
+        ]
+      }
+    },
+    {
+      "id": "98962b8d-e3bc-45ce-b813-f0f186b730f7",
+      "version": 538,
+      "score": 0.6476941,
+      "payload": {
+        "athlete_id": "ATH0444",
+        "name": "محمد القرشي",
+        "age": 55,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Celiac Disease - Mild-Moderate - Autoimmune",
+        "dietary_restrictions": [
+          "Iron supportive",
+          "Strict gluten-free diet"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Training hard during active GI flare",
+            "reason": "Reduced recovery and hydration tolerance"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Wheat-based foods",
+            "reason": "Gluten exposure"
+          },
+          {
+            "food": "Barley or rye products",
+            "reason": "Gluten exposure"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Celiac Disease - Mild - Autoimmune. Constraints: Foods to avoid (Barley or rye products), Exercises to avoid (Training hard during active GI flare)\nIssue: Celiac Disease - Mild - Autoimmune. Constraints: Foods to avoid (Barley or rye products), Exercises to avoid (Training hard during active GI flare)\nIssue: Celiac Disease - Mild-Moderate - Autoimmune. Constraints: Foods to avoid (Wheat-based foods, Barley or rye products), Exercises to avoid (Training hard during active GI flare)"
+}

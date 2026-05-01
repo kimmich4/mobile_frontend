@@ -1,0 +1,711 @@
+{
+  "caseId": "case_18",
+  "mode": "llm_only",
+  "route": "/ai/generate-workout",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "gym": {
+      "title": "Gym Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Treadmill Walk (incline 2%)",
+              "difficulty": "easy",
+              "equipment": "treadmill",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 180
+            },
+            {
+              "id": 2,
+              "name": "Leg Press (light)",
+              "difficulty": "easy",
+              "equipment": "leg press machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 3,
+              "name": "Seated Chest Press",
+              "difficulty": "easy",
+              "equipment": "chest press machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 4,
+              "name": "Cable Row (low weight)",
+              "difficulty": "easy",
+              "equipment": "cable machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 5,
+              "name": "Standing Calf Raise (machine)",
+              "difficulty": "easy",
+              "equipment": "calf raise machine",
+              "sets": "2",
+              "reps": "15",
+              "calories": 30
+            },
+            {
+              "id": 6,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Elliptical Trainer",
+              "difficulty": "easy",
+              "equipment": "elliptical",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 200
+            },
+            {
+              "id": 2,
+              "name": "Lat Pulldown (light)",
+              "difficulty": "easy",
+              "equipment": "lat pulldown machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Leg Curl (light)",
+              "difficulty": "easy",
+              "equipment": "leg curl machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 4,
+              "name": "Shoulder Press (machine)",
+              "difficulty": "easy",
+              "equipment": "shoulder press machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Recumbent Bike",
+              "difficulty": "easy",
+              "equipment": "stationary bike",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 190
+            },
+            {
+              "id": 2,
+              "name": "Goblet Squat (light kettlebell)",
+              "difficulty": "easy",
+              "equipment": "kettlebell",
+              "sets": "3",
+              "reps": "10",
+              "calories": 45
+            },
+            {
+              "id": 3,
+              "name": "Chest Fly (machine)",
+              "difficulty": "easy",
+              "equipment": "chest fly machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 4,
+              "name": "Back Extension (bench)",
+              "difficulty": "easy",
+              "equipment": "back extension bench",
+              "sets": "2",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Treadmill Walk (incline 3%)",
+              "difficulty": "easy",
+              "equipment": "treadmill",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 190
+            },
+            {
+              "id": 2,
+              "name": "Leg Press (moderate)",
+              "difficulty": "easy",
+              "equipment": "leg press machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 3,
+              "name": "Seated Row (machine)",
+              "difficulty": "easy",
+              "equipment": "row machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 4,
+              "name": "Biceps Curl (cable)",
+              "difficulty": "easy",
+              "equipment": "cable machine",
+              "sets": "2",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Elliptical Trainer",
+              "difficulty": "easy",
+              "equipment": "elliptical",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 200
+            },
+            {
+              "id": 2,
+              "name": "Leg Curl (light)",
+              "difficulty": "easy",
+              "equipment": "leg curl machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Shoulder Press (machine)",
+              "difficulty": "easy",
+              "equipment": "shoulder press machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 4,
+              "name": "Triceps Pushdown (cable)",
+              "difficulty": "easy",
+              "equipment": "cable machine",
+              "sets": "2",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Recumbent Bike",
+              "difficulty": "easy",
+              "equipment": "stationary bike",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 190
+            },
+            {
+              "id": 2,
+              "name": "Goblet Squat (light kettlebell)",
+              "difficulty": "easy",
+              "equipment": "kettlebell",
+              "sets": "3",
+              "reps": "10",
+              "calories": 45
+            },
+            {
+              "id": 3,
+              "name": "Chest Fly (machine)",
+              "difficulty": "easy",
+              "equipment": "chest fly machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 4,
+              "name": "Back Extension (bench)",
+              "difficulty": "easy",
+              "equipment": "back extension bench",
+              "sets": "2",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Gentle Walking (treadmill or outdoor)",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 150
+            },
+            {
+              "id": 2,
+              "name": "Full Body Stretch Routine",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "15 min",
+              "calories": 20
+            }
+          ]
+        }
+      ]
+    },
+    "home": {
+      "title": "Home Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Brisk Walk (outside or indoor)",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 150
+            },
+            {
+              "id": 2,
+              "name": "Chair Squat",
+              "difficulty": "easy",
+              "equipment": "chair",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 3,
+              "name": "Wall Push-up",
+              "difficulty": "easy",
+              "equipment": "wall",
+              "sets": "3",
+              "reps": "10",
+              "calories": 30
+            },
+            {
+              "id": 4,
+              "name": "Standing March (low impact)",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "2",
+              "reps": "2 min",
+              "calories": 25
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Gentle Step-ups (low step)",
+              "difficulty": "easy",
+              "equipment": "step",
+              "sets": "2",
+              "reps": "10 each leg",
+              "calories": 35
+            },
+            {
+              "id": 2,
+              "name": "Seated Row with Resistance Band",
+              "difficulty": "easy",
+              "equipment": "resistance band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 3,
+              "name": "Standing Overhead Press (band)",
+              "difficulty": "easy",
+              "equipment": "resistance band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 4,
+              "name": "Standing Heel Raises",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "2",
+              "reps": "15",
+              "calories": 20
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Brisk Walk",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 150
+            },
+            {
+              "id": 2,
+              "name": "Bodyweight Glute Bridge",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 3,
+              "name": "Bent‑over Reverse Fly (band)",
+              "difficulty": "easy",
+              "equipment": "resistance band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 4,
+              "name": "Standing Side Leg Raises",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "2",
+              "reps": "12 each side",
+              "calories": 20
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Gentle Walking",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 150
+            },
+            {
+              "id": 2,
+              "name": "Chair Squat",
+              "difficulty": "easy",
+              "equipment": "chair",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 3,
+              "name": "Wall Push-up",
+              "difficulty": "easy",
+              "equipment": "wall",
+              "sets": "3",
+              "reps": "10",
+              "calories": 30
+            },
+            {
+              "id": 4,
+              "name": "Standing March",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "2",
+              "reps": "2 min",
+              "calories": 25
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Brisk Walk",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 150
+            },
+            {
+              "id": 2,
+              "name": "Step-ups (low step)",
+              "difficulty": "easy",
+              "equipment": "step",
+              "sets": "2",
+              "reps": "10 each leg",
+              "calories": 35
+            },
+            {
+              "id": 3,
+              "name": "Seated Row with Band",
+              "difficulty": "easy",
+              "equipment": "resistance band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 4,
+              "name": "Standing Overhead Press (band)",
+              "difficulty": "easy",
+              "equipment": "resistance band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Gentle Walking",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "1",
+              "reps": "30 min",
+              "calories": 150
+            },
+            {
+              "id": 2,
+              "name": "Bodyweight Glute Bridge",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 3,
+              "name": "Bent‑over Reverse Fly (band)",
+              "difficulty": "easy",
+              "equipment": "resistance band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 30
+            },
+            {
+              "id": 4,
+              "name": "Standing Heel Raises",
+              "difficulty": "easy",
+              "equipment": "none",
+              "sets": "2",
+              "reps": "15",
+              "calories": 20
+            },
+            {
+              "id": 5,
+              "name": "Cool-down Stretch",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 10
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Light Yoga Flow (focus on breathing)",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "20 min",
+              "calories": 50
+            },
+            {
+              "id": 2,
+              "name": "Full Body Stretch Routine",
+              "difficulty": "easy",
+              "equipment": "mat",
+              "sets": "1",
+              "reps": "15 min",
+              "calories": 20
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "parseError": null,
+  "cleanedContent": "{\n  \"gym\": {\n    \"title\": \"Gym Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Treadmill Walk (incline 2%)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"treadmill\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 180\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Leg Press (light)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"leg press machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Seated Chest Press\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"chest press machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Cable Row (low weight)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"cable machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Standing Calf Raise (machine)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"calf raise machine\",\n            \"sets\": \"2\",\n            \"reps\": \"15\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 6,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Elliptical Trainer\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"elliptical\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 200\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Lat Pulldown (light)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"lat pulldown machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Leg Curl (light)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"leg curl machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Shoulder Press (machine)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"shoulder press machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Recumbent Bike\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"stationary bike\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 190\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Goblet Squat (light kettlebell)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"kettlebell\",\n            \"sets\": \"3\",\n            \"reps\": \"10\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Chest Fly (machine)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"chest fly machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Back Extension (bench)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"back extension bench\",\n            \"sets\": \"2\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Treadmill Walk (incline 3%)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"treadmill\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 190\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Leg Press (moderate)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"leg press machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Seated Row (machine)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"row machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Biceps Curl (cable)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"cable machine\",\n            \"sets\": \"2\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Elliptical Trainer\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"elliptical\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 200\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Leg Curl (light)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"leg curl machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Shoulder Press (machine)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"shoulder press machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Triceps Pushdown (cable)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"cable machine\",\n            \"sets\": \"2\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Recumbent Bike\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"stationary bike\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 190\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Goblet Squat (light kettlebell)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"kettlebell\",\n            \"sets\": \"3\",\n            \"reps\": \"10\",\n            \"calories\": 45\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Chest Fly (machine)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"chest fly machine\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Back Extension (bench)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"back extension bench\",\n            \"sets\": \"2\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Gentle Walking (treadmill or outdoor)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 150\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Full Body Stretch Routine\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"15 min\",\n            \"calories\": 20\n          }\n        ]\n      }\n    ]\n  },\n  \"home\": {\n    \"title\": \"Home Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Brisk Walk (outside or indoor)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 150\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Chair Squat\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"chair\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Wall Push-up\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"wall\",\n            \"sets\": \"3\",\n            \"reps\": \"10\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Standing March (low impact)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"2\",\n            \"reps\": \"2 min\",\n            \"calories\": 25\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Gentle Step-ups (low step)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"step\",\n            \"sets\": \"2\",\n            \"reps\": \"10 each leg\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Seated Row with Resistance Band\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"resistance band\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Standing Overhead Press (band)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"resistance band\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Standing Heel Raises\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"2\",\n            \"reps\": \"15\",\n            \"calories\": 20\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Brisk Walk\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 150\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Bodyweight Glute Bridge\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Bent‑over Reverse Fly (band)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"resistance band\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Standing Side Leg Raises\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"2\",\n            \"reps\": \"12 each side\",\n            \"calories\": 20\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Gentle Walking\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 150\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Chair Squat\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"chair\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 40\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Wall Push-up\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"wall\",\n            \"sets\": \"3\",\n            \"reps\": \"10\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Standing March\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"2\",\n            \"reps\": \"2 min\",\n            \"calories\": 25\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Brisk Walk\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 150\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Step-ups (low step)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"step\",\n            \"sets\": \"2\",\n            \"reps\": \"10 each leg\",\n            \"calories\": 35\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Seated Row with Band\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"resistance band\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Standing Overhead Press (band)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"resistance band\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Gentle Walking\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"1\",\n            \"reps\": \"30 min\",\n            \"calories\": 150\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Bodyweight Glute Bridge\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 3,\n            \"name\": \"Bent‑over Reverse Fly (band)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"resistance band\",\n            \"sets\": \"3\",\n            \"reps\": \"12\",\n            \"calories\": 30\n          },\n          {\n            \"id\": 4,\n            \"name\": \"Standing Heel Raises\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"none\",\n            \"sets\": \"2\",\n            \"reps\": \"15\",\n            \"calories\": 20\n          },\n          {\n            \"id\": 5,\n            \"name\": \"Cool-down Stretch\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"5 min\",\n            \"calories\": 10\n          }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          {\n            \"id\": 1,\n            \"name\": \"Light Yoga Flow (focus on breathing)\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"20 min\",\n            \"calories\": 50\n          },\n          {\n            \"id\": 2,\n            \"name\": \"Full Body Stretch Routine\",\n            \"difficulty\": \"easy\",\n            \"equipment\": \"mat\",\n            \"sets\": \"1\",\n            \"reps\": \"15 min\",\n            \"calories\": 20\n          }\n        ]\n      }\n    ]\n  }\n}",
+  "derived": {
+    "allHealthConditions": "exercise-induced asthma, needs gradual conditioning and rest breaks",
+    "allAllergies": "none",
+    "allInjuries": "none",
+    "allGoals": "fat loss and basic strength, walk more and tolerate stairs",
+    "experienceInfo": "beginner - has not trained for years",
+    "bmr": 2174.942,
+    "tdee": 2609.9303999999997,
+    "targetCalories": 2110
+  },
+  "latencyMs": 158919,
+  "usage": {
+    "prompt_tokens": 499,
+    "completion_tokens": 4285,
+    "total_tokens": 4784,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 51,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop"
+}

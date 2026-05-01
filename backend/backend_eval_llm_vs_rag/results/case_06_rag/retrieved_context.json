@@ -1,0 +1,95 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "bb3b7bb6-2186-4a08-bdee-3c8555063725",
+      "version": 2033,
+      "score": 0.6952106,
+      "payload": {
+        "athlete_id": "ATH1939",
+        "name": "عبدالله معتز العوامي",
+        "age": 50,
+        "gender": "Male",
+        "goal": "Fat loss",
+        "issue": "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal",
+        "dietary_restrictions": [
+          "Weight-management focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Hyperextension work to failure",
+            "reason": "May worsen back irritation"
+          },
+          {
+            "exercise": "Max-effort deadlift testing",
+            "reason": "Poor fatigue tolerance"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "f8c1dd30-96f1-4b02-b52a-a51cc062af24",
+      "version": 308,
+      "score": 0.6869463,
+      "payload": {
+        "athlete_id": "ATH0214",
+        "name": "دانا الرفاعي",
+        "age": 40,
+        "gender": "Female",
+        "goal": "Movement quality",
+        "issue": "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal",
+        "dietary_restrictions": [
+          "Weight-management focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Hyperextension work to failure",
+            "reason": "May worsen back irritation"
+          },
+          {
+            "exercise": "Repeated heavy twisting under load",
+            "reason": "Can aggravate lumbar symptoms"
+          },
+          {
+            "exercise": "Max-effort deadlift testing",
+            "reason": "Poor fatigue tolerance"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "714460e7-8d64-4acc-af8f-3814bf4125f0",
+      "version": 674,
+      "score": 0.6669908,
+      "payload": {
+        "athlete_id": "ATH0580",
+        "name": "ياسمين خالد البدري",
+        "age": 60,
+        "gender": "Female",
+        "goal": "Return to training",
+        "issue": "Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal",
+        "dietary_restrictions": [
+          "Weight-management focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Max-effort deadlift testing",
+            "reason": "Poor fatigue tolerance"
+          },
+          {
+            "exercise": "Repeated heavy twisting under load",
+            "reason": "Can aggravate lumbar symptoms"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    }
+  ],
+  "vectorContext": "Issue: Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Hyperextension work to failure, Max-effort deadlift testing)\nIssue: Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Hyperextension work to failure, Repeated heavy twisting under load, Max-effort deadlift testing)\nIssue: Chronic Low Back Pain with Core Weakness - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Max-effort deadlift testing, Repeated heavy twisting under load)"
+}

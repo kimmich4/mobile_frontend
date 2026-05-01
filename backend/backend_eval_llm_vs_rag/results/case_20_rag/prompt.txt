@@ -1,0 +1,36 @@
+Context:
+
+User Profile: Jana Nabil, 35 years old, female. 
+Metrics: Current Weight: 64kg, Target Weight: 64kg, Height: 167cm.
+BMR: 1405.22, TDEE: 2424.00. Target Calories: 2424 kcal.
+Activity Level: active.
+Experience Level: advanced - advanced lifter with home dumbbells and full gym access.
+Goals: maintenance and balanced strength, balanced full-body training. 
+Health Conditions: mild scoliosis.
+Allergies: none.
+Injuries: none, avoid painful asymmetrical loading and sloppy fatigue form.
+Medical Report Findings: Clinician advised good trunk control, symmetrical loading, and technique quality..
+InBody Report Findings: Balanced body composition and good lean mass..
+Vector Database Constraints: Issue: Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Asymmetrical heavy carries to fatigue)
+Issue: Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Repeated twisting under heavy load)
+Issue: Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Poorly controlled heavy axial loading)
+
+
+Task:
+Create a 7-day exercise plan.
+For EACH day, provide TWO complete plans: one for "home" and one for "gym".
+Include warm-up, main exercises, and cool-down.
+Each day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. 
+Adjust difficulty based on the user's experience level and if he gave you a specific split name like "push-pull-legs" or "full body" or "upper-lower" make it in the exact format of the Json in example.
+Ensure exercises are safe for the provided injuries/conditions and doesnt violate any of the vector database constraints. 
+Return ONLY JSON in this format:
+{
+  "gym": {
+    "title": "Gym Workout Plan",
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "...", "sets": "3", "reps": "12", "calories": 40}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "...", "sets": "3", "reps": "15", "calories": 49}]}]
+  },
+  "home": {
+    "title": "Home Workout Plan",
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "None", "sets": "3", "reps": "12", "calories": 100}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "None", "sets": "3", "reps": "15", "calories": 80}]}]
+  }
+}

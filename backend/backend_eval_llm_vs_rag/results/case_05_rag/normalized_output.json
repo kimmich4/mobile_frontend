@@ -1,0 +1,956 @@
+{
+  "caseId": "case_05",
+  "mode": "rag",
+  "route": "/ai/generate-diet",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "days": [
+      {
+        "day": 1,
+        "totalCalories": 3008,
+        "protein": "152g",
+        "carbs": "210g",
+        "fats": "68g",
+        "meals": [
+          {
+            "title": "Sunrise Protein Shake",
+            "items": [
+              {
+                "name": "Soy protein isolate (30g)",
+                "calories": 120
+              },
+              {
+                "name": "Oat milk (250ml)",
+                "calories": 130
+              },
+              {
+                "name": "Frozen berries (100g)",
+                "calories": 60
+              },
+              {
+                "name": "Flaxseed oil (1 tsp)",
+                "calories": 40
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Power Bowl",
+            "items": [
+              {
+                "name": "Quinoa (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Edamame beans (120g)",
+                "calories": 140
+              },
+              {
+                "name": "Avocado (50g)",
+                "calories": 80
+              },
+              {
+                "name": "Pumpkin seeds (15g)",
+                "calories": 120
+              },
+              {
+                "name": "Lemon‑tahini drizzle (10g)",
+                "calories": 100
+              }
+            ]
+          },
+          {
+            "title": "Harvest Lunch",
+            "items": [
+              {
+                "name": "Grilled tempeh (180g)",
+                "calories": 330
+              },
+              {
+                "name": "Sweet potato wedges (200g)",
+                "calories": 180
+              },
+              {
+                "name": "Steamed broccoli (150g)",
+                "calories": 60
+              },
+              {
+                "name": "Olive oil (1 tbsp) for roasting",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Refuel Wrap",
+            "items": [
+              {
+                "name": "Whole‑wheat tortilla (1 large)",
+                "calories": 130
+              },
+              {
+                "name": "Cottage cheese (150g)",
+                "calories": 150
+              },
+              {
+                "name": "Spinach (50g)",
+                "calories": 12
+              },
+              {
+                "name": "Sun‑dried tomatoes (20g)",
+                "calories": 40
+              },
+              {
+                "name": "Hummus (30g)",
+                "calories": 108
+              }
+            ]
+          },
+          {
+            "title": "Evening Builder Plate",
+            "items": [
+              {
+                "name": "Lentil‑dal stew (250g)",
+                "calories": 350
+              },
+              {
+                "name": "Brown basmati rice (180g cooked)",
+                "calories": 250
+              },
+              {
+                "name": "Greek yogurt (150g) with honey drizzle",
+                "calories": 100
+              },
+              {
+                "name": "Mixed nuts (30g, no peanuts)",
+                "calories": 140
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 2,
+        "totalCalories": 3008,
+        "protein": "149g",
+        "carbs": "215g",
+        "fats": "66g",
+        "meals": [
+          {
+            "title": "Morning Green Boost",
+            "items": [
+              {
+                "name": "Pea protein powder (30g)",
+                "calories": 120
+              },
+              {
+                "name": "Almond milk (250ml)",
+                "calories": 60
+              },
+              {
+                "name": "Spinach (80g)",
+                "calories": 20
+              },
+              {
+                "name": "Chia seeds (15g)",
+                "calories": 80
+              },
+              {
+                "name": "Banana (100g)",
+                "calories": 90
+              }
+            ]
+          },
+          {
+            "title": "Protein‑Packed Snack",
+            "items": [
+              {
+                "name": "Roasted chickpeas (100g)",
+                "calories": 380
+              }
+            ]
+          },
+          {
+            "title": "Mediterranean Veggie Plate",
+            "items": [
+              {
+                "name": "Grilled halloumi (120g)",
+                "calories": 340
+              },
+              {
+                "name": "Bulgur wheat (150g cooked)",
+                "calories": 180
+              },
+              {
+                "name": "Roasted zucchini & eggplant (150g)",
+                "calories": 80
+              },
+              {
+                "name": "Olive oil (1 tbsp)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Afternoon Smoothie",
+            "items": [
+              {
+                "name": "Greek yogurt (200g)",
+                "calories": 140
+              },
+              {
+                "name": "Mango chunks (100g)",
+                "calories": 70
+              },
+              {
+                "name": "Hemp protein (20g)",
+                "calories": 100
+              },
+              {
+                "name": "Coconut water (200ml)",
+                "calories": 40
+              }
+            ]
+          },
+          {
+            "title": "Nighttime Power Stir‑Fry",
+            "items": [
+              {
+                "name": "Tofu firm (200g)",
+                "calories": 160
+              },
+              {
+                "name": "Brown rice noodles (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Mixed bell peppers (100g)",
+                "calories": 30
+              },
+              {
+                "name": "Sesame oil (1 tsp)",
+                "calories": 40
+              },
+              {
+                "name": "Soy‑ginger sauce (30g)",
+                "calories": 48
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 3,
+        "totalCalories": 3008,
+        "protein": "151g",
+        "carbs": "208g",
+        "fats": "69g",
+        "meals": [
+          {
+            "title": "Early Bird Chickpea Pancakes",
+            "items": [
+              {
+                "name": "Chickpea flour (100g)",
+                "calories": 370
+              },
+              {
+                "name": "Almond milk (100ml)",
+                "calories": 24
+              },
+              {
+                "name": "Olive oil spray (5ml)",
+                "calories": 45
+              }
+            ]
+          },
+          {
+            "title": "Veggie‑Rich Yogurt Parfait",
+            "items": [
+              {
+                "name": "Low‑fat Greek yogurt (200g)",
+                "calories": 130
+              },
+              {
+                "name": "Granola (40g, nut‑free)",
+                "calories": 180
+              },
+              {
+                "name": "Blueberries (80g)",
+                "calories": 45
+              },
+              {
+                "name": "Drizzle maple syrup (10g)",
+                "calories": 26
+              }
+            ]
+          },
+          {
+            "title": "Lunchtime Lentil Salad",
+            "items": [
+              {
+                "name": "Cooked green lentils (150g)",
+                "calories": 340
+              },
+              {
+                "name": "Arugula (50g)",
+                "calories": 12
+              },
+              {
+                "name": "Feta cheese (50g)",
+                "calories": 130
+              },
+              {
+                "name": "Walnuts (20g, no peanuts)",
+                "calories": 130
+              },
+              {
+                "name": "Balsamic vinaigrette (15g)",
+                "calories": 70
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Energy Balls",
+            "items": [
+              {
+                "name": "Date‑almond bites (3 pieces, 45g total)",
+                "calories": 200
+              }
+            ]
+          },
+          {
+            "title": "Evening Hearty Curry",
+            "items": [
+              {
+                "name": "Paneer cubes (150g)",
+                "calories": 360
+              },
+              {
+                "name": "Coconut milk (100ml)",
+                "calories": 180
+              },
+              {
+                "name": "Cauliflower florets (150g)",
+                "calories": 40
+              },
+              {
+                "name": "Brown basmati rice (180g cooked)",
+                "calories": 250
+              },
+              {
+                "name": "Curry spices & oil (15g)",
+                "calories": 140
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 4,
+        "totalCalories": 3008,
+        "protein": "148g",
+        "carbs": "212g",
+        "fats": "67g",
+        "meals": [
+          {
+            "title": " sunrise Oat‑Protein Bowl",
+            "items": [
+              {
+                "name": "Rolled oats (80g)",
+                "calories": 300
+              },
+              {
+                "name": "Soy milk (200ml)",
+                "calories": 80
+              },
+              {
+                "name": "Pea protein isolate (25g)",
+                "calories": 100
+              },
+              {
+                "name": "Raspberry puree (50g)",
+                "calories": 30
+              },
+              {
+                "name": "Pumpkin seed butter (10g)",
+                "calories": 80
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Morning Veggie Sticks & Dip",
+            "items": [
+              {
+                "name": "Carrot sticks (100g)",
+                "calories": 41
+              },
+              {
+                "name": "Celery sticks (100g)",
+                "calories": 16
+              },
+              {
+                "name": "Greek tzatziki (80g)",
+                "calories": 70
+              }
+            ]
+          },
+          {
+            "title": "Protein‑Rich Buddha Bowl",
+            "items": [
+              {
+                "name": "Cooked farro (150g)",
+                "calories": 210
+              },
+              {
+                "name": "Roasted tempeh (150g)",
+                "calories": 280
+              },
+              {
+                "name": "Steamed kale (100g)",
+                "calories": 35
+              },
+              {
+                "name": "Roasted chickpeas (80g)",
+                "calories": 240
+              },
+              {
+                "name": "Sesame dressing (15g)",
+                "calories": 130
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Cottage Cheese Delight",
+            "items": [
+              {
+                "name": "Cottage cheese (200g)",
+                "calories": 170
+              },
+              {
+                "name": "Sliced kiwi (100g)",
+                "calories": 60
+              },
+              {
+                "name": "Sunflower seeds (15g)",
+                "calories": 90
+              }
+            ]
+          },
+          {
+            "title": "Evening Mexican‑Style Plate",
+            "items": [
+              {
+                "name": "Black bean & quinoa chili (300g)",
+                "calories": 420
+              },
+              {
+                "name": "Brown rice (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Guacamole (40g)",
+                "calories": 70
+              },
+              {
+                "name": "Shredded cheddar (30g)",
+                "calories": 115
+              },
+              {
+                "name": "Salsa (30g)",
+                "calories": 20
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 5,
+        "totalCalories": 3008,
+        "protein": "150g",
+        "carbs": "209g",
+        "fats": "68g",
+        "meals": [
+          {
+            "title": "Morning Power Oats",
+            "items": [
+              {
+                "name": "Steel‑cut oats (90g)",
+                "calories": 340
+              },
+              {
+                "name": "Soy yogurt (120g)",
+                "calories": 80
+              },
+              {
+                "name": "Chia seeds (15g)",
+                "calories": 80
+              },
+              {
+                "name": "Ripe mango (80g)",
+                "calories": 60
+              },
+              {
+                "name": "Honey (10g)",
+                "calories": 30
+              }
+            ]
+          },
+          {
+            "title": "Pre‑Gym Veggie Wrap",
+            "items": [
+              {
+                "name": "Spinach tortilla (1)",
+                "calories": 130
+              },
+              {
+                "name": "Scrambled tofu (150g)",
+                "calories": 180
+              },
+              {
+                "name": "Red pepper strips (50g)",
+                "calories": 15
+              },
+              {
+                "name": "Avocado slice (30g)",
+                "calories": 50
+              },
+              {
+                "name": "Salsa (20g)",
+                "calories": 10
+              }
+            ]
+          },
+          {
+            "title": "Post‑Workout Recovery Shake",
+            "items": [
+              {
+                "name": "Whey‑free soy protein (30g)",
+                "calories": 120
+              },
+              {
+                "name": "Almond milk (250ml)",
+                "calories": 60
+              },
+              {
+                "name": "Frozen pineapple (100g)",
+                "calories": 50
+              },
+              {
+                "name": "Flax oil (1 tsp)",
+                "calories": 40
+              }
+            ]
+          },
+          {
+            "title": "Mid‑Afternoon Lentil Soup",
+            "items": [
+              {
+                "name": "Red lentil soup (350g)",
+                "calories": 380
+              },
+              {
+                "name": "Whole‑grain roll (1 small)",
+                "calories": 120
+              }
+            ]
+          },
+          {
+            "title": "Dinner: Creamy Spinach Pasta",
+            "items": [
+              {
+                "name": "Whole‑wheat penne (180g cooked)",
+                "calories": 260
+              },
+              {
+                "name": "Silken tofu sauce (150g)",
+                "calories": 150
+              },
+              {
+                "name": "Fresh spinach (100g)",
+                "calories": 25
+              },
+              {
+                "name": "Nutritional yeast (15g)",
+                "calories": 60
+              },
+              {
+                "name": "Olive oil (1 tsp)",
+                "calories": 40
+              },
+              {
+                "name": "Parmesan sprinkle (10g)",
+                "calories": 45
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 6,
+        "totalCalories": 3008,
+        "protein": "153g",
+        "carbs": "207g",
+        "fats": "70g",
+        "meals": [
+          {
+            "title": "Sunrise Smoothie Bowl",
+            "items": [
+              {
+                "name": "Pea protein powder (30g)",
+                "calories": 120
+              },
+              {
+                "name": "Soy milk (200ml)",
+                "calories": 80
+              },
+              {
+                "name": "Banana (100g)",
+                "calories": 90
+              },
+              {
+                "name": "Rolled oats (30g)",
+                "calories": 115
+              },
+              {
+                "name": "Pumpkin seeds (15g)",
+                "calories": 85
+              }
+            ]
+          },
+          {
+            "title": "Morning Veggie Toast",
+            "items": [
+              {
+                "name": "Sprouted grain bread (2 slices)",
+                "calories": 180
+              },
+              {
+                "name": "Mashed avocado (50g)",
+                "calories": 80
+              },
+              {
+                "name": "Tomato slices (40g)",
+                "calories": 8
+              },
+              {
+                "name": "Sprouted alfalfa greens (20g)",
+                "calories": 5
+              }
+            ]
+          },
+          {
+            "title": "Lunch Power Plate",
+            "items": [
+              {
+                "name": "Seitan strips (150g)",
+                "calories": 210
+              },
+              {
+                "name": "Quinoa (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Roasted Brussels sprouts (120g)",
+                "calories": 90
+              },
+              {
+                "name": "Tahini drizzle (15g)",
+                "calories": 90
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Greek Yogurt Snack",
+            "items": [
+              {
+                "name": "Greek yogurt (200g)",
+                "calories": 140
+              },
+              {
+                "name": "Pomegranate seeds (60g)",
+                "calories": 70
+              },
+              {
+                "name": "Honey (10g)",
+                "calories": 30
+              },
+              {
+                "name": "Chopped pistachios (15g, no peanuts)",
+                "calories": 90
+              }
+            ]
+          },
+          {
+            "title": "Evening Stir‑Fry Delight",
+            "items": [
+              {
+                "name": "Tempeh cubes (180g)",
+                "calories": 350
+              },
+              {
+                "name": "Brown rice (180g cooked)",
+                "calories": 250
+              },
+              {
+                "name": "Mixed Asian vegetables (150g)",
+                "calories": 70
+              },
+              {
+                "name": "Sesame oil (1 tsp)",
+                "calories": 40
+              },
+              {
+                "name": "Low‑sodium soy sauce (20g)",
+                "calories": 10
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "day": 7,
+        "totalCalories": 3008,
+        "protein": "151g",
+        "carbs": "211g",
+        "fats": "68g",
+        "meals": [
+          {
+            "title": "Morning Chia Pudding",
+            "items": [
+              {
+                "name": "Chia seeds (40g)",
+                "calories": 200
+              },
+              {
+                "name": "Almond milk (250ml)",
+                "calories": 60
+              },
+              {
+                "name": "Maple syrup (15g)",
+                "calories": 52
+              },
+              {
+                "name": "Sliced strawberries (80g)",
+                "calories": 26
+              }
+            ]
+          },
+          {
+            "title": "Pre‑Lunch Protein Balls",
+            "items": [
+              {
+                "name": "Date‑oat balls with sunflower seed butter (4 balls, 80g)",
+                "calories": 320
+              }
+            ]
+          },
+          {
+            "title": "Lunch Mediterranean Grain Bowl",
+            "items": [
+              {
+                "name": "Freekeh (150g cooked)",
+                "calories": 210
+              },
+              {
+                "name": "Grilled halloumi (100g)",
+                "calories": 300
+              },
+              {
+                "name": "Cherry tomatoes (80g)",
+                "calories": 15
+              },
+              {
+                "name": "Cucumber (80g)",
+                "calories": 12
+              },
+              {
+                "name": "Olive oil & lemon dressing (15g)",
+                "calories": 130
+              }
+            ]
+          },
+          {
+            "title": "Afternoon Edamame Hummus Toast",
+            "items": [
+              {
+                "name": "Whole‑grain toast (1 slice)",
+                "calories": 90
+              },
+              {
+                "name": "Edamame hummus (70g)",
+                "calories": 150
+              },
+              {
+                "name": "Microgreens (10g)",
+                "calories": 5
+              }
+            ]
+          },
+          {
+            "title": "Evening Nutri‑Rich Curry",
+            "items": [
+              {
+                "name": "Red kidney bean curry (300g)",
+                "calories": 380
+              },
+              {
+                "name": "Basmati rice (180g cooked)",
+                "calories": 250
+              },
+              {
+                "name": "Spinach (100g) added to sauce",
+                "calories": 25
+              },
+              {
+                "name": "Coconut cream (30g)",
+                "calories": 80
+              },
+              {
+                "name": "Garam masala & oil (15g)",
+                "calories": 113
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "parseError": null,
+  "cleanedContent": "{\n  \"days\": [\n    {\n      \"day\": 1,\n      \"totalCalories\": 3008,\n      \"protein\": \"152g\",\n      \"carbs\": \"210g\",\n      \"fats\": \"68g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunrise Protein Shake\",\n          \"items\": [\n            { \"name\": \"Soy protein isolate (30g)\", \"calories\": 120 },\n            { \"name\": \"Oat milk (250ml)\", \"calories\": 130 },\n            { \"name\": \"Frozen berries (100g)\", \"calories\": 60 },\n            { \"name\": \"Flaxseed oil (1 tsp)\", \"calories\": 40 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Power Bowl\",\n          \"items\": [\n            { \"name\": \"Quinoa (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Edamame beans (120g)\", \"calories\": 140 },\n            { \"name\": \"Avocado (50g)\", \"calories\": 80 },\n            { \"name\": \"Pumpkin seeds (15g)\", \"calories\": 120 },\n            { \"name\": \"Lemon‑tahini drizzle (10g)\", \"calories\": 100 }\n          ]\n        },\n        {\n          \"title\": \"Harvest Lunch\",\n          \"items\": [\n            { \"name\": \"Grilled tempeh (180g)\", \"calories\": 330 },\n            { \"name\": \"Sweet potato wedges (200g)\", \"calories\": 180 },\n            { \"name\": \"Steamed broccoli (150g)\", \"calories\": 60 },\n            { \"name\": \"Olive oil (1 tbsp) for roasting\", \"calories\": 120 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Refuel Wrap\",\n          \"items\": [\n            { \"name\": \"Whole‑wheat tortilla (1 large)\", \"calories\": 130 },\n            { \"name\": \"Cottage cheese (150g)\", \"calories\": 150 },\n            { \"name\": \"Spinach (50g)\", \"calories\": 12 },\n            { \"name\": \"Sun‑dried tomatoes (20g)\", \"calories\": 40 },\n            { \"name\": \"Hummus (30g)\", \"calories\": 108 }\n          ]\n        },\n        {\n          \"title\": \"Evening Builder Plate\",\n          \"items\": [\n            { \"name\": \"Lentil‑dal stew (250g)\", \"calories\": 350 },\n            { \"name\": \"Brown basmati rice (180g cooked)\", \"calories\": 250 },\n            { \"name\": \"Greek yogurt (150g) with honey drizzle\", \"calories\": 100 },\n            { \"name\": \"Mixed nuts (30g, no peanuts)\", \"calories\": 140 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 2,\n      \"totalCalories\": 3008,\n      \"protein\": \"149g\",\n      \"carbs\": \"215g\",\n      \"fats\": \"66g\",\n      \"meals\": [\n        {\n          \"title\": \"Morning Green Boost\",\n          \"items\": [\n            { \"name\": \"Pea protein powder (30g)\", \"calories\": 120 },\n            { \"name\": \"Almond milk (250ml)\", \"calories\": 60 },\n            { \"name\": \"Spinach (80g)\", \"calories\": 20 },\n            { \"name\": \"Chia seeds (15g)\", \"calories\": 80 },\n            { \"name\": \"Banana (100g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Protein‑Packed Snack\",\n          \"items\": [\n            { \"name\": \"Roasted chickpeas (100g)\", \"calories\": 380 }\n          ]\n        },\n        {\n          \"title\": \"Mediterranean Veggie Plate\",\n          \"items\": [\n            { \"name\": \"Grilled halloumi (120g)\", \"calories\": 340 },\n            { \"name\": \"Bulgur wheat (150g cooked)\", \"calories\": 180 },\n            { \"name\": \"Roasted zucchini & eggplant (150g)\", \"calories\": 80 },\n            { \"name\": \"Olive oil (1 tbsp)\", \"calories\": 120 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Afternoon Smoothie\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (200g)\", \"calories\": 140 },\n            { \"name\": \"Mango chunks (100g)\", \"calories\": 70 },\n            { \"name\": \"Hemp protein (20g)\", \"calories\": 100 },\n            { \"name\": \"Coconut water (200ml)\", \"calories\": 40 }\n          ]\n        },\n        {\n          \"title\": \"Nighttime Power Stir‑Fry\",\n          \"items\": [\n            { \"name\": \"Tofu firm (200g)\", \"calories\": 160 },\n            { \"name\": \"Brown rice noodles (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Mixed bell peppers (100g)\", \"calories\": 30 },\n            { \"name\": \"Sesame oil (1 tsp)\", \"calories\": 40 },\n            { \"name\": \"Soy‑ginger sauce (30g)\", \"calories\": 48 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 3,\n      \"totalCalories\": 3008,\n      \"protein\": \"151g\",\n      \"carbs\": \"208g\",\n      \"fats\": \"69g\",\n      \"meals\": [\n        {\n          \"title\": \"Early Bird Chickpea Pancakes\",\n          \"items\": [\n            { \"name\": \"Chickpea flour (100g)\", \"calories\": 370 },\n            { \"name\": \"Almond milk (100ml)\", \"calories\": 24 },\n            { \"name\": \"Olive oil spray (5ml)\", \"calories\": 45 }\n          ]\n        },\n        {\n          \"title\": \"Veggie‑Rich Yogurt Parfait\",\n          \"items\": [\n            { \"name\": \"Low‑fat Greek yogurt (200g)\", \"calories\": 130 },\n            { \"name\": \"Granola (40g, nut‑free)\", \"calories\": 180 },\n            { \"name\": \"Blueberries (80g)\", \"calories\": 45 },\n            { \"name\": \"Drizzle maple syrup (10g)\", \"calories\": 26 }\n          ]\n        },\n        {\n          \"title\": \"Lunchtime Lentil Salad\",\n          \"items\": [\n            { \"name\": \"Cooked green lentils (150g)\", \"calories\": 340 },\n            { \"name\": \"Arugula (50g)\", \"calories\": 12 },\n            { \"name\": \"Feta cheese (50g)\", \"calories\": 130 },\n            { \"name\": \"Walnuts (20g, no peanuts)\", \"calories\": 130 },\n            { \"name\": \"Balsamic vinaigrette (15g)\", \"calories\": 70 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Energy Balls\",\n          \"items\": [\n            { \"name\": \"Date‑almond bites (3 pieces, 45g total)\", \"calories\": 200 }\n          ]\n        },\n        {\n          \"title\": \"Evening Hearty Curry\",\n          \"items\": [\n            { \"name\": \"Paneer cubes (150g)\", \"calories\": 360 },\n            { \"name\": \"Coconut milk (100ml)\", \"calories\": 180 },\n            { \"name\": \"Cauliflower florets (150g)\", \"calories\": 40 },\n            { \"name\": \"Brown basmati rice (180g cooked)\", \"calories\": 250 },\n            { \"name\": \"Curry spices & oil (15g)\", \"calories\": 140 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 4,\n      \"totalCalories\": 3008,\n      \"protein\": \"148g\",\n      \"carbs\": \"212g\",\n      \"fats\": \"67g\",\n      \"meals\": [\n        {\n          \"title\": \" sunrise Oat‑Protein Bowl\",\n          \"items\": [\n            { \"name\": \"Rolled oats (80g)\", \"calories\": 300 },\n            { \"name\": \"Soy milk (200ml)\", \"calories\": 80 },\n            { \"name\": \"Pea protein isolate (25g)\", \"calories\": 100 },\n            { \"name\": \"Raspberry puree (50g)\", \"calories\": 30 },\n            { \"name\": \"Pumpkin seed butter (10g)\", \"calories\": 80 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Morning Veggie Sticks & Dip\",\n          \"items\": [\n            { \"name\": \"Carrot sticks (100g)\", \"calories\": 41 },\n            { \"name\": \"Celery sticks (100g)\", \"calories\": 16 },\n            { \"name\": \"Greek tzatziki (80g)\", \"calories\": 70 }\n          ]\n        },\n        {\n          \"title\": \"Protein‑Rich Buddha Bowl\",\n          \"items\": [\n            { \"name\": \"Cooked farro (150g)\", \"calories\": 210 },\n            { \"name\": \"Roasted tempeh (150g)\", \"calories\": 280 },\n            { \"name\": \"Steamed kale (100g)\", \"calories\": 35 },\n            { \"name\": \"Roasted chickpeas (80g)\", \"calories\": 240 },\n            { \"name\": \"Sesame dressing (15g)\", \"calories\": 130 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Cottage Cheese Delight\",\n          \"items\": [\n            { \"name\": \"Cottage cheese (200g)\", \"calories\": 170 },\n            { \"name\": \"Sliced kiwi (100g)\", \"calories\": 60 },\n            { \"name\": \"Sunflower seeds (15g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Evening Mexican‑Style Plate\",\n          \"items\": [\n            { \"name\": \"Black bean & quinoa chili (300g)\", \"calories\": 420 },\n            { \"name\": \"Brown rice (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Guacamole (40g)\", \"calories\": 70 },\n            { \"name\": \"Shredded cheddar (30g)\", \"calories\": 115 },\n            { \"name\": \"Salsa (30g)\", \"calories\": 20 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 5,\n      \"totalCalories\": 3008,\n      \"protein\": \"150g\",\n      \"carbs\": \"209g\",\n      \"fats\": \"68g\",\n      \"meals\": [\n        {\n          \"title\": \"Morning Power Oats\",\n          \"items\": [\n            { \"name\": \"Steel‑cut oats (90g)\", \"calories\": 340 },\n            { \"name\": \"Soy yogurt (120g)\", \"calories\": 80 },\n            { \"name\": \"Chia seeds (15g)\", \"calories\": 80 },\n            { \"name\": \"Ripe mango (80g)\", \"calories\": 60 },\n            { \"name\": \"Honey (10g)\", \"calories\": 30 }\n          ]\n        },\n        {\n          \"title\": \"Pre‑Gym Veggie Wrap\",\n          \"items\": [\n            { \"name\": \"Spinach tortilla (1)\", \"calories\": 130 },\n            { \"name\": \"Scrambled tofu (150g)\", \"calories\": 180 },\n            { \"name\": \"Red pepper strips (50g)\", \"calories\": 15 },\n            { \"name\": \"Avocado slice (30g)\", \"calories\": 50 },\n            { \"name\": \"Salsa (20g)\", \"calories\": 10 }\n          ]\n        },\n        {\n          \"title\": \"Post‑Workout Recovery Shake\",\n          \"items\": [\n            { \"name\": \"Whey‑free soy protein (30g)\", \"calories\": 120 },\n            { \"name\": \"Almond milk (250ml)\", \"calories\": 60 },\n            { \"name\": \"Frozen pineapple (100g)\", \"calories\": 50 },\n            { \"name\": \"Flax oil (1 tsp)\", \"calories\": 40 }\n          ]\n        },\n        {\n          \"title\": \"Mid‑Afternoon Lentil Soup\",\n          \"items\": [\n            { \"name\": \"Red lentil soup (350g)\", \"calories\": 380 },\n            { \"name\": \"Whole‑grain roll (1 small)\", \"calories\": 120 }\n          ]\n        },\n        {\n          \"title\": \"Dinner: Creamy Spinach Pasta\",\n          \"items\": [\n            { \"name\": \"Whole‑wheat penne (180g cooked)\", \"calories\": 260 },\n            { \"name\": \"Silken tofu sauce (150g)\", \"calories\": 150 },\n            { \"name\": \"Fresh spinach (100g)\", \"calories\": 25 },\n            { \"name\": \"Nutritional yeast (15g)\", \"calories\": 60 },\n            { \"name\": \"Olive oil (1 tsp)\", \"calories\": 40 },\n            { \"name\": \"Parmesan sprinkle (10g)\", \"calories\": 45 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 6,\n      \"totalCalories\": 3008,\n      \"protein\": \"153g\",\n      \"carbs\": \"207g\",\n      \"fats\": \"70g\",\n      \"meals\": [\n        {\n          \"title\": \"Sunrise Smoothie Bowl\",\n          \"items\": [\n            { \"name\": \"Pea protein powder (30g)\", \"calories\": 120 },\n            { \"name\": \"Soy milk (200ml)\", \"calories\": 80 },\n            { \"name\": \"Banana (100g)\", \"calories\": 90 },\n            { \"name\": \"Rolled oats (30g)\", \"calories\": 115 },\n            { \"name\": \"Pumpkin seeds (15g)\", \"calories\": 85 }\n          ]\n        },\n        {\n          \"title\": \"Morning Veggie Toast\",\n          \"items\": [\n            { \"name\": \"Sprouted grain bread (2 slices)\", \"calories\": 180 },\n            { \"name\": \"Mashed avocado (50g)\", \"calories\": 80 },\n            { \"name\": \"Tomato slices (40g)\", \"calories\": 8 },\n            { \"name\": \"Sprouted alfalfa greens (20g)\", \"calories\": 5 }\n          ]\n        },\n        {\n          \"title\": \"Lunch Power Plate\",\n          \"items\": [\n            { \"name\": \"Seitan strips (150g)\", \"calories\": 210 },\n            { \"name\": \"Quinoa (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Roasted Brussels sprouts (120g)\", \"calories\": 90 },\n            { \"name\": \"Tahini drizzle (15g)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Greek Yogurt Snack\",\n          \"items\": [\n            { \"name\": \"Greek yogurt (200g)\", \"calories\": 140 },\n            { \"name\": \"Pomegranate seeds (60g)\", \"calories\": 70 },\n            { \"name\": \"Honey (10g)\", \"calories\": 30 },\n            { \"name\": \"Chopped pistachios (15g, no peanuts)\", \"calories\": 90 }\n          ]\n        },\n        {\n          \"title\": \"Evening Stir‑Fry Delight\",\n          \"items\": [\n            { \"name\": \"Tempeh cubes (180g)\", \"calories\": 350 },\n            { \"name\": \"Brown rice (180g cooked)\", \"calories\": 250 },\n            { \"name\": \"Mixed Asian vegetables (150g)\", \"calories\": 70 },\n            { \"name\": \"Sesame oil (1 tsp)\", \"calories\": 40 },\n            { \"name\": \"Low‑sodium soy sauce (20g)\", \"calories\": 10 }\n          ]\n        }\n      ]\n    },\n    {\n      \"day\": 7,\n      \"totalCalories\": 3008,\n      \"protein\": \"151g\",\n      \"carbs\": \"211g\",\n      \"fats\": \"68g\",\n      \"meals\": [\n        {\n          \"title\": \"Morning Chia Pudding\",\n          \"items\": [\n            { \"name\": \"Chia seeds (40g)\", \"calories\": 200 },\n            { \"name\": \"Almond milk (250ml)\", \"calories\": 60 },\n            { \"name\": \"Maple syrup (15g)\", \"calories\": 52 },\n            { \"name\": \"Sliced strawberries (80g)\", \"calories\": 26 }\n          ]\n        },\n        {\n          \"title\": \"Pre‑Lunch Protein Balls\",\n          \"items\": [\n            { \"name\": \"Date‑oat balls with sunflower seed butter (4 balls, 80g)\", \"calories\": 320 }\n          ]\n        },\n        {\n          \"title\": \"Lunch Mediterranean Grain Bowl\",\n          \"items\": [\n            { \"name\": \"Freekeh (150g cooked)\", \"calories\": 210 },\n            { \"name\": \"Grilled halloumi (100g)\", \"calories\": 300 },\n            { \"name\": \"Cherry tomatoes (80g)\", \"calories\": 15 },\n            { \"name\": \"Cucumber (80g)\", \"calories\": 12 },\n            { \"name\": \"Olive oil & lemon dressing (15g)\", \"calories\": 130 }\n          ]\n        },\n        {\n          \"title\": \"Afternoon Edamame Hummus Toast\",\n          \"items\": [\n            { \"name\": \"Whole‑grain toast (1 slice)\", \"calories\": 90 },\n            { \"name\": \"Edamame hummus (70g)\", \"calories\": 150 },\n            { \"name\": \"Microgreens (10g)\", \"calories\": 5 }\n          ]\n        },\n        {\n          \"title\": \"Evening Nutri‑Rich Curry\",\n          \"items\": [\n            { \"name\": \"Red kidney bean curry (300g)\", \"calories\": 380 },\n            { \"name\": \"Basmati rice (180g cooked)\", \"calories\": 250 },\n            { \"name\": \"Spinach (100g) added to sauce\", \"calories\": 25 },\n            { \"name\": \"Coconut cream (30g)\", \"calories\": 80 },\n            { \"name\": \"Garam masala & oil (15g)\", \"calories\": 113 }\n          ]\n        }\n      ]\n    }\n  ]\n}",
+  "derived": {
+    "allHealthConditions": "none",
+    "allAllergies": "peanut allergy",
+    "allInjuries": "none",
+    "allGoals": "lean muscle gain, vegetarian high protein plan",
+    "experienceInfo": "advanced - strength training 5 days per week",
+    "bmr": 1320.197,
+    "tdee": 2508.3742999999995,
+    "targetCalories": 3008
+  },
+  "latencyMs": 119967,
+  "usage": {
+    "prompt_tokens": 863,
+    "completion_tokens": 4312,
+    "total_tokens": 5175,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 193,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop",
+  "retrieval": {
+    "skip": false,
+    "vectorLength": 384,
+    "results": [
+      {
+        "id": "c6dfe53a-722f-4480-9efb-bac9d52e5e06",
+        "version": 380,
+        "score": 0.6227462,
+        "payload": {
+          "athlete_id": "ATH0286",
+          "name": "هبة سليم العوامي",
+          "age": 34,
+          "gender": "Female",
+          "goal": "Overall fitness",
+          "issue": "Post-Concussion Recovery - Mild - Neurological",
+          "dietary_restrictions": [
+            "Hydration focus",
+            "Regular meal timing"
+          ],
+          "allergies": [
+            "Peanuts"
+          ],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Contact or collision drills",
+              "reason": "Risk of repeat injury"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Peanut-containing snacks",
+              "reason": "Allergic reaction risk"
+            }
+          ]
+        }
+      },
+      {
+        "id": "fddc4ee0-c2f3-4775-ba8b-fb05a59f018e",
+        "version": 652,
+        "score": 0.58989733,
+        "payload": {
+          "athlete_id": "ATH0558",
+          "name": "هدى مروان العوامي",
+          "age": 56,
+          "gender": "Female",
+          "goal": "Overall fitness",
+          "issue": "Hypothyroidism - Mild - Endocrine",
+          "dietary_restrictions": [
+            "Adequate energy intake"
+          ],
+          "allergies": [
+            "Peanuts"
+          ],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Extreme calorie-deficit training blocks",
+              "reason": "Can worsen fatigue"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Peanut-containing snacks",
+              "reason": "Allergic reaction risk"
+            }
+          ]
+        }
+      },
+      {
+        "id": "0fc63e3c-6966-48b0-a491-5f39068ab620",
+        "version": 1279,
+        "score": 0.5668143,
+        "payload": {
+          "athlete_id": "ATH1185",
+          "name": "فاطمة الحمادي",
+          "age": 54,
+          "gender": "Female",
+          "goal": "Overall fitness",
+          "issue": "Gout - Mild - Metabolic",
+          "dietary_restrictions": [
+            "Hydration focus",
+            "Weight-management focus"
+          ],
+          "allergies": [
+            "Peanuts"
+          ],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Training through acutely inflamed toe or ankle pain",
+              "reason": "Alters mechanics and recovery"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Peanut-containing snacks",
+              "reason": "Allergic reaction risk"
+            }
+          ]
+        }
+      }
+    ],
+    "vectorContext": "Issue: Post-Concussion Recovery - Mild - Neurological. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Contact or collision drills)\nIssue: Hypothyroidism - Mild - Endocrine. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Extreme calorie-deficit training blocks)\nIssue: Gout - Mild - Metabolic. Constraints: Foods to avoid (Peanut-containing snacks), Exercises to avoid (Training through acutely inflamed toe or ankle pain)"
+  }
+}

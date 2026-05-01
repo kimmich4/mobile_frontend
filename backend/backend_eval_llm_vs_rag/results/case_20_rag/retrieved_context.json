@@ -1,0 +1,79 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "cd21b89d-c13e-4803-9d65-866154f8f48c",
+      "version": 394,
+      "score": 0.7175523,
+      "payload": {
+        "athlete_id": "ATH0300",
+        "name": "ياسين صالح المنصوري",
+        "age": 23,
+        "gender": "Male",
+        "goal": "Movement quality",
+        "issue": "Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal",
+        "dietary_restrictions": [
+          "Protein distribution support"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Asymmetrical heavy carries to fatigue",
+            "reason": "Can reinforce imbalance"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "c8b063d2-ecc9-47ff-b487-97f297f5aeb8",
+      "version": 128,
+      "score": 0.69510156,
+      "payload": {
+        "athlete_id": "ATH0034",
+        "name": "حاتم الدسوقي",
+        "age": 43,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal",
+        "dietary_restrictions": [
+          "Protein distribution support"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Repeated twisting under heavy load",
+            "reason": "Can irritate the trunk"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    },
+    {
+      "id": "5cf8fcd4-ef15-4773-b495-1d7af72570db",
+      "version": 686,
+      "score": 0.69410276,
+      "payload": {
+        "athlete_id": "ATH0592",
+        "name": "ياسين النجار",
+        "age": 33,
+        "gender": "Male",
+        "goal": "Overall fitness",
+        "issue": "Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal",
+        "dietary_restrictions": [
+          "Protein distribution support"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Poorly controlled heavy axial loading",
+            "reason": "May worsen pain patterns"
+          }
+        ],
+        "contraindicated_foods": []
+      }
+    }
+  ],
+  "vectorContext": "Issue: Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Asymmetrical heavy carries to fatigue)\nIssue: Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Repeated twisting under heavy load)\nIssue: Mild Scoliosis with Training Asymmetry - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Poorly controlled heavy axial loading)"
+}

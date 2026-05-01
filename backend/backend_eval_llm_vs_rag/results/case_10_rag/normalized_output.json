@@ -1,0 +1,1291 @@
+{
+  "caseId": "case_10",
+  "mode": "rag",
+  "route": "/ai/generate-workout",
+  "model": "openai/gpt-oss-120b:free",
+  "parsedOk": true,
+  "parsedOutput": {
+    "gym": {
+      "title": "Gym Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dynamic Warm‑up (foam roll + band dislocates)",
+              "difficulty": "Easy",
+              "equipment": "Foam roller, Resistance band",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Barbell Bench Press",
+              "difficulty": "Medium",
+              "equipment": "Barbell, Bench",
+              "sets": "4",
+              "reps": "8",
+              "calories": 70
+            },
+            {
+              "id": 3,
+              "name": "Seated Cable Row",
+              "difficulty": "Medium",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "10",
+              "calories": 55
+            },
+            {
+              "id": 4,
+              "name": "Dumbbell Incline Press",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells, Incline bench",
+              "sets": "3",
+              "reps": "12",
+              "calories": 60
+            },
+            {
+              "id": 5,
+              "name": "Lateral Raise (cable)",
+              "difficulty": "Easy",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 40
+            },
+            {
+              "id": 6,
+              "name": "Cable Triceps Push‑down",
+              "difficulty": "Easy",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 7,
+              "name": "Standing Calf Raise (machine)",
+              "difficulty": "Medium",
+              "equipment": "Calf raise machine",
+              "sets": "4",
+              "reps": "10",
+              "calories": 50
+            },
+            {
+              "id": 8,
+              "name": "Core: Hanging Knee Raise (controlled)",
+              "difficulty": "Medium",
+              "equipment": "Pull‑up bar",
+              "sets": "3",
+              "reps": "12",
+              "calories": 35
+            },
+            {
+              "id": 9,
+              "name": "Cool‑down Stretch (upper body focus)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Dynamic Lower‑body Warm‑up (banded hip CARs)",
+              "difficulty": "Easy",
+              "equipment": "Resistance band",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Back Squat",
+              "difficulty": "Medium",
+              "equipment": "Barbell, Rack",
+              "sets": "4",
+              "reps": "6",
+              "calories": 80
+            },
+            {
+              "id": 3,
+              "name": "Leg Press (moderate load)",
+              "difficulty": "Medium",
+              "equipment": "Leg press machine",
+              "sets": "3",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 4,
+              "name": "Romanian Deadlift",
+              "difficulty": "Medium",
+              "equipment": "Barbell",
+              "sets": "3",
+              "reps": "8",
+              "calories": 65
+            },
+            {
+              "id": 5,
+              "name": "Single‑Leg Hip Thrust (controlled, body‑weight)",
+              "difficulty": "Easy",
+              "equipment": "Bench",
+              "sets": "3",
+              "reps": "12 each",
+              "calories": 45
+            },
+            {
+              "id": 6,
+              "name": "Cable Hip Abduction",
+              "difficulty": "Easy",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "15 each",
+              "calories": 40
+            },
+            {
+              "id": 7,
+              "name": "Seated Leg Curl",
+              "difficulty": "Easy",
+              "equipment": "Leg curl machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 8,
+              "name": "Standing Calf Raise (free barbell)",
+              "difficulty": "Medium",
+              "equipment": "Barbell",
+              "sets": "4",
+              "reps": "12",
+              "calories": 50
+            },
+            {
+              "id": 9,
+              "name": "Cool‑down: Foam roll & ankle mobility",
+              "difficulty": "Easy",
+              "equipment": "Foam roller",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Battle‑rope intervals",
+              "difficulty": "Easy",
+              "equipment": "Battle rope",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 35
+            },
+            {
+              "id": 2,
+              "name": "Pull‑up (assisted if needed)",
+              "difficulty": "Medium",
+              "equipment": "Pull‑up bar",
+              "sets": "4",
+              "reps": "6‑8",
+              "calories": 55
+            },
+            {
+              "id": 3,
+              "name": "Dumbbell Arnold Press",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 60
+            },
+            {
+              "id": 4,
+              "name": "Chest‑Supported T‑row",
+              "difficulty": "Medium",
+              "equipment": "Cable or machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 5,
+              "name": "Cable Face Pull",
+              "difficulty": "Easy",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 40
+            },
+            {
+              "id": 6,
+              "name": "Dumbbell Hammer Curl",
+              "difficulty": "Easy",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 7,
+              "name": "Overhead Triceps Extension (rope)",
+              "difficulty": "Easy",
+              "equipment": "Cable rope",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 8,
+              "name": "Core: Plank with shoulder tap",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "30 sec",
+              "calories": 30
+            },
+            {
+              "id": 9,
+              "name": "Cool‑down: Upper‑body stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Lateral band walks + ankle circles",
+              "difficulty": "Easy",
+              "equipment": "Resistance band",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Front Squat (moderate load)",
+              "difficulty": "Medium",
+              "equipment": "Barbell",
+              "sets": "4",
+              "reps": "6",
+              "calories": 80
+            },
+            {
+              "id": 3,
+              "name": "Bulgarian Split Squat (body‑weight, controlled)",
+              "difficulty": "Medium",
+              "equipment": "Bench",
+              "sets": "3",
+              "reps": "10 each",
+              "calories": 65
+            },
+            {
+              "id": 4,
+              "name": "Glute‑Ham Raise (machine, limited range)",
+              "difficulty": "Medium",
+              "equipment": "GHR machine",
+              "sets": "3",
+              "reps": "8",
+              "calories": 60
+            },
+            {
+              "id": 5,
+              "name": "Cable Pull‑through",
+              "difficulty": "Easy",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 6,
+              "name": "Leg Extension (light)",
+              "difficulty": "Easy",
+              "equipment": "Leg extension machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 40
+            },
+            {
+              "id": 7,
+              "name": "Standing Calf Raise (single‑leg, controlled)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "12 each",
+              "calories": 45
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down: Deep squat hold & ankle mobility",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Rowing machine",
+              "difficulty": "Easy",
+              "equipment": "Rowing ergometer",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 35
+            },
+            {
+              "id": 2,
+              "name": "Incline Barbell Bench Press",
+              "difficulty": "Medium",
+              "equipment": "Barbell, Incline bench",
+              "sets": "4",
+              "reps": "8",
+              "calories": 70
+            },
+            {
+              "id": 3,
+              "name": "Weighted Chest‑Supported Row",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 60
+            },
+            {
+              "id": 4,
+              "name": "Arnold Press (seated)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 5,
+              "name": "Cable Lateral Raise (light)",
+              "difficulty": "Easy",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "15",
+              "calories": 40
+            },
+            {
+              "id": 6,
+              "name": "EZ‑Bar Curl",
+              "difficulty": "Easy",
+              "equipment": "EZ‑Bar",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 7,
+              "name": "Rope Triceps Extension",
+              "difficulty": "Easy",
+              "equipment": "Cable rope",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 8,
+              "name": "Core: Russian Twist (medicine ball)",
+              "difficulty": "Medium",
+              "equipment": "Medicine ball",
+              "sets": "3",
+              "reps": "20",
+              "calories": 35
+            },
+            {
+              "id": 9,
+              "name": "Cool‑down: Full‑body stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Light bike + ankle dorsiflexion drills",
+              "difficulty": "Easy",
+              "equipment": "Stationary bike",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Deadlift (conventional, moderate load)",
+              "difficulty": "Medium",
+              "equipment": "Barbell",
+              "sets": "4",
+              "reps": "5",
+              "calories": 85
+            },
+            {
+              "id": 3,
+              "name": "Reverse Hack Squat",
+              "difficulty": "Medium",
+              "equipment": "Hack squat machine",
+              "sets": "3",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 4,
+              "name": "Stiff‑Legged Dumbbell Deadlift",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 65
+            },
+            {
+              "id": 5,
+              "name": "Cable Hip Adduction",
+              "difficulty": "Easy",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "15 each",
+              "calories": 40
+            },
+            {
+              "id": 6,
+              "name": "Seated Calf Raise (machine)",
+              "difficulty": "Medium",
+              "equipment": "Calf raise machine",
+              "sets": "4",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 7,
+              "name": "Cool‑down: Hamstring stretch & ankle mobility",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Light kettlebell swing (2 kg) + shoulder circles",
+              "difficulty": "Easy",
+              "equipment": "Kettlebell",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 35
+            },
+            {
+              "id": 2,
+              "name": "Flat Dumbbell Press",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells, Bench",
+              "sets": "4",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 3,
+              "name": "Pendlay Row",
+              "difficulty": "Medium",
+              "equipment": "Barbell",
+              "sets": "3",
+              "reps": "8",
+              "calories": 60
+            },
+            {
+              "id": 4,
+              "name": "Standing Military Press (barbell)",
+              "difficulty": "Medium",
+              "equipment": "Barbell",
+              "sets": "3",
+              "reps": "8",
+              "calories": 65
+            },
+            {
+              "id": 5,
+              "name": "Cable Upright Row (light)",
+              "difficulty": "Easy",
+              "equipment": "Cable machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 6,
+              "name": "Preacher Curl (machine)",
+              "difficulty": "Easy",
+              "equipment": "Preacher curl machine",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 7,
+              "name": "Overhead Rope Triceps Extension",
+              "difficulty": "Easy",
+              "equipment": "Cable rope",
+              "sets": "3",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 8,
+              "name": "Core: Hanging Leg Raise (controlled)",
+              "difficulty": "Medium",
+              "equipment": "Pull‑up bar",
+              "sets": "3",
+              "reps": "10",
+              "calories": 35
+            },
+            {
+              "id": 9,
+              "name": "Cool‑down: Full‑body mobility flow",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        }
+      ]
+    },
+    "home": {
+      "title": "Home Workout Plan",
+      "days": [
+        {
+          "day": 1,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Jumping jacks (low impact) + band shoulder mobilization",
+              "difficulty": "Easy",
+              "equipment": "Resistance band",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Push‑ups (hands on floor, elbows <45°)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "4",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 3,
+              "name": "Bent‑over T‑row (resistance band)",
+              "difficulty": "Medium",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 45
+            },
+            {
+              "id": 4,
+              "name": "Dumbbell Floor Press",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "10",
+              "calories": 60
+            },
+            {
+              "id": 5,
+              "name": "Band Lateral Raise",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 6,
+              "name": "Single‑Leg Glute Bridge (controlled)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "12 each",
+              "calories": 40
+            },
+            {
+              "id": 7,
+              "name": "Standing Calf Raise (body‑weight)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "4",
+              "reps": "15",
+              "calories": 40
+            },
+            {
+              "id": 8,
+              "name": "Plank (forearms)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "45 sec",
+              "calories": 30
+            },
+            {
+              "id": 9,
+              "name": "Cool‑down: Stretch (chest, back, calves)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Banded hip CARs + ankle circles",
+              "difficulty": "Easy",
+              "equipment": "Resistance band",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Goblet Squat (dumbbell)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "4",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 3,
+              "name": "Reverse Lunge (body‑weight, controlled)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "12 each",
+              "calories": 55
+            },
+            {
+              "id": 4,
+              "name": "Single‑Leg Romanian Deadlift (dumbbell, light)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "10 each",
+              "calories": 60
+            },
+            {
+              "id": 5,
+              "name": "Band Hip Abduction (standing)",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15 each",
+              "calories": 35
+            },
+            {
+              "id": 6,
+              "name": "Seated Calf Raise (dumbbell on knees)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "4",
+              "reps": "12",
+              "calories": 45
+            },
+            {
+              "id": 7,
+              "name": "Side‑Plank (knees down)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "30 sec each",
+              "calories": 30
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down: Hamstring & ankle stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Light kettlebell swing (2 kg) + shoulder rolls",
+              "difficulty": "Easy",
+              "equipment": "Kettlebell",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 35
+            },
+            {
+              "id": 2,
+              "name": "Incline Push‑up (feet elevated)",
+              "difficulty": "Medium",
+              "equipment": "Sturdy surface",
+              "sets": "4",
+              "reps": "10",
+              "calories": 55
+            },
+            {
+              "id": 3,
+              "name": "Renegade Row (light dumbbells)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 60
+            },
+            {
+              "id": 4,
+              "name": "Standing Dumbbell Shoulder Press",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 60
+            },
+            {
+              "id": 5,
+              "name": "Band Pull‑apart",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "20",
+              "calories": 30
+            },
+            {
+              "id": 6,
+              "name": "Triceps Bench Dips (feet on floor)",
+              "difficulty": "Easy",
+              "equipment": "Chair",
+              "sets": "3",
+              "reps": "15",
+              "calories": 45
+            },
+            {
+              "id": 7,
+              "name": "Bicep Curl (band)",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 8,
+              "name": "Core: Bird‑Dog (slow)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "12 each",
+              "calories": 30
+            },
+            {
+              "id": 9,
+              "name": "Cool‑down: Full‑body stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Banded side steps + ankle mobilization",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Bulgarian Split Squat (body‑weight, controlled)",
+              "difficulty": "Medium",
+              "equipment": "Chair",
+              "sets": "4",
+              "reps": "10 each",
+              "calories": 65
+            },
+            {
+              "id": 3,
+              "name": "Single‑Leg Hip Thrust (bench, body‑weight)",
+              "difficulty": "Medium",
+              "equipment": "Bench",
+              "sets": "3",
+              "reps": "12 each",
+              "calories": 55
+            },
+            {
+              "id": 4,
+              "name": "Standing Band Hamstring Curl",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15 each",
+              "calories": 40
+            },
+            {
+              "id": 5,
+              "name": "Calf Raise on Step (both legs)",
+              "difficulty": "Medium",
+              "equipment": "Step",
+              "sets": "4",
+              "reps": "20",
+              "calories": 45
+            },
+            {
+              "id": 6,
+              "name": "Side‑Lying Clamshell (band)",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "20 each",
+              "calories": 30
+            },
+            {
+              "id": 7,
+              "name": "Core: Hollow Hold",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "30 sec",
+              "calories": 30
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down: Hip flexor & ankle stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Rowing simulation (band pull‑back)",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 35
+            },
+            {
+              "id": 2,
+              "name": "Dumbbell Bench Press (floor)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "4",
+              "reps": "10",
+              "calories": 70
+            },
+            {
+              "id": 3,
+              "name": "One‑Arm Dumbbell Row (knee on bench)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell, Bench",
+              "sets": "3",
+              "reps": "12",
+              "calories": 60
+            },
+            {
+              "id": 4,
+              "name": "Arnold Press (seated)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 5,
+              "name": "Band Front Raise",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 6,
+              "name": "Hammer Curl (dumbbells)",
+              "difficulty": "Easy",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 7,
+              "name": "Overhead Triceps Extension (band)",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "12",
+              "calories": 40
+            },
+            {
+              "id": 8,
+              "name": "Core: Russian Twist (medicine ball)",
+              "difficulty": "Medium",
+              "equipment": "Medicine ball",
+              "sets": "3",
+              "reps": "20",
+              "calories": 35
+            },
+            {
+              "id": 9,
+              "name": "Cool‑down: Upper‑body stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Light bike + ankle dorsiflexion",
+              "difficulty": "Easy",
+              "equipment": "Stationary bike",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Sumo Deadlift (dumbbell)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "4",
+              "reps": "8",
+              "calories": 75
+            },
+            {
+              "id": 3,
+              "name": "Reverse Lunge with Twist (dumbbell)",
+              "difficulty": "Medium",
+              "equipment": "Dumbbell",
+              "sets": "3",
+              "reps": "12 each",
+              "calories": 60
+            },
+            {
+              "id": 4,
+              "name": "Glute Bridge March (body‑weight)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "20",
+              "calories": 45
+            },
+            {
+              "id": 5,
+              "name": "Standing Band Hip Adduction",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15 each",
+              "calories": 35
+            },
+            {
+              "id": 6,
+              "name": "Single‑Leg Calf Raise (body‑weight, controlled)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "4",
+              "reps": "12 each",
+              "calories": 45
+            },
+            {
+              "id": 7,
+              "name": "Core: Mountain‑climber (slow, low impact)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "30 sec",
+              "calories": 35
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down: Lower‑body stretch",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "exercises": [
+            {
+              "id": 1,
+              "name": "Warm‑up: Dynamic arm circles + band pull‑apart",
+              "difficulty": "Easy",
+              "equipment": "Band",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 30
+            },
+            {
+              "id": 2,
+              "name": "Wide‑Grip Push‑up (knees if needed)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "4",
+              "reps": "12",
+              "calories": 55
+            },
+            {
+              "id": 3,
+              "name": "Reverse Fly (band)",
+              "difficulty": "Medium",
+              "equipment": "Band",
+              "sets": "3",
+              "reps": "15",
+              "calories": 40
+            },
+            {
+              "id": 4,
+              "name": "Dumbbell Lateral Raise (light)",
+              "difficulty": "Easy",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "15",
+              "calories": 35
+            },
+            {
+              "id": 5,
+              "name": "Close‑Grip Push‑up (triceps focus)",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "15",
+              "calories": 45
+            },
+            {
+              "id": 6,
+              "name": "Alternating Biceps Curl (dumbbells)",
+              "difficulty": "Easy",
+              "equipment": "Dumbbells",
+              "sets": "3",
+              "reps": "12 each",
+              "calories": 40
+            },
+            {
+              "id": 7,
+              "name": "Core: Side Plank (knees down)",
+              "difficulty": "Medium",
+              "equipment": "None",
+              "sets": "3",
+              "reps": "30 sec each",
+              "calories": 30
+            },
+            {
+              "id": 8,
+              "name": "Cool‑down: Full‑body mobility",
+              "difficulty": "Easy",
+              "equipment": "None",
+              "sets": "1",
+              "reps": "5 min",
+              "calories": 15
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "parseError": null,
+  "cleanedContent": "{\n  \"gym\": {\n    \"title\": \"Gym Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dynamic Warm‑up (foam roll + band dislocates)\", \"difficulty\": \"Easy\", \"equipment\": \"Foam roller, Resistance band\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Barbell Bench Press\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell, Bench\", \"sets\": \"4\", \"reps\": \"8\", \"calories\": 70 },\n          { \"id\": 3, \"name\": \"Seated Cable Row\", \"difficulty\": \"Medium\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 55 },\n          { \"id\": 4, \"name\": \"Dumbbell Incline Press\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells, Incline bench\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 60 },\n          { \"id\": 5, \"name\": \"Lateral Raise (cable)\", \"difficulty\": \"Easy\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 40 },\n          { \"id\": 6, \"name\": \"Cable Triceps Push‑down\", \"difficulty\": \"Easy\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 7, \"name\": \"Standing Calf Raise (machine)\", \"difficulty\": \"Medium\", \"equipment\": \"Calf raise machine\", \"sets\": \"4\", \"reps\": \"10\", \"calories\": 50 },\n          { \"id\": 8, \"name\": \"Core: Hanging Knee Raise (controlled)\", \"difficulty\": \"Medium\", \"equipment\": \"Pull‑up bar\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 35 },\n          { \"id\": 9, \"name\": \"Cool‑down Stretch (upper body focus)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Dynamic Lower‑body Warm‑up (banded hip CARs)\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance band\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Back Squat\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell, Rack\", \"sets\": \"4\", \"reps\": \"6\", \"calories\": 80 },\n          { \"id\": 3, \"name\": \"Leg Press (moderate load)\", \"difficulty\": \"Medium\", \"equipment\": \"Leg press machine\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 70 },\n          { \"id\": 4, \"name\": \"Romanian Deadlift\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell\", \"sets\": \"3\", \"reps\": \"8\", \"calories\": 65 },\n          { \"id\": 5, \"name\": \"Single‑Leg Hip Thrust (controlled, body‑weight)\", \"difficulty\": \"Easy\", \"equipment\": \"Bench\", \"sets\": \"3\", \"reps\": \"12 each\", \"calories\": 45 },\n          { \"id\": 6, \"name\": \"Cable Hip Abduction\", \"difficulty\": \"Easy\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"15 each\", \"calories\": 40 },\n          { \"id\": 7, \"name\": \"Seated Leg Curl\", \"difficulty\": \"Easy\", \"equipment\": \"Leg curl machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 8, \"name\": \"Standing Calf Raise (free barbell)\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell\", \"sets\": \"4\", \"reps\": \"12\", \"calories\": 50 },\n          { \"id\": 9, \"name\": \"Cool‑down: Foam roll & ankle mobility\", \"difficulty\": \"Easy\", \"equipment\": \"Foam roller\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Battle‑rope intervals\", \"difficulty\": \"Easy\", \"equipment\": \"Battle rope\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 35 },\n          { \"id\": 2, \"name\": \"Pull‑up (assisted if needed)\", \"difficulty\": \"Medium\", \"equipment\": \"Pull‑up bar\", \"sets\": \"4\", \"reps\": \"6‑8\", \"calories\": 55 },\n          { \"id\": 3, \"name\": \"Dumbbell Arnold Press\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 60 },\n          { \"id\": 4, \"name\": \"Chest‑Supported T‑row\", \"difficulty\": \"Medium\", \"equipment\": \"Cable or machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 5, \"name\": \"Cable Face Pull\", \"difficulty\": \"Easy\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 40 },\n          { \"id\": 6, \"name\": \"Dumbbell Hammer Curl\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 7, \"name\": \"Overhead Triceps Extension (rope)\", \"difficulty\": \"Easy\", \"equipment\": \"Cable rope\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 8, \"name\": \"Core: Plank with shoulder tap\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"30 sec\", \"calories\": 30 },\n          { \"id\": 9, \"name\": \"Cool‑down: Upper‑body stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Lateral band walks + ankle circles\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance band\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Front Squat (moderate load)\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell\", \"sets\": \"4\", \"reps\": \"6\", \"calories\": 80 },\n          { \"id\": 3, \"name\": \"Bulgarian Split Squat (body‑weight, controlled)\", \"difficulty\": \"Medium\", \"equipment\": \"Bench\", \"sets\": \"3\", \"reps\": \"10 each\", \"calories\": 65 },\n          { \"id\": 4, \"name\": \"Glute‑Ham Raise (machine, limited range)\", \"difficulty\": \"Medium\", \"equipment\": \"GHR machine\", \"sets\": \"3\", \"reps\": \"8\", \"calories\": 60 },\n          { \"id\": 5, \"name\": \"Cable Pull‑through\", \"difficulty\": \"Easy\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 6, \"name\": \"Leg Extension (light)\", \"difficulty\": \"Easy\", \"equipment\": \"Leg extension machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 40 },\n          { \"id\": 7, \"name\": \"Standing Calf Raise (single‑leg, controlled)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"12 each\", \"calories\": 45 },\n          { \"id\": 8, \"name\": \"Cool‑down: Deep squat hold & ankle mobility\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Rowing machine\", \"difficulty\": \"Easy\", \"equipment\": \"Rowing ergometer\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 35 },\n          { \"id\": 2, \"name\": \"Incline Barbell Bench Press\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell, Incline bench\", \"sets\": \"4\", \"reps\": \"8\", \"calories\": 70 },\n          { \"id\": 3, \"name\": \"Weighted Chest‑Supported Row\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 60 },\n          { \"id\": 4, \"name\": \"Arnold Press (seated)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 5, \"name\": \"Cable Lateral Raise (light)\", \"difficulty\": \"Easy\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 40 },\n          { \"id\": 6, \"name\": \"EZ‑Bar Curl\", \"difficulty\": \"Easy\", \"equipment\": \"EZ‑Bar\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 7, \"name\": \"Rope Triceps Extension\", \"difficulty\": \"Easy\", \"equipment\": \"Cable rope\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 8, \"name\": \"Core: Russian Twist (medicine ball)\", \"difficulty\": \"Medium\", \"equipment\": \"Medicine ball\", \"sets\": \"3\", \"reps\": \"20\", \"calories\": 35 },\n          { \"id\": 9, \"name\": \"Cool‑down: Full‑body stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Light bike + ankle dorsiflexion drills\", \"difficulty\": \"Easy\", \"equipment\": \"Stationary bike\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Deadlift (conventional, moderate load)\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell\", \"sets\": \"4\", \"reps\": \"5\", \"calories\": 85 },\n          { \"id\": 3, \"name\": \"Reverse Hack Squat\", \"difficulty\": \"Medium\", \"equipment\": \"Hack squat machine\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 70 },\n          { \"id\": 4, \"name\": \"Stiff‑Legged Dumbbell Deadlift\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 65 },\n          { \"id\": 5, \"name\": \"Cable Hip Adduction\", \"difficulty\": \"Easy\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"15 each\", \"calories\": 40 },\n          { \"id\": 6, \"name\": \"Seated Calf Raise (machine)\", \"difficulty\": \"Medium\", \"equipment\": \"Calf raise machine\", \"sets\": \"4\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 7, \"name\": \"Cool‑down: Hamstring stretch & ankle mobility\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Light kettlebell swing (2 kg) + shoulder circles\", \"difficulty\": \"Easy\", \"equipment\": \"Kettlebell\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 35 },\n          { \"id\": 2, \"name\": \"Flat Dumbbell Press\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells, Bench\", \"sets\": \"4\", \"reps\": \"10\", \"calories\": 70 },\n          { \"id\": 3, \"name\": \"Pendlay Row\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell\", \"sets\": \"3\", \"reps\": \"8\", \"calories\": 60 },\n          { \"id\": 4, \"name\": \"Standing Military Press (barbell)\", \"difficulty\": \"Medium\", \"equipment\": \"Barbell\", \"sets\": \"3\", \"reps\": \"8\", \"calories\": 65 },\n          { \"id\": 5, \"name\": \"Cable Upright Row (light)\", \"difficulty\": \"Easy\", \"equipment\": \"Cable machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40 },\n          { \"id\": 6, \"name\": \"Preacher Curl (machine)\", \"difficulty\": \"Easy\", \"equipment\": \"Preacher curl machine\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 7, \"name\": \"Overhead Rope Triceps Extension\", \"difficulty\": \"Easy\", \"equipment\": \"Cable rope\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 8, \"name\": \"Core: Hanging Leg Raise (controlled)\", \"difficulty\": \"Medium\", \"equipment\": \"Pull‑up bar\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 35 },\n          { \"id\": 9, \"name\": \"Cool‑down: Full‑body mobility flow\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      }\n    ]\n  },\n  \"home\": {\n    \"title\": \"Home Workout Plan\",\n    \"days\": [\n      {\n        \"day\": 1,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Jumping jacks (low impact) + band shoulder mobilization\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance band\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Push‑ups (hands on floor, elbows <45°)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"4\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 3, \"name\": \"Bent‑over T‑row (resistance band)\", \"difficulty\": \"Medium\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 45 },\n          { \"id\": 4, \"name\": \"Dumbbell Floor Press\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"10\", \"calories\": 60 },\n          { \"id\": 5, \"name\": \"Band Lateral Raise\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 35 },\n          { \"id\": 6, \"name\": \"Single‑Leg Glute Bridge (controlled)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"12 each\", \"calories\": 40 },\n          { \"id\": 7, \"name\": \"Standing Calf Raise (body‑weight)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"4\", \"reps\": \"15\", \"calories\": 40 },\n          { \"id\": 8, \"name\": \"Plank (forearms)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"45 sec\", \"calories\": 30 },\n          { \"id\": 9, \"name\": \"Cool‑down: Stretch (chest, back, calves)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 2,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Banded hip CARs + ankle circles\", \"difficulty\": \"Easy\", \"equipment\": \"Resistance band\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Goblet Squat (dumbbell)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"4\", \"reps\": \"10\", \"calories\": 70 },\n          { \"id\": 3, \"name\": \"Reverse Lunge (body‑weight, controlled)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"12 each\", \"calories\": 55 },\n          { \"id\": 4, \"name\": \"Single‑Leg Romanian Deadlift (dumbbell, light)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"10 each\", \"calories\": 60 },\n          { \"id\": 5, \"name\": \"Band Hip Abduction (standing)\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15 each\", \"calories\": 35 },\n          { \"id\": 6, \"name\": \"Seated Calf Raise (dumbbell on knees)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"4\", \"reps\": \"12\", \"calories\": 45 },\n          { \"id\": 7, \"name\": \"Side‑Plank (knees down)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"30 sec each\", \"calories\": 30 },\n          { \"id\": 8, \"name\": \"Cool‑down: Hamstring & ankle stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 3,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Light kettlebell swing (2 kg) + shoulder rolls\", \"difficulty\": \"Easy\", \"equipment\": \"Kettlebell\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 35 },\n          { \"id\": 2, \"name\": \"Incline Push‑up (feet elevated)\", \"difficulty\": \"Medium\", \"equipment\": \"Sturdy surface\", \"sets\": \"4\", \"reps\": \"10\", \"calories\": 55 },\n          { \"id\": 3, \"name\": \"Renegade Row (light dumbbells)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 60 },\n          { \"id\": 4, \"name\": \"Standing Dumbbell Shoulder Press\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 60 },\n          { \"id\": 5, \"name\": \"Band Pull‑apart\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"20\", \"calories\": 30 },\n          { \"id\": 6, \"name\": \"Triceps Bench Dips (feet on floor)\", \"difficulty\": \"Easy\", \"equipment\": \"Chair\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 45 },\n          { \"id\": 7, \"name\": \"Bicep Curl (band)\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 35 },\n          { \"id\": 8, \"name\": \"Core: Bird‑Dog (slow)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"12 each\", \"calories\": 30 },\n          { \"id\": 9, \"name\": \"Cool‑down: Full‑body stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 4,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Banded side steps + ankle mobilization\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Bulgarian Split Squat (body‑weight, controlled)\", \"difficulty\": \"Medium\", \"equipment\": \"Chair\", \"sets\": \"4\", \"reps\": \"10 each\", \"calories\": 65 },\n          { \"id\": 3, \"name\": \"Single‑Leg Hip Thrust (bench, body‑weight)\", \"difficulty\": \"Medium\", \"equipment\": \"Bench\", \"sets\": \"3\", \"reps\": \"12 each\", \"calories\": 55 },\n          { \"id\": 4, \"name\": \"Standing Band Hamstring Curl\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15 each\", \"calories\": 40 },\n          { \"id\": 5, \"name\": \"Calf Raise on Step (both legs)\", \"difficulty\": \"Medium\", \"equipment\": \"Step\", \"sets\": \"4\", \"reps\": \"20\", \"calories\": 45 },\n          { \"id\": 6, \"name\": \"Side‑Lying Clamshell (band)\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"20 each\", \"calories\": 30 },\n          { \"id\": 7, \"name\": \"Core: Hollow Hold\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"30 sec\", \"calories\": 30 },\n          { \"id\": 8, \"name\": \"Cool‑down: Hip flexor & ankle stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 5,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Rowing simulation (band pull‑back)\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 35 },\n          { \"id\": 2, \"name\": \"Dumbbell Bench Press (floor)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"4\", \"reps\": \"10\", \"calories\": 70 },\n          { \"id\": 3, \"name\": \"One‑Arm Dumbbell Row (knee on bench)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell, Bench\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 60 },\n          { \"id\": 4, \"name\": \"Arnold Press (seated)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 5, \"name\": \"Band Front Raise\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 35 },\n          { \"id\": 6, \"name\": \"Hammer Curl (dumbbells)\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40 },\n          { \"id\": 7, \"name\": \"Overhead Triceps Extension (band)\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"12\", \"calories\": 40 },\n          { \"id\": 8, \"name\": \"Core: Russian Twist (medicine ball)\", \"difficulty\": \"Medium\", \"equipment\": \"Medicine ball\", \"sets\": \"3\", \"reps\": \"20\", \"calories\": 35 },\n          { \"id\": 9, \"name\": \"Cool‑down: Upper‑body stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 6,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Light bike + ankle dorsiflexion\", \"difficulty\": \"Easy\", \"equipment\": \"Stationary bike\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Sumo Deadlift (dumbbell)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"4\", \"reps\": \"8\", \"calories\": 75 },\n          { \"id\": 3, \"name\": \"Reverse Lunge with Twist (dumbbell)\", \"difficulty\": \"Medium\", \"equipment\": \"Dumbbell\", \"sets\": \"3\", \"reps\": \"12 each\", \"calories\": 60 },\n          { \"id\": 4, \"name\": \"Glute Bridge March (body‑weight)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"20\", \"calories\": 45 },\n          { \"id\": 5, \"name\": \"Standing Band Hip Adduction\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15 each\", \"calories\": 35 },\n          { \"id\": 6, \"name\": \"Single‑Leg Calf Raise (body‑weight, controlled)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"4\", \"reps\": \"12 each\", \"calories\": 45 },\n          { \"id\": 7, \"name\": \"Core: Mountain‑climber (slow, low impact)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"30 sec\", \"calories\": 35 },\n          { \"id\": 8, \"name\": \"Cool‑down: Lower‑body stretch\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      },\n      {\n        \"day\": 7,\n        \"exercises\": [\n          { \"id\": 1, \"name\": \"Warm‑up: Dynamic arm circles + band pull‑apart\", \"difficulty\": \"Easy\", \"equipment\": \"Band\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 30 },\n          { \"id\": 2, \"name\": \"Wide‑Grip Push‑up (knees if needed)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"4\", \"reps\": \"12\", \"calories\": 55 },\n          { \"id\": 3, \"name\": \"Reverse Fly (band)\", \"difficulty\": \"Medium\", \"equipment\": \"Band\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 40 },\n          { \"id\": 4, \"name\": \"Dumbbell Lateral Raise (light)\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 35 },\n          { \"id\": 5, \"name\": \"Close‑Grip Push‑up (triceps focus)\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"15\", \"calories\": 45 },\n          { \"id\": 6, \"name\": \"Alternating Biceps Curl (dumbbells)\", \"difficulty\": \"Easy\", \"equipment\": \"Dumbbells\", \"sets\": \"3\", \"reps\": \"12 each\", \"calories\": 40 },\n          { \"id\": 7, \"name\": \"Core: Side Plank (knees down)\", \"difficulty\": \"Medium\", \"equipment\": \"None\", \"sets\": \"3\", \"reps\": \"30 sec each\", \"calories\": 30 },\n          { \"id\": 8, \"name\": \"Cool‑down: Full‑body mobility\", \"difficulty\": \"Easy\", \"equipment\": \"None\", \"sets\": \"1\", \"reps\": \"5 min\", \"calories\": 15 }\n        ]\n      }\n    ]\n  }\n}",
+  "derived": {
+    "allHealthConditions": "none",
+    "allAllergies": "none",
+    "allInjuries": "ankle instability, avoid repeated hard lateral cutting and unstable jumps",
+    "allGoals": "muscle gain with upper-lower split, athletic look and stronger legs",
+    "experienceInfo": "intermediate - prefers upper-lower split",
+    "bmr": 1817.0750000000003,
+    "tdee": 3134.4543750000007,
+    "targetCalories": 3634
+  },
+  "latencyMs": 209230,
+  "usage": {
+    "prompt_tokens": 767,
+    "completion_tokens": 6978,
+    "total_tokens": 7745,
+    "cost": 0,
+    "is_byok": false,
+    "prompt_tokens_details": {
+      "cached_tokens": 64,
+      "cache_write_tokens": 0,
+      "audio_tokens": 0,
+      "video_tokens": 0
+    },
+    "cost_details": {
+      "upstream_inference_cost": 0,
+      "upstream_inference_prompt_cost": 0,
+      "upstream_inference_completions_cost": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 125,
+      "image_tokens": 0,
+      "audio_tokens": 0
+    }
+  },
+  "finishReason": "stop",
+  "retrieval": {
+    "skip": false,
+    "vectorLength": 384,
+    "results": [
+      {
+        "id": "c5d59819-fc29-47da-9424-131e7c15508e",
+        "version": 787,
+        "score": 0.66236484,
+        "payload": {
+          "athlete_id": "ATH0693",
+          "name": "نادر النعيمي",
+          "age": 30,
+          "gender": "Male",
+          "goal": "Sport performance",
+          "issue": "Chronic Ankle Instability - Moderate - Musculoskeletal",
+          "dietary_restrictions": [
+            "Collagen/Vitamin C support"
+          ],
+          "allergies": [
+            "Eggs"
+          ],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Uncontrolled lateral jump landings",
+              "reason": "High re-sprain risk"
+            },
+            {
+              "exercise": "Heavy single-leg jumps to fatigue",
+              "reason": "Reduced landing control"
+            }
+          ],
+          "contraindicated_foods": [
+            {
+              "food": "Egg-based meals",
+              "reason": "Allergic reaction risk"
+            }
+          ]
+        }
+      },
+      {
+        "id": "6f998285-f2f1-46c3-805c-7422ee341c1f",
+        "version": 1686,
+        "score": 0.6471444,
+        "payload": {
+          "athlete_id": "ATH1592",
+          "name": "شهد فؤاد الأنصاري",
+          "age": 21,
+          "gender": "Female",
+          "goal": "Sport performance",
+          "issue": "Chronic Ankle Instability - Mild - Musculoskeletal",
+          "dietary_restrictions": [
+            "Collagen/Vitamin C support"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Uncontrolled lateral jump landings",
+              "reason": "High re-sprain risk"
+            }
+          ],
+          "contraindicated_foods": []
+        }
+      },
+      {
+        "id": "8cac4782-47c8-48eb-a467-52f52d08d277",
+        "version": 1067,
+        "score": 0.64278424,
+        "payload": {
+          "athlete_id": "ATH0973",
+          "name": "محمد نجيب القرشي",
+          "age": 27,
+          "gender": "Male",
+          "goal": "Overall fitness",
+          "issue": "Chronic Ankle Instability - Moderate - Musculoskeletal",
+          "dietary_restrictions": [
+            "Collagen/Vitamin C support"
+          ],
+          "allergies": [],
+          "contraindicated_exercises": [
+            {
+              "exercise": "Uncontrolled lateral jump landings",
+              "reason": "High re-sprain risk"
+            },
+            {
+              "exercise": "Heavy single-leg jumps to fatigue",
+              "reason": "Reduced landing control"
+            }
+          ],
+          "contraindicated_foods": []
+        }
+      }
+    ],
+    "vectorContext": "Issue: Chronic Ankle Instability - Moderate - Musculoskeletal. Constraints: Foods to avoid (Egg-based meals), Exercises to avoid (Uncontrolled lateral jump landings, Heavy single-leg jumps to fatigue)\nIssue: Chronic Ankle Instability - Mild - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Uncontrolled lateral jump landings)\nIssue: Chronic Ankle Instability - Moderate - Musculoskeletal. Constraints: Foods to avoid (), Exercises to avoid (Uncontrolled lateral jump landings, Heavy single-leg jumps to fatigue)"
+  }
+}

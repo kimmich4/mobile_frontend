@@ -1,0 +1,113 @@
+{
+  "skip": false,
+  "vectorLength": 384,
+  "results": [
+    {
+      "id": "eb3881ef-8d64-4c66-b8b2-0ed4524a1a87",
+      "version": 1664,
+      "score": 0.65701544,
+      "payload": {
+        "athlete_id": "ATH1570",
+        "name": "Isabella Hayes",
+        "age": 55,
+        "gender": "Female",
+        "goal": "Body recomposition",
+        "issue": "Irritable Bowel Syndrome during Cutting Phases - Mild - Gastrointestinal",
+        "dietary_restrictions": [
+          "Lower-FODMAP awareness"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Aggressive abdominal bracing during bloating episodes",
+            "reason": "May increase discomfort"
+          },
+          {
+            "exercise": "Very intense sessions immediately after large meals",
+            "reason": "Can worsen cramping and urgency"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Very high-fat cheat meals",
+            "reason": "Can worsen IBS symptoms"
+          }
+        ]
+      }
+    },
+    {
+      "id": "d2f1e10f-549c-4114-bda2-81baffd60125",
+      "version": 54,
+      "score": 0.6548315,
+      "payload": {
+        "athlete_id": "ATH010",
+        "name": "Noor Al-Faisal",
+        "age": 27,
+        "gender": "Female",
+        "goal": "Toning",
+        "issue": "Irritable Bowel Syndrome (IBS-D) - Moderate - Gastrointestinal",
+        "dietary_restrictions": [
+          "Low FODMAP"
+        ],
+        "allergies": [
+          "Dairy"
+        ],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Very intense core circuits",
+            "reason": "Can trigger GI symptoms"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Dairy products",
+            "reason": "Lactose intolerance"
+          },
+          {
+            "food": "High FODMAP foods",
+            "reason": "IBS trigger"
+          }
+        ]
+      }
+    },
+    {
+      "id": "13fb5dfb-0d3c-4517-be54-35cfe86d63bd",
+      "version": 1064,
+      "score": 0.6292464,
+      "payload": {
+        "athlete_id": "ATH0970",
+        "name": "ندى الصقري",
+        "age": 18,
+        "gender": "Female",
+        "goal": "Fat loss",
+        "issue": "Irritable Bowel Syndrome during Cutting Phases - Mild-Moderate - Gastrointestinal",
+        "dietary_restrictions": [
+          "Lower-FODMAP awareness",
+          "Hydration focus"
+        ],
+        "allergies": [],
+        "contraindicated_exercises": [
+          {
+            "exercise": "Aggressive abdominal bracing during bloating episodes",
+            "reason": "May increase discomfort"
+          },
+          {
+            "exercise": "Very intense sessions immediately after large meals",
+            "reason": "Can worsen cramping and urgency"
+          }
+        ],
+        "contraindicated_foods": [
+          {
+            "food": "Liquid-calorie coffees and shakes",
+            "reason": "Can hide excess calories and disrupt fat-loss targets"
+          },
+          {
+            "food": "Very high-fat cheat meals",
+            "reason": "Can worsen IBS symptoms"
+          }
+        ]
+      }
+    }
+  ],
+  "vectorContext": "Issue: Irritable Bowel Syndrome during Cutting Phases - Mild - Gastrointestinal. Constraints: Foods to avoid (Very high-fat cheat meals), Exercises to avoid (Aggressive abdominal bracing during bloating episodes, Very intense sessions immediately after large meals)\nIssue: Irritable Bowel Syndrome (IBS-D) - Moderate - Gastrointestinal. Constraints: Foods to avoid (Dairy products, High FODMAP foods), Exercises to avoid (Very intense core circuits)\nIssue: Irritable Bowel Syndrome during Cutting Phases - Mild-Moderate - Gastrointestinal. Constraints: Foods to avoid (Liquid-calorie coffees and shakes, Very high-fat cheat meals), Exercises to avoid (Aggressive abdominal bracing during bloating episodes, Very intense sessions immediately after large meals)"
+}

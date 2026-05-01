@@ -1,0 +1,36 @@
+Context:
+
+User Profile: Dina Mostafa, 33 years old, female. 
+Metrics: Current Weight: 68kg, Target Weight: 62kg, Height: 166cm.
+BMR: 1447.77, TDEE: 1990.68. Target Calories: 1491 kcal.
+Activity Level: light.
+Experience Level: beginner - resistance bands and one kettlebell at home.
+Goals: rebuild strength and lose fat gradually, short home sessions while caring for baby. 
+Health Conditions: postpartum deconditioning, mild diastasis history now cleared for exercise.
+Allergies: none.
+Injuries: wrist sensitivity, avoid long loaded planks on hands.
+Medical Report Findings: Clinician advised gradual core retraining and avoiding prolonged painful wrist-loaded positions..
+InBody Report Findings: Body fat moderately elevated, low recent activity..
+Vector Database Constraints: Issue: Postpartum Pelvic Floor Dysfunction - Mild - Musculoskeletal. Constraints: Foods to avoid (High-sugar foods), Exercises to avoid (High-impact plyometrics, Heavy valsalva lifting)
+Issue: General Joint Stiffness - Mild - Musculoskeletal. Constraints: Foods to avoid (Highly processed snacks), Exercises to avoid (Cold-start maximal lifting, High-impact circuits without warm-up)
+Issue: Hypermobility Spectrum Disorder - Moderate - Connective Tissue. Constraints: Foods to avoid (), Exercises to avoid (Ballistic end-range loading, Uncontrolled heavy overhead work)
+
+
+Task:
+Create a 7-day exercise plan.
+For EACH day, provide TWO complete plans: one for "home" and one for "gym".
+Include warm-up, main exercises, and cool-down.
+Each day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. 
+Adjust difficulty based on the user's experience level and if he gave you a specific split name like "push-pull-legs" or "full body" or "upper-lower" make it in the exact format of the Json in example.
+Ensure exercises are safe for the provided injuries/conditions and doesnt violate any of the vector database constraints. 
+Return ONLY JSON in this format:
+{
+  "gym": {
+    "title": "Gym Workout Plan",
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "...", "sets": "3", "reps": "12", "calories": 40}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "...", "sets": "3", "reps": "15", "calories": 49}]}]
+  },
+  "home": {
+    "title": "Home Workout Plan",
+    "days": [{"day": 1, "exercises": [{"id": 1, "name": "...", "difficulty": "Medium", "equipment": "None", "sets": "3", "reps": "12", "calories": 100}, {"id": 2, "name": "...", "difficulty": "Easy", "equipment": "None", "sets": "3", "reps": "15", "calories": 80}]}]
+  }
+}

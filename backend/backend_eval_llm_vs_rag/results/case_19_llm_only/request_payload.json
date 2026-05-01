@@ -1,0 +1,19 @@
+{
+  "method": "POST",
+  "headers": {
+    "Authorization": "Bearer [REDACTED]",
+    "Content-Type": "application/json",
+    "HTTP-Referer": "https://local.eval.backend",
+    "X-Title": "backend_eval_llm_vs_rag_openrouter_oss120b"
+  },
+  "body": {
+    "model": "openai/gpt-oss-120b:free",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Please create a practical, safe, personalized, and easy-to-use fitness plan using only the information provided below. Do not use any outside retrieved database context. The plan should consider the person's age, sex, height, weight, target weight, activity level, goal, experience, allergies, injuries, health conditions, medical-report notes, InBody notes, and calculated calorie target. Return the answer as clean JSON only so it can be loaded by an app.\n\nRequest type: diet.\n\nPlease create a 7-day diet plan. Each day must include total calories, protein, carbs, fats, and meals with item names and calories. The daily calories must match exactly 2663. Use this JSON shape:\n{\"days\":[{\"day\":1,\"totalCalories\":2663,\"protein\":\"...g\",\"carbs\":\"...g\",\"fats\":\"...g\",\"meals\":[{\"title\":\"...\",\"items\":[{\"name\":\"...\",\"calories\":123}]}]}]}\n\nPerson: Aya Hamdy is a 28-year-old female, 171 cm tall, currently weighs 59 kg, and has a target weight of 60 kg. The activity level is very active, the experience level is advanced, and the goal is maintenance with running recovery, support half-marathon training. Health conditions: celiac disease. Allergies or food restrictions: gluten. Injuries or movement restrictions: none. Medical-report notes: Dietitian advised gluten-free carb sources and post-run protein timing.. InBody notes: Lean athletic build with high weekly energy expenditure.. Calculated BMR: 1402. Calculated TDEE: 2663. Calculated target daily calories: 2663.\n\nRequirements:\n- Use only the information above.\n- Do not use outside retrieved database context.\n- Return clean JSON only.\n- Do not add markdown, explanations, or commentary."
+      }
+    ],
+    "max_tokens": 16000
+  }
+}
