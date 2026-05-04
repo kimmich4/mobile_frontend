@@ -8,6 +8,7 @@ const { ragChain } = require('./rag_chain');
 const { generateAnswer, calculateBMR, calculateTDEE, adjustCalories } = require('./plan_generator');
 const { chatAssistant } = require('./ai_assistant');
 const { analyzeImage } = require('./ocr_logic');
+const { buildDietSearchQuery, buildWorkoutSearchQuery } = require('./retrieval_helpers');
 
 const app = express();
 app.use(express.json({ limit: '50mb' }));
@@ -64,7 +65,13 @@ app.post('/ai/generate-diet', async (req, res) => {
         const allGoals = [goal, other_fitness_goal].filter(Boolean).join(', ');
 
         // 1. Define vector search string
-        const searchQuery = `${allHealthConditions}, ${allAllergies},${allInjuries}`;
+        const searchQuery = buildDietSearchQuery({
+            healthConditions: allHealthConditions,
+            allergies: allAllergies,
+            goals: allGoals,
+            medicalReport: medical_report_text,
+            inbodyReport: inbody_report_text
+        });
 
         // 2. Calculate calorie targets
         const bmr = calculateBMR(weight_kg, height_cm, age, gender || 'male');
@@ -166,7 +173,14 @@ app.post('/ai/generate-workout', async (req, res) => {
         const experienceInfo = [experience_level, other_experience].filter(Boolean).join(' - ');
 
         // 1. Define vector search string
-        const searchQuery = `Health conditions: ${allHealthConditions}. Allergies: ${allAllergies}. Injuries: ${allInjuries}. Experience: ${experienceInfo || ''}`;
+        const searchQuery = buildWorkoutSearchQuery({
+            healthConditions: allHealthConditions,
+            injuries: allInjuries,
+            goals: allGoals,
+            experience: experienceInfo,
+            medicalReport: medical_report_text,
+            inbodyReport: inbody_report_text
+        });
 
         // 2. Calculate calorie targets (for context)
         const bmr = calculateBMR(weight_kg, height_cm, age, gender || 'male');

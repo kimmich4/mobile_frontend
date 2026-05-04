@@ -21,7 +21,8 @@ describe('RAG Logic Helpers', () => {
         const result = await queryQdrant([0.1, 0.2]);
         expect(mockSearch).toHaveBeenCalledWith("athlete_health_context", expect.objectContaining({
             vector: [0.1, 0.2],
-            limit: 3
+            limit: 5,
+            score_threshold: 0.35
         }));
         expect(result).toEqual([{ id: 1, payload: {} }]);
     });

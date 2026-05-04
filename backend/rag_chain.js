@@ -4,6 +4,7 @@ const { RunnableLambda, RunnableSequence } = require("@langchain/core/runnables"
 const { getEmbedding, queryQdrant } = require("./rag_logic");
 const { generateAnswer } = require("./plan_generator");
 const { enforceStructuredPlan } = require("./structured_output");
+const { formatVectorContext, rankRetrievedResults } = require("./retrieval_helpers");
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🦜 LangChain Full Plan Orchestration Pipeline
@@ -67,6 +68,7 @@ const step_qdrantSearch = RunnableLambda.from(async (state) => {
     let result = [];
     try {
         result = await queryQdrant(state.vector);
+        result = rankRetrievedResults(result, state.searchQuery);
     } catch (e) {
         console.error("   ⚠️ Qdrant Search Error:", e.message);
     }
@@ -84,13 +86,10 @@ const step_qdrantSearch = RunnableLambda.from(async (state) => {
 const step_buildFinalContext = RunnableLambda.from(async (state) => {
     console.log(`\n🦜 [LangChain Full Plan] Step 4 — Build Final Context`);
 
-    // Resolve Vector String
+    // Resolve vector results into compact, plan-relevant safety constraints.
     let vectorContext = "No specific contraindications found in database.";
     if (!state.skip && state.results && state.results.length > 0) {
-        vectorContext = state.results.map(r => {
-            const p = r.payload;
-            return `Issue: ${p.issue || 'N/A'}. Constraints: Foods to avoid (${(p.contraindicated_foods || []).map(f => f.food).join(", ")}), Exercises to avoid (${(p.contraindicated_exercises || []).map(e => e.exercise).join(", ")})`;
-        }).join("\n");
+        vectorContext = formatVectorContext(state.results);
         console.log(`   ✅ Vector Context resolved.`);
     } else {
         console.log(`   ℹ️  No vector results to format — using default string.`);

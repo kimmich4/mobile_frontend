@@ -3,6 +3,7 @@ const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const { calculateBMR, calculateTDEE, adjustCalories } = require("../../plan_generator");
+const { buildDietSearchQuery, buildWorkoutSearchQuery } = require("../../retrieval_helpers");
 
 const HF_CHAT_COMPLETIONS_URL = "https://router.huggingface.co/v1/chat/completions";
 const DEEPSEEK_MODEL = "deepseek-ai/DeepSeek-V3";
@@ -80,7 +81,13 @@ function computeDerivedValues(body) {
 
 function buildDietRagInput(body) {
   const d = computeDerivedValues(body);
-  const searchQuery = `${d.allHealthConditions}, ${d.allAllergies},${d.allInjuries}`;
+  const searchQuery = buildDietSearchQuery({
+    healthConditions: d.allHealthConditions,
+    allergies: d.allAllergies,
+    goals: d.allGoals,
+    medicalReport: body.medical_report_text,
+    inbodyReport: body.inbody_report_text
+  });
   const contextPrefix = `
 User Profile: ${body.fullName}, ${body.age} years old, ${body.gender}. 
 Metrics: Current Weight: ${body.weight_kg}kg, Target Weight: ${body.target_weight_kg || "Not specified"}kg, Height: ${body.height_cm}cm. 
@@ -153,7 +160,14 @@ Return ONLY JSON in this EXACT format:
 
 function buildWorkoutRagInput(body) {
   const d = computeDerivedValues(body);
-  const searchQuery = `Health conditions: ${d.allHealthConditions}. Allergies: ${d.allAllergies}. Injuries: ${d.allInjuries}. Experience: ${d.experienceInfo || ""}`;
+  const searchQuery = buildWorkoutSearchQuery({
+    healthConditions: d.allHealthConditions,
+    injuries: d.allInjuries,
+    goals: d.allGoals,
+    experience: d.experienceInfo,
+    medicalReport: body.medical_report_text,
+    inbodyReport: body.inbody_report_text
+  });
   const contextPrefix = `
 User Profile: ${body.fullName}, ${body.age} years old, ${body.gender}. 
 Metrics: Current Weight: ${body.weight_kg}kg, Target Weight: ${body.target_weight_kg || "Not specified"}kg, Height: ${body.height_cm}cm.

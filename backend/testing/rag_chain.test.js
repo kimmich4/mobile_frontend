@@ -37,7 +37,11 @@ describe('RAG Chain Orchestration', () => {
         expect(getEmbedding).toHaveBeenCalledWith("Diabetes");
         expect(queryQdrant).toHaveBeenCalledWith([0.1, 0.2]);
         expect(generateAnswer).toHaveBeenCalledWith(
-            expect.stringContaining("Issue: Diabetes"),
+            expect.stringContaining("Relevant issues: Diabetes"),
+            "Generate diet"
+        );
+        expect(generateAnswer).toHaveBeenCalledWith(
+            expect.stringContaining("Foods to avoid (Sugar)"),
             "Generate diet"
         );
         expect(JSON.parse(response)).toEqual({ days: [] });

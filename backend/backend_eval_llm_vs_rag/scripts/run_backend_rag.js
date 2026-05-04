@@ -2,6 +2,7 @@ const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, "../../.env") });
 
 const { getEmbedding, queryQdrant } = require("../../rag_logic");
+const { formatVectorContext: formatRetrievedContext, rankRetrievedResults } = require("../../retrieval_helpers");
 const {
   readJson,
   writeJson,
@@ -17,10 +18,7 @@ function formatVectorContext(skip, results) {
   if (skip || !results || results.length === 0) {
     return "No specific contraindications found in database.";
   }
-  return results.map((r) => {
-    const p = r.payload || {};
-    return `Issue: ${p.issue || "N/A"}. Constraints: Foods to avoid (${(p.contraindicated_foods || []).map((f) => f.food).join(", ")}), Exercises to avoid (${(p.contraindicated_exercises || []).map((e) => e.exercise).join(", ")})`;
-  }).join("\n");
+  return formatRetrievedContext(results);
 }
 
 async function retrieveLikeBackend(searchQuery) {
@@ -34,7 +32,7 @@ async function retrieveLikeBackend(searchQuery) {
 
   try {
     const vector = await getEmbedding(searchQuery);
-    const results = await queryQdrant(vector);
+    const results = rankRetrievedResults(await queryQdrant(vector), searchQuery);
     return {
       skip: false,
       vectorLength: Array.isArray(vector) ? vector.length : null,

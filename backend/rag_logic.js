@@ -19,12 +19,15 @@ async function getEmbedding(text) {
 }
 
 // 🔹 Helper: Query Vector Database (Qdrant)
-async function queryQdrant(vector) {
+async function queryQdrant(vector, options = {}) {
+    const limit = options.limit || 5;
+    const scoreThreshold = options.scoreThreshold || 0.35;
+
     return await qdrant.search("athlete_health_context", {
         vector: vector,
-        limit: 3,
+        limit,
         with_payload: true,
-        score_threshold: 0.300
+        score_threshold: scoreThreshold
     });
 }
 

@@ -53,6 +53,29 @@ describe('Express API Routes', () => {
         expect(res.body.days.length).toBe(1);
     });
 
+    test('POST /ai/generate-diet should build diet-focused retrieval query', async () => {
+        ragChain.invoke.mockResolvedValue(JSON.stringify({ days: [] }));
+
+        await request(app)
+            .post('/ai/generate-diet')
+            .send({
+                weight_kg: 70,
+                height_cm: 175,
+                age: 25,
+                gender: 'male',
+                health_conditions: 'type 2 diabetes',
+                allergies: 'shellfish',
+                injuries: 'knee pain',
+                goal: 'fat loss'
+            });
+
+        const input = ragChain.invoke.mock.calls[0][0];
+        expect(input.searchQuery).toContain('Medical conditions: type 2 diabetes');
+        expect(input.searchQuery).toContain('Food allergies or restrictions: shellfish');
+        expect(input.searchQuery).not.toContain('fat loss');
+        expect(input.searchQuery).not.toContain('knee pain');
+    });
+
     test('POST /ai/generate-workout should return workout plan JSON', async () => {
         const mockWorkout = JSON.stringify({ gym: { days: [] }, home: { days: [] } });
         ragChain.invoke.mockResolvedValue(mockWorkout);
@@ -64,6 +87,31 @@ describe('Express API Routes', () => {
         expect(res.status).toBe(200);
         expect(res.body).toHaveProperty('gym');
         expect(res.body).toHaveProperty('home');
+    });
+
+    test('POST /ai/generate-workout should build workout-focused retrieval query', async () => {
+        ragChain.invoke.mockResolvedValue(JSON.stringify({ gym: { days: [] }, home: { days: [] } }));
+
+        await request(app)
+            .post('/ai/generate-workout')
+            .send({
+                weight_kg: 70,
+                height_cm: 175,
+                age: 25,
+                gender: 'male',
+                health_conditions: 'exercise-induced asthma',
+                allergies: 'shellfish',
+                injuries: 'knee pain, avoid jumping',
+                goal: 'build strength',
+                experience_level: 'beginner'
+            });
+
+        const input = ragChain.invoke.mock.calls[0][0];
+        expect(input.searchQuery).toContain('Medical conditions: exercise-induced asthma');
+        expect(input.searchQuery).toContain('Injuries or movement restrictions: knee pain, avoid jumping');
+        expect(input.searchQuery).toContain('Experience: beginner');
+        expect(input.searchQuery).not.toContain('build strength');
+        expect(input.searchQuery).not.toContain('shellfish');
     });
 
     test('POST /ai/search-video should return videoId', async () => {
