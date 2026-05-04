@@ -106,7 +106,7 @@ CRITICAL RULES:
 7. Portions (grams/ml) must be realistic and specific.
 
 THINKING STEP:
-Before writing each day, decide on the number of meals (3-6) and creative formal titles. Then mentally calculate the calories for each so the total matches exactly ${targetCalories}.
+Before writing each day, decide on the number of meals (5 and above) and use formal titles. Then mentally calculate the calories for each so the total matches exactly ${targetCalories}.
 
 EXAMPLE OF CORRECT MATH (Varying counts/titles):
 - Pre-Gym Snack: 300

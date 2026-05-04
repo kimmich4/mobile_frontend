@@ -56,6 +56,7 @@ describe('Plan Generator calculations', () => {
         const tdee = 2500;
         expect(adjustCalories(tdee, 'lose weight')).toBe(2000);
         expect(adjustCalories(tdee, 'build muscle')).toBe(3000);
+        expect(adjustCalories(tdee, 'reduce fat and build muscle')).toBe(2500);
         expect(adjustCalories(tdee, 'maintain')).toBe(2500);
     });
 

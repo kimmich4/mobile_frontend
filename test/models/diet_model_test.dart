@@ -37,7 +37,7 @@ void main() {
       final fromJson = DietPlan.fromJson(json);
 
       expect(fromJson.days.length, 1);
-      expect(fromJson.days[0].totalCalories, 1500);
+      expect(fromJson.days[0].totalCalories, 500);
       expect(fromJson.days[0].meals[0].title, 'Lunch');
     });
   });

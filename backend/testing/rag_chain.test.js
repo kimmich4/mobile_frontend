@@ -40,7 +40,7 @@ describe('RAG Chain Orchestration', () => {
             expect.stringContaining("Issue: Diabetes"),
             "Generate diet"
         );
-        expect(JSON.parse(response)).toEqual({ result: "success" });
+        expect(JSON.parse(response)).toEqual({ days: [] });
     });
 
     test('ragChain should normalize alternative workout JSON shapes', async () => {

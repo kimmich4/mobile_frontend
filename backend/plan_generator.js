@@ -24,10 +24,21 @@ function calculateTDEE(bmr, activityLevel) {
 function adjustCalories(tdee, goals) {
     const lowerGoals = goals.toLowerCase();
     let targetCalories = tdee;
+    const fatLossGoal = lowerGoals.includes("lose") ||
+        lowerGoals.includes("reduce") ||
+        lowerGoals.includes("cut") ||
+        lowerGoals.includes("fat") ||
+        lowerGoals.includes("loss");
+    const muscleGainGoal = lowerGoals.includes("build") ||
+        lowerGoals.includes("gain") ||
+        lowerGoals.includes("bulk") ||
+        lowerGoals.includes("muscle");
 
-    if (lowerGoals.includes("lose") || lowerGoals.includes("cut") || lowerGoals.includes("fat") || lowerGoals.includes("loss")) {
+    if (fatLossGoal && muscleGainGoal) {
+        targetCalories = tdee;
+    } else if (fatLossGoal) {
         targetCalories -= 500;
-    } else if (lowerGoals.includes("build") || lowerGoals.includes("gain") || lowerGoals.includes("bulk") || lowerGoals.includes("muscle")) {
+    } else if (muscleGainGoal) {
         targetCalories += 500;
     }
 
