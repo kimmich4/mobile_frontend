@@ -26,6 +26,29 @@ describe('structured output normalization', () => {
         expect(normalized.days[0].meals[0].title).toBe('Breakfast');
     });
 
+    test('balances diet meal item calories to match daily summary calories', () => {
+        const normalized = normalizeDietPlan({
+            days: [{
+                day: 1,
+                totalCalories: 2000,
+                protein: '150g',
+                carbs: '200g',
+                fats: '60g',
+                meals: [
+                    { title: 'Breakfast', items: [{ name: 'Oats', calories: 400 }] },
+                    { title: 'Lunch', items: [{ name: 'Chicken', calories: 600 }] }
+                ]
+            }]
+        });
+
+        const mealTotal = normalized.days[0].meals
+            .flatMap((meal) => meal.items)
+            .reduce((sum, item) => sum + item.calories, 0);
+
+        expect(normalized.days[0].totalCalories).toBe(2000);
+        expect(mealTotal).toBe(2000);
+    });
+
     test('normalizes alternative workout root shape into gym/home days arrays', () => {
         const input = {
             "7_day_exercise_plan": [

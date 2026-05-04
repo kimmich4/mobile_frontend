@@ -3,6 +3,7 @@ const { RunnableLambda, RunnableSequence } = require("@langchain/core/runnables"
 
 const { getEmbedding, queryQdrant } = require("./rag_logic");
 const { generateAnswer } = require("./plan_generator");
+const { enforceStructuredPlan } = require("./structured_output");
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 🦜 LangChain Full Plan Orchestration Pipeline
@@ -121,7 +122,7 @@ const step_generateAnswer = RunnableLambda.from(async (state) => {
     // This calls the robust generateAnswer function which includes the 3-attempt retry loop
     const aiResponse = await generateAnswer(state.finalContext, state.task);
     console.log(`   ✅ Successfully generated AI Plan.`);
-    return aiResponse; // Returns the raw JSON string
+    return enforceStructuredPlan(aiResponse, state.finalContext, state.task);
 });
 
 // ─── Compose the sequence ──

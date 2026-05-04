@@ -195,7 +195,7 @@ Include warm-up, main exercises, and cool-down.
 Each day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. 
 Adjust difficulty based on the user's experience level and if he gave you a specific split name like "push-pull-legs" or "full body" or "upper-lower" make it in the exact format of the Json in example.
 Ensure exercises are safe for the provided injuries/conditions and doesnt violate any of the vector database constraints. 
-Return ONLY JSON in this format:
+Return ONLY JSON in this format: 
 {
   "gym": {
     "title": "Gym Workout Plan",

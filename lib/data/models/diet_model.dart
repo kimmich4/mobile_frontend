@@ -70,16 +70,19 @@ class DailyDietPlan {
 
   factory DailyDietPlan.fromJson(Map<String, dynamic>? json) {
     if (json == null) return DailyDietPlan(day: 1, totalCalories: 0, protein: '0g', carbs: '0g', fats: '0g', meals: []);
+    final meals = (json['meals'] as List<dynamic>?)
+            ?.map((meal) => Meal.fromJson(meal as Map<String, dynamic>))
+            .toList() ??
+        [];
+    final mealCalories = meals.fold<int>(0, (sum, meal) => sum + meal.totalCalories);
+
     return DailyDietPlan(
       day: (json['day'] as num?)?.toInt() ?? 1,
-      totalCalories: (json['totalCalories'] as num?)?.toInt() ?? 0,
+      totalCalories: mealCalories > 0 ? mealCalories : ((json['totalCalories'] as num?)?.toInt() ?? 0),
       protein: json['protein']?.toString() ?? '0g',
       carbs: json['carbs']?.toString() ?? '0g',
       fats: json['fats']?.toString() ?? '0g',
-      meals: (json['meals'] as List<dynamic>?)
-              ?.map((meal) => Meal.fromJson(meal as Map<String, dynamic>))
-              .toList() ??
-          [],
+      meals: meals,
     );
   }
 }

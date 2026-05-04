@@ -313,9 +313,9 @@ class ProfileSetupViewModel extends BaseViewModel {
         profileInitial: nameController.text.isNotEmpty
             ? nameController.text[0].toUpperCase()
             : 'U',
-        // Default values for other fields
-        currentCalories: 1847,
-        dailyCalorieGoal: 2200,
+        // Generated plan values are written after AI diet generation.
+        currentCalories: 0,
+        dailyCalorieGoal: 0,
         workoutsCompletedThisWeek: 4,
         workoutsGoalPerWeek: 5,
         currentStreak: 12,
