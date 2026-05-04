@@ -26,7 +26,7 @@ describe('structured output normalization', () => {
         expect(normalized.days[0].meals[0].title).toBe('Breakfast');
     });
 
-    test('balances diet meal item calories to match daily summary calories', () => {
+    test('does not add backend-generated foods when diet calories do not match summary calories', () => {
         const normalized = normalizeDietPlan({
             days: [{
                 day: 1,
@@ -45,8 +45,10 @@ describe('structured output normalization', () => {
             .flatMap((meal) => meal.items)
             .reduce((sum, item) => sum + item.calories, 0);
 
-        expect(normalized.days[0].totalCalories).toBe(2000);
-        expect(mealTotal).toBe(2000);
+        expect(normalized.days[0].totalCalories).toBe(1000);
+        expect(mealTotal).toBe(1000);
+        expect(normalized.days[0].meals.flatMap((meal) => meal.items).map((item) => item.name))
+            .toEqual(['Oats', 'Chicken']);
     });
 
     test('normalizes alternative workout root shape into gym/home days arrays', () => {

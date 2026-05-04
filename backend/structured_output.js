@@ -74,31 +74,7 @@ function balanceDietDayCalories(day, fallbackCalories = 0) {
         return { ...day, totalCalories: sumMealCalories(day.meals) };
     }
 
-    const currentTotal = sumMealCalories(day.meals);
-    const delta = target - currentTotal;
-
-    if (delta > 0) {
-        const lastMeal = day.meals[day.meals.length - 1];
-        if (!Array.isArray(lastMeal.items)) lastMeal.items = [];
-        lastMeal.items.push({ name: "Calorie balance portion", calories: delta });
-    } else if (delta < 0) {
-        let remainingReduction = Math.abs(delta);
-        for (let mealIndex = day.meals.length - 1; mealIndex >= 0 && remainingReduction > 0; mealIndex--) {
-            const items = toArray(day.meals[mealIndex].items);
-            for (let itemIndex = items.length - 1; itemIndex >= 0 && remainingReduction > 0; itemIndex--) {
-                const itemCalories = numberOrZero(items[itemIndex].calories);
-                const reduction = Math.min(itemCalories, remainingReduction);
-                items[itemIndex].calories = itemCalories - reduction;
-                remainingReduction -= reduction;
-            }
-        }
-
-        if (remainingReduction > 0) {
-            return { ...day, totalCalories: sumMealCalories(day.meals) };
-        }
-    }
-
-    return { ...day, totalCalories: sumMealCalories(day.meals) };
+    return { ...day, totalCalories: sumMealCalories(day.meals) || target };
 }
 
 function normalizeDietDay(rawDay, index, fallbackCalories) {
