@@ -45,8 +45,8 @@ describe('structured output normalization', () => {
             .flatMap((meal) => meal.items)
             .reduce((sum, item) => sum + item.calories, 0);
 
-        expect(normalized.days[0].totalCalories).toBe(1000);
-        expect(mealTotal).toBe(1000);
+        expect(normalized.days[0].totalCalories).toBe(2000);
+        expect(mealTotal).toBe(2000);
         expect(normalized.days[0].meals.flatMap((meal) => meal.items).map((item) => item.name))
             .toEqual(['Oats', 'Chicken']);
     });

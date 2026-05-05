@@ -84,6 +84,16 @@ class ProfileSetupViewModel extends BaseViewModel {
   final TextEditingController otherExperienceController = TextEditingController();
   bool _experienceOtherSelected = false;
 
+  int _selectedTrainingDaysPerWeek = 3;
+  final List<String> workoutSplitOptions = [
+    'Full Body',
+    'Upper Lower',
+    'Push Pull Legs',
+    'Arnold Split',
+    'Pro Split',
+  ];
+  String? _selectedWorkoutSplit;
+
   final ImagePicker _picker = ImagePicker();
 
   // Getters
@@ -105,6 +115,8 @@ class ProfileSetupViewModel extends BaseViewModel {
   bool get fitnessGoalOtherSelected => _fitnessGoalOtherSelected;
   String? get selectedExperienceLevel => _selectedExperienceLevel;
   bool get experienceOtherSelected => _experienceOtherSelected;
+  int get selectedTrainingDaysPerWeek => _selectedTrainingDaysPerWeek;
+  String? get selectedWorkoutSplit => _selectedWorkoutSplit;
 
   /// Calculate progress percentage
   double get progressPercentage => (_currentPage + 1) / 4;
@@ -203,6 +215,16 @@ class ProfileSetupViewModel extends BaseViewModel {
 
   void setExperienceOtherSelected(bool value) {
     _experienceOtherSelected = value;
+    notifyListeners();
+  }
+
+  void setSelectedTrainingDaysPerWeek(int days) {
+    _selectedTrainingDaysPerWeek = days.clamp(1, 7);
+    notifyListeners();
+  }
+
+  void setSelectedWorkoutSplit(String? split) {
+    _selectedWorkoutSplit = split;
     notifyListeners();
   }
 
@@ -308,6 +330,8 @@ class ProfileSetupViewModel extends BaseViewModel {
         otherExperience: _experienceOtherSelected
             ? otherExperienceController.text
             : null,
+        trainingDaysPerWeek: _selectedTrainingDaysPerWeek,
+        preferredWorkoutSplit: _selectedWorkoutSplit,
         medicalReportText: _medicalReportText,
         inBodyReportText: _inBodyReportText,
         profileInitial: nameController.text.isNotEmpty
@@ -317,7 +341,7 @@ class ProfileSetupViewModel extends BaseViewModel {
         currentCalories: 0,
         dailyCalorieGoal: 0,
         workoutsCompletedThisWeek: 4,
-        workoutsGoalPerWeek: 5,
+        workoutsGoalPerWeek: _selectedTrainingDaysPerWeek,
         currentStreak: 12,
         isPremiumMember: false,
       );

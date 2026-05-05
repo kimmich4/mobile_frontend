@@ -29,6 +29,8 @@ class UserModel {
   final String? otherFitnessGoal;
   final String? experienceLevel; // 'Beginner', 'Intermediate', 'Advanced'
   final String? otherExperience;
+  final int? trainingDaysPerWeek;
+  final String? preferredWorkoutSplit;
 
   // Authentication Data
   final String? email;
@@ -87,6 +89,8 @@ class UserModel {
     this.otherFitnessGoal,
     this.experienceLevel,
     this.otherExperience,
+    this.trainingDaysPerWeek,
+    this.preferredWorkoutSplit,
     
     // Authentication
     this.email,
@@ -174,6 +178,8 @@ class UserModel {
     String? otherFitnessGoal,
     String? experienceLevel,
     String? otherExperience,
+    int? trainingDaysPerWeek,
+    String? preferredWorkoutSplit,
     String? medicalReportText,
     String? inBodyReportText,
     String? email,
@@ -218,6 +224,8 @@ class UserModel {
       otherFitnessGoal: otherFitnessGoal ?? this.otherFitnessGoal,
       experienceLevel: experienceLevel ?? this.experienceLevel,
       otherExperience: otherExperience ?? this.otherExperience,
+      trainingDaysPerWeek: trainingDaysPerWeek ?? this.trainingDaysPerWeek,
+      preferredWorkoutSplit: preferredWorkoutSplit ?? this.preferredWorkoutSplit,
       email: email ?? this.email,
       userId: userId ?? this.userId,
       profilePicturePath: profilePicturePath ?? this.profilePicturePath,
@@ -268,6 +276,8 @@ class UserModel {
       'otherFitnessGoal': otherFitnessGoal,
       'experienceLevel': experienceLevel,
       'otherExperience': otherExperience,
+      'trainingDaysPerWeek': trainingDaysPerWeek,
+      'preferredWorkoutSplit': preferredWorkoutSplit,
       'email': email,
       'userId': userId,
       'profilePicturePath': profilePicturePath,
@@ -317,6 +327,8 @@ class UserModel {
       otherFitnessGoal: json['otherFitnessGoal'] as String?,
       experienceLevel: json['experienceLevel'] as String?,
       otherExperience: json['otherExperience'] as String?,
+      trainingDaysPerWeek: (json['trainingDaysPerWeek'] as num?)?.toInt(),
+      preferredWorkoutSplit: json['preferredWorkoutSplit'] as String?,
       email: json['email'] as String?,
       userId: json['userId'] as String?,
       profilePicturePath: json['profilePicturePath'] as String?,

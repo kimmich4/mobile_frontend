@@ -273,6 +273,24 @@ class ProfileSetupScreen extends StatelessWidget {
             
           ),
         ),
+
+        const SizedBox(height: 24),
+
+        AnimateIn(delay: const Duration(milliseconds: 600), child: _buildSectionTitle('How many days per week will you train?')),
+        const SizedBox(height: 16),
+        AnimateIn(
+          delay: const Duration(milliseconds: 700),
+          child: _buildTrainingDaysScale(context, viewModel),
+        ),
+
+        const SizedBox(height: 24),
+
+        AnimateIn(delay: const Duration(milliseconds: 800), child: _buildSectionTitle('Workout Split')),
+        const SizedBox(height: 16),
+        AnimateIn(
+          delay: const Duration(milliseconds: 900),
+          child: _buildSplitSelect(context, viewModel),
+        ),
       ]),
     );
   }
@@ -404,6 +422,52 @@ class ProfileSetupScreen extends StatelessWidget {
           fontWeight: FontWeight.w400,
         ),
       ),
+    );
+  }
+
+  Widget _buildTrainingDaysScale(BuildContext context, ProfileSetupViewModel viewModel) {
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: List.generate(7, (index) {
+        final day = index + 1;
+        final isSelected = viewModel.selectedTrainingDaysPerWeek == day;
+        return GestureDetector(
+          onTap: () => viewModel.setSelectedTrainingDaysPerWeek(day),
+          child: Container(
+            width: 44,
+            height: 44,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: isSelected ? const Color(0xFF024950) : Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5)),
+            ),
+            child: Text(
+              day.toString(),
+              style: TextStyle(
+                color: isSelected ? Colors.white : const Color(0xFF024950),
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        );
+      }),
+    );
+  }
+
+  Widget _buildSplitSelect(BuildContext context, ProfileSetupViewModel viewModel) {
+    return Wrap(
+      spacing: 8,
+      runSpacing: 8,
+      children: viewModel.workoutSplitOptions.map((split) {
+        final isSelected = viewModel.selectedWorkoutSplit == split;
+        return GestureDetector(
+          onTap: () => viewModel.setSelectedWorkoutSplit(split),
+          child: _buildPill(context, split, isSelected),
+        );
+      }).toList(),
     );
   }
 

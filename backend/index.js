@@ -54,7 +54,7 @@ app.post('/ai/analyze-report', async (req, res) => {
 // Route: Generate 7-Day Diet Plan
 // ─────────────────────────────────────────────────────────────────────────────
 app.post('/ai/generate-diet', async (req, res) => {
-    const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
+    const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, training_days_per_week, preferred_workout_split, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Diet requested for ${fullName || userId}`);
 
     try {
@@ -83,11 +83,9 @@ app.post('/ai/generate-diet', async (req, res) => {
 User Profile: ${fullName}, ${age} years old, ${gender}. 
 Metrics: Current Weight: ${weight_kg}kg, Target Weight: ${target_weight_kg || 'Not specified'}kg, Height: ${height_cm}cm. 
 Activity Level: ${activity_level || 'moderate'}.
-Experience Level: ${experience_level || 'Not specified'}.
 Goals: ${allGoals || 'General fitness'}.  
 Reported Health Conditions: ${allHealthConditions || 'None'}. 
 Allergies: ${allAllergies || 'None'}. 
-Injuries: ${allInjuries || 'None'}.
 Calculated BMR: ${Math.round(bmr)}. 
 Calculated TDEE: ${Math.round(tdee)}.
 Target Daily Calories (adjusted for goal): ${targetCalories}.
@@ -161,7 +159,7 @@ Return ONLY JSON in this EXACT format:
 // Route: Generate 7-Day Workout Plan
 // ─────────────────────────────────────────────────────────────────────────────
 app.post('/ai/generate-workout', async (req, res) => {
-    const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
+    const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, training_days_per_week, preferred_workout_split, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Workout requested for ${fullName || userId}`);
 
     try {
@@ -171,13 +169,15 @@ app.post('/ai/generate-workout', async (req, res) => {
         const allInjuries = [injuries, other_injury].filter(Boolean).join(', ');
         const allGoals = [goal, other_fitness_goal].filter(Boolean).join(', ');
         const experienceInfo = [experience_level, other_experience].filter(Boolean).join(' - ');
+        const trainingDaysInfo = training_days_per_week || 7;
+        const splitInfo = preferred_workout_split || 'Not specified';
 
         // 1. Define vector search string
         const searchQuery = buildWorkoutSearchQuery({
             healthConditions: allHealthConditions,
             injuries: allInjuries,
             goals: allGoals,
-            experience: experienceInfo,
+            experience: [experienceInfo, `${trainingDaysInfo} training days per week`, splitInfo].filter(Boolean).join(', '),
             medicalReport: medical_report_text,
             inbodyReport: inbody_report_text
         });
@@ -194,6 +194,8 @@ Metrics: Current Weight: ${weight_kg}kg, Target Weight: ${target_weight_kg || 'N
 BMR: ${bmr.toFixed(2)}, TDEE: ${tdee.toFixed(2)}. Target Calories: ${targetCalories} kcal.
 Activity Level: ${activity_level || 'moderate'}.
 Experience Level: ${experienceInfo || 'Not specified'}.
+Training Days Per Week: ${trainingDaysInfo}.
+Preferred Workout Split: ${splitInfo}.
 Goals: ${allGoals || 'General fitness'}. 
 Health Conditions: ${allHealthConditions || 'None'}.
 Allergies: ${allAllergies || 'None'}.
@@ -205,11 +207,13 @@ Vector Database Constraints: {{VECTOR_CONTEXT}}
 
         // 4. Build prompt task
         const task = `Create a 7-day exercise plan.
-For EACH day, provide TWO complete plans: one for "home" and one for "gym".
-Include warm-up, main exercises, and cool-down.
-Each day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. 
-Adjust difficulty based on the user's experience level and if he gave you a specific split name like "push-pull-legs" or "full body" or "upper-lower" or "arnold split" make it in the exact format of the Json in example.
-Ensure exercises are safe for the provided injuries/conditions and doesnt violate any of the vector database constraints. 
+1. For EACH day, provide TWO complete plans: one for "home" and one for "gym".
+2. Include warm-up, main exercises, and cool-down.
+3. The user wants to train ${trainingDaysInfo} day(s) per week. Make exactly ${trainingDaysInfo} day(s) active training days and make the remaining day(s), if any, recovery or mobility days with low-intensity exercises.
+4. Use the preferred workout split "${splitInfo}" when assigning the active training days. If no split is specified, choose the safest split for the user's goal, experience, and training frequency.
+5. Each active training day should have a VARIED number of exercises (between 6 and 10), also the calories and sets and reps should be varied and NOT always the same count and they should be realistic. 
+6. Adjust difficulty based on the user's experience level and preferred split.
+7. Ensure exercises are safe for the provided injuries/conditions and doesnt violate any of the vector database constraints. 
 Return ONLY JSON in this format: 
 {
   "gym": {

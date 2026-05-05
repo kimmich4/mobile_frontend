@@ -105,7 +105,7 @@ class _WorkoutLoadingScreenState extends State<WorkoutLoadingScreen> {
               const AnimateIn(
                 delay: Duration(milliseconds: 400),
                 child: Text(
-                  'Our AI is designing the perfect routine for your goals and health conditions...',
+                  'Please wait while our AI is designing the perfect routine for your goals and health conditions...',
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 16),
                 ),
@@ -118,7 +118,7 @@ class _WorkoutLoadingScreenState extends State<WorkoutLoadingScreen> {
                 ),
                 const SizedBox(height: 24),
                 const Text(
-                  'This may take a minute',
+                  'This may take a few minutes',
                   style: TextStyle(color: Colors.white54, fontSize: 12),
                 ),
               ] else ...[
