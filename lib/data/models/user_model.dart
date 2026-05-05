@@ -19,6 +19,7 @@ class UserModel {
   final String? inBodyReportName;
   final List<String> allergies;
   final String? otherAllergy;
+  final String? dislikedFoods;
   final List<String> currentInjuries;
   final String? otherInjury;
   final String? medicalReportText;
@@ -81,6 +82,7 @@ class UserModel {
     this.inBodyReportName,
     this.allergies = const [],
     this.otherAllergy,
+    this.dislikedFoods,
     this.currentInjuries = const [],
     this.otherInjury,
     
@@ -172,6 +174,7 @@ class UserModel {
     String? inBodyReportName,
     List<String>? allergies,
     String? otherAllergy,
+    String? dislikedFoods,
     List<String>? currentInjuries,
     String? otherInjury,
     List<String>? fitnessGoals,
@@ -218,6 +221,7 @@ class UserModel {
       inBodyReportName: inBodyReportName ?? this.inBodyReportName,
       allergies: allergies ?? this.allergies,
       otherAllergy: otherAllergy ?? this.otherAllergy,
+      dislikedFoods: dislikedFoods ?? this.dislikedFoods,
       currentInjuries: currentInjuries ?? this.currentInjuries,
       otherInjury: otherInjury ?? this.otherInjury,
       fitnessGoals: fitnessGoals ?? this.fitnessGoals,
@@ -268,6 +272,7 @@ class UserModel {
       'inBodyReportName': inBodyReportName,
       'allergies': allergies,
       'otherAllergy': otherAllergy,
+      'dislikedFoods': dislikedFoods,
       'currentInjuries': currentInjuries,
       'otherInjury': otherInjury,
       'medicalReportText': medicalReportText,
@@ -319,6 +324,7 @@ class UserModel {
       inBodyReportName: json['inBodyReportName'] as String?,
       allergies: (json['allergies'] as List<dynamic>?)?.cast<String>() ?? [],
       otherAllergy: json['otherAllergy'] as String?,
+      dislikedFoods: json['dislikedFoods'] as String?,
       currentInjuries: (json['currentInjuries'] as List<dynamic>?)?.cast<String>() ?? [],
       otherInjury: json['otherInjury'] as String?,
       medicalReportText: json['medicalReportText'] as String?,

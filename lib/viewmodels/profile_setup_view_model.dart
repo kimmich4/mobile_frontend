@@ -54,6 +54,7 @@ class ProfileSetupViewModel extends BaseViewModel {
   final List<String> allergiesOptions = ['Peanuts', 'Dairy', 'Gluten', 'Shellfish', 'Eggs', 'Soy', 'None'];
   final List<String> _selectedAllergies = [];
   final TextEditingController otherAllergyController = TextEditingController();
+  final TextEditingController dislikedFoodsController = TextEditingController();
   bool _allergyOtherSelected = false;
 
   final List<String> injuriesOptions = ['Back Pain', 'Knee Injury', 'Shoulder Pain', 'Ankle Sprain', 'None'];
@@ -320,6 +321,9 @@ class ProfileSetupViewModel extends BaseViewModel {
         inBodyReportName: _inBodyReportName,
         allergies: _selectedAllergies,
         otherAllergy: _allergyOtherSelected ? otherAllergyController.text : null,
+        dislikedFoods: dislikedFoodsController.text.trim().isNotEmpty
+            ? dislikedFoodsController.text.trim()
+            : null,
         currentInjuries: _selectedInjuries,
         otherInjury: _injuryOtherSelected ? otherInjuryController.text : null,
         fitnessGoals: _selectedFitnessGoals,
@@ -370,6 +374,7 @@ class ProfileSetupViewModel extends BaseViewModel {
     heightController.dispose();
     otherMedicalConditionController.dispose();
     otherAllergyController.dispose();
+    dislikedFoodsController.dispose();
     otherInjuryController.dispose();
     otherFitnessGoalController.dispose();
     otherExperienceController.dispose();

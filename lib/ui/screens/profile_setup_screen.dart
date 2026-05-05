@@ -208,6 +208,18 @@ class ProfileSetupScreen extends StatelessWidget {
 
         const SizedBox(height: 24),
 
+        AnimateIn(
+          delay: const Duration(milliseconds: 550),
+          child: _buildTextField(
+            context,
+            label: 'Food you dont like',
+            controller: viewModel.dislikedFoodsController,
+            hint: 'Example: tuna, broccoli, oats',
+          ),
+        ),
+
+        const SizedBox(height: 24),
+
         // Current Injuries
         AnimateIn(delay: const Duration(milliseconds: 600), child: _buildSectionTitle('Current Injuries')),
         const SizedBox(height: 16),
