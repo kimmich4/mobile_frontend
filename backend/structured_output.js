@@ -74,7 +74,28 @@ function balanceDietDayCalories(day, fallbackCalories = 0) {
         return { ...day, totalCalories: sumMealCalories(day.meals) };
     }
 
-    return { ...day, totalCalories: sumMealCalories(day.meals) || target };
+    const actual = sumMealCalories(day.meals);
+
+    // If the model's output is within 5% of target, accept it as-is
+    const tolerance = target * 0.05;
+    if (actual > 0 && Math.abs(actual - target) <= tolerance) {
+        return { ...day, totalCalories: actual };
+    }
+
+    // Otherwise scale every meal item proportionally to hit the target exactly
+    if (actual > 0) {
+        const scale = target / actual;
+        const scaledMeals = day.meals.map((meal) => ({
+            ...meal,
+            items: (meal.items || []).map((item) => ({
+                ...item,
+                calories: Math.round(numberOrZero(item.calories) * scale)
+            }))
+        }));
+        return { ...day, meals: scaledMeals, totalCalories: target };
+    }
+
+    return { ...day, totalCalories: target };
 }
 
 function normalizeDietDay(rawDay, index, fallbackCalories) {
