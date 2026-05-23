@@ -6,22 +6,22 @@ const { generateAnswer } = require("./plan_generator");
 const { enforceStructuredPlan } = require("./structured_output");
 const { formatVectorContext, rankRetrievedResults } = require("./retrieval_helpers");
 
-// ─────────────────────────────────────────────────────────────────────────────
-// 🦜 LangChain Full Plan Orchestration Pipeline
 //
-//  Step 1  →  Validate & normalise query
-//  Step 2  →  Generate HuggingFace embedding   
-//  Step 3  →  Search Qdrant vector DB          
-//  Step 4  →  Build Prompt (resolves vector DB results into the generic Context)
-//  Step 5  →  DeepSeek LLM Generation (generates JSON plan)
+// langchain full plan orchestration pipeline
 //
-// ─────────────────────────────────────────────────────────────────────────────
+// step 1 to validate & normalise query
+// step 2 to generate huggingface embedding
+// step 3 to search qdrant vector db
+// step 4 to build prompt (resolves vector db results into the generic context)
+// step 5 to deepseek llm generation (generates json plan)
+//
+//
 
-// Step 1 — Validate & normalise the incoming health-profile query
+// step 1 - validate & normalise the incoming health-profile query
 const step_validateQuery = RunnableLambda.from(async (inputObj) => {
-    console.log(`\n🦜 [LangChain Full Plan] Step 1 — Validate Query`);
+    console.log(`\nlangchain full plan step 1 - validate query`);
 
-    // Support either a raw string (for old unit tests) or the full object (from Express routes)
+    // support either a raw string (for old unit tests) or the full object (from express routes)
     const state = typeof inputObj === 'string' ? { searchQuery: inputObj, contextPrefix: "", task: "" } : inputObj;
 
     console.log(`   Input: "${state.searchQuery}"`);
@@ -31,100 +31,100 @@ const step_validateQuery = RunnableLambda.from(async (inputObj) => {
         : "";
 
     if (!cleanProfile) {
-        console.log(`   ⚠️  Empty/none profile — chain will short-circuit vector search.`);
+        console.log(`   empty/none profile - chain will short-circuit vector search.`);
         return { ...state, skip: true };
     }
 
-    console.log(`   ✅ Query is valid, passing to embedding step.`);
+    console.log(`   query is valid, passing to embedding step.`);
     return { ...state, skip: false };
 });
 
-// Step 2 — Generate embedding via HuggingFace (delegates to getEmbedding in rag_logic.js)
+// step 2 - generate embedding via huggingface (delegates to getembedding in raglogic.js)
 const step_getEmbedding = RunnableLambda.from(async (state) => {
-    console.log(`\n🦜 [LangChain Full Plan] Step 2 — Get Embedding`);
+    console.log(`\nlangchain full plan step 2 - get embedding`);
     if (state.skip) {
-        console.log(`   ⏭️  Skipping embedding (empty profile).`);
+        console.log(`   skipping embedding (empty profile).`);
         return state;
     }
-    console.log(`   🔢 Calling HuggingFace for: "${state.searchQuery}"`);
+    console.log(`   calling huggingface for: "${state.searchQuery}"`);
     try {
         const vector = await getEmbedding(state.searchQuery);
-        console.log(`   ✅ Embedding generated. Vector length: ${vector.length}`);
+        console.log(`   embedding generated. vector length: ${vector.length}`);
         return { ...state, vector };
     } catch (e) {
-        console.error("   ⚠️ Embedding Error:", e.message);
-        return { ...state, skip: true }; // Fallback
+        console.error("   embedding error:", e.message);
+        return { ...state, skip: true }; // fallback
     }
 });
 
-// Step 3 — Search Qdrant vector DB (delegates to queryQdrant in rag_logic.js)
+// step 3 - search qdrant vector db (delegates to queryqdrant in raglogic.js)
 const step_qdrantSearch = RunnableLambda.from(async (state) => {
-    console.log(`\n🦜 [LangChain Full Plan] Step 3 — Qdrant Search`);
+    console.log(`\nlangchain full plan step 3 - qdrant search`);
     if (state.skip) {
-        console.log(`   ⏭️  Skipping Qdrant search.`);
+        console.log(`   skipping qdrant search.`);
         return state;
     }
-    console.log(`   🔍 Searching collection "athlete_health_context" …`);
+    console.log(`   searching collection "athlete_health_context"...`);
     let result = [];
     try {
         result = await queryQdrant(state.vector);
         result = rankRetrievedResults(result, state.searchQuery);
     } catch (e) {
-        console.error("   ⚠️ Qdrant Search Error:", e.message);
+        console.error("   qdrant search error:", e.message);
     }
 
     if (result && result.length > 0) {
-        console.log(`   ✅ Found ${result.length} matches.`);
+        console.log(`   found ${result.length} matches.`);
         console.log("   Results payload:", JSON.stringify(result.map(r => ({ score: r.score, payload: r.payload })), null, 2));
     } else {
-        console.log(`   ℹ️  0 matches found.`);
+        console.log(`   0 matches found.`);
     }
     return { ...state, results: result };
 });
 
-// Step 4 — Build Final Prompt from context string
+// step 4 - build final prompt from context string
 const step_buildFinalContext = RunnableLambda.from(async (state) => {
-    console.log(`\n🦜 [LangChain Full Plan] Step 4 — Build Final Context`);
+    console.log(`\nlangchain full plan step 4 - build final context`);
 
-    // Resolve vector results into compact, plan-relevant safety constraints.
+    // resolve vector results into compact, plan-relevant safety constraints.
     let vectorContext = "No specific contraindications found in database.";
     if (!state.skip && state.results && state.results.length > 0) {
         vectorContext = formatVectorContext(state.results);
-        console.log(`   ✅ Vector Context resolved.`);
+        console.log(`   vector context resolved.`);
     } else {
-        console.log(`   ℹ️  No vector results to format — using default string.`);
+        console.log(`   no vector results to format - using default string.`);
     }
 
-    // Inject the resolved vectorContext into the {{VECTOR_CONTEXT}} placeholder
+    // inject the resolved vectorcontext into the {{vectorcontext}} placeholder
     const finalContext = state.contextPrefix ? state.contextPrefix.replace('{{VECTOR_CONTEXT}}', vectorContext) : vectorContext;
     return { ...state, finalContext };
 });
 
-// Step 5 — AI Generation (DeepSeek via plan_generator.js)
+// step 5 - ai generation (deepseek via plangenerator.js)
 const step_generateAnswer = RunnableLambda.from(async (state) => {
-    console.log(`\n🦜 [LangChain Full Plan] Step 5 — LLM Generation`);
+    console.log(`\nlangchain full plan step 5 - llm generation`);
 
-    // If we only passed a string (like a basic unit test), just return the context directly.
+    // if we only passed a string (like a basic unit test), just return the context directly.
     if (!state.task) {
-        console.log(`   ⏭️  No task provided. Returning resolved context string.`);
+        console.log(`   no task provided. returning resolved context string.`);
         return state.finalContext;
     }
 
-    console.log(`   🧠 Calling DeepSeek V3...`);
+    console.log(`   calling deepseek v3...`);
 
-    // Print the final complete prompt so the user can see everything clearly
-    console.log(`\n================= 📝 FINAL AI PROMPT =================`);
+    // print the final complete prompt so the user can see everything clearly
+    console.log(`\n================= final ai prompt =================`);
     console.log(`[Context Body]:\n${state.finalContext}`);
     console.log(`\n[Task Header]:\n${state.task}`);
     console.log(`======================================================\n`);
 
-    // This calls the robust generateAnswer function which includes the 3-attempt retry loop
+    // this calls the robust generateanswer function which includes the 3-attempt retry loop
     const aiResponse = await generateAnswer(state.finalContext, state.task);
-    console.log(`   ✅ Successfully generated AI Plan.`);
+    console.log(`   successfully generated ai plan.`);
     return enforceStructuredPlan(aiResponse, state.finalContext, state.task);
 });
 
-// ─── Compose the sequence ──
+// compose the sequence
 const ragChain = RunnableSequence.from([
     step_validateQuery,
     step_getEmbedding,

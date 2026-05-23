@@ -10,13 +10,13 @@ class DietRepository {
     : _firestore = firestore ?? FirebaseFirestore.instance,
       _apiService = apiService ?? ApiService();
 
-  /// Collection reference for a specific user's diet plans
-  /// Structure: users/{userId}/dietPlans/{planId}
+  /// collection reference for a specific user's diet plans
+  /// structure: users/{userid}/dietplans/{planid}
   CollectionReference<Map<String, dynamic>> _getDietCollection(String userId) {
     return _firestore.collection('users').doc(userId).collection('dietPlans');
   }
 
-  /// Generate and save a new 7-day diet plan
+  /// generate and save a new 7-day diet plan
   Future<DietPlan> generateAndSaveDietPlan({
     required String userId,
     required Map<String, dynamic> userProfile,
@@ -24,13 +24,13 @@ class DietRepository {
     try {
       print('Generating 7-day diet plan for user: $userId');
 
-      // 1. Fetch from API
+      // 1. fetch from api
       final dietPlan = await _apiService.generateDietPlan(
         userId: userId,
         userProfile: userProfile,
       );
 
-      // 2. Save to Firestore as a single 'weekly_diet' document
+      // 2. save to firestore as a single 'weeklydiet' document
       print('Saving weekly diet plan to Firestore');
       await _getDietCollection(
         userId,
@@ -43,7 +43,7 @@ class DietRepository {
     }
   }
 
-  /// Get the current diet plan
+  /// get the current diet plan
   Future<DietPlan?> getDietPlan(String userId) async {
     try {
       final doc = await _getDietCollection(userId).doc('weekly_diet').get();
@@ -56,7 +56,7 @@ class DietRepository {
     }
   }
 
-  /// Update the diet plan
+  /// update the diet plan
   Future<void> updateDietPlan(String userId, DietPlan plan) async {
     try {
       await _getDietCollection(userId).doc('weekly_diet').update(plan.toJson());

@@ -1,16 +1,16 @@
-/// Comprehensive User Model containing all user data from profile setup and usage
+/// comprehensive user model containing all user data from profile setup and usage
 class UserModel {
-  // Basic Information (Step 1 of Profile Setup)
+  // basic information (step 1 of profile setup)
   final String? fullName;
   final int? age;
-  final String? gender; // 'Male', 'Female', 'Other'
+  final String? gender; // 'male', 'female', 'other'
 
-  // Body Metrics (Step 2 of Profile Setup)
+  // body metrics (step 2 of profile setup)
   final double? weightKg;
   final double? heightCm;
-  final String? activityLevel; // 'Sedentary', 'Light', 'Moderate', 'Active', 'Very Active'
+  final String? activityLevel; // 'sedentary', 'light', 'moderate', 'active', 'very active'
 
-  // Health Information (Step 3 of Profile Setup)
+  // health information (step 3 of profile setup)
   final List<String> medicalConditions;
   final String? otherMedicalCondition;
   final String? medicalReportPath;
@@ -25,55 +25,55 @@ class UserModel {
   final String? medicalReportText;
   final String? inBodyReportText;
 
-  // Goals & Experience (Step 4 of Profile Setup)
-  final List<String> fitnessGoals; // 'Lose weight', 'Build muscle', etc.
+  // goals & experience (step 4 of profile setup)
+  final List<String> fitnessGoals; // 'lose weight', 'build muscle', etc.
   final String? otherFitnessGoal;
-  final String? experienceLevel; // 'Beginner', 'Intermediate', 'Advanced'
+  final String? experienceLevel; // 'beginner', 'intermediate', 'advanced'
   final String? otherExperience;
   final int? trainingDaysPerWeek;
   final String? preferredWorkoutSplit;
 
-  // Authentication Data
+  // authentication data
   final String? email;
   final String? userId;
   
-  // Profile Data
+  // profile data
   final String? profilePicturePath;
-  final String? profileInitial; // For avatar display (e.g., 'J')
+  final String? profileInitial; // for avatar display (e.g., 'j')
   final bool isPremiumMember;
 
-  // Current Stats (updated during app usage)
+  // current stats (updated during app usage)
   final int? currentCalories;
   final int? dailyCalorieGoal;
   final int? workoutsCompletedThisWeek;
   final int? workoutsGoalPerWeek;
   final int? currentStreak;
-  final int waterIntake; // Glasses of water today
+  final int waterIntake; // glasses of water today
   final double? currentWeightKg;
   final double? goalWeightKg;
-  // Progress Tracking Weight — entered by user in the Progress screen (separate from signup weightKg)
+  // progress tracking weight - entered by user in the progress screen (separate from signup weightkg)
   final double? trackedWeightKg;
-  final Map<int, List<int>> completedMeals; // Map of dayIndex -> List of meal indices
-  final Map<int, List<int>> completedHomeExercises; // Map of dayIndex -> List of home exercise IDs
-  final Map<int, List<int>> completedGymExercises; // Map of dayIndex -> List of gym exercise IDs
+  final Map<int, List<int>> completedMeals; // map of dayindex - list of meal indices
+  final Map<int, List<int>> completedHomeExercises; // map of dayindex - list of home exercise ids
+  final Map<int, List<int>> completedGymExercises; // map of dayindex - list of gym exercise ids
 
-  // Preferences
+  // preferences
   final bool notificationsEnabled;
   final bool darkModeEnabled;
   final bool dataSharingEnabled;
 
   UserModel({
-    // Basic Information
+    // basic information
     this.fullName,
     this.age,
     this.gender,
     
-    // Body Metrics
+    // body metrics
     this.weightKg,
     this.heightCm,
     this.activityLevel,
     
-    // Health Information
+    // health information
     this.medicalConditions = const [],
     this.otherMedicalCondition,
     this.medicalReportPath,
@@ -86,7 +86,7 @@ class UserModel {
     this.currentInjuries = const [],
     this.otherInjury,
     
-    // Goals & Experience
+    // goals & experience
     this.fitnessGoals = const [],
     this.otherFitnessGoal,
     this.experienceLevel,
@@ -94,16 +94,16 @@ class UserModel {
     this.trainingDaysPerWeek,
     this.preferredWorkoutSplit,
     
-    // Authentication
+    // authentication
     this.email,
     this.userId,
     
-    // Profile
+    // profile
     this.profilePicturePath,
     this.profileInitial,
     this.isPremiumMember = false,
     
-    // Current Stats
+    // current stats
     this.currentCalories,
     this.dailyCalorieGoal = 2200,
     this.workoutsCompletedThisWeek,
@@ -119,13 +119,13 @@ class UserModel {
     this.medicalReportText,
     this.inBodyReportText,
     
-    // Preferences
+    // preferences
     this.notificationsEnabled = true,
     this.darkModeEnabled = false,
     this.dataSharingEnabled = false,
   });
 
-  /// Calculate BMI if height and weight are available
+  /// calculate bmi if height and weight are available
   double? get bmi {
     if (weightKg != null && heightCm != null && heightCm! > 0) {
       final heightM = heightCm! / 100;
@@ -134,7 +134,7 @@ class UserModel {
     return null;
   }
 
-  /// Get weight remaining to goal
+  /// get weight remaining to goal
   double? get weightRemainingToGoal {
     if (currentWeightKg != null && goalWeightKg != null) {
       return (currentWeightKg! - goalWeightKg!).abs();
@@ -142,7 +142,7 @@ class UserModel {
     return null;
   }
 
-  /// Get calorie consumption percentage
+  /// get calorie consumption percentage
   double? get calorieConsumptionPercentage {
     if (currentCalories != null && dailyCalorieGoal != null && dailyCalorieGoal! > 0) {
       return currentCalories! / dailyCalorieGoal!;
@@ -150,7 +150,7 @@ class UserModel {
     return null;
   }
 
-  /// Get workout completion percentage for the week
+  /// get workout completion percentage for the week
   double? get workoutCompletionPercentage {
     if (workoutsCompletedThisWeek != null && workoutsGoalPerWeek != null && workoutsGoalPerWeek! > 0) {
       return workoutsCompletedThisWeek! / workoutsGoalPerWeek!;
@@ -158,7 +158,7 @@ class UserModel {
     return null;
   }
 
-  /// Create a copy of this user with updated fields
+  /// create a copy of this user with updated fields
   UserModel copyWith({
     String? fullName,
     int? age,
@@ -255,7 +255,7 @@ class UserModel {
     );
   }
 
-  /// Convert to JSON (for potential future storage/API integration)
+  /// convert to json (for potential future storage/api integration)
   Map<String, dynamic> toJson() {
     return {
       'fullName': fullName,
@@ -297,7 +297,7 @@ class UserModel {
       'currentWeightKg': currentWeightKg,
       'goalWeightKg': goalWeightKg,
       'trackedWeightKg': trackedWeightKg,
-      // Convert map keys to string for JSON
+      // convert map keys to string for json
       'completedMeals': completedMeals.map((k, v) => MapEntry(k.toString(), v)),
       'completedHomeExercises': completedHomeExercises.map((k, v) => MapEntry(k.toString(), v)),
       'completedGymExercises': completedGymExercises.map((k, v) => MapEntry(k.toString(), v)),
@@ -307,7 +307,7 @@ class UserModel {
     };
   }
 
-  /// Create from JSON
+  /// create from json
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       fullName: json['fullName'] as String?,

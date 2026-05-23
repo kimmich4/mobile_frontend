@@ -7,7 +7,7 @@ import '../data/repositories/user_repository.dart';
 import 'base_view_model.dart';
 import '../core/theme/theme_manager.dart';
 
-/// ViewModel for Settings Screen
+/// viewmodel for settings screen
 class SettingsViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final UserRepository _userRepository;
@@ -24,7 +24,7 @@ class SettingsViewModel extends BaseViewModel {
   bool get darkModeEnabled => _darkModeEnabled;
   bool get dataSharingEnabled => _dataSharingEnabled;
 
-  // User profile info
+  // user profile info
   String get userName => _currentUser?.fullName ?? 'User';
   String get userInitial => _currentUser?.profileInitial ?? 'U';
   String? get profilePicturePath => _currentUser?.profilePicturePath;
@@ -37,14 +37,14 @@ class SettingsViewModel extends BaseViewModel {
   }
 
   void _initAuthListener() {
-    // Listen to auth state changes to handle user switching
+    // listen to auth state changes to handle user switching
     _authSubscription = _authRepository.authStateChanges.listen((user) {
-      // Cancel previous user subscription
+      // cancel previous user subscription
       _userSubscription?.cancel();
       _currentUser = null;
       
       if (user != null) {
-        // Initialize new user stream
+        // initialize new user stream
         _userSubscription = _userRepository.getUserStream(user.uid).listen((userModel) {
           if (userModel != null) {
             _currentUser = userModel;
@@ -55,7 +55,7 @@ class SettingsViewModel extends BaseViewModel {
           }
         });
       } else {
-        // Reset to defaults when logged out
+        // reset to defaults when logged out
         _notificationsEnabled = true;
         _darkModeEnabled = false;
         _dataSharingEnabled = false;
@@ -64,13 +64,13 @@ class SettingsViewModel extends BaseViewModel {
     });
   }
 
-  /// Initialize dark mode from ThemeManager
+  /// initialize dark mode from thememanager
   void initializeDarkMode() {
     _darkModeEnabled = ThemeManager.themeMode.value == ThemeMode.dark;
     notifyListeners();
   }
 
-  /// Toggle notifications
+  /// toggle notifications
   void setNotificationsEnabled(bool value) async {
     _notificationsEnabled = value;
     notifyListeners();
@@ -80,7 +80,7 @@ class SettingsViewModel extends BaseViewModel {
     }
   }
 
-  /// Toggle dark mode
+  /// toggle dark mode
   void setDarkModeEnabled(bool value) async {
     _darkModeEnabled = value;
     ThemeManager.toggleTheme(value);
@@ -91,7 +91,7 @@ class SettingsViewModel extends BaseViewModel {
     }
   }
 
-  /// Toggle data sharing
+  /// toggle data sharing
   void setDataSharingEnabled(bool value) async {
     _dataSharingEnabled = value;
     notifyListeners();
@@ -101,12 +101,12 @@ class SettingsViewModel extends BaseViewModel {
     }
   }
 
-  /// Navigate to a specific screen
+  /// navigate to a specific screen
   void navigateTo(BuildContext context, Widget screen) {
     Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
   }
 
-  /// Show modal bottom sheet
+  /// show modal bottom sheet
   void showModal(BuildContext context, String title, String description) {
     showModalBottomSheet(
       context: context,
@@ -124,7 +124,7 @@ class SettingsViewModel extends BaseViewModel {
     );
   }
 
-  /// Show logout confirmation dialog
+  /// show logout confirmation dialog
   void showLogoutDialog(BuildContext context, VoidCallback onLogout) {
     showDialog(
       context: context,
@@ -149,7 +149,7 @@ class SettingsViewModel extends BaseViewModel {
     );
   }
 
-  /// Show export data dialog
+  /// show export data dialog
   void showExportDialog(BuildContext context) {
     showDialog(
       context: context,

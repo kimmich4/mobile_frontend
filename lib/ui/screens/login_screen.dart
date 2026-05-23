@@ -43,7 +43,7 @@ class AuthScreen extends StatelessWidget {
                           children: [
                             _buildTabs(context),
                             const SizedBox(height: 32),
-                            // Error message if any
+                            // error message if any
                             if (viewModel.error != null)
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 16),

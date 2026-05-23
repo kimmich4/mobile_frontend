@@ -36,7 +36,7 @@ class _WorkoutLoadingScreenState extends State<WorkoutLoadingScreen> {
     try {
       print('DEBUG: Starting dual AI generation...');
 
-      // 2. Trigger both generations in parallel
+      // 2. trigger both generations in parallel
       await Future.wait([
         workoutViewModel.generateWorkouts(),
         dietViewModel.generateDietPlan(),

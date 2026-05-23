@@ -253,8 +253,8 @@ class HomeScreen extends StatelessWidget {
           icon: Icons.home,
           colors: [const Color(0xFF964734), const Color(0xFF024950)],
           onTap: () {
-            // Force select Home tab (0) and then navigate
-            // Assuming we might need a way to set the tab in WorkoutViewModel
+            // force select home tab (0) and then navigate
+            // assuming we might need a way to set the tab in workoutviewmodel
             MainViewModel.switchTabStatic(1);
           },
         ),
@@ -267,7 +267,7 @@ class HomeScreen extends StatelessWidget {
           icon: Icons.fitness_center,
           colors: [const Color(0xFF0FA4AF), const Color(0xFF024950)],
           onTap: () {
-            // Force select Gym tab (1) and then navigate
+            // force select gym tab (1) and then navigate
             MainViewModel.switchTabStatic(1);
           },
         ),

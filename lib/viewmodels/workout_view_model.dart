@@ -5,7 +5,7 @@ import '../data/repositories/workout_repository.dart';
 import '../data/repositories/user_repository.dart';
 import '../data/repositories/progress_repository.dart';
 
-/// ViewModel for Workout Plan Screen — connects exercise completion to progress tracking
+/// viewmodel for workout plan screen - connects exercise completion to progress tracking
 class WorkoutViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final WorkoutRepository _workoutRepository;
@@ -22,7 +22,7 @@ class WorkoutViewModel extends BaseViewModel {
         _userRepository = userRepository ?? UserRepository(),
         _progressRepository = progressRepository ?? ProgressRepository();
 
-  int _selectedTab = 0; // 0: Home Workout, 1: Gym Workout
+  int _selectedTab = 0; // 0: home workout, 1: gym workout
   int _selectedDay = 1; // 1 to 7
 
   final Map<int, Set<int>> _completedHomeExercises = {};
@@ -45,20 +45,20 @@ class WorkoutViewModel extends BaseViewModel {
 
   String? get userId => _authRepository.currentUser?.uid;
 
-  // Track if today's workout was already counted toward weekly goal
+  // track if today's workout was already counted toward weekly goal
   bool _todayWorkoutLogged = false;
 
   final List<String> dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
-  /// Initialize
+  /// initialize
   Future<void> init() async {
-    // Default to today
-    _selectedDay = DateTime.now().weekday; // 1=Mon .. 7=Sun
+    // default to today
+    _selectedDay = DateTime.now().weekday; // 1=mon .. 7=sun
     await fetchWorkoutPlans();
     await _loadCompletedExercises();
   }
 
-  /// Load completed exercises from Firestore
+  /// load completed exercises from firestore
   Future<void> _loadCompletedExercises() async {
     if (userId == null) return;
     try {
@@ -81,7 +81,7 @@ class WorkoutViewModel extends BaseViewModel {
     } catch (_) {}
   }
 
-  /// Fetch workout plans
+  /// fetch workout plans
   Future<void> fetchWorkoutPlans() async {
     if (userId == null) return;
 
@@ -99,7 +99,7 @@ class WorkoutViewModel extends BaseViewModel {
     }
   }
 
-  /// Generate plans using user profile from Firestore
+  /// generate plans using user profile from firestore
   Future<void> generateWorkouts() async {
     if (userId == null) {
       setError('User not logged in');
@@ -124,7 +124,7 @@ class WorkoutViewModel extends BaseViewModel {
       _homeWorkout = plans['home'];
       _gymWorkout = plans['gym'];
 
-      // Sync workoutsGoalPerWeek to user doc
+      // sync workoutsgoalperweek to user doc
       final plan = _homeWorkout ?? _gymWorkout;
       if (plan != null) {
         final activeDays = plan.days.where((d) => d.exercises.isNotEmpty).length;
@@ -144,7 +144,7 @@ class WorkoutViewModel extends BaseViewModel {
     }
   }
 
-  /// Get current workout list based on selected tab and day
+  /// get current workout list based on selected tab and day
   List<Exercise> get currentWorkoutExercises {
     if (currentPlan == null) return [];
     try {
@@ -155,30 +155,30 @@ class WorkoutViewModel extends BaseViewModel {
     }
   }
 
-  /// Get total duration of the current workout
+  /// get total duration of the current workout
   int get durationMinutes {
     return currentWorkoutExercises.length * 8;
   }
 
-  /// Get total calories burned for the selected day
+  /// get total calories burned for the selected day
   int get caloriesBurned {
     return currentWorkoutExercises.fold(0, (sum, ex) => sum + ex.calories);
   }
 
-  /// Get total number of exercises for selected day
+  /// get total number of exercises for selected day
   int get exerciseCount {
     return currentWorkoutExercises.length;
   }
 
-  /// Get workout title
+  /// get workout title
   String get workoutTitle {
     return currentPlan?.title ?? (_selectedTab == 0 ? 'Home Workout' : 'Gym Workout');
   }
 
-  /// Get total calories (alias)
+  /// get total calories (alias)
   int get totalCalories => caloriesBurned;
 
-  /// Check if all exercises for today are completed
+  /// check if all exercises for today are completed
   bool get allExercisesCompleted {
     final exercises = currentWorkoutExercises;
     if (exercises.isEmpty) return false;
@@ -186,7 +186,7 @@ class WorkoutViewModel extends BaseViewModel {
     return exercises.every((ex) => (targetMap[_selectedDay] ?? {}).contains(ex.id));
   }
 
-  /// Switch between Home and Gym workouts
+  /// switch between home and gym workouts
   void setSelectedTab(int index) {
     if (_selectedTab != index) {
       _selectedTab = index;
@@ -194,18 +194,18 @@ class WorkoutViewModel extends BaseViewModel {
     }
   }
 
-  /// Switch between days
+  /// switch between days
   void setSelectedDay(int day) {
     if (_selectedDay != day) {
       _selectedDay = day;
-      // Do not clear _completedExercises here so state isn't lost when switching days
-      // _completedExercises.clear();
+      // do not clear completedexercises here so state isn't lost when switching days
+      // completedexercises.clear();
       _todayWorkoutLogged = false;
       notifyListeners();
     }
   }
 
-  /// Toggle exercise completion and persist to progress tracking
+  /// toggle exercise completion and persist to progress tracking
   Future<void> toggleExerciseCompletion(int exerciseId) async {
     final targetMap = _selectedTab == 0 ? _completedHomeExercises : _completedGymExercises;
     
@@ -217,7 +217,7 @@ class WorkoutViewModel extends BaseViewModel {
     }
     notifyListeners();
 
-    // Persist to user profile
+    // persist to user profile
     if (userId != null) {
       try {
         final updatedExercisesMap = targetMap.map((key, value) => MapEntry(key.toString(), value.toList()));
@@ -231,7 +231,7 @@ class WorkoutViewModel extends BaseViewModel {
       }
     }
 
-    // If all exercises completed for today → log workout completion
+    // if all exercises completed for today to log workout completion
     final todayDay = DateTime.now().weekday;
     if (_selectedDay == todayDay && userId != null) {
       try {
@@ -260,7 +260,7 @@ class WorkoutViewModel extends BaseViewModel {
     }
   }
 
-  /// Check if an exercise is completed
+  /// check if an exercise is completed
   bool isExerciseCompleted(int exerciseId) {
     final targetMap = _selectedTab == 0 ? _completedHomeExercises : _completedGymExercises;
     return (targetMap[_selectedDay] ?? {}).contains(exerciseId);

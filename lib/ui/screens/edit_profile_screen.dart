@@ -4,7 +4,7 @@ import 'dart:io';
 import '../components/animate_in.dart';
 import '../widgets/profile_avatar.dart';
 import '../../viewmodels/edit_profile_view_model.dart';
-// Remove local ImagePicker import as it's handled in ViewModel
+// remove local imagepicker import as it's handled in viewmodel
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -24,14 +24,14 @@ class EditProfileScreen extends StatelessWidget {
           body: ListView(
             padding: const EdgeInsets.all(24),
             children: [
-              // Profile Picture Section
+              // profile picture section
               AnimateIn(
                 child: Center(
                   child: Column(
                     children: [
                       Stack(
                         children: [
-                          // Show selected image or current profile picture or initials
+                          // show selected image or current profile picture or initials
                           viewModel.selectedProfilePicturePath != null
                               ? Container(
                                   width: 120,
@@ -103,7 +103,7 @@ class EditProfileScreen extends StatelessWidget {
               const AnimateIn(delay: Duration(milliseconds: 1000), child: SectionHeader('Health Information')),
               const SizedBox(height: 24),
               
-              // Medical Conditions
+              // medical conditions
               AnimateIn(delay: const Duration(milliseconds: 1050), child: _buildSectionTitle('Medical Conditions')),
               const SizedBox(height: 16),
               AnimateIn(
@@ -121,7 +121,7 @@ class EditProfileScreen extends StatelessWidget {
 
               const SizedBox(height: 24),
               
-              // Allergies
+              // allergies
               AnimateIn(delay: const Duration(milliseconds: 1200), child: _buildSectionTitle('Allergies')),
               const SizedBox(height: 16),
               AnimateIn(
@@ -139,7 +139,7 @@ class EditProfileScreen extends StatelessWidget {
 
               const SizedBox(height: 24),
               
-              // Injuries
+              // injuries
               AnimateIn(delay: const Duration(milliseconds: 1300), child: _buildSectionTitle('Current Injuries')),
               const SizedBox(height: 16),
               AnimateIn(

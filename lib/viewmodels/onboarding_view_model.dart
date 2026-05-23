@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'base_view_model.dart';
 
-/// ViewModel for Onboarding Screen
+/// viewmodel for onboarding screen
 class OnboardingViewModel extends BaseViewModel {
   final PageController pageController = PageController();
   int _currentPage = 0;
 
   int get currentPage => _currentPage;
 
-  /// Update current page index
+  /// update current page index
   void setCurrentPage(int page) {
     _currentPage = page;
     notifyListeners();
   }
 
-  /// Navigate to next page or complete onboarding
+  /// navigate to next page or complete onboarding
   void nextPage(BuildContext context, VoidCallback onComplete) {
     if (_currentPage < 2) {
       pageController.nextPage(
@@ -26,7 +26,7 @@ class OnboardingViewModel extends BaseViewModel {
     }
   }
 
-  /// Skip onboarding and go to auth screen
+  /// skip onboarding and go to auth screen
   void skipOnboarding(VoidCallback onComplete) {
     onComplete();
   }

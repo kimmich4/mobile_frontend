@@ -19,7 +19,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialize dark mode state from ThemeManager via ViewModel
+    // initialize dark mode state from thememanager via viewmodel
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<SettingsViewModel>().initializeDarkMode();
     });

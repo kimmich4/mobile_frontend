@@ -1,5 +1,5 @@
 //
-//  Generated file. Do not edit.
+// generated file. do not edit.
 //
 
 // clang-format off

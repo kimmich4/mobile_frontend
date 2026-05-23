@@ -1,6 +1,6 @@
 const { chatAssistant } = require('../ai_assistant');
 
-// Mock global fetch
+// mock global fetch
 global.fetch = jest.fn();
 
 describe('AI Assistant', () => {
@@ -24,13 +24,13 @@ describe('AI Assistant', () => {
     });
 
     test('chatAssistant should try next model if the first one fails with 429', async () => {
-        // First model fails with 429
+        // first model fails with 429
         fetch.mockResolvedValueOnce({
             ok: false,
             status: 429,
             text: async () => 'Rate limit exceeded'
         });
-        // Second model succeeds
+        // second model succeeds
         fetch.mockResolvedValueOnce({
             ok: true,
             json: async () => ({

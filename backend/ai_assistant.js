@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-// 🔹 Helper: Chat Assistant (Using OpenRouter with Fallbacks)
+// helper: chat assistant (using openrouter with fallbacks)
 async function chatAssistant(messages) {
     const models = [
         "google/gemma-4-31b-it:free",
@@ -20,7 +20,7 @@ async function chatAssistant(messages) {
 
     for (const model of models) {
         try {
-            console.log(`🤖 Attempting chat with ${model}...`);
+            console.log(`attempting chat with ${model}...`);
             const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
                 method: "POST",
                 headers: {
@@ -44,9 +44,9 @@ async function chatAssistant(messages) {
 
             if (!response.ok) {
                 const errText = await response.text();
-                // If rate limited (429), try next model
+                // if rate limited (429), try next model
                 if (response.status === 429) {
-                    console.warn(`⚠️ Model ${model} is rate limited. Trying next...`);
+                    console.warn(`model ${model} is rate limited. trying next...`);
                     lastError = new Error(`Rate limit reached for ${model}`);
                     continue;
                 }

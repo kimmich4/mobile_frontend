@@ -19,7 +19,7 @@ class ApiException implements Exception {
 
 
 class ApiService {
-  // Determine URL based on platform
+  // determine url based on platform
   static String get _baseUrl {
     if (kIsWeb) return 'http://localhost:3000';
     try {
@@ -32,7 +32,7 @@ class ApiService {
 
   ApiService({http.Client? client}) : _client = client ?? http.Client();
 
-  /// Generate a 7-day diet plan via AI backend
+  /// generate a 7-day diet plan via ai backend
   Future<DietPlan> generateDietPlan({
     required String userId,
     required Map<String, dynamic> userProfile,
@@ -80,7 +80,7 @@ class ApiService {
     }
   }
 
-  /// Generate workout plans (Gym and Home) via AI backend
+  /// generate workout plans (gym and home) via ai backend
   Future<Map<String, WorkoutPlan>> generateWorkoutPlans({
     required String userId,
     required Map<String, dynamic> userProfile,
@@ -131,7 +131,7 @@ class ApiService {
     }
   }
 
-  /// Analyze a report image using OCR on the backend
+  /// analyze a report image using ocr on the backend
   Future<String> analyzeReport({
     required XFile image,
     required String type,
@@ -161,7 +161,7 @@ class ApiService {
     }
   }
 
-  /// Chat with the AI assistant
+  /// chat with the ai assistant
   Future<String> chatWithAssistant({
     required List<Map<String, dynamic>> messages,
   }) async {
@@ -186,7 +186,7 @@ class ApiService {
     }
   }
 
-  /// Search for an exercise tutorial video ID on YouTube using the backend
+  /// search for an exercise tutorial video id on youtube using the backend
   Future<String> searchVideo(String query) async {
     try {
       final response = await _client.post(

@@ -4,14 +4,14 @@ import 'base_view_model.dart';
 import '../data/models/workout_model.dart';
 import '../data/services/api_service.dart';
 
-/// ViewModel for Video Screen
+/// viewmodel for video screen
 class VideoViewModel extends BaseViewModel {
   final ApiService _apiService;
   
   VideoViewModel({ApiService? apiService})
       : _apiService = apiService ?? ApiService();
 
-  // Video details
+  // video details
   String _title = 'Loading...';
   String _difficulty = 'Beginner';
   int _durationMinutes = 0;
@@ -22,7 +22,7 @@ class VideoViewModel extends BaseViewModel {
   int get durationMinutes => _durationMinutes;
   int get calories => _calories;
 
-  // Youtube Details
+  // youtube details
   YoutubePlayerController? _youtubeController;
   YoutubePlayerController? get youtubeController => _youtubeController;
   bool _isVideoLoading = true;
@@ -30,11 +30,11 @@ class VideoViewModel extends BaseViewModel {
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
 
-  // Dynamic Key points
+  // dynamic key points
   List<String> _keyPoints = [];
   List<String> get keyPoints => _keyPoints;
 
-  // Common mistakes (Static fallback or dynamic)
+  // common mistakes (static fallback or dynamic)
   final List<String> commonMistakes = [
     'Rushing the movement',
     'Not using full range of motion',
@@ -47,14 +47,14 @@ class VideoViewModel extends BaseViewModel {
     super.dispose();
   }
 
-  /// Initialize with a specific exercise
+  /// initialize with a specific exercise
   Future<void> init(Exercise exercise) async {
     _title = exercise.name;
     _difficulty = exercise.difficulty;
-    _durationMinutes = (exercise.calories / 10).ceil(); // Rough estimate
+    _durationMinutes = (exercise.calories / 10).ceil(); // rough estimate
     _calories = exercise.calories;
     
-    // Auto-generate some basic tips from the name
+    // auto-generate some basic tips from the name
     _keyPoints = [
       'Focus on the mind-muscle connection for $_title',
       'Keep your core engaged during the set',
@@ -71,7 +71,7 @@ class VideoViewModel extends BaseViewModel {
     notifyListeners();
 
     try {
-      // Search for the exercise name + "form tutoriall"
+      // search for the exercise name + "form tutoriall"
       final searchQuery = '$exerciseName exercise form tutorial';
       
       final videoId = await _apiService.searchVideo(searchQuery);

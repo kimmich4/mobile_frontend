@@ -42,7 +42,7 @@ class Signupscreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Error message if any
+                            // error message if any
                             if (viewModel.error != null)
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 16),

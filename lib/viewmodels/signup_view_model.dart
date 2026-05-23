@@ -4,7 +4,7 @@ import '../data/repositories/auth_repository.dart';
 import '../data/repositories/user_repository.dart';
 import 'base_view_model.dart';
 
-/// ViewModel for Signup Screen
+/// viewmodel for signup screen
 class SignupViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final UserRepository _userRepository;
@@ -23,18 +23,18 @@ class SignupViewModel extends BaseViewModel {
 
   bool get agreedToTerms => _agreedToTerms;
 
-  /// Toggle terms agreement
+  /// toggle terms agreement
   void setAgreedToTerms(bool value) {
     _agreedToTerms = value;
     notifyListeners();
   }
 
-  /// Validate and perform signup using repositories
+  /// validate and perform signup using repositories
   Future<bool> signup(BuildContext context, VoidCallback onSuccess) async {
-    // Clear any previous errors
+    // clear any previous errors
     clearError();
 
-    // Validate all fields
+    // validate all fields
     if (nameController.text.isEmpty ||
         emailController.text.isEmpty ||
         passwordController.text.isEmpty ||
@@ -43,13 +43,13 @@ class SignupViewModel extends BaseViewModel {
       return false;
     }
 
-    // Check password match
+    // check password match
     if (passwordController.text != confirmPasswordController.text) {
       setError('Passwords do not match');
       return false;
     }
 
-    // Check terms agreement
+    // check terms agreement
     if (!_agreedToTerms) {
       setError('Please agree to Terms & Conditions');
       return false;
@@ -58,7 +58,7 @@ class SignupViewModel extends BaseViewModel {
     setLoading(true);
 
     try {
-      // 1. Create user in Firebase Authentication via Repository
+      // 1. create user in firebase authentication via repository
       final credential = await _authRepository.createUserWithEmailAndPassword(
         emailController.text.trim(),
         passwordController.text,
@@ -67,7 +67,7 @@ class SignupViewModel extends BaseViewModel {
       final user = credential.user;
 
       if (user != null) {
-        // 2. Save additional user details (like name) to Firestore via Repository
+        // 2. save additional user details (like name) to firestore via repository
         await _userRepository.updateFields(user.uid, {
           'uid': user.uid,
           'name': nameController.text.trim(),
@@ -99,7 +99,7 @@ class SignupViewModel extends BaseViewModel {
     }
   }
 
-  /// Perform Google Login/Signup
+  /// perform google login/signup
   Future<void> loginWithGoogle(BuildContext context, VoidCallback onSuccess) async {
     clearError();
     setLoading(true);
@@ -107,7 +107,7 @@ class SignupViewModel extends BaseViewModel {
     try {
       final credential = await _authRepository.signInWithGoogle();
       
-      // Check if this is a new user and create record in Firestore
+      // check if this is a new user and create record in firestore
       if (credential.additionalUserInfo?.isNewUser ?? false) {
         final user = credential.user;
         if (user != null) {
@@ -131,7 +131,7 @@ class SignupViewModel extends BaseViewModel {
     }
   }
 
-  /// Perform Apple Login/Signup
+  /// perform apple login/signup
   Future<void> loginWithApple(BuildContext context, VoidCallback onSuccess) async {
     clearError();
     setLoading(true);
@@ -159,7 +159,7 @@ class SignupViewModel extends BaseViewModel {
     }
   }
 
-  /// Navigate to login screen
+  /// navigate to login screen
   void navigateToLogin(VoidCallback onNavigate) {
     onNavigate();
   }

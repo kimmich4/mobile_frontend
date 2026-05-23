@@ -8,7 +8,7 @@ import '../data/services/api_service.dart';
 import 'base_view_model.dart';
 import '../data/models/user_model.dart';
 
-/// ViewModel for Profile Setup Screen (4-step process)
+/// viewmodel for profile setup screen (4-step process)
 class ProfileSetupViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final UserRepository _userRepository;
@@ -28,18 +28,18 @@ class ProfileSetupViewModel extends BaseViewModel {
   final PageController pageController = PageController();
   int _currentPage = 0;
 
-  // Step 1: Basic Information
+  // step 1: basic information
   final TextEditingController nameController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
   String _selectedGender = 'Male';
 
-  // Step 2: Body Metrics
+  // step 2: body metrics
   final TextEditingController weightController = TextEditingController();
   final TextEditingController targetWeightController = TextEditingController();
   final TextEditingController heightController = TextEditingController();
   String _selectedActivityLevel = 'Sedentary';
 
-  // Step 3: Health Information
+  // step 3: health information
   final List<String> medicalConditionsOptions = [
     'Diabetes',
     'Hypertension',
@@ -68,7 +68,7 @@ class ProfileSetupViewModel extends BaseViewModel {
   String? _inBodyReportText;
   bool _isAnalyzingReport = false;
 
-  // Step 4: Goals & Experience
+  // step 4: goals & experience
   final List<String> fitnessGoalsOptions = [
     'Weight Loss',
     'Muscle Gain',
@@ -97,7 +97,7 @@ class ProfileSetupViewModel extends BaseViewModel {
 
   final ImagePicker _picker = ImagePicker();
 
-  // Getters
+  // getters
   int get currentPage => _currentPage;
   String get selectedGender => _selectedGender;
   String get selectedActivityLevel => _selectedActivityLevel;
@@ -119,10 +119,10 @@ class ProfileSetupViewModel extends BaseViewModel {
   int get selectedTrainingDaysPerWeek => _selectedTrainingDaysPerWeek;
   String? get selectedWorkoutSplit => _selectedWorkoutSplit;
 
-  /// Calculate progress percentage
+  /// calculate progress percentage
   double get progressPercentage => (_currentPage + 1) / 4;
 
-  // Setters
+  // setters
   void setCurrentPage(int page) {
     _currentPage = page;
     notifyListeners();
@@ -229,7 +229,7 @@ class ProfileSetupViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  /// Navigate to next page or complete setup
+  /// navigate to next page or complete setup
   void nextPage(VoidCallback onComplete) {
     if (_currentPage < 3) {
       pageController.nextPage(
@@ -241,7 +241,7 @@ class ProfileSetupViewModel extends BaseViewModel {
     }
   }
 
-  /// Navigate to previous page
+  /// navigate to previous page
   void previousPage() {
     if (_currentPage > 0) {
       pageController.previousPage(
@@ -251,7 +251,7 @@ class ProfileSetupViewModel extends BaseViewModel {
     }
   }
 
-  /// Pick file for medical or inbody report and analyze it
+  /// pick file for medical or inbody report and analyze it
   Future<void> pickFile({required bool isMedical}) async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
@@ -262,7 +262,7 @@ class ProfileSetupViewModel extends BaseViewModel {
       }
       notifyListeners();
 
-      // Trigger OCR analysis
+      // trigger ocr analysis
       _isAnalyzingReport = true;
       notifyListeners();
 
@@ -289,7 +289,7 @@ class ProfileSetupViewModel extends BaseViewModel {
     }
   }
 
-  /// Complete profile setup and save to Firestore using Repository
+  /// complete profile setup and save to firestore using repository
   Future<void> completeSetup(VoidCallback onComplete) async {
     final user = _authRepository.currentUser;
     if (user == null) {
@@ -301,7 +301,7 @@ class ProfileSetupViewModel extends BaseViewModel {
     clearError();
 
     try {
-      // Create UserModel from collected data
+      // create usermodel from collected data
       final userModel = UserModel(
         userId: user.uid,
         email: user.email,
@@ -341,7 +341,7 @@ class ProfileSetupViewModel extends BaseViewModel {
         profileInitial: nameController.text.isNotEmpty
             ? nameController.text[0].toUpperCase()
             : 'U',
-        // Generated plan values are written after AI diet generation.
+        // generated plan values are written after ai diet generation.
         currentCalories: 0,
         dailyCalorieGoal: 0,
         workoutsCompletedThisWeek: 4,
@@ -350,11 +350,11 @@ class ProfileSetupViewModel extends BaseViewModel {
         isPremiumMember: false,
       );
 
-      // Save via UserRepository
+      // save via userrepository
       await _userRepository.saveUserProfile(userModel);
       debugPrint('User Profile Saved via Repository');
 
-      // 3. Navigation to Loading Screen (handled by UI)
+      // 3. navigation to loading screen (handled by ui)
       setLoading(false);
       onComplete();
     } catch (e) {

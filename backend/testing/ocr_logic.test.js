@@ -1,6 +1,6 @@
 const { analyzeImage } = require('../ocr_logic');
 
-// Mock global fetch
+// mock global fetch
 global.fetch = jest.fn();
 
 describe('OCR Logic', () => {

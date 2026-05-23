@@ -151,7 +151,7 @@ Return ONLY JSON in this EXACT format:
         // ... add more meals per day
       ]
     }
-    // MUST CONTINUE FOR DAYS 2, 3, 4, 5, 6, 7
+    // must continue for days 2, 3, 4, 5, 6, 7
   ]
 }`;
 

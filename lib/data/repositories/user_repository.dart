@@ -3,7 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:typed_data';
 import '../models/user_model.dart';
 
-/// Repository handling all Firestore operations for User profiles
+/// repository handling all firestore operations for user profiles
 class UserRepository {
   final FirebaseFirestore _firestore;
   final FirebaseStorage _storage;
@@ -12,7 +12,7 @@ class UserRepository {
       : _firestore = firestore ?? FirebaseFirestore.instance,
         _storage = storage ?? FirebaseStorage.instance;
 
-  /// Save or update a full user profile
+  /// save or update a full user profile
   Future<void> saveUserProfile(UserModel user) async {
     if (user.userId == null) throw Exception('User ID is required to save profile');
     
@@ -22,7 +22,7 @@ class UserRepository {
         );
   }
 
-  /// Get a user profile by UID
+  /// get a user profile by uid
   Future<UserModel?> getUserProfile(String uid) async {
     final doc = await _firestore.collection('users').doc(uid).get();
     if (doc.exists && doc.data() != null) {
@@ -31,7 +31,7 @@ class UserRepository {
     return null;
   }
 
-  /// Get a user profile by UID as a stream for real-time updates
+  /// get a user profile by uid as a stream for real-time updates
   Stream<UserModel?> getUserStream(String uid) {
     return _firestore.collection('users').doc(uid).snapshots().map((snapshot) {
       if (snapshot.exists && snapshot.data() != null) {
@@ -41,7 +41,7 @@ class UserRepository {
     });
   }
 
-  /// Update specific fields in a user profile
+  /// update specific fields in a user profile
   Future<void> updateFields(String uid, Map<String, dynamic> data) async {
     await _firestore.collection('users').doc(uid).set(
           data,
@@ -49,22 +49,22 @@ class UserRepository {
         );
   }
 
-  /// Upload profile picture to Firebase Storage and return download URL
-  /// Works on both mobile and web platforms
+  /// upload profile picture to firebase storage and return download url
+  /// works on both mobile and web platforms
   Future<String> uploadProfilePicture(String uid, List<int> fileBytes, String fileName) async {
     try {
       final ref = _storage.ref().child('profile_pictures/$uid.jpg');
       
-      // Upload file bytes (works on both web and mobile)
+      // upload file bytes (works on both web and mobile)
       await ref.putData(
         fileBytes as Uint8List,
         SettableMetadata(contentType: 'image/jpeg'),
       );
       
-      // Get download URL
+      // get download url
       final downloadUrl = await ref.getDownloadURL();
       
-      // Update user profile with new picture URL
+      // update user profile with new picture url
       await updateFields(uid, {'profilePicturePath': downloadUrl});
       
       return downloadUrl;

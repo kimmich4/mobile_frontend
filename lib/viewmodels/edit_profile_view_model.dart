@@ -7,7 +7,7 @@ import '../data/repositories/auth_repository.dart';
 import '../data/repositories/user_repository.dart';
 import 'base_view_model.dart';
 
-/// ViewModel for Edit Profile Screen
+/// viewmodel for edit profile screen
 class EditProfileViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final UserRepository _userRepository;
@@ -15,18 +15,18 @@ class EditProfileViewModel extends BaseViewModel {
   
   UserModel? _originalUser;
 
-  // Basic Information
+  // basic information
   final TextEditingController nameController = TextEditingController();
   final TextEditingController ageController = TextEditingController();
   String _selectedGender = 'Male';
 
-  // Body Metrics
+  // body metrics
   final TextEditingController weightController = TextEditingController();
   final TextEditingController targetWeightController = TextEditingController();
   final TextEditingController heightController = TextEditingController();
   String _selectedActivityLevel = 'Sedentary';
 
-  // Health Information
+  // health information
   final List<String> medicalConditionsOptions = ['Diabetes', 'Hypertension', 'Heart Disease', 'Asthma', 'None'];
   final List<String> _selectedMedicalConditions = [];
   final TextEditingController otherMedicalConditionController = TextEditingController();
@@ -45,11 +45,11 @@ class EditProfileViewModel extends BaseViewModel {
   String? _inBodyReportName;
   final ImagePicker _picker = ImagePicker();
 
-  // Profile Picture
+  // profile picture
   String? _profilePicturePath;
-  String? _selectedProfilePicturePath; // Local path before upload
+  String? _selectedProfilePicturePath; // local path before upload
 
-  // Getters
+  // getters
   String get selectedGender => _selectedGender;
   String get selectedActivityLevel => _selectedActivityLevel;
   List<String> get selectedMedicalConditions => _selectedMedicalConditions;
@@ -71,7 +71,7 @@ class EditProfileViewModel extends BaseViewModel {
   }
 
   void _initAuthListener() {
-    // Listen to auth state changes to reload data when user switches
+    // listen to auth state changes to reload data when user switches
     _authSubscription = _authRepository.authStateChanges.listen((user) {
       if (user != null) {
         loadUserData();
@@ -106,7 +106,7 @@ class EditProfileViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  /// Load user data from Firestore to pre-fill the form
+  /// load user data from firestore to pre-fill the form
   Future<void> loadUserData() async {
     final user = _authRepository.currentUser;
     if (user == null) return;
@@ -150,7 +150,7 @@ class EditProfileViewModel extends BaseViewModel {
     }
   }
 
-  // Setters
+  // setters
   void setSelectedGender(String gender) {
     _selectedGender = gender;
     notifyListeners();
@@ -218,7 +218,7 @@ class EditProfileViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  /// Pick file for medical or inbody report
+  /// pick file for medical or inbody report
   Future<void> pickFile(bool isMedical) async {
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
@@ -231,7 +231,7 @@ class EditProfileViewModel extends BaseViewModel {
     }
   }
 
-  /// Pick profile picture from gallery
+  /// pick profile picture from gallery
   Future<void> pickProfilePicture() async {
     final XFile? image = await _picker.pickImage(
       source: ImageSource.gallery,
@@ -245,7 +245,7 @@ class EditProfileViewModel extends BaseViewModel {
     }
   }
 
-  /// Save profile changes to Firestore
+  /// save profile changes to firestore
   Future<void> saveChanges(VoidCallback onSaved) async {
     final user = _authRepository.currentUser;
     if (user == null) {
@@ -257,10 +257,10 @@ class EditProfileViewModel extends BaseViewModel {
     clearError();
 
     try {
-      // Upload profile picture if a new one was selected
+      // upload profile picture if a new one was selected
       String? uploadedPicturePath = _profilePicturePath;
       if (_selectedProfilePicturePath != null) {
-        // Read file as bytes (works on both web and mobile)
+        // read file as bytes (works on both web and mobile)
         final bytes = await XFile(_selectedProfilePicturePath!).readAsBytes();
         uploadedPicturePath = await _userRepository.uploadProfilePicture(
           user.uid,
@@ -273,7 +273,7 @@ class EditProfileViewModel extends BaseViewModel {
         fullName: nameController.text.trim(),
         age: int.tryParse(ageController.text),
         gender: _selectedGender,
-        // CRITICAL: weightKg is the STARTING weight. Don't overwrite it with current.
+        // critical: weightkg is the starting weight. don't overwrite it with current.
         weightKg: _originalUser?.weightKg ?? double.tryParse(weightController.text),
         currentWeightKg: double.tryParse(weightController.text),
         goalWeightKg: double.tryParse(targetWeightController.text),

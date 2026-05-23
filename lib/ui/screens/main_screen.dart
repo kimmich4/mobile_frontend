@@ -23,7 +23,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // Screens are stateless/stateful widgets, but we don't manage their state here anymore
+  // screens are stateless/stateful widgets, but we don't manage their state here anymore
   final List<Widget> _screens = [
     const HomeScreen(),
     const WorkoutPlanScreen(),
@@ -36,11 +36,11 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    // Register this instance in ViewModel for static access
+    // register this instance in viewmodel for static access
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<MainViewModel>().setInstance();
 
-      // Initialize data when MainScreen loads
+      // initialize data when mainscreen loads
       context.read<DietViewModel>().init();
       context.read<WorkoutViewModel>().init();
     });

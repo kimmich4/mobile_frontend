@@ -5,7 +5,7 @@ import '../data/repositories/diet_repository.dart';
 import '../data/repositories/progress_repository.dart';
 import '../data/repositories/user_repository.dart';
 
-/// ViewModel for Diet Screen — includes meal completion tracking
+/// viewmodel for diet screen - includes meal completion tracking
 class DietViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final DietRepository _dietRepository;
@@ -22,7 +22,7 @@ class DietViewModel extends BaseViewModel {
         _userRepository = userRepository ?? UserRepository(),
         _progressRepository = progressRepository ?? ProgressRepository();
 
-  int _selectedDayIndex = 0; // 0-6 (Mon-Sun)
+  int _selectedDayIndex = 0; // 0-6 (mon-sun)
 
   DietPlan? _dietPlan;
   DietPlan? get dietPlan => _dietPlan;
@@ -33,18 +33,18 @@ class DietViewModel extends BaseViewModel {
   
   String? get userId => _authRepository.currentUser?.uid;
 
-  // Track completed meals per day: key = dayIndex, value = set of meal indices
+  // track completed meals per day: key = dayindex, value = set of meal indices
   final Map<int, Set<int>> _completedMeals = {};
 
-  /// Initialize and fetch data
+  /// initialize and fetch data
   Future<void> init() async {
-    // Default to current weekday (Mon=0 .. Sun=6)
+    // default to current weekday (mon=0 .. sun=6)
     _selectedDayIndex = DateTime.now().weekday - 1; // weekday is 1-7
     await fetchDietPlan();
     await _loadCompletedMeals();
   }
 
-  /// Fetch diet plan
+  /// fetch diet plan
   Future<void> fetchDietPlan() async {
     if (userId == null) return;
     
@@ -61,13 +61,13 @@ class DietViewModel extends BaseViewModel {
     }
   }
 
-  /// Load completed meals from Firestore for today
+  /// load completed meals from firestore for today
   Future<void> _loadCompletedMeals() async {
     if (userId == null) return;
     try {
       final userModel = await _userRepository.getUserProfile(userId!);
       if (userModel != null && userModel.completedMeals.isNotEmpty) {
-        // Load all completed meals across all days from the map
+        // load all completed meals across all days from the map
         _completedMeals.clear();
         userModel.completedMeals.forEach((dayIndex, mealsList) {
           _completedMeals[dayIndex] = Set<int>.from(mealsList);
@@ -77,7 +77,7 @@ class DietViewModel extends BaseViewModel {
     } catch (_) {}
   }
 
-  /// Generate a new diet plan using user profile from Firestore
+  /// generate a new diet plan using user profile from firestore
   Future<void> generateDietPlan() async {
     if (userId == null) {
       setError('User not logged in');
@@ -88,19 +88,19 @@ class DietViewModel extends BaseViewModel {
     clearError();
 
     try {
-      // 1. Fetch User Profile
+      // 1. fetch user profile
       final userModel = await _userRepository.getUserProfile(userId!);
       if (userModel == null) {
         throw Exception('User profile not found. Please complete profile setup.');
       }
 
-      // 2. Generate Plan
+      // 2. generate plan
       _dietPlan = await _dietRepository.generateAndSaveDietPlan(
         userId: userId!,
         userProfile: userModel.toJson(),
       );
 
-      // 3. Sync dailyCalorieGoal to user doc from day 1 of plan
+      // 3. sync dailycaloriegoal to user doc from day 1 of plan
       if (_dietPlan != null && _dietPlan!.days.isNotEmpty) {
         final day1Calories = _dietPlan!.days.first.totalCalories;
         if (day1Calories > 0) {
@@ -119,7 +119,7 @@ class DietViewModel extends BaseViewModel {
     }
   }
 
-  /// Get current day's diet plan
+  /// get current day's diet plan
   DailyDietPlan? get currentDayPlan {
     if (_dietPlan == null || _dietPlan!.days.isEmpty) return null;
     try {
@@ -129,7 +129,7 @@ class DietViewModel extends BaseViewModel {
     }
   }
 
-  /// Get current day's diet data as a Map for UI compatibility
+  /// get current day's diet data as a map for ui compatibility
   Map<String, dynamic> get currentDietData {
     final plan = currentDayPlan;
     if (plan == null) return {};
@@ -151,14 +151,14 @@ class DietViewModel extends BaseViewModel {
     };
   }
 
-  /// Check if a meal is completed
+  /// check if a meal is completed
   bool isMealCompleted(int mealIndex) {
     return _completedMeals[_selectedDayIndex]?.contains(mealIndex) ?? false;
   }
 
-  /// Toggle meal completion — updates calories consumed and progress tracking
+  /// toggle meal completion - updates calories consumed and progress tracking
   Future<void> toggleMealCompletion(int mealIndex) async {
-    // Update local state
+    // update local state
     _completedMeals[_selectedDayIndex] ??= {};
     if (_completedMeals[_selectedDayIndex]!.contains(mealIndex)) {
       _completedMeals[_selectedDayIndex]!.remove(mealIndex);
@@ -167,10 +167,10 @@ class DietViewModel extends BaseViewModel {
     }
     notifyListeners();
 
-    // Persist to Firestore
+    // persist to firestore
     if (userId == null) return;
     try {
-      // Calculate total calories consumed from completed meals
+      // calculate total calories consumed from completed meals
       final plan = currentDayPlan;
       if (plan == null) return;
 
@@ -182,17 +182,17 @@ class DietViewModel extends BaseViewModel {
         }
       }
 
-      // Update the whole completedMeals map in Firestore
+      // update the whole completedmeals map in firestore
       final updatedMealsMap = _completedMeals.map((key, value) => MapEntry(key.toString(), value.toList()));
       
-      // Calculate total calories consumed from completed meals for TODAY
+      // calculate total calories consumed from completed meals for today
       final todayIndex = DateTime.now().weekday - 1;
       
       final Map<String, dynamic> updates = {
          'completedMeals': updatedMealsMap,
       };
       
-      // Only update currentCalories counter if we are modifying today's meals
+      // only update currentcalories counter if we are modifying today's meals
       if (_selectedDayIndex == todayIndex) {
         updates['currentCalories'] = totalConsumed;
       }
@@ -207,12 +207,12 @@ class DietViewModel extends BaseViewModel {
     }
   }
 
-  /// Get count of completed meals for the selected day
+  /// get count of completed meals for the selected day
   int get completedMealsCount {
     return _completedMeals[_selectedDayIndex]?.length ?? 0;
   }
 
-  /// Select a specific day
+  /// select a specific day
   void selectDay(int dayIndex) {
     if (_selectedDayIndex != dayIndex) {
       _selectedDayIndex = dayIndex;
@@ -220,7 +220,7 @@ class DietViewModel extends BaseViewModel {
     }
   }
 
-  /// Get formatted date string
+  /// get formatted date string
   String getFormattedDate() {
     return "Weekly Plan - Day ${_selectedDayIndex + 1}";
   }

@@ -257,7 +257,7 @@ class _AiAssistantScreenState extends State<AiAssistantScreen> {
             ),
           ),
           const SizedBox(height: 16),
-          // Group quick actions in rows of 2 for better layout
+          // group quick actions in rows of 2 for better layout
           Column(
             children: List.generate(
               (viewModel.quickActions.length / 2).ceil(),

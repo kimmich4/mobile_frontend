@@ -2,14 +2,14 @@ import 'base_view_model.dart';
 import '../data/models/message_model.dart';
 import '../data/services/api_service.dart';
 
-/// ViewModel for AI Assistant Screen
+/// viewmodel for ai assistant screen
 class AiAssistantViewModel extends BaseViewModel {
   final ApiService _apiService;
 
   AiAssistantViewModel({ApiService? apiService})
       : _apiService = apiService ?? ApiService();
   
-  // Message history
+  // message history
   final List<ChatMessage> _messages = [
     ChatMessage(
       text: "Hello! I'm your AI fitness assistant. I can help you with personalized diet plans, workout recommendations, and answer any health-related questions. How can I assist you today?",
@@ -35,14 +35,14 @@ class AiAssistantViewModel extends BaseViewModel {
     _prefillText = null;
   }
 
-  // Quick action categories
+  // quick action categories
   final List<QuickAction> quickActions = [
     QuickAction(title: 'Progress', iconName: 'analytics'),
     QuickAction(title: 'Tips', iconName: 'lightbulb'),
     QuickAction(title: 'Alternative', iconName: 'swap_horiz'),
   ];
 
-  /// Handle quick action tap
+  /// handle quick action tap
   void onQuickActionTap(String actionTitle) {
     String message = "";
     bool shouldSend = true;
@@ -70,11 +70,11 @@ class AiAssistantViewModel extends BaseViewModel {
     }
   }
 
-  /// Send message
+  /// send message
   Future<void> sendMessage(String text) async {
     if (text.trim().isEmpty) return;
 
-    // Add user message
+    // add user message
     _messages.add(ChatMessage(
       text: text,
       isUser: true,
@@ -85,14 +85,14 @@ class AiAssistantViewModel extends BaseViewModel {
     notifyListeners();
 
     try {
-      // Prepare history for AI (limit to last 10 messages for context)
+      // prepare history for ai (limit to last 10 messages for context)
       final history = _messages
           .map((m) => m.toJson())
           .toList();
           
       final aiResponse = await _apiService.chatWithAssistant(messages: history);
       
-      // Add AI response
+      // add ai response
       _messages.add(ChatMessage(
         text: aiResponse,
         isUser: false,
@@ -111,7 +111,7 @@ class AiAssistantViewModel extends BaseViewModel {
   }
 }
 
-/// Quick action model
+/// quick action model
 class QuickAction {
   final String title;
   final String iconName;

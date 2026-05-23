@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'base_view_model.dart';
 import '../data/repositories/auth_repository.dart';
 
-/// ViewModel for Splash Screen
+/// viewmodel for splash screen
 class SplashViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   
@@ -24,25 +24,25 @@ class SplashViewModel extends BaseViewModel {
 
   SplashViewModel({AuthRepository? authRepository})
       : _authRepository = authRepository ?? AuthRepository() {
-    // Force sign out on app start as requested
+    // force sign out on app start as requested
     _authRepository.signOut();
   }
 
-  /// Initialize all animations
+  /// initialize all animations
   void initializeAnimations(TickerProvider vsync) {
-    // Main entrance animation
+    // main entrance animation
     mainController = AnimationController(
       vsync: vsync,
       duration: const Duration(milliseconds: 2500),
     );
 
-    // Continuous pulse for the logo
+    // continuous pulse for the logo
     pulseController = AnimationController(
       vsync: vsync,
       duration: const Duration(seconds: 2),
     )..repeat(reverse: true);
 
-    // Loading dots animation
+    // loading dots animation
     loadingController = AnimationController(
       vsync: vsync,
       duration: const Duration(milliseconds: 1200),
@@ -93,7 +93,7 @@ class SplashViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  /// Schedule navigation to onboarding screen
+  /// schedule navigation to onboarding screen
   void scheduleNavigation(BuildContext context, VoidCallback onNavigate) {
     if (_navigationStarted) return;
     _navigationStarted = true;

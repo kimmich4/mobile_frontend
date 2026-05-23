@@ -12,8 +12,8 @@ import '../data/repositories/diet_repository.dart';
 import '../data/repositories/workout_repository.dart';
 import '../data/repositories/auth_repository.dart';
 
-/// ViewModel for Progress Tracking Screen — computes real progress data.
-/// Reads weight logs and daily logs from Firebase for each period.
+/// viewmodel for progress tracking screen - computes real progress data.
+/// reads weight logs and daily logs from firebase for each period.
 class ProgressTrackingViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final ProgressRepository _progressRepository;
@@ -39,12 +39,12 @@ class ProgressTrackingViewModel extends BaseViewModel {
     _initAuthListener();
   }
 
-  int _selectedPeriod = 0; // 0: Week, 1: Month, 2: Year
+  int _selectedPeriod = 0; // 0: week, 1: month, 2: year
   int get selectedPeriod => _selectedPeriod;
 
   String? get userId => _authRepository.currentUser?.uid;
 
-  /// Current period enum
+  /// current period enum
   ProgressPeriod get currentPeriod {
     switch (_selectedPeriod) {
       case 0:  return ProgressPeriod.week;
@@ -54,7 +54,7 @@ class ProgressTrackingViewModel extends BaseViewModel {
     }
   }
 
-  // ── State ──────────────────────────────────────────────────────────────
+  // state
 
   ProgressStats? _stats;
   ProgressStats? get stats => _stats;
@@ -64,23 +64,23 @@ class ProgressTrackingViewModel extends BaseViewModel {
   WorkoutPlan? _homeWorkout;
   WorkoutPlan? _gymWorkout;
 
-  // Weight chart — real daily logs from Firebase
+  // weight chart - real daily logs from firebase
   final List<WeightDataPoint> weightData = [];
 
-  // Calories chart — real Firebase dailyLogs, period-aware
+  // calories chart - real firebase dailylogs, period-aware
   final List<CalorieDataPoint> caloriesData = [];
 
-  // Consistency (weekly workout streak)
+  // consistency (weekly workout streak)
   ConsistencyData _consistencyData = ConsistencyData(days: []);
   ConsistencyData get consistencyData => _consistencyData;
 
-  // Whether a weight save is in progress (for Progress screen log-weight card)
+  // whether a weight save is in progress (for progress screen log-weight card)
   bool _isSavingWeight = false;
   bool get isSavingWeight => _isSavingWeight;
 
-  // ── Computed getters ────────────────────────────────────────────────────
+  // computed getters
 
-  /// Subtitle for weight chart — shows period delta from real stats
+  /// subtitle for weight chart - shows period delta from real stats
   String get weightProgressSubtitle {
     if (_stats == null) return '';
     final lost = _stats!.weightLostKg;
@@ -89,13 +89,13 @@ class ProgressTrackingViewModel extends BaseViewModel {
     return '$direction${lost.toStringAsFixed(1)} kg ${currentPeriod.displayName.toLowerCase()}';
   }
 
-  /// Most recent weight logged in the Progress screen (new field, separate)
+  /// most recent weight logged in the progress screen (new field, separate)
   double? get latestTrackedWeight => _currentUser?.trackedWeightKg;
 
-  /// Original signup weight (unchanged)
+  /// original signup weight (unchanged)
   double? get signupWeight => _currentUser?.weightKg;
 
-  /// Subtitle for workout consistency section
+  /// subtitle for workout consistency section
   String get consistencySubtitle {
     final completed = _consistencyData.days.where((d) => d.isCompleted).length;
     final total = _consistencyData.days.length;
@@ -106,7 +106,7 @@ class ProgressTrackingViewModel extends BaseViewModel {
 
   String get goalEstimate => _stats?.toGoalTime ?? '';
 
-  // ── Auth + stream setup ─────────────────────────────────────────────────
+  // auth + stream setup
 
   void _initAuthListener() {
     _authSubscription = _authRepository.authStateChanges.listen((user) {
@@ -138,13 +138,13 @@ class ProgressTrackingViewModel extends BaseViewModel {
     } catch (_) {}
   }
 
-  // ── Core recompute — now fully Firebase-backed and period-aware ──────────
+  // core recompute - now fully firebase-backed and period-aware
 
   Future<void> _recomputeProgress() async {
     if (_currentUser == null || userId == null) return;
 
     try {
-      // 1. Compute period-aware stats from Firebase
+      // 1. compute period-aware stats from firebase
       _stats = await _progressRepository.computeProgressStats(
         userId!,
         _currentUser!,
@@ -154,22 +154,22 @@ class ProgressTrackingViewModel extends BaseViewModel {
         gymWorkout: _gymWorkout,
       );
 
-      // 2. Persist snapshot to Firebase
+      // 2. persist snapshot to firebase
       await _progressRepository.updateProgressStats(userId!, _stats!);
 
-      // 3. Weight chart — real daily logs from Firebase (period-aware)
+      // 3. weight chart - real daily logs from firebase (period-aware)
       weightData.clear();
       weightData.addAll(
         await _progressRepository.fetchWeightLogsForPeriod(userId!, currentPeriod),
       );
 
-      // 4. Calorie chart — real Firebase dailyLogs (period-aware)
+      // 4. calorie chart - real firebase dailylogs (period-aware)
       caloriesData.clear();
       caloriesData.addAll(
         await _progressRepository.fetchCaloriesForPeriod(userId!, currentPeriod),
       );
 
-      // 5. Build workout consistency from user doc (weekly)
+      // 5. build workout consistency from user doc (weekly)
       _buildConsistencyFromUserData();
 
       if (!_initialized) _initialized = true;
@@ -179,7 +179,7 @@ class ProgressTrackingViewModel extends BaseViewModel {
     }
   }
 
-  /// Build consistency data from user doc (weekly exercise completions)
+  /// build consistency data from user doc (weekly exercise completions)
   void _buildConsistencyFromUserData() {
     if (_currentUser == null) return;
     const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -225,7 +225,7 @@ class ProgressTrackingViewModel extends BaseViewModel {
     _consistencyData = ConsistencyData(days: days);
   }
 
-  // ── Public API ──────────────────────────────────────────────────────────
+  // public api
 
   Future<void> init() async {
     if (!_initialized) {
@@ -257,7 +257,7 @@ class ProgressTrackingViewModel extends BaseViewModel {
     }
   }
 
-  /// Switch period and immediately reload all data from Firebase
+  /// switch period and immediately reload all data from firebase
   void setSelectedPeriod(int period) {
     if (_selectedPeriod == period) return;
     _selectedPeriod = period;
@@ -265,18 +265,18 @@ class ProgressTrackingViewModel extends BaseViewModel {
     fetchProgressData();
   }
 
-  /// Log a new weight entry from the Progress Tracking screen.
-  /// Saves `trackedWeightKg` to the user doc AND appends to `weightLogs`.
-  /// Does NOT touch existing `weightKg` or `currentWeightKg` fields.
+  /// log a new weight entry from the progress tracking screen.
+  /// saves trackedweightkg to the user doc and appends to weightlogs.
+  /// does not touch existing weightkg or currentweightkg fields.
   Future<void> logNewWeight(double newWeight) async {
     if (userId == null) return;
     _isSavingWeight = true;
     notifyListeners();
     try {
-      // 1. Update user document
+      // 1. update user document
       await _userRepository.updateFields(userId!, {'trackedWeightKg': newWeight});
 
-      // 2. Append to weightLogs history
+      // 2. append to weightlogs history
       await FirebaseFirestore.instance
           .collection('users')
           .doc(userId!)
@@ -286,7 +286,7 @@ class ProgressTrackingViewModel extends BaseViewModel {
         'loggedAt': FieldValue.serverTimestamp(),
       });
 
-      // 3. Optimistic local update + recompute
+      // 3. optimistic local update + recompute
       if (_currentUser != null) {
         _currentUser = _currentUser!.copyWith(trackedWeightKg: newWeight);
         await _recomputeProgress();

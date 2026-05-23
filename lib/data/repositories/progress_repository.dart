@@ -4,9 +4,9 @@ import '../models/user_model.dart';
 import '../models/diet_model.dart';
 import '../models/workout_model.dart';
 
-// ---------------------------------------------------------------------------
-// Helper: date range for a given period
-// ---------------------------------------------------------------------------
+//
+// helper: date range for a given period
+//
 class _DateRange {
   final DateTime start;
   final DateTime end;
@@ -22,7 +22,7 @@ class ProgressRepository {
   ProgressRepository({FirebaseFirestore? firestore})
     : _firestore = firestore ?? FirebaseFirestore.instance;
 
-  // ─── Firestore collection helpers ───────────────────────────────────────
+  // firestore collection helpers
 
   CollectionReference<Map<String, dynamic>> _getProgressCollection(
     String userId,
@@ -36,15 +36,15 @@ class ProgressRepository {
     String userId,
   ) => _firestore.collection('users').doc(userId).collection('weightLogs');
 
-  // ─── Period date-range helper ────────────────────────────────────────────
+  // period date-range helper
 
-  /// Returns [start, end] DateTime for the selected period, always in the
+  /// returns [start, end] datetime for the selected period, always in the
   /// current calendar week / month / year.
   _DateRange _getPeriodDateRange(ProgressPeriod period) {
     final now = DateTime.now();
     switch (period) {
       case ProgressPeriod.week:
-        // Monday 00:00 → Sunday 23:59:59
+        // monday 00:00 to sunday 23:59:59
         final monday = now.subtract(Duration(days: now.weekday - 1));
         final start = DateTime(monday.year, monday.month, monday.day);
         final end = start.add(
@@ -72,13 +72,13 @@ class ProgressRepository {
     }
   }
 
-  // ─── WEIGHT LOGS — real Firebase read ───────────────────────────────────
+  // weight logs - real firebase read
 
-  /// Fetch actual per-day weight logs for a given period from Firebase.
+  /// fetch actual per-day weight logs for a given period from firebase.
   ///
-  /// Week  → 7 slots (Mon–Sun), only logged days have a point.
-  /// Month → one point per logged day (x-label = day-of-month number).
-  /// Year  → one point per month that has logs (x-label = 'Jan', 'Feb', …).
+  /// week to 7 slots (mon-sun), only logged days have a point.
+  /// month to one point per logged day (x-label = day-of-month number).
+  /// year to one point per month that has logs (x-label = 'jan', 'feb', ...).
   Future<List<WeightDataPoint>> fetchWeightLogsForPeriod(
     String userId,
     ProgressPeriod period,
@@ -222,13 +222,13 @@ class ProgressRepository {
     return points;
   }
 
-  // ─── CALORIE DATA — real Firebase read ──────────────────────────────────
+  // calorie data - real firebase read
 
-  /// Fetch calorie data for a period from Firebase `dailyLogs`.
+  /// fetch calorie data for a period from firebase dailylogs.
   ///
-  /// Week  → 7 day bars  (Mon–Sun).
-  /// Month → 4-5 weekly  bars  (W1–W4/W5, averaged).
-  /// Year  → 12 monthly  bars  (Jan–Dec, averaged per day).
+  /// week to 7 day bars (mon-sun).
+  /// month to 4-5 weekly bars (w1-w4/w5, averaged).
+  /// year to 12 monthly bars (jan-dec, averaged per day).
   Future<List<CalorieDataPoint>> fetchCaloriesForPeriod(
     String userId,
     ProgressPeriod period,
@@ -236,7 +236,7 @@ class ProgressRepository {
     try {
       final range = _getPeriodDateRange(period);
 
-      // dailyLogs docs use YYYY-MM-DD as ID — range query works directly
+      // dailylogs docs use yyyy-mm-dd as id - range query works directly
       final snapshot =
           await _getDailyLogsCollection(userId)
               .where(
@@ -246,7 +246,7 @@ class ProgressRepository {
               .where(FieldPath.documentId, isLessThanOrEqualTo: range.endStr)
               .get();
 
-      // Build map: dateStr → (burned, consumed)
+      // build map: datestr to (burned, consumed)
       final Map<String, _RawCalorieLog> byDate = {};
       for (final doc in snapshot.docs) {
         final data = doc.data();
@@ -268,7 +268,7 @@ class ProgressRepository {
     }
   }
 
-  /// Week: 7 daily bars Mon–Sun.
+  /// week: 7 daily bars mon-sun.
   List<CalorieDataPoint> _buildWeeklyCaloriePoints(
     Map<String, _RawCalorieLog> byDate,
     DateTime monday,
@@ -286,16 +286,16 @@ class ProgressRepository {
     });
   }
 
-  /// Month: group days into ISO weeks within the month. Returns W1–W4 (or W5).
+  /// month: group days into iso weeks within the month. returns w1-w4 (or w5).
   List<CalorieDataPoint> _buildMonthlyCaloriePoints(
     Map<String, _RawCalorieLog> byDate,
     DateTime monthStart,
   ) {
-    // Determine how many weeks the month spans
+    // determine how many weeks the month spans
     final Map<int, List<_RawCalorieLog>> byWeek = {};
     for (final entry in byDate.entries) {
       final date = DateTime.parse(entry.key);
-      // week index within month (0-based): day 1-7 = W0, 8-14 = W1 ...
+      // week index within month (0-based): day 1-7 = w0, 8-14 = w1 ...
       final weekIdx = (date.day - 1) ~/ 7;
       byWeek.putIfAbsent(weekIdx, () => []).add(entry.value);
     }
@@ -325,7 +325,7 @@ class ProgressRepository {
     return points;
   }
 
-  /// Year: 12 monthly bars — average burned/consumed per logged day in each month.
+  /// year: 12 monthly bars - average burned/consumed per logged day in each month.
   List<CalorieDataPoint> _buildYearlyCaloriePoints(
     Map<String, _RawCalorieLog> byDate,
   ) {
@@ -373,10 +373,10 @@ class ProgressRepository {
     });
   }
 
-  // ─── PROGRESS STATS — period-aware ──────────────────────────────────────
+  // progress stats - period-aware
 
-  /// Compute progress stats dynamically.
-  /// For weight change and workout counts, reads real Firebase data for the period.
+  /// compute progress stats dynamically.
+  /// for weight change and workout counts, reads real firebase data for the period.
   Future<ProgressStats> computeProgressStats(
     String userId,
     UserModel user,
@@ -387,14 +387,14 @@ class ProgressRepository {
   }) async {
     final range = _getPeriodDateRange(period);
 
-    // ── 1. Weight calculations from Firebase weightLogs ──
+    // 1. weight calculations from firebase weightlogs
     final initialWeight = user.weightKg ?? 0.0;
     double currentWeight =
         user.trackedWeightKg ?? user.currentWeightKg ?? initialWeight;
     double periodStartWeight = initialWeight;
 
     try {
-      // Fetch logs sorted ascending for this period
+      // fetch logs sorted ascending for this period
       final weightSnap =
           await _getWeightLogsCollection(userId)
               .where(
@@ -416,29 +416,29 @@ class ProgressRepository {
             (weightSnap.docs.last.data()['trackedWeightKg'] as num?)
                 ?.toDouble();
 
-        // Always use first log of the period as baseline
+        // always use first log of the period as baseline
         if (firstLog != null) periodStartWeight = firstLog;
         if (lastLog != null) currentWeight = lastLog;
       }
     } catch (_) {
-      // Fallback to user model weights if Firebase query fails
+      // fallback to user model weights if firebase query fails
     }
 
     final weightLost = periodStartWeight - currentWeight; // positive = lost
     final goalWeight = user.goalWeightKg ?? currentWeight;
     final toGoal = (currentWeight - goalWeight).abs();
 
-    // ── 2. Avg calories ──
+    // 2. avg calories
     int avgCaloriesBurned = 0;
     if (period == ProgressPeriod.week) {
-      // Always calculate current week from raw user data (100% accurate)
+      // always calculate current week from raw user data (100% accurate)
       avgCaloriesBurned = _computeWeeklyAvgCaloriesFromPlan(
         user,
         homeWorkout,
         gymWorkout,
       );
     } else {
-      // Calculate month/year from dailyLogs
+      // calculate month/year from dailylogs
       try {
         final calSnap =
             await _getDailyLogsCollection(userId)
@@ -461,10 +461,10 @@ class ProgressRepository {
       } catch (_) {}
     }
 
-    // ── 3. Workout count ──
+    // 3. workout count
     int workoutsCompleted = 0;
     if (period == ProgressPeriod.week) {
-      // Calculate week workout count cleanly from user struct
+      // calculate week workout count cleanly from user struct
       workoutsCompleted = _computeWeeklyWorkoutCount(
         user,
         homeWorkout,
@@ -488,7 +488,7 @@ class ProgressRepository {
       } catch (_) {}
     }
 
-    // Workout goal varies by period
+    // workout goal varies by period
     int workoutsGoal;
     switch (period) {
       case ProgressPeriod.week:
@@ -502,7 +502,7 @@ class ProgressRepository {
         break;
     }
 
-    // ── 4. Time to goal estimate ──
+    // 4. time to goal estimate
     final toGoalTime = _estimateTimeToGoal(toGoal, weightLost);
 
     String toGoalLabel = 'To Goal';
@@ -512,7 +512,7 @@ class ProgressRepository {
       toGoalLabel = 'To Gain';
     }
 
-    // ── 5. Period label for weight card ──
+    // 5. period label for weight card
     final weightLostPeriod =
         weightLost >= 0
             ? 'lost this ${period.displayName.toLowerCase()}'
@@ -531,7 +531,7 @@ class ProgressRepository {
     );
   }
 
-  /// Weekly calorie computation from the exact plan completion state
+  /// weekly calorie computation from the exact plan completion state
   int _computeWeeklyAvgCaloriesFromPlan(
     UserModel user,
     WorkoutPlan? homeWorkout,
@@ -564,7 +564,7 @@ class ProgressRepository {
     return todayWeekday > 0 ? (totalBurnedCals / todayWeekday).round() : 0;
   }
 
-  /// Weekly workout completion count from exact plan completion state
+  /// weekly workout completion count from exact plan completion state
   int _computeWeeklyWorkoutCount(
     UserModel user,
     WorkoutPlan? homeWorkout,
@@ -600,7 +600,7 @@ class ProgressRepository {
     return completedDays;
   }
 
-  /// Estimate time remaining to reach goal weight.
+  /// estimate time remaining to reach goal weight.
   String _estimateTimeToGoal(double toGoal, double weightLost) {
     if (toGoal < 0.5) return 'Goal reached! 🎉';
     if (weightLost.abs() > 0.1) {
@@ -617,9 +617,9 @@ class ProgressRepository {
     return '~$months months';
   }
 
-  // ─── LEGACY / PERSISTENCE METHODS (unchanged) ────────────────────────────
+  // legacy / persistence methods (unchanged)
 
-  /// Save or update progress stats snapshot to Firebase
+  /// save or update progress stats snapshot to firebase
   Future<void> updateProgressStats(String userId, ProgressStats stats) async {
     try {
       await _getProgressCollection(userId).doc('currentStats').set({
@@ -637,7 +637,7 @@ class ProgressRepository {
     } catch (_) {}
   }
 
-  /// Log a completed workout for a specific day
+  /// log a completed workout for a specific day
   Future<void> logWorkoutCompletion(
     String userId,
     String dayName,
@@ -672,7 +672,7 @@ class ProgressRepository {
     }
   }
 
-  /// Fetch user's current progress stats snapshot (legacy — kept for backward compat)
+  /// fetch user's current progress stats snapshot (legacy - kept for backward compat)
   Future<ProgressStats?> getProgressStats(String userId) async {
     try {
       final doc =
@@ -697,7 +697,7 @@ class ProgressRepository {
     }
   }
 
-  /// Get daily logs consistency (legacy — kept for backward compat)
+  /// get daily logs consistency (legacy - kept for backward compat)
   Future<List<WorkoutDayStatus>> getWeeklyConsistency(String userId) async {
     const dayLabels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     try {
@@ -735,7 +735,7 @@ class ProgressRepository {
   }
 }
 
-// ─── Internal helpers ───────────────────────────────────────────────────────
+// internal helpers
 
 class _RawWeightLog {
   final DateTime date;

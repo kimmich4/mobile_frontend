@@ -172,7 +172,7 @@ class ProfileSetupScreen extends StatelessWidget {
         const AnimateIn(child: Text('Health Information', style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400))),
         const SizedBox(height: 24),
         
-        // Medical Conditions
+        // medical conditions
         AnimateIn(delay: const Duration(milliseconds: 200), child: _buildSectionTitle('Medical Conditions')),
         const SizedBox(height: 16),
         AnimateIn(
@@ -190,7 +190,7 @@ class ProfileSetupScreen extends StatelessWidget {
 
         const SizedBox(height: 24),
         
-        // Allergies
+        // allergies
         AnimateIn(delay: const Duration(milliseconds: 400), child: _buildSectionTitle('Allergies')),
         const SizedBox(height: 16),
         AnimateIn(
@@ -220,7 +220,7 @@ class ProfileSetupScreen extends StatelessWidget {
 
         const SizedBox(height: 24),
 
-        // Current Injuries
+        // current injuries
         AnimateIn(delay: const Duration(milliseconds: 600), child: _buildSectionTitle('Current Injuries')),
         const SizedBox(height: 16),
         AnimateIn(
@@ -251,7 +251,7 @@ class ProfileSetupScreen extends StatelessWidget {
         const AnimateIn(child: Text('Goals & Experience', style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400))),
         const SizedBox(height: 24),
         
-        // Fitness Goals
+        // fitness goals
         AnimateIn(delay: const Duration(milliseconds: 200), child: _buildSectionTitle('Fitness Goals')),
         const SizedBox(height: 16),
         AnimateIn(
@@ -269,7 +269,7 @@ class ProfileSetupScreen extends StatelessWidget {
 
         const SizedBox(height: 24),
         
-        // Experience Level
+        // experience level
         AnimateIn(delay: const Duration(milliseconds: 400), child: _buildSectionTitle('Experience Level')),
         const SizedBox(height: 16),
         AnimateIn(
@@ -422,7 +422,7 @@ class ProfileSetupScreen extends StatelessWidget {
             width: 1.60,
             color: isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5),
           ),
-          borderRadius: BorderRadius.circular(50), // Fully rounded
+          borderRadius: BorderRadius.circular(50), // fully rounded
         ),
       ),
       child: Text(

@@ -49,9 +49,9 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return Consumer<SplashViewModel>(
       builder: (context, viewModel, child) {
-        // Ensure animations are initialized to avoid null errors if build happens before init (rare but possible)
+        // ensure animations are initialized to avoid null errors if build happens before init (rare but possible)
         if (!viewModel.isInitialized) {
-           return Container(color: const Color(0xFF003135)); // Return background color while initializing
+           return Container(color: const Color(0xFF003135)); // return background color while initializing
         }
         
         return Scaffold(

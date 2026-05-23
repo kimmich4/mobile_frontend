@@ -1,9 +1,9 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    // the flutter gradle plugin must be applied after the android and kotlin gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
-    // Add the Google services Gradle plugin
+    // add the google services gradle plugin
     id("com.google.gms.google-services")
 }
 
@@ -22,11 +22,11 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // todo: specify your own unique application id (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.mobile_frontend"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = 23 // Firebase needs at least 21 or 23 for BoM/some features
+        // you can update the following values to match your application needs.
+        // for more information, see: https://flutter.dev/to/review-gradle-config.
+        minSdk = 23 // firebase needs at least 21 or 23 for bom/some features
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
@@ -34,8 +34,8 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
+            // todo: add your own signing config for the release build.
+            // signing with the debug keys for now, so flutter run --release works.
             signingConfig = signingConfigs.getByName("debug")
         }
     }
@@ -46,14 +46,14 @@ flutter {
 }
 
 dependencies {
-  // Import the Firebase BoM
+  // import the firebase bom
   implementation(platform("com.google.firebase:firebase-bom:34.9.0"))
 
-  // TODO: Add the dependencies for Firebase products you want to use
-  // When using the BoM, don't specify versions in Firebase dependencies
+  // todo: add the dependencies for firebase products you want to use
+  // when using the bom, don't specify versions in firebase dependencies
   implementation("com.google.firebase:firebase-analytics")
 
-  // Add the dependencies for any other desired Firebase products
+  // add the dependencies for any other desired firebase products
   // https://firebase.google.com/docs/android/setup#available-libraries
 }
 

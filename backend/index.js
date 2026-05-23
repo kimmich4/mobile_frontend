@@ -14,9 +14,9 @@ const app = express();
 app.use(express.json({ limit: '50mb' }));
 app.use(cors());
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Route: AI Chat
-// ─────────────────────────────────────────────────────────────────────────────
+//
+// route: ai chat
+//
 app.post('/ai/chat', async (req, res) => {
     const { messages } = req.body;
 
@@ -32,9 +32,9 @@ app.post('/ai/chat', async (req, res) => {
     }
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Route: Analyze Medical / InBody Report (OCR)
-// ─────────────────────────────────────────────────────────────────────────────
+//
+// route: analyze medical / inbody report (ocr)
+//
 app.post('/ai/analyze-report', async (req, res) => {
     const { base64Image, type } = req.body;
 
@@ -50,22 +50,22 @@ app.post('/ai/analyze-report', async (req, res) => {
     }
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Route: Generate 7-Day Diet Plan
-// ─────────────────────────────────────────────────────────────────────────────
+//
+// route: generate 7-day diet plan
+//
 app.post('/ai/generate-diet', async (req, res) => {
     const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, disliked_foods, injuries, experience_level, training_days_per_week, preferred_workout_split, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Diet requested for ${fullName || userId}`);
 
     try {
-        // Merge "other" custom text into relevant fields
+        // merge "other" custom text into relevant fields
         const allHealthConditions = [health_conditions, other_medical].filter(Boolean).join(', ');
         const allAllergies = [allergies, other_allergy].filter(Boolean).join(', ');
         const dislikedFoods = disliked_foods || '';
         const allInjuries = [injuries, other_injury].filter(Boolean).join(', ');
         const allGoals = [goal, other_fitness_goal].filter(Boolean).join(', ');
 
-        // 1. Define vector search string
+        // 1. define vector search string
         const searchQuery = buildDietSearchQuery({
             healthConditions: allHealthConditions,
             allergies: [allAllergies, dislikedFoods && `Disliked foods to avoid: ${dislikedFoods}`].filter(Boolean).join(', '),
@@ -74,12 +74,12 @@ app.post('/ai/generate-diet', async (req, res) => {
             inbodyReport: inbody_report_text
         });
 
-        // 2. Calculate calorie targets
+        // 2. calculate calorie targets
         const bmr = calculateBMR(weight_kg, height_cm, age, gender || 'male');
         const tdee = calculateTDEE(bmr, activity_level || 'moderate');
         const targetCalories = adjustCalories(tdee, allGoals);
 
-        // 3. Build generic context template (LangChain injects Vector details into {{VECTOR_CONTEXT}})
+        // 3. build generic context template (langchain injects vector details into {{vectorcontext}})
         const contextPrefix = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
 Metrics: Current Weight: ${weight_kg}kg, Target Weight: ${target_weight_kg || 'Not specified'}kg, Height: ${height_cm}cm. 
@@ -96,7 +96,7 @@ InBody Report Findings: ${inbody_report_text || 'None provided'}.
 Vector Database Constraints: {{VECTOR_CONTEXT}}
 `;
 
-        // 4. Build prompt task
+        // 4. build prompt task
         const task = `Create a 7-day diet plan (Day 1 to Day 7). 
 You MUST provide EXACTLY 7 DAYS in the "days" array. DO NOT stop before Day 7.
 
@@ -144,11 +144,11 @@ Return ONLY JSON in this EXACT format:
         // ... add more meals per day
       ]
     }
-    // MUST CONTINUE FOR DAYS 2, 3, 4, 5, 6, 7
+    // must continue for days 2, 3, 4, 5, 6, 7
   ]
 }`;
 
-        // 5. Execute the full LangChain orchestration
+        // 5. execute the full langchain orchestration
         const aiResponse = await ragChain.invoke({ searchQuery, contextPrefix, task });
         res.json(JSON.parse(aiResponse));
     } catch (e) {
@@ -157,15 +157,15 @@ Return ONLY JSON in this EXACT format:
     }
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Route: Generate 7-Day Workout Plan
-// ─────────────────────────────────────────────────────────────────────────────
+//
+// route: generate 7-day workout plan
+//
 app.post('/ai/generate-workout', async (req, res) => {
     const { userId, fullName, age, height_cm, weight_kg, target_weight_kg, gender, activity_level, goal, health_conditions, allergies, injuries, experience_level, training_days_per_week, preferred_workout_split, other_medical, other_allergy, other_injury, other_fitness_goal, other_experience, medical_report_text, inbody_report_text } = req.body;
     console.log(`Workout requested for ${fullName || userId}`);
 
     try {
-        // Merge "other" custom text into relevant fields
+        // merge "other" custom text into relevant fields
         const allHealthConditions = [health_conditions, other_medical].filter(Boolean).join(', ');
         const allAllergies = [allergies, other_allergy].filter(Boolean).join(', ');
         const allInjuries = [injuries, other_injury].filter(Boolean).join(', ');
@@ -174,7 +174,7 @@ app.post('/ai/generate-workout', async (req, res) => {
         const trainingDaysInfo = training_days_per_week || 7;
         const splitInfo = preferred_workout_split || 'Not specified';
 
-        // 1. Define vector search string
+        // 1. define vector search string
         const searchQuery = buildWorkoutSearchQuery({
             healthConditions: allHealthConditions,
             injuries: allInjuries,
@@ -184,12 +184,12 @@ app.post('/ai/generate-workout', async (req, res) => {
             inbodyReport: inbody_report_text
         });
 
-        // 2. Calculate calorie targets (for context)
+        // 2. calculate calorie targets (for context)
         const bmr = calculateBMR(weight_kg, height_cm, age, gender || 'male');
         const tdee = calculateTDEE(bmr, activity_level || 'moderate');
         const targetCalories = adjustCalories(tdee, allGoals);
 
-        // 3. Build generic context template (LangChain injects Vector details into {{VECTOR_CONTEXT}})
+        // 3. build generic context template (langchain injects vector details into {{vectorcontext}})
         const contextPrefix = `
 User Profile: ${fullName}, ${age} years old, ${gender}. 
 Metrics: Current Weight: ${weight_kg}kg, Target Weight: ${target_weight_kg || 'Not specified'}kg, Height: ${height_cm}cm.
@@ -207,7 +207,7 @@ InBody Report Findings: ${inbody_report_text || 'None provided'}.
 Vector Database Constraints: {{VECTOR_CONTEXT}}
 `;
 
-        // 4. Build prompt task
+        // 4. build prompt task
         const task = `Create a 7-day exercise plan.
 1. For EACH day, provide TWO complete plans: one for "home" and one for "gym".
 2. Include warm-up, main exercises, and cool-down.
@@ -228,7 +228,7 @@ Return ONLY JSON in this format:
   }
 }`;
 
-        // 5. Execute the full LangChain orchestration
+        // 5. execute the full langchain orchestration
         const aiResponse = await ragChain.invoke({ searchQuery, contextPrefix, task });
         res.json(JSON.parse(aiResponse));
     } catch (e) {
@@ -237,9 +237,9 @@ Return ONLY JSON in this format:
     }
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Route: YouTube Video Search
-// ─────────────────────────────────────────────────────────────────────────────
+//
+// route: youtube video search
+//
 app.post('/ai/search-video', async (req, res) => {
     const { query } = req.body;
     if (!query) {
@@ -260,9 +260,9 @@ app.post('/ai/search-video', async (req, res) => {
     }
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Route: Health Check
-// ─────────────────────────────────────────────────────────────────────────────
+//
+// route: health check
+//
 app.get('/health', (req, res) => res.json({ status: 'ok', environment: 'BypassMode' }));
 
 const PORT = 3000;

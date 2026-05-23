@@ -1,9 +1,9 @@
 require("dotenv").config();
 
-// 🔹 Helper: Analyze Image (OCR/Report Extraction)
+// helper: analyze image (ocr/report extraction)
 async function analyzeImage(base64Image, type) {
     try {
-        console.log(`🔍 Analyzing ${type} report using Llama 3.2 Vision (v4)...`);
+        console.log(`analyzing ${type} report using llama 3.2 vision (v4)...`);
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -45,7 +45,7 @@ async function analyzeImage(base64Image, type) {
         const data = await response.json();
         const extractedText = data.choices?.[0]?.message?.content || "No data extracted.";
 
-        console.log(`✅ Extracted Text from ${type} report:`);
+        console.log(`extracted text from ${type} report:`);
         console.log("-----------------------------------------");
         console.log(extractedText);
         console.log("-----------------------------------------");

@@ -16,7 +16,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
   @override
   void initState() {
     super.initState();
-    // Initialize progress data when screen loads
+    // initialize progress data when screen loads
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<ProgressTrackingViewModel>().init();
     });
@@ -358,7 +358,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     BuildContext context,
     ProgressTrackingViewModel viewModel,
   ) {
-    // Determine subtitle icon direction
+    // determine subtitle icon direction
     final isGained =
         viewModel.weightProgressSubtitle.contains('+') ||
         viewModel.weightProgressSubtitle.contains('gained');
@@ -402,7 +402,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                             final int x = value.toInt();
                             String label = '';
                             if (viewModel.selectedPeriod == 0) {
-                              // Week
+                              // week
                               const wLabels = [
                                 'Mon',
                                 'Tue',
@@ -414,12 +414,12 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                               ];
                               if (x >= 0 && x < 7) label = wLabels[x];
                             } else if (viewModel.selectedPeriod == 1) {
-                              // Month
+                              // month
                               if (x >= 1 && x <= 31) label = x.toString();
-                              // Only show every 5th day label, plus 1st, to avoid overlap
+                              // only show every 5th day label, plus 1st, to avoid overlap
                               if (x != 1 && x % 5 != 0) label = '';
                             } else {
-                              // Year
+                              // year
                               const yLabels = [
                                 'Jan',
                                 'Feb',
@@ -435,7 +435,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                                 'Dec',
                               ];
                               if (x >= 1 && x <= 12) label = yLabels[x - 1];
-                              // Only show every 2nd or 3rd month if overlap occurs, but 12 fits usually.
+                              // only show every 2nd or 3rd month if overlap occurs, but 12 fits usually.
                             }
 
                             if (label.isEmpty) return const SizedBox();
@@ -530,7 +530,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                         getTooltipColor: (_) => const Color(0xFF024950),
                         getTooltipItems: (touchedSpots) {
                           return touchedSpots.map((spot) {
-                            // Find the data point that matches this nearly exact X coordinate
+                            // find the data point that matches this nearly exact x coordinate
                             final point = viewModel.weightData.firstWhere(
                               (d) => (d.x - spot.x).abs() < 0.0001,
                               orElse:
@@ -562,7 +562,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     BuildContext context,
     ProgressTrackingViewModel viewModel,
   ) {
-    // Compute dynamic maxY from actual data
+    // compute dynamic maxy from actual data
     double maxY = 500;
     for (final point in viewModel.caloriesData) {
       if (point.burned > maxY) maxY = point.burned.toDouble();
@@ -906,7 +906,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     );
   }
 
-  // --- Chart helpers ---
+  // chart helpers
 
   double _getWeightMinY(ProgressTrackingViewModel viewModel) {
     if (viewModel.weightData.isEmpty) return 0;
@@ -931,7 +931,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     return 5;
   }
 
-  // --- Log Weight Card ---
+  // log weight card
 
   Widget _buildLogWeightCard(
     BuildContext context,
@@ -968,7 +968,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Title row
+          // title row
           Row(
             children: [
               Container(
@@ -998,10 +998,10 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
             ],
           ),
           const SizedBox(height: 20),
-          // Weight comparison row
+          // weight comparison row
           Row(
             children: [
-              // Starting weight tile
+              // starting weight tile
               Expanded(
                 child: _buildWeightTile(
                   context,
@@ -1014,7 +1014,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                   iconColor: const Color(0xFFAFDDE5),
                 ),
               ),
-              // Arrow / diff indicator
+              // arrow / diff indicator
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Column(
@@ -1050,7 +1050,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
                   ],
                 ),
               ),
-              // Current tracked weight tile
+              // current tracked weight tile
               Expanded(
                 child: _buildWeightTile(
                   context,
@@ -1067,7 +1067,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
             ],
           ),
           const SizedBox(height: 20),
-          // Log button
+          // log button
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
@@ -1153,7 +1153,7 @@ class _ProgressTrackingScreenState extends State<ProgressTrackingScreen> {
     ProgressTrackingViewModel viewModel,
   ) {
     final TextEditingController weightController = TextEditingController();
-    // Pre-fill with last tracked or signup weight
+    // pre-fill with last tracked or signup weight
     final prefill = viewModel.latestTrackedWeight ?? viewModel.signupWeight;
     if (prefill != null) {
       weightController.text = prefill.toStringAsFixed(1);

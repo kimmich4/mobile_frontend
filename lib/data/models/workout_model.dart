@@ -1,9 +1,9 @@
-/// Represents a single exercise
+/// represents a single exercise
 class Exercise {
   final int id;
   final String name;
-  final String difficulty; // 'Easy', 'Medium', 'Hard'
-  final String equipment;  // 'Bodyweight', 'Barbell', etc.
+  final String difficulty; // 'easy', 'medium', 'hard'
+  final String equipment;  // 'bodyweight', 'barbell', etc.
   final String sets;       // e.g., "3"
   final String reps;       // e.g., "15" or "60s"
   final int calories;
@@ -42,7 +42,7 @@ class Exercise {
   }
 }
 
-/// Represents a single day in a workout plan
+/// represents a single day in a workout plan
 class WorkoutDay {
   final int day;
   final List<Exercise> exercises;
@@ -69,9 +69,9 @@ class WorkoutDay {
   }
 }
 
-/// Represents a workout plan (Home or Gym)
+/// represents a workout plan (home or gym)
 class WorkoutPlan {
-  final String title; // e.g., 'Upper Body Strength'
+  final String title; // e.g., 'upper body strength'
   final List<WorkoutDay> days;
 
   WorkoutPlan({
@@ -114,9 +114,9 @@ class WorkoutPlan {
   }
 }
 
-/// Represents workout calendar day status
+/// represents workout calendar day status
 class WorkoutCalendarDay {
-  final String dayName; // 'Mon', 'Tue', etc.
+  final String dayName; // 'mon', 'tue', etc.
   final bool isCompleted;
 
   WorkoutCalendarDay({

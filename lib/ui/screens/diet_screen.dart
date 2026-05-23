@@ -196,7 +196,7 @@ class DietScreen extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          // Progress bar for meal completion
+          // progress bar for meal completion
           Container(
             height: 8,
             clipBehavior: Clip.antiAlias,

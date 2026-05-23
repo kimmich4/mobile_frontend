@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-/// Base ViewModel class that all ViewModels should extend
-/// Provides common functionality like loading state and error handling
+/// base viewmodel class that all viewmodels should extend
+/// provides common functionality like loading state and error handling
 abstract class BaseViewModel extends ChangeNotifier {
   bool _isLoading = false;
   String? _error;
@@ -11,21 +11,21 @@ abstract class BaseViewModel extends ChangeNotifier {
   String? get error => _error;
   bool get isDisposed => _disposed;
 
-  /// Set loading state and notify listeners
+  /// set loading state and notify listeners
   void setLoading(bool value) {
     if (_disposed) return;
     _isLoading = value;
     notifyListeners();
   }
 
-  /// Set error message and notify listeners
+  /// set error message and notify listeners
   void setError(String? value) {
     if (_disposed) return;
     _error = value;
     notifyListeners();
   }
 
-  /// Clear any error messages
+  /// clear any error messages
   void clearError() {
     if (_disposed) return;
     _error = null;

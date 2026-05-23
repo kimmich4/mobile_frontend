@@ -7,12 +7,12 @@ G_DECLARE_FINAL_TYPE(MyApplication, my_application, MY, APPLICATION,
                      GtkApplication)
 
 /**
- * my_application_new:
+ * myapplicationnew:
  *
- * Creates a new Flutter-based application.
+ * creates a new flutter-based application.
  *
- * Returns: a new #MyApplication.
+ * returns: a new #myapplication.
  */
 MyApplication* my_application_new();
 
-#endif  // FLUTTER_MY_APPLICATION_H_
+#endif  // fluttermyapplicationh

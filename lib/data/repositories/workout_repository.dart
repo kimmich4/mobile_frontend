@@ -10,8 +10,8 @@ class WorkoutRepository {
     : _firestore = firestore ?? FirebaseFirestore.instance,
       _apiService = apiService ?? ApiService();
 
-  /// Collection reference for a specific user's workout plans
-  /// Structure: users/{userId}/workoutPlans/{planId}
+  /// collection reference for a specific user's workout plans
+  /// structure: users/{userid}/workoutplans/{planid}
   CollectionReference<Map<String, dynamic>> _getWorkoutCollection(
     String userId,
   ) {
@@ -21,19 +21,19 @@ class WorkoutRepository {
         .collection('workoutPlans');
   }
 
-  /// Generate and save new workout plans (Gym and Home)
+  /// generate and save new workout plans (gym and home)
   Future<Map<String, WorkoutPlan>> generateAndSaveWorkoutPlans({
     required String userId,
     required Map<String, dynamic> userProfile,
   }) async {
     try {
-      // 1. Fetch from API (Returns both gym and home)
+      // 1. fetch from api (returns both gym and home)
       final plans = await _apiService.generateWorkoutPlans(
         userId: userId,
         userProfile: userProfile,
       );
 
-      // 2. Save both to Firestore
+      // 2. save both to firestore
       print('Saving gym and home workout plans to Firestore');
       await _getWorkoutCollection(
         userId,
@@ -48,7 +48,7 @@ class WorkoutRepository {
     }
   }
 
-  /// Get specific workout plan
+  /// get specific workout plan
   Future<WorkoutPlan?> getWorkoutPlan(String userId, String planId) async {
     try {
       final doc = await _getWorkoutCollection(userId).doc(planId).get();
@@ -61,7 +61,7 @@ class WorkoutRepository {
     }
   }
 
-  /// Get all workout plans for the user
+  /// get all workout plans for the user
   Future<List<WorkoutPlan>> getAllWorkoutPlans(String userId) async {
     try {
       final snapshot = await _getWorkoutCollection(userId).get();
@@ -73,6 +73,6 @@ class WorkoutRepository {
     }
   }
 
-  // Note: Workout completion status is typically tracked in ProgressRepository,
-  // but if the plan itself has 'isCompleted' flags, update here.
+  // note: workout completion status is typically tracked in progressrepository,
+  // but if the plan itself has 'iscompleted' flags, update here.
 }

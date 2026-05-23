@@ -1,4 +1,4 @@
-/// Represents a single meal item
+/// represents a single meal item
 class MealItem {
   final String name;
   final int calories;
@@ -15,7 +15,7 @@ class MealItem {
   );
 }
 
-/// Represents a meal (breakfast, lunch, dinner, snacks)
+/// represents a meal (breakfast, lunch, dinner, snacks)
 class Meal {
   final String title;
   final List<MealItem> items;
@@ -25,7 +25,7 @@ class Meal {
     required this.items,
   });
 
-  /// Calculate total calories for this meal
+  /// calculate total calories for this meal
   int get totalCalories => items.fold(0, (sum, item) => sum + item.calories);
 
   Map<String, dynamic> toJson() => {
@@ -41,7 +41,7 @@ class Meal {
   );
 }
 
-/// Represents a daily diet plan
+/// represents a daily diet plan
 class DailyDietPlan {
   final int day; // 1-7
   final int totalCalories;
@@ -87,7 +87,7 @@ class DailyDietPlan {
   }
 }
 
-/// Represents a multi-day diet plan
+/// represents a multi-day diet plan
 class DietPlan {
   final List<DailyDietPlan> days;
 

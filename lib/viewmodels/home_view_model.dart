@@ -9,7 +9,7 @@ import '../data/repositories/diet_repository.dart';
 import '../data/repositories/workout_repository.dart';
 import 'base_view_model.dart';
 
-/// ViewModel for Home Screen — pulls real data from AI-generated plans
+/// viewmodel for home screen - pulls real data from ai-generated plans
 class HomeViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final UserRepository _userRepository;
@@ -36,12 +36,12 @@ class HomeViewModel extends BaseViewModel {
   WorkoutPlan? _homeWorkout;
   WorkoutPlan? _gymWorkout;
 
-  // ── User info ──
+  // user info
   String get fullName => _currentUser?.fullName ?? 'User';
   String get profileInitial => _currentUser?.profileInitial ?? 'U';
   String? get profilePicturePath => _currentUser?.profilePicturePath;
 
-  // ── Calories (from diet plan for today) ──
+  // calories (from diet plan for today)
   String get caloriesConsumed {
     final todayPlan = _todayDietPlan;
     if (todayPlan == null) return '0';
@@ -75,7 +75,7 @@ class HomeViewModel extends BaseViewModel {
     return _currentUser?.dailyCalorieGoal?.toString() ?? '0';
   }
 
-  // ── Workouts (from workout plans) ──
+  // workouts (from workout plans)
   String get workoutsCompleted {
     final today = _todayWeekday;
     final homeCompleted =
@@ -91,7 +91,7 @@ class HomeViewModel extends BaseViewModel {
     return goal > 0 && completed >= goal;
   }
 
-  // ── Home Workout Specific ──
+  // home workout specific
   String get homeWorkoutTitle => _homeWorkout?.title ?? 'Home Workout';
 
   String get homeWorkoutDescription {
@@ -126,7 +126,7 @@ class HomeViewModel extends BaseViewModel {
   bool get isHomeWorkoutDone =>
       homeWorkoutGoal > 0 && homeWorkoutCompleted >= homeWorkoutGoal;
 
-  // ── Gym Workout Specific ──
+  // gym workout specific
   String get gymWorkoutTitle => _gymWorkout?.title ?? 'Gym Workout';
 
   String get gymWorkoutDescription {
@@ -161,7 +161,7 @@ class HomeViewModel extends BaseViewModel {
   bool get isGymWorkoutDone =>
       gymWorkoutGoal > 0 && gymWorkoutCompleted >= gymWorkoutGoal;
 
-  /// Goal = number of exercises today
+  /// goal = number of exercises today
   String get workoutsGoal {
     final today = _todayWeekday;
     int totalExercises = 0;
@@ -185,7 +185,7 @@ class HomeViewModel extends BaseViewModel {
 
   int get currentStreak => _currentUser?.currentStreak ?? 0;
   
-  // ── Water Tracker ──
+  // water tracker
   int get waterIntake => _currentUser?.waterIntake ?? 0;
   int get waterGoal => 8;
   bool get isWaterGoalReached => waterIntake >= waterGoal;
@@ -193,13 +193,13 @@ class HomeViewModel extends BaseViewModel {
   Future<void> incrementWaterIntake() async {
     final uid = _authRepository.currentUser?.uid;
     if (uid != null) {
-      final newValue = (waterIntake + 1).clamp(0, 99); // Allow going over but limit UI to 8 for logic
+      final newValue = (waterIntake + 1).clamp(0, 99); // allow going over but limit ui to 8 for logic
       await _userRepository.updateFields(uid, {'waterIntake': newValue});
-      // The stream listener will update _currentUser and notify listeners automatically
+      // the stream listener will update currentuser and notify listeners automatically
     }
   }
 
-  // ── Diet plan info ──
+  // diet plan info
   int get mealsRemaining {
     final todayPlan = _todayDietPlan;
     if (todayPlan == null) return 0;
@@ -215,7 +215,7 @@ class HomeViewModel extends BaseViewModel {
     return (completedMealsToday / total).clamp(0.0, 1.0);
   }
 
-  // ── Workout info (dynamic) ──
+  // workout info (dynamic)
   String get workoutTitle {
     if (_homeWorkout != null) return _homeWorkout!.title;
     if (_gymWorkout != null) return _gymWorkout!.title;
@@ -236,7 +236,7 @@ class HomeViewModel extends BaseViewModel {
     }
   }
 
-  // ── Progress summary (computed) ──
+  // progress summary (computed)
   String get weightChange {
     final initial = _currentUser?.weightKg;
     final current = _currentUser?.currentWeightKg;
@@ -266,12 +266,12 @@ class HomeViewModel extends BaseViewModel {
     return '$pct%';
   }
 
-  // ── Daily tip ──
+  // daily tip
   final String dailyTip =
       'Stay hydrated! Aim for at least 8 glasses of water today.';
 
-  // ── Helpers ──
-  int get _todayWeekday => DateTime.now().weekday; // 1=Mon .. 7=Sun
+  // helpers
+  int get _todayWeekday => DateTime.now().weekday; // 1=mon .. 7=sun
 
   DailyDietPlan? get _todayDietPlan {
     if (_dietPlan == null || _dietPlan!.days.isEmpty) return null;
@@ -282,21 +282,21 @@ class HomeViewModel extends BaseViewModel {
     }
   }
 
-  // ── Lifecycle ──
+  // lifecycle
   void _initAuthListener() {
     _authSubscription = _authRepository.authStateChanges.listen((user) {
       _userSubscription?.cancel();
       _currentUser = null;
 
       if (user != null) {
-        // Listen to user doc for real-time updates
+        // listen to user doc for real-time updates
         _userSubscription = _userRepository.getUserStream(user.uid).listen((
           userModel,
         ) {
           _currentUser = userModel;
           notifyListeners();
         });
-        // Fetch plans once
+        // fetch plans once
         _loadPlans(user.uid);
       } else {
         notifyListeners();
@@ -321,13 +321,13 @@ class HomeViewModel extends BaseViewModel {
     }
   }
 
-  /// Reload plans (e.g. after generating new ones)
+  /// reload plans (e.g. after generating new ones)
   Future<void> refreshPlans() async {
     final uid = _authRepository.currentUser?.uid;
     if (uid != null) await _loadPlans(uid);
   }
 
-  /// Get greeting based on time of day
+  /// get greeting based on time of day
   String getGreeting() {
     final hour = DateTime.now().hour;
     if (hour < 12) return 'Good Morning';

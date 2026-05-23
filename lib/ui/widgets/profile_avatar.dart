@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Reusable profile avatar widget that displays profile picture or initials
+/// reusable profile avatar widget that displays profile picture or initials
 class ProfileAvatar extends StatelessWidget {
   final String? profilePicturePath;
   final String profileInitial;
