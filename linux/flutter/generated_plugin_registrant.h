@@ -1,5 +1,5 @@
 //
-// generated file. do not edit.
+//  Generated file. Do not edit.
 //
 
 // clang-format off
@@ -9,7 +9,7 @@
 
 #include <flutter_linux/flutter_linux.h>
 
-// registers flutter plugins.
+// Registers Flutter plugins.
 void fl_register_plugins(FlPluginRegistry* registry);
 
-#endif  // generated_plugin_registrant_
+#endif  // GENERATED_PLUGIN_REGISTRANT_

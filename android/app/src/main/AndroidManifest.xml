@@ -27,7 +27,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
-    <!-- required to query activities that can process text, see: https:// developer.android.com/training/package-visibility and https://developer.android.com/reference/android/content/intent#actionprocesstext. in particular, this is used by the flutter engine in io.flutter.plugin.text.processtextplugin. --
+    <!-- required to query activities that can process text, see: https:// developer.android.com/training/package-visibility and https://developer.android.com/reference/android/content/intent#actionprocesstext. in particular, this is used by the flutter engine in io.flutter.plugin.text.processtextplugin. -->
     <queries>
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
