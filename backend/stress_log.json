@@ -1,0 +1,1012 @@
+{
+  "ts": "2026-05-16T16:20:10.131Z",
+  "thresholds": {
+    "maxErrorPct": 0,
+    "maxP95": 500,
+    "maxP99": 1000
+  },
+  "results": [
+    {
+      "label": "GET /health",
+      "breakAt": 700,
+      "breakReasons": [
+        "p95 531ms > 500ms"
+      ],
+      "maxPassedLevel": 600,
+      "levels": [
+        {
+          "concurrency": 1,
+          "success": 1,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 14,
+            "median": 14,
+            "p95": 14,
+            "p99": 14,
+            "max": 14
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 5,
+          "success": 5,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 9,
+            "median": 9,
+            "p95": 10,
+            "p99": 10,
+            "max": 10
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 10,
+          "success": 10,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 16,
+            "median": 17,
+            "p95": 18,
+            "p99": 18,
+            "max": 18
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 25,
+          "success": 25,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 22,
+            "median": 24,
+            "p95": 26,
+            "p99": 26,
+            "max": 26
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 50,
+          "success": 50,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 41,
+            "median": 45,
+            "p95": 47,
+            "p99": 48,
+            "max": 48
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 100,
+          "success": 100,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 77,
+            "median": 84,
+            "p95": 88,
+            "p99": 89,
+            "max": 89
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 200,
+          "success": 200,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 168,
+            "median": 176,
+            "p95": 181,
+            "p99": 183,
+            "max": 183
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 500,
+          "success": 500,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 410,
+            "median": 437,
+            "p95": 453,
+            "p99": 455,
+            "max": 456
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 600,
+          "success": 600,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 371,
+            "median": 398,
+            "p95": 442,
+            "p99": 445,
+            "max": 445
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 700,
+          "success": 700,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 456,
+            "median": 499,
+            "p95": 531,
+            "p99": 533,
+            "max": 534
+          },
+          "broke": true,
+          "reasons": [
+            "p95 531ms > 500ms"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "POST /ai/chat",
+      "breakAt": 800,
+      "breakReasons": [
+        "p95 551ms > 500ms"
+      ],
+      "maxPassedLevel": 700,
+      "levels": [
+        {
+          "concurrency": 1,
+          "success": 1,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 65,
+            "median": 65,
+            "p95": 65,
+            "p99": 65,
+            "max": 65
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 5,
+          "success": 5,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 6,
+            "median": 7,
+            "p95": 8,
+            "p99": 8,
+            "max": 8
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 10,
+          "success": 10,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 12,
+            "median": 12,
+            "p95": 14,
+            "p99": 14,
+            "max": 14
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 25,
+          "success": 25,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 16,
+            "median": 20,
+            "p95": 22,
+            "p99": 22,
+            "max": 22
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 50,
+          "success": 50,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 36,
+            "median": 41,
+            "p95": 45,
+            "p99": 45,
+            "max": 45
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 100,
+          "success": 100,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 81,
+            "median": 85,
+            "p95": 90,
+            "p99": 91,
+            "max": 92
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 200,
+          "success": 200,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 138,
+            "median": 158,
+            "p95": 180,
+            "p99": 181,
+            "max": 181
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 500,
+          "success": 500,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 332,
+            "median": 424,
+            "p95": 452,
+            "p99": 456,
+            "max": 457
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 600,
+          "success": 600,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 422,
+            "median": 442,
+            "p95": 463,
+            "p99": 465,
+            "max": 466
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 700,
+          "success": 700,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 419,
+            "median": 455,
+            "p95": 497,
+            "p99": 517,
+            "max": 523
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 800,
+          "success": 800,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 483,
+            "median": 516,
+            "p95": 551,
+            "p99": 552,
+            "max": 554
+          },
+          "broke": true,
+          "reasons": [
+            "p95 551ms > 500ms"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "POST /ai/analyze-report",
+      "breakAt": 700,
+      "breakReasons": [
+        "p95 551ms > 500ms"
+      ],
+      "maxPassedLevel": 600,
+      "levels": [
+        {
+          "concurrency": 1,
+          "success": 1,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 45,
+            "median": 45,
+            "p95": 45,
+            "p99": 45,
+            "max": 45
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 5,
+          "success": 5,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 5,
+            "median": 6,
+            "p95": 7,
+            "p99": 7,
+            "max": 7
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 10,
+          "success": 10,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 7,
+            "median": 8,
+            "p95": 9,
+            "p99": 9,
+            "max": 9
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 25,
+          "success": 25,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 14,
+            "median": 17,
+            "p95": 18,
+            "p99": 19,
+            "max": 19
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 50,
+          "success": 50,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 29,
+            "median": 33,
+            "p95": 37,
+            "p99": 37,
+            "max": 37
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 100,
+          "success": 100,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 61,
+            "median": 67,
+            "p95": 75,
+            "p99": 75,
+            "max": 76
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 200,
+          "success": 200,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 110,
+            "median": 119,
+            "p95": 127,
+            "p99": 129,
+            "max": 129
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 500,
+          "success": 500,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 288,
+            "median": 310,
+            "p95": 337,
+            "p99": 339,
+            "max": 340
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 600,
+          "success": 600,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 395,
+            "median": 423,
+            "p95": 471,
+            "p99": 476,
+            "max": 477
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 700,
+          "success": 700,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 429,
+            "median": 492,
+            "p95": 551,
+            "p99": 558,
+            "max": 559
+          },
+          "broke": true,
+          "reasons": [
+            "p95 551ms > 500ms"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "POST /ai/generate-diet",
+      "breakAt": 800,
+      "breakReasons": [
+        "p95 555ms > 500ms"
+      ],
+      "maxPassedLevel": 700,
+      "levels": [
+        {
+          "concurrency": 1,
+          "success": 1,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 41,
+            "median": 41,
+            "p95": 41,
+            "p99": 41,
+            "max": 41
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 5,
+          "success": 5,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 5,
+            "median": 5,
+            "p95": 6,
+            "p99": 6,
+            "max": 6
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 10,
+          "success": 10,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 9,
+            "median": 11,
+            "p95": 13,
+            "p99": 13,
+            "max": 13
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 25,
+          "success": 25,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 16,
+            "median": 19,
+            "p95": 23,
+            "p99": 23,
+            "max": 23
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 50,
+          "success": 50,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 34,
+            "median": 36,
+            "p95": 39,
+            "p99": 39,
+            "max": 39
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 100,
+          "success": 100,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 77,
+            "median": 85,
+            "p95": 92,
+            "p99": 93,
+            "max": 93
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 200,
+          "success": 200,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 107,
+            "median": 121,
+            "p95": 134,
+            "p99": 136,
+            "max": 137
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 500,
+          "success": 500,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 292,
+            "median": 318,
+            "p95": 383,
+            "p99": 385,
+            "max": 387
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 600,
+          "success": 600,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 399,
+            "median": 423,
+            "p95": 447,
+            "p99": 450,
+            "max": 451
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 700,
+          "success": 700,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 427,
+            "median": 461,
+            "p95": 491,
+            "p99": 493,
+            "max": 495
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 800,
+          "success": 800,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 495,
+            "median": 526,
+            "p95": 555,
+            "p99": 560,
+            "max": 561
+          },
+          "broke": true,
+          "reasons": [
+            "p95 555ms > 500ms"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "POST /ai/generate-workout",
+      "breakAt": 700,
+      "breakReasons": [
+        "p95 555ms > 500ms"
+      ],
+      "maxPassedLevel": 600,
+      "levels": [
+        {
+          "concurrency": 1,
+          "success": 1,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 44,
+            "median": 44,
+            "p95": 44,
+            "p99": 44,
+            "max": 44
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 5,
+          "success": 5,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 7,
+            "median": 9,
+            "p95": 9,
+            "p99": 9,
+            "max": 9
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 10,
+          "success": 10,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 9,
+            "median": 11,
+            "p95": 12,
+            "p99": 12,
+            "max": 12
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 25,
+          "success": 25,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 15,
+            "median": 17,
+            "p95": 19,
+            "p99": 19,
+            "max": 19
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 50,
+          "success": 50,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 35,
+            "median": 36,
+            "p95": 38,
+            "p99": 39,
+            "max": 39
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 100,
+          "success": 100,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 63,
+            "median": 70,
+            "p95": 82,
+            "p99": 83,
+            "max": 84
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 200,
+          "success": 200,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 118,
+            "median": 128,
+            "p95": 143,
+            "p99": 145,
+            "max": 146
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 500,
+          "success": 500,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 305,
+            "median": 323,
+            "p95": 352,
+            "p99": 354,
+            "max": 355
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 600,
+          "success": 600,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 366,
+            "median": 392,
+            "p95": 420,
+            "p99": 423,
+            "max": 424
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 700,
+          "success": 700,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 515,
+            "median": 535,
+            "p95": 555,
+            "p99": 559,
+            "max": 561
+          },
+          "broke": true,
+          "reasons": [
+            "p95 555ms > 500ms"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "POST /ai/search-video",
+      "breakAt": 700,
+      "breakReasons": [
+        "p95 501ms > 500ms"
+      ],
+      "maxPassedLevel": 600,
+      "levels": [
+        {
+          "concurrency": 1,
+          "success": 1,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 38,
+            "median": 38,
+            "p95": 38,
+            "p99": 38,
+            "max": 38
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 5,
+          "success": 5,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 5,
+            "median": 5,
+            "p95": 5,
+            "p99": 5,
+            "max": 5
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 10,
+          "success": 10,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 9,
+            "median": 11,
+            "p95": 13,
+            "p99": 13,
+            "max": 13
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 25,
+          "success": 25,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 18,
+            "median": 22,
+            "p95": 25,
+            "p99": 25,
+            "max": 25
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 50,
+          "success": 50,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 39,
+            "median": 44,
+            "p95": 51,
+            "p99": 52,
+            "max": 52
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 100,
+          "success": 100,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 91,
+            "median": 96,
+            "p95": 101,
+            "p99": 101,
+            "max": 101
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 200,
+          "success": 200,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 131,
+            "median": 148,
+            "p95": 157,
+            "p99": 158,
+            "max": 158
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 500,
+          "success": 500,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 331,
+            "median": 340,
+            "p95": 351,
+            "p99": 354,
+            "max": 355
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 600,
+          "success": 600,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 359,
+            "median": 373,
+            "p95": 407,
+            "p99": 410,
+            "max": 411
+          },
+          "broke": false,
+          "reasons": []
+        },
+        {
+          "concurrency": 700,
+          "success": 700,
+          "errors": 0,
+          "errorPct": 0,
+          "latency": {
+            "min": 425,
+            "median": 474,
+            "p95": 501,
+            "p99": 503,
+            "max": 504
+          },
+          "broke": true,
+          "reasons": [
+            "p95 501ms > 500ms"
+          ]
+        }
+      ]
+    }
+  ]
+}
