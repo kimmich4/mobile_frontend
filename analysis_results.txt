@@ -1,9 +1,0 @@
-﻿Analyzing 5 items...                                            
-
-   info - Unnecessary use of 'toList' in a spread - lib\ui\screens\profile_setup_screen.dart:161:11 - unnecessary_to_list_in_spreads
-warning - The declaration '_buildMultiSelectSectionWithOther' isn't referenced - lib\ui\screens\profile_setup_screen.dart:465:10 - unused_element
-warning - The declaration '_buildSingleSelectSectionWithOther' isn't referenced - lib\ui\screens\profile_setup_screen.dart:487:10 - unused_element
-  error - Undefined name '_medicalConditionOtherSelected' - lib\viewmodels\edit_profile_view_model.dart:45:45 - undefined_identifier
-  error - Undefined name '_medicalConditionOtherSelected' - lib\viewmodels\edit_profile_view_model.dart:80:5 - undefined_identifier
-warning - The value of the local variable 'user' isn't used - lib\viewmodels\profile_setup_view_model.dart:220:11 - unused_local_variable
-
