@@ -84,7 +84,7 @@ async function requestChatCompletion(messages) {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            model: "deepseek-ai/DeepSeek-V3.2",
+            model: "deepseek-ai/DeepSeek-V3",
             messages,
             max_tokens: MAX_TOKENS
         })
