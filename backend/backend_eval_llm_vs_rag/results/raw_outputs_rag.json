@@ -3,7 +3,7 @@
     "caseId": "case_01",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "days": [
@@ -865,7 +865,7 @@
     "caseId": "case_02",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "gym": {
@@ -2080,7 +2080,7 @@
     "caseId": "case_03",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": false,
     "parsedOutput": null,
     "parseError": "Expected double-quoted property name in JSON at position 9732 (line 290 column 11)",
@@ -2238,7 +2238,7 @@
     "caseId": "case_04",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "gym": {
@@ -3348,7 +3348,7 @@
     "caseId": "case_05",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "days": [
@@ -4304,7 +4304,7 @@
     "caseId": "case_06",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "gym": {
@@ -5461,7 +5461,7 @@
     "caseId": "case_07",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "days": [
@@ -6081,7 +6081,7 @@
     "caseId": "case_08",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "gym": {
@@ -7190,7 +7190,7 @@
     "caseId": "case_09",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "days": [
@@ -7858,7 +7858,7 @@
     "caseId": "case_10",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "gym": {
@@ -9149,7 +9149,7 @@
     "caseId": "case_11",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "days": [
@@ -9850,7 +9850,7 @@
     "caseId": "case_12",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "gym": {
@@ -10898,7 +10898,7 @@
     "caseId": "case_13",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": false,
     "parsedOutput": null,
     "parseError": "Unexpected token 'D', ...\"{ \"name\": Dried Cran\"... is not valid JSON",
@@ -11048,7 +11048,7 @@
     "caseId": "case_14",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": false,
     "parsedOutput": null,
     "parseError": "Unexpected token 'i', ...\"ories\":  fifty},\n   \"... is not valid JSON",
@@ -11182,7 +11182,7 @@
     "caseId": "case_15",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "days": [
@@ -11919,7 +11919,7 @@
     "caseId": "case_16",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "gym": {
@@ -13050,7 +13050,7 @@
     "caseId": "case_17",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "days": [
@@ -13877,7 +13877,7 @@
     "caseId": "case_18",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "gym": {
@@ -14972,7 +14972,7 @@
     "caseId": "case_19",
     "mode": "rag",
     "route": "/ai/generate-diet",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "days": [
@@ -15672,7 +15672,7 @@
     "caseId": "case_20",
     "mode": "rag",
     "route": "/ai/generate-workout",
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "parsedOk": true,
     "parsedOutput": {
       "gym": {

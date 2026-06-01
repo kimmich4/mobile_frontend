@@ -2,7 +2,7 @@
   "caseId": "case_02",
   "mode": "llm_only",
   "route": "/ai/generate-workout",
-  "model": "openai/gpt-oss-120b:free",
+  "model": "deepseek-ai/DeepSeek-V3",
   "parsedOk": false,
   "parsedOutput": null,
   "parseError": "Expected ',' or ']' after array element in JSON at position 3562 (line 1 column 3563)",

@@ -2,7 +2,7 @@
   "caseId": "case_14",
   "mode": "llm_only",
   "route": "/ai/generate-workout",
-  "model": "openai/gpt-oss-120b:free",
+  "model": "deepseek-ai/DeepSeek-V3",
   "parsedOk": false,
   "parsedOutput": null,
   "parseError": "Expected double-quoted property name in JSON at position 3893 (line 147 column 13)",

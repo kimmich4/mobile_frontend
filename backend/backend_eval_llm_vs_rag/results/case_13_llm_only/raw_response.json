@@ -4,7 +4,7 @@
     "id": "gen-1777217279-Am5OHiQopNKGzsUcxB8h",
     "object": "chat.completion",
     "created": 1777217279,
-    "model": "openai/gpt-oss-120b:free",
+    "model": "deepseek-ai/DeepSeek-V3",
     "provider": "OpenInference",
     "system_fingerprint": null,
     "choices": [

@@ -2,7 +2,7 @@
   "caseId": "case_04",
   "mode": "rag",
   "route": "/ai/generate-workout",
-  "model": "openai/gpt-oss-120b:free",
+  "model": "deepseek-ai/DeepSeek-V3",
   "parsedOk": true,
   "parsedOutput": {
     "gym": {

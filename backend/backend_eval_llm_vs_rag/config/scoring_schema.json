@@ -1,7 +1,7 @@
 {
   "model_requirement": {
-    "provider": "OpenRouter",
-    "model": "openai/gpt-oss-120b:free",
+    "provider": "Hugging Face",
+    "model": "deepseek-ai/DeepSeek-V3",
     "fixed_across_modes": true,
     "fallback_allowed": false
   },

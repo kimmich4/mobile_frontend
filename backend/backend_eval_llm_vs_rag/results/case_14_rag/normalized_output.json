@@ -2,7 +2,7 @@
   "caseId": "case_14",
   "mode": "rag",
   "route": "/ai/generate-workout",
-  "model": "openai/gpt-oss-120b:free",
+  "model": "deepseek-ai/DeepSeek-V3",
   "parsedOk": false,
   "parsedOutput": null,
   "parseError": "Unexpected token 'i', ...\"ories\":  fifty},\n   \"... is not valid JSON",

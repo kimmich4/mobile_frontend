@@ -2,7 +2,7 @@
   "caseId": "case_03",
   "mode": "rag",
   "route": "/ai/generate-diet",
-  "model": "openai/gpt-oss-120b:free",
+  "model": "deepseek-ai/DeepSeek-V3",
   "parsedOk": false,
   "parsedOutput": null,
   "parseError": "Expected double-quoted property name in JSON at position 9732 (line 290 column 11)",

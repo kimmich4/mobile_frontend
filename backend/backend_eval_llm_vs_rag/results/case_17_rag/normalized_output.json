@@ -2,7 +2,7 @@
   "caseId": "case_17",
   "mode": "rag",
   "route": "/ai/generate-diet",
-  "model": "openai/gpt-oss-120b:free",
+  "model": "deepseek-ai/DeepSeek-V3",
   "parsedOk": true,
   "parsedOutput": {
     "days": [
