@@ -36,34 +36,55 @@ class ProfileSetupScreen extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(24),
                   color: Theme.of(context).colorScheme.surface,
-                  child: Row(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (viewModel.currentPage > 0) ...[
-                        Expanded(
-                          child: _buildNavButton(
-                            context,
-                            'Back',
-                            isPrimary: false,
-                            onTap: viewModel.previousPage,
+                      Row(
+                        children: [
+                          if (viewModel.currentPage > 0) ...[
+                            Expanded(
+                              child: _buildNavButton(
+                                context,
+                                'Back',
+                                isPrimary: false,
+                                onTap: viewModel.previousPage,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                          ],
+                          Expanded(
+                            child: _buildNavButton(
+                              context,
+                              viewModel.currentPage == 3
+                                  ? 'Finish'
+                                  : 'Continue',
+                              isPrimary: true,
+                              onTap: () {
+                                viewModel.nextPage(() {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder:
+                                          (context) =>
+                                              const WorkoutLoadingScreen(),
+                                    ),
+                                  );
+                                });
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      if (viewModel.error != null) ...[
+                        const SizedBox(height: 12),
+                        Text(
+                          viewModel.error!,
+                          style: const TextStyle(
+                            color: Colors.red,
+                            fontSize: 14,
                           ),
                         ),
-                        const SizedBox(width: 12),
                       ],
-                      Expanded(
-                        child: _buildNavButton(
-                          context,
-                          viewModel.currentPage == 3 ? 'Finish' : 'Continue',
-                          isPrimary: true,
-                          onTap: () {
-                            viewModel.nextPage(() {
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(builder: (context) => const WorkoutLoadingScreen()),
-                              );
-                            });
-                          },
-                        ),
-                      ),
                     ],
                   ),
                 ),
@@ -75,19 +96,39 @@ class ProfileSetupScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildNavButton(BuildContext context, String label, {required bool isPrimary, required VoidCallback onTap}) {
+  Widget _buildNavButton(
+    BuildContext context,
+    String label, {
+    required bool isPrimary,
+    required VoidCallback onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 56,
         decoration: BoxDecoration(
           color: isPrimary ? null : Theme.of(context).colorScheme.surface,
-          gradient: isPrimary ? const LinearGradient(colors: [Color(0xFF024950), Color(0xFF0FA4AF)]) : null,
+          gradient:
+              isPrimary
+                  ? const LinearGradient(
+                    colors: [Color(0xFF024950), Color(0xFF0FA4AF)],
+                  )
+                  : null,
           borderRadius: BorderRadius.circular(14),
-          border: isPrimary ? null : Border.all(color: const Color(0xFF024950), width: 1.6),
+          border:
+              isPrimary
+                  ? null
+                  : Border.all(color: const Color(0xFF024950), width: 1.6),
         ),
         alignment: Alignment.center,
-        child: Text(label, style: TextStyle(color: isPrimary ? Colors.white : const Color(0xFF024950), fontSize: 16, fontWeight: FontWeight.bold)),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isPrimary ? Colors.white : const Color(0xFF024950),
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
@@ -97,29 +138,61 @@ class ProfileSetupScreen extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 24),
       decoration: const BoxDecoration(
-        gradient: LinearGradient(colors: [Color(0xFF003135), Color(0xFF024950)]),
+        gradient: LinearGradient(
+          colors: [Color(0xFF003135), Color(0xFF024950)],
+        ),
         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30)),
       ),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const Text('Profile Setup', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
-        const SizedBox(height: 16),
-        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text('Step ${viewModel.currentPage + 1} of 4', style: const TextStyle(color: Color(0xFFAFDDE5))),
-          Text('${(viewModel.progressPercentage * 100).toInt()}%', style: const TextStyle(color: Color(0xFFAFDDE5))),
-        ]),
-        const SizedBox(height: 8),
-        _buildProgressBar(viewModel),
-      ]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Profile Setup',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Step ${viewModel.currentPage + 1} of 4',
+                style: const TextStyle(color: Color(0xFFAFDDE5)),
+              ),
+              Text(
+                '${(viewModel.progressPercentage * 100).toInt()}%',
+                style: const TextStyle(color: Color(0xFFAFDDE5)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          _buildProgressBar(viewModel),
+        ],
+      ),
     );
   }
 
   Widget _buildProgressBar(ProfileSetupViewModel viewModel) {
     return Container(
-      height: 8, clipBehavior: Clip.antiAlias,
-      decoration: BoxDecoration(color: const Color(0xFF024950), borderRadius: BorderRadius.circular(10)),
+      height: 8,
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        color: const Color(0xFF024950),
+        borderRadius: BorderRadius.circular(10),
+      ),
       child: FractionallySizedBox(
-        widthFactor: viewModel.progressPercentage, alignment: Alignment.centerLeft,
-        child: Container(decoration: const BoxDecoration(gradient: LinearGradient(colors: [Color(0xFF0FA4AF), Color(0xFF964734)]))),
+        widthFactor: viewModel.progressPercentage,
+        alignment: Alignment.centerLeft,
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF0FA4AF), Color(0xFF964734)],
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -127,183 +200,361 @@ class ProfileSetupScreen extends StatelessWidget {
   Widget _buildStep1(BuildContext context, ProfileSetupViewModel viewModel) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const AnimateIn(child: Text('Basic Information', style: TextStyle(color: Color(0xFF003135), fontSize: 20, fontWeight: FontWeight.bold))),
-        const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildTextField(context, label: 'Full Name', controller: viewModel.nameController, hint: 'Enter your full name')),
-        const SizedBox(height: 16),
-        AnimateIn(delay: const Duration(milliseconds: 300), child: _buildTextField(context, label: 'Age', controller: viewModel.ageController, hint: 'Enter your age', keyboardType: TextInputType.number)),
-        const SizedBox(height: 16),
-        const AnimateIn(delay: Duration(milliseconds: 400), child: Text('Gender', style: TextStyle(color: Color(0xFF024950), fontSize: 16))),
-        const SizedBox(height: 8),
-        AnimateIn(delay: const Duration(milliseconds: 500), child: Row(children: [
-          _buildGenderOption(context, viewModel, 'Male'), const SizedBox(width: 12),
-          _buildGenderOption(context, viewModel, 'Female'), const SizedBox(width: 12),
-        ])),
-      ]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const AnimateIn(
+            child: Text(
+              'Basic Information',
+              style: TextStyle(
+                color: Color(0xFF003135),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+          AnimateIn(
+            delay: const Duration(milliseconds: 200),
+            child: _buildTextField(
+              context,
+              label: 'Full Name',
+              controller: viewModel.nameController,
+              hint: 'Enter your full name',
+            ),
+          ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 300),
+            child: _buildTextField(
+              context,
+              label: 'Age',
+              controller: viewModel.ageController,
+              hint: 'Enter your age',
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          const SizedBox(height: 16),
+          const AnimateIn(
+            delay: Duration(milliseconds: 400),
+            child: Text(
+              'Gender',
+              style: TextStyle(color: Color(0xFF024950), fontSize: 16),
+            ),
+          ),
+          const SizedBox(height: 8),
+          AnimateIn(
+            delay: const Duration(milliseconds: 500),
+            child: Row(
+              children: [
+                _buildGenderOption(context, viewModel, 'Male'),
+                const SizedBox(width: 12),
+                _buildGenderOption(context, viewModel, 'Female'),
+                const SizedBox(width: 12),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildStep2(BuildContext context, ProfileSetupViewModel viewModel) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const AnimateIn(child: Text('Body Metrics', style: TextStyle(color: Color(0xFF003135), fontSize: 20, fontWeight: FontWeight.bold))),
-        const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildTextField(context, label: 'Current Weight (kg)', controller: viewModel.weightController, hint: 'Enter your weight', keyboardType: TextInputType.number)),
-        const SizedBox(height: 16),
-        AnimateIn(delay: const Duration(milliseconds: 250), child: _buildTextField(context, label: 'Target Weight (kg)', controller: viewModel.targetWeightController, hint: 'Enter your goal weight', keyboardType: TextInputType.number)),
-        const SizedBox(height: 16),
-        AnimateIn(delay: const Duration(milliseconds: 300), child: _buildTextField(context, label: 'Height (cm)', controller: viewModel.heightController, hint: 'Enter your height', keyboardType: TextInputType.number)),
-        const SizedBox(height: 24),
-        const AnimateIn(delay: Duration(milliseconds: 400), child: Text('Activity Level', style: TextStyle(color: Color(0xFF024950), fontSize: 16))),
-        const SizedBox(height: 8),
-        ...['Sedentary', 'Light', 'Moderate', 'Active', 'Very Active'].asMap().entries.map((e) => 
-          AnimateIn(delay: Duration(milliseconds: 500 + e.key * 100), child: Padding(padding: const EdgeInsets.only(bottom: 8), child: _buildActivityOption(context, viewModel, e.value)))
-        ),
-      ]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const AnimateIn(
+            child: Text(
+              'Body Metrics',
+              style: TextStyle(
+                color: Color(0xFF003135),
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(height: 24),
+          AnimateIn(
+            delay: const Duration(milliseconds: 200),
+            child: _buildTextField(
+              context,
+              label: 'Current Weight (kg)',
+              controller: viewModel.weightController,
+              hint: 'Enter your weight',
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 250),
+            child: _buildTextField(
+              context,
+              label: 'Target Weight (kg)',
+              controller: viewModel.targetWeightController,
+              hint: 'Enter your goal weight',
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 300),
+            child: _buildTextField(
+              context,
+              label: 'Height (cm)',
+              controller: viewModel.heightController,
+              hint: 'Enter your height',
+              keyboardType: TextInputType.number,
+            ),
+          ),
+          const SizedBox(height: 24),
+          const AnimateIn(
+            delay: Duration(milliseconds: 400),
+            child: Text(
+              'Activity Level',
+              style: TextStyle(color: Color(0xFF024950), fontSize: 16),
+            ),
+          ),
+          const SizedBox(height: 8),
+          ...[
+            'Sedentary',
+            'Light',
+            'Moderate',
+            'Active',
+            'Very Active',
+          ].asMap().entries.map(
+            (e) => AnimateIn(
+              delay: Duration(milliseconds: 500 + e.key * 100),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: _buildActivityOption(context, viewModel, e.value),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildStep3(BuildContext context, ProfileSetupViewModel viewModel) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const AnimateIn(child: Text('Health Information', style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400))),
-        const SizedBox(height: 24),
-        
-        // medical conditions
-        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildSectionTitle('Medical Conditions')),
-        const SizedBox(height: 16),
-        AnimateIn(
-          delay: const Duration(milliseconds: 300),
-          child: _buildCustomMultiSelect(
-            context,
-            options: viewModel.medicalConditionsOptions,
-            selectedValues: viewModel.selectedMedicalConditions,
-            otherSelected: viewModel.medicalConditionOtherSelected,
-            otherController: viewModel.otherMedicalConditionController,
-            onOptionTap: viewModel.toggleMedicalCondition,
-            onOtherTap: () => viewModel.setMedicalConditionOtherSelected(!viewModel.medicalConditionOtherSelected),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const AnimateIn(
+            child: Text(
+              'Health Information',
+              style: TextStyle(
+                color: Color(0xFF003135),
+                fontSize: 16,
+                fontFamily: 'Arial',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ),
-        ),
+          const SizedBox(height: 24),
 
-        const SizedBox(height: 24),
-        
-        // allergies
-        AnimateIn(delay: const Duration(milliseconds: 400), child: _buildSectionTitle('Allergies')),
-        const SizedBox(height: 16),
-        AnimateIn(
-          delay: const Duration(milliseconds: 500),
-          child: _buildCustomMultiSelect(
-            context,
-            options: viewModel.allergiesOptions,
-            selectedValues: viewModel.selectedAllergies,
-            otherSelected: viewModel.allergyOtherSelected,
-            otherController: viewModel.otherAllergyController,
-            onOptionTap: viewModel.toggleAllergy,
-            onOtherTap: () => viewModel.setAllergyOtherSelected(!viewModel.allergyOtherSelected),
+          // medical conditions
+          AnimateIn(
+            delay: const Duration(milliseconds: 200),
+            child: _buildSectionTitle('Medical Conditions'),
           ),
-        ),
-
-        const SizedBox(height: 24),
-
-        AnimateIn(
-          delay: const Duration(milliseconds: 550),
-          child: _buildTextField(
-            context,
-            label: 'Food you dont like',
-            controller: viewModel.dislikedFoodsController,
-            hint: 'Example: tuna, broccoli, oats',
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 300),
+            child: _buildCustomMultiSelect(
+              context,
+              options: viewModel.medicalConditionsOptions,
+              selectedValues: viewModel.selectedMedicalConditions,
+              otherSelected: viewModel.medicalConditionOtherSelected,
+              otherController: viewModel.otherMedicalConditionController,
+              onOptionTap: viewModel.toggleMedicalCondition,
+              onOtherTap:
+                  () => viewModel.setMedicalConditionOtherSelected(
+                    !viewModel.medicalConditionOtherSelected,
+                  ),
+            ),
           ),
-        ),
 
-        const SizedBox(height: 24),
+          const SizedBox(height: 24),
 
-        // current injuries
-        AnimateIn(delay: const Duration(milliseconds: 600), child: _buildSectionTitle('Current Injuries')),
-        const SizedBox(height: 16),
-        AnimateIn(
-          delay: const Duration(milliseconds: 700),
-          child: _buildCustomMultiSelect(
-            context,
-            options: viewModel.injuriesOptions,
-            selectedValues: viewModel.selectedInjuries,
-            otherSelected: viewModel.injuryOtherSelected,
-            otherController: viewModel.otherInjuryController,
-            onOptionTap: viewModel.toggleInjury,
-            onOtherTap: () => viewModel.setInjuryOtherSelected(!viewModel.injuryOtherSelected),
+          // allergies
+          AnimateIn(
+            delay: const Duration(milliseconds: 400),
+            child: _buildSectionTitle('Allergies'),
           ),
-        ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 500),
+            child: _buildCustomMultiSelect(
+              context,
+              options: viewModel.allergiesOptions,
+              selectedValues: viewModel.selectedAllergies,
+              otherSelected: viewModel.allergyOtherSelected,
+              otherController: viewModel.otherAllergyController,
+              onOptionTap: viewModel.toggleAllergy,
+              onOtherTap:
+                  () => viewModel.setAllergyOtherSelected(
+                    !viewModel.allergyOtherSelected,
+                  ),
+            ),
+          ),
 
-        const SizedBox(height: 24),
-        AnimateIn(delay: const Duration(milliseconds: 800), child: _buildFileUploadSection(context, title: 'Medical Report', fileName: viewModel.medicalReportName, isAnalyzing: viewModel.isAnalyzingReport, onTap: () => viewModel.pickFile(isMedical: true))),
-        const SizedBox(height: 16),
-        AnimateIn(delay: const Duration(milliseconds: 900), child: _buildFileUploadSection(context, title: 'InBody Report', fileName: viewModel.inBodyReportName, isAnalyzing: viewModel.isAnalyzingReport, onTap: () => viewModel.pickFile(isMedical: false))),
-      ]),
+          const SizedBox(height: 24),
+
+          AnimateIn(
+            delay: const Duration(milliseconds: 550),
+            child: _buildTextField(
+              context,
+              label: 'Food you dont like',
+              controller: viewModel.dislikedFoodsController,
+              hint: 'Example: tuna, broccoli, oats',
+            ),
+          ),
+
+          const SizedBox(height: 24),
+
+          // current injuries
+          AnimateIn(
+            delay: const Duration(milliseconds: 600),
+            child: _buildSectionTitle('Current Injuries'),
+          ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 700),
+            child: _buildCustomMultiSelect(
+              context,
+              options: viewModel.injuriesOptions,
+              selectedValues: viewModel.selectedInjuries,
+              otherSelected: viewModel.injuryOtherSelected,
+              otherController: viewModel.otherInjuryController,
+              onOptionTap: viewModel.toggleInjury,
+              onOtherTap:
+                  () => viewModel.setInjuryOtherSelected(
+                    !viewModel.injuryOtherSelected,
+                  ),
+            ),
+          ),
+
+          const SizedBox(height: 24),
+          AnimateIn(
+            delay: const Duration(milliseconds: 800),
+            child: _buildFileUploadSection(
+              context,
+              title: 'Medical Report',
+              fileName: viewModel.medicalReportName,
+              isAnalyzing: viewModel.isAnalyzingReport,
+              onTap: () => viewModel.pickFile(isMedical: true),
+            ),
+          ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 900),
+            child: _buildFileUploadSection(
+              context,
+              title: 'InBody Report',
+              fileName: viewModel.inBodyReportName,
+              isAnalyzing: viewModel.isAnalyzingReport,
+              onTap: () => viewModel.pickFile(isMedical: false),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildStep4(BuildContext context, ProfileSetupViewModel viewModel) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(24),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const AnimateIn(child: Text('Goals & Experience', style: TextStyle(color: Color(0xFF003135), fontSize: 16, fontFamily: 'Arial', fontWeight: FontWeight.w400))),
-        const SizedBox(height: 24),
-        
-        // fitness goals
-        AnimateIn(delay: const Duration(milliseconds: 200), child: _buildSectionTitle('Fitness Goals')),
-        const SizedBox(height: 16),
-        AnimateIn(
-          delay: const Duration(milliseconds: 300),
-          child: _buildCustomMultiSelect(
-            context,
-            options: viewModel.fitnessGoalsOptions,
-            selectedValues: viewModel.selectedFitnessGoals,
-            otherSelected: viewModel.fitnessGoalOtherSelected,
-            otherController: viewModel.otherFitnessGoalController,
-            onOptionTap: viewModel.toggleFitnessGoal,
-            onOtherTap: () => viewModel.setFitnessGoalOtherSelected(!viewModel.fitnessGoalOtherSelected),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const AnimateIn(
+            child: Text(
+              'Goals & Experience',
+              style: TextStyle(
+                color: Color(0xFF003135),
+                fontSize: 16,
+                fontFamily: 'Arial',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
           ),
-        ),
+          const SizedBox(height: 24),
 
-        const SizedBox(height: 24),
-        
-        // experience level
-        AnimateIn(delay: const Duration(milliseconds: 400), child: _buildSectionTitle('Experience Level')),
-        const SizedBox(height: 16),
-        AnimateIn(
-          delay: const Duration(milliseconds: 500),
-          child: _buildCustomSingleSelect(
-            context,
-            options: viewModel.experienceLevelOptions,
-            selectedValue: viewModel.selectedExperienceLevel,
-            otherSelected: viewModel.experienceOtherSelected,
-            otherController: viewModel.otherExperienceController,
-            onOptionTap: viewModel.setSelectedExperienceLevel,
-            onOtherTap: () => viewModel.setExperienceOtherSelected(!viewModel.experienceOtherSelected),
-            
+          // fitness goals
+          AnimateIn(
+            delay: const Duration(milliseconds: 200),
+            child: _buildSectionTitle('Fitness Goals'),
           ),
-        ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 300),
+            child: _buildCustomMultiSelect(
+              context,
+              options: viewModel.fitnessGoalsOptions,
+              selectedValues: viewModel.selectedFitnessGoals,
+              otherSelected: viewModel.fitnessGoalOtherSelected,
+              otherController: viewModel.otherFitnessGoalController,
+              onOptionTap: viewModel.toggleFitnessGoal,
+              onOtherTap:
+                  () => viewModel.setFitnessGoalOtherSelected(
+                    !viewModel.fitnessGoalOtherSelected,
+                  ),
+            ),
+          ),
 
-        const SizedBox(height: 24),
+          const SizedBox(height: 24),
 
-        AnimateIn(delay: const Duration(milliseconds: 600), child: _buildSectionTitle('How many days per week will you train?')),
-        const SizedBox(height: 16),
-        AnimateIn(
-          delay: const Duration(milliseconds: 700),
-          child: _buildTrainingDaysScale(context, viewModel),
-        ),
+          // experience level
+          AnimateIn(
+            delay: const Duration(milliseconds: 400),
+            child: _buildSectionTitle('Experience Level'),
+          ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 500),
+            child: _buildCustomSingleSelect(
+              context,
+              options: viewModel.experienceLevelOptions,
+              selectedValue: viewModel.selectedExperienceLevel,
+              otherSelected: viewModel.experienceOtherSelected,
+              otherController: viewModel.otherExperienceController,
+              onOptionTap: viewModel.setSelectedExperienceLevel,
+              onOtherTap:
+                  () => viewModel.setExperienceOtherSelected(
+                    !viewModel.experienceOtherSelected,
+                  ),
+            ),
+          ),
 
-        const SizedBox(height: 24),
+          const SizedBox(height: 24),
 
-        AnimateIn(delay: const Duration(milliseconds: 800), child: _buildSectionTitle('Workout Split')),
-        const SizedBox(height: 16),
-        AnimateIn(
-          delay: const Duration(milliseconds: 900),
-          child: _buildSplitSelect(context, viewModel),
-        ),
-      ]),
+          AnimateIn(
+            delay: const Duration(milliseconds: 600),
+            child: _buildSectionTitle('How many days per week will you train?'),
+          ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 700),
+            child: _buildTrainingDaysScale(context, viewModel),
+          ),
+
+          const SizedBox(height: 24),
+
+          AnimateIn(
+            delay: const Duration(milliseconds: 800),
+            child: _buildSectionTitle('Workout Split'),
+          ),
+          const SizedBox(height: 16),
+          AnimateIn(
+            delay: const Duration(milliseconds: 900),
+            child: _buildSplitSelect(context, viewModel),
+          ),
+        ],
+      ),
     );
   }
 
@@ -357,8 +608,13 @@ class ProfileSetupScreen extends StatelessWidget {
               hintText: 'Please specify...',
               filled: true,
               fillColor: Theme.of(context).colorScheme.surface,
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(14),
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 12,
+              ),
             ),
           ),
         ],
@@ -403,8 +659,13 @@ class ProfileSetupScreen extends StatelessWidget {
               hintText: 'Please specify...',
               filled: true,
               fillColor: Theme.of(context).colorScheme.surface,
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(14)),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(14),
+              ),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 12,
+              ),
             ),
           ),
         ],
@@ -420,7 +681,8 @@ class ProfileSetupScreen extends StatelessWidget {
         shape: RoundedRectangleBorder(
           side: BorderSide(
             width: 1.60,
-            color: isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5),
+            color:
+                isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5),
           ),
           borderRadius: BorderRadius.circular(50), // fully rounded
         ),
@@ -437,7 +699,10 @@ class ProfileSetupScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTrainingDaysScale(BuildContext context, ProfileSetupViewModel viewModel) {
+  Widget _buildTrainingDaysScale(
+    BuildContext context,
+    ProfileSetupViewModel viewModel,
+  ) {
     return Wrap(
       spacing: 8,
       runSpacing: 8,
@@ -451,9 +716,17 @@ class ProfileSetupScreen extends StatelessWidget {
             height: 44,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: isSelected ? const Color(0xFF024950) : Theme.of(context).colorScheme.surface,
+              color:
+                  isSelected
+                      ? const Color(0xFF024950)
+                      : Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5)),
+              border: Border.all(
+                color:
+                    isSelected
+                        ? const Color(0xFF024950)
+                        : const Color(0xFFAFDDE5),
+              ),
             ),
             child: Text(
               day.toString(),
@@ -469,81 +742,182 @@ class ProfileSetupScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSplitSelect(BuildContext context, ProfileSetupViewModel viewModel) {
+  Widget _buildSplitSelect(
+    BuildContext context,
+    ProfileSetupViewModel viewModel,
+  ) {
     return Wrap(
       spacing: 8,
       runSpacing: 8,
-      children: viewModel.workoutSplitOptions.map((split) {
-        final isSelected = viewModel.selectedWorkoutSplit == split;
-        return GestureDetector(
-          onTap: () => viewModel.setSelectedWorkoutSplit(split),
-          child: _buildPill(context, split, isSelected),
-        );
-      }).toList(),
+      children:
+          viewModel.workoutSplitOptions.map((split) {
+            final isSelected = viewModel.selectedWorkoutSplit == split;
+            return GestureDetector(
+              onTap: () => viewModel.setSelectedWorkoutSplit(split),
+              child: _buildPill(context, split, isSelected),
+            );
+          }).toList(),
     );
   }
 
-  Widget _buildTextField(BuildContext context, {required String label, required TextEditingController controller, String? hint, TextInputType? keyboardType}) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(label, style: const TextStyle(color: Color(0xFF024950), fontSize: 16)),
-      const SizedBox(height: 8),
-      TextField(
-        controller: controller, keyboardType: keyboardType,
-        decoration: InputDecoration(
-          hintText: hint, filled: true, fillColor: Theme.of(context).colorScheme.surface,
-          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Color(0xFFAFDDE5))),
-          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: const BorderSide(color: Color(0xFF024950))),
+  Widget _buildTextField(
+    BuildContext context, {
+    required String label,
+    required TextEditingController controller,
+    String? hint,
+    TextInputType? keyboardType,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(color: Color(0xFF024950), fontSize: 16),
+        ),
+        const SizedBox(height: 8),
+        TextField(
+          controller: controller,
+          keyboardType: keyboardType,
+          decoration: InputDecoration(
+            hintText: hint,
+            filled: true,
+            fillColor: Theme.of(context).colorScheme.surface,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(14),
+              borderSide: const BorderSide(color: Color(0xFFAFDDE5)),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(14),
+              borderSide: const BorderSide(color: Color(0xFF024950)),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildGenderOption(
+    BuildContext context,
+    ProfileSetupViewModel viewModel,
+    String gender,
+  ) {
+    bool isSelected = viewModel.selectedGender == gender;
+    return Expanded(
+      child: GestureDetector(
+        onTap: () => viewModel.setSelectedGender(gender),
+        child: Container(
+          height: 50,
+          decoration: BoxDecoration(
+            color:
+                isSelected
+                    ? const Color(0xFF024950)
+                    : Theme.of(context).colorScheme.surface,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color:
+                  isSelected
+                      ? const Color(0xFF024950)
+                      : const Color(0xFFAFDDE5),
+            ),
+          ),
+          alignment: Alignment.center,
+          child: Text(
+            gender,
+            style: TextStyle(
+              color: isSelected ? Colors.white : const Color(0xFF024950),
+            ),
+          ),
         ),
       ),
-    ]);
+    );
   }
 
-  Widget _buildGenderOption(BuildContext context, ProfileSetupViewModel viewModel, String gender) {
-    bool isSelected = viewModel.selectedGender == gender;
-    return Expanded(child: GestureDetector(
-      onTap: () => viewModel.setSelectedGender(gender),
-      child: Container(
-        height: 50, decoration: BoxDecoration(color: isSelected ? const Color(0xFF024950) : Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14), border: Border.all(color: isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5))),
-        alignment: Alignment.center,
-        child: Text(gender, style: TextStyle(color: isSelected ? Colors.white : const Color(0xFF024950))),
-      ),
-    ));
-  }
-
-  Widget _buildActivityOption(BuildContext context, ProfileSetupViewModel viewModel, String level) {
+  Widget _buildActivityOption(
+    BuildContext context,
+    ProfileSetupViewModel viewModel,
+    String level,
+  ) {
     bool isSelected = viewModel.selectedActivityLevel == level;
     return GestureDetector(
       onTap: () => viewModel.setSelectedActivityLevel(level),
       child: Container(
-        width: double.infinity, padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(color: isSelected ? const Color(0xFF024950) : Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14), border: Border.all(color: isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5))),
-        child: Text(level, style: TextStyle(color: isSelected ? Colors.white : const Color(0xFF024950))),
+        width: double.infinity,
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color:
+              isSelected
+                  ? const Color(0xFF024950)
+                  : Theme.of(context).colorScheme.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color:
+                isSelected ? const Color(0xFF024950) : const Color(0xFFAFDDE5),
+          ),
+        ),
+        child: Text(
+          level,
+          style: TextStyle(
+            color: isSelected ? Colors.white : const Color(0xFF024950),
+          ),
+        ),
       ),
     );
   }
 
-  Widget _buildFileUploadSection(BuildContext context, {required String title, String? fileName, bool isAnalyzing = false, required VoidCallback onTap}) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(title, style: const TextStyle(color: Color(0xFF024950), fontSize: 16)),
-      const SizedBox(height: 8),
-      GestureDetector(
-        onTap: isAnalyzing ? null : onTap,
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(color: Theme.of(context).colorScheme.surface, borderRadius: BorderRadius.circular(14), border: Border.all(color: const Color(0xFFAFDDE5))),
-          child: Row(children: [
-            if (isAnalyzing && fileName != null)
-              const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF024950)))
-            else
-              Icon(fileName != null ? Icons.check_circle : Icons.upload_file, color: const Color(0xFF024950)),
-            const SizedBox(width: 12),
-            Expanded(child: Text(isAnalyzing && fileName != null ? 'Analyzing report...' : (fileName ?? 'Upload file'), overflow: TextOverflow.ellipsis)),
-          ]),
+  Widget _buildFileUploadSection(
+    BuildContext context, {
+    required String title,
+    String? fileName,
+    bool isAnalyzing = false,
+    required VoidCallback onTap,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(color: Color(0xFF024950), fontSize: 16),
         ),
-      ),
-    ]);
+        const SizedBox(height: 8),
+        GestureDetector(
+          onTap: isAnalyzing ? null : onTap,
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: const Color(0xFFAFDDE5)),
+            ),
+            child: Row(
+              children: [
+                if (isAnalyzing && fileName != null)
+                  const SizedBox(
+                    width: 20,
+                    height: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                      color: Color(0xFF024950),
+                    ),
+                  )
+                else
+                  Icon(
+                    fileName != null ? Icons.check_circle : Icons.upload_file,
+                    color: const Color(0xFF024950),
+                  ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Text(
+                    isAnalyzing && fileName != null
+                        ? 'Analyzing report...'
+                        : (fileName ?? 'Upload file'),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
-
-
-

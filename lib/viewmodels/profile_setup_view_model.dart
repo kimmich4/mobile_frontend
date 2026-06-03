@@ -14,17 +14,17 @@ class ProfileSetupViewModel extends BaseViewModel {
   final UserRepository _userRepository;
   final DietRepository _dietRepository;
   final WorkoutRepository _workoutRepository;
-  
+
   ProfileSetupViewModel({
     AuthRepository? authRepository,
     UserRepository? userRepository,
     DietRepository? dietRepository,
     WorkoutRepository? workoutRepository,
-  })  : _authRepository = authRepository ?? AuthRepository(),
-        _userRepository = userRepository ?? UserRepository(),
-        _dietRepository = dietRepository ?? DietRepository(),
-        _workoutRepository = workoutRepository ?? WorkoutRepository();
-  
+  }) : _authRepository = authRepository ?? AuthRepository(),
+       _userRepository = userRepository ?? UserRepository(),
+       _dietRepository = dietRepository ?? DietRepository(),
+       _workoutRepository = workoutRepository ?? WorkoutRepository();
+
   final PageController pageController = PageController();
   int _currentPage = 0;
 
@@ -45,19 +45,34 @@ class ProfileSetupViewModel extends BaseViewModel {
     'Hypertension',
     'Heart Disease',
     'Asthma',
-    'None'
+    'None',
   ];
   final List<String> _selectedMedicalConditions = [];
-  final TextEditingController otherMedicalConditionController = TextEditingController();
+  final TextEditingController otherMedicalConditionController =
+      TextEditingController();
   bool _medicalConditionOtherSelected = false;
 
-  final List<String> allergiesOptions = ['Peanuts', 'Dairy', 'Gluten', 'Shellfish', 'Eggs', 'Soy', 'None'];
+  final List<String> allergiesOptions = [
+    'Peanuts',
+    'Dairy',
+    'Gluten',
+    'Shellfish',
+    'Eggs',
+    'Soy',
+    'None',
+  ];
   final List<String> _selectedAllergies = [];
   final TextEditingController otherAllergyController = TextEditingController();
   final TextEditingController dislikedFoodsController = TextEditingController();
   bool _allergyOtherSelected = false;
 
-  final List<String> injuriesOptions = ['Back Pain', 'Knee Injury', 'Shoulder Pain', 'Ankle Sprain', 'None'];
+  final List<String> injuriesOptions = [
+    'Back Pain',
+    'Knee Injury',
+    'Shoulder Pain',
+    'Ankle Sprain',
+    'None',
+  ];
   final List<String> _selectedInjuries = [];
   final TextEditingController otherInjuryController = TextEditingController();
   bool _injuryOtherSelected = false;
@@ -74,15 +89,21 @@ class ProfileSetupViewModel extends BaseViewModel {
     'Muscle Gain',
     'Maintain Weight',
     'Improve Endurance',
-    'Flexibility'
+    'Flexibility',
   ];
   final List<String> _selectedFitnessGoals = [];
-  final TextEditingController otherFitnessGoalController = TextEditingController();
+  final TextEditingController otherFitnessGoalController =
+      TextEditingController();
   bool _fitnessGoalOtherSelected = false;
 
-  final List<String> experienceLevelOptions = ['Beginner', 'Intermediate', 'Advanced'];
+  final List<String> experienceLevelOptions = [
+    'Beginner',
+    'Intermediate',
+    'Advanced',
+  ];
   String? _selectedExperienceLevel;
-  final TextEditingController otherExperienceController = TextEditingController();
+  final TextEditingController otherExperienceController =
+      TextEditingController();
   bool _experienceOtherSelected = false;
 
   int _selectedTrainingDaysPerWeek = 3;
@@ -230,14 +251,19 @@ class ProfileSetupViewModel extends BaseViewModel {
   }
 
   /// navigate to next page or complete setup
-  void nextPage(VoidCallback onComplete) {
+  Future<void> nextPage(VoidCallback onComplete) async {
+    clearError();
+    if (!_validateCurrentPage()) {
+      return;
+    }
+
     if (_currentPage < 3) {
       pageController.nextPage(
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
       );
     } else {
-      completeSetup(onComplete);
+      await completeSetup(onComplete);
     }
   }
 
@@ -278,7 +304,9 @@ class ProfileSetupViewModel extends BaseViewModel {
         } else {
           _inBodyReportText = extractedText;
         }
-        debugPrint('OCR extraction successful: ${extractedText.substring(0, 50)}...');
+        debugPrint(
+          'OCR extraction successful: ${extractedText.substring(0, 50)}...',
+        );
       } catch (e) {
         debugPrint('OCR extraction failed: $e');
         setError('Failed to extract data from report: $e');
@@ -291,6 +319,13 @@ class ProfileSetupViewModel extends BaseViewModel {
 
   /// complete profile setup and save to firestore using repository
   Future<void> completeSetup(VoidCallback onComplete) async {
+    clearError();
+    final validationError = _validateAllPages();
+    if (validationError != null) {
+      setError(validationError);
+      return;
+    }
+
     final user = _authRepository.currentUser;
     if (user == null) {
       setError('No authenticated user found. Please login again.');
@@ -298,49 +333,53 @@ class ProfileSetupViewModel extends BaseViewModel {
     }
 
     setLoading(true);
-    clearError();
 
     try {
+      final fullName = nameController.text.trim();
+      final age = int.parse(ageController.text.trim());
+      final weight = double.parse(weightController.text.trim());
+      final targetWeight = double.parse(targetWeightController.text.trim());
+      final height = double.parse(heightController.text.trim());
+
       // create usermodel from collected data
       final userModel = UserModel(
         userId: user.uid,
         email: user.email,
-        fullName: nameController.text.isNotEmpty ? nameController.text : null,
-        age: int.tryParse(ageController.text),
+        fullName: fullName,
+        age: age,
         gender: _selectedGender,
-        weightKg: double.tryParse(weightController.text),
-        currentWeightKg: double.tryParse(weightController.text),
-        goalWeightKg: double.tryParse(targetWeightController.text),
-        heightCm: double.tryParse(heightController.text),
+        weightKg: weight,
+        currentWeightKg: weight,
+        goalWeightKg: targetWeight,
+        heightCm: height,
         activityLevel: _selectedActivityLevel,
         medicalConditions: _selectedMedicalConditions,
-        otherMedicalCondition: _medicalConditionOtherSelected
-            ? otherMedicalConditionController.text
-            : null,
+        otherMedicalCondition:
+            _medicalConditionOtherSelected
+                ? otherMedicalConditionController.text
+                : null,
         medicalReportName: _medicalReportName,
         inBodyReportName: _inBodyReportName,
         allergies: _selectedAllergies,
-        otherAllergy: _allergyOtherSelected ? otherAllergyController.text : null,
-        dislikedFoods: dislikedFoodsController.text.trim().isNotEmpty
-            ? dislikedFoodsController.text.trim()
-            : null,
+        otherAllergy:
+            _allergyOtherSelected ? otherAllergyController.text : null,
+        dislikedFoods:
+            dislikedFoodsController.text.trim().isNotEmpty
+                ? dislikedFoodsController.text.trim()
+                : null,
         currentInjuries: _selectedInjuries,
         otherInjury: _injuryOtherSelected ? otherInjuryController.text : null,
         fitnessGoals: _selectedFitnessGoals,
-        otherFitnessGoal: _fitnessGoalOtherSelected
-            ? otherFitnessGoalController.text
-            : null,
+        otherFitnessGoal:
+            _fitnessGoalOtherSelected ? otherFitnessGoalController.text : null,
         experienceLevel: _selectedExperienceLevel,
-        otherExperience: _experienceOtherSelected
-            ? otherExperienceController.text
-            : null,
+        otherExperience:
+            _experienceOtherSelected ? otherExperienceController.text : null,
         trainingDaysPerWeek: _selectedTrainingDaysPerWeek,
         preferredWorkoutSplit: _selectedWorkoutSplit,
         medicalReportText: _medicalReportText,
         inBodyReportText: _inBodyReportText,
-        profileInitial: nameController.text.isNotEmpty
-            ? nameController.text[0].toUpperCase()
-            : 'U',
+        profileInitial: fullName.isNotEmpty ? fullName[0].toUpperCase() : 'U',
         // generated plan values are written after ai diet generation.
         currentCalories: 0,
         dailyCalorieGoal: 0,
@@ -362,6 +401,121 @@ class ProfileSetupViewModel extends BaseViewModel {
       setError('Failed to save profile: $e');
       debugPrint('Error saving profile: $e');
     }
+  }
+
+  bool _validateCurrentPage() {
+    final error = switch (_currentPage) {
+      0 => _validateStep1(),
+      1 => _validateStep2(),
+      2 => _validateStep3(),
+      3 => _validateStep4(),
+      _ => null,
+    };
+    if (error != null) {
+      setError(error);
+      return false;
+    }
+    return true;
+  }
+
+  String? _validateAllPages() {
+    return _validateStep1() ??
+        _validateStep2() ??
+        _validateStep3() ??
+        _validateStep4();
+  }
+
+  String? _validateStep1() {
+    final fullName = nameController.text.trim();
+    if (fullName.isEmpty) return 'Please enter your full name';
+    if (fullName.length < 2) return 'Full name must be at least 2 characters';
+
+    final age = int.tryParse(ageController.text.trim());
+    if (age == null) return 'Please enter a valid age';
+    if (age < 13 || age > 100) return 'Age must be between 13 and 100';
+
+    if (_selectedGender.trim().isEmpty) return 'Please select your gender';
+    return null;
+  }
+
+  String? _validateStep2() {
+    final weight = double.tryParse(weightController.text.trim());
+    if (weight == null) return 'Please enter a valid current weight';
+    if (weight < 30 || weight > 300) {
+      return 'Current weight must be between 30 and 300 kg';
+    }
+
+    final targetWeight = double.tryParse(targetWeightController.text.trim());
+    if (targetWeight == null) return 'Please enter a valid target weight';
+    if (targetWeight < 30 || targetWeight > 300) {
+      return 'Target weight must be between 30 and 300 kg';
+    }
+
+    final height = double.tryParse(heightController.text.trim());
+    if (height == null) return 'Please enter a valid height';
+    if (height < 100 || height > 250) {
+      return 'Height must be between 100 and 250 cm';
+    }
+
+    if (_selectedActivityLevel.trim().isEmpty) {
+      return 'Please select your activity level';
+    }
+    return null;
+  }
+
+  String? _validateStep3() {
+    if (_selectedMedicalConditions.isEmpty && !_medicalConditionOtherSelected) {
+      return 'Please select your medical conditions, or choose None';
+    }
+    if (_medicalConditionOtherSelected &&
+        otherMedicalConditionController.text.trim().isEmpty) {
+      return 'Please specify your medical condition';
+    }
+
+    if (_selectedAllergies.isEmpty && !_allergyOtherSelected) {
+      return 'Please select your allergies, or choose None';
+    }
+    if (_allergyOtherSelected && otherAllergyController.text.trim().isEmpty) {
+      return 'Please specify your allergy';
+    }
+
+    if (_selectedInjuries.isEmpty && !_injuryOtherSelected) {
+      return 'Please select your current injuries, or choose None';
+    }
+    if (_injuryOtherSelected && otherInjuryController.text.trim().isEmpty) {
+      return 'Please specify your injury';
+    }
+
+    return null;
+  }
+
+  String? _validateStep4() {
+    if (_selectedFitnessGoals.isEmpty && !_fitnessGoalOtherSelected) {
+      return 'Please select at least one fitness goal';
+    }
+    if (_fitnessGoalOtherSelected &&
+        otherFitnessGoalController.text.trim().isEmpty) {
+      return 'Please specify your fitness goal';
+    }
+
+    if ((_selectedExperienceLevel == null ||
+            _selectedExperienceLevel!.isEmpty) &&
+        !_experienceOtherSelected) {
+      return 'Please select your experience level';
+    }
+    if (_experienceOtherSelected &&
+        otherExperienceController.text.trim().isEmpty) {
+      return 'Please specify your experience level';
+    }
+
+    if (_selectedTrainingDaysPerWeek < 1 || _selectedTrainingDaysPerWeek > 7) {
+      return 'Please select training days per week';
+    }
+    if (_selectedWorkoutSplit == null || _selectedWorkoutSplit!.isEmpty) {
+      return 'Please select a workout split';
+    }
+
+    return null;
   }
 
   @override

@@ -6,7 +6,6 @@ import 'profile_setup_screen.dart';
 import '../components/animate_in.dart';
 import '../../viewmodels/signup_view_model.dart';
 
-
 class Signupscreen extends StatelessWidget {
   const Signupscreen({super.key});
 
@@ -36,7 +35,7 @@ class Signupscreen extends StatelessWidget {
                               color: Colors.black.withOpacity(0.05),
                               blurRadius: 25,
                               offset: const Offset(0, 20),
-                            )
+                            ),
                           ],
                         ),
                         child: Column(
@@ -48,15 +47,18 @@ class Signupscreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(bottom: 16),
                                 child: Text(
                                   viewModel.error!,
-                                  style: const TextStyle(color: Colors.red, fontSize: 14),
+                                  style: const TextStyle(
+                                    color: Colors.red,
+                                    fontSize: 14,
+                                  ),
                                 ),
                               ),
                             AnimateIn(
                               delay: const Duration(milliseconds: 300),
                               child: _buildTextField(
                                 context,
-                                'Full Name',
-                                viewModel.nameController,
+                                'Username',
+                                viewModel.usernameController,
                                 Icons.person_outline,
                               ),
                             ),
@@ -127,121 +129,242 @@ class Signupscreen extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.only(top: 64, left: 24, right: 24, bottom: 40),
       decoration: const BoxDecoration(
-        gradient: LinearGradient(colors: [Color(0xFF003135), Color(0xFF024950)]),
-        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)),
+        gradient: LinearGradient(
+          colors: [Color(0xFF003135), Color(0xFF024950)],
+        ),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(40),
+          bottomRight: Radius.circular(40),
+        ),
       ),
-      child: Column(children: [
-        Row(children: [
-          IconButton(icon: const Icon(Icons.arrow_back, color: Colors.white), onPressed: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const AuthScreen()))),
-          const Expanded(child: Text('Create Account', textAlign: TextAlign.center, style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold))),
-          const SizedBox(width: 48),
-        ]),
-        const SizedBox(height: 8),
-        const Text('Start your fitness journey today', style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14)),
-      ]),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.white),
+                onPressed:
+                    () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (_) => const AuthScreen()),
+                    ),
+              ),
+              const Expanded(
+                child: Text(
+                  'Create Account',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              const SizedBox(width: 48),
+            ],
+          ),
+          const SizedBox(height: 8),
+          const Text(
+            'Start your fitness journey today',
+            style: TextStyle(color: Color(0xFFAFDDE5), fontSize: 14),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _buildTextField(BuildContext context, String label, TextEditingController controller, IconData icon, {bool isPassword = false}) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(label, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16)),
-      const SizedBox(height: 8),
-      TextField(
-        controller: controller,
-        obscureText: isPassword,
-        decoration: InputDecoration(
-          hintText: 'Enter your ${label.toLowerCase()}',
-          filled: true,
-          fillColor: Theme.of(context).colorScheme.surface,
-          prefixIcon: Icon(icon, color: Theme.of(context).colorScheme.primary),
-          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1))),
-          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(14), borderSide: BorderSide(color: Theme.of(context).colorScheme.primary)),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+  Widget _buildTextField(
+    BuildContext context,
+    String label,
+    TextEditingController controller,
+    IconData icon, {
+    bool isPassword = false,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface,
+            fontSize: 16,
+          ),
         ),
-      ),
-    ]);
+        const SizedBox(height: 8),
+        TextField(
+          controller: controller,
+          obscureText: isPassword,
+          decoration: InputDecoration(
+            hintText: 'Enter your ${label.toLowerCase()}',
+            filled: true,
+            fillColor: Theme.of(context).colorScheme.surface,
+            prefixIcon: Icon(
+              icon,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(14),
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.1),
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(14),
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 16,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
-  Widget _buildTermsAndConditions(BuildContext context, SignupViewModel viewModel) {
-    return Row(children: [
-      Checkbox(
-        value: viewModel.agreedToTerms,
-        onChanged: (v) => viewModel.setAgreedToTerms(v ?? false),
-        activeColor: Theme.of(context).colorScheme.primary,
-      ),
-      Expanded(
-        child: Text(
-          'I agree to the Terms & Conditions and Privacy Policy',
-          style: TextStyle(fontSize: 12, color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7)),
+  Widget _buildTermsAndConditions(
+    BuildContext context,
+    SignupViewModel viewModel,
+  ) {
+    return Row(
+      children: [
+        Checkbox(
+          value: viewModel.agreedToTerms,
+          onChanged: (v) => viewModel.setAgreedToTerms(v ?? false),
+          activeColor: Theme.of(context).colorScheme.primary,
         ),
-      ),
-    ]);
+        Expanded(
+          child: Text(
+            'I agree to the Terms & Conditions and Privacy Policy',
+            style: TextStyle(
+              fontSize: 12,
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Widget _buildSignupButton(BuildContext context, SignupViewModel viewModel) {
     return GestureDetector(
       onTap: () {
         viewModel.signup(context, () {
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfileSetupScreen()));
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const ProfileSetupScreen()),
+          );
         });
       },
       child: Container(
-        width: double.infinity, height: 56,
-        decoration: BoxDecoration(gradient: const LinearGradient(colors: [Color(0xFF024950), Color(0xFF0FA4AF)]), borderRadius: BorderRadius.circular(14)),
+        width: double.infinity,
+        height: 56,
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [Color(0xFF024950), Color(0xFF0FA4AF)],
+          ),
+          borderRadius: BorderRadius.circular(14),
+        ),
         alignment: Alignment.center,
-        child: viewModel.isLoading
-          ? const CircularProgressIndicator(color: Colors.white)
-          : const Text('Sign Up', style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+        child:
+            viewModel.isLoading
+                ? const CircularProgressIndicator(color: Colors.white)
+                : const Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
       ),
     );
   }
 
   Widget _buildDivider(BuildContext context) {
-    return Row(children: [
-      Expanded(child: Container(height: 1, color: const Color(0xFFAFDDE5))),
-      const Padding(padding: EdgeInsets.symmetric(horizontal: 16), child: Text('or continue with', style: TextStyle(color: Color(0xFF024950)))),
-      Expanded(child: Container(height: 1, color: const Color(0xFFAFDDE5))),
-    ]);
+    return Row(
+      children: [
+        Expanded(child: Container(height: 1, color: const Color(0xFFAFDDE5))),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            'or continue with',
+            style: TextStyle(color: Color(0xFF024950)),
+          ),
+        ),
+        Expanded(child: Container(height: 1, color: const Color(0xFFAFDDE5))),
+      ],
+    );
   }
 
   Widget _buildSocialButtons(BuildContext context, SignupViewModel viewModel) {
-    return Row(children: [
-      Expanded(
-        child: _buildSocialButton(
-          'Google',
-          const Color(0xFF4285F4),
-          FontAwesomeIcons.google,
-          onTap: () => viewModel.loginWithGoogle(context, () {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfileSetupScreen()));
-          }),
+    return Row(
+      children: [
+        Expanded(
+          child: _buildSocialButton(
+            'Google',
+            const Color(0xFF4285F4),
+            FontAwesomeIcons.google,
+            onTap:
+                () => viewModel.loginWithGoogle(context, () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfileSetupScreen(),
+                    ),
+                  );
+                }),
+          ),
         ),
-      ),
-      const SizedBox(width: 16),
-      Expanded(
-        child: _buildSocialButton(
-          'Apple',
-          Colors.black,
-          FontAwesomeIcons.apple,
-          onTap: () => viewModel.loginWithApple(context, () {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const ProfileSetupScreen()));
-          }),
+        const SizedBox(width: 16),
+        Expanded(
+          child: _buildSocialButton(
+            'Apple',
+            Colors.black,
+            FontAwesomeIcons.apple,
+            onTap:
+                () => viewModel.loginWithApple(context, () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ProfileSetupScreen(),
+                    ),
+                  );
+                }),
+          ),
         ),
-      ),
-    ]);
+      ],
+    );
   }
 
-  Widget _buildSocialButton(String label, Color color, IconData icon, {VoidCallback? onTap}) {
+  Widget _buildSocialButton(
+    String label,
+    Color color,
+    IconData icon, {
+    VoidCallback? onTap,
+  }) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
         height: 52,
-        decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(14)),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(14),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             FaIcon(icon, color: Colors.white, size: 20),
             const SizedBox(width: 12),
-            Text(label, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            Text(
+              label,
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ],
         ),
       ),
@@ -249,13 +372,25 @@ class Signupscreen extends StatelessWidget {
   }
 
   Widget _buildLoginLink(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      const Text('Already have an account? '),
-      GestureDetector(
-        onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const AuthScreen())),
-        child: const Text('Login', style: TextStyle(color: Color(0xFF0FA4AF), fontWeight: FontWeight.bold)),
-      ),
-    ]);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text('Already have an account? '),
+        GestureDetector(
+          onTap:
+              () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (_) => const AuthScreen()),
+              ),
+          child: const Text(
+            'Login',
+            style: TextStyle(
+              color: Color(0xFF0FA4AF),
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
-

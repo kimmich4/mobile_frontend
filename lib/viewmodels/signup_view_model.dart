@@ -9,11 +9,13 @@ class SignupViewModel extends BaseViewModel {
   final AuthRepository _authRepository;
   final UserRepository _userRepository;
 
-  SignupViewModel({AuthRepository? authRepository, UserRepository? userRepository})
-      : _authRepository = authRepository ?? AuthRepository(),
-        _userRepository = userRepository ?? UserRepository();
+  SignupViewModel({
+    AuthRepository? authRepository,
+    UserRepository? userRepository,
+  }) : _authRepository = authRepository ?? AuthRepository(),
+       _userRepository = userRepository ?? UserRepository();
 
-  final TextEditingController nameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
@@ -21,6 +23,9 @@ class SignupViewModel extends BaseViewModel {
 
   bool _agreedToTerms = false;
 
+  // Kept as an alias so older tests/call sites do not break while the UI uses
+  // the clearer username name.
+  TextEditingController get nameController => usernameController;
   bool get agreedToTerms => _agreedToTerms;
 
   /// toggle terms agreement
@@ -34,17 +39,42 @@ class SignupViewModel extends BaseViewModel {
     // clear any previous errors
     clearError();
 
-    // validate all fields
-    if (nameController.text.isEmpty ||
-        emailController.text.isEmpty ||
-        passwordController.text.isEmpty ||
-        confirmPasswordController.text.isEmpty) {
+    final username = usernameController.text.trim();
+    final email = emailController.text.trim();
+    final password = passwordController.text;
+    final confirmPassword = confirmPasswordController.text;
+
+    if (username.isEmpty ||
+        email.isEmpty ||
+        password.isEmpty ||
+        confirmPassword.isEmpty) {
       setError('Please fill all fields');
       return false;
     }
 
-    // check password match
-    if (passwordController.text != confirmPasswordController.text) {
+    if (username.length < 3) {
+      setError('Username must be at least 3 characters');
+      return false;
+    }
+
+    if (!RegExp(r'^[a-zA-Z0-9._]+$').hasMatch(username)) {
+      setError(
+        'Username can only contain letters, numbers, dots, and underscores',
+      );
+      return false;
+    }
+
+    if (!_isValidEmail(email)) {
+      setError('Please enter a valid email address');
+      return false;
+    }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
+      return false;
+    }
+
+    if (password != confirmPassword) {
       setError('Passwords do not match');
       return false;
     }
@@ -60,8 +90,8 @@ class SignupViewModel extends BaseViewModel {
     try {
       // 1. create user in firebase authentication via repository
       final credential = await _authRepository.createUserWithEmailAndPassword(
-        emailController.text.trim(),
-        passwordController.text,
+        email,
+        password,
       );
 
       final user = credential.user;
@@ -70,8 +100,9 @@ class SignupViewModel extends BaseViewModel {
         // 2. save additional user details (like name) to firestore via repository
         await _userRepository.updateFields(user.uid, {
           'uid': user.uid,
-          'name': nameController.text.trim(),
-          'email': emailController.text.trim(),
+          'username': username,
+          'name': username,
+          'email': email,
           'createdAt': FieldValue.serverTimestamp(),
         });
 
@@ -100,19 +131,23 @@ class SignupViewModel extends BaseViewModel {
   }
 
   /// perform google login/signup
-  Future<void> loginWithGoogle(BuildContext context, VoidCallback onSuccess) async {
+  Future<void> loginWithGoogle(
+    BuildContext context,
+    VoidCallback onSuccess,
+  ) async {
     clearError();
     setLoading(true);
 
     try {
       final credential = await _authRepository.signInWithGoogle();
-      
+
       // check if this is a new user and create record in firestore
       if (credential.additionalUserInfo?.isNewUser ?? false) {
         final user = credential.user;
         if (user != null) {
           await _userRepository.updateFields(user.uid, {
             'uid': user.uid,
+            'username': user.displayName ?? 'New User',
             'name': user.displayName ?? 'New User',
             'email': user.email ?? '',
             'createdAt': FieldValue.serverTimestamp(),
@@ -132,7 +167,10 @@ class SignupViewModel extends BaseViewModel {
   }
 
   /// perform apple login/signup
-  Future<void> loginWithApple(BuildContext context, VoidCallback onSuccess) async {
+  Future<void> loginWithApple(
+    BuildContext context,
+    VoidCallback onSuccess,
+  ) async {
     clearError();
     setLoading(true);
 
@@ -144,6 +182,7 @@ class SignupViewModel extends BaseViewModel {
         if (user != null) {
           await _userRepository.updateFields(user.uid, {
             'uid': user.uid,
+            'username': user.displayName ?? 'New User',
             'name': user.displayName ?? 'New User',
             'email': user.email ?? '',
             'createdAt': FieldValue.serverTimestamp(),
@@ -164,9 +203,13 @@ class SignupViewModel extends BaseViewModel {
     onNavigate();
   }
 
+  bool _isValidEmail(String email) {
+    return RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]+$').hasMatch(email);
+  }
+
   @override
   void dispose() {
-    nameController.dispose();
+    usernameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();

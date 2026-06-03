@@ -11,9 +11,11 @@ class AuthViewModel extends BaseViewModel {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  AuthViewModel({AuthRepository? authRepository, UserRepository? userRepository})
-      : _authRepository = authRepository ?? AuthRepository(),
-        _userRepository = userRepository ?? UserRepository();
+  AuthViewModel({
+    AuthRepository? authRepository,
+    UserRepository? userRepository,
+  }) : _authRepository = authRepository ?? AuthRepository(),
+       _userRepository = userRepository ?? UserRepository();
 
   String get email => emailController.text;
   String get password => passwordController.text;
@@ -23,24 +25,32 @@ class AuthViewModel extends BaseViewModel {
     // clear any previous errors
     clearError();
 
-    // validate input
-    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+    final email = emailController.text.trim();
+    final password = passwordController.text;
+
+    if (email.isEmpty || password.isEmpty) {
       setError('Please enter email and password');
+      return false;
+    }
+
+    if (!RegExp(r'^[^\s@]+@[^\s@]+\.[^\s@]+$').hasMatch(email)) {
+      setError('Please enter a valid email address');
+      return false;
+    }
+
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
       return false;
     }
 
     setLoading(true);
 
     try {
-      await _authRepository.signInWithEmailAndPassword(
-        emailController.text.trim(),
-        passwordController.text,
-      );
+      await _authRepository.signInWithEmailAndPassword(email, password);
 
       setLoading(false);
       onSuccess();
       return true;
-
     } on Exception catch (e) {
       setLoading(false);
       // we can improve error parsing in the repository or here
@@ -59,13 +69,16 @@ class AuthViewModel extends BaseViewModel {
   }
 
   /// perform google login
-  Future<void> loginWithGoogle(BuildContext context, VoidCallback onSuccess) async {
+  Future<void> loginWithGoogle(
+    BuildContext context,
+    VoidCallback onSuccess,
+  ) async {
     clearError();
     setLoading(true);
 
     try {
       final credential = await _authRepository.signInWithGoogle();
-      
+
       // check if this is a new user and create record in firestore if needed
       if (credential.additionalUserInfo?.isNewUser ?? false) {
         final user = credential.user;
@@ -91,7 +104,10 @@ class AuthViewModel extends BaseViewModel {
   }
 
   /// perform apple login
-  Future<void> loginWithApple(BuildContext context, VoidCallback onSuccess) async {
+  Future<void> loginWithApple(
+    BuildContext context,
+    VoidCallback onSuccess,
+  ) async {
     clearError();
     setLoading(true);
 
@@ -118,7 +134,6 @@ class AuthViewModel extends BaseViewModel {
       setError(e.toString().replaceFirst('Exception: ', ''));
     }
   }
-
 
   /// navigate to signup screen
   void navigateToSignup(VoidCallback onNavigate) {
