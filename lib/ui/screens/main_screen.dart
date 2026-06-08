@@ -23,7 +23,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // screens are stateless/stateful widgets, but we don't manage their state here anymore
+  // screens are stateless/stateful widgets, but we don't manage their state here
   final List<Widget> _screens = [
     const HomeScreen(),
     const WorkoutPlanScreen(),

@@ -21,7 +21,7 @@ const { formatVectorContext, rankRetrievedResults } = require("./retrieval_helpe
 const step_validateQuery = RunnableLambda.from(async (inputObj) => {
     console.log(`\nlangchain full plan step 1 - validate query`);
 
-    // support either a raw string (for old unit tests) or the full object (from express routes)
+
     const state = typeof inputObj === 'string' ? { searchQuery: inputObj, contextPrefix: "", task: "" } : inputObj;
 
     console.log(`   Input: "${state.searchQuery}"`);

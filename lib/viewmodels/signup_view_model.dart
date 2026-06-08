@@ -23,8 +23,7 @@ class SignupViewModel extends BaseViewModel {
 
   bool _agreedToTerms = false;
 
-  // Kept as an alias so older tests/call sites do not break while the UI uses
-  // the clearer username name.
+  // the username name.
   TextEditingController get nameController => usernameController;
   bool get agreedToTerms => _agreedToTerms;
 

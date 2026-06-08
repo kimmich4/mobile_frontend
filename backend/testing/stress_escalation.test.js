@@ -21,7 +21,7 @@ jest.setTimeout(600_000); // 10 min ceiling for full escalation
 const LOAD_LEVELS = [1, 5, 10, 25, 50, 100, 200, 500, 600, 700, 800, 900, 1000];
 const REQUEST_TIMEOUT = 5_000; // ms before a single request is counted as failed
 const THRESHOLDS = {
-    maxErrorPct: 0, // any 5xx or timeout is failure
+    maxErrorPct: 0, // any error or timeout is failure
     maxP95: 500, // ms
     maxP99: 1000, // ms
 };

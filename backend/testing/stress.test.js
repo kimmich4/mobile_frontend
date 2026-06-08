@@ -1,8 +1,8 @@
 
 
 const request = require('supertest');
-const { app }          = require('../index');
-const { ragChain }     = require('../rag_chain');
+const { app } = require('../index');
+const { ragChain } = require('../rag_chain');
 const { chatAssistant } = require('../ai_assistant');
 const { analyzeImage } = require('../ocr_logic');
 
@@ -49,18 +49,19 @@ const BASE_PROFILE = {
     preferred_workout_split: 'Push/Pull/Legs',
 };
 
-// sla thresholds (ms)
+// Service Level Agreement thresholds (ms) 
+//maximum acceptable response time for an API request to be considered successful.
 const SLA = {
-    health:          50, // trivial endpoint
-    chat:           150,
-    analyzeReport:  150,
-    generateDiet:   200,
-    generateWorkout:200,
-    searchVideo:    150,
+    health: 50, // trivial endpoint
+    chat: 150,
+    analyzeReport: 150,
+    generateDiet: 200,
+    generateWorkout: 200,
+    searchVideo: 150,
 };
 
 // mock payloads
-const MOCK_DIET    = JSON.stringify({ days: Array.from({ length: 7 }, (_, i) => ({ day: i + 1, meals: [] })) });
+const MOCK_DIET = JSON.stringify({ days: Array.from({ length: 7 }, (_, i) => ({ day: i + 1, meals: [] })) });
 const MOCK_WORKOUT = JSON.stringify({ gym: { title: 'Gym Plan', days: [] }, home: { title: 'Home Plan', days: [] } });
 
 // 1. get /health concurrent and sequential stress
@@ -215,7 +216,7 @@ describe('Stress: POST /ai/generate-diet', () => {
     test('handles extreme body weight values without crashing (1 kg → 500 kg)', async () => {
         const weights = [1, 50, 100, 200, 300, 500];
         const results = await concurrent(
-            () => {}, // placeholder replaced below
+            () => { }, // placeholder replaced below
             0
         );
         const realResults = await Promise.all(
